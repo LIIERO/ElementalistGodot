@@ -1,0 +1,173 @@
+[gd_scene load_steps=20 format=3 uid="uid://d0if8ksrlccpx"]
+
+[ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br4kj"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(32, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1l1"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrcjj"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(16, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rx15"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(64, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn8nu"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwe65"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqhye"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqspd"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(0, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6rep"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8htpt"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(16, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt0ou"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(32, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oqp3"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(48, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jaji"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(64, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v24ej"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(80, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ir13h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br4kj")
+}],
+"loop": true,
+"name": &"Cling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx1l1")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrcjj")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rx15")
+}],
+"loop": true,
+"name": &"Fireball",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 24.0,
+"texture": SubResource("AtlasTexture_bn8nu")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_jwe65")
+}, {
+"duration": 24.0,
+"texture": SubResource("AtlasTexture_jqhye")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_jwe65")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqspd")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6rep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8htpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt0ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oqp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jaji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v24ej")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npdoq"]
+size = Vector2(9, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5dbt"]
+
+[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "wallcheck")]
+z_index = 5
+texture_filter = 1
+position = Vector2(16, 32)
+script = ExtResource("1_ttwdh")
+animatedSprite = NodePath("AnimatedSprite2D")
+wallcheck = NodePath("Wallcheck")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ir13h")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_npdoq")
+
+[node name="Wallcheck" type="ShapeCast2D" parent="."]
+visible = false
+position = Vector2(-1, -9)
+scale = Vector2(0.2, 0.9)
+shape = SubResource("RectangleShape2D_a5dbt")
+target_position = Vector2(35, 0)
+max_results = 5

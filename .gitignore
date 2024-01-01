@@ -1,0 +1,11 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Visual Studio cache directory
+.vs/
+
+# Solution and project files
+*.csproj
+*.sln
+
+Backup/
