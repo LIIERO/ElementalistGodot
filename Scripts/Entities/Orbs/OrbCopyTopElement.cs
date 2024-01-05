@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using static GlobalTypes;
 
-public partial class OrbCopyTopElement : Orb, IOrb
+public partial class OrbCopyTopElement : Orb
 {
-    public void ModifyElementStack(List<ElementState> elementStack)
+    protected override void ModifyElementStack(List<ElementState> elementStack)
     {
         if (elementStack.Count > 0)
         {

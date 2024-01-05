@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuxshltrytaqn"]
+
+[ext_resource type="Texture2D" uid="uid://b8wj63fvhh5sd" path="res://Graphics/UI/Gameplay/element_overlay.png" id="1_vlhss"]
+
+[node name="ElementSymbol" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(16, 16)
+texture = ExtResource("1_vlhss")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

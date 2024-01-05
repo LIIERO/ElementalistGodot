@@ -1,7 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0if8ksrlccpx"]
+[gd_scene load_steps=23 format=3 uid="uid://d0if8ksrlccpx"]
 
 [ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
+[ext_resource type="Shader" path="res://Graphics/Materials/Player.gdshader" id="2_8qnsu"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerShader.cs" id="4_cjnuf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3van"]
+resource_local_to_scene = true
+shader = ExtResource("2_8qnsu")
+shader_parameter/shirtColor = Vector3(0.16, 0.8, 0.16)
+shader_parameter/sleeveColor = Vector3(0.12, 0.6, 0.12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_br4kj"]
 atlas = ExtResource("1_hmjjb")
@@ -147,7 +155,7 @@ size = Vector2(9, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5dbt"]
 
-[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "wallcheck")]
+[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "wallcheck") groups=["Player"]]
 z_index = 5
 texture_filter = 1
 position = Vector2(16, 32)
@@ -156,9 +164,11 @@ animatedSprite = NodePath("AnimatedSprite2D")
 wallcheck = NodePath("Wallcheck")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_q3van")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ir13h")
 animation = &"Idle"
+script = ExtResource("4_cjnuf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -9)

@@ -1,10 +1,11 @@
 
+using Godot;
 using System.Collections.Generic;
 using static GlobalTypes;
 
-public partial class OrbAddElement : Orb, IOrb
+public partial class OrbAddElement : Orb
 {
-    public void ModifyElementStack(List<ElementState> elementStack)
+    protected override void ModifyElementStack(List<ElementState> elementStack)
     {
         elementStack.Add(ColorsetToElement[refillColor]);
     }
