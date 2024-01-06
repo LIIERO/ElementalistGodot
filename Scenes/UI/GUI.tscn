@@ -1,11 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=8 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
+[ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
+[ext_resource type="Texture2D" uid="uid://juu7xv6auy2o" path="res://Graphics/UI/Gameplay/ElementOverlay/eo_air.png" id="3_ajuk5"]
+[ext_resource type="Texture2D" uid="uid://2mt8ahvkcn0f" path="res://Graphics/transparent.png" id="3_cu30s"]
+[ext_resource type="Texture2D" uid="uid://x8xsggtojqhl" path="res://Graphics/UI/Gameplay/ElementOverlay/eo_water.png" id="4_l11v4"]
+[ext_resource type="Texture2D" uid="uid://c08fv7riufstl" path="res://Graphics/UI/Gameplay/ElementOverlay/eo_fire.png" id="5_wbbe2"]
+[ext_resource type="Texture2D" uid="uid://b1bwid5ffekya" path="res://Graphics/UI/Gameplay/ElementOverlay/eo_earth.png" id="6_5tabo"]
 
 [node name="GUI" type="CanvasLayer"]
-follow_viewport_enabled = true
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="Rows" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,6 +25,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="Rows/TopRow"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -29,5 +38,12 @@ size_flags_stretch_ratio = 4.0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ElementSymbol" parent="." instance=ExtResource("1_rymwl")]
-visible = false
+[node name="ElementOverlay" type="Node2D" parent="."]
+position = Vector2(10.6667, 10.6667)
+script = ExtResource("2_00r7b")
+elementSymbol = ExtResource("1_rymwl")
+emptySprite = ExtResource("3_cu30s")
+airSprite = ExtResource("3_ajuk5")
+waterSprite = ExtResource("4_l11v4")
+fireSprite = ExtResource("5_wbbe2")
+earthSprite = ExtResource("6_5tabo")

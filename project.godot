@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/resizable=false
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -68,7 +69,3 @@ inputRestart={
 [physics]
 
 2d/default_gravity=700.0
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
