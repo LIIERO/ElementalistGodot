@@ -26,10 +26,14 @@ public partial class PlayerShader : AnimatedSprite2D
     Vector3 brownSleeves = new(0.471f, 0.282f, 0.094f);
     Vector3 brownParticle = new(1.0f, 0.5f, 0.0f);
 
+    // Signals
+    private CustomSignals customSignals;
+
     public override void _Ready()
 	{
         shaderMaterial = Material as ShaderMaterial;
-        Orb.PlayerAbilityListModified += UpdatePlayerColorFromStack;
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.PlayerAbilityListUpdated, new Callable(this, MethodName.UpdatePlayerColorFromArray));
     }
 
     public void UpdatePlayerColor(ElementState element)
@@ -54,11 +58,11 @@ public partial class PlayerShader : AnimatedSprite2D
         }
     }
 
-    public void UpdatePlayerColorFromStack(List<ElementState> elementStack)
+    public void UpdatePlayerColorFromArray(int[] elementArray)
     {
-        if (elementStack.Count > 0)
+        if (elementArray.Length > 0)
         {
-            UpdatePlayerColor(elementStack[^1]);
+            UpdatePlayerColor((ElementState)elementArray[^1]);
         }
     }
 

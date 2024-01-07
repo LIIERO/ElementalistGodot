@@ -22,10 +22,10 @@ public partial class Camera : Camera2D
 	{
         initialPosition = Position;
 
-        leftLimit = (leftLimit * GlobalData.gameUnitSize) + initialPosition.X;
-        upLimit = (upLimit * GlobalData.gameUnitSize) + initialPosition.Y;
-        rightLimit = (rightLimit * GlobalData.gameUnitSize) + initialPosition.X;
-        downLimit = (downLimit * GlobalData.gameUnitSize) + initialPosition.Y;
+        leftLimit = (leftLimit * GlobalUtils.gameUnitSize) + initialPosition.X;
+        upLimit = (upLimit * GlobalUtils.gameUnitSize) + initialPosition.Y;
+        rightLimit = (rightLimit * GlobalUtils.gameUnitSize) + initialPosition.X;
+        downLimit = (downLimit * GlobalUtils.gameUnitSize) + initialPosition.Y;
 
         Position = ApplyCameraBounds(Position);
     }

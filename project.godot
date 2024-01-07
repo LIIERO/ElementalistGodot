@@ -17,6 +17,10 @@ run/max_fps=60
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+CustomSignals="*res://Scripts/Global/CustomSignals.cs"
+
 [display]
 
 window/size/viewport_width=1280
