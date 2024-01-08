@@ -19,7 +19,7 @@ public abstract partial class Orb : Area2D
 
 	protected virtual void ModifyElementStack(List<ElementState> elementStack) {}
 
-	void _on_body_entered(Node2D body)
+	void _OnBodyEntered(Node2D body)
 	{
 		if (body.IsInGroup("Player"))
 		{

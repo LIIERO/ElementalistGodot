@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using static GlobalTypes;
 
-public partial class PlayerShader : AnimatedSprite2D
+public partial class PlayerShaderEffects : AnimatedSprite2D
 {
     ShaderMaterial shaderMaterial;
 
@@ -66,4 +66,71 @@ public partial class PlayerShader : AnimatedSprite2D
         }
     }
 
+
+
+    // ECHO TRAIL
+
+    [Export] Node echoTrailSpawner;
+    [Export] PackedScene echoTrailObject;
+    const float timeBetweenSpawns = 0.02f;
+    const float removalTime = 2.0f;
+
+    [Export] Texture2D waterAbility;
+    [Export] Texture2D airAbility;
+    [Export] Texture2D earthAbility;
+    [Export] Texture2D fireAbility;
+
+    bool trailActive;
+    float timeBetweenSpawnsCounter;
+    Texture2D trailSprite;
+
+
+    public override void _Process(double delta)
+    {
+        if (trailActive)
+        {
+            if (timeBetweenSpawnsCounter <= 0)
+            {
+                SpawnEchoObject();
+                timeBetweenSpawnsCounter = timeBetweenSpawns;
+            }
+            else
+            {
+                timeBetweenSpawnsCounter -= (float)delta;
+            }
+        }
+    }
+
+    private async void SpawnEchoObject()
+    {
+        Sprite2D instance = echoTrailObject.Instantiate() as Sprite2D;
+        instance.FlipH = FlipH;
+        instance.Texture = trailSprite;
+        echoTrailSpawner.AddChild(instance);
+        instance.GlobalPosition = GlobalPosition;
+        //RemoveChild(instance);
+
+        await ToSignal(GetTree().CreateTimer(removalTime), "timeout");
+        instance.QueueFree();
+    }
+
+    public void ActivateTrail(ElementState abilityElement)
+    {
+        trailActive = true;
+        timeBetweenSpawnsCounter = timeBetweenSpawns;
+
+        trailSprite = abilityElement switch
+        {
+            ElementState.water => waterAbility,
+            ElementState.air => airAbility,
+            ElementState.earth => earthAbility,
+            ElementState.fire => fireAbility,
+            _ => throw new NotImplementedException(),
+        };
+    }
+
+    public void DeactivateTrail()
+    {
+        trailActive = false;
+    }
 }

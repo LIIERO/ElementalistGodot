@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://d0if8ksrlccpx" path="res://Scenes/Entities/Player.tscn" id="3_ley1a"]
 [ext_resource type="PackedScene" uid="uid://bwqsxgd4jkoan" path="res://Scenes/MainCamera.tscn" id="3_mm8ou"]
 [ext_resource type="Texture2D" uid="uid://erpa5lvkprei" path="res://Graphics/Tiles/purple_grass.png" id="4_1lmij"]
-[ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_oufbe"]
-[ext_resource type="PackedScene" uid="uid://cm0acyovra7xg" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_h2q4x"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_oufbe"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_h2q4x"]
 [ext_resource type="PackedScene" uid="uid://ciq4cuqvua4tl" path="res://Scenes/UI/GUI.tscn" id="5_xqocp"]
-[ext_resource type="PackedScene" uid="uid://bidi2t44oie8o" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_356fw"]
-[ext_resource type="PackedScene" uid="uid://ckc338solyk2p" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="7_4msej"]
-[ext_resource type="PackedScene" uid="uid://bqltyyoysdevg" path="res://Scenes/Entities/Orbs/GreenOrb.tscn" id="8_1u0n6"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_356fw"]
+[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="7_4msej"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="8_xuxpx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to7sr"]
 texture = ExtResource("4_1lmij")
@@ -346,7 +346,7 @@ sources/0 = SubResource("TileSetAtlasSource_to7sr")
 [node name="Zoe" parent="." instance=ExtResource("3_ley1a")]
 position = Vector2(0, 0)
 
-[node name="GroundTiles" type="TileMap" parent="."]
+[node name="GroundTiles" type="TileMap" parent="." groups=["PlayerCollider"]]
 texture_filter = 1
 tile_set = SubResource("TileSet_b4wqv")
 format = 2
@@ -358,18 +358,25 @@ PlayerNode = NodePath("../Zoe")
 [node name="Orbs" type="Node2D" parent="."]
 
 [node name="WaterOrb" parent="Orbs" instance=ExtResource("4_oufbe")]
-position = Vector2(-112, -32)
+position = Vector2(-32, -32)
 
 [node name="AirOrb" parent="Orbs" instance=ExtResource("5_h2q4x")]
-position = Vector2(-48, -32)
+position = Vector2(-64, -32)
 
 [node name="EarthOrb" parent="Orbs" instance=ExtResource("6_356fw")]
-position = Vector2(-80, -32)
+position = Vector2(-96, -32)
 
 [node name="FireOrb" parent="Orbs" instance=ExtResource("7_4msej")]
-position = Vector2(-144, -32)
+position = Vector2(-128, -32)
+refillColor = 0
 
-[node name="GreenOrb" parent="Orbs" instance=ExtResource("8_1u0n6")]
-position = Vector2(-176, -32)
+[node name="CopyTopOrb" parent="Orbs" instance=ExtResource("8_xuxpx")]
+position = Vector2(-160, -32)
 
 [node name="GUI" parent="." instance=ExtResource("5_xqocp")]
+
+[connection signal="body_entered" from="Orbs/WaterOrb" to="Orbs/WaterOrb" method="_on_body_entered"]
+[connection signal="body_entered" from="Orbs/AirOrb" to="Orbs/AirOrb" method="_on_body_entered"]
+[connection signal="body_entered" from="Orbs/EarthOrb" to="Orbs/EarthOrb" method="_on_body_entered"]
+[connection signal="body_entered" from="Orbs/FireOrb" to="Orbs/FireOrb" method="_on_body_entered"]
+[connection signal="body_entered" from="Orbs/CopyTopOrb" to="Orbs/CopyTopOrb" method="_on_body_entered"]

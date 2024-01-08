@@ -1,9 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0if8ksrlccpx"]
+[gd_scene load_steps=34 format=3 uid="uid://d0if8ksrlccpx"]
 
 [ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
 [ext_resource type="Shader" path="res://Graphics/Materials/Player.gdshader" id="2_8qnsu"]
-[ext_resource type="Script" path="res://Scripts/Player/PlayerShader.cs" id="4_cjnuf"]
+[ext_resource type="PackedScene" uid="uid://bqil6g1p2c3cp" path="res://Scenes/Entities/Fireball.tscn" id="2_e76yy"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerShaderEffects.cs" id="4_grl6q"]
+[ext_resource type="PackedScene" uid="uid://c5b36fnh8utbi" path="res://Scenes/Effects/PlayerEchoTrailObject.tscn" id="5_xlh2h"]
+[ext_resource type="Texture2D" uid="uid://dreth7lup1wxr" path="res://Graphics/Effects/ZoeEchoTrail/water_echo.png" id="6_wxj53"]
+[ext_resource type="Texture2D" uid="uid://c6hrw8tpcgsae" path="res://Graphics/Effects/ZoeEchoTrail/air_echo.png" id="7_ol6ge"]
+[ext_resource type="Texture2D" uid="uid://yhfqnqjvtmru" path="res://Graphics/Effects/ZoeEchoTrail/earth_echo.png" id="8_8uvrg"]
+[ext_resource type="Texture2D" uid="uid://buyfr2nnlr3qq" path="res://Graphics/Effects/ZoeEchoTrail/fire_echo.png" id="9_kgryv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3van"]
 resource_local_to_scene = true
@@ -18,6 +24,26 @@ region = Rect2(32, 64, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx1l1"]
 atlas = ExtResource("1_hmjjb")
 region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvv4v"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(0, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpra0"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(16, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7580x"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(32, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umfww"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(48, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoatn"]
+atlas = ExtResource("1_hmjjb")
+region = Rect2(64, 96, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrcjj"]
 atlas = ExtResource("1_hmjjb")
@@ -87,6 +113,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rvv4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpra0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7580x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umfww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoatn")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wrcjj")
 }],
 "loop": true,
@@ -102,21 +148,21 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 24.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_bn8nu")
 }, {
-"duration": 3.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jwe65")
 }, {
-"duration": 24.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_jqhye")
 }, {
-"duration": 3.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jwe65")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 30.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -155,20 +201,30 @@ size = Vector2(9, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5dbt"]
 
-[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "wallcheck") groups=["Player"]]
-z_index = 5
+[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "wallcheck", "spawner") groups=["Player"]]
 texture_filter = 1
 position = Vector2(16, 32)
 script = ExtResource("1_ttwdh")
+fireball = ExtResource("2_e76yy")
 animatedSprite = NodePath("AnimatedSprite2D")
 wallcheck = NodePath("Wallcheck")
+spawner = NodePath("AnimatedSprite2D/EntitySpawner")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("echoTrailSpawner")]
+z_index = 5
 material = SubResource("ShaderMaterial_q3van")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ir13h")
 animation = &"Idle"
-script = ExtResource("4_cjnuf")
+script = ExtResource("4_grl6q")
+echoTrailSpawner = NodePath("EntitySpawner")
+echoTrailObject = ExtResource("5_xlh2h")
+waterAbility = ExtResource("6_wxj53")
+airAbility = ExtResource("7_ol6ge")
+earthAbility = ExtResource("8_8uvrg")
+fireAbility = ExtResource("9_kgryv")
+
+[node name="EntitySpawner" type="Node" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -9)

@@ -1,52 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckc338solyk2p"]
+[gd_scene load_steps=4 format=3 uid="uid://dlb3kwtwp4t6l"]
 
+[ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/OrbBase.tscn" id="1_8sst4"]
 [ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbAddElement.cs" id="1_jro5d"]
 [ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="2_tr1sw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfvn0"]
-size = Vector2(8, 8)
-
-[sub_resource type="Animation" id="Animation_porbe"]
-resource_name = "Idle"
-length = 4.0
-loop_mode = 1
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MovedByAnimation:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(-2, -2, -2),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
-_data = {
-"Idle": SubResource("Animation_porbe")
-}
-
-[node name="Orb" type="Area2D"]
+[node name="FireOrb" instance=ExtResource("1_8sst4")]
 script = ExtResource("1_jro5d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_kfvn0")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_c15ny")
-}
-autoplay = "Idle"
-
-[node name="MovedByAnimation" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="MovedByAnimation"]
-texture_filter = 1
+[node name="Sprite2D" parent="MovedByAnimation" index="0"]
 texture = ExtResource("2_tr1sw")
-region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

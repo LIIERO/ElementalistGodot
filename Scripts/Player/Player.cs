@@ -12,10 +12,14 @@ public partial class Player : CharacterBody2D
 	// Signals
 	private CustomSignals customSignals;
 
+	// Instaniates
+	[Export] private PackedScene fireball;
+
     // Child nodes
     [Export] private AnimatedSprite2D animatedSprite;
 	[Export] private ShapeCast2D wallcheck;
-	private PlayerShader shaderScript;
+	[Export] private Node spawner;
+	private PlayerShaderEffects shaderScript;
 
 	// Parameters
 	public const float speed = 110.0f;
@@ -47,6 +51,7 @@ public partial class Player : CharacterBody2D
 	bool canUseBaseAbility = false;
 	bool isFacingRight = true;
 	bool isGrounded = false;
+	bool isDying = false;
 	//(bool left, bool right) huggingWall = (false, false); // useless I think
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 	
@@ -56,7 +61,7 @@ public partial class Player : CharacterBody2D
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 
 		gravity = defaultGravity;
-		shaderScript = animatedSprite as PlayerShader;
+		shaderScript = animatedSprite as PlayerShaderEffects;
 		AbilityList = new List<ElementState>();
 		BaseAbility = ElementState.normal;
 	}
@@ -167,7 +172,6 @@ public partial class Player : CharacterBody2D
 					currentAbility = AbilityList[^1];
 					AbilityList.RemoveAt(AbilityList.Count - 1);
 					customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityUsed, (int)currentAbility);
-					//AbilityUsed?.Invoke(currentAbility);
 				}
 
 				ExecuteAbilityAfterSeconds(abilityFreezeTime);
@@ -215,7 +219,7 @@ public partial class Player : CharacterBody2D
 
 		isExecutingAbility = true;
 		//StartAbilityDust(currentAbility);
-		//trailScript.ActivateTrail(currentAbility);
+		shaderScript.ActivateTrail(currentAbility);
 
 		if (currentAbility == ElementState.air)
 		{
@@ -229,7 +233,7 @@ public partial class Player : CharacterBody2D
 		}
 		else if (currentAbility == ElementState.fire)
 		{
-			//SpawnFireball();
+			SpawnFireball();
 			await ToSignal(GetTree().CreateTimer(dashTime / 2f), "timeout");
 			StopAbility();
 		}
@@ -239,7 +243,7 @@ public partial class Player : CharacterBody2D
 	{
 		shaderScript.UpdatePlayerColor(GetZoeEffectiveElement());
 		// StopAbilityDust();
-		// trailScript.DeactivateTrail();
+		shaderScript.DeactivateTrail();
 
 		isUsingAbility = false;
 		isExecutingAbility = false;
@@ -250,17 +254,22 @@ public partial class Player : CharacterBody2D
 		jumpBufferTimeCounter = 0f;
 	}
 
-	/*void SpawnFireball()
+	void SpawnFireball()
 	{
-		float downOffset = 0.4f;
-		GameObject newFireball = Instantiate(fireball, transform.position - new Vector3(0f, downOffset, 0f), transform.rotation);
-		if (!isFacingRight) newFireball.transform.localScale = new Vector3(-1, 1, 1);
-	}*/
+		const float downOffset = 9f;
+
+        Node2D instance = fireball.Instantiate() as Node2D;
+		(instance as Fireball).SetDirection(isFacingRight);
+        spawner.AddChild(instance);
+        instance.GlobalPosition = GlobalPosition - new Vector2(0.0f, downOffset);
+	}
 
 	// ANIMATION ==================================================================================================================
 
 	private void UpdateAnimation(Vector2 direction)
 	{
+		if (isDying) return; // Death animation set in Die method
+
 		// change direction facing
 		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency
 		{
@@ -312,9 +321,10 @@ public partial class Player : CharacterBody2D
 	{
 		//if (isUsingAbility) return;
 		//Global.PlayingCutscene = true;
+		isDying = true;
 		isFrozen = true; // player floats when killed
-		//anim.SetTrigger("death"); // death animation
-		await ToSignal(GetTree().CreateTimer(t), "timeout");
+        animatedSprite.Play("Die"); // death animation
+        await ToSignal(GetTree().CreateTimer(t), "timeout");
 		GetTree().ReloadCurrentScene(); // TEMPORARY
 	}
 

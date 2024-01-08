@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwq53xpwvs61d"]
+
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="1_uod1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]
+size = Vector2(16, 19)
+
+[node name="Sign" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_3qu6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("1_uod1i")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 32)

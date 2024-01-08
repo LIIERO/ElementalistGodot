@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5eyiktb8ynu0"]
+
+[ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/OrbBase.tscn" id="1_7mpx1"]
+[ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbCopyTopElement.cs" id="2_juf2b"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="3_2vkkd"]
+
+[node name="CopyTopOrb" instance=ExtResource("1_7mpx1")]
+script = ExtResource("2_juf2b")
+refillColor = 4
+
+[node name="Sprite2D" parent="MovedByAnimation" index="0"]
+texture = ExtResource("3_2vkkd")
+region_rect = Rect2(64, 0, 16, 16)
