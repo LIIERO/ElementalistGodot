@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwq53xpwvs61d"]
+[gd_scene load_steps=5 format=3 uid="uid://dwq53xpwvs61d"]
 
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/Sign.cs" id="1_556lc"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="1_uod1i"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/UpArrowIndicator.tscn" id="2_k02hu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]
-size = Vector2(16, 19)
+size = Vector2(16, 1)
 
 [node name="Sign" type="Area2D"]
+script = ExtResource("1_556lc")
+Text = "Text from a sign"
+arrowIndicatorPrefab = ExtResource("2_k02hu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3qu6i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,3 +22,6 @@ position = Vector2(0, -16)
 texture = ExtResource("1_uod1i")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 32)
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="_OnBodyExited"]

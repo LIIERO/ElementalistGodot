@@ -8,7 +8,7 @@ public static class GlobalUtils
 {
     public static readonly int gameUnitSize = 16;
 
-    public static bool PlayingCutscene { get; set; } = false; // TODO MOVE THIS AWATY FROM HERE
+    public static bool PlayingCutscene { get; set; } = false; // TODO MOVE THIS AWAY FROM HERE
 
     public static int[] ElementListToIntArray(List<ElementState> elementList)
     {
@@ -18,5 +18,14 @@ public static class GlobalUtils
             elementArray[i] = (int)elementList[i];
         }
         return elementArray;
+    }
+
+    public static string GetKeyName(string actionName) // Fix this
+    {
+        //OS.get_scancode_string(InputMap.get_action_list("interact")[0].physical_scancode)
+        //var keycode = DisplayServer.KeyboardGetKeycodeFromPhysical(inputEventKey.PhysicalKeycode);
+        //GD.Print(OS.GetKeycodeString(keycode));
+        //return OS.GetKeycodeString();
+        return InputMap.ActionGetEvents(actionName)[0].AsText();
     }
 }

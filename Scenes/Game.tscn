@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6gi1rur3t3m0"]
+[gd_scene load_steps=13 format=3 uid="uid://c6gi1rur3t3m0"]
 
 [ext_resource type="PackedScene" uid="uid://d0if8ksrlccpx" path="res://Scenes/Entities/Player.tscn" id="3_ley1a"]
 [ext_resource type="PackedScene" uid="uid://bwqsxgd4jkoan" path="res://Scenes/MainCamera.tscn" id="3_mm8ou"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_356fw"]
 [ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="7_4msej"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="8_xuxpx"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Sign.tscn" id="9_ikh81"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to7sr"]
 texture = ExtResource("4_1lmij")
@@ -358,20 +359,29 @@ PlayerNode = NodePath("../Zoe")
 [node name="Orbs" type="Node2D" parent="."]
 
 [node name="WaterOrb" parent="Orbs" instance=ExtResource("4_oufbe")]
-position = Vector2(-32, -32)
-
-[node name="AirOrb" parent="Orbs" instance=ExtResource("5_h2q4x")]
-position = Vector2(-64, -32)
-
-[node name="EarthOrb" parent="Orbs" instance=ExtResource("6_356fw")]
 position = Vector2(-96, -32)
 
-[node name="FireOrb" parent="Orbs" instance=ExtResource("7_4msej")]
+[node name="AirOrb" parent="Orbs" instance=ExtResource("5_h2q4x")]
 position = Vector2(-128, -32)
+
+[node name="EarthOrb" parent="Orbs" instance=ExtResource("6_356fw")]
+position = Vector2(-160, -32)
+
+[node name="FireOrb" parent="Orbs" instance=ExtResource("7_4msej")]
+position = Vector2(-192, -32)
 refillColor = 0
 
 [node name="CopyTopOrb" parent="Orbs" instance=ExtResource("8_xuxpx")]
-position = Vector2(-160, -32)
+position = Vector2(-224, -32)
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="Sign" parent="Interactables" instance=ExtResource("9_ikh81")]
+position = Vector2(-32, 0)
+
+[node name="Sign2" parent="Interactables" instance=ExtResource("9_ikh81")]
+position = Vector2(-80, 0)
+Text = "Different sign"
 
 [node name="GUI" parent="." instance=ExtResource("5_xqocp")]
 

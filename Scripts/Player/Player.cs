@@ -44,17 +44,20 @@ public partial class Player : CharacterBody2D
 	public List<ElementState> AbilityList { get; private set; }
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
 
-	bool isFrozen = false;
 	ElementState currentAbility = ElementState.normal;
 	bool isUsingAbility = false;
 	bool isExecutingAbility = false;
 	bool canUseBaseAbility = false;
-	bool isFacingRight = true;
-	bool isGrounded = false;
-	bool isDying = false;
+
+    public bool isFrozen = false;
+    public bool isFacingRight = true;
+	public bool isGrounded = false;
+	public bool isDying = false;
 	//(bool left, bool right) huggingWall = (false, false); // useless I think
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
-	
+
+	// Interaction input
+	public bool interactPressed = false;
 
 	public override void _Ready()
 	{
@@ -73,6 +76,9 @@ public partial class Player : CharacterBody2D
 		// Reload scene
 		bool restartPressed = Input.IsActionJustPressed("inputRestart");
 		if (restartPressed) Die(deathTime);
+
+		// Interact (handled by Interactable)
+		interactPressed = Input.IsActionJustPressed("inputUp");
 
 		// Add the gravity
 		if (!isGrounded)
@@ -256,12 +262,12 @@ public partial class Player : CharacterBody2D
 
 	void SpawnFireball()
 	{
-		const float downOffset = 9f;
+		const float downOffset = -9f;
 
         Node2D instance = fireball.Instantiate() as Node2D;
 		(instance as Fireball).SetDirection(isFacingRight);
         spawner.AddChild(instance);
-        instance.GlobalPosition = GlobalPosition - new Vector2(0.0f, downOffset);
+        instance.GlobalPosition = GlobalPosition + new Vector2(0.0f, downOffset);
 	}
 
 	// ANIMATION ==================================================================================================================
@@ -315,9 +321,9 @@ public partial class Player : CharacterBody2D
 	}
 
 
-	// DYING RESPAWNING
+    // DYING RESPAWNING
 
-	async void Die(float t)
+    async void Die(float t)
 	{
 		//if (isUsingAbility) return;
 		//Global.PlayingCutscene = true;

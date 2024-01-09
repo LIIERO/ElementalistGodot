@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=11 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://x8xsggtojqhl" path="res://Graphics/UI/Gameplay/ElementOverlay/eo_water.png" id="4_l11v4"]
 [ext_resource type="Texture2D" uid="uid://c08fv7riufstl" path="res://Graphics/UI/Gameplay/ElementOverlay/eo_fire.png" id="5_wbbe2"]
 [ext_resource type="Texture2D" uid="uid://b1bwid5ffekya" path="res://Graphics/UI/Gameplay/ElementOverlay/eo_earth.png" id="6_5tabo"]
+[ext_resource type="Texture2D" uid="uid://ds6o5r41hh4he" path="res://Graphics/UI/Gameplay/textbox_sign.png" id="8_vda0l"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="9_3cem8"]
+[ext_resource type="Script" path="res://Scripts/UI/DialogBox.cs" id="9_ko3ni"]
 
 [node name="GUI" type="CanvasLayer"]
 scale = Vector2(3, 3)
@@ -47,3 +50,27 @@ airSprite = ExtResource("3_ajuk5")
 waterSprite = ExtResource("4_l11v4")
 fireSprite = ExtResource("5_wbbe2")
 earthSprite = ExtResource("6_5tabo")
+
+[node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObject")]
+texture_filter = 1
+position = Vector2(213.333, 37.3333)
+texture = ExtResource("8_vda0l")
+script = ExtResource("9_ko3ni")
+textObject = NodePath("DialogText")
+
+[node name="DialogText" type="Label" parent="DialogBox"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -27.0
+offset_right = -149.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "Sample text Sample text Sample text Sample text Sample text Sample text Sample text "
+autowrap_mode = 2
+text_overrun_behavior = 2

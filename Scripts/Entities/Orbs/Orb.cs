@@ -21,15 +21,13 @@ public abstract partial class Orb : Area2D
 
 	void _OnBodyEntered(Node2D body)
 	{
-		if (body.IsInGroup("Player"))
-		{
-			// Get the script of player node and modify it's ability list
-			Player playerScript = body as Player;
-			ModifyElementStack(playerScript.AbilityList);
-            customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GlobalUtils.ElementListToIntArray(playerScript.AbilityList));
-            //PlayerAbilityListModified?.Invoke(playerScript.AbilityList);
-			QueueFree();
-		}
+        if (body is not Player) return;
+
+        // Get the script of player node and modify it's ability list
+        Player playerScript = body as Player;
+		ModifyElementStack(playerScript.AbilityList);
+        customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GlobalUtils.ElementListToIntArray(playerScript.AbilityList));
+		QueueFree();
 	}
 
 }
