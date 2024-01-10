@@ -25,6 +25,7 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+z_index = 20
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u0yme")
 animation = &"Idle"

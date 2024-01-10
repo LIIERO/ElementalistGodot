@@ -5,7 +5,7 @@ using static GlobalTypes;
 public abstract partial class Orb : Area2D
 {
 	[Export] public ColorSet refillColor;
-	//Light2D backgroundLight;
+	[Export] Light2D backgroundLight;
 
     // Signals
     private CustomSignals customSignals;
@@ -13,8 +13,7 @@ public abstract partial class Orb : Area2D
     public override void _Ready()
 	{
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-        //backgroundLight = gameObject.transform.GetChild(0).gameObject.GetComponent<Light2D>();
-        //backgroundLight.color = ColorsetToColor[refillColor];
+        backgroundLight.Color = ColorsetToColor[refillColor];
     }
 
 	protected virtual void ModifyElementStack(List<ElementState> elementStack) {}

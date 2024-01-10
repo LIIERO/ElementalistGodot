@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpn4bkokcwqml"]
+[gd_scene load_steps=9 format=3 uid="uid://dpn4bkokcwqml"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbAddElement.cs" id="1_0u24s"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="2_ioeab"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="2_mbh8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfvn0"]
-size = Vector2(8, 8)
+size = Vector2(10, 11)
 
 [sub_resource type="Animation" id="Animation_porbe"]
 resource_name = "Idle"
-length = 4.0
+length = 3.0
 loop_mode = 1
 step = 0.0166667
 tracks/0/type = "value"
@@ -17,10 +19,10 @@ tracks/0/path = NodePath("MovedByAnimation:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
+"times": PackedFloat32Array(0, 1.503, 3),
 "transitions": PackedFloat32Array(-2, -2, -2),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
@@ -28,11 +30,23 @@ _data = {
 "Idle": SubResource("Animation_porbe")
 }
 
-[node name="Orb" type="Area2D"]
+[sub_resource type="Gradient" id="Gradient_fktf4"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.331169)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5oq0n"]
+gradient = SubResource("Gradient_fktf4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Orb" type="Area2D" node_paths=PackedStringArray("backgroundLight")]
 script = ExtResource("1_0u24s")
 refillColor = 4
+backgroundLight = NodePath("MovedByAnimation/PointLight2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_kfvn0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -40,12 +54,20 @@ libraries = {
 "": SubResource("AnimationLibrary_c15ny")
 }
 autoplay = "Idle"
+script = ExtResource("2_ioeab")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
+position = Vector2(0, -0.124914)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovedByAnimation"]
 texture_filter = 1
+texture = ExtResource("2_mbh8a")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
+
+[node name="PointLight2D" type="PointLight2D" parent="MovedByAnimation"]
+range_z_max = -1
+range_layer_min = -100
+texture = SubResource("GradientTexture2D_5oq0n")
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]

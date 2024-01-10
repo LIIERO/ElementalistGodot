@@ -197,11 +197,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npdoq"]
-size = Vector2(9, 18)
+size = Vector2(9, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5dbt"]
 
 [node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "wallcheck", "spawner") groups=["Player"]]
+z_index = 5
 texture_filter = 1
 position = Vector2(16, 32)
 script = ExtResource("1_ttwdh")
@@ -211,7 +212,6 @@ wallcheck = NodePath("Wallcheck")
 spawner = NodePath("AnimatedSprite2D/EntitySpawner")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("echoTrailSpawner")]
-z_index = 5
 material = SubResource("ShaderMaterial_q3van")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ir13h")
@@ -227,7 +227,7 @@ fireAbility = ExtResource("9_kgryv")
 [node name="EntitySpawner" type="Node" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -9)
+position = Vector2(-0.5, -9.5)
 shape = SubResource("RectangleShape2D_npdoq")
 
 [node name="Wallcheck" type="ShapeCast2D" parent="."]

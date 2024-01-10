@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Fireball.cs" id="1_vefbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cilp7"]
-size = Vector2(5, 10)
+size = Vector2(6, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ckb7"]
 atlas = ExtResource("1_rg0h7")
@@ -22,11 +22,12 @@ animations = [{
 }]
 
 [node name="Fireball" type="Area2D" node_paths=PackedStringArray("spriteNode")]
+z_index = 4
 script = ExtResource("1_vefbd")
 spriteNode = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.5, 0)
+position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_cilp7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
