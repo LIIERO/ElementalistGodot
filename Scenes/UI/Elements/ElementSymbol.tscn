@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://2mt8ahvkcn0f" path="res://Graphics/transparent.png" id="1_ax0ey"]
 
 [node name="ElementSymbol" type="Sprite2D" groups=["ElementSymbol"]]
-z_index = 20
 texture_filter = 1
 position = Vector2(16, 16)
 texture = ExtResource("1_ax0ey")

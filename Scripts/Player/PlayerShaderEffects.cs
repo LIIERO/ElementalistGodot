@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using static GlobalTypes;
+using GlobalTypes;
 
 public partial class PlayerShaderEffects : AnimatedSprite2D
 {

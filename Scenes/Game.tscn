@@ -363,21 +363,25 @@ PlayerNode = NodePath("../Zoe")
 
 [node name="Orbs" type="Node2D" parent="."]
 
-[node name="WaterOrb" parent="Orbs" instance=ExtResource("4_oufbe")]
+[node name="WaterOrb" parent="Orbs" node_paths=PackedStringArray("particles") instance=ExtResource("4_oufbe")]
 position = Vector2(-96, 16)
+particles = NodePath("MovedByAnimation/GPUParticles2D")
 
-[node name="AirOrb" parent="Orbs" instance=ExtResource("5_h2q4x")]
+[node name="AirOrb" parent="Orbs" node_paths=PackedStringArray("particles") instance=ExtResource("5_h2q4x")]
 position = Vector2(-128, 16)
+particles = NodePath("MovedByAnimation/GPUParticles2D")
 
-[node name="EarthOrb" parent="Orbs" instance=ExtResource("6_356fw")]
+[node name="EarthOrb" parent="Orbs" node_paths=PackedStringArray("particles") instance=ExtResource("6_356fw")]
 position = Vector2(-160, 16)
+particles = NodePath("MovedByAnimation/GPUParticles2D")
 
-[node name="FireOrb" parent="Orbs" instance=ExtResource("7_4msej")]
+[node name="FireOrb" parent="Orbs" node_paths=PackedStringArray("particles") instance=ExtResource("7_4msej")]
 position = Vector2(-192, 16)
-refillColor = 0
+particles = NodePath("MovedByAnimation/GPUParticles2D")
 
-[node name="CopyTopOrb" parent="Orbs" instance=ExtResource("8_xuxpx")]
+[node name="CopyTopOrb" parent="Orbs" node_paths=PackedStringArray("particles") instance=ExtResource("8_xuxpx")]
 position = Vector2(-224, 16)
+particles = NodePath("MovedByAnimation/GPUParticles2D")
 
 [node name="Interactables" type="Node2D" parent="."]
 

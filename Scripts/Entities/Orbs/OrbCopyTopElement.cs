@@ -1,6 +1,6 @@
 
 using System.Collections.Generic;
-using static GlobalTypes;
+using GlobalTypes;
 
 public partial class OrbCopyTopElement : Orb
 {

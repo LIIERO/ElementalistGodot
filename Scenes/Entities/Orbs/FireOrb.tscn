@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlb3kwtwp4t6l"]
+[gd_scene load_steps=2 format=3 uid="uid://dlb3kwtwp4t6l"]
 
 [ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/OrbBase.tscn" id="1_8sst4"]
-[ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbAddElement.cs" id="1_jro5d"]
-[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="2_tr1sw"]
 
 [node name="FireOrb" instance=ExtResource("1_8sst4")]
-script = ExtResource("1_jro5d")
+refillColor = 0
+
+[node name="MovedByAnimation" parent="." index="2"]
+position = Vector2(0, 1)
 
 [node name="Sprite2D" parent="MovedByAnimation" index="0"]
-texture = ExtResource("2_tr1sw")
 region_rect = Rect2(0, 0, 16, 16)

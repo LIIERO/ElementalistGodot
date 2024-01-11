@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpn4bkokcwqml"]
+[gd_scene load_steps=10 format=3 uid="uid://dpn4bkokcwqml"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbAddElement.cs" id="1_0u24s"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="2_ioeab"]
@@ -40,6 +40,9 @@ gradient = SubResource("Gradient_fktf4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_ejmvq"]
+colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0)
+
 [node name="Orb" type="Area2D" node_paths=PackedStringArray("backgroundLight")]
 script = ExtResource("1_0u24s")
 refillColor = 4
@@ -69,5 +72,20 @@ region_rect = Rect2(16, 0, 16, 16)
 range_z_max = -1
 range_layer_min = -100
 texture = SubResource("GradientTexture2D_5oq0n")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="MovedByAnimation"]
+z_index = 1
+texture_filter = 1
+lifetime = 0.8
+fixed_fps = 30
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+color_ramp = SubResource("Gradient_ejmvq")
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]

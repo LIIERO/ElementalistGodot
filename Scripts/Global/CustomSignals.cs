@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using static GlobalTypes;
+using GlobalTypes;
 using System.Collections.Generic;
 
 public partial class CustomSignals : Node

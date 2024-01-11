@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using static GlobalTypes;
+using GlobalTypes;
 
 public partial class Player : CharacterBody2D
 {
@@ -19,6 +19,7 @@ public partial class Player : CharacterBody2D
     [Export] private AnimatedSprite2D animatedSprite;
 	[Export] private ShapeCast2D wallcheck;
 	[Export] private Node spawner;
+	[Export] private CpuParticles2D particles;
 	private PlayerShaderEffects shaderScript;
 
 	// Parameters
@@ -153,7 +154,7 @@ public partial class Player : CharacterBody2D
 
 	// ABILITY ==================================================================================================================
 
-	void Ability(bool abilityPressed, double delta)
+	private void Ability(bool abilityPressed, double delta)
 	{
 		if (abilityPressed) abilityBufferTimeCounter = inputBufferTime;
 		else abilityBufferTimeCounter -= (float)delta;
@@ -205,9 +206,9 @@ public partial class Player : CharacterBody2D
 			{
 				if (isGrounded)
 				{
-					StopAbility();
-					//StartCoroutine(AdditionalDustSparkleForGroundAbility());
-					abilityBufferTimeCounter = 0f; // Preventing overlapping abilities
+                    StopAbility();
+                    SparkleAbilityDust(ElementState.earth, 0.1f);
+                    abilityBufferTimeCounter = 0f; // Preventing overlapping abilities
 					Velocity = new Vector2(Velocity.X, earthJumpPower);
 				}
 				else Velocity = new Vector2(0f, dashPower);
@@ -217,14 +218,14 @@ public partial class Player : CharacterBody2D
 		else if (isGrounded) canUseBaseAbility = true;
 	}
 
-	async void ExecuteAbilityAfterSeconds(float t)
+	async private void ExecuteAbilityAfterSeconds(float t)
 	{
 		await ToSignal(GetTree().CreateTimer(t), "timeout");
 
 		//abilitySound.Play();
 
 		isExecutingAbility = true;
-		//StartAbilityDust(currentAbility);
+		StartAbilityDust(currentAbility);
 		shaderScript.ActivateTrail(currentAbility);
 
 		if (currentAbility == ElementState.air)
@@ -245,10 +246,10 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	void StopAbility()
+	private void StopAbility()
 	{
 		shaderScript.UpdatePlayerColor(GetZoeEffectiveElement());
-		// StopAbilityDust();
+		StopAbilityDust();
 		shaderScript.DeactivateTrail();
 
 		isUsingAbility = false;
@@ -260,7 +261,7 @@ public partial class Player : CharacterBody2D
 		jumpBufferTimeCounter = 0f;
 	}
 
-	void SpawnFireball()
+	private void SpawnFireball()
 	{
 		const float downOffset = -9f;
 
@@ -270,9 +271,27 @@ public partial class Player : CharacterBody2D
         instance.GlobalPosition = GlobalPosition + new Vector2(0.0f, downOffset);
 	}
 
-	// ANIMATION ==================================================================================================================
+    public void StartAbilityDust(ElementState elementState)
+    {
+		particles.Color = GameUtils.ColorsetToColor[GameUtils.ElementToColorset[elementState]];
+		particles.Emitting = true;
+    }
 
-	private void UpdateAnimation(Vector2 direction)
+    public void StopAbilityDust()
+    {
+        particles.Emitting = false;
+    }
+
+    async private void SparkleAbilityDust(ElementState elementState, float time)
+    {
+        StartAbilityDust(elementState);
+        await ToSignal(GetTree().CreateTimer(time), "timeout");
+        StopAbilityDust();
+    }
+
+    // ANIMATION ==================================================================================================================
+
+    private void UpdateAnimation(Vector2 direction)
 	{
 		if (isDying) return; // Death animation set in Die method
 
@@ -311,7 +330,7 @@ public partial class Player : CharacterBody2D
 			else animation = "Fall";
 		}
 
-		if (GlobalUtils.PlayingCutscene)
+		if (GameUtils.PlayingCutscene)
 		{
 			animation = "Idle";
 			Velocity = new Vector2(0f, 0f);

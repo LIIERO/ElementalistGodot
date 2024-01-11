@@ -15,7 +15,7 @@ public abstract partial class Interactable : Area2D
 	{
         arrowIndicator = arrowIndicatorPrefab.Instantiate() as AnimatedSprite2D;
         AddChild(arrowIndicator);
-        arrowIndicator.Position += new Vector2(0.0f, arrowYOffset * GlobalUtils.gameUnitSize);
+        arrowIndicator.Position += new Vector2(0.0f, arrowYOffset * GameUtils.gameUnitSize);
 
         IsActive = false;
         arrowIndicator.Hide();
