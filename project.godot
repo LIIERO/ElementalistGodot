@@ -13,20 +13,21 @@ config_version=5
 config/name="Elementalist Godot"
 run/main_scene="res://Scenes/Game.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-run/max_fps=60
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
 
 CustomSignals="*res://Scripts/Global/CustomSignals.cs"
+GameState="*res://Scripts/Global/GameState.cs"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/size/resizable=false
-window/stretch/mode="viewport"
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/mode=4
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -72,6 +73,11 @@ inputRestart={
 inputFreeView={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194326,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+inputPause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

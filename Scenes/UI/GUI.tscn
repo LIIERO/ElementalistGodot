@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=12 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -10,10 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ds6o5r41hh4he" path="res://Graphics/UI/Gameplay/textbox_sign.png" id="8_vda0l"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="9_3cem8"]
 [ext_resource type="Script" path="res://Scripts/UI/DialogBox.cs" id="9_ko3ni"]
+[ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="11_ovtmv"]
 
 [node name="GUI" type="CanvasLayer"]
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="Rows" type="VBoxContainer" parent="."]
 visible = false
@@ -42,7 +41,8 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ElementOverlay" type="Node2D" parent="."]
-position = Vector2(10.6667, 10.6667)
+texture_filter = 1
+position = Vector2(8, 8)
 script = ExtResource("2_00r7b")
 elementSymbol = ExtResource("1_rymwl")
 emptySprite = ExtResource("3_cu30s")
@@ -53,7 +53,7 @@ earthSprite = ExtResource("6_5tabo")
 
 [node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObject")]
 texture_filter = 1
-position = Vector2(213.333, 37.3333)
+position = Vector2(240, 48)
 texture = ExtResource("8_vda0l")
 script = ExtResource("9_ko3ni")
 textObject = NodePath("DialogText")
@@ -74,3 +74,38 @@ theme_override_font_sizes/font_size = 12
 text = "Sample text Sample text Sample text Sample text Sample text Sample text Sample text "
 autowrap_mode = 2
 text_overrun_behavior = 2
+
+[node name="PauseMenu" type="Panel" parent="."]
+process_mode = 3
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_ovtmv")
+
+[node name="Button" type="Button" parent="PauseMenu"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 168.0
+offset_top = 136.0
+offset_right = 328.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+action_mode = 0
+text = "CONTINUE"
+
+[node name="TextureButton" type="TextureButton" parent="PauseMenu"]
+visible = false
+layout_mode = 0
+offset_left = 168.0
+offset_top = 136.0
+offset_right = 328.0
+offset_bottom = 168.0

@@ -9,11 +9,12 @@ public partial class Player : CharacterBody2D
 	// FOR TEMPORARY DEBUG RELOADING GAME SCENE
 	// [Export] private Node2D gameScene;
 
-	// Signals
+	// Singletons
 	private CustomSignals customSignals;
+    //private GameState gameState;
 
-	// Instaniates
-	[Export] private PackedScene fireball;
+    // Instaniates
+    [Export] private PackedScene fireball;
 
     // Child nodes
     [Export] private AnimatedSprite2D animatedSprite;
@@ -63,8 +64,9 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        //gameState = GetNode<GameState>("/root/GameState");
 
-		gravity = defaultGravity;
+        gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
 		AbilityList = new List<ElementState>();
 		BaseAbility = ElementState.normal;
