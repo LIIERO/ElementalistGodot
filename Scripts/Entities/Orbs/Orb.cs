@@ -5,8 +5,8 @@ using GlobalTypes;
 public abstract partial class Orb : Area2D
 {
 	[Export] public ColorSet refillColor;
-	[Export] Light2D backgroundLight;
-    [Export] CpuParticles2D particles;
+	[Export] private Light2D backgroundLight;
+    [Export] private CpuParticles2D particles;
 
     // Signals
     private CustomSignals customSignals;

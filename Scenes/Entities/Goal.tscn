@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://eqqxlxvmmaaa"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Goal.cs" id="1_5u0vj"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_52swv"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="2_ewlgh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxjak"]
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vitxw"]
+atlas = ExtResource("2_52swv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqjgx"]
+atlas = ExtResource("2_52swv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dt8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vitxw")
+}],
+"loop": false,
+"name": &"LevelCompleted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqjgx")
+}],
+"loop": false,
+"name": &"LevelNotCompleted",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_bs0om"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.331169)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5u447"]
+gradient = SubResource("Gradient_bs0om")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_g8c8v"]
+colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0)
+
+[node name="Goal" type="Area2D" node_paths=PackedStringArray("sprite", "backgroundLight")]
+script = ExtResource("1_5u0vj")
+sprite = NodePath("MovedByAnimation/Sprite2D")
+backgroundLight = NodePath("MovedByAnimation/PointLight2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wxjak")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("2_ewlgh")
+
+[node name="MovedByAnimation" type="Node2D" parent="."]
+position = Vector2(0, -0.997732)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
+texture_filter = 1
+position = Vector2(0, 0.124914)
+sprite_frames = SubResource("SpriteFrames_6dt8e")
+animation = &"LevelNotCompleted"
+
+[node name="PointLight2D" type="PointLight2D" parent="MovedByAnimation"]
+range_z_max = -1
+range_layer_min = -100
+texture = SubResource("GradientTexture2D_5u447")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="MovedByAnimation"]
+visible = false
+z_index = 1
+texture_filter = 1
+lifetime = 0.8
+fixed_fps = 30
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+color_ramp = SubResource("Gradient_g8c8v")
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]

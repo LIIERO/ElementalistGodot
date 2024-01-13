@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=18 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -11,34 +11,35 @@
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="9_3cem8"]
 [ext_resource type="Script" path="res://Scripts/UI/DialogBox.cs" id="9_ko3ni"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="11_ovtmv"]
+[ext_resource type="Texture2D" uid="uid://dtbtuholq2xi5" path="res://Graphics/UI/Menu/menu_button.png" id="12_v0wth"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuButton.cs" id="13_nu52h"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="13_ykw2f"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="15_1xd4b"]
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
 
 [node name="GUI" type="CanvasLayer"]
-
-[node name="Rows" type="VBoxContainer" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TopRow" type="HBoxContainer" parent="Rows"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="Rows/TopRow"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MiddleRow" type="HBoxContainer" parent="Rows"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
-
-[node name="BottomRow" type="HBoxContainer" parent="Rows"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="ElementOverlay" type="Node2D" parent="."]
 texture_filter = 1
@@ -75,7 +76,7 @@ text = "Sample text Sample text Sample text Sample text Sample text Sample text 
 autowrap_mode = 2
 text_overrun_behavior = 2
 
-[node name="PauseMenu" type="Panel" parent="."]
+[node name="PauseMenu" type="Panel" parent="." node_paths=PackedStringArray("buttonList")]
 process_mode = 3
 texture_filter = 1
 anchors_preset = 15
@@ -88,24 +89,148 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_ovtmv")
+buttonList = [NodePath("ContinueButton"), NodePath("MenuButton"), NodePath("ExitButton")]
 
-[node name="Button" type="Button" parent="PauseMenu"]
-visible = false
+[node name="ContinueButton" type="Node2D" parent="PauseMenu"]
+process_mode = 2
 texture_filter = 1
-layout_mode = 0
-offset_left = 168.0
-offset_top = 136.0
-offset_right = 328.0
-offset_bottom = 168.0
+position = Vector2(184, 136)
+script = ExtResource("13_nu52h")
+
+[node name="OrbSelection" type="Node2D" parent="PauseMenu/ContinueButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu/ContinueButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("15_1xd4b")
+
+[node name="MovedByAnimation" type="Node2D" parent="PauseMenu/ContinueButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/ContinueButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("13_ykw2f")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/ContinueButton"]
+position = Vector2(64, 8)
+texture = ExtResource("12_v0wth")
+
+[node name="DialogText" type="Label" parent="PauseMenu/ContinueButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
-action_mode = 0
 text = "CONTINUE"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
 
-[node name="TextureButton" type="TextureButton" parent="PauseMenu"]
-visible = false
-layout_mode = 0
-offset_left = 168.0
-offset_top = 136.0
-offset_right = 328.0
-offset_bottom = 168.0
+[node name="MenuButton" type="Node2D" parent="PauseMenu"]
+process_mode = 2
+texture_filter = 1
+position = Vector2(184, 160)
+script = ExtResource("13_nu52h")
+
+[node name="OrbSelection" type="Node2D" parent="PauseMenu/MenuButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu/MenuButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("15_1xd4b")
+
+[node name="MovedByAnimation" type="Node2D" parent="PauseMenu/MenuButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/MenuButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("13_ykw2f")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/MenuButton"]
+position = Vector2(64, 8)
+texture = ExtResource("12_v0wth")
+
+[node name="DialogText" type="Label" parent="PauseMenu/MenuButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "MAIN MENU"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="ExitButton" type="Node2D" parent="PauseMenu"]
+process_mode = 2
+texture_filter = 1
+position = Vector2(184, 184)
+script = ExtResource("13_nu52h")
+
+[node name="OrbSelection" type="Node2D" parent="PauseMenu/ExitButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu/ExitButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("15_1xd4b")
+
+[node name="MovedByAnimation" type="Node2D" parent="PauseMenu/ExitButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/ExitButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("13_ykw2f")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/ExitButton"]
+position = Vector2(64, 8)
+texture = ExtResource("12_v0wth")
+
+[node name="DialogText" type="Label" parent="PauseMenu/ExitButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "EXIT"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2

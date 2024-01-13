@@ -18,7 +18,7 @@ public partial class Player : CharacterBody2D
 
     // Child nodes
     [Export] private AnimatedSprite2D animatedSprite;
-	[Export] private ShapeCast2D wallcheck;
+	//[Export] private ShapeCast2D wallcheck;
 	[Export] private Node spawner;
 	[Export] private CpuParticles2D particles;
 	private PlayerShaderEffects shaderScript;
@@ -51,10 +51,12 @@ public partial class Player : CharacterBody2D
 	bool isExecutingAbility = false;
 	bool canUseBaseAbility = false;
 
-    public bool isFrozen = false;
-    public bool isFacingRight = true;
-	public bool isGrounded = false;
-	public bool isDying = false;
+    public bool IsFrozen { get; private set; } = false;
+    public bool IsFacingRight { get; private set; } = true;
+	public bool IsGrounded { get; private set; } = false;
+	public bool IsClinging { get; private set; } = false;
+	public bool isDying { get; private set; } = false;
+	public bool IsHoldingGoal { get; set; } = false;
 	//(bool left, bool right) huggingWall = (false, false); // useless I think
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
@@ -74,35 +76,28 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		isGrounded = IsOnFloor();
+        Vector2 direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown"); // Get the input direction
+        bool restartPressed = Input.IsActionJustPressed("inputRestart"); // Reload scene button pressed
+        interactPressed = Input.IsActionJustPressed("inputUp"); // Interact button pressed (handled by Interactable)
+        bool jumpPressed = Input.IsActionJustPressed("inputJump");
+        bool jumpReleased = Input.IsActionJustReleased("inputJump");
+        bool abilityPressed = Input.IsActionJustPressed("inputAbility");
 
-		// Reload scene
-		bool restartPressed = Input.IsActionJustPressed("inputRestart");
+        IsGrounded = IsOnFloor();
+		IsClinging = IsOnWallOnly() && Velocity.Y > 0f && ((!IsFacingRight && direction.X < -0.5f) || (IsFacingRight && direction.X > 0.5f));
+        
 		if (restartPressed) Die(deathTime);
 
-		// Interact (handled by Interactable)
-		interactPressed = Input.IsActionJustPressed("inputUp");
-
 		// Add the gravity
-		if (!isGrounded)
+		if (!IsGrounded)
 			Velocity += new Vector2(0.0f, gravity * (float)delta);
 
-		// Handle Jump
-		bool jumpPressed = Input.IsActionJustPressed("inputJump");
-		bool jumpReleased = Input.IsActionJustReleased("inputJump");
 		Jump(jumpPressed, jumpReleased, delta);
-
-		// Use ability
-		bool abilityPressed = Input.IsActionJustPressed("inputAbility");
 		Ability(abilityPressed, delta);
-
-		// Get the input direction and handle the movement/deceleration
-		// As good practice, you should replace UI actions with custom gameplay actions
-		Vector2 direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown");
 		Movement(direction);
 
 		UpdateAnimation(direction);
-		if (!isFrozen) MoveAndSlide();
+		if (!IsFrozen) MoveAndSlide();
 	}
 
 	// MOVEMENT ==================================================================================================================
@@ -119,7 +114,7 @@ public partial class Player : CharacterBody2D
 			Velocity = new Vector2(Velocity.X, maxFallingSpeed);
 
 		// resistance when clinging to a wall
-		if (IsOnWallOnly() && Velocity.Y > 0f)
+		if (IsClinging)
 			Velocity = new Vector2(Velocity.X, Velocity.Y * clingDrag);
 
 	}
@@ -129,7 +124,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (isUsingAbility) return;
 
-		if (isGrounded)
+		if (IsGrounded)
 			coyoteTimeCounter = coyoteTime;
 		else coyoteTimeCounter -= (float)delta;
 
@@ -196,17 +191,17 @@ public partial class Player : CharacterBody2D
 			}
 			else if (currentAbility == ElementState.air)
 			{
-				if (isFacingRight) Velocity = new Vector2(dashPower, 0f);
+				if (IsFacingRight) Velocity = new Vector2(dashPower, 0f);
 				else Velocity = new Vector2(-dashPower, 0f);
 			}
 			else if (currentAbility == ElementState.fire)
 			{
-				if (isFacingRight) Velocity = new Vector2(-dashPower, 0f);
+				if (IsFacingRight) Velocity = new Vector2(-dashPower, 0f);
 				else Velocity = new Vector2(dashPower, 0f);
 			}
 			else if (currentAbility == ElementState.earth)
 			{
-				if (isGrounded)
+				if (IsGrounded)
 				{
                     StopAbility();
                     SparkleAbilityDust(ElementState.earth, 0.1f);
@@ -217,7 +212,7 @@ public partial class Player : CharacterBody2D
 			}
 		}
 
-		else if (isGrounded) canUseBaseAbility = true;
+		else if (IsGrounded) canUseBaseAbility = true;
 	}
 
 	async private void ExecuteAbilityAfterSeconds(float t)
@@ -268,7 +263,7 @@ public partial class Player : CharacterBody2D
 		const float downOffset = -9f;
 
         Node2D instance = fireball.Instantiate() as Node2D;
-		(instance as Fireball).SetDirection(isFacingRight);
+		(instance as Fireball).SetDirection(IsFacingRight);
         spawner.AddChild(instance);
         instance.GlobalPosition = GlobalPosition + new Vector2(0.0f, downOffset);
 	}
@@ -300,14 +295,14 @@ public partial class Player : CharacterBody2D
 		// change direction facing
 		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency
 		{
-			if ((isFacingRight && direction.X < 0f) || (IsOnWallOnly() && !wallcheck.IsColliding()))
+			if (IsFacingRight && direction.X < -0.5f)
 			{
-				isFacingRight = false;
+				IsFacingRight = false;
 				animatedSprite.FlipH = true;
 			}
-			else if ((!isFacingRight && direction.X > 0f) || (IsOnWallOnly() && wallcheck.IsColliding()))
+			else if (!IsFacingRight && direction.X > 0.5f)
 			{
-				isFacingRight = true;
+				IsFacingRight = true;
 				animatedSprite.FlipH = false;
 			}
 		}
@@ -319,7 +314,7 @@ public partial class Player : CharacterBody2D
 			animation = "Dash";
 		else if (currentAbility == ElementState.fire)
 			animation = "Fireball";
-		else if (isGrounded)
+		else if (IsGrounded)
 		{
 			if (direction.X == 0f || IsOnWall())
 				animation = "Idle";
@@ -328,7 +323,7 @@ public partial class Player : CharacterBody2D
 		else
 		{
 			if (Velocity.Y < -0.1f) animation = "Jump";
-			else if (IsOnWallOnly()) animation = "Cling";
+			else if (IsClinging) animation = "Cling";
 			else animation = "Fall";
 		}
 
@@ -349,7 +344,7 @@ public partial class Player : CharacterBody2D
 		//if (isUsingAbility) return;
 		//Global.PlayingCutscene = true;
 		isDying = true;
-		isFrozen = true; // player floats when killed
+		IsFrozen = true; // player floats when killed
         animatedSprite.Play("Die"); // death animation
         await ToSignal(GetTree().CreateTimer(t), "timeout");
 		GetTree().ReloadCurrentScene(); // TEMPORARY
