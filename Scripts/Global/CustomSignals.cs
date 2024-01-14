@@ -13,6 +13,8 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void PlayerAbilityListUpdatedEventHandler(int[] abilityArray);
 
+    [Signal]
+    public delegate void SetPlayerPositionEventHandler(Vector2 position);
 
     // UI
 

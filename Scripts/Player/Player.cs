@@ -66,6 +66,7 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
         //gameState = GetNode<GameState>("/root/GameState");
 
         gravity = defaultGravity;
@@ -245,7 +246,7 @@ public partial class Player : CharacterBody2D
 
 	private void StopAbility()
 	{
-		shaderScript.UpdatePlayerColor(GetZoeEffectiveElement());
+		shaderScript.UpdatePlayerColor(GetEffectiveElement());
 		StopAbilityDust();
 		shaderScript.DeactivateTrail();
 
@@ -352,12 +353,17 @@ public partial class Player : CharacterBody2D
 
 	// PUBLIC ==================================================================================================================
 
-	public ElementState GetZoeEffectiveElement()
+	public ElementState GetEffectiveElement()
 	{
 		ElementState effectiveElem;
 		if (AbilityList.Count == 0) { effectiveElem = BaseAbility; }
 		else { effectiveElem = AbilityList[^1]; }
 		return effectiveElem;
+	}
+
+	public void SetPosition(Vector2 position)
+	{
+		GlobalPosition = position;
 	}
 
 }

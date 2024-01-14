@@ -1,19 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccg8gwtjisj4"]
+[gd_scene load_steps=10 format=3 uid="uid://deel3vxmckby4"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Interactable/LevelTeleport.cs" id="1_npe73"]
-[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/UpArrowIndicator.tscn" id="2_tx6ga"]
-[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="3_scuhr"]
-[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="4_pew6j"]
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/LevelExit.cs" id="1_ipfbx"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/UpArrowIndicator.tscn" id="2_3gj41"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="3_r3rhy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]
 size = Vector2(16, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejfed"]
-atlas = ExtResource("3_scuhr")
+atlas = ExtResource("3_r3rhy")
 region = Rect2(16, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12hi8"]
-atlas = ExtResource("3_scuhr")
+atlas = ExtResource("3_r3rhy")
 region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f1tq1"]
@@ -58,12 +57,10 @@ _data = {
 "Idle": SubResource("Animation_porbe")
 }
 
-[node name="LevelTeleport" type="Area2D" node_paths=PackedStringArray("currentSprite", "teleportText")]
-script = ExtResource("1_npe73")
-currentSprite = NodePath("MovedByAnimation/Sprite2D")
-teleportText = NodePath("MovedByAnimation/Text/Label")
+[node name="LevelExit" type="Area2D"]
+script = ExtResource("1_ipfbx")
 arrowYOffset = -2.5
-arrowIndicatorPrefab = ExtResource("2_tx6ga")
+arrowIndicatorPrefab = ExtResource("2_3gj41")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -77,17 +74,6 @@ texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_f1tq1")
 animation = &"LevelNotCompleted"
-
-[node name="Text" type="Node2D" parent="MovedByAnimation"]
-position = Vector2(-2.5, -21)
-
-[node name="Label" type="Label" parent="MovedByAnimation/Text"]
-texture_filter = 1
-offset_right = 6.0
-offset_bottom = 12.0
-theme_override_fonts/font = ExtResource("4_pew6j")
-theme_override_font_sizes/font_size = 12
-text = "X"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -43,10 +43,11 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="Gradient" id="Gradient_ejmvq"]
 colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0)
 
-[node name="Orb" type="Area2D" node_paths=PackedStringArray("backgroundLight")]
+[node name="Orb" type="Area2D" node_paths=PackedStringArray("backgroundLight", "particles")]
 script = ExtResource("1_0u24s")
 refillColor = 4
 backgroundLight = NodePath("MovedByAnimation/PointLight2D")
+particles = NodePath("MovedByAnimation/GPUParticles2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

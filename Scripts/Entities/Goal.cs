@@ -1,7 +1,6 @@
 using GlobalTypes;
 using Godot;
 using System;
-using GlobalTypes;
 
 public partial class Goal : Area2D
 {
@@ -33,7 +32,7 @@ public partial class Goal : Area2D
     {
         gameState = GetNode<GameState>("/root/GameState");
 
-        if (gameState.HasLevelBeenCompleted("ChangeThisLater")) // White goal
+        if (gameState.HasCurrentLevelBeenCompleted()) // White goal
         {
             sprite.Play("LevelCompleted");
             backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.white];

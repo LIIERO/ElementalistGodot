@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://xs48e3humoub"]
+
+[ext_resource type="PackedScene" uid="uid://ciq4cuqvua4tl" path="res://Scenes/UI/GUI.tscn" id="1_ac16r"]
+[ext_resource type="PackedScene" uid="uid://d0if8ksrlccpx" path="res://Scenes/Entities/Player.tscn" id="2_t2ulh"]
+[ext_resource type="Script" path="res://Scripts/Camera/Camera.cs" id="3_jq0pi"]
+
+[node name="Game" type="Node2D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_ac16r")]
+
+[node name="Zoe" parent="." instance=ExtResource("2_t2ulh")]
+position = Vector2(0, 48)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("PlayerNode")]
+position_smoothing_enabled = true
+script = ExtResource("3_jq0pi")
+PlayerNode = NodePath("../Zoe")
+leftLimit = 0.0
+upLimit = 0.0
+rightLimit = 0.0
+downLimit = 0.0
