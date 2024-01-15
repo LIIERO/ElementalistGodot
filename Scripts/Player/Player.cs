@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using GlobalTypes;
+using System.Reflection.Metadata;
 
 public partial class Player : CharacterBody2D
 {
@@ -11,9 +12,9 @@ public partial class Player : CharacterBody2D
 
 	// Singletons
 	private CustomSignals customSignals;
-    //private GameState gameState;
+    private GameState gameState;
 
-    // Instaniates
+    // Instantiates
     [Export] private PackedScene fireball;
 
     // Child nodes
@@ -45,29 +46,32 @@ public partial class Player : CharacterBody2D
 	// Player state (move to a different class?)
 	public List<ElementState> AbilityList { get; private set; }
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
+    public bool IsHoldingGoal { get; set; } = false;
 
-	ElementState currentAbility = ElementState.normal;
+    ElementState currentAbility = ElementState.normal;
 	bool isUsingAbility = false;
 	bool isExecutingAbility = false;
 	bool canUseBaseAbility = false;
-
-    public bool IsFrozen { get; private set; } = false;
-    public bool IsFacingRight { get; private set; } = true;
-	public bool IsGrounded { get; private set; } = false;
-	public bool IsClinging { get; private set; } = false;
-	public bool isDying { get; private set; } = false;
-	public bool IsHoldingGoal { get; set; } = false;
-	//(bool left, bool right) huggingWall = (false, false); // useless I think
+    public bool isFrozen = false;
+    public bool isFacingRight = true;
+	public bool isGrounded = false;
+	public bool isClinging = false;
+	public bool isDying = false;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
-	// Interaction input
-	public bool interactPressed = false;
+    // Input
+	public bool interactPressed = false; // Interact button pressed (handled by Interactable)
+    Vector2 direction; // input direction
+    bool restartPressed; // Reload scene button pressed
+    bool jumpPressed;
+    bool jumpReleased;
+    bool abilityPressed;
 
-	public override void _Ready()
+    public override void _Ready()
 	{
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
-        //gameState = GetNode<GameState>("/root/GameState");
+        gameState = GetNode<GameState>("/root/GameState");
 
         gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
@@ -75,22 +79,26 @@ public partial class Player : CharacterBody2D
 		BaseAbility = ElementState.normal;
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-        Vector2 direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown"); // Get the input direction
-        bool restartPressed = Input.IsActionJustPressed("inputRestart"); // Reload scene button pressed
-        interactPressed = Input.IsActionJustPressed("inputUp"); // Interact button pressed (handled by Interactable)
-        bool jumpPressed = Input.IsActionJustPressed("inputJump");
-        bool jumpReleased = Input.IsActionJustReleased("inputJump");
-        bool abilityPressed = Input.IsActionJustPressed("inputAbility");
+    public override void _Process(double delta)
+    {
+		// Get input
+        direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown");
+        restartPressed = Input.IsActionJustPressed("inputRestart");
+        interactPressed = Input.IsActionJustPressed("inputUp");
+        jumpPressed = Input.IsActionJustPressed("inputJump");
+        jumpReleased = Input.IsActionJustReleased("inputJump");
+        abilityPressed = Input.IsActionJustPressed("inputAbility");
+    }
 
-        IsGrounded = IsOnFloor();
-		IsClinging = IsOnWallOnly() && Velocity.Y > 0f && ((!IsFacingRight && direction.X < -0.5f) || (IsFacingRight && direction.X > 0.5f));
+    public override void _PhysicsProcess(double delta)
+	{
+        isGrounded = IsOnFloor();
+		isClinging = IsOnWallOnly() && Velocity.Y > 0f && ((!isFacingRight && direction.X < -0.5f) || (isFacingRight && direction.X > 0.5f));
         
-		if (restartPressed) Die(deathTime);
+		if (restartPressed && !gameState.IsHubLoaded()) Die(deathTime);
 
 		// Add the gravity
-		if (!IsGrounded)
+		if (!isGrounded)
 			Velocity += new Vector2(0.0f, gravity * (float)delta);
 
 		Jump(jumpPressed, jumpReleased, delta);
@@ -98,7 +106,7 @@ public partial class Player : CharacterBody2D
 		Movement(direction);
 
 		UpdateAnimation(direction);
-		if (!IsFrozen) MoveAndSlide();
+		if (!isFrozen) MoveAndSlide();
 	}
 
 	// MOVEMENT ==================================================================================================================
@@ -115,7 +123,7 @@ public partial class Player : CharacterBody2D
 			Velocity = new Vector2(Velocity.X, maxFallingSpeed);
 
 		// resistance when clinging to a wall
-		if (IsClinging)
+		if (isClinging)
 			Velocity = new Vector2(Velocity.X, Velocity.Y * clingDrag);
 
 	}
@@ -125,7 +133,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (isUsingAbility) return;
 
-		if (IsGrounded)
+		if (isGrounded)
 			coyoteTimeCounter = coyoteTime;
 		else coyoteTimeCounter -= (float)delta;
 
@@ -192,17 +200,17 @@ public partial class Player : CharacterBody2D
 			}
 			else if (currentAbility == ElementState.air)
 			{
-				if (IsFacingRight) Velocity = new Vector2(dashPower, 0f);
+				if (isFacingRight) Velocity = new Vector2(dashPower, 0f);
 				else Velocity = new Vector2(-dashPower, 0f);
 			}
 			else if (currentAbility == ElementState.fire)
 			{
-				if (IsFacingRight) Velocity = new Vector2(-dashPower, 0f);
+				if (isFacingRight) Velocity = new Vector2(-dashPower, 0f);
 				else Velocity = new Vector2(dashPower, 0f);
 			}
 			else if (currentAbility == ElementState.earth)
 			{
-				if (IsGrounded)
+				if (isGrounded)
 				{
                     StopAbility();
                     SparkleAbilityDust(ElementState.earth, 0.1f);
@@ -213,7 +221,7 @@ public partial class Player : CharacterBody2D
 			}
 		}
 
-		else if (IsGrounded) canUseBaseAbility = true;
+		else if (isGrounded) canUseBaseAbility = true;
 	}
 
 	async private void ExecuteAbilityAfterSeconds(float t)
@@ -264,7 +272,7 @@ public partial class Player : CharacterBody2D
 		const float downOffset = -9f;
 
         Node2D instance = fireball.Instantiate() as Node2D;
-		(instance as Fireball).SetDirection(IsFacingRight);
+		(instance as Fireball).SetDirection(isFacingRight);
         spawner.AddChild(instance);
         instance.GlobalPosition = GlobalPosition + new Vector2(0.0f, downOffset);
 	}
@@ -296,14 +304,14 @@ public partial class Player : CharacterBody2D
 		// change direction facing
 		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency
 		{
-			if (IsFacingRight && direction.X < -0.5f)
+			if (isFacingRight && direction.X < -0.5f)
 			{
-				IsFacingRight = false;
+				isFacingRight = false;
 				animatedSprite.FlipH = true;
 			}
-			else if (!IsFacingRight && direction.X > 0.5f)
+			else if (!isFacingRight && direction.X > 0.5f)
 			{
-				IsFacingRight = true;
+				isFacingRight = true;
 				animatedSprite.FlipH = false;
 			}
 		}
@@ -315,7 +323,7 @@ public partial class Player : CharacterBody2D
 			animation = "Dash";
 		else if (currentAbility == ElementState.fire)
 			animation = "Fireball";
-		else if (IsGrounded)
+		else if (isGrounded)
 		{
 			if (direction.X == 0f || IsOnWall())
 				animation = "Idle";
@@ -324,7 +332,7 @@ public partial class Player : CharacterBody2D
 		else
 		{
 			if (Velocity.Y < -0.1f) animation = "Jump";
-			else if (IsClinging) animation = "Cling";
+			else if (isClinging) animation = "Cling";
 			else animation = "Fall";
 		}
 
@@ -345,7 +353,7 @@ public partial class Player : CharacterBody2D
 		//if (isUsingAbility) return;
 		//Global.PlayingCutscene = true;
 		isDying = true;
-		IsFrozen = true; // player floats when killed
+		isFrozen = true; // player floats when killed
         animatedSprite.Play("Die"); // death animation
         await ToSignal(GetTree().CreateTimer(t), "timeout");
 		GetTree().ReloadCurrentScene(); // TEMPORARY

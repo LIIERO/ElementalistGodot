@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/Sign.cs" id="1_556lc"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="1_uod1i"]
-[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/UpArrowIndicator.tscn" id="2_k02hu"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_k02hu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]
 size = Vector2(16, 1)

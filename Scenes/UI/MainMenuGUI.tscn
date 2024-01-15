@@ -1,0 +1,235 @@
+[gd_scene load_steps=9 format=3 uid="uid://kb46qb43ayfp"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_pqhl0"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="10_ul3lr"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuButton.cs" id="12_eg7p4"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="13_b1y81"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="14_7fec3"]
+[ext_resource type="Texture2D" uid="uid://dtbtuholq2xi5" path="res://Graphics/UI/Menu/menu_button.png" id="15_j3jau"]
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="MainButtons" type="Panel" parent="." node_paths=PackedStringArray("buttonList")]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -288.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pqhl0")
+buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("OptionsButton"), NodePath("ExitButton")]
+
+[node name="NewGameButton" type="Node2D" parent="MainButtons"]
+texture_filter = 1
+position = Vector2(16, 16)
+script = ExtResource("12_eg7p4")
+
+[node name="OrbSelection" type="Node2D" parent="MainButtons/NewGameButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainButtons/NewGameButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("13_b1y81")
+
+[node name="MovedByAnimation" type="Node2D" parent="MainButtons/NewGameButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/NewGameButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("14_7fec3")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/NewGameButton"]
+position = Vector2(64, 8)
+texture = ExtResource("15_j3jau")
+
+[node name="Text" type="Label" parent="MainButtons/NewGameButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ul3lr")
+theme_override_font_sizes/font_size = 12
+text = "NEW GAME"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="ContinueButton" type="Node2D" parent="MainButtons"]
+texture_filter = 1
+position = Vector2(16, 40)
+script = ExtResource("12_eg7p4")
+
+[node name="OrbSelection" type="Node2D" parent="MainButtons/ContinueButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainButtons/ContinueButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("13_b1y81")
+
+[node name="MovedByAnimation" type="Node2D" parent="MainButtons/ContinueButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/ContinueButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("14_7fec3")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/ContinueButton"]
+position = Vector2(64, 8)
+texture = ExtResource("15_j3jau")
+
+[node name="Text" type="Label" parent="MainButtons/ContinueButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ul3lr")
+theme_override_font_sizes/font_size = 12
+text = "CONTINUE"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="OptionsButton" type="Node2D" parent="MainButtons"]
+texture_filter = 1
+position = Vector2(16, 64)
+script = ExtResource("12_eg7p4")
+
+[node name="OrbSelection" type="Node2D" parent="MainButtons/OptionsButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainButtons/OptionsButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("13_b1y81")
+
+[node name="MovedByAnimation" type="Node2D" parent="MainButtons/OptionsButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/OptionsButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("14_7fec3")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/OptionsButton"]
+position = Vector2(64, 8)
+texture = ExtResource("15_j3jau")
+
+[node name="Text" type="Label" parent="MainButtons/OptionsButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ul3lr")
+theme_override_font_sizes/font_size = 12
+text = "OPTIONS"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="ExitButton" type="Node2D" parent="MainButtons"]
+texture_filter = 1
+position = Vector2(16, 88)
+script = ExtResource("12_eg7p4")
+
+[node name="OrbSelection" type="Node2D" parent="MainButtons/ExitButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainButtons/ExitButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("13_b1y81")
+
+[node name="MovedByAnimation" type="Node2D" parent="MainButtons/ExitButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/ExitButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("14_7fec3")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/ExitButton"]
+position = Vector2(64, 8)
+texture = ExtResource("15_j3jau")
+
+[node name="Text" type="Label" parent="MainButtons/ExitButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ul3lr")
+theme_override_font_sizes/font_size = 12
+text = "EXIT"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2

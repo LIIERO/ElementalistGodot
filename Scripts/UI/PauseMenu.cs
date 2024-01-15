@@ -5,13 +5,12 @@ using static System.Net.Mime.MediaTypeNames;
 public partial class PauseMenu : ButtonManager
 {
     // Singletons
-    private CustomSignals customSignals;
-    
+    //private CustomSignals customSignals;
+    const float resumeDelay = 0.1f;
 
 	public override void _Ready()
 	{
 		base._Ready();
-
         Resume();
 	}
 
@@ -36,12 +35,13 @@ public partial class PauseMenu : ButtonManager
         {
             if (CurrentButtonIndex == 0) // resume
             {
-                Resume();
+                DelayResume();
             }
             if (CurrentButtonIndex == 1) // main menu
             {
+                Resume();
                 // TODO save progress
-                // TODO switch to menu
+                gameState.LoadMenu();
             }
             if (CurrentButtonIndex == 2) // exit
             {
@@ -51,26 +51,27 @@ public partial class PauseMenu : ButtonManager
         }
     }
 
-
-	void _OnContinueButtonPressed()
-	{
-		Resume();
-	}
-
-
     public void Pause()
 	{
-		//Engine.TimeScale = 0;
-		GetTree().Paused = true;
-		Show();
+        //Engine.TimeScale = 0;
+        Show();
+        GetTree().Paused = true;
         gameState.IsGamePaused = true;
 	}
 
 	public void Resume()
 	{
         //Engine.TimeScale = 1;
-        GetTree().Paused = false;
         Hide();
+        GetTree().Paused = false;
+        gameState.IsGamePaused = false;
+    }
+
+    public async void DelayResume()
+    {
+        Hide();
+        await ToSignal(GetTree().CreateTimer(resumeDelay), "timeout");
+        GetTree().Paused = false;
         gameState.IsGamePaused = false;
     }
 }

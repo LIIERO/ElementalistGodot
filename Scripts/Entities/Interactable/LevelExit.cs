@@ -19,7 +19,7 @@ public partial class LevelExit : Interactable
         if (playerScriptReference.IsHoldingGoal)
             gameState.CompleteCurrentLevel();
 
-        gameState.LoadHub();
+        gameState.LoadHubLevel();
         
     }
 }

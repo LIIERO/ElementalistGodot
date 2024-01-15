@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://deel3vxmckby4"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/LevelExit.cs" id="1_ipfbx"]
-[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/UpArrowIndicator.tscn" id="2_3gj41"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_3gj41"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="3_r3rhy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]

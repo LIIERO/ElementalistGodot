@@ -24,7 +24,7 @@ public partial class LevelTeleport : Interactable
         }
         else
         {
-            if (gameState.HasCurrentLevelBeenCompleted()) // Level is completed - gold outline
+            if (gameState.HasLevelBeenCompleted(id)) // Level is completed - gold outline
             {
                 currentSprite.Play("LevelCompleted");
             }
