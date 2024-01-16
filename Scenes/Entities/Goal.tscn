@@ -58,7 +58,7 @@ animations = [{
 
 [sub_resource type="Gradient" id="Gradient_bs0om"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.331169)
+offsets = PackedFloat32Array(0, 0.530612)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5u447"]
