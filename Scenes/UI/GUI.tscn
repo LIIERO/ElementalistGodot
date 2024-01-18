@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=27 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" path="res://Scripts/UI/MenuButton.cs" id="13_nu52h"]
 [ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="13_ykw2f"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="15_1xd4b"]
+[ext_resource type="Texture2D" uid="uid://bc7aiqfid7inw" path="res://Graphics/UI/Gameplay/sun_counter_background.png" id="16_g1udj"]
+[ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1vbw"]
 bg_color = Color(0, 0, 0, 0.313726)
@@ -41,6 +44,56 @@ tracks/0/keys = {
 _data = {
 "Idle": SubResource("Animation_porbe")
 }
+
+[sub_resource type="Animation" id="Animation_sgcxl"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqv8"]
+_data = {
+"Idle": SubResource("Animation_sgcxl")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vitxw"]
+atlas = ExtResource("17_x2t6e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqjgx"]
+atlas = ExtResource("17_x2t6e")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqdk7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vitxw")
+}],
+"loop": false,
+"name": &"LevelCompleted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqjgx")
+}],
+"loop": false,
+"name": &"LevelNotCompleted",
+"speed": 5.0
+}]
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -238,3 +291,38 @@ text = "EXIT"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+
+[node name="SunCounter" type="Sprite2D" parent="." node_paths=PackedStringArray("counterText")]
+texture_filter = 1
+position = Vector2(448, 16)
+texture = ExtResource("16_g1udj")
+script = ExtResource("17_gsxjm")
+counterText = NodePath("Label")
+
+[node name="SunSymbol" type="Node2D" parent="SunCounter"]
+position = Vector2(-14, -2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SunCounter/SunSymbol"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("15_1xd4b")
+
+[node name="MovedByAnimation" type="Node2D" parent="SunCounter/SunSymbol"]
+position = Vector2(0, 0.284063)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="SunCounter/SunSymbol/MovedByAnimation"]
+texture_filter = 1
+position = Vector2(0, 0.124914)
+sprite_frames = SubResource("SpriteFrames_qqdk7")
+animation = &"LevelNotCompleted"
+
+[node name="Label" type="Label" parent="SunCounter"]
+texture_filter = 1
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 4.0
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "X"

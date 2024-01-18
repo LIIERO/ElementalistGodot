@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmnxh43swq1fg"]
+
+[ext_resource type="Script" path="res://Scripts/Camera/Camera.cs" id="1_qfb3k"]
+
+[node name="Camera2D" type="Camera2D" node_paths=PackedStringArray("PlayerNode")]
+script = ExtResource("1_qfb3k")
+PlayerNode = NodePath("")
+leftLimit = 0.0
+upLimit = 0.0
+rightLimit = 0.0
+downLimit = 0.0

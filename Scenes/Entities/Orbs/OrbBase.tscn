@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfvn0"]
 size = Vector2(10, 11)
 
-[sub_resource type="Animation" id="Animation_porbe"]
+[sub_resource type="Animation" id="Animation_sgcxl"]
 resource_name = "Idle"
 length = 3.0
 loop_mode = 1
@@ -25,9 +25,9 @@ tracks/0/keys = {
 "values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqv8"]
 _data = {
-"Idle": SubResource("Animation_porbe")
+"Idle": SubResource("Animation_sgcxl")
 }
 
 [sub_resource type="Gradient" id="Gradient_kh12u"]
@@ -43,11 +43,9 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="Gradient" id="Gradient_ejmvq"]
 colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0)
 
-[node name="Orb" type="Area2D" node_paths=PackedStringArray("backgroundLight", "particles")]
+[node name="Orb" type="Area2D"]
 script = ExtResource("1_0u24s")
 refillColor = 4
-backgroundLight = NodePath("MovedByAnimation/PointLight2D")
-particles = NodePath("MovedByAnimation/GPUParticles2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -55,13 +53,13 @@ shape = SubResource("RectangleShape2D_kfvn0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_c15ny")
+"": SubResource("AnimationLibrary_6uqv8")
 }
 autoplay = "Idle"
 script = ExtResource("2_ioeab")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 0.284063)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovedByAnimation"]
 texture_filter = 1

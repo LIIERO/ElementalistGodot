@@ -58,10 +58,8 @@ _data = {
 "Idle": SubResource("Animation_porbe")
 }
 
-[node name="LevelTeleport" type="Area2D" node_paths=PackedStringArray("currentSprite", "teleportText")]
+[node name="LevelTeleport" type="Area2D"]
 script = ExtResource("1_npe73")
-currentSprite = NodePath("MovedByAnimation/Sprite2D")
-teleportText = NodePath("MovedByAnimation/Text/Label")
 arrowYOffset = -2.5
 arrowIndicatorPrefab = ExtResource("2_tx6ga")
 
@@ -72,7 +70,7 @@ shape = SubResource("RectangleShape2D_3qu6i")
 [node name="MovedByAnimation" type="Node2D" parent="."]
 position = Vector2(0, -0.287858)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_f1tq1")

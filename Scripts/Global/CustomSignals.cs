@@ -5,7 +5,10 @@ using System.Collections.Generic;
 
 public partial class CustomSignals : Node
 {
-    // Gameplay
+    // Player
+
+    [Signal]
+    public delegate void PlayerDiedEventHandler();
 
     [Signal]
     public delegate void PlayerAbilityUsedEventHandler(int ability);
@@ -15,6 +18,11 @@ public partial class CustomSignals : Node
 
     [Signal]
     public delegate void SetPlayerPositionEventHandler(Vector2 position);
+
+    // Camera
+
+    [Signal]
+    public delegate void SetCameraPositionEventHandler(Vector2 position);
 
     // UI
 

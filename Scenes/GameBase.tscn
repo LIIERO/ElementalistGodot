@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ciq4cuqvua4tl" path="res://Scenes/UI/GUI.tscn" id="1_ac16r"]
 [ext_resource type="PackedScene" uid="uid://d0if8ksrlccpx" path="res://Scenes/Entities/Player.tscn" id="2_t2ulh"]
-[ext_resource type="Script" path="res://Scripts/Camera/Camera.cs" id="3_jq0pi"]
+[ext_resource type="PackedScene" uid="uid://cmnxh43swq1fg" path="res://Scenes/MainCamera.tscn" id="3_qsafc"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,11 +11,4 @@
 [node name="Zoe" parent="." instance=ExtResource("2_t2ulh")]
 position = Vector2(0, 48)
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("PlayerNode")]
-position_smoothing_enabled = true
-script = ExtResource("3_jq0pi")
-PlayerNode = NodePath("../Zoe")
-leftLimit = 0.0
-upLimit = 0.0
-rightLimit = 0.0
-downLimit = 0.0
+[node name="Camera2D" parent="." instance=ExtResource("3_qsafc")]

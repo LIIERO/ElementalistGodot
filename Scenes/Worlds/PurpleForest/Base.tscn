@@ -492,6 +492,9 @@ sources/0 = SubResource("TileSetAtlasSource_to7sr")
 
 [node name="Game" instance=ExtResource("1_qj3jk")]
 
+[node name="Camera2D" parent="." index="2" node_paths=PackedStringArray("PlayerNode")]
+PlayerNode = NodePath("../Zoe")
+
 [node name="GroundTiles" type="TileMap" parent="." index="3" groups=["PlayerCollider"]]
 z_index = -1
 texture_filter = 1

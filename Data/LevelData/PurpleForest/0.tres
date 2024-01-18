@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://caqyhgk2vrgv4"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_nrte4"]
+
+[resource]
+script = ExtResource("1_nrte4")
+ID = "0"
+Name = "Sun Collector"
+NoCompletedToUnlock = 0

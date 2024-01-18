@@ -3,10 +3,16 @@ using System;
 
 public partial class Camera : Camera2D
 {
+    private CustomSignals customSignals; // Singleton
     public static bool FreeViewModeEnabled { get; set; } = false; // TODO: move to a freeviewcontroller
     [Export] private Node2D PlayerNode { get; set; }
 
     Vector2 initialPosition;
+
+    private float velocityX = 0.0f;
+    private float velocityY = 0.0f;
+
+    const float smoothTime = 0.2f;
 
     // How far in each direction can camera go in grid units
     [Export] private float leftLimit = -99f;
@@ -20,6 +26,8 @@ public partial class Camera : Camera2D
 
     public override void _Ready()
 	{
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.SetCameraPosition, new Callable(this, MethodName.SetPosition));
         initialPosition = Position;
 
         leftLimit = (leftLimit * GameUtils.gameUnitSize) + initialPosition.X;
@@ -32,6 +40,11 @@ public partial class Camera : Camera2D
 
 	public override void _Process(double delta)
 	{
+        ApplyPosition(delta);
+    }
+
+    private void ApplyPosition(double delta)
+    {
         /*if (FreeViewModeEnabled)
         {
             Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
@@ -46,16 +59,17 @@ public partial class Camera : Camera2D
         desiredPosition = PlayerNode.Position;
         desiredPosition = ApplyCameraBounds(desiredPosition);
 
-        Position = desiredPosition;
+        float smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, 200, (float)delta);
+        float smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, 200, (float)delta);
+        Position = new Vector2(smoothedX, smoothedY);
 
         //fwc.CheckIfCameraTouchesBounds(desiredPosition, cameraBoundaries);
 
         //Vector3 smoothedPosition = Vector3.SmoothDamp(cameraObject.transform.position, desiredPosition, ref velocity, smoothCameraTime);
         //cameraObject.transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, cameraObject.transform.position.z); // Camera following player
-
     }
 
-    Vector2 ApplyCameraBounds(Vector2 position)
+    private Vector2 ApplyCameraBounds(Vector2 position)
     {
         if (position.X < leftLimit) position.X = leftLimit;
         else if (position.X > rightLimit) position.X = rightLimit;
@@ -64,5 +78,10 @@ public partial class Camera : Camera2D
         else if (position.Y > downLimit) position.Y = downLimit;
 
         return position;
+    }
+
+    public void SetPosition(Vector2 position)
+    {
+        GlobalPosition = ApplyCameraBounds(position);
     }
 }

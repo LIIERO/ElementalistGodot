@@ -350,9 +350,10 @@ public partial class Player : CharacterBody2D
 
     async void Die(float t)
 	{
-		//if (isUsingAbility) return;
-		//Global.PlayingCutscene = true;
-		isDying = true;
+        //if (isUsingAbility) return;
+        //Global.PlayingCutscene = true;
+        customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
+        isDying = true;
 		isFrozen = true; // player floats when killed
         animatedSprite.Play("Die"); // death animation
         await ToSignal(GetTree().CreateTimer(t), "timeout");

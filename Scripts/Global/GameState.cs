@@ -8,7 +8,7 @@ public partial class GameState : Node
     // Level loader stuff
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
-        { "PurpleForest", new string[] { "HUB", "0" } },
+        { "PurpleForest", new string[] { "HUB", "0", "1", "2" } },
         { "DistantShoreline", new string[] {} } 
     };
 
@@ -86,6 +86,7 @@ public partial class GameState : Node
         if (PlayerHubPosition == Vector2.Zero) return;
         await ToSignal(GetTree(), "process_frame");
         customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, PlayerHubPosition);
+        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, PlayerHubPosition);
     }
 
     public void LoadMenu()

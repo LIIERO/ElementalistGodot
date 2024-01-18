@@ -6,7 +6,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxjak"]
 
-[sub_resource type="Animation" id="Animation_porbe"]
+[sub_resource type="Animation" id="Animation_sgcxl"]
 resource_name = "Idle"
 length = 3.0
 loop_mode = 1
@@ -24,9 +24,9 @@ tracks/0/keys = {
 "values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqv8"]
 _data = {
-"Idle": SubResource("Animation_porbe")
+"Idle": SubResource("Animation_sgcxl")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vitxw"]
@@ -56,13 +56,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_bs0om"]
+[sub_resource type="Gradient" id="Gradient_ct5vk"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.530612)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5u447"]
-gradient = SubResource("Gradient_bs0om")
+gradient = SubResource("Gradient_ct5vk")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -79,13 +79,13 @@ shape = SubResource("RectangleShape2D_wxjak")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_c15ny")
+"": SubResource("AnimationLibrary_6uqv8")
 }
 autoplay = "Idle"
 script = ExtResource("2_ewlgh")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, -0.997732)
+position = Vector2(0, 0.284063)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
 texture_filter = 1
