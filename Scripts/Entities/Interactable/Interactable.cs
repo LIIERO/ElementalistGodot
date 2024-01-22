@@ -25,7 +25,9 @@ public abstract partial class Interactable : Area2D
 	public override void _Process(double delta)
 	{
         if (!IsActive) return;
+        if (playerScriptReference == null) return;
         if (!playerScriptReference.interactPressed) return;
+        if (!playerScriptReference.isGrounded) return;
 
         Interact();
 	}
@@ -33,7 +35,8 @@ public abstract partial class Interactable : Area2D
     void _OnBodyEntered(Node2D body)
     {
         if (body is not Player) return;
-        PlayerEntered(body);
+        playerScriptReference = body as Player;
+        PlayerEntered();
     }
 
     void _OnBodyExited(Node2D body)
@@ -42,9 +45,8 @@ public abstract partial class Interactable : Area2D
         PlayerExited();
     }
 
-    protected void PlayerEntered(Node2D player)
+    protected void PlayerEntered()
     {
-        playerScriptReference = player as Player;
         IsActive = true;
         arrowIndicator.Show();
         arrowIndicator.Play("Idle");

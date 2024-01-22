@@ -12,6 +12,10 @@ public partial class GameState : Node
         { "DistantShoreline", new string[] {} } 
     };
 
+    /*private readonly Dictionary<string, string> worldToWorldName = new() {
+        { "PurpleForest", "Purple Forest" }
+    };*/
+
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
 
 
@@ -26,10 +30,11 @@ public partial class GameState : Node
     // Data not loaded from the save file
     public int NoCompletedLevels { get; private set; } = 0;
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
+    public bool IsLevelTransitionPlaying { get; set; } = false;
 
 
     // METHODS ===========================================================================================================
-    private CustomSignals customSignals;
+    private CustomSignals customSignals; // singleton
     public override void _Ready()
     {
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
@@ -72,12 +77,17 @@ public partial class GameState : Node
     {
         CurrentLevel = id;
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
+        //levelTransitions.EndLevelTransition();
+    }
+
+    public void RestartCurrentLevel()
+    {
+        if (CurrentLevel != "HUB") GetTree().ReloadCurrentScene();
     }
 
     public void LoadHubLevel()
     {
-        CurrentLevel = "HUB";
-        GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld]["HUB"]);
+        LoadLevel("HUB");
         SetPlayerHubPosition();
     }
 

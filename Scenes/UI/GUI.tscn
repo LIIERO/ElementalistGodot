@@ -19,32 +19,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1vbw"]
-bg_color = Color(0, 0, 0, 0.313726)
-
-[sub_resource type="Animation" id="Animation_porbe"]
-resource_name = "Idle"
-length = 3.0
-loop_mode = 1
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MovedByAnimation:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.503, 3),
-"transitions": PackedFloat32Array(-2, -2, -2),
-"update": 0,
-"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
-_data = {
-"Idle": SubResource("Animation_porbe")
-}
-
 [sub_resource type="Animation" id="Animation_sgcxl"]
 resource_name = "Idle"
 length = 3.0
@@ -95,6 +69,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1vbw"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
 [node name="GUI" type="CanvasLayer"]
 
 [node name="ElementOverlay" type="Node2D" parent="."]
@@ -131,6 +131,42 @@ theme_override_font_sizes/font_size = 12
 text = "Sample text Sample text Sample text Sample text Sample text Sample text Sample text "
 autowrap_mode = 2
 text_overrun_behavior = 2
+
+[node name="SunCounter" type="Sprite2D" parent="." node_paths=PackedStringArray("counterText")]
+process_mode = 3
+texture_filter = 1
+position = Vector2(448, 16)
+texture = ExtResource("16_g1udj")
+script = ExtResource("17_gsxjm")
+counterText = NodePath("Label")
+
+[node name="SunSymbol" type="Node2D" parent="SunCounter"]
+position = Vector2(-14, -2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SunCounter/SunSymbol"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("15_1xd4b")
+
+[node name="MovedByAnimation" type="Node2D" parent="SunCounter/SunSymbol"]
+position = Vector2(0, 0.284063)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="SunCounter/SunSymbol/MovedByAnimation"]
+texture_filter = 1
+position = Vector2(0, 0.124914)
+sprite_frames = SubResource("SpriteFrames_qqdk7")
+animation = &"LevelNotCompleted"
+
+[node name="Label" type="Label" parent="SunCounter"]
+texture_filter = 1
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 4.0
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "X"
 
 [node name="PauseMenu" type="Panel" parent="." node_paths=PackedStringArray("buttonList")]
 process_mode = 3
@@ -291,38 +327,3 @@ text = "EXIT"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
-
-[node name="SunCounter" type="Sprite2D" parent="." node_paths=PackedStringArray("counterText")]
-texture_filter = 1
-position = Vector2(448, 16)
-texture = ExtResource("16_g1udj")
-script = ExtResource("17_gsxjm")
-counterText = NodePath("Label")
-
-[node name="SunSymbol" type="Node2D" parent="SunCounter"]
-position = Vector2(-14, -2)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SunCounter/SunSymbol"]
-libraries = {
-"": SubResource("AnimationLibrary_6uqv8")
-}
-autoplay = "Idle"
-script = ExtResource("15_1xd4b")
-
-[node name="MovedByAnimation" type="Node2D" parent="SunCounter/SunSymbol"]
-position = Vector2(0, 0.284063)
-
-[node name="Sprite2D" type="AnimatedSprite2D" parent="SunCounter/SunSymbol/MovedByAnimation"]
-texture_filter = 1
-position = Vector2(0, 0.124914)
-sprite_frames = SubResource("SpriteFrames_qqdk7")
-animation = &"LevelNotCompleted"
-
-[node name="Label" type="Label" parent="SunCounter"]
-texture_filter = 1
-offset_top = -8.0
-offset_right = 20.0
-offset_bottom = 4.0
-theme_override_fonts/font = ExtResource("9_3cem8")
-theme_override_font_sizes/font_size = 12
-text = "X"

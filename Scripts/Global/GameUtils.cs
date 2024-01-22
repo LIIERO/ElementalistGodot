@@ -8,8 +8,6 @@ public static class GameUtils
 {
     public static readonly int gameUnitSize = 16;
 
-    public static bool PlayingCutscene { get; set; } = false; // TODO MOVE THIS AWAY FROM HERE
-
     public static readonly Dictionary<ColorSet, Color> ColorsetToColor = new() {
         { ColorSet.red, new Color(1f, 0.2f, 0.2f) },
         { ColorSet.blue, new Color(0.2f, 0.2f, 1f) },

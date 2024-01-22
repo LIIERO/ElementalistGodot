@@ -5,10 +5,12 @@ using System;
 public partial class LevelExit : Interactable
 {
     private GameState gameState;
+    private LevelTransitions levelTransitions;
 
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
+        levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         base._Ready();
     }
 
@@ -19,7 +21,6 @@ public partial class LevelExit : Interactable
         if (playerScriptReference.IsHoldingGoal)
             gameState.CompleteCurrentLevel();
 
-        gameState.LoadHubLevel();
-        
+        levelTransitions.StartHubTransition(playerScriptReference.IsHoldingGoal);  
     }
 }

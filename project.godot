@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 CustomSignals="*res://Scripts/Global/CustomSignals.cs"
 GameState="*res://Scripts/Global/GameState.cs"
+Transitions="*res://Scenes/UI/Transitions.tscn"
 
 [display]
 

@@ -4,7 +4,10 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class LevelTeleport : Interactable
 {
-    private GameState gameState; // Singleton
+    // Singletons
+    private GameState gameState;
+    private LevelTransitions levelTransitions;
+
     private AnimatedSprite2D currentSprite;
     private Label teleportText;
 
@@ -12,6 +15,7 @@ public partial class LevelTeleport : Interactable
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
+        levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         currentSprite = GetNode<AnimatedSprite2D>("MovedByAnimation/AnimatedSprite2D");
         teleportText = GetNode<Label>("MovedByAnimation/Text/Label");
         base._Ready();
@@ -38,6 +42,6 @@ public partial class LevelTeleport : Interactable
     {
         base.Interact();
         gameState.PlayerHubPosition = GlobalPosition; // Upon returning player should respawn on top of the teleport they entered
-        gameState.LoadLevel(levelData.ID);
+        levelTransitions.StartLevelTransition(levelData); 
     }
 }

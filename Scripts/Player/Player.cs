@@ -13,6 +13,7 @@ public partial class Player : CharacterBody2D
 	// Singletons
 	private CustomSignals customSignals;
     private GameState gameState;
+    private LevelTransitions levelTransitions;
 
     // Instantiates
     [Export] private PackedScene fireball;
@@ -37,7 +38,7 @@ public partial class Player : CharacterBody2D
 	public const float inputBufferTime = 0.1f;
 	public const float abilityFreezeTime = 0.05f;
 	public const float jumpCancelFraction = 0.2f;
-	public const float deathTime = 1.0f;
+	public const float deathTime = 0.2f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -47,12 +48,12 @@ public partial class Player : CharacterBody2D
 	public List<ElementState> AbilityList { get; private set; }
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
     public bool IsHoldingGoal { get; set; } = false;
+	public bool IsFrozen => isDying || gameState.IsLevelTransitionPlaying;
 
     ElementState currentAbility = ElementState.normal;
 	bool isUsingAbility = false;
 	bool isExecutingAbility = false;
 	bool canUseBaseAbility = false;
-    public bool isFrozen = false;
     public bool isFacingRight = true;
 	public bool isGrounded = false;
 	public bool isClinging = false;
@@ -72,6 +73,7 @@ public partial class Player : CharacterBody2D
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
         gameState = GetNode<GameState>("/root/GameState");
+        levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
 
         gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
@@ -95,7 +97,7 @@ public partial class Player : CharacterBody2D
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0f && ((!isFacingRight && direction.X < -0.5f) || (isFacingRight && direction.X > 0.5f));
         
-		if (restartPressed && !gameState.IsHubLoaded()) Die(deathTime);
+		if (restartPressed && !gameState.IsHubLoaded()) RestartLevel(deathTime);
 
 		// Add the gravity
 		if (!isGrounded)
@@ -105,9 +107,9 @@ public partial class Player : CharacterBody2D
 		Ability(abilityPressed, delta);
 		Movement(direction);
 
-		UpdateAnimation(direction);
-		if (!isFrozen) MoveAndSlide();
-	}
+		if (!IsFrozen) MoveAndSlide();
+        UpdateAnimation(direction);
+    }
 
 	// MOVEMENT ==================================================================================================================
 
@@ -299,7 +301,7 @@ public partial class Player : CharacterBody2D
 
     private void UpdateAnimation(Vector2 direction)
 	{
-		if (isDying) return; // Death animation set in Die method
+		if (IsFrozen) return;
 
 		// change direction facing
 		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency
@@ -331,16 +333,11 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
-			if (Velocity.Y < -0.1f) animation = "Jump";
+			if (Velocity.Y < -1.0f) animation = "Jump";
 			else if (isClinging) animation = "Cling";
-			else animation = "Fall";
-		}
-
-		if (GameUtils.PlayingCutscene)
-		{
-			animation = "Idle";
-			Velocity = new Vector2(0f, 0f);
-		}
+			else if (Velocity.Y > 1.0f) animation = "Fall";
+			else animation = "Idle";
+        }
 
 		animatedSprite.Play(animation);
 	}
@@ -348,16 +345,14 @@ public partial class Player : CharacterBody2D
 
     // DYING RESPAWNING
 
-    async void Die(float t)
+    async void RestartLevel(float t)
 	{
         //if (isUsingAbility) return;
-        //Global.PlayingCutscene = true;
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
         isDying = true;
-		isFrozen = true; // player floats when killed
         animatedSprite.Play("Die"); // death animation
         await ToSignal(GetTree().CreateTimer(t), "timeout");
-		GetTree().ReloadCurrentScene(); // TEMPORARY
+		levelTransitions.StartLevelReloadTransition();
 	}
 
 	// PUBLIC ==================================================================================================================
