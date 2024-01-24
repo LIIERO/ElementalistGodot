@@ -1,3 +1,4 @@
+using GlobalTypes;
 using Godot;
 using System;
 using static System.Net.Mime.MediaTypeNames;
@@ -21,7 +22,7 @@ public partial class MainMenu : ButtonManager
             if (CurrentButtonIndex == 0) // new game
             {
                 // TODO: New game save resource
-                gameState.LoadWorld("PurpleForest"); // TEMPORARY
+                gameState.LoadWorld(WorldID.PurpleForest); // TEMPORARY
                 gameState.LoadHubLevel(); // TEMPORARY
             }
             if (CurrentButtonIndex == 1) // continue

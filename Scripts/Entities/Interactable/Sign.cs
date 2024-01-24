@@ -3,8 +3,7 @@ using System;
 
 public partial class Sign : Interactable
 {
-    // Signals
-    private CustomSignals customSignals;
+    private CustomSignals customSignals; // Singleton
 
     [Export] public string Text { get; set; }
     [Export] public string SunHoldingText { get; set; }

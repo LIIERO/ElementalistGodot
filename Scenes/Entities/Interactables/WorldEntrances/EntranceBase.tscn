@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqushr7gr33sh"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/WorldEntrance.cs" id="1_k7ws4"]
+[ext_resource type="Texture2D" uid="uid://p2loqqfdl0eb" path="res://Graphics/Entities/entrances.png" id="1_o7n1y"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_jcid6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl8ud"]
+atlas = ExtResource("1_o7n1y")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5io4r"]
+atlas = ExtResource("1_o7n1y")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sexyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl8ud")
+}],
+"loop": false,
+"name": &"Completed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5io4r")
+}],
+"loop": false,
+"name": &"NotCompleted",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd17k"]
+size = Vector2(48, 1)
+
+[node name="Entrance" type="Area2D"]
+script = ExtResource("1_k7ws4")
+arrowYOffset = -3.0
+arrowIndicatorPrefab = ExtResource("2_jcid6")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_o7n1y")
+region_enabled = true
+region_rect = Rect2(96, 0, 48, 64)
+
+[node name="Foreground" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_sexyo")
+animation = &"NotCompleted"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 31.5)
+shape = SubResource("RectangleShape2D_jd17k")
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="_OnBodyExited"]

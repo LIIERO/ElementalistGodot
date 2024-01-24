@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx47v4hw8lhtm"]
+[gd_scene load_steps=9 format=3 uid="uid://cx47v4hw8lhtm"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/PurpleForest/Base.tscn" id="1_xgcwe"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="2_2cuig"]
 [ext_resource type="Resource" uid="uid://caqyhgk2vrgv4" path="res://Data/LevelData/PurpleForest/0.tres" id="3_5tm00"]
 [ext_resource type="Resource" uid="uid://be7bo2mjleqao" path="res://Data/LevelData/PurpleForest/1.tres" id="4_2x1f6"]
 [ext_resource type="Resource" uid="uid://ccv8non0rky78" path="res://Data/LevelData/PurpleForest/2.tres" id="5_dg7oy"]
+[ext_resource type="PackedScene" uid="uid://cqushr7gr33sh" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceBase.tscn" id="6_tug57"]
+[ext_resource type="Resource" uid="uid://re1tuvntbpg7" path="res://Data/WorldData/PurpleForest.tres" id="7_no7xh"]
+[ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="8_ekp26"]
 
 [node name="Game" instance=ExtResource("1_xgcwe")]
 
@@ -28,3 +31,12 @@ levelData = ExtResource("4_2x1f6")
 [node name="LevelTeleport3" parent="Interactables" index="2" instance=ExtResource("2_2cuig")]
 position = Vector2(448, 80)
 levelData = ExtResource("5_dg7oy")
+
+[node name="Entrance" parent="Interactables" index="3" instance=ExtResource("6_tug57")]
+position = Vector2(64, 32)
+worldToTeleportTo = ExtResource("7_no7xh")
+
+[node name="Gate" parent="." index="7" node_paths=PackedStringArray("playerNode") instance=ExtResource("8_ekp26")]
+position = Vector2(592, 16)
+requiredFragments = 1
+playerNode = NodePath("../Zoe")
