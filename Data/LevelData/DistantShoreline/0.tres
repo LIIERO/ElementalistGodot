@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bbs0nncffbraf"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_iijul"]
+
+[resource]
+script = ExtResource("1_iijul")
+ID = "0"
+Name = "Useless Orb"
+NoCompletedToUnlock = 0

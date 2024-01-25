@@ -36,6 +36,7 @@ public partial class WorldEntrance : Interactable
     {
         base.Interact();
 
+        gameState.LoadWorld(worldToTeleportTo.ID);
     }
 
     protected override void PlayerExited()

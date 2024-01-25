@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnwfel811ty30"]
+
+[ext_resource type="PackedScene" uid="uid://cqushr7gr33sh" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceBase.tscn" id="1_66vk8"]
+[ext_resource type="Resource" uid="uid://b0xtaj8nycpab" path="res://Data/WorldData/DistantShoreline.tres" id="2_3xbv4"]
+
+[node name="EntranceDistantShoreline" instance=ExtResource("1_66vk8")]
+worldToTeleportTo = ExtResource("2_3xbv4")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(192, 0, 48, 64)

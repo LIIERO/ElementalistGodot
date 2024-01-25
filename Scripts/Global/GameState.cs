@@ -10,7 +10,7 @@ public partial class GameState : Node
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
     private readonly Dictionary<WorldID, string[]> levels = new() { // Turn this to json?
         { WorldID.PurpleForest, new string[] { "HUB", "0", "1", "2" } },
-        { WorldID.DistantShoreline, new string[] {} } 
+        { WorldID.DistantShoreline, new string[] { "HUB", "0" } } 
     };
 
     /*private readonly Dictionary<string, string> worldToWorldName = new() {
@@ -67,17 +67,26 @@ public partial class GameState : Node
     public bool HasCurrentLevelBeenCompleted() { return HasLevelBeenCompleted(CurrentLevel); }
     public bool IsHubLoaded() { return CurrentLevel == "HUB"; }
 
+    public int GetNoLocalCompletedLevels()
+    {
+        int noCompleted = 0;
+        foreach (bool isCompleted in CompletedLevels[CurrentWorld].Values)
+        {
+            if (isCompleted) noCompleted++;
+        }
+        return noCompleted;
+    }
+
     public void LoadWorld(WorldID world)
     {
         CurrentWorld = world;
-        //throw new NotImplementedException();
+        LoadLevel("HUB");
     }
 
     public void LoadLevel(string id)
     {
         CurrentLevel = id;
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
-        //levelTransitions.EndLevelTransition();
     }
 
     public void RestartCurrentLevel()

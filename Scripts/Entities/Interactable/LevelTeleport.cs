@@ -21,7 +21,7 @@ public partial class LevelTeleport : Interactable
         base._Ready();
 
         teleportText.Text = levelData.ID[0].ToString();
-        if (gameState.NoCompletedLevels < levelData.NoCompletedToUnlock) // Not enough completed levels - teleport not showing up
+        if (gameState.GetNoLocalCompletedLevels() < levelData.NoCompletedToUnlock) // Not enough completed levels - teleport not showing up
         {
             QueueFree();
         }
