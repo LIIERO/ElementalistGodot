@@ -31,4 +31,5 @@ public partial class CustomSignals : Node
 
     [Signal]
     public delegate void DialogBoxHideEventHandler();
+
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://blskr05twsghv"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Gate.cs" id="1_4ajf3"]
-[ext_resource type="Texture2D" uid="uid://bv6o0xaekridn" path="res://Graphics/Entities/gates.png" id="1_fbqkg"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_r7521"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_n338q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1n3eo"]
@@ -41,12 +41,12 @@ shape = SubResource("RectangleShape2D_1n3eo")
 
 [node name="Sprite2D" type="Sprite2D" parent="ToMove"]
 texture_filter = 1
-texture = ExtResource("1_fbqkg")
+texture = ExtResource("2_r7521")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Text" type="Node2D" parent="ToMove"]
-position = Vector2(-2.5, -5)
+position = Vector2(-2.5, -11)
 
 [node name="Label" type="Label" parent="ToMove/Text"]
 texture_filter = 1

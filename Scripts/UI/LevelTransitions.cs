@@ -9,7 +9,10 @@ public partial class LevelTransitions : CanvasLayer
 
     [Export] private Label levelTextTopLabel;
     [Export] private Label levelTextBottomLabel;
+
     private LevelData transitionLevel;
+    private WorldData transitionWorld;
+
     private ScreenTransition currentTransition;
 
 	public override void _Ready()
@@ -72,6 +75,19 @@ public partial class LevelTransitions : CanvasLayer
         animationPlayer.Play("LevelExit");
     }
 
+    public void StartWorldTransition(WorldData worldToTransitionTo)
+    {
+        currentTransition = ScreenTransition.worldEntry;
+        gameState.IsLevelTransitionPlaying = true;
+        transitionWorld = worldToTransitionTo;
+        Show();
+
+        levelTextBottomLabel.Show();
+        levelTextBottomLabel.Text = worldToTransitionTo.Name;
+
+        animationPlayer.Play("LevelExit");
+    }
+
     void _onAnimationPlayerAnimationFinished(string animationName)
 	{
         if (animationName == "LevelExit") // End of first part of transition
@@ -92,6 +108,10 @@ public partial class LevelTransitions : CanvasLayer
 
                 case ScreenTransition.levelEntry:
                     gameState.LoadLevel(transitionLevel.ID);
+                    EndLevelTransitionAfterSeconds(1.5f); break;
+
+                case ScreenTransition.worldEntry:
+                    gameState.LoadWorld(transitionWorld.ID);
                     EndLevelTransitionAfterSeconds(1.5f); break;
             }
         }

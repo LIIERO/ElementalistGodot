@@ -23,7 +23,6 @@ public partial class MainMenu : ButtonManager
             {
                 // TODO: New game save resource
                 gameState.LoadWorld(WorldID.PurpleForest); // TEMPORARY
-                gameState.LoadHubLevel(); // TEMPORARY
             }
             if (CurrentButtonIndex == 1) // continue
             {

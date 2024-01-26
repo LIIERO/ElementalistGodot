@@ -54,5 +54,8 @@ animation = &"NotCompleted"
 position = Vector2(0, 31.5)
 shape = SubResource("RectangleShape2D_jd17k")
 
+[node name="PlayerRespawnPosition" type="Node2D" parent="."]
+position = Vector2(0, 32)
+
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

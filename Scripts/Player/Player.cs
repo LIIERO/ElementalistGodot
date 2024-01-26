@@ -301,7 +301,8 @@ public partial class Player : CharacterBody2D
 
     private void UpdateAnimation(Vector2 direction)
 	{
-		if (IsFrozen) return;
+		if (gameState.IsLevelTransitionPlaying && !isDying) animatedSprite.Play("Idle"); // Level transition animation
+        if (IsFrozen) return;
 
 		// change direction facing
 		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency

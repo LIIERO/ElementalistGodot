@@ -18,7 +18,7 @@ layer_0/tile_data = PackedInt32Array(262128, 0, 1, 327664, 0, 1, 393200, 0, 1, 4
 position = Vector2(-208, 64)
 
 [node name="WaterOrb2" parent="Orbs" index="1" instance=ExtResource("2_tghq4")]
-position = Vector2(-144, 32)
+position = Vector2(-144, 64)
 
 [node name="WaterOrb3" parent="Orbs" index="2" instance=ExtResource("2_tghq4")]
 position = Vector2(-176, 48)

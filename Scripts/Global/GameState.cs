@@ -9,7 +9,7 @@ public partial class GameState : Node
     // Level loader stuff
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
     private readonly Dictionary<WorldID, string[]> levels = new() { // Turn this to json?
-        { WorldID.PurpleForest, new string[] { "HUB", "0", "1", "2" } },
+        { WorldID.PurpleForest, new string[] { "HUB", "0", "1", "2", "3", "4", "5" } },
         { WorldID.DistantShoreline, new string[] { "HUB", "0" } } 
     };
 
@@ -24,7 +24,7 @@ public partial class GameState : Node
     public Dictionary<WorldID, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
 
     public WorldID CurrentWorld { get; private set; } = WorldID.PurpleForest;
-    public string CurrentLevel { get; private set; } = "HUB"; // Current level ID
+    public string CurrentLevel { get; private set; } = "0"; // Current level ID
     public Vector2 PlayerHubPosition { get; set; } = Vector2.Zero; // Updated in LevelTeleport
 
 
@@ -32,11 +32,12 @@ public partial class GameState : Node
     public int NoCompletedLevels { get; private set; } = 0;
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
+    public WorldID PreviousWorld { get; private set; }
 
 
     // METHODS ===========================================================================================================
     private CustomSignals customSignals; // singleton
-    public override void _Ready()
+    public override void _EnterTree()
     {
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 
@@ -53,6 +54,9 @@ public partial class GameState : Node
                     CompletedLevels[world.Key].Add(levelID, false);
             }
         }
+
+        // Initialize previous world, TODO: do this in save file
+        PreviousWorld = CurrentWorld;
     }
 
     public void CompleteCurrentLevel()
@@ -79,8 +83,11 @@ public partial class GameState : Node
 
     public void LoadWorld(WorldID world)
     {
+        PreviousWorld = CurrentWorld;
         CurrentWorld = world;
         LoadLevel("HUB");
+        // World enter player position set in WorldEntrance because it was easier that way
+        WorldEntrance.setPlayerWorldEnterPosition = true;
     }
 
     public void LoadLevel(string id)
@@ -97,15 +104,15 @@ public partial class GameState : Node
     public void LoadHubLevel()
     {
         LoadLevel("HUB");
-        SetPlayerHubPosition();
+        SetPlayerPosition(PlayerHubPosition);
     }
 
-    private async void SetPlayerHubPosition()
+    public async void SetPlayerPosition(Vector2 position)
     {
-        if (PlayerHubPosition == Vector2.Zero) return;
+        if (position == Vector2.Zero) return;
         await ToSignal(GetTree(), "process_frame");
-        customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, PlayerHubPosition);
-        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, PlayerHubPosition);
+        customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position);
+        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, position);
     }
 
     public void LoadMenu()

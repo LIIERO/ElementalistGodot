@@ -6,5 +6,5 @@ namespace GlobalTypes
     //public enum InteractableType { teleport, checkpoint, sign, entrance }; // checkpoint is also a teleport that brings you back
     //public enum Direction { left, right, up, down };
 
-    public enum ScreenTransition { restart, hubEntry, levelEntry, hubEntryCompleted };
+    public enum ScreenTransition { restart, hubEntry, levelEntry, hubEntryCompleted, worldEntry };
 }
