@@ -24,7 +24,9 @@ public partial class GameState : Node
     public Dictionary<WorldID, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
 
     public WorldID CurrentWorld { get; private set; } = WorldID.PurpleForest;
+    public WorldID PreviousWorld { get; private set; } = WorldID.PurpleForest;
     public string CurrentLevel { get; private set; } = "0"; // Current level ID
+    public string PreviousLevel { get; private set; } = "0";
     public Vector2 PlayerHubPosition { get; set; } = Vector2.Zero; // Updated in LevelTeleport
 
 
@@ -32,7 +34,7 @@ public partial class GameState : Node
     public int NoCompletedLevels { get; private set; } = 0;
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
-    public WorldID PreviousWorld { get; private set; }
+    
 
 
     // METHODS ===========================================================================================================
@@ -92,6 +94,7 @@ public partial class GameState : Node
 
     public void LoadLevel(string id)
     {
+        PreviousLevel = CurrentLevel;
         CurrentLevel = id;
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
     }
@@ -104,15 +107,8 @@ public partial class GameState : Node
     public void LoadHubLevel()
     {
         LoadLevel("HUB");
-        SetPlayerPosition(PlayerHubPosition);
-    }
-
-    public async void SetPlayerPosition(Vector2 position)
-    {
-        if (position == Vector2.Zero) return;
-        await ToSignal(GetTree(), "process_frame");
-        customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position);
-        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, position);
+        // Level enter player position set in LevelTeleport because it was easier that way
+        LevelTeleport.setPlayerLevelEnterPosition = true;
     }
 
     public void LoadMenu()

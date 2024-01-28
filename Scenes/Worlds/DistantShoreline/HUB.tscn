@@ -20,4 +20,4 @@ position = Vector2(-160, 16)
 
 [node name="LevelTeleport" parent="Interactables" index="1" instance=ExtResource("2_kyqrh")]
 position = Vector2(-64, 48)
-levelData = ExtResource("3_7d8nf")
+levelToTeleportTo = ExtResource("3_7d8nf")

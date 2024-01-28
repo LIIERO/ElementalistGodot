@@ -27,29 +27,28 @@ position = Vector2(704, 32)
 
 [node name="LevelTeleport" parent="Interactables" index="1" instance=ExtResource("2_2cuig")]
 position = Vector2(368, 96)
-levelData = ExtResource("3_5tm00")
+levelToTeleportTo = ExtResource("3_5tm00")
 
 [node name="LevelTeleport2" parent="Interactables" index="2" instance=ExtResource("2_2cuig")]
 position = Vector2(288, 80)
-levelData = ExtResource("4_2x1f6")
+levelToTeleportTo = ExtResource("4_2x1f6")
 
 [node name="LevelTeleport3" parent="Interactables" index="3" instance=ExtResource("2_2cuig")]
 position = Vector2(448, 80)
-levelData = ExtResource("5_dg7oy")
+levelToTeleportTo = ExtResource("5_dg7oy")
 
 [node name="LevelTeleport4" parent="Interactables" index="4" instance=ExtResource("2_2cuig")]
 position = Vector2(288, 16)
-levelData = ExtResource("7_cgfnr")
+levelToTeleportTo = ExtResource("7_cgfnr")
 
 [node name="LevelTeleport5" parent="Interactables" index="5" instance=ExtResource("2_2cuig")]
 position = Vector2(368, 0)
-levelData = ExtResource("8_wyoy1")
+levelToTeleportTo = ExtResource("9_q1053")
 
 [node name="LevelTeleport6" parent="Interactables" index="6" instance=ExtResource("2_2cuig")]
 position = Vector2(448, 16)
-levelData = ExtResource("9_q1053")
+levelToTeleportTo = ExtResource("8_wyoy1")
 
 [node name="Gate" parent="." index="7" node_paths=PackedStringArray("playerNode") instance=ExtResource("8_ekp26")]
 position = Vector2(592, 16)
-requiredFragments = 6
 playerNode = NodePath("../Zoe")
