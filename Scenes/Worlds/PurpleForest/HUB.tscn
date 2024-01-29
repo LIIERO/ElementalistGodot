@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx47v4hw8lhtm"]
+[gd_scene load_steps=12 format=3 uid="uid://cx47v4hw8lhtm"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/PurpleForest/Base.tscn" id="1_xgcwe"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="2_2cuig"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="8_ekp26"]
 [ext_resource type="Resource" uid="uid://b2bv3ngdmig0o" path="res://Data/LevelData/PurpleForest/4.tres" id="8_wyoy1"]
 [ext_resource type="Resource" uid="uid://s3ceyew3kfmc" path="res://Data/LevelData/PurpleForest/5.tres" id="9_q1053"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="10_go0h5"]
 
 [node name="Game" instance=ExtResource("1_xgcwe")]
 
@@ -49,6 +50,11 @@ levelToTeleportTo = ExtResource("9_q1053")
 position = Vector2(448, 16)
 levelToTeleportTo = ExtResource("8_wyoy1")
 
+[node name="Sign" parent="Interactables" index="7" instance=ExtResource("10_go0h5")]
+position = Vector2(-32, 96)
+Text = "Press \"C\" to jump."
+
 [node name="Gate" parent="." index="7" node_paths=PackedStringArray("playerNode") instance=ExtResource("8_ekp26")]
 position = Vector2(592, 16)
+requiredFragments = 6
 playerNode = NodePath("../Zoe")
