@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciu3a3cvn5w14"
-path="res://.godot/imported/green_thorns.png-45ad1cd545b6b97333b347e78f7e519d.ctex"
+uid="uid://erpa5lvkprei"
+path="res://.godot/imported/purple_grass.png-d0c7a4ef9b49c4950576d3695da1c459.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Danger/Thorns/green_thorns.png"
-dest_files=["res://.godot/imported/green_thorns.png-45ad1cd545b6b97333b347e78f7e519d.ctex"]
+source_file="res://Graphics/Tiles/Ground/purple_grass.png"
+dest_files=["res://.godot/imported/purple_grass.png-d0c7a4ef9b49c4950576d3695da1c459.ctex"]
 
 [params]
 

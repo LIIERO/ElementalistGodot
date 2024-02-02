@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://8fiiiupclrw5"]
+[gd_scene load_steps=4 format=3 uid="uid://b1058bt1p1lbe"]
 
-[ext_resource type="Texture2D" uid="uid://erpa5lvkprei" path="res://Graphics/Tiles/purple_grass.png" id="1_nn3wp"]
+[ext_resource type="Texture2D" uid="uid://b62sfgrr62qxv" path="res://Graphics/Tiles/Ground/distant_shoreline.png" id="1_bpoxx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to7sr"]
-texture = ExtResource("1_nn3wp")
+texture = ExtResource("1_bpoxx")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0

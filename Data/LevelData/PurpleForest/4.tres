@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_2ohha")
 ID = "4"
-Name = "More Dash"
+Name = "In and Out"
 NoCompletedToUnlock = 4

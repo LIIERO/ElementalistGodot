@@ -33,7 +33,7 @@ public partial class Player : CharacterBody2D
 	public const float dashPower = 220.0f;
 	public const float dashTime = 0.2f;
 	public const float waterJumpMomentumPreservation = 0.6f;
-	public const float clingDrag = 0.7f;
+	public const float clingDrag = 0.8f;
 	public const float coyoteTime = 0.1f;
 	public const float inputBufferTime = 0.1f;
 	public const float abilityFreezeTime = 0.05f;
@@ -97,7 +97,7 @@ public partial class Player : CharacterBody2D
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0f && ((!isFacingRight && direction.X < -0.5f) || (isFacingRight && direction.X > 0.5f));
         
-		if (restartPressed && !gameState.IsHubLoaded()) RestartLevel(deathTime);
+		if (restartPressed && !gameState.IsHubLoaded()) Kill();
 
 		// Add the gravity
 		if (!isGrounded)
@@ -107,7 +107,11 @@ public partial class Player : CharacterBody2D
 		Ability(abilityPressed, delta);
 		Movement(direction);
 
-		if (!IsFrozen) MoveAndSlide();
+		if (!IsFrozen)
+		{
+            MoveAndSlide();
+            CheckForDangerCollision();
+        }
         UpdateAnimation(direction);
     }
 
@@ -168,7 +172,7 @@ public partial class Player : CharacterBody2D
 		else abilityBufferTimeCounter -= (float)delta;
 
 		// player uses ability
-		if (!isUsingAbility && abilityBufferTimeCounter > 0f)
+		if (!isUsingAbility && !IsFrozen && abilityBufferTimeCounter > 0f)
 		{
 			if (AbilityList.Count > 0 || (BaseAbility != ElementState.normal && canUseBaseAbility))
 			{
@@ -356,6 +360,19 @@ public partial class Player : CharacterBody2D
 		levelTransitions.StartLevelReloadTransition();
 	}
 
+	private void CheckForDangerCollision()
+	{
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision2D collision = GetSlideCollision(i);
+            if ((collision.GetCollider() as Node).IsInGroup("Danger"))
+			{
+				Kill();
+				break;
+			}
+        }
+    }
+
 	// PUBLIC ==================================================================================================================
 
 	public ElementState GetEffectiveElement()
@@ -371,4 +388,8 @@ public partial class Player : CharacterBody2D
 		GlobalPosition = position;
 	}
 
+    public void Kill()
+    {
+		RestartLevel(deathTime);
+    }
 }

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ciq4cuqvua4tl" path="res://Scenes/UI/GUI.tscn" id="1_kql8m"]
 [ext_resource type="PackedScene" uid="uid://d0if8ksrlccpx" path="res://Scenes/Entities/Player.tscn" id="2_66axb"]
 [ext_resource type="Script" path="res://Scripts/Camera/Camera.cs" id="3_qgtq1"]
-[ext_resource type="Texture2D" uid="uid://erpa5lvkprei" path="res://Graphics/Tiles/purple_grass.png" id="4_lewe6"]
+[ext_resource type="Texture2D" uid="uid://erpa5lvkprei" path="res://Graphics/Tiles/Ground/purple_grass.png" id="4_lewe6"]
 [ext_resource type="Texture2D" uid="uid://1camlv8qspsp" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_0.png" id="5_5g2mc"]
 [ext_resource type="Texture2D" uid="uid://drkpo63h6lydd" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_1.png" id="6_ntn74"]
 [ext_resource type="Texture2D" uid="uid://bp1ukqnl5wq1b" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_2.png" id="7_2ulbl"]

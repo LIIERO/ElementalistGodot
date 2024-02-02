@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4huidt2uo664"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_qj3jk"]
-[ext_resource type="PackedScene" uid="uid://8fiiiupclrw5" path="res://Scenes/Tilesets/PFGround.tscn" id="2_njoi7"]
+[ext_resource type="PackedScene" uid="uid://8fiiiupclrw5" path="res://Scenes/Tilesets/Ground/PFGround.tscn" id="2_njoi7"]
 [ext_resource type="Texture2D" uid="uid://1camlv8qspsp" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_0.png" id="3_a2msj"]
 [ext_resource type="Texture2D" uid="uid://drkpo63h6lydd" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_1.png" id="4_kj6kf"]
 [ext_resource type="Texture2D" uid="uid://bp1ukqnl5wq1b" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_2.png" id="5_hox8m"]

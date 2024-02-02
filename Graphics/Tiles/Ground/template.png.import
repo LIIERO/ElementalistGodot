@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b62sfgrr62qxv"
-path="res://.godot/imported/distant_shoreline.png-8726c538274bc52fa056f09866e1f189.ctex"
+uid="uid://cynxv1kwne8qh"
+path="res://.godot/imported/template.png-5ada97e75e703330eb6616b6a581ea69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Tiles/distant_shoreline.png"
-dest_files=["res://.godot/imported/distant_shoreline.png-8726c538274bc52fa056f09866e1f189.ctex"]
+source_file="res://Graphics/Tiles/Ground/template.png"
+dest_files=["res://.godot/imported/template.png-5ada97e75e703330eb6616b6a581ea69.ctex"]
 
 [params]
 

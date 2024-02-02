@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cynxv1kwne8qh"
-path="res://.godot/imported/template.png-c632f42a0b10936b6d916dc64597229e.ctex"
+uid="uid://bfo8aglkjljxo"
+path="res://.godot/imported/cosmic_stone.png-d663679f2b4c097f37a922266d8b0b62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Tiles/template.png"
-dest_files=["res://.godot/imported/template.png-c632f42a0b10936b6d916dc64597229e.ctex"]
+source_file="res://Graphics/Tiles/Ground/cosmic_stone.png"
+dest_files=["res://.godot/imported/cosmic_stone.png-d663679f2b4c097f37a922266d8b0b62.ctex"]
 
 [params]
 

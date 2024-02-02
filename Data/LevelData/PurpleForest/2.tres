@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_rr6mn")
 ID = "2"
-Name = "Order"
+Name = "The Climb"
 NoCompletedToUnlock = 2

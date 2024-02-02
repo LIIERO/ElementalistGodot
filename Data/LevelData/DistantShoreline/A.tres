@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://d3vaygpjymu1u"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_4btir"]
+
+[resource]
+script = ExtResource("1_4btir")
+ID = "A"
+Name = "Missing Piece"
+NoCompletedToUnlock = 4

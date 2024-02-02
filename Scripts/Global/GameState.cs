@@ -10,7 +10,7 @@ public partial class GameState : Node
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
     private readonly Dictionary<WorldID, string[]> levels = new() { // Turn this to json?
         { WorldID.PurpleForest, new string[] { "HUB", "0", "1", "2", "3", "4", "5" } },
-        { WorldID.DistantShoreline, new string[] { "HUB", "0" } } 
+        { WorldID.DistantShoreline, new string[] { "HUB", "0", "1", "2", "3", "A" } } 
     };
 
     /*private readonly Dictionary<string, string> worldToWorldName = new() {

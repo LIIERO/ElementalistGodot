@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfo8aglkjljxo"
-path="res://.godot/imported/cosmic_stone.png-ae37ce653c9eaeedfeafbf88f26e6bd7.ctex"
+uid="uid://b62sfgrr62qxv"
+path="res://.godot/imported/distant_shoreline.png-c57e2cdc79283d56cd08f036d9ba724f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Tiles/cosmic_stone.png"
-dest_files=["res://.godot/imported/cosmic_stone.png-ae37ce653c9eaeedfeafbf88f26e6bd7.ctex"]
+source_file="res://Graphics/Tiles/Ground/distant_shoreline.png"
+dest_files=["res://.godot/imported/distant_shoreline.png-c57e2cdc79283d56cd08f036d9ba724f.ctex"]
 
 [params]
 

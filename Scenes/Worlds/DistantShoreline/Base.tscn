@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvcfjv4q8c13d"]
+[gd_scene load_steps=4 format=3 uid="uid://bvcfjv4q8c13d"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_b502t"]
-[ext_resource type="PackedScene" uid="uid://b1058bt1p1lbe" path="res://Scenes/Tilesets/DSGround.tscn" id="2_bqg7k"]
+[ext_resource type="PackedScene" uid="uid://b1058bt1p1lbe" path="res://Scenes/Tilesets/Ground/DSGround.tscn" id="2_bqg7k"]
+[ext_resource type="PackedScene" uid="uid://bjy3ha4nvax5k" path="res://Scenes/Tilesets/Danger/DSDanger.tscn" id="3_dkysh"]
 
 [node name="Game" instance=ExtResource("1_b502t")]
 
@@ -9,3 +10,5 @@
 PlayerNode = NodePath("../Zoe")
 
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_bqg7k")]
+
+[node name="DangerTiles" parent="." index="4" instance=ExtResource("3_dkysh")]
