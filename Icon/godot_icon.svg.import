@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8wj63fvhh5sd"
-path="res://.godot/imported/element_overlay.png-108c5f8b2536962a7d442176add0e013.ctex"
+uid="uid://bh4jyb8vardyo"
+path="res://.godot/imported/godot_icon.svg-520a1008c7842495d43741eb116a8024.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/UI/Gameplay/element_overlay.png"
-dest_files=["res://.godot/imported/element_overlay.png-108c5f8b2536962a7d442176add0e013.ctex"]
+source_file="res://Icon/godot_icon.svg"
+dest_files=["res://.godot/imported/godot_icon.svg-520a1008c7842495d43741eb116a8024.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

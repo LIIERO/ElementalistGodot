@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cx47v4hw8lhtm"]
+[gd_scene load_steps=13 format=3 uid="uid://cx47v4hw8lhtm"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/PurpleForest/Base.tscn" id="1_xgcwe"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="2_2cuig"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://b2bv3ngdmig0o" path="res://Data/LevelData/PurpleForest/4.tres" id="8_wyoy1"]
 [ext_resource type="Resource" uid="uid://s3ceyew3kfmc" path="res://Data/LevelData/PurpleForest/5.tres" id="9_q1053"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="10_go0h5"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="12_636tf"]
 
 [node name="Game" instance=ExtResource("1_xgcwe")]
 
@@ -58,3 +59,14 @@ Text = "Press \"C\" to jump."
 position = Vector2(592, 16)
 requiredFragments = 6
 playerNode = NodePath("../Zoe")
+
+[node name="WalkingTutorial" type="Node2D" parent="." index="8"]
+position = Vector2(-128, 112)
+
+[node name="AnimatedSprite2D" parent="WalkingTutorial" index="0" instance=ExtResource("12_636tf")]
+position = Vector2(16, 0)
+rotation = 1.5708
+
+[node name="AnimatedSprite2D2" parent="WalkingTutorial" index="1" instance=ExtResource("12_636tf")]
+position = Vector2(-16, 0)
+rotation = -1.5708

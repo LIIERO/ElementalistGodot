@@ -56,7 +56,6 @@ public partial class LevelTeleport : Interactable
     protected override void Interact()
     {
         base.Interact();
-        gameState.PlayerHubPosition = GlobalPosition; // Upon returning player should respawn on top of the teleport they entered
         levelTransitions.StartLevelTransition(levelToTeleportTo); 
     }
 }
