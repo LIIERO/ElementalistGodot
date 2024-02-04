@@ -12,10 +12,10 @@
 [ext_resource type="Script" path="res://Scripts/UI/DialogBox.cs" id="9_ko3ni"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="11_ovtmv"]
 [ext_resource type="Texture2D" uid="uid://dtbtuholq2xi5" path="res://Graphics/UI/Menu/menu_button.png" id="12_v0wth"]
-[ext_resource type="Script" path="res://Scripts/UI/MenuButton.cs" id="13_nu52h"]
 [ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="13_ykw2f"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="15_1xd4b"]
 [ext_resource type="Texture2D" uid="uid://bc7aiqfid7inw" path="res://Graphics/UI/Gameplay/sun_counter_background.png" id="16_g1udj"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="16_s0b1u"]
 [ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
 
@@ -188,7 +188,7 @@ buttonList = [NodePath("ContinueButton"), NodePath("MenuButton"), NodePath("Exit
 process_mode = 2
 texture_filter = 1
 position = Vector2(184, 136)
-script = ExtResource("13_nu52h")
+script = ExtResource("16_s0b1u")
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/ContinueButton"]
 position = Vector2(-8, 8)
@@ -236,7 +236,7 @@ text_overrun_behavior = 2
 process_mode = 2
 texture_filter = 1
 position = Vector2(184, 160)
-script = ExtResource("13_nu52h")
+script = ExtResource("16_s0b1u")
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/MenuButton"]
 position = Vector2(-8, 8)
@@ -284,7 +284,7 @@ text_overrun_behavior = 2
 process_mode = 2
 texture_filter = 1
 position = Vector2(184, 184)
-script = ExtResource("13_nu52h")
+script = ExtResource("16_s0b1u")
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/ExitButton"]
 position = Vector2(-8, 8)

@@ -27,7 +27,6 @@ public partial class GameState : Node
     public WorldID PreviousWorld { get; private set; } = WorldID.PurpleForest;
     public string CurrentLevel { get; private set; } = "0"; // Current level ID
     public string PreviousLevel { get; private set; } = "0";
-    public Vector2 PlayerHubPosition { get; set; } = Vector2.Zero; // Updated in LevelTeleport
 
 
     // Data not loaded from the save file
@@ -114,5 +113,10 @@ public partial class GameState : Node
     public void LoadMenu()
     {
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/MainMenu.tscn"));
+    }
+
+    public void LoadOptions()
+    {
+        GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Options.tscn"));
     }
 }

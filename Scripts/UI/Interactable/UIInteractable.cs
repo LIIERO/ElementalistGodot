@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MenuButton : Node2D
+public abstract partial class UIInteractable : Node2D
 {
 	private Node2D orbSelection;
 	private Vector2 basePosition;
@@ -15,13 +15,13 @@ public partial class MenuButton : Node2D
         orbSelection.Hide();
     }
 
-	public void Select()
+	public virtual void Select()
 	{
         orbSelection.Show();
         Position = offsetPosition;
     }
 
-	public void Deselect()
+	public virtual void Deselect()
 	{
         orbSelection.Hide();
         Position = basePosition;

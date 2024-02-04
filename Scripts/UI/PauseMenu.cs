@@ -31,19 +31,19 @@ public partial class PauseMenu : ButtonManager
             }
 		}
 
-        if (Input.IsActionJustPressed("inputJump") && gameState.IsGamePaused)
+        if (Input.IsActionJustPressed("ui_accept") && gameState.IsGamePaused)
         {
-            if (CurrentButtonIndex == 0) // resume
+            if (CurrentItemIndex == 0) // resume
             {
                 DelayResume();
             }
-            if (CurrentButtonIndex == 1) // main menu
+            if (CurrentItemIndex == 1) // main menu
             {
                 Resume();
                 // TODO save progress
                 gameState.LoadMenu();
             }
-            if (CurrentButtonIndex == 2) // exit
+            if (CurrentItemIndex == 2) // exit
             {
                 // TODO save progress
                 GetTree().Quit();

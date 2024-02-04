@@ -1,0 +1,199 @@
+[gd_scene load_steps=12 format=3 uid="uid://8qcfuieiis0n"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Options.cs" id="1_3g4ri"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="2_ilks8"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="3_x81f0"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="4_tsktv"]
+[ext_resource type="Texture2D" uid="uid://dtbtuholq2xi5" path="res://Graphics/UI/Menu/menu_button.png" id="5_ey2qm"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="6_0it6a"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuToggle.cs" id="7_fm3dv"]
+[ext_resource type="Texture2D" uid="uid://sflwnnmquqr" path="res://Graphics/UI/Menu/toggle_box.png" id="7_jexq3"]
+[ext_resource type="Texture2D" uid="uid://dvap62mhmj3yo" path="res://Graphics/UI/Menu/toggle_box_toggled.png" id="8_1d85j"]
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Options" type="Panel" parent="." node_paths=PackedStringArray("buttonList")]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3g4ri")
+buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide")]
+
+[node name="MainMenuButton" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 16)
+script = ExtResource("2_ilks8")
+
+[node name="OrbSelection" type="Node2D" parent="Options/MainMenuButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/MainMenuButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_x81f0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/MainMenuButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/MainMenuButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_tsktv")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/MainMenuButton"]
+position = Vector2(64, 8)
+texture = ExtResource("5_ey2qm")
+
+[node name="Text" type="Label" parent="Options/MainMenuButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "MAIN MENU"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="FullscreenToggle" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 64)
+script = ExtResource("7_fm3dv")
+
+[node name="OrbSelection" type="Node2D" parent="Options/FullscreenToggle"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/FullscreenToggle/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_x81f0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/FullscreenToggle/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/FullscreenToggle/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_tsktv")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/FullscreenToggle"]
+position = Vector2(64, 8)
+texture = ExtResource("5_ey2qm")
+
+[node name="Text" type="Label" parent="Options/FullscreenToggle/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "FULLSCREEN"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="ToggleBox" type="Sprite2D" parent="Options/FullscreenToggle"]
+position = Vector2(144, 8)
+texture = ExtResource("7_jexq3")
+
+[node name="ToggleCheckmark" type="Sprite2D" parent="Options/FullscreenToggle"]
+position = Vector2(144, 8)
+texture = ExtResource("8_1d85j")
+
+[node name="ResolutionSlide" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 88)
+script = ExtResource("2_ilks8")
+
+[node name="OrbSelection" type="Node2D" parent="Options/ResolutionSlide"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/ResolutionSlide/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_x81f0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/ResolutionSlide/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/ResolutionSlide/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_tsktv")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/ResolutionSlide"]
+position = Vector2(64, 8)
+texture = ExtResource("5_ey2qm")
+
+[node name="Text" type="Label" parent="Options/ResolutionSlide/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "RESOLUTION (TODO)"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2

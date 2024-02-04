@@ -17,22 +17,22 @@ public partial class MainMenu : ButtonManager
 	{
 		base._Process(delta);
 
-        if (Input.IsActionJustPressed("inputJump"))
+        if (Input.IsActionJustPressed("ui_accept"))
         {
-            if (CurrentButtonIndex == 0) // new game
+            if (CurrentItemIndex == 0) // new game
             {
                 // TODO: New game save resource
                 gameState.LoadWorld(WorldID.PurpleForest); // TEMPORARY
             }
-            if (CurrentButtonIndex == 1) // continue
+            if (CurrentItemIndex == 1) // continue
             {
                 // TODO: Load game save resource
             }
-            if (CurrentButtonIndex == 2) // options
+            if (CurrentItemIndex == 2) // options
             {
-
+                gameState.LoadOptions();
             }
-            if (CurrentButtonIndex == 3) // exit
+            if (CurrentItemIndex == 3) // exit
             {
                 GetTree().Quit();
             }

@@ -46,7 +46,7 @@ region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="Text" type="Node2D" parent="ToMove"]
-position = Vector2(-2.5, -11)
+position = Vector2(-3, -11)
 
 [node name="Label" type="Label" parent="ToMove/Text"]
 texture_filter = 1
