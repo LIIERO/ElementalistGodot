@@ -27,6 +27,7 @@ SettingsManager="*res://Scripts/Global/SettingsManager.cs"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
@@ -93,3 +94,8 @@ inputPause={
 [physics]
 
 2d/default_gravity=700.0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"

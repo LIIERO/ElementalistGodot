@@ -28,10 +28,10 @@ position = Vector2(64, 80)
 position = Vector2(-192, 32)
 
 [node name="WaterOrb2" parent="Orbs" index="1" instance=ExtResource("3_m40w1")]
-position = Vector2(-16, 32)
+position = Vector2(224, 80)
 
 [node name="AirOrb" parent="Orbs" index="2" instance=ExtResource("4_ix64f")]
-position = Vector2(224, 80)
+position = Vector2(-16, 32)
 
 [node name="AirOrb2" parent="Orbs" index="3" instance=ExtResource("4_ix64f")]
 position = Vector2(144, -32)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ilsixb4dgwqg"]
+
+[ext_resource type="Texture2D" uid="uid://btt6ijyt4vh14" path="res://Graphics/Danger/thorn_ball.png" id="1_kntlj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48xkk"]
+size = Vector2(8, 8)
+
+[node name="ThornBall" type="StaticBody2D" groups=["Danger"]]
+position = Vector2(16, 36)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -3
+texture_filter = 1
+texture = ExtResource("1_kntlj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_48xkk")
