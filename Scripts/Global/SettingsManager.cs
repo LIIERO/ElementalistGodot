@@ -15,8 +15,9 @@ public partial class SettingsManager : Node
 
     public override void _Ready()
     {
-        //Fullscreen = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen;
-        ChangeToWindowed(); // Temporary, TODO: save file for player preferences that are loaded in this method
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.ResizeDisabled, true); // Window resize disabled (in code to fix a bug)
+        Fullscreen = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen;
+        //ChangeToWindowed(); // Temporary, TODO: save file for player preferences that are loaded in this method
     }
 
 
@@ -37,5 +38,6 @@ public partial class SettingsManager : Node
         Fullscreen = false;
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
         ChangeResolution(WindowScale);
+        DisplayServer.WindowSetPosition(new Vector2I(baseWindowWidth, baseWindowHeight)); // Move window a bit away from the edge
     }
 }

@@ -118,6 +118,7 @@ region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="MainButtons/ContinueButton"]
+modulate = Color(1, 1, 1, 0.501961)
 position = Vector2(64, 8)
 texture = ExtResource("15_j3jau")
 
