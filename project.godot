@@ -22,6 +22,7 @@ CustomSignals="*res://Scripts/Global/CustomSignals.cs"
 GameState="*res://Scripts/Global/GameState.cs"
 Transitions="*res://Scenes/UI/Transitions.tscn"
 SettingsManager="*res://Scripts/Global/SettingsManager.cs"
+AudioManager="*res://Scenes/AudioManager.tscn"
 
 [display]
 

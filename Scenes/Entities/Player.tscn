@@ -256,3 +256,7 @@ scale = Vector2(0.2, 0.9)
 shape = SubResource("RectangleShape2D_a5dbt")
 target_position = Vector2(35, 0)
 max_results = 5
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="SoundPool" type="Node" parent="."]

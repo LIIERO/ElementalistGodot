@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://lwcdnh2w31db"]
+
+[ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
+[ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/walk_grass_1.ogg" id="2_3djbo"]
+[ext_resource type="AudioStream" uid="uid://dmcnwo8jp0eal" path="res://Audio/Sounds/Zoe/collect.ogg" id="2_a35su"]
+[ext_resource type="AudioStream" uid="uid://csd6jvy1gbl7h" path="res://Audio/Sounds/Zoe/Walk/walk_grass_2.ogg" id="3_8ila2"]
+[ext_resource type="AudioStream" uid="uid://bvt37ors5cmow" path="res://Audio/Sounds/Zoe/Walk/walk_grass_3.ogg" id="4_lgkml"]
+[ext_resource type="AudioStream" uid="uid://nhu5teaaysqw" path="res://Audio/Sounds/Zoe/Walk/walk_grass_4.ogg" id="5_3qaf6"]
+[ext_resource type="AudioStream" uid="uid://d0d2n6g8etugv" path="res://Audio/Sounds/Menu/click.ogg" id="7_v72p3"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "orbCollectSound", "buttonSelected")]
+script = ExtResource("1_b82rj")
+softFootsteps = [NodePath("Player/FS1"), NodePath("Player/FS2"), NodePath("Player/FS3"), NodePath("Player/FS4")]
+orbCollectSound = NodePath("Entities/orbCollect")
+buttonSelected = NodePath("UI/Select")
+
+[node name="Player" type="Node" parent="."]
+
+[node name="FS1" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("2_3djbo")
+
+[node name="FS2" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("3_8ila2")
+
+[node name="FS3" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("4_lgkml")
+
+[node name="FS4" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("5_3qaf6")
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="orbCollect" type="AudioStreamPlayer" parent="Entities"]
+stream = ExtResource("2_a35su")
+volume_db = -3.0
+pitch_scale = 1.1
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Select" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("7_v72p3")

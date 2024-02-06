@@ -28,7 +28,7 @@ _data = {
 "Open": SubResource("Animation_foprm")
 }
 
-[node name="Gate" type="Node2D"]
+[node name="Gate" type="Node2D" groups=["PlayerCollider"]]
 z_index = -2
 script = ExtResource("1_4ajf3")
 

@@ -14,6 +14,7 @@ public partial class Player : CharacterBody2D
 	private CustomSignals customSignals;
     private GameState gameState;
     private LevelTransitions levelTransitions;
+    private AudioManager audioManager;
 
     // Instantiates
     [Export] private PackedScene fireball;
@@ -60,8 +61,11 @@ public partial class Player : CharacterBody2D
 	public bool isDying = false;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
+    private string currentAnimation;
+	private float footstepTimer = 0.0f;
+
     // Input
-	public bool interactPressed = false; // Interact button pressed (handled by Interactable)
+    public bool interactPressed = false; // Interact button pressed (handled by Interactable)
     Vector2 direction; // input direction
     bool restartPressed; // Reload scene button pressed
     bool jumpPressed;
@@ -74,6 +78,7 @@ public partial class Player : CharacterBody2D
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
         gameState = GetNode<GameState>("/root/GameState");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
 
         gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
@@ -110,7 +115,7 @@ public partial class Player : CharacterBody2D
 		if (!IsFrozen)
 		{
             MoveAndSlide();
-            CheckForDangerCollision();
+            CheckForCollision(delta);
         }
         UpdateAnimation(direction);
     }
@@ -324,27 +329,25 @@ public partial class Player : CharacterBody2D
 		}
 
 		// animations
-		string animation;
-
 		if (currentAbility == ElementState.air || currentAbility == ElementState.water || currentAbility == ElementState.earth)
-			animation = "Dash";
+			currentAnimation = "Dash";
 		else if (currentAbility == ElementState.fire)
-			animation = "Fireball";
+			currentAnimation = "Fireball";
 		else if (isGrounded)
 		{
 			if (direction.X == 0f || IsOnWall())
-				animation = "Idle";
-			else animation = "Run";
+				currentAnimation = "Idle";
+			else currentAnimation = "Run";
 		}
 		else
 		{
-			if (Velocity.Y < -1.0f) animation = "Jump";
-			else if (isClinging) animation = "Cling";
-			else if (Velocity.Y > 1.0f) animation = "Fall";
-			else animation = "Idle";
+			if (Velocity.Y < -1.0f) currentAnimation = "Jump";
+			else if (isClinging) currentAnimation = "Cling";
+			else if (Velocity.Y > 1.0f) currentAnimation = "Fall";
+			else currentAnimation = "Idle";
         }
 
-		animatedSprite.Play(animation);
+		animatedSprite.Play(currentAnimation);
 	}
 
 
@@ -360,16 +363,36 @@ public partial class Player : CharacterBody2D
 		levelTransitions.StartLevelReloadTransition();
 	}
 
-	private void CheckForDangerCollision()
+
+	// COLLISIONS
+
+	private void CheckForCollision(double delta)
 	{
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
             KinematicCollision2D collision = GetSlideCollision(i);
-            if ((collision.GetCollider() as Node).IsInGroup("Danger"))
+            Node collider = collision.GetCollider() as Node;
+
+            if (collider.IsInGroup("Danger"))
 			{
 				Kill();
 				break;
 			}
+
+			// Making proper sound when walking on something
+            if (collider.IsInGroup("PlayerCollider"))
+            {
+                float angle = collision.GetAngle();
+                if (angle > 0.001f || angle < -0.001f || currentAnimation != "Run") continue; // Check if is touching floor and running
+
+                footstepTimer -= (float)delta;
+				if (footstepTimer >= 0.0f) continue;
+				footstepTimer = 0.2f;
+
+				if (collider.IsInGroup("SoftMaterial"))
+					audioManager.PlayRandomSound(audioManager.softFootsteps);
+				
+            }
         }
     }
 
