@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8qcfuieiis0n"]
+[gd_scene load_steps=15 format=3 uid="uid://8qcfuieiis0n"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Options.cs" id="1_3g4ri"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="2_ilks8"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuToggle.cs" id="7_fm3dv"]
 [ext_resource type="Texture2D" uid="uid://sflwnnmquqr" path="res://Graphics/UI/Menu/toggle_box.png" id="7_jexq3"]
 [ext_resource type="Texture2D" uid="uid://dvap62mhmj3yo" path="res://Graphics/UI/Menu/toggle_box_toggled.png" id="8_1d85j"]
+[ext_resource type="Texture2D" uid="uid://boqmp3jhevoyc" path="res://Graphics/UI/Menu/menu_button_short.png" id="10_dq1sj"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuSelection.cs" id="10_rob1m"]
+[ext_resource type="PackedScene" uid="uid://f8vlqpiinn75" path="res://Scenes/UI/Indicators/ArrowIndicatorThick.tscn" id="11_o44qe"]
 
 [sub_resource type="Animation" id="Animation_porbe"]
 resource_name = "Idle"
@@ -144,17 +147,18 @@ autowrap_mode = 2
 text_overrun_behavior = 2
 
 [node name="ToggleBox" type="Sprite2D" parent="Options/FullscreenToggle"]
-position = Vector2(144, 8)
+position = Vector2(160, 8)
 texture = ExtResource("7_jexq3")
 
 [node name="ToggleCheckmark" type="Sprite2D" parent="Options/FullscreenToggle"]
-position = Vector2(144, 8)
+position = Vector2(160, 8)
 texture = ExtResource("8_1d85j")
 
 [node name="ResolutionSlide" type="Node2D" parent="Options"]
 texture_filter = 1
 position = Vector2(16, 88)
-script = ExtResource("2_ilks8")
+script = ExtResource("10_rob1m")
+values = PackedStringArray("480x270", "960x540", "1440x810", "1920x1080")
 
 [node name="OrbSelection" type="Node2D" parent="Options/ResolutionSlide"]
 position = Vector2(-8, 8)
@@ -193,7 +197,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_0it6a")
 theme_override_font_sizes/font_size = 12
-text = "RESOLUTION (TODO)"
+text = "RESOLUTION"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="Selection" type="Sprite2D" parent="Options/ResolutionSlide"]
+position = Vector2(184, 8)
+texture = ExtResource("10_dq1sj")
+
+[node name="ArrowIndicatorThick" parent="Options/ResolutionSlide/Selection" instance=ExtResource("11_o44qe")]
+visible = false
+position = Vector2(-40, 0)
+rotation = 1.5708
+
+[node name="ArrowIndicatorThick2" parent="Options/ResolutionSlide/Selection" instance=ExtResource("11_o44qe")]
+visible = false
+position = Vector2(40, 0)
+rotation = -1.5708
+
+[node name="Text" type="Label" parent="Options/ResolutionSlide/Selection"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -31.0
+offset_top = -7.0
+offset_right = -31.488
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "res"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2

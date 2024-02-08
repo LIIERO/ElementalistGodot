@@ -5,16 +5,20 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class Options : ButtonManager
 {
+    // Button indexes
+    private const int MENU = 0;
+    private const int FULLSCREEN = 1;
+    private const int RESOLUTION = 2;
+
     // Singletons
     private SettingsManager settingsManager;
 
-    
 
     public override void _Ready()
 	{
         settingsManager = GetNode<SettingsManager>("/root/SettingsManager");
         base._Ready();
-        ToggleCheckboxesEndFrame();
+        InitializeElementsEndFrame();
 	}
 
     public override void _Process(double delta)
@@ -28,50 +32,57 @@ public partial class Options : ButtonManager
 
         if (Input.IsActionJustPressed("ui_accept"))
         {
-            if (CurrentItemIndex == 0) // go back to main menu
+            if (CurrentItemIndex == MENU)
             {
                 gameState.LoadMenu();
             }
-            if (CurrentItemIndex == 1) // toggle fullscreen
+            if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
             {
                 if (settingsManager.Fullscreen)
                 {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
+                    (buttonList[RESOLUTION] as MenuSelection).Enable();
                     settingsManager.ChangeToWindowed();
                 }
                 else
                 {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
+                    (buttonList[RESOLUTION] as MenuSelection).Disable();
                     settingsManager.ChangeToFullscreen();
                 }
             }
-            if (CurrentItemIndex == 2) // choose resolution
+            
+        }
+
+
+        // Move right or left for selections
+        if (Input.IsActionJustPressed("ui_right"))
+        {
+            if (CurrentItemIndex == RESOLUTION) // choose resolution
             {
-                // TODO
+                MenuSelection resolutionSelection = buttonList[CurrentItemIndex] as MenuSelection;
+                resolutionSelection.MoveRight();
+                if (resolutionSelection.Enabled) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
+            }
+        }
+
+        if (Input.IsActionJustPressed("ui_left"))
+        {
+            if (CurrentItemIndex == RESOLUTION) // choose resolution
+            {
+                MenuSelection resolutionSelection = buttonList[CurrentItemIndex] as MenuSelection;
+                resolutionSelection.MoveLeft();
+                if (resolutionSelection.Enabled) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
             }
         }
     }
 
-    async void ToggleCheckboxesEndFrame()
+    async void InitializeElementsEndFrame()
     {
         await ToSignal(GetTree(), "process_frame");
 
-        (buttonList[1] as MenuToggle).Toggle(settingsManager.Fullscreen);
+        (buttonList[FULLSCREEN] as MenuToggle).Toggle(settingsManager.Fullscreen);
+        if (settingsManager.Fullscreen) (buttonList[RESOLUTION] as MenuSelection).Disable();
+        (buttonList[RESOLUTION] as MenuSelection).SetCurrentValueIndex(settingsManager.WindowScale - 1); // Set to current resoluton option
     }
-
-    /*private void SwapResolution()
-    {
-        if (Input.IsActionJustPressed("inputLeft"))
-        {
-            settingsManager.WindowScale -= 1;
-            if (settingsManager.WindowScale < 1) settingsManager.WindowScale = 4;
-            ChangeResolution(settingsManager.WindowScale);
-        }
-        else if (Input.IsActionJustPressed("inputRight"))
-        {
-            settingsManager.WindowScale += 1;
-            if (settingsManager.WindowScale > 4) settingsManager.WindowScale = 1;
-            ChangeResolution(settingsManager.WindowScale);
-        }
-    }*/
 }

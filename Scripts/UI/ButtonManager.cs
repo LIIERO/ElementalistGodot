@@ -24,7 +24,7 @@ public abstract partial class ButtonManager : Panel
     {
         //if (!buttonList[0].activeInHierarchy) return;
 
-        if (Input.IsActionJustPressed("inputDown"))
+        if (Input.IsActionJustPressed("ui_down"))
         {
             DeselectButton(CurrentItemIndex);
             CurrentItemIndex += 1;
@@ -33,7 +33,7 @@ public abstract partial class ButtonManager : Panel
             //hoverSound.Play();
         }
 
-        if (Input.IsActionJustPressed("inputUp"))
+        if (Input.IsActionJustPressed("ui_up"))
         {
             DeselectButton(CurrentItemIndex);
             CurrentItemIndex -= 1;

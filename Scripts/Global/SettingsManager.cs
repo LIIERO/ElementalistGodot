@@ -21,9 +21,15 @@ public partial class SettingsManager : Node
     }
 
 
-    public void ChangeResolution(int windowScale = 1)
+    private void ChangeResolution(int windowScale = 1)
     {
         GetWindow().Size = new Vector2I(baseWindowWidth, baseWindowHeight) * windowScale;
+    }
+
+    public void ChangeWindowScale(int windowScale)
+    {
+        WindowScale = windowScale;
+        ChangeResolution(windowScale);
     }
 
     public void ChangeToFullscreen()
@@ -38,6 +44,6 @@ public partial class SettingsManager : Node
         Fullscreen = false;
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
         ChangeResolution(WindowScale);
-        DisplayServer.WindowSetPosition(new Vector2I(baseWindowWidth, baseWindowHeight)); // Move window a bit away from the edge
+        //DisplayServer.WindowSetPosition(new Vector2I(baseWindowWidth, baseWindowHeight)); // Move window a bit away from the edge
     }
 }
