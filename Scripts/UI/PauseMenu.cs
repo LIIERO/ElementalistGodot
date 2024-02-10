@@ -4,13 +4,12 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class PauseMenu : ButtonManager
 {
-    // Singletons
-    //private CustomSignals customSignals;
+
     const float resumeDelay = 0.1f;
 
 	public override void _Ready()
 	{
-		base._Ready();
+        base._Ready();
         Resume();
 	}
 
@@ -24,7 +23,7 @@ public partial class PauseMenu : ButtonManager
 			{
                 Resume();
             }	
-			else
+			else if (!gameState.IsLevelTransitionPlaying) // Cant pause during transitions
             {
                 ResetButtons();
                 Pause();

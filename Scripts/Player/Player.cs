@@ -66,7 +66,7 @@ public partial class Player : CharacterBody2D
 
     // Input
     public bool interactPressed = false; // Interact button pressed (handled by Interactable)
-    Vector2 direction; // input direction
+    float direction; // input direction
     bool restartPressed; // Reload scene button pressed
     bool jumpPressed;
     bool jumpReleased;
@@ -89,7 +89,7 @@ public partial class Player : CharacterBody2D
     public override void _Process(double delta)
     {
 		// Get input
-        direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown");
+		direction = Input.GetAxis("inputLeft", "inputRight");
         restartPressed = Input.IsActionJustPressed("inputRestart");
         interactPressed = Input.IsActionJustPressed("inputUp");
         jumpPressed = Input.IsActionJustPressed("inputJump");
@@ -100,9 +100,9 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
         isGrounded = IsOnFloor();
-		isClinging = IsOnWallOnly() && Velocity.Y > 0f && ((!isFacingRight && direction.X < -0.5f) || (isFacingRight && direction.X > 0.5f));
+		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));
         
-		if (restartPressed && !gameState.IsHubLoaded()) Kill();
+		if (restartPressed && !gameState.IsHubLoaded()) Kill(); // Retry level
 
 		// Add the gravity
 		if (!isGrounded)
@@ -122,12 +122,12 @@ public partial class Player : CharacterBody2D
 
 	// MOVEMENT ==================================================================================================================
 
-	private void Movement(Vector2 direction)
+	private void Movement(float direction)
 	{
 		if (isUsingAbility) return;
 		
 		// left right movement
-		Velocity = new Vector2(direction.X * speed, Velocity.Y);
+		Velocity = new Vector2(direction * speed, Velocity.Y);
 
 		// Falling speed cap
 		if (Velocity.Y >= maxFallingSpeed)
@@ -154,10 +154,11 @@ public partial class Player : CharacterBody2D
 
 		if (jumpBufferTimeCounter > 0.0f && coyoteTimeCounter > 0.0f) // jump
 		{
-			// jump_sound.Play();
+			//audioManager.softFootsteps[audioManager.softFootsteps.Length - 1].Play();
 			// CreateJumpDust();
 			Velocity = new Vector2(Velocity.X, jumpVelocity);
 			jumpBufferTimeCounter = 0f;
+			footstepTimer = -0.1f; // random negative number so player makes sound falling on the ground
 		}
 
 		if (Velocity.Y < 0.0f && jumpReleased) // cancel jump
@@ -308,7 +309,7 @@ public partial class Player : CharacterBody2D
 
     // ANIMATION ==================================================================================================================
 
-    private void UpdateAnimation(Vector2 direction)
+    private void UpdateAnimation(float direction)
 	{
 		if (gameState.IsLevelTransitionPlaying && !isDying) animatedSprite.Play("Idle"); // Level transition animation
         if (IsFrozen) return;
@@ -316,12 +317,12 @@ public partial class Player : CharacterBody2D
 		// change direction facing
 		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency
 		{
-			if (isFacingRight && direction.X < -0.5f)
+			if (isFacingRight && direction < 0.0f)
 			{
 				isFacingRight = false;
 				animatedSprite.FlipH = true;
 			}
-			else if (!isFacingRight && direction.X > 0.5f)
+			else if (!isFacingRight && direction > 0.0f)
 			{
 				isFacingRight = true;
 				animatedSprite.FlipH = false;
@@ -335,7 +336,7 @@ public partial class Player : CharacterBody2D
 			currentAnimation = "Fireball";
 		else if (isGrounded)
 		{
-			if (direction.X == 0f || IsOnWall())
+			if (direction == 0.0f || IsOnWall())
 				currentAnimation = "Idle";
 			else currentAnimation = "Run";
 		}
@@ -383,9 +384,9 @@ public partial class Player : CharacterBody2D
             if (collider.IsInGroup("PlayerCollider"))
             {
                 float angle = collision.GetAngle();
-                if (angle > 0.001f || angle < -0.001f || currentAnimation != "Run") continue; // Check if is touching floor and running
+                if (angle > 0.001f || angle < -0.001f) continue; // Check if is touching floor
 
-                footstepTimer -= (float)delta;
+                if (currentAnimation == "Run") footstepTimer -= (float)delta; // if running count down to the next sound
 				if (footstepTimer >= 0.0f) continue;
 				footstepTimer = 0.2f;
 

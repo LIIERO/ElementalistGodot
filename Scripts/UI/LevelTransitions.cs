@@ -28,12 +28,12 @@ public partial class LevelTransitions : CanvasLayer
         Hide();
         levelTextTopLabel.Hide();
         levelTextBottomLabel.Hide();
+        gameState.IsLevelTransitionPlaying = false;
     }
 
     private void EndLevelTransition()
 	{
 		animationPlayer.Play("LevelEnter");
-        gameState.IsLevelTransitionPlaying = false;
     }
 
     public void StartLevelTransition(LevelData levelToTransitionTo)
