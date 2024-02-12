@@ -12,6 +12,9 @@ public partial class AudioManager : Node
 
     [ExportSubgroup("Player")]
     [Export] public AudioStreamPlayer[] softFootsteps;
+    [Export] public AudioStreamPlayer waterAbility;
+    [Export] public AudioStreamPlayer airAbility;
+
 
     [ExportSubgroup("Entities")]
     [Export] public AudioStreamPlayer orbCollectSound;

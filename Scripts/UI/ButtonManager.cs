@@ -4,6 +4,7 @@ using System;
 public abstract partial class ButtonManager : Panel
 {
     protected GameState gameState;
+    private AudioManager audioManager;
 
     public int CurrentItemIndex { get; private set; }
     [Export] protected Node2D[] buttonList; // not only buttons but all interactable stuff from menus like toggles
@@ -14,6 +15,7 @@ public abstract partial class ButtonManager : Panel
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
 
         maxButtonIndex = buttonList.Length - 1;
         CurrentItemIndex = 0;
@@ -26,6 +28,7 @@ public abstract partial class ButtonManager : Panel
 
         if (Input.IsActionJustPressed("ui_down"))
         {
+            audioManager.buttonSelected.Play();
             DeselectButton(CurrentItemIndex);
             CurrentItemIndex += 1;
             if (CurrentItemIndex > maxButtonIndex) CurrentItemIndex = 0;
@@ -35,6 +38,7 @@ public abstract partial class ButtonManager : Panel
 
         if (Input.IsActionJustPressed("ui_up"))
         {
+            audioManager.buttonSelected.Play();
             DeselectButton(CurrentItemIndex);
             CurrentItemIndex -= 1;
             if (CurrentItemIndex < 0) CurrentItemIndex = maxButtonIndex;

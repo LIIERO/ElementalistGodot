@@ -240,20 +240,20 @@ public partial class Player : CharacterBody2D
 	{
 		await ToSignal(GetTree().CreateTimer(t), "timeout");
 
-		//abilitySound.Play();
-
 		isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
 		shaderScript.ActivateTrail(currentAbility);
 
 		if (currentAbility == ElementState.air)
 		{
+			audioManager.airAbility.Play();
 			await ToSignal(GetTree().CreateTimer(dashTime), "timeout");
 			StopAbility();
 		}
 		else if (currentAbility == ElementState.water)
 		{
-			await ToSignal(GetTree().CreateTimer(dashTime / 2f), "timeout");
+            audioManager.waterAbility.Play();
+            await ToSignal(GetTree().CreateTimer(dashTime / 2f), "timeout");
 			StopAbility();
 		}
 		else if (currentAbility == ElementState.fire)

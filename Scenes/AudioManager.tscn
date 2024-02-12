@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=10 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/walk_grass_1.ogg" id="2_3djbo"]
@@ -6,36 +6,55 @@
 [ext_resource type="AudioStream" uid="uid://csd6jvy1gbl7h" path="res://Audio/Sounds/Zoe/Walk/walk_grass_2.ogg" id="3_8ila2"]
 [ext_resource type="AudioStream" uid="uid://bvt37ors5cmow" path="res://Audio/Sounds/Zoe/Walk/walk_grass_3.ogg" id="4_lgkml"]
 [ext_resource type="AudioStream" uid="uid://nhu5teaaysqw" path="res://Audio/Sounds/Zoe/Walk/walk_grass_4.ogg" id="5_3qaf6"]
+[ext_resource type="AudioStream" uid="uid://dphvi8fo1mg1b" path="res://Audio/Sounds/Zoe/Abilities/ability_water.ogg" id="6_rxp4u"]
+[ext_resource type="AudioStream" uid="uid://dtjwhskjs8psj" path="res://Audio/Sounds/Zoe/Abilities/ability_air.ogg" id="7_mwis0"]
 [ext_resource type="AudioStream" uid="uid://d0d2n6g8etugv" path="res://Audio/Sounds/Menu/click.ogg" id="7_v72p3"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "orbCollectSound", "buttonSelected")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "waterAbility", "airAbility", "orbCollectSound", "buttonSelected")]
 script = ExtResource("1_b82rj")
-softFootsteps = [NodePath("Player/FS1"), NodePath("Player/FS2"), NodePath("Player/FS3"), NodePath("Player/FS4")]
+softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
+waterAbility = NodePath("Player/Abilities/Water")
+airAbility = NodePath("Player/Abilities/Air")
 orbCollectSound = NodePath("Entities/orbCollect")
 buttonSelected = NodePath("UI/Select")
 
 [node name="Player" type="Node" parent="."]
 
-[node name="FS1" type="AudioStreamPlayer" parent="Player"]
+[node name="Footsteps" type="Node" parent="Player"]
+
+[node name="FS1" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("2_3djbo")
+volume_db = -3.0
 
-[node name="FS2" type="AudioStreamPlayer" parent="Player"]
+[node name="FS2" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("3_8ila2")
+volume_db = -3.0
 
-[node name="FS3" type="AudioStreamPlayer" parent="Player"]
+[node name="FS3" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("4_lgkml")
+volume_db = -3.0
 
-[node name="FS4" type="AudioStreamPlayer" parent="Player"]
+[node name="FS4" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("5_3qaf6")
+volume_db = -3.0
+
+[node name="Abilities" type="Node" parent="Player"]
+
+[node name="Water" type="AudioStreamPlayer" parent="Player/Abilities"]
+stream = ExtResource("6_rxp4u")
+
+[node name="Air" type="AudioStreamPlayer" parent="Player/Abilities"]
+stream = ExtResource("7_mwis0")
 
 [node name="Entities" type="Node" parent="."]
 
 [node name="orbCollect" type="AudioStreamPlayer" parent="Entities"]
 stream = ExtResource("2_a35su")
-volume_db = -3.0
+volume_db = -10.0
 pitch_scale = 1.1
 
 [node name="UI" type="Node" parent="."]
 
 [node name="Select" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("7_v72p3")
+volume_db = -3.0

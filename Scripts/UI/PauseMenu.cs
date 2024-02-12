@@ -15,22 +15,24 @@ public partial class PauseMenu : ButtonManager
 
     public override void _Process(double delta)
 	{
-		base._Process(delta);
-
-		if (Input.IsActionJustPressed("inputPause"))
-		{
-			if (gameState.IsGamePaused)
-			{
+        if (Input.IsActionJustPressed("inputPause"))
+        {
+            if (gameState.IsGamePaused)
+            {
                 Resume();
-            }	
-			else if (!gameState.IsLevelTransitionPlaying) // Cant pause during transitions
+            }
+            else if (!gameState.IsLevelTransitionPlaying) // Cant pause during transitions
             {
                 ResetButtons();
                 Pause();
             }
-		}
+        }
 
-        if (Input.IsActionJustPressed("ui_accept") && gameState.IsGamePaused)
+        if (!gameState.IsGamePaused) return;
+
+		base._Process(delta); // button stuff
+
+        if (Input.IsActionJustPressed("ui_accept"))
         {
             if (CurrentItemIndex == 0) // resume
             {
