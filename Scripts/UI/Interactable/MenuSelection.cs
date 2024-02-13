@@ -50,20 +50,22 @@ public partial class MenuSelection : UIInteractable
         RefreshDisplay();
     }
 
-    public void MoveRight()
+    public bool MoveRight()
     {
-        if (!Enabled || CurrentValueIndex >= lastIndex) return;
+        if (!Enabled || CurrentValueIndex >= lastIndex) return false;
         CurrentValueIndex++;
         RefreshDisplay();
         UpdateArrows();
+        return true;
     }
 
-    public void MoveLeft()
+    public bool MoveLeft()
     {
-        if (!Enabled || CurrentValueIndex <= 0) return;
+        if (!Enabled || CurrentValueIndex <= 0) return false;
         CurrentValueIndex--;
         RefreshDisplay();
         UpdateArrows();
+        return true;
     }
 
     public string GetCurrentValue()

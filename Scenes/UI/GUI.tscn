@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=26 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -68,9 +68,6 @@ animations = [{
 "name": &"LevelNotCompleted",
 "speed": 5.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1vbw"]
-bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="Animation" id="Animation_porbe"]
 resource_name = "Idle"
@@ -168,21 +165,18 @@ theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
 text = "X"
 
-[node name="PauseMenu" type="Panel" parent="." node_paths=PackedStringArray("buttonList")]
+[node name="PauseMenu" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
 process_mode = 3
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_o1vbw")
 script = ExtResource("11_ovtmv")
 buttonList = [NodePath("ContinueButton"), NodePath("MenuButton"), NodePath("ExitButton")]
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+modulate = Color(1, 1, 1, 0.705882)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 488.0
+offset_bottom = 280.0
 
 [node name="ContinueButton" type="Node2D" parent="PauseMenu"]
 process_mode = 2

@@ -38,17 +38,8 @@ _data = {
 
 [node name="GUI" type="CanvasLayer"]
 
-[node name="Options" type="Panel" parent="." node_paths=PackedStringArray("buttonList")]
+[node name="Options" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_3g4ri")
 buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide")]
 

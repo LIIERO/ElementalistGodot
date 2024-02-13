@@ -119,4 +119,12 @@ public partial class GameState : Node
     {
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Options.tscn"));
     }
+
+
+
+    // DEBUG
+    /*public override void _Process(double delta)
+    {
+        if (MainMenu.sceneEnterItemIndex != 0) GD.Print(MainMenu.sceneEnterItemIndex);
+    }*/
 }

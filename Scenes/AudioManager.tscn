@@ -57,4 +57,4 @@ pitch_scale = 1.1
 
 [node name="Select" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("7_v72p3")
-volume_db = -3.0
+volume_db = -12.0

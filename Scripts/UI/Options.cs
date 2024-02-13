@@ -27,6 +27,7 @@ public partial class Options : ButtonManager
 
         if (Input.IsActionJustPressed("ui_cancel"))
         {
+            MainMenu.sceneEnterItemIndex = 2; // menu starts with options selected
             gameState.LoadMenu();
         }
 
@@ -34,6 +35,7 @@ public partial class Options : ButtonManager
         {
             if (CurrentItemIndex == MENU)
             {
+                MainMenu.sceneEnterItemIndex = 2; // menu starts with options selected
                 gameState.LoadMenu();
             }
             if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
@@ -61,8 +63,8 @@ public partial class Options : ButtonManager
             if (CurrentItemIndex == RESOLUTION) // choose resolution
             {
                 MenuSelection resolutionSelection = buttonList[CurrentItemIndex] as MenuSelection;
-                resolutionSelection.MoveRight();
-                if (resolutionSelection.Enabled) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
+                bool moved = resolutionSelection.MoveRight();
+                if (moved) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
             }
         }
 
@@ -71,8 +73,8 @@ public partial class Options : ButtonManager
             if (CurrentItemIndex == RESOLUTION) // choose resolution
             {
                 MenuSelection resolutionSelection = buttonList[CurrentItemIndex] as MenuSelection;
-                resolutionSelection.MoveLeft();
-                if (resolutionSelection.Enabled) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
+                bool moved = resolutionSelection.MoveLeft();
+                if (moved) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
             }
         }
     }

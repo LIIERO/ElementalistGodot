@@ -2,6 +2,7 @@ using Godot;
 using System;
 using GlobalTypes;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public partial class SettingsManager : Node
 {
@@ -24,6 +25,15 @@ public partial class SettingsManager : Node
     private void ChangeResolution(int windowScale = 1)
     {
         GetWindow().Size = new Vector2I(baseWindowWidth, baseWindowHeight) * windowScale;
+        GetWindow().Size = new Vector2I(baseWindowWidth, baseWindowHeight) * windowScale; // bugfix
+    }
+
+    public override void _Notification(int what) // bugfix
+    {
+        if (what == NotificationApplicationFocusIn)
+        {
+            if (!Fullscreen) ChangeResolution(WindowScale);
+        }
     }
 
     public void ChangeWindowScale(int windowScale)
@@ -43,7 +53,13 @@ public partial class SettingsManager : Node
     {
         Fullscreen = false;
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-        ChangeResolution(WindowScale);
+        RefreshResolutionEndFrame();
         //DisplayServer.WindowSetPosition(new Vector2I(baseWindowWidth, baseWindowHeight)); // Move window a bit away from the edge
+    }
+
+    async void RefreshResolutionEndFrame()
+    {
+        await ToSignal(GetTree(), "process_frame");
+        if (!Fullscreen) ChangeResolution(WindowScale);
     }
 }

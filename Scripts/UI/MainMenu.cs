@@ -5,11 +5,15 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class MainMenu : ButtonManager
 {
+    public static int sceneEnterItemIndex = 0; // which button is selected upon entering menu, set before switching to menu
+
     // Singletons
     //private CustomSignals customSignals;
 
-	public override void _Ready()
+    public override void _Ready()
 	{
+        //GD.Print(sceneEnterItemIndex);
+        startingIndex = sceneEnterItemIndex;
 		base._Ready();
 	}
 

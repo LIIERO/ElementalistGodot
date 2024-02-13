@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c42dvla5oicfn"]
+[gd_scene load_steps=3 format=3 uid="uid://c42dvla5oicfn"]
 
 [ext_resource type="PackedScene" uid="uid://8qcfuieiis0n" path="res://Scenes/UI/OptionsGUI.tscn" id="1_vliw4"]
+[ext_resource type="PackedScene" uid="uid://cep3g7i8o4gx4" path="res://Scenes/UI/MenuBackground.tscn" id="2_onacg"]
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="GUI" parent="." instance=ExtResource("1_vliw4")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_onacg")]

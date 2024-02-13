@@ -42,6 +42,7 @@ public partial class PauseMenu : ButtonManager
             {
                 Resume();
                 // TODO save progress
+                MainMenu.sceneEnterItemIndex = 1; // Menu starts with continue selected
                 gameState.LoadMenu();
             }
             if (CurrentItemIndex == 2) // exit
