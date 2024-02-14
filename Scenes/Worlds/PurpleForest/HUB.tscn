@@ -57,7 +57,6 @@ Text = "Press \"C\" to jump."
 
 [node name="Gate" parent="." index="7" node_paths=PackedStringArray("playerNode") instance=ExtResource("8_ekp26")]
 position = Vector2(592, 16)
-requiredFragments = 6
 playerNode = NodePath("../Zoe")
 
 [node name="WalkingTutorial" type="Node2D" parent="." index="8"]

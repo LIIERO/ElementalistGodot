@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhgnc28l5o25c"]
+[gd_scene load_steps=11 format=3 uid="uid://bhgnc28l5o25c"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/DistantShoreline/Base.tscn" id="1_5rch5"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_1r5da"]
@@ -8,8 +8,13 @@
 [ext_resource type="Resource" uid="uid://ddstfcbicvavv" path="res://Data/LevelData/DistantShoreline/2.tres" id="6_vufc0"]
 [ext_resource type="Resource" uid="uid://dkm1rwpm3gxcs" path="res://Data/LevelData/DistantShoreline/3.tres" id="7_4gfwn"]
 [ext_resource type="Resource" uid="uid://d3vaygpjymu1u" path="res://Data/LevelData/DistantShoreline/A.tres" id="8_naxqw"]
+[ext_resource type="Resource" uid="uid://imr1x0jnpo71" path="res://Data/LevelData/DistantShoreline/4.tres" id="9_04x1e"]
+[ext_resource type="Resource" uid="uid://dswyikifbkwas" path="res://Data/LevelData/DistantShoreline/B.tres" id="10_srsab"]
 
 [node name="Game" instance=ExtResource("1_5rch5")]
+
+[node name="GUI" parent="." index="0"]
+visible = false
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-160, 48)
@@ -41,3 +46,11 @@ levelToTeleportTo = ExtResource("7_4gfwn")
 [node name="LevelTeleport5" parent="Interactables" index="5" instance=ExtResource("2_kyqrh")]
 position = Vector2(224, 16)
 levelToTeleportTo = ExtResource("8_naxqw")
+
+[node name="LevelTeleport6" parent="Interactables" index="6" instance=ExtResource("2_kyqrh")]
+position = Vector2(-64, 16)
+levelToTeleportTo = ExtResource("9_04x1e")
+
+[node name="LevelTeleport7" parent="Interactables" index="7" instance=ExtResource("2_kyqrh")]
+position = Vector2(-96, 48)
+levelToTeleportTo = ExtResource("10_srsab")

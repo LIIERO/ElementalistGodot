@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://imr1x0jnpo71"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_nx0om"]
+
+[resource]
+script = ExtResource("1_nx0om")
+ID = "4"
+Name = "Zigzag"
+NoCompletedToUnlock = 4
