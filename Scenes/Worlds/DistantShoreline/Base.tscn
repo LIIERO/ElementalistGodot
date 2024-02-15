@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvcfjv4q8c13d"]
+[gd_scene load_steps=6 format=3 uid="uid://bvcfjv4q8c13d"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_b502t"]
 [ext_resource type="PackedScene" uid="uid://b1058bt1p1lbe" path="res://Scenes/Tilesets/Ground/DSGround.tscn" id="2_bqg7k"]
 [ext_resource type="PackedScene" uid="uid://bjy3ha4nvax5k" path="res://Scenes/Tilesets/Danger/DSDanger.tscn" id="3_dkysh"]
+[ext_resource type="Texture2D" uid="uid://bq7c64jtdli3" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_0.png" id="4_73alj"]
+[ext_resource type="Texture2D" uid="uid://dtu6ycblst2ux" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_1.png" id="5_j3a1v"]
 
 [node name="Game" instance=ExtResource("1_b502t")]
 
@@ -12,3 +14,36 @@ PlayerNode = NodePath("../Zoe")
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_bqg7k")]
 
 [node name="DangerTiles" parent="." index="4" instance=ExtResource("3_dkysh")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="5"]
+scroll_base_scale = Vector2(1, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("4_73alj")
+offset = Vector2(240, 135)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("5_j3a1v")
+offset = Vector2(240, 135)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
+visible = false
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
+z_index = -10
+texture_filter = 1
+offset = Vector2(240, 135)

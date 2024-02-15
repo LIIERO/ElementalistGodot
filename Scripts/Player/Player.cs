@@ -88,17 +88,19 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
-		// Get input
-		direction = Input.GetAxis("inputLeft", "inputRight");
+		
+    }
+
+    public override void _PhysicsProcess(double delta)
+	{
+        // Get input
+        direction = Input.GetAxis("inputLeft", "inputRight");
         restartPressed = Input.IsActionJustPressed("inputRestart");
         interactPressed = Input.IsActionJustPressed("inputUp");
         jumpPressed = Input.IsActionJustPressed("inputJump");
         jumpReleased = Input.IsActionJustReleased("inputJump");
         abilityPressed = Input.IsActionJustPressed("inputAbility");
-    }
 
-    public override void _PhysicsProcess(double delta)
-	{
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));
         
