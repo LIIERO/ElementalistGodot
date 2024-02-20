@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_cibys")
 ID = "2"
-Name = "Extraction"
+Name = "Coral Cave"
 NoCompletedToUnlock = 2

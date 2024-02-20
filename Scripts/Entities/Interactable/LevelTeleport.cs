@@ -7,7 +7,7 @@ public partial class LevelTeleport : Interactable
 {
     // Singletons
     private GameState gameState;
-    private CustomSignals customSignals;
+    //private CustomSignals customSignals;
     private LevelTransitions levelTransitions;
 
     private AnimatedSprite2D currentSprite;
@@ -20,7 +20,7 @@ public partial class LevelTeleport : Interactable
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
-        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        //customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         currentSprite = GetNode<AnimatedSprite2D>("MovedByAnimation/AnimatedSprite2D");
         teleportText = GetNode<Label>("MovedByAnimation/Text/Label");
@@ -48,8 +48,7 @@ public partial class LevelTeleport : Interactable
         if (setPlayerLevelEnterPosition && levelToTeleportTo.ID == gameState.PreviousLevel)
         {
             setPlayerLevelEnterPosition = false;
-            customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, GlobalPosition);
-            customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
+            gameState.SetPlayerPosition(GlobalPosition);
         }
     }
 

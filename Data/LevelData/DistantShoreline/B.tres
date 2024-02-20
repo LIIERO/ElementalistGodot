@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_0eipm")
 ID = "B"
-Name = "Out of reach"
+Name = "Wide Enough"
 NoCompletedToUnlock = 5

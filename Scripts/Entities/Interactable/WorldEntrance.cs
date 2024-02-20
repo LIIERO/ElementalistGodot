@@ -7,11 +7,10 @@ public partial class WorldEntrance : Interactable
     // Singletons
     //private CustomSignals customSignals;
     private GameState gameState;
-    private CustomSignals customSignals;
+    //private CustomSignals customSignals;
     private LevelTransitions levelTransitions;
 
     private AnimatedSprite2D outlineSprite;
-    private Node2D playerRespawnPosition;
 
     [Export] WorldData worldToTeleportTo;
 
@@ -23,10 +22,9 @@ public partial class WorldEntrance : Interactable
 
         //customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         gameState = GetNode<GameState>("/root/GameState");
-        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        //customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         outlineSprite = GetNode<AnimatedSprite2D>("Foreground");
-        playerRespawnPosition = GetNode<Node2D>("PlayerRespawnPosition");
 
         if (gameState.HasWorldBeenCompleted(worldToTeleportTo.ID)) // Yellow outline
         {
@@ -42,15 +40,14 @@ public partial class WorldEntrance : Interactable
         if (setPlayerWorldEnterPosition && worldToTeleportTo.ID == gameState.PreviousWorld)
         {
             setPlayerWorldEnterPosition = false;
-            customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, playerRespawnPosition.GlobalPosition);
-            customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, playerRespawnPosition.GlobalPosition);
+            gameState.PlayerHubRespawnPosition = GlobalPosition; // Changing worlds changes respawn position in hub
+            gameState.SetPlayerPosition(GlobalPosition);
         }
     }
 
     protected override void Interact()
     {
         base.Interact();
-
         levelTransitions.StartWorldTransition(worldToTeleportTo);
     }
 

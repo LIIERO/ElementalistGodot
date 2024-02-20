@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvcfjv4q8c13d"]
+[gd_scene load_steps=8 format=3 uid="uid://bvcfjv4q8c13d"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_b502t"]
 [ext_resource type="PackedScene" uid="uid://b1058bt1p1lbe" path="res://Scenes/Tilesets/Ground/DSGround.tscn" id="2_bqg7k"]
 [ext_resource type="PackedScene" uid="uid://bjy3ha4nvax5k" path="res://Scenes/Tilesets/Danger/DSDanger.tscn" id="3_dkysh"]
 [ext_resource type="Texture2D" uid="uid://bq7c64jtdli3" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_0.png" id="4_73alj"]
 [ext_resource type="Texture2D" uid="uid://dtu6ycblst2ux" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_1.png" id="5_j3a1v"]
+[ext_resource type="Texture2D" uid="uid://dl54m5dbpugh7" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_2.png" id="6_6hleb"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="6_gavt2"]
 
 [node name="Game" instance=ExtResource("1_b502t")]
 
@@ -29,7 +31,7 @@ texture = ExtResource("4_73alj")
 offset = Vector2(240, 135)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
-motion_scale = Vector2(0.4, 0)
+motion_scale = Vector2(0.3, 0)
 motion_mirroring = Vector2(480, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
@@ -39,11 +41,14 @@ texture = ExtResource("5_j3a1v")
 offset = Vector2(240, 135)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
-visible = false
-motion_scale = Vector2(0.6, 0)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.7, 0)
+motion_mirroring = Vector2(512, 0)
+script = ExtResource("6_gavt2")
+speedX = 5.0
+speedY = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
 z_index = -10
 texture_filter = 1
-offset = Vector2(240, 135)
+texture = ExtResource("6_6hleb")
+offset = Vector2(256, 135)

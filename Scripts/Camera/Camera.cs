@@ -3,7 +3,10 @@ using System;
 
 public partial class Camera : Camera2D
 {
-    private CustomSignals customSignals; // Singleton
+    // Singletons
+    private GameState gameState;
+    private CustomSignals customSignals;
+
     public static bool FreeViewModeEnabled { get; set; } = false; // TODO: move to a freeviewcontroller
     [Export] private Node2D PlayerNode { get; set; }
 
@@ -26,9 +29,14 @@ public partial class Camera : Camera2D
 
     public override void _Ready()
 	{
+        gameState = GetNode<GameState>("/root/GameState");
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.SetCameraPosition, new Callable(this, MethodName.SetPosition));
+
         initialPosition = Position;
+
+        if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf)
+            Position = gameState.PlayerHubRespawnPosition;
 
         leftLimit = (leftLimit * GameUtils.gameUnitSize) + initialPosition.X;
         upLimit = (upLimit * GameUtils.gameUnitSize) + initialPosition.Y;

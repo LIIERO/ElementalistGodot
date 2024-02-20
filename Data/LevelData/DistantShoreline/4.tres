@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_nx0om")
 ID = "4"
-Name = "Zigzag"
+Name = "Unprepared"
 NoCompletedToUnlock = 4

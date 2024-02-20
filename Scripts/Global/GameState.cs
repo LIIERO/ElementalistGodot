@@ -31,6 +31,7 @@ public partial class GameState : Node
 
     // Data not loaded from the save file
     public int NoCompletedLevels { get; private set; } = 0;
+    public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
     
@@ -100,7 +101,7 @@ public partial class GameState : Node
 
     public void RestartCurrentLevel()
     {
-        if (CurrentLevel != "HUB") GetTree().ReloadCurrentScene();
+        GetTree().ReloadCurrentScene();
     }
 
     public void LoadHubLevel()
@@ -120,7 +121,11 @@ public partial class GameState : Node
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Options.tscn"));
     }
 
-
+    public void SetPlayerPosition(Vector2 position)
+    {
+        customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position);
+        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, position);
+    }
 
     // DEBUG
     /*public override void _Process(double delta)

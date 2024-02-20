@@ -18,6 +18,7 @@ public partial class SettingsManager : Node
     {
         DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.ResizeDisabled, true); // Window resize disabled (in code to fix a bug)
         Fullscreen = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen;
+        if (Fullscreen) Input.MouseMode = Input.MouseModeEnum.Hidden;
         //ChangeToWindowed(); // Temporary, TODO: save file for player preferences that are loaded in this method
     }
 
@@ -47,6 +48,7 @@ public partial class SettingsManager : Node
         Fullscreen = true;
         ChangeResolution(); // The base window size to be scaled by exclusive fullscreen
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.ExclusiveFullscreen);
+        Input.MouseMode = Input.MouseModeEnum.Hidden;
     }
 
     public void ChangeToWindowed()
@@ -54,6 +56,7 @@ public partial class SettingsManager : Node
         Fullscreen = false;
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
         RefreshResolutionEndFrame();
+        Input.MouseMode = Input.MouseModeEnum.Visible;
         //DisplayServer.WindowSetPosition(new Vector2I(baseWindowWidth, baseWindowHeight)); // Move window a bit away from the edge
     }
 

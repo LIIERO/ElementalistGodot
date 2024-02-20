@@ -41,21 +41,20 @@ arrowIndicatorPrefab = ExtResource("2_jcid6")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -32)
 texture = ExtResource("1_o7n1y")
 region_enabled = true
 region_rect = Rect2(96, 0, 48, 64)
 
 [node name="Foreground" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_sexyo")
 animation = &"NotCompleted"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 31.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_jd17k")
-
-[node name="PlayerRespawnPosition" type="Node2D" parent="."]
-position = Vector2(0, 32)
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

@@ -72,6 +72,8 @@ public partial class Player : CharacterBody2D
     bool jumpReleased;
     bool abilityPressed;
 
+	private static bool setPlayerRespawnPosition = false; // Flag that adjusts player respawn position after restarting in hub
+
     public override void _Ready()
 	{
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
@@ -84,11 +86,12 @@ public partial class Player : CharacterBody2D
 		shaderScript = animatedSprite as PlayerShaderEffects;
 		AbilityList = new List<ElementState>();
 		BaseAbility = ElementState.normal;
-	}
 
-    public override void _Process(double delta)
-    {
-		
+		if (setPlayerRespawnPosition == true) // Respawning after dying in a Hub (multiple checkpoints)
+        {
+            setPlayerRespawnPosition = false;
+			SetPosition(gameState.PlayerHubRespawnPosition);
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -104,7 +107,7 @@ public partial class Player : CharacterBody2D
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));
         
-		if (restartPressed && !gameState.IsHubLoaded()) Kill(); // Retry level
+		if (restartPressed && !IsFrozen) Kill(); // Retry level
 
 		// Add the gravity
 		if (!isGrounded)
@@ -354,22 +357,23 @@ public partial class Player : CharacterBody2D
 	}
 
 
-    // DYING RESPAWNING
+    // DYING
 
-    async void RestartLevel(float t)
+	async void Die(float t)
 	{
-        //if (isUsingAbility) return;
+        if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf) // Dying in Hub (multiple checkpoints)
+            setPlayerRespawnPosition = true;
+
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
         isDying = true;
         animatedSprite.Play("Die"); // death animation
         await ToSignal(GetTree().CreateTimer(t), "timeout");
-		levelTransitions.StartLevelReloadTransition();
-	}
+        levelTransitions.StartLevelReloadTransition();
+    }
 
+    // COLLISIONS
 
-	// COLLISIONS
-
-	private void CheckForCollision(double delta)
+    private void CheckForCollision(double delta)
 	{
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
@@ -416,6 +420,6 @@ public partial class Player : CharacterBody2D
 
     public void Kill()
     {
-		RestartLevel(deathTime);
+		Die(deathTime);
     }
 }
