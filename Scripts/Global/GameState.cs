@@ -127,9 +127,25 @@ public partial class GameState : Node
         customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, position);
     }
 
+
     // DEBUG
-    /*public override void _Process(double delta)
+    private bool isGameDebugUnlocked = false;
+    public override void _Process(double delta)
     {
-        if (MainMenu.sceneEnterItemIndex != 0) GD.Print(MainMenu.sceneEnterItemIndex);
-    }*/
+        // Unlock everything to test stuff
+        if (Input.IsActionJustPressed("inputDebugUnlockAll") && !isGameDebugUnlocked)
+        {
+            NoCompletedLevels = 999;
+            foreach(KeyValuePair<WorldID, Dictionary<string, bool>> world in CompletedLevels)
+            {
+                foreach(string levelKey in world.Value.Keys.ToList())
+                {
+                    CompletedLevels[world.Key][levelKey] = true;
+                }
+            }
+            isGameDebugUnlocked = true;
+            RestartCurrentLevel();
+        }
+        
+    }
 }

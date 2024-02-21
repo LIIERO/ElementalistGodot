@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://r3fcog0eibm"]
+[gd_scene load_steps=9 format=3 uid="uid://r3fcog0eibm"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/DistantShoreline/Base.tscn" id="1_e5e44"]
 [ext_resource type="PackedScene" uid="uid://ilsixb4dgwqg" path="res://Scenes/Entities/Danger/ThornBall.tscn" id="2_q77d7"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="3_r7pa0"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="4_0vvu8"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_nv85h"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_ie00r"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="6_7ae1v"]
@@ -27,6 +28,10 @@ layer_0/tile_data = PackedInt32Array(131070, 65536, 0, 131071, 196608, 0, 65536,
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("3_r7pa0")]
 position = Vector2(-128, 96)
+
+[node name="Sign" parent="Interactables" index="1" instance=ExtResource("4_0vvu8")]
+position = Vector2(-208, 32)
+Text = "Levels labeled with letters are significantly harder than normal ones, but are not needed to progress. Don't feel bad for skipping them!"
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 
