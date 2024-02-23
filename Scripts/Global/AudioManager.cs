@@ -22,6 +22,9 @@ public partial class AudioManager : Node
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;
 
+    [ExportSubgroup("Transitions")]
+    [Export] public AudioStreamPlayer levelCompleted;
+
 
     public void PlayRandomSound(AudioStreamPlayer[] soundPool)
     {

@@ -5,7 +5,10 @@ using GlobalTypes;
 public partial class LevelTransitions : CanvasLayer
 {
 	private AnimationPlayer animationPlayer;
-	private GameState gameState; // singleton
+
+    // singletons
+    private GameState gameState;
+    private AudioManager audioManager;
 
     [Export] private Label levelTextTopLabel;
     [Export] private Label levelTextBottomLabel;
@@ -18,6 +21,7 @@ public partial class LevelTransitions : CanvasLayer
 	public override void _Ready()
 	{
         gameState = GetNode<GameState>("/root/GameState");
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
         HideTransition();
@@ -70,6 +74,7 @@ public partial class LevelTransitions : CanvasLayer
             currentTransition = ScreenTransition.hubEntryCompleted;
             levelTextBottomLabel.Show();
             levelTextBottomLabel.Text = "Level complete";
+            audioManager.levelCompleted.Play();
         }
 
         animationPlayer.Play("LevelExit");

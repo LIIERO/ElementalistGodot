@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjy3ha4nvax5k"]
 
-[ext_resource type="Texture2D" uid="uid://ciu3a3cvn5w14" path="res://Graphics/Tiles/Danger/Thorns/green_thorns.png" id="1_01hbc"]
+[ext_resource type="Texture2D" uid="uid://gwoemxh28j1n" path="res://Graphics/Tiles/Danger/Thorns/coral_thorns.png" id="1_fuu70"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to7sr"]
-texture = ExtResource("1_01hbc")
+texture = ExtResource("1_fuu70")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0

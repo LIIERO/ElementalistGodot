@@ -6,4 +6,5 @@
 script = ExtResource("1_0eipm")
 ID = "B"
 Name = "Wide Enough"
-NoCompletedToUnlock = 5
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "4"

@@ -6,4 +6,5 @@
 script = ExtResource("1_4btir")
 ID = "A"
 Name = "Missing Piece"
-NoCompletedToUnlock = 4
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "3"

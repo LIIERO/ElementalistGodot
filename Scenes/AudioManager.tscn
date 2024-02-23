@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=11 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/walk_grass_1.ogg" id="2_3djbo"]
@@ -9,14 +9,16 @@
 [ext_resource type="AudioStream" uid="uid://dphvi8fo1mg1b" path="res://Audio/Sounds/Zoe/Abilities/ability_water.ogg" id="6_rxp4u"]
 [ext_resource type="AudioStream" uid="uid://dtjwhskjs8psj" path="res://Audio/Sounds/Zoe/Abilities/ability_air.ogg" id="7_mwis0"]
 [ext_resource type="AudioStream" uid="uid://d0d2n6g8etugv" path="res://Audio/Sounds/Menu/click.ogg" id="7_v72p3"]
+[ext_resource type="AudioStream" uid="uid://bnhiyx516x2ll" path="res://Audio/Sounds/Transitions/level_complete.ogg" id="10_v3dar"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "waterAbility", "airAbility", "orbCollectSound", "buttonSelected")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "waterAbility", "airAbility", "orbCollectSound", "buttonSelected", "levelCompleted")]
 script = ExtResource("1_b82rj")
 softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
 waterAbility = NodePath("Player/Abilities/Water")
 airAbility = NodePath("Player/Abilities/Air")
 orbCollectSound = NodePath("Entities/orbCollect")
 buttonSelected = NodePath("UI/Select")
+levelCompleted = NodePath("Transitions/LevelComplete")
 
 [node name="Player" type="Node" parent="."]
 
@@ -58,3 +60,8 @@ pitch_scale = 1.1
 [node name="Select" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("7_v72p3")
 volume_db = -12.0
+
+[node name="Transitions" type="Node" parent="."]
+
+[node name="LevelComplete" type="AudioStreamPlayer" parent="Transitions"]
+stream = ExtResource("10_v3dar")
