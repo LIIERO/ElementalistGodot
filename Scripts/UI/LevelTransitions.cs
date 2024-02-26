@@ -26,7 +26,7 @@ public partial class LevelTransitions : CanvasLayer
 
         HideTransition();
     }
-
+    
     private void HideTransition()
     {
         Hide();
@@ -39,6 +39,8 @@ public partial class LevelTransitions : CanvasLayer
 	{
 		animationPlayer.Play("LevelEnter");
     }
+
+    // Gameplay transitions
 
     public void StartLevelTransition(LevelData levelToTransitionTo)
     {
@@ -93,6 +95,33 @@ public partial class LevelTransitions : CanvasLayer
         animationPlayer.Play("LevelExit");
     }
 
+    // Menu transitions
+
+    public void StartOptionsTransition()
+    {
+        currentTransition = ScreenTransition.optionsEntry;
+        gameState.IsLevelTransitionPlaying = true;
+        Show();
+        animationPlayer.Play("LevelExit");
+    }
+
+    public void StartMenuTransition()
+    {
+        currentTransition = ScreenTransition.menuEntry;
+        gameState.IsLevelTransitionPlaying = true;
+        Show();
+        animationPlayer.Play("LevelExit");
+    }
+
+    public void StartGameTransition()
+    {
+        currentTransition = ScreenTransition.gameEntry;
+        gameState.IsLevelTransitionPlaying = true;
+        Show();
+        animationPlayer.Play("LevelExit");
+    }
+
+
     void _onAnimationPlayerAnimationFinished(string animationName)
 	{
         if (animationName == "LevelExit") // End of first part of transition
@@ -118,6 +147,18 @@ public partial class LevelTransitions : CanvasLayer
                 case ScreenTransition.worldEntry:
                     gameState.LoadWorld(transitionWorld.ID);
                     EndLevelTransitionAfterSeconds(1.5f); break;
+
+                case ScreenTransition.optionsEntry:
+                    gameState.LoadOptions();
+                    EndLevelTransition(); break;
+
+                case ScreenTransition.menuEntry:
+                    gameState.LoadMenu();
+                    EndLevelTransition(); break;
+
+                case ScreenTransition.gameEntry:
+                    gameState.LoadGame();
+                    EndLevelTransition(); break;
             }
         }
 

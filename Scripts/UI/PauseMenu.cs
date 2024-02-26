@@ -4,11 +4,14 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class PauseMenu : ButtonManager
 {
+    private LevelTransitions levelTransitions; // singleton
 
     const float resumeDelay = 0.1f;
 
 	public override void _Ready()
 	{
+        levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
+
         base._Ready();
         Resume();
 	}
@@ -43,7 +46,7 @@ public partial class PauseMenu : ButtonManager
                 Resume();
                 // TODO save progress
                 MainMenu.sceneEnterItemIndex = 1; // Menu starts with continue selected
-                gameState.LoadMenu();
+                levelTransitions.StartMenuTransition();
             }
             if (CurrentItemIndex == 2) // exit
             {

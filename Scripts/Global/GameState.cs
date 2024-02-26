@@ -25,8 +25,8 @@ public partial class GameState : Node
 
     public WorldID CurrentWorld { get; private set; } = WorldID.PurpleForest;
     public WorldID PreviousWorld { get; private set; } = WorldID.PurpleForest;
-    public string CurrentLevel { get; private set; } = "0"; // Current level ID
-    public string PreviousLevel { get; private set; } = "0";
+    public string CurrentLevel { get; private set; } = "HUB"; // Current level ID
+    public string PreviousLevel { get; private set; } = "HUB";
 
 
     // Data not loaded from the save file
@@ -69,7 +69,11 @@ public partial class GameState : Node
     }
 
     public bool HasWorldBeenCompleted(WorldID world) { return !CompletedLevels[world].Values.Any(l => l == false); }
-    public bool HasLevelBeenCompleted(string levelID) { return CompletedLevels[CurrentWorld][levelID] == true; }
+    public bool HasLevelBeenCompleted(string levelID)
+    {
+        if (levelID == "HUB") return true;
+        return CompletedLevels[CurrentWorld][levelID] == true;
+    }
     public bool HasCurrentLevelBeenCompleted() { return HasLevelBeenCompleted(CurrentLevel); }
     public bool IsHubLoaded() { return CurrentLevel == "HUB"; }
 
@@ -81,6 +85,11 @@ public partial class GameState : Node
             if (isCompleted) noCompleted++;
         }
         return noCompleted;
+    }
+
+    public void LoadGame()
+    {
+        GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
     }
 
     public void LoadWorld(WorldID world)
@@ -96,7 +105,7 @@ public partial class GameState : Node
     {
         PreviousLevel = CurrentLevel;
         CurrentLevel = id;
-        GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
+        LoadGame();
     }
 
     public void RestartCurrentLevel()

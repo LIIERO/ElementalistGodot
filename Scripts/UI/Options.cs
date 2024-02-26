@@ -11,11 +11,13 @@ public partial class Options : ButtonManager
     private const int RESOLUTION = 2;
 
     // Singletons
+    private LevelTransitions levelTransitions;
     private SettingsManager settingsManager;
 
 
     public override void _Ready()
 	{
+        levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         settingsManager = GetNode<SettingsManager>("/root/SettingsManager");
         base._Ready();
         InitializeElementsEndFrame();
@@ -23,12 +25,14 @@ public partial class Options : ButtonManager
 
     public override void _Process(double delta)
 	{
+        if (gameState.IsLevelTransitionPlaying) return;
+
 		base._Process(delta);
 
         if (Input.IsActionJustPressed("ui_cancel"))
         {
             MainMenu.sceneEnterItemIndex = 2; // menu starts with options selected
-            gameState.LoadMenu();
+            levelTransitions.StartMenuTransition();
         }
 
         if (Input.IsActionJustPressed("ui_accept"))
@@ -36,7 +40,7 @@ public partial class Options : ButtonManager
             if (CurrentItemIndex == MENU)
             {
                 MainMenu.sceneEnterItemIndex = 2; // menu starts with options selected
-                gameState.LoadMenu();
+                levelTransitions.StartMenuTransition();
             }
             if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
             {

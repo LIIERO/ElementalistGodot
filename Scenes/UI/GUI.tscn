@@ -181,7 +181,7 @@ offset_bottom = 280.0
 [node name="ContinueButton" type="Node2D" parent="PauseMenu"]
 process_mode = 2
 texture_filter = 1
-position = Vector2(184, 136)
+position = Vector2(176, 136)
 script = ExtResource("16_s0b1u")
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/ContinueButton"]
@@ -229,7 +229,7 @@ text_overrun_behavior = 2
 [node name="MenuButton" type="Node2D" parent="PauseMenu"]
 process_mode = 2
 texture_filter = 1
-position = Vector2(184, 160)
+position = Vector2(176, 160)
 script = ExtResource("16_s0b1u")
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/MenuButton"]
@@ -277,7 +277,7 @@ text_overrun_behavior = 2
 [node name="ExitButton" type="Node2D" parent="PauseMenu"]
 process_mode = 2
 texture_filter = 1
-position = Vector2(184, 184)
+position = Vector2(176, 184)
 script = ExtResource("16_s0b1u")
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/ExitButton"]
@@ -318,6 +318,29 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
 text = "EXIT TO DESKTOP"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="PauseText" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(240, 96)
+texture = ExtResource("12_v0wth")
+
+[node name="Text" type="Label" parent="PauseMenu/PauseText"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "GAME HAS BEEN PAUSED"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
