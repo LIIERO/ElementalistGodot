@@ -52,7 +52,7 @@ public partial class Player : CharacterBody2D
 	public bool IsFrozen => isDying || gameState.IsLevelTransitionPlaying;
 
     ElementState currentAbility = ElementState.normal;
-	bool isUsingAbility = false;
+	public bool isUsingAbility = false;
 	bool isExecutingAbility = false;
 	bool canUseBaseAbility = false;
     public bool isFacingRight = true;

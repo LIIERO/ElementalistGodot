@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://clau3s1lggnyx"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/ChargeGate.cs" id="1_f8ub3"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_w2jk2"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_ppg34"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n3eo"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_foprm"]
+resource_name = "Open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToMove:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g26fh"]
+_data = {
+"Open": SubResource("Animation_foprm")
+}
+
+[node name="ChargeGate" type="Node2D" groups=["PlayerCollider"]]
+z_index = -2
+script = ExtResource("1_f8ub3")
+
+[node name="ToMove" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ToMove"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToMove/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1n3eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="ToMove"]
+texture_filter = 1
+texture = ExtResource("2_w2jk2")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="Text" type="Node2D" parent="ToMove"]
+position = Vector2(-3, -11)
+
+[node name="Label" type="Label" parent="ToMove/Text"]
+texture_filter = 1
+offset_left = -11.0
+offset_right = 18.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("3_ppg34")
+theme_override_font_sizes/font_size = 12
+text = "X"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g26fh")
+}

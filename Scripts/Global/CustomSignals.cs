@@ -32,4 +32,9 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void DialogBoxHideEventHandler();
 
+    // Gameplay
+
+    [Signal]
+    public delegate void ElementChargeActivatedEventHandler();
+
 }
