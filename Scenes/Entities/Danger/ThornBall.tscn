@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ilsixb4dgwqg"]
 
-[ext_resource type="Texture2D" uid="uid://btt6ijyt4vh14" path="res://Graphics/Danger/thorn_ball.png" id="1_kntlj"]
+[ext_resource type="Texture2D" uid="uid://btt6ijyt4vh14" path="res://Graphics/Danger/coral_ball.png" id="1_kntlj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48xkk"]
 size = Vector2(8, 8)

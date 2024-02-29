@@ -31,6 +31,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mra5"]
+size = Vector2(20, 22)
 
 [node name="ElementCharge" type="Area2D"]
 position = Vector2(48, 80)
@@ -42,6 +43,7 @@ animation = &"Default"
 autoplay = "Default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_8mra5")
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]

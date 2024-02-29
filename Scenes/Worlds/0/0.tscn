@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgoo441sy0tyh"]
 
-[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/PurpleForest/Base.tscn" id="1_xn1pv"]
+[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_xn1pv"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_6yo7d"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="3_3qqh5"]
 

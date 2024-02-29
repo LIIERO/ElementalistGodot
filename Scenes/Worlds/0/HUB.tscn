@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cx47v4hw8lhtm"]
 
-[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/PurpleForest/Base.tscn" id="1_xgcwe"]
+[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_xgcwe"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="2_2cuig"]
 [ext_resource type="PackedScene" uid="uid://cnwfel811ty30" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceDistantShoreline.tscn" id="2_5nmy5"]
 [ext_resource type="Resource" uid="uid://caqyhgk2vrgv4" path="res://Data/LevelData/PurpleForest/0.tres" id="3_5tm00"]

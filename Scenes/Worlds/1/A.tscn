@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbmqifk1ke6yv"]
+[gd_scene load_steps=9 format=3 uid="uid://r3fcog0eibm"]
 
-[ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/DistantShoreline/Base.tscn" id="1_6i3ty"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_5bimd"]
-[ext_resource type="PackedScene" uid="uid://ilsixb4dgwqg" path="res://Scenes/Entities/Danger/ThornBall.tscn" id="2_wg7k7"]
-[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_sngsm"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_jy12j"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_ka5jh"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="6_getl5"]
+[ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_e5e44"]
+[ext_resource type="PackedScene" uid="uid://ilsixb4dgwqg" path="res://Scenes/Entities/Danger/ThornBall.tscn" id="2_q77d7"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="3_r7pa0"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="4_0vvu8"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_nv85h"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_ie00r"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="6_7ae1v"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="7_4ng0c"]
 
-[node name="Game" instance=ExtResource("1_6i3ty")]
+[node name="Game" instance=ExtResource("1_e5e44")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-128, 96)
@@ -21,34 +22,36 @@ layer_0/tile_data = PackedInt32Array(589808, 589824, 3, 524272, 589824, 2, 45873
 
 [node name="Danger" type="Node2D" parent="." index="5"]
 
-[node name="ThornBall" parent="Danger" index="0" instance=ExtResource("2_wg7k7")]
+[node name="ThornBall" parent="Danger" index="0" instance=ExtResource("2_q77d7")]
+position = Vector2(15, 36)
 
 [node name="Interactables" type="Node2D" parent="." index="6"]
 
-[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_5bimd")]
+[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("3_r7pa0")]
 position = Vector2(-128, 96)
+
+[node name="Sign" parent="Interactables" index="1" instance=ExtResource("4_0vvu8")]
+position = Vector2(-208, 32)
+Text = "Levels labeled with letters are significantly harder than normal ones, but are not needed to progress. Don't feel bad for skipping them!"
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 
-[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_sngsm")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("4_nv85h")]
 position = Vector2(-160, 80)
 
-[node name="AirOrb2" parent="Orbs" index="1" instance=ExtResource("4_jy12j")]
+[node name="AirOrb2" parent="Orbs" index="1" instance=ExtResource("5_ie00r")]
 position = Vector2(-32, 48)
 
-[node name="AirOrb4" parent="Orbs" index="2" instance=ExtResource("4_jy12j")]
-position = Vector2(-208, 16)
-
-[node name="AirOrb3" parent="Orbs" index="3" instance=ExtResource("4_jy12j")]
+[node name="AirOrb3" parent="Orbs" index="2" instance=ExtResource("5_ie00r")]
 position = Vector2(80, 48)
 
-[node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("5_ka5jh")]
+[node name="CopyTopOrb" parent="Orbs" index="3" instance=ExtResource("6_7ae1v")]
 position = Vector2(0, 48)
 
-[node name="CopyTopOrb2" parent="Orbs" index="5" instance=ExtResource("5_ka5jh")]
+[node name="CopyTopOrb2" parent="Orbs" index="4" instance=ExtResource("6_7ae1v")]
 position = Vector2(-64, 48)
 
-[node name="Goal" parent="." index="8" instance=ExtResource("6_getl5")]
+[node name="Goal" parent="." index="8" instance=ExtResource("7_4ng0c")]
 position = Vector2(208, -80)
 
 [node name="DangerTiles" parent="." index="9"]

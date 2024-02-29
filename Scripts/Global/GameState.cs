@@ -8,23 +8,19 @@ public partial class GameState : Node
 {
     // Level loader stuff
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
-    private readonly Dictionary<WorldID, string[]> levels = new() { // Turn this to json?
-        { WorldID.PurpleForest, new string[] { "HUB", "0", "1", "2", "3", "4", "5" } },
-        { WorldID.DistantShoreline, new string[] { "HUB", "0", "1", "2", "3", "4", "5", "A", "B" } } 
+    private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
+        { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
+        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B" } } // Distant Shores
     };
 
-    /*private readonly Dictionary<string, string> worldToWorldName = new() {
-        { "PurpleForest", "Purple Forest" }
-    };*/
-
-    private Dictionary<WorldID, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
+    private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
 
 
     // Data loaded from the save file
-    public Dictionary<WorldID, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
+    public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
 
-    public WorldID CurrentWorld { get; private set; } = WorldID.PurpleForest;
-    public WorldID PreviousWorld { get; private set; } = WorldID.PurpleForest;
+    public string CurrentWorld { get; private set; } = "0";
+    public string PreviousWorld { get; private set; } = "0";
     public string CurrentLevel { get; private set; } = "HUB"; // Current level ID
     public string PreviousLevel { get; private set; } = "HUB";
 
@@ -44,14 +40,14 @@ public partial class GameState : Node
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 
         // Initialize LevelIDToLevel and CompletedLevels
-        foreach (KeyValuePair<WorldID, string[]> world in levels)
+        foreach (KeyValuePair<string, string[]> world in levels)
         {
             LevelIDToLevel.Add(world.Key, new Dictionary<string, PackedScene>());
             CompletedLevels.Add(world.Key, new Dictionary<string, bool>());
 
             foreach (string levelID in world.Value)
             {
-                LevelIDToLevel[world.Key].Add(levelID, ResourceLoader.Load<PackedScene>(levelsPathStart + world.Key.ToString() + "/" + levelID + ".tscn"));
+                LevelIDToLevel[world.Key].Add(levelID, ResourceLoader.Load<PackedScene>(levelsPathStart + world.Key + "/" + levelID + ".tscn"));
                 if (levelID != "HUB")
                     CompletedLevels[world.Key].Add(levelID, false);
             }
@@ -68,7 +64,7 @@ public partial class GameState : Node
         CompletedLevels[CurrentWorld][CurrentLevel] = true;
     }
 
-    public bool HasWorldBeenCompleted(WorldID world) { return !CompletedLevels[world].Values.Any(l => l == false); }
+    public bool HasWorldBeenCompleted(string world) { return !CompletedLevels[world].Values.Any(l => l == false); }
     public bool HasLevelBeenCompleted(string levelID)
     {
         if (levelID == "HUB") return true;
@@ -92,7 +88,7 @@ public partial class GameState : Node
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
     }
 
-    public void LoadWorld(WorldID world)
+    public void LoadWorld(string world)
     {
         PreviousWorld = CurrentWorld;
         CurrentWorld = world;
@@ -145,7 +141,7 @@ public partial class GameState : Node
         if (Input.IsActionJustPressed("inputDebugUnlockAll") && !isGameDebugUnlocked)
         {
             NoCompletedLevels = 999;
-            foreach(KeyValuePair<WorldID, Dictionary<string, bool>> world in CompletedLevels)
+            foreach(KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
             {
                 foreach(string levelKey in world.Value.Keys.ToList())
                 {

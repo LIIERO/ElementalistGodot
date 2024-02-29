@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7xqd6wem6ta7"]
 
-[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/PurpleForest/Base.tscn" id="1_wpal6"]
+[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_wpal6"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_5q4rx"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_lxokk"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="4_6qucs"]

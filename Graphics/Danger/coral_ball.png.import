@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqk0wdgrkan1t"
-path="res://.godot/imported/thorn_ball.png-9e469bc37cf6a426906c2ce334d36c4a.ctex"
+uid="uid://btt6ijyt4vh14"
+path="res://.godot/imported/coral_ball.png-339d0ef05151e6bd8947838bcecbf03c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Danger/thorn_ball.png"
-dest_files=["res://.godot/imported/thorn_ball.png-9e469bc37cf6a426906c2ce334d36c4a.ctex"]
+source_file="res://Graphics/Danger/coral_ball.png"
+dest_files=["res://.godot/imported/coral_ball.png-339d0ef05151e6bd8947838bcecbf03c.ctex"]
 
 [params]
 

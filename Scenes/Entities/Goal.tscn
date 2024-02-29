@@ -70,6 +70,7 @@ fill_from = Vector2(0.5, 0.5)
 colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0)
 
 [node name="Goal" type="Area2D" node_paths=PackedStringArray("sprite", "backgroundLight")]
+z_index = 1
 script = ExtResource("1_5u0vj")
 sprite = NodePath("MovedByAnimation/Sprite2D")
 backgroundLight = NodePath("MovedByAnimation/PointLight2D")
