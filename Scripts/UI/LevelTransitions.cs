@@ -89,7 +89,9 @@ public partial class LevelTransitions : CanvasLayer
         transitionWorld = worldToTransitionTo;
         Show();
 
+        levelTextTopLabel.Show();
         levelTextBottomLabel.Show();
+        levelTextTopLabel.Text = "World " + worldToTransitionTo.ID;
         levelTextBottomLabel.Text = worldToTransitionTo.Name;
 
         animationPlayer.Play("LevelExit");

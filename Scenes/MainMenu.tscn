@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceyal433rjg2d"]
+[gd_scene load_steps=4 format=3 uid="uid://ceyal433rjg2d"]
 
 [ext_resource type="PackedScene" uid="uid://kb46qb43ayfp" path="res://Scenes/UI/MainMenuGUI.tscn" id="1_wggo7"]
 [ext_resource type="PackedScene" uid="uid://cep3g7i8o4gx4" path="res://Scenes/UI/MenuBackground.tscn" id="2_klgq3"]
+[ext_resource type="Texture2D" uid="uid://bwpevfdvbddf2" path="res://Graphics/Backgrounds/title1.png" id="3_ko43d"]
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="GUI" parent="." instance=ExtResource("1_wggo7")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_klgq3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(240, 32)
+texture = ExtResource("3_ko43d")

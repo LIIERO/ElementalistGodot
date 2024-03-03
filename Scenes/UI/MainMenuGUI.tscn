@@ -34,6 +34,7 @@ _data = {
 
 [node name="MainButtons" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
 texture_filter = 1
+position = Vector2(0, 72)
 script = ExtResource("1_pqhl0")
 buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("OptionsButton"), NodePath("ExitButton")]
 
