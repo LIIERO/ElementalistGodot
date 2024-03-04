@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqj8267bl5dj6"]
+
+[ext_resource type="PackedScene" uid="uid://cqushr7gr33sh" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceBase.tscn" id="1_13lwf"]
+[ext_resource type="Resource" uid="uid://8k13uq5g6v1s" path="res://Data/WorldData/Void.tres" id="2_4jb1g"]
+
+[node name="Entrance" instance=ExtResource("1_13lwf")]
+worldToTeleportTo = ExtResource("2_4jb1g")

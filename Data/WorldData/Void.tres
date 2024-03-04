@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3 uid="uid://8k13uq5g6v1s"]
+
+[ext_resource type="Script" path="res://Scripts/Data/WorldData.cs" id="1_ipo53"]
+
+[resource]
+script = ExtResource("1_ipo53")
+ID = "H"
+Name = "The Void"

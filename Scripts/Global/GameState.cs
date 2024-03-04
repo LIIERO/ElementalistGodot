@@ -9,6 +9,7 @@ public partial class GameState : Node
     // Level loader stuff
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
+        { "H", new string[] { "HUB" } }, // Main Hub (RGB)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B" } } // Distant Shores
     };

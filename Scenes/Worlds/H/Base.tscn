@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgm3ht0c8whkr"]
+
+[ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_ouv4h"]
+[ext_resource type="PackedScene" uid="uid://dksvpjuakc3ut" path="res://Scenes/Tilesets/Ground/VoidGround.tscn" id="2_iyyjr"]
+
+[node name="Game" instance=ExtResource("1_ouv4h")]
+
+[node name="Camera2D" parent="." index="2" node_paths=PackedStringArray("PlayerNode")]
+PlayerNode = NodePath("../Zoe")
+
+[node name="GroundTiles" parent="." index="3" instance=ExtResource("2_iyyjr")]
