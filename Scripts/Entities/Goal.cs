@@ -9,6 +9,7 @@ public partial class Goal : Area2D
     // Singletons
     private CustomSignals customSignals;
     private GameState gameState;
+    private AudioManager audioManager;
 
     private Node2D objectToFollow = null;
     private Vector2 initialPosition;
@@ -21,7 +22,9 @@ public partial class Goal : Area2D
 
     public void AssignObjectToFollow(Node2D obj)
     {
+        if (objectToFollow == obj) return;
         objectToFollow = obj;
+        audioManager.sunCollectSound.Play();
     }
 
     public void UnassignObjectToFollow()
@@ -34,13 +37,14 @@ public partial class Goal : Area2D
         if (player is not Player) return;
 
         AssignObjectToFollow(player);
-        (player as Player).IsHoldingGoal = true;
+        (player as Player).IsHoldingGoal = true; 
     }
 
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.UnassignObjectToFollow));
         initialPosition = Position;
 

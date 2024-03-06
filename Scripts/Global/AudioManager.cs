@@ -18,6 +18,7 @@ public partial class AudioManager : Node
 
     [ExportSubgroup("Entities")]
     [Export] public AudioStreamPlayer orbCollectSound;
+    [Export] public AudioStreamPlayer sunCollectSound;
 
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;
