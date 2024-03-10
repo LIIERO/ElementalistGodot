@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://5yfpjixmnqxt"]
+[gd_scene load_steps=7 format=3 uid="uid://5yfpjixmnqxt"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_fy8vr"]
 [ext_resource type="PackedScene" uid="uid://uchi2854lf05" path="res://Scenes/Tilesets/Ground/COGround.tscn" id="2_rlhp3"]
-[ext_resource type="Texture2D" uid="uid://1camlv8qspsp" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_0.png" id="3_67p57"]
-[ext_resource type="Texture2D" uid="uid://drkpo63h6lydd" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_1.png" id="4_d4ypw"]
-[ext_resource type="Texture2D" uid="uid://bp1ukqnl5wq1b" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_2.png" id="5_xx8m1"]
+[ext_resource type="PackedScene" uid="uid://dsfspfamfvt1t" path="res://Scenes/Tilesets/Danger/CODanger.tscn" id="3_tu7c0"]
+[ext_resource type="Texture2D" uid="uid://cuvfbapg47xvo" path="res://Graphics/Backgrounds/CaveOutskirts/bg_cave_outskirts_0.png" id="4_gti55"]
+[ext_resource type="Texture2D" uid="uid://brqaoiboskvx6" path="res://Graphics/Backgrounds/CaveOutskirts/bg_cave_outskirts_1.png" id="5_qwqco"]
+[ext_resource type="Texture2D" uid="uid://b2ba51vtgwkog" path="res://Graphics/Backgrounds/CaveOutskirts/bg_cave_outskirts_2.png" id="6_1ecya"]
 
 [node name="Game" instance=ExtResource("1_fy8vr")]
 
@@ -13,8 +14,9 @@ PlayerNode = NodePath("../Zoe")
 
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_rlhp3")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
-visible = false
+[node name="DangerTiles" parent="." index="4" instance=ExtResource("3_tu7c0")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="5"]
 scroll_base_scale = Vector2(1, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
@@ -24,7 +26,7 @@ motion_mirroring = Vector2(480, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
 z_index = -10
 texture_filter = 1
-texture = ExtResource("3_67p57")
+texture = ExtResource("4_gti55")
 offset = Vector2(240, 135)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
@@ -34,7 +36,7 @@ motion_mirroring = Vector2(480, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 z_index = -10
 texture_filter = 1
-texture = ExtResource("4_d4ypw")
+texture = ExtResource("5_qwqco")
 offset = Vector2(240, 135)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
@@ -44,5 +46,5 @@ motion_mirroring = Vector2(480, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
 z_index = -10
 texture_filter = 1
-texture = ExtResource("5_xx8m1")
+texture = ExtResource("6_1ecya")
 offset = Vector2(240, 135)

@@ -20,24 +20,28 @@ public partial class Goal : Area2D
     private float velocityX = 0.0f;
     private float velocityY = 0.0f;
 
-    public void AssignObjectToFollow(Node2D obj)
+    private bool assigned = false;
+
+    public void AssignObjectToFollow(Node2D player)
     {
-        if (objectToFollow == obj) return;
-        objectToFollow = obj;
+        if (assigned || gameState.IsLevelTransitionPlaying) return;
+        assigned = true;
+        objectToFollow = player;
         audioManager.sunCollectSound.Play();
     }
 
     public void UnassignObjectToFollow()
     {
+        assigned = false;
         objectToFollow = null;
     }
 
     void _OnBodyEntered(Node2D player)
     {
         if (player is not Player) return;
+        (player as Player).IsHoldingGoal = true;
 
         AssignObjectToFollow(player);
-        (player as Player).IsHoldingGoal = true; 
     }
 
     public override void _Ready()
