@@ -14,11 +14,13 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer[] softFootsteps;
     [Export] public AudioStreamPlayer waterAbility;
     [Export] public AudioStreamPlayer airAbility;
-
+    [Export] public AudioStreamPlayer earthAbilityStart;
+    [Export] public AudioStreamPlayer earthAbilityEnd;
 
     [ExportSubgroup("Entities")]
     [Export] public AudioStreamPlayer orbCollectSound;
     [Export] public AudioStreamPlayer sunCollectSound;
+    [Export] public AudioStreamPlayer elementCharge;
 
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;

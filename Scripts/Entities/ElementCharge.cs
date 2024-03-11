@@ -6,13 +6,19 @@ public partial class ElementCharge : Area2D
 	public bool IsActivated { get; private set; } = false;
     private Player playerInRange = null;
 
-    private CustomSignals customSignals; // Singleton
+    // Singletons
+    private CustomSignals customSignals;
+    private AudioManager audioManager;
+
     private AnimatedSprite2D sprite;
+    private PointLight2D light;
 
     public override void _Ready()
 	{
         sprite = GetNode<AnimatedSprite2D>("Sprite2D");
+        light = GetNode<PointLight2D>("PointLight2D");
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
     }
 
     public override void _Process(double delta)
@@ -42,6 +48,8 @@ public partial class ElementCharge : Area2D
         if (IsActivated) return;
         IsActivated = true;
         sprite.Play("Activated");
+        audioManager.elementCharge.Play();
+        light.Show();
         customSignals.EmitSignal(CustomSignals.SignalName.ElementChargeActivated);
     }
 }

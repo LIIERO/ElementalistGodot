@@ -32,6 +32,7 @@ public partial class Camera : Camera2D
         gameState = GetNode<GameState>("/root/GameState");
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.SetCameraPosition, new Callable(this, MethodName.SetPosition));
+        customSignals.Connect(CustomSignals.SignalName.ShiftCameraXLimits, new Callable(this, MethodName.ShiftXLimits));
 
         initialPosition = Position;
 
@@ -43,7 +44,7 @@ public partial class Camera : Camera2D
         rightLimit = (rightLimit * GameUtils.gameUnitSize) + initialPosition.X;
         downLimit = (downLimit * GameUtils.gameUnitSize) + initialPosition.Y;
 
-        Position = ApplyCameraBounds(Position);
+        Position = ApplyCameraLimits(Position);
     }
 
 	public override void _Process(double delta)
@@ -65,7 +66,7 @@ public partial class Camera : Camera2D
         else desiredPosition = playerNode.Position;*/
 
         desiredPosition = PlayerNode.Position;
-        desiredPosition = ApplyCameraBounds(desiredPosition);
+        desiredPosition = ApplyCameraLimits(desiredPosition);
 
         float smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, 200, (float)delta);
         float smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, 200, (float)delta);
@@ -77,7 +78,7 @@ public partial class Camera : Camera2D
         //cameraObject.transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, cameraObject.transform.position.z); // Camera following player
     }
 
-    private Vector2 ApplyCameraBounds(Vector2 position)
+    private Vector2 ApplyCameraLimits(Vector2 position)
     {
         if (position.X < leftLimit) position.X = leftLimit;
         else if (position.X > rightLimit) position.X = rightLimit;
@@ -90,6 +91,12 @@ public partial class Camera : Camera2D
 
     public void SetPosition(Vector2 position)
     {
-        GlobalPosition = ApplyCameraBounds(position);
+        GlobalPosition = ApplyCameraLimits(position);
+    }
+
+    public void ShiftXLimits(int left, int right)
+    {
+        leftLimit += left * GameUtils.gameUnitSize;
+        rightLimit += right * GameUtils.gameUnitSize;
     }
 }

@@ -24,6 +24,9 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void SetCameraPositionEventHandler(Vector2 position);
 
+    [Signal]
+    public delegate void ShiftCameraXLimitsEventHandler(int left, int right);
+
     // UI
 
     [Signal]

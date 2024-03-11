@@ -11,7 +11,8 @@ public partial class GameState : Node
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
         { "H", new string[] { "HUB" } }, // Main Hub (RGB)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
-        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B" } } // Distant Shores
+        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B" } }, // Distant Shores
+        { "2", new string[] { "HUB", "0", "1", "A" } } // Cave Outskirts
     };
 
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready

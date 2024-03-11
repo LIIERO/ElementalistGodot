@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn587plam4h6o"]
+[gd_scene load_steps=9 format=3 uid="uid://bn587plam4h6o"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/ElementCharge.cs" id="1_mpouf"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_5v7ee"]
@@ -33,6 +33,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mra5"]
 size = Vector2(20, 22)
 
+[sub_resource type="Gradient" id="Gradient_ct5vk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.338658)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uy7w1"]
+gradient = SubResource("Gradient_ct5vk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="ElementCharge" type="Area2D"]
 position = Vector2(48, 80)
 script = ExtResource("1_mpouf")
@@ -45,6 +55,13 @@ autoplay = "Default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_8mra5")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+color = Color(1, 0.831373, 0.380392, 1)
+range_z_max = -1
+range_layer_min = -100
+texture = SubResource("GradientTexture2D_uy7w1")
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

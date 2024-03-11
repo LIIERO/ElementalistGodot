@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cx47v4hw8lhtm"]
+[gd_scene load_steps=16 format=3 uid="uid://cx47v4hw8lhtm"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_xgcwe"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="2_2cuig"]
@@ -13,6 +13,10 @@
 [ext_resource type="Resource" uid="uid://s3ceyew3kfmc" path="res://Data/LevelData/PurpleForest/5.tres" id="9_q1053"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="10_go0h5"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="12_636tf"]
+[ext_resource type="Script" path="res://Scripts/Triggers/ShiftCameraLimit.cs" id="14_oyofh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3myo"]
+size = Vector2(112, 272)
 
 [node name="Game" instance=ExtResource("1_xgcwe")]
 
@@ -20,7 +24,6 @@
 position = Vector2(0, 96)
 
 [node name="Camera2D" parent="." index="2"]
-leftLimit = -7.0
 rightLimit = 36.0
 
 [node name="GroundTiles" parent="." index="3"]
@@ -82,3 +85,15 @@ rotation = 1.5708
 [node name="AnimatedSprite2D2" parent="WalkingTutorial" index="1" instance=ExtResource("12_636tf")]
 position = Vector2(-16, 0)
 rotation = -1.5708
+
+[node name="Triggers" type="Node2D" parent="." index="10"]
+
+[node name="ShiftCameraLimit2" type="Area2D" parent="Triggers" index="0"]
+position = Vector2(-224, 0)
+script = ExtResource("14_oyofh")
+leftShiftUnits = -7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ShiftCameraLimit2" index="0"]
+shape = SubResource("RectangleShape2D_a3myo")
+
+[connection signal="body_entered" from="Triggers/ShiftCameraLimit2" to="Triggers/ShiftCameraLimit2" method="_OnBodyEntered"]

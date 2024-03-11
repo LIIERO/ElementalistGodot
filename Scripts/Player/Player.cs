@@ -233,6 +233,7 @@ public partial class Player : CharacterBody2D
                     SparkleAbilityDust(ElementState.earth, 0.1f);
                     abilityBufferTimeCounter = 0f; // Preventing overlapping abilities
 					Velocity = new Vector2(Velocity.X, earthJumpPower);
+					audioManager.earthAbilityEnd.Play();
 				}
 				else Velocity = new Vector2(0f, dashPower);
 			}
@@ -266,6 +267,10 @@ public partial class Player : CharacterBody2D
 			SpawnFireball();
 			await ToSignal(GetTree().CreateTimer(dashTime / 2f), "timeout");
 			StopAbility();
+		}
+		else
+		{
+			audioManager.earthAbilityStart.Play();
 		}
 	}
 

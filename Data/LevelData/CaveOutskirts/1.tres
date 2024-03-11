@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cojhmmr7g5mpx"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_2pu0v"]
+
+[resource]
+script = ExtResource("1_2pu0v")
+ID = "0"
+Name = "Power abundance"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
