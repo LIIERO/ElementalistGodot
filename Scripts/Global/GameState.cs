@@ -131,7 +131,6 @@ public partial class GameState : Node
     public void SetPlayerPosition(Vector2 position)
     {
         customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position);
-        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, position);
     }
 
 

@@ -42,7 +42,7 @@ position = Vector2(-384, 96)
 
 [node name="Sign" parent="Interactables" index="2" instance=ExtResource("11_gi8hh")]
 position = Vector2(-560, 80)
-Text = "Next world here"
+Text = "World 3 here"
 
 [node name="Levels" type="Node2D" parent="Interactables" index="3"]
 
@@ -89,5 +89,5 @@ position = Vector2(-128, 48)
 
 [node name="Gate" parent="." index="8" node_paths=PackedStringArray("playerNode") instance=ExtResource("13_5j67r")]
 position = Vector2(-224, 80)
-requiredFragments = 12
+requiredFragments = 18
 playerNode = NodePath("../Zoe")

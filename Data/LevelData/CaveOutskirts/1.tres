@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_2pu0v")
-ID = "0"
-Name = "Power abundance"
-NoCompletedToUnlock = 0
+ID = "1"
+Name = "Two Birds One Stone"
+NoCompletedToUnlock = 1
 SpecificLevelCompletedToUnlock = ""

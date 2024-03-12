@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://csujtn0jeug38"]
+
+[ext_resource type="PackedScene" uid="uid://cqushr7gr33sh" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceBase.tscn" id="1_uwpt7"]
+[ext_resource type="Resource" uid="uid://bapt3mtdpy5h3" path="res://Data/WorldData/CaveOutskirts.tres" id="2_uk1fu"]
+
+[node name="EntranceCaveOutskirts" instance=ExtResource("1_uwpt7")]
+worldToTeleportTo = ExtResource("2_uk1fu")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 64, 48, 64)

@@ -22,14 +22,19 @@ public partial class Camera : Camera2D
     [Export] private float upLimit = -99f;
     [Export] private float rightLimit = 99f;
     [Export] private float downLimit = 99f;
+    private float baseLeftLimit, baseRightLimit, baseDownLimit, baseUpLimit;
 
     private const float freeViewSpeed = 200.0f;
 
-    Vector2 desiredPosition;
+    private Vector2 desiredPosition;
+
+    private bool snap = false; // Should camera snap to player when transition is playing (it should at the start)
 
     public override void _Ready()
 	{
         gameState = GetNode<GameState>("/root/GameState");
+        if (gameState.IsLevelTransitionPlaying) snap = true;
+
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.SetCameraPosition, new Callable(this, MethodName.SetPosition));
         customSignals.Connect(CustomSignals.SignalName.ShiftCameraXLimits, new Callable(this, MethodName.ShiftXLimits));
@@ -43,6 +48,7 @@ public partial class Camera : Camera2D
         upLimit = (upLimit * GameUtils.gameUnitSize) + initialPosition.Y;
         rightLimit = (rightLimit * GameUtils.gameUnitSize) + initialPosition.X;
         downLimit = (downLimit * GameUtils.gameUnitSize) + initialPosition.Y;
+        baseLeftLimit = leftLimit; baseRightLimit = rightLimit; baseDownLimit = downLimit; baseUpLimit = upLimit;
 
         Position = ApplyCameraLimits(Position);
     }
@@ -68,8 +74,17 @@ public partial class Camera : Camera2D
         desiredPosition = PlayerNode.Position;
         desiredPosition = ApplyCameraLimits(desiredPosition);
 
-        float smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, 200, (float)delta);
-        float smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, 200, (float)delta);
+        float smoothedX, smoothedY;
+        smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, 200, (float)delta);
+        smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, 200, (float)delta);
+
+        if (snap) // Snap the camera during transition so it doesnt scroll towards you slowly
+        {
+            smoothedX = desiredPosition.X;
+            smoothedY = desiredPosition.Y;
+        }
+        if (!gameState.IsLevelTransitionPlaying) snap = false;
+
         Position = new Vector2(smoothedX, smoothedY);
 
         //fwc.CheckIfCameraTouchesBounds(desiredPosition, cameraBoundaries);
@@ -96,7 +111,10 @@ public partial class Camera : Camera2D
 
     public void ShiftXLimits(int left, int right)
     {
-        leftLimit += left * GameUtils.gameUnitSize;
-        rightLimit += right * GameUtils.gameUnitSize;
+        float newLeftLimit = baseLeftLimit + left * GameUtils.gameUnitSize;
+        if (Mathf.Abs(newLeftLimit) > Mathf.Abs(leftLimit)) leftLimit = newLeftLimit;
+
+        float newRightLimit = baseRightLimit + right * GameUtils.gameUnitSize;
+        if (Mathf.Abs(newRightLimit) > Mathf.Abs(rightLimit)) rightLimit = newRightLimit;
     }
 }
