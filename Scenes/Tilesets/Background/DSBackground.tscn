@@ -440,7 +440,7 @@ terrain_set_0/terrain_0/color = Color(0.729412, 0, 0.117647, 1)
 sources/0 = SubResource("TileSetAtlasSource_to7sr")
 
 [node name="BackgroundTiles" type="TileMap" groups=["PlayerCollider", "SoftMaterial"]]
-z_index = -3
+z_index = -4
 texture_filter = 1
 tile_set = SubResource("TileSet_yh4ff")
 format = 2
