@@ -49,4 +49,4 @@ requiredCharges = 2
 position = Vector2(0, 80)
 
 [node name="ElementCharge2" parent="Charges" index="2" instance=ExtResource("8_kfi2t")]
-position = Vector2(0, -32)
+position = Vector2(0, -48)

@@ -17,6 +17,8 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer earthAbilityStart;
     [Export] public AudioStreamPlayer earthAbilityEnd;
 
+    [Export] public AudioStreamPlayer death;
+
     [ExportSubgroup("Entities")]
     [Export] public AudioStreamPlayer orbCollectSound;
     [Export] public AudioStreamPlayer sunCollectSound;

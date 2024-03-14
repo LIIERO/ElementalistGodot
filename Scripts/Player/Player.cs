@@ -372,6 +372,7 @@ public partial class Player : CharacterBody2D
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
         isDying = true;
         animatedSprite.Play("Die"); // death animation
+		audioManager.death.Play();
         await ToSignal(GetTree().CreateTimer(t), "timeout");
         levelTransitions.StartLevelReloadTransition();
     }

@@ -11,12 +11,12 @@
 [ext_resource type="Resource" uid="uid://imr1x0jnpo71" path="res://Data/LevelData/DistantShoreline/4.tres" id="9_04x1e"]
 [ext_resource type="Resource" uid="uid://c08yu10jk8ce1" path="res://Data/LevelData/DistantShoreline/5.tres" id="10_kd0py"]
 [ext_resource type="Resource" uid="uid://dswyikifbkwas" path="res://Data/LevelData/DistantShoreline/B.tres" id="10_srsab"]
-[ext_resource type="Resource" uid="uid://chtw2kac5ocy4" path="res://Data/LevelData/DistantShoreline/6.tres" id="11_3jaxu"]
+[ext_resource type="Resource" uid="uid://chtw2kac5ocy4" path="res://Data/LevelData/DistantShoreline/7.tres" id="11_3jaxu"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="11_gi8hh"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="11_sinnj"]
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="13_5j67r"]
 [ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="14_bdrl0"]
-[ext_resource type="Resource" uid="uid://bq44ex6bl6olc" path="res://Data/LevelData/DistantShoreline/7.tres" id="14_namc8"]
+[ext_resource type="Resource" uid="uid://bq44ex6bl6olc" path="res://Data/LevelData/DistantShoreline/6.tres" id="14_namc8"]
 
 [node name="Game" instance=ExtResource("1_5rch5")]
 
@@ -80,11 +80,11 @@ levelToTeleportTo = ExtResource("10_kd0py")
 
 [node name="Level6" parent="Interactables/Levels" index="7" instance=ExtResource("2_kyqrh")]
 position = Vector2(304, 16)
-levelToTeleportTo = ExtResource("11_3jaxu")
+levelToTeleportTo = ExtResource("14_namc8")
 
 [node name="Level7" parent="Interactables/Levels" index="8" instance=ExtResource("2_kyqrh")]
 position = Vector2(240, 16)
-levelToTeleportTo = ExtResource("14_namc8")
+levelToTeleportTo = ExtResource("11_3jaxu")
 
 [node name="LevelB" parent="Interactables/Levels" index="9" instance=ExtResource("2_kyqrh")]
 position = Vector2(-224, -32)
