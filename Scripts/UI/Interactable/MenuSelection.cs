@@ -15,8 +15,12 @@ public partial class MenuSelection : UIInteractable
     private Node2D leftArrow;
     private Node2D rightArrow;
 
-	public override void _Ready()
+    private AudioManager audioManager; // singleton
+
+    public override void _Ready()
 	{
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
+
         lastIndex = values.Length - 1;
         selectionPanel = GetNode<Sprite2D>("Selection");
         valueDisplay = GetNode<Label>("Selection/Text");
@@ -56,6 +60,7 @@ public partial class MenuSelection : UIInteractable
         CurrentValueIndex++;
         RefreshDisplay();
         UpdateArrows();
+        audioManager.buttonSelected.Play();
         return true;
     }
 
@@ -65,6 +70,7 @@ public partial class MenuSelection : UIInteractable
         CurrentValueIndex--;
         RefreshDisplay();
         UpdateArrows();
+        audioManager.buttonSelected.Play();
         return true;
     }
 

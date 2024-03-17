@@ -71,4 +71,14 @@ public static class GameUtils
         }
         return num8;
     }
+
+    public static float LinearToDecibel(float linear)
+    {
+        float dB;
+        if (linear > 0.001f)
+            dB = 20.0f * (float)Math.Log10(linear);
+        else
+            dB = -144.0f;
+        return dB;
+    }
 }

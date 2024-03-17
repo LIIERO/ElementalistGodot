@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bhgnc28l5o25c"]
+[gd_scene load_steps=19 format=3 uid="uid://bhgnc28l5o25c"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_5rch5"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_1r5da"]
@@ -11,17 +11,15 @@
 [ext_resource type="Resource" uid="uid://imr1x0jnpo71" path="res://Data/LevelData/DistantShoreline/4.tres" id="9_04x1e"]
 [ext_resource type="Resource" uid="uid://c08yu10jk8ce1" path="res://Data/LevelData/DistantShoreline/5.tres" id="10_kd0py"]
 [ext_resource type="Resource" uid="uid://dswyikifbkwas" path="res://Data/LevelData/DistantShoreline/B.tres" id="10_srsab"]
-[ext_resource type="Resource" uid="uid://chtw2kac5ocy4" path="res://Data/LevelData/DistantShoreline/7.tres" id="11_3jaxu"]
+[ext_resource type="Resource" uid="uid://cmkd26ndnqqqd" path="res://Data/LevelData/DistantShoreline/6.tres" id="11_3jaxu"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="11_gi8hh"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="11_sinnj"]
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="13_5j67r"]
 [ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="14_bdrl0"]
-[ext_resource type="Resource" uid="uid://bq44ex6bl6olc" path="res://Data/LevelData/DistantShoreline/6.tres" id="14_namc8"]
+[ext_resource type="Resource" uid="uid://bq44ex6bl6olc" path="res://Data/LevelData/DistantShoreline/7.tres" id="14_namc8"]
+[ext_resource type="Resource" uid="uid://chtw2kac5ocy4" path="res://Data/LevelData/DistantShoreline/8.tres" id="14_nswby"]
 
 [node name="Game" instance=ExtResource("1_5rch5")]
-
-[node name="GUI" parent="." index="0"]
-visible = false
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(0, 96)
@@ -66,27 +64,31 @@ levelToTeleportTo = ExtResource("6_vufc0")
 position = Vector2(368, 80)
 levelToTeleportTo = ExtResource("7_4gfwn")
 
-[node name="LevelA" parent="Interactables/Levels" index="4" instance=ExtResource("2_kyqrh")]
-position = Vector2(-128, -16)
-levelToTeleportTo = ExtResource("8_naxqw")
-
-[node name="Level4" parent="Interactables/Levels" index="5" instance=ExtResource("2_kyqrh")]
+[node name="Level4" parent="Interactables/Levels" index="4" instance=ExtResource("2_kyqrh")]
 position = Vector2(272, 112)
 levelToTeleportTo = ExtResource("9_04x1e")
 
-[node name="Level5" parent="Interactables/Levels" index="6" instance=ExtResource("2_kyqrh")]
+[node name="Level5" parent="Interactables/Levels" index="5" instance=ExtResource("2_kyqrh")]
 position = Vector2(368, 0)
 levelToTeleportTo = ExtResource("10_kd0py")
 
-[node name="Level6" parent="Interactables/Levels" index="7" instance=ExtResource("2_kyqrh")]
+[node name="Level6" parent="Interactables/Levels" index="6" instance=ExtResource("2_kyqrh")]
 position = Vector2(304, 16)
-levelToTeleportTo = ExtResource("14_namc8")
-
-[node name="Level7" parent="Interactables/Levels" index="8" instance=ExtResource("2_kyqrh")]
-position = Vector2(240, 16)
 levelToTeleportTo = ExtResource("11_3jaxu")
 
-[node name="LevelB" parent="Interactables/Levels" index="9" instance=ExtResource("2_kyqrh")]
+[node name="Level7" parent="Interactables/Levels" index="7" instance=ExtResource("2_kyqrh")]
+position = Vector2(240, 16)
+levelToTeleportTo = ExtResource("14_namc8")
+
+[node name="Level8" parent="Interactables/Levels" index="8" instance=ExtResource("2_kyqrh")]
+position = Vector2(176, 0)
+levelToTeleportTo = ExtResource("14_nswby")
+
+[node name="LevelA" parent="Interactables/Levels" index="9" instance=ExtResource("2_kyqrh")]
+position = Vector2(-128, -16)
+levelToTeleportTo = ExtResource("8_naxqw")
+
+[node name="LevelB" parent="Interactables/Levels" index="10" instance=ExtResource("2_kyqrh")]
 position = Vector2(-224, -32)
 levelToTeleportTo = ExtResource("10_srsab")
 

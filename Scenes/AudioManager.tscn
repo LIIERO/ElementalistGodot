@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b66jck5colg4c" path="res://Audio/Sounds/Zoe/Abilities/ability_earth_start.ogg" id="8_br0le"]
 [ext_resource type="AudioStream" uid="uid://u0n3g5pvttt6" path="res://Audio/Sounds/Zoe/Abilities/ability_earth_end.ogg" id="9_vrbso"]
 [ext_resource type="AudioStream" uid="uid://c3c8lyj8hs8la" path="res://Audio/Sounds/Entities/sun_collect.ogg" id="9_y1c0r"]
-[ext_resource type="AudioStream" uid="uid://dcs8a5es28pk2" path="res://Audio/Sounds/Zoe/death.ogg" id="10_4xgau"]
+[ext_resource type="AudioStream" uid="uid://cp4e3ld53dfgd" path="res://Audio/Sounds/Zoe/death.ogg" id="10_4xgau"]
 [ext_resource type="AudioStream" uid="uid://bnhiyx516x2ll" path="res://Audio/Sounds/Transitions/level_complete.ogg" id="10_v3dar"]
 [ext_resource type="AudioStream" uid="uid://jqom2n7sddb2" path="res://Audio/Sounds/Entities/element_charge.ogg" id="12_06771"]
 
@@ -37,35 +37,44 @@ levelCompleted = NodePath("Transitions/LevelComplete")
 [node name="FS1" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("2_3djbo")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="FS2" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("3_8ila2")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="FS3" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("4_lgkml")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="FS4" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("5_3qaf6")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="Abilities" type="Node" parent="Player"]
 
 [node name="Water" type="AudioStreamPlayer" parent="Player/Abilities"]
 stream = ExtResource("6_rxp4u")
+bus = &"Sounds"
 
 [node name="Air" type="AudioStreamPlayer" parent="Player/Abilities"]
 stream = ExtResource("7_mwis0")
+bus = &"Sounds"
 
 [node name="EarthStart" type="AudioStreamPlayer" parent="Player/Abilities"]
 stream = ExtResource("8_br0le")
+bus = &"Sounds"
 
 [node name="EarthEnd" type="AudioStreamPlayer" parent="Player/Abilities"]
 stream = ExtResource("9_vrbso")
+bus = &"Sounds"
 
 [node name="Death" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("10_4xgau")
+bus = &"Sounds"
 
 [node name="Entities" type="Node" parent="."]
 
@@ -73,20 +82,25 @@ stream = ExtResource("10_4xgau")
 stream = ExtResource("2_a35su")
 volume_db = -12.0
 pitch_scale = 1.1
+bus = &"Sounds"
 
 [node name="sunCollect" type="AudioStreamPlayer" parent="Entities"]
 stream = ExtResource("9_y1c0r")
+bus = &"Sounds"
 
 [node name="elementCharge" type="AudioStreamPlayer" parent="Entities"]
 stream = ExtResource("12_06771")
+bus = &"Sounds"
 
 [node name="UI" type="Node" parent="."]
 
 [node name="Select" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("7_v72p3")
 volume_db = -12.0
+bus = &"Sounds"
 
 [node name="Transitions" type="Node" parent="."]
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="Transitions"]
 stream = ExtResource("10_v3dar")
+bus = &"Sounds"

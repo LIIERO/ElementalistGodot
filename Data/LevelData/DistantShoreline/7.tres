@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://chtw2kac5ocy4"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bq44ex6bl6olc"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_holyi"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_68vrq"]
 
 [resource]
-script = ExtResource("1_holyi")
+script = ExtResource("1_68vrq")
 ID = "7"
-Name = "Over the Ditch"
+Name = "Sandcastle"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = ""

@@ -13,9 +13,26 @@ public partial class SettingsManager : Node
     public bool Fullscreen { get; private set; }
     public int WindowScale { get; private set; } = 2; // Set with resolution option TODO
 
+    public int SoundVolume { get; private set; } = 5;
+    public int MusicVolume { get; private set; } = 5;
+
+
+    // audio volume stuff
+    private const string soundBusName = "Sounds";
+    private int soundBusId = 0;
+    private const string musicBusName = "Music";
+    private int musicBusId = 0;
+
 
     public override void _Ready()
     {
+        soundBusId = AudioServer.GetBusIndex(soundBusName);
+        musicBusId = AudioServer.GetBusIndex(musicBusName);
+
+        // TODO: Read settings save file and apply
+
+        ChangeSoundVolume(SoundVolume);
+
         DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.ResizeDisabled, true); // Window resize disabled (in code to fix a bug)
         Fullscreen = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen;
         if (Fullscreen) Input.MouseMode = Input.MouseModeEnum.Hidden;
@@ -64,5 +81,13 @@ public partial class SettingsManager : Node
     {
         await ToSignal(GetTree(), "process_frame");
         if (!Fullscreen) ChangeResolution(WindowScale);
+    }
+
+    public void ChangeSoundVolume(int volume) // volume from 0 to 10
+    {
+        SoundVolume = volume;
+        float volume_db = GameUtils.LinearToDecibel(volume / 10f);
+        AudioServer.SetBusVolumeDb(soundBusId, volume_db);
+        //GD.Print(volume_db);
     }
 }

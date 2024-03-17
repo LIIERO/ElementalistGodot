@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5yfpjixmnqxt"]
+[gd_scene load_steps=8 format=3 uid="uid://5yfpjixmnqxt"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_fy8vr"]
 [ext_resource type="PackedScene" uid="uid://uchi2854lf05" path="res://Scenes/Tilesets/Ground/COGround.tscn" id="2_rlhp3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cuvfbapg47xvo" path="res://Graphics/Backgrounds/CaveOutskirts/bg_cave_outskirts_0.png" id="4_gti55"]
 [ext_resource type="Texture2D" uid="uid://brqaoiboskvx6" path="res://Graphics/Backgrounds/CaveOutskirts/bg_cave_outskirts_1.png" id="5_qwqco"]
 [ext_resource type="Texture2D" uid="uid://b2ba51vtgwkog" path="res://Graphics/Backgrounds/CaveOutskirts/bg_cave_outskirts_2.png" id="6_1ecya"]
+[ext_resource type="PackedScene" uid="uid://cgx8a0o6usr8c" path="res://Scenes/Tilesets/Background/COBackground.tscn" id="7_sy0g3"]
 
 [node name="Game" instance=ExtResource("1_fy8vr")]
 
@@ -48,3 +49,5 @@ z_index = -10
 texture_filter = 1
 texture = ExtResource("6_1ecya")
 offset = Vector2(240, 135)
+
+[node name="BackgroundTiles" parent="." index="6" instance=ExtResource("7_sy0g3")]

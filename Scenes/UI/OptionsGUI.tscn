@@ -41,7 +41,7 @@ _data = {
 [node name="Options" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
 texture_filter = 1
 script = ExtResource("1_3g4ri")
-buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide")]
+buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide")]
 
 [node name="MainMenuButton" type="Node2D" parent="Options"]
 texture_filter = 1
@@ -222,6 +222,89 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_0it6a")
 theme_override_font_sizes/font_size = 12
 text = "res"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="SfxVolumeSlide" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 112)
+script = ExtResource("10_rob1m")
+values = PackedStringArray("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
+
+[node name="OrbSelection" type="Node2D" parent="Options/SfxVolumeSlide"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/SfxVolumeSlide/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_x81f0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/SfxVolumeSlide/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/SfxVolumeSlide/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_tsktv")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/SfxVolumeSlide"]
+position = Vector2(64, 8)
+texture = ExtResource("5_ey2qm")
+
+[node name="Text" type="Label" parent="Options/SfxVolumeSlide/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "SOUND VOLUME
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="Selection" type="Sprite2D" parent="Options/SfxVolumeSlide"]
+position = Vector2(184, 8)
+texture = ExtResource("10_dq1sj")
+
+[node name="ArrowIndicatorThick" parent="Options/SfxVolumeSlide/Selection" instance=ExtResource("11_o44qe")]
+visible = false
+position = Vector2(-40, 0)
+rotation = 1.5708
+
+[node name="ArrowIndicatorThick2" parent="Options/SfxVolumeSlide/Selection" instance=ExtResource("11_o44qe")]
+visible = false
+position = Vector2(40, 0)
+rotation = -1.5708
+
+[node name="Text" type="Label" parent="Options/SfxVolumeSlide/Selection"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -31.0
+offset_top = -7.0
+offset_right = -31.488
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "vol
+"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn10ttq2evpac"]
+[gd_scene load_steps=9 format=3 uid="uid://cn10ttq2evpac"]
 
 [ext_resource type="PackedScene" uid="uid://dgm3ht0c8whkr" path="res://Scenes/Worlds/H/Base.tscn" id="1_stapj"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_qncnp"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="4_dp1gh"]
 [ext_resource type="PackedScene" uid="uid://csujtn0jeug38" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceCaveOutskirts.tscn" id="4_g2r2f"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="5_r0uht"]
+[ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="7_u3ckl"]
+[ext_resource type="Resource" uid="uid://d3ja8l4x8744j" path="res://Data/LevelData/Void/0.tres" id="8_d4rcp"]
 
 [node name="Game" instance=ExtResource("1_stapj")]
 
@@ -56,3 +58,9 @@ playerNode = NodePath("../../Zoe")
 [node name="Sign" parent="Interactables" index="0" instance=ExtResource("5_r0uht")]
 position = Vector2(0, 96)
 Text = "Welcome to the Void, you can access every single world here."
+
+[node name="Levels" type="Node2D" parent="Interactables" index="1"]
+
+[node name="LevelTeleport" parent="Interactables/Levels" index="0" instance=ExtResource("7_u3ckl")]
+position = Vector2(-176, 80)
+levelToTeleportTo = ExtResource("8_d4rcp")

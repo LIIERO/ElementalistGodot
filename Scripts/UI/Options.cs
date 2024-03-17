@@ -9,11 +9,11 @@ public partial class Options : ButtonManager
     private const int MENU = 0;
     private const int FULLSCREEN = 1;
     private const int RESOLUTION = 2;
+    private const int SOUNDVOLUME = 3;
 
     // Singletons
     private LevelTransitions levelTransitions;
     private SettingsManager settingsManager;
-
 
     public override void _Ready()
 	{
@@ -70,6 +70,14 @@ public partial class Options : ButtonManager
                 bool moved = resolutionSelection.MoveRight();
                 if (moved) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
             }
+
+            if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
+            {
+                MenuSelection soundVolumeSelection = buttonList[CurrentItemIndex] as MenuSelection;
+                bool moved = soundVolumeSelection.MoveRight();
+                if (moved) settingsManager.ChangeSoundVolume(soundVolumeSelection.CurrentValueIndex);
+            }
+
         }
 
         if (Input.IsActionJustPressed("ui_left"))
@@ -79,6 +87,13 @@ public partial class Options : ButtonManager
                 MenuSelection resolutionSelection = buttonList[CurrentItemIndex] as MenuSelection;
                 bool moved = resolutionSelection.MoveLeft();
                 if (moved) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
+            }
+
+            if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
+            {
+                MenuSelection soundVolumeSelection = buttonList[CurrentItemIndex] as MenuSelection;
+                bool moved = soundVolumeSelection.MoveLeft();
+                if (moved) settingsManager.ChangeSoundVolume(soundVolumeSelection.CurrentValueIndex);
             }
         }
     }
@@ -90,5 +105,6 @@ public partial class Options : ButtonManager
         (buttonList[FULLSCREEN] as MenuToggle).Toggle(settingsManager.Fullscreen);
         if (settingsManager.Fullscreen) (buttonList[RESOLUTION] as MenuSelection).Disable();
         (buttonList[RESOLUTION] as MenuSelection).SetCurrentValueIndex(settingsManager.WindowScale - 1); // Set to current resoluton option
+        (buttonList[SOUNDVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.SoundVolume);
     }
 }
