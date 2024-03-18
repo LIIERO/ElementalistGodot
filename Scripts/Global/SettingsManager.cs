@@ -19,9 +19,9 @@ public partial class SettingsManager : Node
 
     // audio volume stuff
     private const string soundBusName = "Sounds";
-    private int soundBusId = 0;
+    private int soundBusId;
     private const string musicBusName = "Music";
-    private int musicBusId = 0;
+    private int musicBusId;
 
 
     public override void _Ready()
@@ -32,6 +32,7 @@ public partial class SettingsManager : Node
         // TODO: Read settings save file and apply
 
         ChangeSoundVolume(SoundVolume);
+        ChangeMusicVolume(MusicVolume);
 
         DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.ResizeDisabled, true); // Window resize disabled (in code to fix a bug)
         Fullscreen = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen;
@@ -88,6 +89,12 @@ public partial class SettingsManager : Node
         SoundVolume = volume;
         float volume_db = GameUtils.LinearToDecibel(volume / 10f);
         AudioServer.SetBusVolumeDb(soundBusId, volume_db);
-        //GD.Print(volume_db);
+    }
+
+    public void ChangeMusicVolume(int volume) // volume from 0 to 10
+    {
+        MusicVolume = volume;
+        float volume_db = GameUtils.LinearToDecibel(volume / 10f);
+        AudioServer.SetBusVolumeDb(musicBusId, volume_db);
     }
 }

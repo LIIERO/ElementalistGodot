@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=18 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/walk_grass_1.ogg" id="2_3djbo"]
@@ -15,8 +15,10 @@
 [ext_resource type="AudioStream" uid="uid://cp4e3ld53dfgd" path="res://Audio/Sounds/Zoe/death.ogg" id="10_4xgau"]
 [ext_resource type="AudioStream" uid="uid://bnhiyx516x2ll" path="res://Audio/Sounds/Transitions/level_complete.ogg" id="10_v3dar"]
 [ext_resource type="AudioStream" uid="uid://jqom2n7sddb2" path="res://Audio/Sounds/Entities/element_charge.ogg" id="12_06771"]
+[ext_resource type="AudioStream" uid="uid://bhmoon5pwhm3g" path="res://Audio/Music/purple_forest.ogg" id="16_hvofm"]
+[ext_resource type="AudioStream" uid="uid://crgpglfsjb8f2" path="res://Audio/Music/distant_shore.ogg" id="17_i7plo"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "waterAbility", "airAbility", "earthAbilityStart", "earthAbilityEnd", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "buttonSelected", "levelCompleted")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "waterAbility", "airAbility", "earthAbilityStart", "earthAbilityEnd", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "buttonSelected", "levelCompleted", "musicPurpleForest", "musicDistantShore")]
 script = ExtResource("1_b82rj")
 softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
 waterAbility = NodePath("Player/Abilities/Water")
@@ -29,6 +31,8 @@ sunCollectSound = NodePath("Entities/sunCollect")
 elementCharge = NodePath("Entities/elementCharge")
 buttonSelected = NodePath("UI/Select")
 levelCompleted = NodePath("Transitions/LevelComplete")
+musicPurpleForest = NodePath("Music/PurpleForest")
+musicDistantShore = NodePath("Music/DistantShore")
 
 [node name="Player" type="Node" parent="."]
 
@@ -104,3 +108,14 @@ bus = &"Sounds"
 [node name="LevelComplete" type="AudioStreamPlayer" parent="Transitions"]
 stream = ExtResource("10_v3dar")
 bus = &"Sounds"
+
+[node name="Music" type="Node" parent="."]
+
+[node name="PurpleForest" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("16_hvofm")
+bus = &"Music"
+
+[node name="DistantShore" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("17_i7plo")
+volume_db = -8.0
+bus = &"Music"

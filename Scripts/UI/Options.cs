@@ -10,6 +10,7 @@ public partial class Options : ButtonManager
     private const int FULLSCREEN = 1;
     private const int RESOLUTION = 2;
     private const int SOUNDVOLUME = 3;
+    private const int MUSICVOLUME = 4;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -62,38 +63,45 @@ public partial class Options : ButtonManager
 
 
         // Move right or left for selections
+        if (buttonList[CurrentItemIndex] is not MenuSelection) return;
+
         if (Input.IsActionJustPressed("ui_right"))
         {
+            MenuSelection selection = buttonList[CurrentItemIndex] as MenuSelection;
+            bool moved = selection.MoveRight();
+            if (!moved) return;
+
             if (CurrentItemIndex == RESOLUTION) // choose resolution
             {
-                MenuSelection resolutionSelection = buttonList[CurrentItemIndex] as MenuSelection;
-                bool moved = resolutionSelection.MoveRight();
-                if (moved) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
+                settingsManager.ChangeWindowScale(selection.CurrentValueIndex + 1);
             }
-
             if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
             {
-                MenuSelection soundVolumeSelection = buttonList[CurrentItemIndex] as MenuSelection;
-                bool moved = soundVolumeSelection.MoveRight();
-                if (moved) settingsManager.ChangeSoundVolume(soundVolumeSelection.CurrentValueIndex);
+                settingsManager.ChangeSoundVolume(selection.CurrentValueIndex);
             }
-
+            if (CurrentItemIndex == MUSICVOLUME) // change music volume
+            {
+                settingsManager.ChangeMusicVolume(selection.CurrentValueIndex);
+            }
         }
 
         if (Input.IsActionJustPressed("ui_left"))
         {
+            MenuSelection selection = buttonList[CurrentItemIndex] as MenuSelection;
+            bool moved = selection.MoveLeft();
+            if (!moved) return;
+
             if (CurrentItemIndex == RESOLUTION) // choose resolution
             {
-                MenuSelection resolutionSelection = buttonList[CurrentItemIndex] as MenuSelection;
-                bool moved = resolutionSelection.MoveLeft();
-                if (moved) settingsManager.ChangeWindowScale(resolutionSelection.CurrentValueIndex + 1);
+                settingsManager.ChangeWindowScale(selection.CurrentValueIndex + 1);
             }
-
             if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
             {
-                MenuSelection soundVolumeSelection = buttonList[CurrentItemIndex] as MenuSelection;
-                bool moved = soundVolumeSelection.MoveLeft();
-                if (moved) settingsManager.ChangeSoundVolume(soundVolumeSelection.CurrentValueIndex);
+                settingsManager.ChangeSoundVolume(selection.CurrentValueIndex);
+            }
+            if (CurrentItemIndex == MUSICVOLUME) // change music volume
+            {
+                settingsManager.ChangeMusicVolume(selection.CurrentValueIndex);
             }
         }
     }
@@ -106,5 +114,6 @@ public partial class Options : ButtonManager
         if (settingsManager.Fullscreen) (buttonList[RESOLUTION] as MenuSelection).Disable();
         (buttonList[RESOLUTION] as MenuSelection).SetCurrentValueIndex(settingsManager.WindowScale - 1); // Set to current resoluton option
         (buttonList[SOUNDVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.SoundVolume);
+        (buttonList[MUSICVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.MusicVolume);
     }
 }

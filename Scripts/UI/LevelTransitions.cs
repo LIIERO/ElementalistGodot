@@ -147,6 +147,7 @@ public partial class LevelTransitions : CanvasLayer
                     EndLevelTransitionAfterSeconds(1.5f); break;
 
                 case ScreenTransition.worldEntry:
+                    audioManager.StopMusic();
                     gameState.LoadWorld(transitionWorld.ID);
                     EndLevelTransitionAfterSeconds(1.5f); break;
 
@@ -155,6 +156,7 @@ public partial class LevelTransitions : CanvasLayer
                     EndLevelTransition(); break;
 
                 case ScreenTransition.menuEntry:
+                    audioManager.StopMusic();
                     gameState.LoadMenu();
                     EndLevelTransition(); break;
 
@@ -167,6 +169,11 @@ public partial class LevelTransitions : CanvasLayer
 		if (animationName == "LevelEnter") // End of transition
 		{
             HideTransition();
+
+            if (currentTransition == ScreenTransition.gameEntry || currentTransition == ScreenTransition.worldEntry)
+            {
+                audioManager.PlayWorldMusic(gameState.CurrentWorld); // Start music upon entering the game or a new world
+            }
         }
 	}
 
