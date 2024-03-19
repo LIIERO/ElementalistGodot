@@ -486,7 +486,7 @@ terrain_set_0/terrain_0/name = "PurpleGrass"
 terrain_set_0/terrain_0/color = Color(0.729412, 0, 0.117647, 1)
 sources/0 = SubResource("TileSetAtlasSource_to7sr")
 
-[node name="GroundTiles" type="TileMap" groups=["PlayerCollider", "SoftMaterial"]]
+[node name="GroundTiles" type="TileMap" groups=["HardMaterial", "PlayerCollider"]]
 z_index = -1
 texture_filter = 1
 tile_set = SubResource("TileSet_yh4ff")

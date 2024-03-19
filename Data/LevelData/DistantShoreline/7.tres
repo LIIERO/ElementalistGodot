@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_68vrq")
 ID = "7"
-Name = "Sandcastle"
+Name = "Over the Ditch"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = ""

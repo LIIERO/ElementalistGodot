@@ -404,7 +404,8 @@ public partial class Player : CharacterBody2D
 
 				if (collider.IsInGroup("SoftMaterial"))
 					audioManager.PlayRandomSound(audioManager.softFootsteps);
-				
+                else if (collider.IsInGroup("HardMaterial"))
+                    audioManager.PlayRandomSound(audioManager.hardFootsteps);
             }
         }
     }

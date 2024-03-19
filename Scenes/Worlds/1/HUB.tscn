@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhgnc28l5o25c"]
+[gd_scene load_steps=20 format=3 uid="uid://bhgnc28l5o25c"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_5rch5"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_1r5da"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="14_bdrl0"]
 [ext_resource type="Resource" uid="uid://bq44ex6bl6olc" path="res://Data/LevelData/DistantShoreline/7.tres" id="14_namc8"]
 [ext_resource type="Resource" uid="uid://chtw2kac5ocy4" path="res://Data/LevelData/DistantShoreline/8.tres" id="14_nswby"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_7sv8y"]
 
 [node name="Game" instance=ExtResource("1_5rch5")]
 
@@ -49,39 +50,39 @@ Text = "World 3 here"
 [node name="Levels" type="Node2D" parent="Interactables" index="3"]
 
 [node name="Level0" parent="Interactables/Levels" index="0" instance=ExtResource("2_kyqrh")]
-position = Vector2(240, 96)
+position = Vector2(176, 80)
 levelToTeleportTo = ExtResource("3_7d8nf")
 
 [node name="Level1" parent="Interactables/Levels" index="1" instance=ExtResource("2_kyqrh")]
-position = Vector2(304, 96)
+position = Vector2(368, 80)
 levelToTeleportTo = ExtResource("5_3pdde")
 
 [node name="Level2" parent="Interactables/Levels" index="2" instance=ExtResource("2_kyqrh")]
-position = Vector2(176, 80)
+position = Vector2(240, 96)
 levelToTeleportTo = ExtResource("6_vufc0")
 
 [node name="Level3" parent="Interactables/Levels" index="3" instance=ExtResource("2_kyqrh")]
-position = Vector2(368, 80)
+position = Vector2(304, 96)
 levelToTeleportTo = ExtResource("7_4gfwn")
 
 [node name="Level4" parent="Interactables/Levels" index="4" instance=ExtResource("2_kyqrh")]
-position = Vector2(272, 112)
+position = Vector2(368, 0)
 levelToTeleportTo = ExtResource("9_04x1e")
 
 [node name="Level5" parent="Interactables/Levels" index="5" instance=ExtResource("2_kyqrh")]
-position = Vector2(368, 0)
+position = Vector2(176, 0)
 levelToTeleportTo = ExtResource("10_kd0py")
 
 [node name="Level6" parent="Interactables/Levels" index="6" instance=ExtResource("2_kyqrh")]
-position = Vector2(304, 16)
+position = Vector2(272, 112)
 levelToTeleportTo = ExtResource("11_3jaxu")
 
 [node name="Level7" parent="Interactables/Levels" index="7" instance=ExtResource("2_kyqrh")]
-position = Vector2(240, 16)
+position = Vector2(304, 16)
 levelToTeleportTo = ExtResource("14_namc8")
 
 [node name="Level8" parent="Interactables/Levels" index="8" instance=ExtResource("2_kyqrh")]
-position = Vector2(176, 0)
+position = Vector2(240, 16)
 levelToTeleportTo = ExtResource("14_nswby")
 
 [node name="LevelA" parent="Interactables/Levels" index="9" instance=ExtResource("2_kyqrh")]
@@ -91,6 +92,75 @@ levelToTeleportTo = ExtResource("8_naxqw")
 [node name="LevelB" parent="Interactables/Levels" index="10" instance=ExtResource("2_kyqrh")]
 position = Vector2(-224, -32)
 levelToTeleportTo = ExtResource("10_srsab")
+
+[node name="LevelIndicators" type="Node2D" parent="Interactables" index="4"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/LevelIndicators" index="0"]
+position = Vector2(176, -16)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Interactables/LevelIndicators" index="1"]
+position = Vector2(240, 0)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interactables/LevelIndicators" index="2"]
+position = Vector2(304, 0)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interactables/LevelIndicators" index="3"]
+position = Vector2(368, -16)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Interactables/LevelIndicators" index="4"]
+position = Vector2(368, 64)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Interactables/LevelIndicators" index="5"]
+position = Vector2(304, 80)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Interactables/LevelIndicators" index="6"]
+position = Vector2(272, 96)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Interactables/LevelIndicators" index="7"]
+position = Vector2(240, 80)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Interactables/LevelIndicators" index="8"]
+position = Vector2(176, 64)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Interactables/LevelIndicators" index="9"]
+position = Vector2(-128, -32)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Sprite2D11" type="Sprite2D" parent="Interactables/LevelIndicators" index="10"]
+position = Vector2(-224, -48)
+texture = ExtResource("17_7sv8y")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 

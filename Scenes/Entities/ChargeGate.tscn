@@ -27,13 +27,13 @@ _data = {
 "Open": SubResource("Animation_foprm")
 }
 
-[node name="ChargeGate" type="Node2D" groups=["PlayerCollider"]]
+[node name="ChargeGate" type="Node2D"]
 z_index = -2
 script = ExtResource("1_f8ub3")
 
 [node name="ToMove" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ToMove"]
+[node name="StaticBody2D" type="StaticBody2D" parent="ToMove" groups=["HardMaterial", "PlayerCollider"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToMove/StaticBody2D"]
 shape = SubResource("RectangleShape2D_1n3eo")

@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_uc1ho")
 ID = "6"
-Name = "Over the Ditch"
+Name = "Doors and Keys"
 NoCompletedToUnlock = 5
 SpecificLevelCompletedToUnlock = ""

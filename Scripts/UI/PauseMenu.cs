@@ -4,13 +4,16 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class PauseMenu : ButtonManager
 {
-    private LevelTransitions levelTransitions; // singleton
+    // singletons
+    private LevelTransitions levelTransitions;
+    private AudioManager audioManager;
 
     const float resumeDelay = 0.1f;
 
 	public override void _Ready()
 	{
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
 
         base._Ready();
         Resume();
@@ -43,6 +46,7 @@ public partial class PauseMenu : ButtonManager
             }
             if (CurrentItemIndex == 1) // main menu
             {
+                audioManager.StopMusic();
                 Resume();
                 // TODO save progress
                 MainMenu.sceneEnterItemIndex = 1; // Menu starts with continue selected
@@ -50,6 +54,7 @@ public partial class PauseMenu : ButtonManager
             }
             if (CurrentItemIndex == 2) // exit
             {
+                audioManager.StopMusic();
                 // TODO save progress
                 GetTree().Quit();
             }

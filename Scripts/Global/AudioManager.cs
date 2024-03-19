@@ -39,31 +39,37 @@ public partial class AudioManager : Node
         if (fadeTimeProgress < 0.0f)
         {
             fadingOut = false;
-            currentMusic.Stop();
+            StopMusic();
         }
     }
 
-    public void PlayWorldMusic(string id)
+    public void PlayWorldMusic(string worldId)
     {
         fadingOut = false;
         AudioServer.SetBusVolumeDb(musicFadeBusId, 0f);
-        currentMusic = worldMusicDictionary[id];
+        currentMusic = worldMusicDictionary[worldId];
         currentMusic.Play();
     }
 
     public void StopMusic()
     {
         if (currentMusic == null) return;
+        currentMusic.Stop();
+        currentMusic = null;
+    }
 
+    public void StopMusicWithFade()
+    {
+        if (currentMusic == null) return;
         fadingOut = true;
         fadeTimeProgress = FADETIME;
-        //currentMusic.Stop();
     }
 
 
     // Sound effects
     [ExportSubgroup("Player")]
     [Export] public AudioStreamPlayer[] softFootsteps;
+    [Export] public AudioStreamPlayer[] hardFootsteps;
     [Export] public AudioStreamPlayer waterAbility;
     [Export] public AudioStreamPlayer airAbility;
     [Export] public AudioStreamPlayer earthAbilityStart;

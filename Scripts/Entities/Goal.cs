@@ -30,9 +30,8 @@ public partial class Goal : Area2D
         audioManager.sunCollectSound.Play();
     }
 
-    public void UnassignObjectToFollow()
+    public void DetatchFromObjectToFollow()
     {
-        assigned = false;
         objectToFollow = null;
     }
 
@@ -49,7 +48,7 @@ public partial class Goal : Area2D
         gameState = GetNode<GameState>("/root/GameState");
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
-        customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.UnassignObjectToFollow));
+        customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.DetatchFromObjectToFollow));
         initialPosition = Position;
 
         if (gameState.HasCurrentLevelBeenCompleted()) // White goal
