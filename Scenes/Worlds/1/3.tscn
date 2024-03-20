@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_6i3ty"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_5bimd"]
-[ext_resource type="PackedScene" uid="uid://ilsixb4dgwqg" path="res://Scenes/Entities/Danger/ThornBall.tscn" id="2_wg7k7"]
+[ext_resource type="PackedScene" uid="uid://ilsixb4dgwqg" path="res://Scenes/Entities/Danger/CoralBall.tscn" id="2_wg7k7"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_sngsm"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_jy12j"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_ka5jh"]
@@ -22,7 +22,6 @@ layer_0/tile_data = PackedInt32Array(589808, 589824, 3, 524272, 589824, 2, 45873
 [node name="Danger" type="Node2D" parent="." index="5"]
 
 [node name="ThornBall" parent="Danger" index="0" instance=ExtResource("2_wg7k7")]
-position = Vector2(15, 36)
 
 [node name="Interactables" type="Node2D" parent="." index="6"]
 

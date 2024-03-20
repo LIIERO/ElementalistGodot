@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://r3fcog0eibm"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_e5e44"]
-[ext_resource type="PackedScene" uid="uid://ilsixb4dgwqg" path="res://Scenes/Entities/Danger/ThornBall.tscn" id="2_q77d7"]
+[ext_resource type="PackedScene" uid="uid://ilsixb4dgwqg" path="res://Scenes/Entities/Danger/CoralBall.tscn" id="2_q77d7"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="3_r7pa0"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="4_0vvu8"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_nv85h"]
@@ -23,7 +23,6 @@ layer_0/tile_data = PackedInt32Array(589808, 589824, 3, 524272, 589824, 2, 45873
 [node name="Danger" type="Node2D" parent="." index="5"]
 
 [node name="ThornBall" parent="Danger" index="0" instance=ExtResource("2_q77d7")]
-position = Vector2(15, 36)
 
 [node name="Interactables" type="Node2D" parent="." index="6"]
 

@@ -1,17 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bia0xktrfmxvc"]
+[gd_scene load_steps=11 format=3 uid="uid://d0yua0kswxklu"]
 
-[ext_resource type="PackedScene" uid="uid://5yfpjixmnqxt" path="res://Scenes/Worlds/2/Base.tscn" id="1_jn2ws"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_h7im3"]
-[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_p4lm1"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_sjea1"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_a0y4p"]
-[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_dnlum"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="7_658f6"]
-[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_1vej4"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="9_0lrmy"]
-[ext_resource type="PackedScene" uid="uid://qxymawh4pw5d" path="res://Scenes/Entities/Danger/EarthSpikeBall.tscn" id="10_3s1kn"]
+[ext_resource type="PackedScene" uid="uid://5yfpjixmnqxt" path="res://Scenes/Worlds/2/Base.tscn" id="1_tismv"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_kipld"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_3iadb"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_igbio"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_bpgpp"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_a6o04"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="7_xomvu"]
+[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_21qm4"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="9_wpwkq"]
+[ext_resource type="PackedScene" uid="uid://qxymawh4pw5d" path="res://Scenes/Entities/Danger/EarthSpikeBall.tscn" id="10_tgy57"]
 
-[node name="Game" instance=ExtResource("1_jn2ws")]
+[node name="Game" instance=ExtResource("1_tismv")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-112, -16)
@@ -24,45 +24,45 @@ layer_0/tile_data = PackedInt32Array(2, 65536, 2, 65532, 196608, 2, 65533, 19660
 
 [node name="Interactables" type="Node2D" parent="." index="5"]
 
-[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_h7im3")]
+[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_kipld")]
 position = Vector2(-112, -16)
 
 [node name="Orbs" type="Node2D" parent="." index="6"]
 
-[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_p4lm1")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_3iadb")]
 position = Vector2(-152, 88)
 
-[node name="WaterOrb3" parent="Orbs" index="1" instance=ExtResource("3_p4lm1")]
+[node name="WaterOrb3" parent="Orbs" index="1" instance=ExtResource("3_3iadb")]
 position = Vector2(-152, 104)
 
-[node name="WaterOrb4" parent="Orbs" index="2" instance=ExtResource("3_p4lm1")]
+[node name="WaterOrb4" parent="Orbs" index="2" instance=ExtResource("3_3iadb")]
 position = Vector2(-144, -64)
 
-[node name="WaterOrb5" parent="Orbs" index="3" instance=ExtResource("3_p4lm1")]
+[node name="WaterOrb5" parent="Orbs" index="3" instance=ExtResource("3_3iadb")]
 position = Vector2(-80, -64)
 
-[node name="AirOrb" parent="Orbs" index="4" instance=ExtResource("4_sjea1")]
+[node name="AirOrb" parent="Orbs" index="4" instance=ExtResource("4_igbio")]
 position = Vector2(216, 48)
 
-[node name="AirOrb2" parent="Orbs" index="5" instance=ExtResource("4_sjea1")]
+[node name="AirOrb2" parent="Orbs" index="5" instance=ExtResource("4_igbio")]
 position = Vector2(-32, 48)
 
-[node name="AirOrb3" parent="Orbs" index="6" instance=ExtResource("4_sjea1")]
+[node name="AirOrb3" parent="Orbs" index="6" instance=ExtResource("4_igbio")]
 position = Vector2(-176, -96)
 
-[node name="CopyTopOrb" parent="Orbs" index="7" instance=ExtResource("5_a0y4p")]
+[node name="CopyTopOrb" parent="Orbs" index="7" instance=ExtResource("5_bpgpp")]
 position = Vector2(-48, -32)
 
-[node name="EarthOrb" parent="Orbs" index="8" instance=ExtResource("6_dnlum")]
+[node name="EarthOrb" parent="Orbs" index="8" instance=ExtResource("6_a6o04")]
 position = Vector2(-48, -96)
 
-[node name="EarthOrb3" parent="Orbs" index="9" instance=ExtResource("6_dnlum")]
+[node name="EarthOrb3" parent="Orbs" index="9" instance=ExtResource("6_a6o04")]
 position = Vector2(-176, -32)
 
-[node name="EarthOrb2" parent="Orbs" index="10" instance=ExtResource("6_dnlum")]
+[node name="EarthOrb2" parent="Orbs" index="10" instance=ExtResource("6_a6o04")]
 position = Vector2(32, 48)
 
-[node name="Goal" parent="." index="7" instance=ExtResource("7_658f6")]
+[node name="Goal" parent="." index="7" instance=ExtResource("7_xomvu")]
 position = Vector2(88, 48)
 
 [node name="BackgroundTiles" parent="." index="9"]
@@ -70,29 +70,29 @@ layer_0/tile_data = PackedInt32Array(262153, 589824, 3, 196617, 589824, 2, 52427
 
 [node name="Charges" type="Node2D" parent="." index="10"]
 
-[node name="ElementCharge" parent="Charges" index="0" instance=ExtResource("8_1vej4")]
+[node name="ElementCharge" parent="Charges" index="0" instance=ExtResource("8_21qm4")]
 position = Vector2(112, 48)
 
-[node name="ElementCharge2" parent="Charges" index="1" instance=ExtResource("8_1vej4")]
+[node name="ElementCharge2" parent="Charges" index="1" instance=ExtResource("8_21qm4")]
 position = Vector2(64, 48)
 
-[node name="ElementCharge3" parent="Charges" index="2" instance=ExtResource("8_1vej4")]
+[node name="ElementCharge3" parent="Charges" index="2" instance=ExtResource("8_21qm4")]
 position = Vector2(-208, -96)
 
-[node name="ElementCharge4" parent="Charges" index="3" instance=ExtResource("8_1vej4")]
+[node name="ElementCharge4" parent="Charges" index="3" instance=ExtResource("8_21qm4")]
 position = Vector2(-16, -96)
 
-[node name="ChargeGate" parent="Charges" index="4" instance=ExtResource("9_0lrmy")]
+[node name="ChargeGate" parent="Charges" index="4" instance=ExtResource("9_wpwkq")]
 position = Vector2(-176, 96)
 requiredCharges = 2
 
-[node name="ChargeGate2" parent="Charges" index="5" instance=ExtResource("9_0lrmy")]
+[node name="ChargeGate2" parent="Charges" index="5" instance=ExtResource("9_wpwkq")]
 position = Vector2(144, 48)
-requiredCharges = 2
+requiredCharges = 1
 
-[node name="ChargeGate3" parent="Charges" index="6" instance=ExtResource("9_0lrmy")]
+[node name="ChargeGate3" parent="Charges" index="6" instance=ExtResource("9_wpwkq")]
 position = Vector2(192, 48)
-requiredCharges = 4
+requiredCharges = 3
 
-[node name="ThornBall" parent="." index="11" instance=ExtResource("10_3s1kn")]
+[node name="ThornBall" parent="." index="11" instance=ExtResource("10_tgy57")]
 position = Vector2(0, 36)
