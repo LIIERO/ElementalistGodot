@@ -37,10 +37,10 @@ layer_0/tile_data = PackedInt32Array(393200, 589824, 2, 458736, 589824, 2, 45874
 position = Vector2(704, 64)
 
 [node name="EntranceVoid" parent="Interactables" index="1" instance=ExtResource("3_qmj75")]
-position = Vector2(-272, 32)
+position = Vector2(-528, 112)
 
 [node name="EntranceCaveOutskirts" parent="Interactables" index="2" instance=ExtResource("4_68r2e")]
-position = Vector2(-528, 112)
+position = Vector2(-272, 32)
 
 [node name="Sign" parent="Interactables" index="3" instance=ExtResource("10_go0h5")]
 position = Vector2(32, 96)

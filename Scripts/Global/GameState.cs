@@ -20,7 +20,6 @@ public partial class GameState : Node
 
     // Data loaded from the save file
     public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
-
     public string CurrentWorld { get; private set; } = "0";
     public string PreviousWorld { get; private set; } = "0";
     public string CurrentLevel { get; private set; } = "HUB"; // Current level ID
@@ -131,6 +130,42 @@ public partial class GameState : Node
     public void SetPlayerPosition(Vector2 position)
     {
         customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position);
+    }
+
+
+    // SAVE LOAD
+    private const string savesPath = "res://Data/Saves/Save";
+    public void LoadFromSaveFile(string id)
+    {
+        string path = savesPath + id + ".tscn";
+        if (!ResourceLoader.Exists(path))
+        {
+            GD.Print("Path not found");
+            return;
+        }
+
+        Save save = ResourceLoader.Load<Save>(path);
+
+        CompletedLevels = save.CompletedLevels;
+        CurrentLevel = save.CurrentLevel;
+        PreviousLevel = save.PreviousLevel;
+        CurrentWorld = save.CurrentWorld;
+        PreviousWorld = save.PreviousWorld;
+    }
+
+    public void SaveToSaveFile(string id)
+    {
+        string path = savesPath + id + ".tscn";
+
+        Save save = new();
+
+        save.CompletedLevels = CompletedLevels;
+        save.CurrentLevel = CurrentLevel;
+        save.PreviousLevel = PreviousLevel;
+        save.CurrentWorld = CurrentWorld;
+        save.PreviousWorld = PreviousWorld;
+
+        ResourceSaver.Save(save, path);
     }
 
 

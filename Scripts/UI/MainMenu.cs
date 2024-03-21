@@ -30,12 +30,13 @@ public partial class MainMenu : ButtonManager
         {
             if (CurrentItemIndex == 0) // new game
             {
-                // TODO: New game save resource + load it
+                gameState.SaveToSaveFile("0"); // Create a new save with the default values
                 levelTransitions.StartGameTransition(); // transition from menu to game
             }
             if (CurrentItemIndex == 1) // continue
             {
-                // TODO: Load game save resource
+                gameState.LoadFromSaveFile("0");
+                levelTransitions.StartGameTransition(); // transition from menu to game
             }
             if (CurrentItemIndex == 2) // options
             {

@@ -31,7 +31,7 @@ public partial class Player : CharacterBody2D
 	public const float jumpVelocity = -220.0f;
 	public const float maxFallingSpeed = 250f;
 	public const float earthJumpPower = -275.0f;
-	public const float dashPower = 220.0f;
+	public const float dashPower = 230.0f;
 	public const float dashTime = 0.2f;
 	public const float waterJumpMomentumPreservation = 0.6f;
 	public const float clingDrag = 0.8f;
