@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_2ohha")
 ID = "4"
-Name = "Preparations"
+Name = "Powers Combined"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""

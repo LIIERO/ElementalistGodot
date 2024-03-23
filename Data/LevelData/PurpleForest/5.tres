@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_suvea")
 ID = "5"
-Name = "Powers Combined"
+Name = "Elemental Stack"
 NoCompletedToUnlock = 5
+SpecificLevelCompletedToUnlock = ""

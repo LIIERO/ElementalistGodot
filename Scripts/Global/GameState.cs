@@ -40,22 +40,39 @@ public partial class GameState : Node
     {
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 
-        // Initialize LevelIDToLevel and CompletedLevels
+        // Initialize LevelIDToLevel
         foreach (KeyValuePair<string, string[]> world in levels)
         {
             LevelIDToLevel.Add(world.Key, new Dictionary<string, PackedScene>());
-            CompletedLevels.Add(world.Key, new Dictionary<string, bool>());
 
             foreach (string levelID in world.Value)
             {
                 LevelIDToLevel[world.Key].Add(levelID, ResourceLoader.Load<PackedScene>(levelsPathStart + world.Key + "/" + levelID + ".tscn"));
-                if (levelID != "HUB")
-                    CompletedLevels[world.Key].Add(levelID, false);
             }
         }
 
+        CompletedLevels = CreateNewCompletedLevelsDict(); // Initialize CompletedLevels
+
         // Initialize previous world, TODO: do this in save file
         PreviousWorld = CurrentWorld;
+    }
+
+
+    private Dictionary<string, Dictionary<string, bool>> CreateNewCompletedLevelsDict()
+    {
+        Dictionary<string, Dictionary<string, bool>> completedLevels = new();
+
+        foreach (KeyValuePair<string, string[]> world in levels)
+        {
+            completedLevels.Add(world.Key, new Dictionary<string, bool>());
+
+            foreach (string levelID in world.Value)
+            {
+                if (levelID != "HUB")
+                    completedLevels[world.Key].Add(levelID, false);
+            }
+        }
+        return completedLevels;
     }
 
     public void CompleteCurrentLevel()
@@ -143,7 +160,6 @@ public partial class GameState : Node
             GD.Print("Path not found");
             return;
         }
-
         Save save = ResourceLoader.Load<Save>(path);
 
         CompletedLevels = save.CompletedLevels;
@@ -156,7 +172,6 @@ public partial class GameState : Node
     public void SaveToSaveFile(string id)
     {
         string path = savesPath + id + ".tscn";
-
         Save save = new();
 
         save.CompletedLevels = CompletedLevels;
@@ -164,6 +179,20 @@ public partial class GameState : Node
         save.PreviousLevel = PreviousLevel;
         save.CurrentWorld = CurrentWorld;
         save.PreviousWorld = PreviousWorld;
+
+        ResourceSaver.Save(save, path);
+    }
+
+    public void CreateNewSaveFile(string id)
+    {
+        string path = savesPath + id + ".tscn";
+        Save save = new();
+
+        save.CompletedLevels = CreateNewCompletedLevelsDict();
+        save.CurrentLevel = "HUB";
+        save.PreviousLevel = "HUB";
+        save.CurrentWorld = "0";
+        save.PreviousWorld = "0";
 
         ResourceSaver.Save(save, path);
     }
