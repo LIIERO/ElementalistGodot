@@ -134,9 +134,10 @@ bus = &"Sounds"
 
 [node name="PurpleForest" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("16_hvofm")
+volume_db = -6.5
 bus = &"Music"
 
 [node name="DistantShore" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("17_i7plo")
-volume_db = -8.0
+volume_db = -3.0
 bus = &"Music"

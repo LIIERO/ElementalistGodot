@@ -1,10 +1,96 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuxshltrytaqn"]
+[gd_scene load_steps=12 format=3 uid="uid://cuxshltrytaqn"]
 
-[ext_resource type="Texture2D" uid="uid://2mt8ahvkcn0f" path="res://Graphics/transparent.png" id="1_ax0ey"]
+[ext_resource type="Texture2D" uid="uid://c04lj3qwlcsey" path="res://Graphics/UI/Gameplay/ElementOverlay/element_overlay.png" id="1_t6jse"]
+[ext_resource type="Script" path="res://Scripts/UI/Visual/ElementSymbol.cs" id="2_hq4ja"]
+[ext_resource type="Texture2D" uid="uid://dg3us64bf4g4b" path="res://Graphics/UI/Gameplay/ElementOverlay/current_element_indicator.png" id="2_nfm3k"]
 
-[node name="ElementSymbol" type="Sprite2D" groups=["ElementSymbol"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxb7l"]
+atlas = ExtResource("1_t6jse")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqkpr"]
+atlas = ExtResource("1_t6jse")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8jk0"]
+atlas = ExtResource("1_t6jse")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rylvy"]
+atlas = ExtResource("1_t6jse")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trbb7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxb7l")
+}],
+"loop": false,
+"name": &"Air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqkpr")
+}],
+"loop": false,
+"name": &"Earth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8jk0")
+}],
+"loop": false,
+"name": &"Fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rylvy")
+}],
+"loop": false,
+"name": &"Water",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry3eg"]
+atlas = ExtResource("2_nfm3k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4exft"]
+atlas = ExtResource("2_nfm3k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rff10"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_ry3eg")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_4exft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ElementSymbol" type="AnimatedSprite2D" groups=["ElementSymbol"]]
 texture_filter = 1
 position = Vector2(16, 16)
-texture = ExtResource("1_ax0ey")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+sprite_frames = SubResource("SpriteFrames_trbb7")
+animation = &"Air"
+autoplay = "default"
+script = ExtResource("2_hq4ja")
+
+[node name="Indicator" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_rff10")
+frame_progress = 0.366172

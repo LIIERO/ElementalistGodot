@@ -9,7 +9,9 @@ public partial class AudioManager : Node
     private Dictionary<string, AudioStreamPlayer> worldMusicDictionary;
     private AudioStreamPlayer currentMusic;
     private bool fadingOut = false;
-    private const float FADETIME = 1.0f;
+    private bool fadingIn = false;
+    private const float FADEOUTTIME = 1.0f;
+    private const float FADEINTIME = 6.0f;
     private float fadeTimeProgress;
 
     private int musicFadeBusId;
@@ -30,22 +32,43 @@ public partial class AudioManager : Node
 
     public override void _Process(double delta)
     {
-        if (!fadingOut) return;
+        if (fadingOut) FadeOutProcess(delta);
+        if (fadingIn) FadeInProcess(delta);
+    }
 
+    private void FadeOutProcess(double delta)
+    {
         fadeTimeProgress -= (float)delta;
-        float volume_db = GameUtils.LinearToDecibel(fadeTimeProgress / FADETIME); 
-        AudioServer.SetBusVolumeDb(musicFadeBusId, volume_db);
-
         if (fadeTimeProgress < 0.0f)
         {
             fadingOut = false;
             StopMusic();
         }
+
+        float volume_db = GameUtils.LinearToDecibel(fadeTimeProgress / FADEOUTTIME);
+        AudioServer.SetBusVolumeDb(musicFadeBusId, volume_db);
+
+        
+    }
+
+    private void FadeInProcess(double delta)
+    {
+        fadeTimeProgress -= (float)delta;
+        if (fadeTimeProgress < 0.0f)
+        {
+            fadingIn = false;
+            fadeTimeProgress = 0.0f;
+        }
+
+        float volume_db = GameUtils.LinearToDecibel((FADEINTIME - fadeTimeProgress) / FADEINTIME);
+        AudioServer.SetBusVolumeDb(musicFadeBusId, volume_db);
     }
 
     public void PlayWorldMusic(string worldId)
     {
+        fadingIn = true;
         fadingOut = false;
+        fadeTimeProgress = FADEINTIME;
         AudioServer.SetBusVolumeDb(musicFadeBusId, 0f);
         currentMusic = worldMusicDictionary[worldId];
         currentMusic.Play();
@@ -54,6 +77,7 @@ public partial class AudioManager : Node
     public void StopMusic()
     {
         if (currentMusic == null) return;
+        fadingIn = false;
         currentMusic.Stop();
         currentMusic = null;
     }
@@ -61,8 +85,9 @@ public partial class AudioManager : Node
     public void StopMusicWithFade()
     {
         if (currentMusic == null) return;
+        fadingIn = false;
         fadingOut = true;
-        fadeTimeProgress = FADETIME;
+        fadeTimeProgress = FADEOUTTIME;
     }
 
 
