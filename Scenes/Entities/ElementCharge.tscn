@@ -63,5 +63,6 @@ range_z_max = -1
 range_layer_min = -100
 texture = SubResource("GradientTexture2D_uy7w1")
 
+[connection signal="area_entered" from="." to="." method="_OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

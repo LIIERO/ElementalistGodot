@@ -222,8 +222,8 @@ public partial class Player : CharacterBody2D
 			}
 			else if (currentAbility == ElementState.fire)
 			{
-				if (isFacingRight) Velocity = new Vector2(-dashPower, 0f);
-				else Velocity = new Vector2(dashPower, 0f);
+				if (isFacingRight) Velocity = new Vector2(-dashPower/4, 0f);
+				else Velocity = new Vector2(dashPower/4, 0f);
 			}
 			else if (currentAbility == ElementState.earth)
 			{
@@ -265,7 +265,9 @@ public partial class Player : CharacterBody2D
 		else if (currentAbility == ElementState.fire)
 		{
 			SpawnFireball();
-			await ToSignal(GetTree().CreateTimer(dashTime / 2f), "timeout");
+			SparkleAbilityDust(ElementState.fire, 0.1f);
+			abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
+			await ToSignal(GetTree().CreateTimer(dashTime/4), "timeout");
 			StopAbility();
 		}
 		else
@@ -291,12 +293,13 @@ public partial class Player : CharacterBody2D
 
 	private void SpawnFireball()
 	{
-		const float downOffset = -9f;
+		float downOffset = -9f;
+		float rightOffset = isFacingRight ? 10f : -10f;
 
         Node2D instance = fireball.Instantiate() as Node2D;
 		(instance as Fireball).SetDirection(isFacingRight);
         spawner.AddChild(instance);
-        instance.GlobalPosition = GlobalPosition + new Vector2(0.0f, downOffset);
+        instance.GlobalPosition = GlobalPosition + new Vector2(rightOffset, downOffset);
 	}
 
     public void StartAbilityDust(ElementState elementState)

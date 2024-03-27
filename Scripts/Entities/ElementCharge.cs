@@ -43,6 +43,14 @@ public partial class ElementCharge : Area2D
         playerInRange = null;
     }
 
+    void _OnAreaEntered(Area2D fireball)
+    {
+        if (fireball is Fireball)
+        {
+            Activate();
+        }
+    }
+
     private void Activate()
     {
         if (IsActivated) return;

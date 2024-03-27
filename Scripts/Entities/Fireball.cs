@@ -3,13 +3,27 @@ using System;
 
 public partial class Fireball : Area2D
 {
-	[Export] AnimatedSprite2D spriteNode;
+    private GameState gameState; // singleton
+    //private StaticBody2D hitbox;
+
+    [Export] AnimatedSprite2D spriteNode;
 	const float speed = 200.0f;
+    const float activationTime = 0.05f;
+    const float playerTeleportOffset = 8.0f;
+
+    private float flyTime = 0.0f; 
 
 	private float direction;
 
-	public override void _Process(double delta)
+    public override void _Ready()
+    {
+        gameState = GetNode<GameState>("/root/GameState");
+        //hitbox = GetNode<StaticBody2D>("Hitbox");
+    }
+
+    public override void _Process(double delta)
 	{
+        flyTime += (float)delta;
         Position += new Vector2((float)delta * direction * speed, 0.0f);
     }
 
@@ -24,6 +38,13 @@ public partial class Fireball : Area2D
 		if (body.IsInGroup("PlayerCollider"))
 		{
 			QueueFree();
+
+            if (flyTime > activationTime)
+            {
+                Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
+                gameState.SetPlayerPosition(GlobalPosition + playerOffset);
+            }
+                
 		}
 	}
 
