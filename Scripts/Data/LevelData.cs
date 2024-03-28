@@ -7,4 +7,5 @@ public partial class LevelData : Resource
     [Export] public string Name { get; set; }
     [Export] public int NoCompletedToUnlock { get; set; }
     [Export] public string SpecificLevelCompletedToUnlock { get; set; } = string.Empty;
+    [Export] public bool IsSpecial { get; set; } = false;
 }

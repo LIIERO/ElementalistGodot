@@ -38,6 +38,7 @@ public partial class LevelTransitions : CanvasLayer
     private void EndLevelTransition()
 	{
 		animationPlayer.Play("LevelEnter");
+        audioManager.fadeOut.Play();
     }
 
     // Gameplay transitions
@@ -55,6 +56,7 @@ public partial class LevelTransitions : CanvasLayer
         levelTextBottomLabel.Text = levelToTransitionTo.Name;
 
         animationPlayer.Play("LevelExit");
+        audioManager.fadeIn.Play();
     }
 
     public void StartLevelReloadTransition()
@@ -63,6 +65,7 @@ public partial class LevelTransitions : CanvasLayer
         gameState.IsLevelTransitionPlaying = true;
         Show();
         animationPlayer.Play("LevelExit");
+        audioManager.fadeIn.Play();
     }
 
     public void StartHubTransition(bool levelCompleted)
@@ -80,6 +83,7 @@ public partial class LevelTransitions : CanvasLayer
         }
 
         animationPlayer.Play("LevelExit");
+        audioManager.fadeIn.Play();
     }
 
     public void StartWorldTransition(WorldData worldToTransitionTo)
@@ -95,6 +99,7 @@ public partial class LevelTransitions : CanvasLayer
         levelTextBottomLabel.Text = worldToTransitionTo.Name;
 
         animationPlayer.Play("LevelExit");
+        audioManager.fadeIn.Play();
     }
 
     // Menu transitions
@@ -105,6 +110,7 @@ public partial class LevelTransitions : CanvasLayer
         gameState.IsLevelTransitionPlaying = true;
         Show();
         animationPlayer.Play("LevelExit");
+        audioManager.fadeIn.Play();
     }
 
     public void StartMenuTransition()
@@ -113,6 +119,7 @@ public partial class LevelTransitions : CanvasLayer
         gameState.IsLevelTransitionPlaying = true;
         Show();
         animationPlayer.Play("LevelExit");
+        audioManager.fadeIn.Play();
     }
 
     public void StartGameTransition()
@@ -121,6 +128,7 @@ public partial class LevelTransitions : CanvasLayer
         gameState.IsLevelTransitionPlaying = true;
         Show();
         animationPlayer.Play("LevelExit");
+        audioManager.fadeIn.Play();
     }
 
 

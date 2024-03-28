@@ -11,7 +11,7 @@ public partial class GameState : Node
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
         { "H", new string[] { "HUB", "0" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
-        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "A", "B" } }, // Distant Shores
+        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "3S", "5S" } }, // Distant Shores
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } } // Cave Outskirts
     };
 

@@ -112,6 +112,8 @@ public partial class AudioManager : Node
 
     [ExportSubgroup("Transitions")]
     [Export] public AudioStreamPlayer levelCompleted;
+    [Export] public AudioStreamPlayer fadeOut;
+    [Export] public AudioStreamPlayer fadeIn;
 
 
     public void PlayRandomSound(AudioStreamPlayer[] soundPool)
