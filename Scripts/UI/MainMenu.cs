@@ -31,7 +31,6 @@ public partial class MainMenu : ButtonManager
             if (CurrentItemIndex == 0) // new game
             {
                 gameState.CreateNewSaveFile("0"); // Create a new save with the default values
-                gameState.LoadFromSaveFile("0");
                 levelTransitions.StartGameTransition(); // transition from menu to game
             }
             if (CurrentItemIndex == 1) // continue

@@ -26,7 +26,7 @@ public partial class Gate : Node2D
 	{
         if (Position.DistanceTo(playerNode.Position) > detectionRangeUnits) return;
 
-        if (!isOpened && gameState.NoCompletedLevels >= requiredFragments)
+        if (!isOpened && gameState.NoSunFragments >= requiredFragments)
         {
             isOpened = true;
             animator.Play("Open");

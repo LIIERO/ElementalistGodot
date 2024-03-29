@@ -1,8 +1,11 @@
 using Godot;
 using System;
+using System.Text.Json;
 using System.Collections.Generic;
 using GlobalTypes;
 using System.Linq;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public partial class GameState : Node
 {
@@ -20,6 +23,7 @@ public partial class GameState : Node
 
     // Data loaded from the save file
     public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
+    public int NoSunFragments { get; private set; } = 0;
     public string CurrentWorld { get; private set; } = "0";
     public string PreviousWorld { get; private set; } = "0";
     public string CurrentLevel { get; private set; } = "HUB"; // Current level ID
@@ -27,7 +31,6 @@ public partial class GameState : Node
 
 
     // Data not loaded from the save file
-    public int NoCompletedLevels { get; private set; } = 0;
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
@@ -78,7 +81,7 @@ public partial class GameState : Node
     public void CompleteCurrentLevel()
     {
         if (HasCurrentLevelBeenCompleted()) return;
-        NoCompletedLevels++;
+        NoSunFragments++;
         CompletedLevels[CurrentWorld][CurrentLevel] = true;
     }
 
@@ -151,50 +154,45 @@ public partial class GameState : Node
 
 
     // SAVE LOAD
-    private const string savesPath = "res://Data/Saves/Save";
+    private const string savesPath = "user://save";
+    private const string savesFormat = ".json";
+    public void SaveToSaveFile(string id)
+    {
+        string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
+        PlayerData data = new(CompletedLevels, NoSunFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel);
+        string jsonString = JsonSerializer.Serialize(data);
+        File.WriteAllText(path, jsonString);
+    }
+
     public void LoadFromSaveFile(string id)
     {
-        string path = savesPath + id + ".tscn";
-        if (!ResourceLoader.Exists(path))
+        string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
+        if (!File.Exists(path))
         {
             GD.Print("Path not found");
             return;
         }
-        Save save = ResourceLoader.Load<Save>(path);
+        string jsonString = File.ReadAllText(path);
+        PlayerData data = JsonSerializer.Deserialize<PlayerData>(jsonString)!;
 
-        CompletedLevels = save.CompletedLevels;
-        CurrentLevel = save.CurrentLevel;
-        PreviousLevel = save.PreviousLevel;
-        CurrentWorld = save.CurrentWorld;
-        PreviousWorld = save.PreviousWorld;
-    }
-
-    public void SaveToSaveFile(string id)
-    {
-        string path = savesPath + id + ".tscn";
-        Save save = new();
-
-        save.CompletedLevels = CompletedLevels;
-        save.CurrentLevel = CurrentLevel;
-        save.PreviousLevel = PreviousLevel;
-        save.CurrentWorld = CurrentWorld;
-        save.PreviousWorld = PreviousWorld;
-
-        ResourceSaver.Save(save, path);
+        CompletedLevels = data.CompletedLevels;
+        NoSunFragments = data.NoSunFragments;
+        CurrentWorld = data.CurrentWorld;
+        PreviousWorld = data.PreviousWorld;
+        CurrentLevel = data.CurrentLevel;
+        PreviousLevel = data.PreviousLevel;
     }
 
     public void CreateNewSaveFile(string id)
     {
-        string path = savesPath + id + ".tscn";
-        Save save = new();
+        CompletedLevels = CreateNewCompletedLevelsDict();
+        NoSunFragments = 0;
+        CurrentLevel = "HUB";
+        PreviousLevel = "HUB";
+        CurrentWorld = "0";
+        PreviousWorld = "0";
 
-        save.CompletedLevels = CreateNewCompletedLevelsDict();
-        save.CurrentLevel = "HUB";
-        save.PreviousLevel = "HUB";
-        save.CurrentWorld = "0";
-        save.PreviousWorld = "0";
-
-        ResourceSaver.Save(save, path);
+        SaveToSaveFile(id);
     }
 
 
@@ -205,7 +203,7 @@ public partial class GameState : Node
         // Unlock everything to test stuff
         if (Input.IsActionJustPressed("inputDebugUnlockAll") && !isGameDebugUnlocked)
         {
-            NoCompletedLevels = 999;
+            NoSunFragments = 999;
             foreach(KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
             {
                 foreach(string levelKey in world.Value.Keys.ToList())

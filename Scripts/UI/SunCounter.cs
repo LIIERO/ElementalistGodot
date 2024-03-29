@@ -12,6 +12,6 @@ public partial class SunCounter : Sprite2D
         gameState = GetNode<GameState>("/root/GameState");
 
         if (!gameState.IsHubLoaded()) Hide();
-        counterText.Text = gameState.NoCompletedLevels.ToString();
+        counterText.Text = gameState.NoSunFragments.ToString();
     }
 }
