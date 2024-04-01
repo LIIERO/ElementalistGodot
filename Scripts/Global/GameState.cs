@@ -14,7 +14,7 @@ public partial class GameState : Node
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
         { "H", new string[] { "HUB", "0" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
-        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "3S", "5S" } }, // Distant Shores
+        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "4S", "7S" } }, // Distant Shores
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } } // Cave Outskirts
     };
 
@@ -197,23 +197,31 @@ public partial class GameState : Node
 
 
     // DEBUG
-    private bool isGameDebugUnlocked = false;
+    //private bool isGameDebugUnlocked = false;
     public override void _Process(double delta)
     {
-        // Unlock everything to test stuff
-        if (Input.IsActionJustPressed("inputDebugUnlockAll") && !isGameDebugUnlocked)
+        if (Input.IsActionJustPressed("inputDebugUnlockAll"))
         {
-            NoSunFragments = 999;
-            foreach(KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
+            if (IsHubLoaded()) // Unlock whole current world
             {
-                foreach(string levelKey in world.Value.Keys.ToList())
+                foreach (string levelKey in CompletedLevels[CurrentWorld].Keys.ToList())
                 {
-                    CompletedLevels[world.Key][levelKey] = true;
+                    if (CompletedLevels[CurrentWorld][levelKey] == false)
+                    {
+                        CompletedLevels[CurrentWorld][levelKey] = true;
+                        NoSunFragments += 1;
+                    }
+
                 }
             }
-            isGameDebugUnlocked = true;
+
+            else // Unlock current level
+            {
+                CompleteCurrentLevel();
+            }
+            
+            //isGameDebugUnlocked = true;
             RestartCurrentLevel();
         }
-        
     }
 }

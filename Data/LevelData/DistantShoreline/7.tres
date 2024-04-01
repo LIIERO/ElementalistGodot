@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_68vrq")
 ID = "7"
-Name = "Over the Ditch"
+Name = "Unprepared"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

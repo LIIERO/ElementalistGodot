@@ -92,13 +92,13 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3qu6i")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, -0.287858)
+position = Vector2(0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_f1tq1")
-animation = &"LevelNotCompletedSpecial"
+animation = &"LevelNotCompleted"
 
 [node name="Text" type="Node2D" parent="MovedByAnimation"]
 position = Vector2(-3, -21)

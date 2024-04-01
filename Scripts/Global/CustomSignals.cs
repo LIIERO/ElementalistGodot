@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public partial class CustomSignals : Node
 {
     // Player
+    [Signal]
+    public delegate void PlayerInteractedEventHandler();
 
     [Signal]
     public delegate void PlayerDiedEventHandler();

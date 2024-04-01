@@ -10,9 +10,13 @@ public abstract partial class Interactable : Area2D
     protected Player playerScriptReference;
     public bool IsActive { get; private set; } = false;
 
-    
+    private CustomSignals customSignals; // singleton
+
     public override void _Ready()
 	{
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.PlayerInteracted, new Callable(this, MethodName.OnPlayerInteract));
+
         arrowIndicator = arrowIndicatorPrefab.Instantiate() as AnimatedSprite2D;
         AddChild(arrowIndicator);
         arrowIndicator.Position += new Vector2(0.0f, arrowYOffset * GameUtils.gameUnitSize);
@@ -21,16 +25,13 @@ public abstract partial class Interactable : Area2D
         arrowIndicator.Hide();
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+    private void OnPlayerInteract()
+    {
         if (!IsActive) return;
         if (playerScriptReference == null) return;
-        if (!playerScriptReference.interactPressed) return;
         if (!playerScriptReference.isGrounded) return;
-
         Interact();
-	}
+    }
 
     void _OnBodyEntered(Node2D body)
     {

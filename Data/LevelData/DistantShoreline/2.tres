@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_cibys")
 ID = "2"
-Name = "Coral Cave"
+Name = "Useless Orb"
 NoCompletedToUnlock = 2
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_aw7t6")
 ID = "5"
-Name = "Unprepared"
+Name = "Sandcastle"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

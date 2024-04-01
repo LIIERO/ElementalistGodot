@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_wtuyr")
 ID = "1"
-Name = "Useless Orb"
+Name = "Trade Offer"
 NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

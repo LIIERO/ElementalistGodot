@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://dk7pjjjae06bh"]
 
-[ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_cjuy8"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_8cl6k"]
-[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_da6p5"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_yskh6"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_k0253"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="6_syfgc"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="7_gbjsd"]
-[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_2otov"]
+[ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_x86jm"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_cf26l"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_4k1n4"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_rkvcw"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_l8oxb"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="6_7k52k"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="7_ske0g"]
+[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_jreot"]
 
-[node name="Game" instance=ExtResource("1_cjuy8")]
+[node name="Game" instance=ExtResource("1_x86jm")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-16, 96)
@@ -25,47 +25,47 @@ layer_0/tile_data = PackedInt32Array(-262155, 65536, 0, -65547, 196608, 2, -2621
 
 [node name="Interactables" type="Node2D" parent="." index="7"]
 
-[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_8cl6k")]
+[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_cf26l")]
 position = Vector2(-16, 96)
 
 [node name="Orbs" type="Node2D" parent="." index="8"]
 
-[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_da6p5")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_4k1n4")]
 position = Vector2(32, 80)
 
-[node name="WaterOrb3" parent="Orbs" index="1" instance=ExtResource("3_da6p5")]
+[node name="WaterOrb3" parent="Orbs" index="1" instance=ExtResource("3_4k1n4")]
 position = Vector2(160, 32)
 
-[node name="AirOrb" parent="Orbs" index="2" instance=ExtResource("4_yskh6")]
+[node name="AirOrb" parent="Orbs" index="2" instance=ExtResource("4_rkvcw")]
 position = Vector2(144, -32)
 
-[node name="AirOrb3" parent="Orbs" index="3" instance=ExtResource("4_yskh6")]
+[node name="AirOrb3" parent="Orbs" index="3" instance=ExtResource("4_rkvcw")]
 position = Vector2(160, -32)
 
-[node name="AirOrb2" parent="Orbs" index="4" instance=ExtResource("4_yskh6")]
+[node name="AirOrb2" parent="Orbs" index="4" instance=ExtResource("4_rkvcw")]
 position = Vector2(160, -48)
 
-[node name="CopyTopOrb" parent="Orbs" index="5" instance=ExtResource("5_k0253")]
+[node name="CopyTopOrb" parent="Orbs" index="5" instance=ExtResource("5_l8oxb")]
 position = Vector2(-64, 80)
 
-[node name="CopyTopOrb2" parent="Orbs" index="6" instance=ExtResource("5_k0253")]
+[node name="CopyTopOrb2" parent="Orbs" index="6" instance=ExtResource("5_l8oxb")]
 position = Vector2(128, 32)
 
-[node name="Goal" parent="." index="9" instance=ExtResource("6_syfgc")]
+[node name="Goal" parent="." index="9" instance=ExtResource("6_7k52k")]
 position = Vector2(-208, -16)
 
 [node name="Charges" type="Node2D" parent="." index="10"]
 
-[node name="ChargeGate" parent="Charges" index="0" instance=ExtResource("7_gbjsd")]
+[node name="ChargeGate" parent="Charges" index="0" instance=ExtResource("7_ske0g")]
 position = Vector2(-96, -16)
 requiredCharges = 2
 
-[node name="ChargeGate3" parent="Charges" index="1" instance=ExtResource("7_gbjsd")]
+[node name="ChargeGate3" parent="Charges" index="1" instance=ExtResource("7_ske0g")]
 position = Vector2(96, 32)
 requiredCharges = 1
 
-[node name="ElementCharge3" parent="Charges" index="2" instance=ExtResource("8_2otov")]
+[node name="ElementCharge3" parent="Charges" index="2" instance=ExtResource("8_jreot")]
 position = Vector2(32, 32)
 
-[node name="ElementCharge2" parent="Charges" index="3" instance=ExtResource("8_2otov")]
+[node name="ElementCharge2" parent="Charges" index="3" instance=ExtResource("8_jreot")]
 position = Vector2(176, 32)

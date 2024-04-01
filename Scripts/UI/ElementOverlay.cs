@@ -9,7 +9,7 @@ public partial class ElementOverlay : Node2D
 {
 	[Export] private PackedScene elementSymbol;
 	const float spaceBetweenEntries = 32f;
-	const int maxElements = 10;
+	const int maxElements = 14;
 
 	private ElementSymbol[] overlayElements;
 	private int firstEmptyIndex;

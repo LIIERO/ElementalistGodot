@@ -65,7 +65,6 @@ public partial class Player : CharacterBody2D
 	private float footstepTimer = 0.0f;
 
     // Input
-    public bool interactPressed = false; // Interact button pressed (handled by Interactable)
     float direction; // input direction
     bool restartPressed; // Reload scene button pressed
     bool jumpPressed;
@@ -99,10 +98,12 @@ public partial class Player : CharacterBody2D
         // Get input
         direction = Input.GetAxis("inputLeft", "inputRight");
         restartPressed = Input.IsActionJustPressed("inputRestart");
-        interactPressed = Input.IsActionJustPressed("inputUp");
         jumpPressed = Input.IsActionJustPressed("inputJump");
         jumpReleased = Input.IsActionJustReleased("inputJump");
         abilityPressed = Input.IsActionJustPressed("inputAbility");
+
+		// Pressed interact button
+		if (Input.IsActionJustPressed("inputUp")) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
 
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));
