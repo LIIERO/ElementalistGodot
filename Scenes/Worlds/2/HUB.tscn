@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5ktwc4380unw"]
+[gd_scene load_steps=16 format=3 uid="uid://b5ktwc4380unw"]
 
 [ext_resource type="PackedScene" uid="uid://5yfpjixmnqxt" path="res://Scenes/Worlds/2/Base.tscn" id="1_et00c"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_bhi1m"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="8_jcuj1"]
 [ext_resource type="Resource" uid="uid://befmg0py7p5k5" path="res://Data/LevelData/CaveOutskirts/3.tres" id="8_vpmsc"]
 [ext_resource type="Resource" uid="uid://cumbokm56e1mv" path="res://Data/LevelData/CaveOutskirts/4.tres" id="9_v6fqk"]
+[ext_resource type="Resource" uid="uid://4gprdleep38y" path="res://Data/LevelData/CaveOutskirts/6.tres" id="11_gtafy"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="11_je6uh"]
+[ext_resource type="Resource" uid="uid://gf6ebnqsmwal" path="res://Data/LevelData/CaveOutskirts/6S.tres" id="12_2cj48"]
 
 [node name="Game" instance=ExtResource("1_et00c")]
 
@@ -60,13 +62,21 @@ levelToTeleportTo = ExtResource("9_v6fqk")
 position = Vector2(192, 64)
 levelToTeleportTo = ExtResource("6_q6qbl")
 
+[node name="LevelTeleport8" parent="Interactables/Levels" index="6" instance=ExtResource("3_wj1er")]
+position = Vector2(256, 16)
+levelToTeleportTo = ExtResource("12_2cj48")
+
+[node name="LevelTeleport7" parent="Interactables/Levels" index="7" instance=ExtResource("3_wj1er")]
+position = Vector2(256, 80)
+levelToTeleportTo = ExtResource("11_gtafy")
+
 [node name="Sign" parent="Interactables" index="3" instance=ExtResource("11_je6uh")]
 position = Vector2(480, 16)
-Text = "These are all of the levels so far. Congratz!"
+Text = "You've completed all of the levels there are so far. Congratz!"
 
 [node name="Sign2" parent="Interactables" index="4" instance=ExtResource("11_je6uh")]
 position = Vector2(-192, 64)
-Text = "This area is early in development, so the levels, and their order may change a lot."
+Text = "This area is early in development, so the levels, and their order may change a lot. Also no music yet."
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 
@@ -78,7 +88,7 @@ position = Vector2(112, -32)
 
 [node name="Gate" parent="." index="8" node_paths=PackedStringArray("playerNode") instance=ExtResource("8_jcuj1")]
 position = Vector2(384, 0)
-requiredFragments = 26
+requiredFragments = 27
 playerNode = NodePath("../Zoe")
 
 [node name="BackgroundTiles" parent="." index="9"]

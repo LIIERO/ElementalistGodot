@@ -3,19 +3,19 @@ using System;
 using GlobalTypes;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Text.Json;
+using System.IO;
 
 public partial class SettingsManager : Node
 {
+    private GameState gameState;
     const int baseWindowWidth = 480;
     const int baseWindowHeight = 270;
 
-
-    public bool Fullscreen { get; private set; }
+    public bool Fullscreen { get; private set; } = true;
     public int WindowScale { get; private set; } = 2; // Set with resolution option TODO
-
     public int SoundVolume { get; private set; } = 5;
     public int MusicVolume { get; private set; } = 5;
-
 
     // audio volume stuff
     private const string soundBusName = "Sounds";
@@ -26,18 +26,25 @@ public partial class SettingsManager : Node
 
     public override void _Ready()
     {
+        gameState = GetNode<GameState>("/root/GameState");
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.ResizeDisabled, true); // Window resize disabled (in code to fix a bug)
         soundBusId = AudioServer.GetBusIndex(soundBusName);
         musicBusId = AudioServer.GetBusIndex(musicBusName);
 
-        // TODO: Read settings save file and apply
+        LoadPreferences();
 
         ChangeSoundVolume(SoundVolume);
         ChangeMusicVolume(MusicVolume);
 
-        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.ResizeDisabled, true); // Window resize disabled (in code to fix a bug)
-        Fullscreen = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen;
-        if (Fullscreen) Input.MouseMode = Input.MouseModeEnum.Hidden;
-        //ChangeToWindowed(); // Temporary, TODO: save file for player preferences that are loaded in this method
+        if (Fullscreen)
+        {
+            ChangeToFullscreen();
+        } 
+        else
+        {
+            ChangeWindowScale(WindowScale);
+            ChangeToWindowed();
+        }   
     }
 
 
@@ -47,11 +54,16 @@ public partial class SettingsManager : Node
         GetWindow().Size = new Vector2I(baseWindowWidth, baseWindowHeight) * windowScale; // bugfix
     }
 
-    public override void _Notification(int what) // bugfix
+    public override void _Notification(int what)
     {
-        if (what == NotificationApplicationFocusIn)
+        if (what == NotificationApplicationFocusIn) // bugfix
         {
             if (!Fullscreen) ChangeResolution(WindowScale);
+        }
+
+        if (what == NotificationWMCloseRequest)
+        {
+            SavePreferences();
         }
     }
 
@@ -96,5 +108,33 @@ public partial class SettingsManager : Node
         MusicVolume = volume;
         float volume_db = GameUtils.LinearToDecibel(volume / 10f);
         AudioServer.SetBusVolumeDb(musicBusId, volume_db);
+    }
+
+
+    private const string preferencesPath = "user://preferences.json";
+    public void SavePreferences()
+    {
+        string path = ProjectSettings.GlobalizePath(preferencesPath);
+        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume);
+        string jsonString = JsonSerializer.Serialize(data);
+        File.WriteAllText(path, jsonString);
+    }
+
+    private void LoadPreferences()
+    {
+        string path = ProjectSettings.GlobalizePath(preferencesPath);
+        if (!File.Exists(path))
+        {
+            GD.Print("Path not found");
+            gameState.FirstBoot = true;
+            return;
+        }
+        string jsonString = File.ReadAllText(path);
+        PreferencesData data = JsonSerializer.Deserialize<PreferencesData>(jsonString)!;
+
+        Fullscreen = data.Fullscreen;
+        WindowScale = data.WindowScale;
+        SoundVolume = data.SoundVolume;
+        MusicVolume = data.MusicVolume;
     }
 }

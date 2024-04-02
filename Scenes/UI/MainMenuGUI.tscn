@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://kb46qb43ayfp"]
+[gd_scene load_steps=10 format=3 uid="uid://kb46qb43ayfp"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_pqhl0"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/GrayOutContinueButton.cs" id="7_t0sbl"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="10_ul3lr"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="12_eg7p4"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="13_b1y81"]
@@ -110,9 +111,9 @@ region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="MainButtons/ContinueButton"]
-modulate = Color(1, 1, 1, 0.501961)
 position = Vector2(64, 8)
 texture = ExtResource("15_j3jau")
+script = ExtResource("7_t0sbl")
 
 [node name="Text" type="Label" parent="MainButtons/ContinueButton/Sprite2D"]
 texture_filter = 1

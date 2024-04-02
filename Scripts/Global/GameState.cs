@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using GlobalTypes;
 using System.Linq;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 public partial class GameState : Node
 {
@@ -15,7 +14,7 @@ public partial class GameState : Node
         { "H", new string[] { "HUB", "0" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } } // Cave Outskirts
+        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "6S" } } // Cave Outskirts
     };
 
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
@@ -26,15 +25,15 @@ public partial class GameState : Node
     public int NoSunFragments { get; private set; } = 0;
     public string CurrentWorld { get; private set; } = "0";
     public string PreviousWorld { get; private set; } = "0";
-    public string CurrentLevel { get; private set; } = "HUB"; // Current level ID
-    public string PreviousLevel { get; private set; } = "HUB";
+    public string CurrentLevel { get; private set; } = "0"; // Current level ID
+    public string PreviousLevel { get; private set; } = "0";
 
 
     // Data not loaded from the save file
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
-    
+    public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
 
 
     // METHODS ===========================================================================================================
@@ -193,6 +192,12 @@ public partial class GameState : Node
         PreviousWorld = "0";
 
         SaveToSaveFile(id);
+    }
+
+    public bool SaveFileExists(string id)
+    {
+        string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
+        return File.Exists(path);
     }
 
 

@@ -9,12 +9,18 @@ public partial class MainMenu : ButtonManager
 
     // Singletons
     private LevelTransitions levelTransitions;
+    private SettingsManager settingsManager;
     //private CustomSignals customSignals;
 
     public override void _Ready()
 	{
         //GD.Print(sceneEnterItemIndex);
+        settingsManager = GetNode<SettingsManager>("/root/SettingsManager");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
+        gameState = GetNode<GameState>("/root/GameState");
+
+        if (sceneEnterItemIndex == 0 && gameState.SaveFileExists("0")) // If there is a save file, the "continue" button will be selected first
+            sceneEnterItemIndex = 1;
 
         startingIndex = sceneEnterItemIndex;
 		base._Ready();
@@ -35,6 +41,7 @@ public partial class MainMenu : ButtonManager
             }
             if (CurrentItemIndex == 1) // continue
             {
+                if (!gameState.SaveFileExists("0")) return;
                 gameState.LoadFromSaveFile("0");
                 levelTransitions.StartGameTransition(); // transition from menu to game
             }
@@ -44,6 +51,7 @@ public partial class MainMenu : ButtonManager
             }
             if (CurrentItemIndex == 3) // exit
             {
+                settingsManager.SavePreferences();
                 GetTree().Quit();
             }
         }

@@ -13,6 +13,7 @@ public partial class AudioManager : Node
     private const float FADEOUTTIME = 1.0f;
     private const float FADEINTIME = 6.0f;
     private float fadeTimeProgress;
+    private float music_volume_db;
 
     private int musicFadeBusId;
 
@@ -23,17 +24,17 @@ public partial class AudioManager : Node
         // Create music dictionary
         worldMusicDictionary = new Dictionary<string, AudioStreamPlayer>()
         {
-            { "H", musicPurpleForest },
+            { "H", musicVoid },
             { "0", musicPurpleForest },
             { "1", musicDistantShore },
-            { "2", musicDistantShore }
+            { "2", musicVoid }
         };
     }
 
     public override void _Process(double delta)
     {
         if (fadingOut) FadeOutProcess(delta);
-        if (fadingIn) FadeInProcess(delta);
+        else if (fadingIn) FadeInProcess(delta);
     }
 
     private void FadeOutProcess(double delta)
@@ -45,10 +46,9 @@ public partial class AudioManager : Node
             StopMusic();
         }
 
-        float volume_db = GameUtils.LinearToDecibel(fadeTimeProgress / FADEOUTTIME);
-        AudioServer.SetBusVolumeDb(musicFadeBusId, volume_db);
-
-        
+        float new_music_volume_db = GameUtils.LinearToDecibel(fadeTimeProgress / FADEOUTTIME);
+        music_volume_db = new_music_volume_db <= music_volume_db ? new_music_volume_db : music_volume_db;
+        AudioServer.SetBusVolumeDb(musicFadeBusId, music_volume_db);
     }
 
     private void FadeInProcess(double delta)
@@ -60,8 +60,8 @@ public partial class AudioManager : Node
             fadeTimeProgress = 0.0f;
         }
 
-        float volume_db = GameUtils.LinearToDecibel((FADEINTIME - fadeTimeProgress) / FADEINTIME);
-        AudioServer.SetBusVolumeDb(musicFadeBusId, volume_db);
+        music_volume_db = GameUtils.LinearToDecibel((FADEINTIME - fadeTimeProgress) / FADEINTIME);
+        AudioServer.SetBusVolumeDb(musicFadeBusId, music_volume_db);
     }
 
     public void PlayWorldMusic(string worldId)
@@ -126,4 +126,5 @@ public partial class AudioManager : Node
     [ExportSubgroup("Music")]
     [Export] public AudioStreamPlayer musicPurpleForest;
     [Export] public AudioStreamPlayer musicDistantShore;
+    [Export] public AudioStreamPlayer musicVoid;
 }

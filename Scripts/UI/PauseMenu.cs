@@ -5,6 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 public partial class PauseMenu : ButtonManager
 {
     // singletons
+    private SettingsManager settingsManager;
     private LevelTransitions levelTransitions;
     private AudioManager audioManager;
 
@@ -12,6 +13,7 @@ public partial class PauseMenu : ButtonManager
 
 	public override void _Ready()
 	{
+        settingsManager = GetNode<SettingsManager>("/root/SettingsManager");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
 
@@ -56,6 +58,7 @@ public partial class PauseMenu : ButtonManager
             {
                 audioManager.StopMusic();
                 gameState.SaveToSaveFile("0");
+                settingsManager.SavePreferences();
                 GetTree().Quit();
             }
         }

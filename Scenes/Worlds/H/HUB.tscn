@@ -50,7 +50,7 @@ playerNode = NodePath("../../Zoe")
 
 [node name="Gate3" parent="Gates" index="3" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(320, 48)
-requiredFragments = 26
+requiredFragments = 27
 playerNode = NodePath("../../Zoe")
 
 [node name="Interactables" type="Node2D" parent="." index="6"]
