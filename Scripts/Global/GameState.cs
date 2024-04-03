@@ -31,9 +31,11 @@ public partial class GameState : Node
 
     // Data not loaded from the save file
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
+    public bool IsGameplayActive { get; private set; } = false; // Are we menuing or gameing
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
     public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
+    
 
 
     // METHODS ===========================================================================================================
@@ -105,6 +107,7 @@ public partial class GameState : Node
 
     public void LoadGame()
     {
+        IsGameplayActive = true;
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
     }
 
@@ -138,6 +141,7 @@ public partial class GameState : Node
 
     public void LoadMenu()
     {
+        IsGameplayActive = false;
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/MainMenu.tscn"));
     }
 
@@ -205,7 +209,7 @@ public partial class GameState : Node
     //private bool isGameDebugUnlocked = false;
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("inputDebugUnlockAll"))
+        if (Input.IsActionJustPressed("inputDebugUnlockSpecific"))
         {
             if (IsHubLoaded()) // Unlock whole current world
             {
@@ -227,6 +231,20 @@ public partial class GameState : Node
             
             //isGameDebugUnlocked = true;
             RestartCurrentLevel();
+        }
+
+
+        if (Input.IsActionJustPressed("inputDebugUnlockAll"))
+        {
+                NoSunFragments = 999;
+                foreach (KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
+                {
+                    foreach (string levelKey in world.Value.Keys.ToList())
+                    {
+                        CompletedLevels[world.Key][levelKey] = true;
+                    }
+                }
+                RestartCurrentLevel();
         }
     }
 }

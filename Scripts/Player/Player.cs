@@ -59,6 +59,7 @@ public partial class Player : CharacterBody2D
 	public bool isGrounded = false;
 	public bool isClinging = false;
 	public bool isDying = false;
+	public bool canJumpCancel = true;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
     private string currentAnimation;
@@ -151,7 +152,10 @@ public partial class Player : CharacterBody2D
 		if (isUsingAbility) return;
 
 		if (isGrounded)
-			coyoteTimeCounter = coyoteTime;
+		{
+            coyoteTimeCounter = coyoteTime;
+            canJumpCancel = true;
+        }
 		else coyoteTimeCounter -= (float)delta;
 
 		if (jumpPressed)
@@ -167,12 +171,11 @@ public partial class Player : CharacterBody2D
 			footstepTimer = -0.1f; // random negative number so player makes sound falling on the ground
 		}
 
-		if (Velocity.Y < 0.0f && jumpReleased) // cancel jump
+		if (canJumpCancel && Velocity.Y < 0.0f && jumpReleased) // cancel jump
 		{
 			Velocity = new Vector2(Velocity.X, Velocity.Y * jumpCancelFraction);
 			coyoteTimeCounter = 0f;
 		}
-		
 	}
 
 
@@ -233,6 +236,7 @@ public partial class Player : CharacterBody2D
                     StopAbility();
                     SparkleAbilityDust(ElementState.earth, 0.1f);
                     abilityBufferTimeCounter = 0f; // Preventing overlapping abilities
+					isGrounded = false;
 					Velocity = new Vector2(Velocity.X, earthJumpPower);
 					audioManager.earthAbilityEnd.Play();
 				}
@@ -290,6 +294,7 @@ public partial class Player : CharacterBody2D
 		Velocity = new Vector2(0f, Velocity.Y * waterJumpMomentumPreservation);
 		coyoteTimeCounter = 0f;
 		jumpBufferTimeCounter = 0f;
+		canJumpCancel = false;
 	}
 
 	private void SpawnFireball()

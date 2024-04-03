@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 public partial class Options : ButtonManager
 {
     // Button indexes
-    private const int MENU = 0;
+    private const int BACK = 0;
     private const int FULLSCREEN = 1;
     private const int RESOLUTION = 2;
     private const int SOUNDVOLUME = 3;
@@ -24,6 +24,19 @@ public partial class Options : ButtonManager
         InitializeElementsEndFrame();
 	}
 
+    private void GoBack()
+    {
+        if (gameState.IsGameplayActive)
+        {
+            levelTransitions.StartGameTransition();
+        }
+        else
+        {
+            MainMenu.sceneEnterItemIndex = 2; // menu starts with options selected
+            levelTransitions.StartMenuTransition();
+        }
+    }
+
     public override void _Process(double delta)
 	{
         if (gameState.IsLevelTransitionPlaying) return;
@@ -32,16 +45,14 @@ public partial class Options : ButtonManager
 
         if (Input.IsActionJustPressed("ui_cancel"))
         {
-            MainMenu.sceneEnterItemIndex = 2; // menu starts with options selected
-            levelTransitions.StartMenuTransition();
+            GoBack();
         }
 
         if (Input.IsActionJustPressed("ui_accept"))
         {
-            if (CurrentItemIndex == MENU)
+            if (CurrentItemIndex == BACK)
             {
-                MainMenu.sceneEnterItemIndex = 2; // menu starts with options selected
-                levelTransitions.StartMenuTransition();
+                GoBack();
             }
             if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
             {
