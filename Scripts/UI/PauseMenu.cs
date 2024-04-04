@@ -48,14 +48,14 @@ public partial class PauseMenu : ButtonManager
             }
             if (CurrentItemIndex == 1) // options
             {
-                gameState.SaveToSaveFile("0");
+                gameState.SaveToSaveFile(gameState.CurrentSaveFileID);
                 audioManager.StopMusic();
                 Resume();
                 levelTransitions.StartOptionsTransition();
             }
             if (CurrentItemIndex == 2) // main menu (save and exit)
             {
-                gameState.SaveToSaveFile("0");
+                gameState.SaveToSaveFile(gameState.CurrentSaveFileID);
                 audioManager.StopMusic();
                 Resume();
                 MainMenu.sceneEnterItemIndex = 1; // Menu starts with continue selected

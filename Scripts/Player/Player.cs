@@ -104,7 +104,7 @@ public partial class Player : CharacterBody2D
         abilityPressed = Input.IsActionJustPressed("inputAbility");
 
 		// Pressed interact button
-		if (Input.IsActionJustPressed("inputUp")) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
+		if (Input.IsActionJustPressed("inputUp") && !IsFrozen) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
 
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));

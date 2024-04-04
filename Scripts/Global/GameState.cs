@@ -32,6 +32,7 @@ public partial class GameState : Node
     // Data not loaded from the save file
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGameplayActive { get; private set; } = false; // Are we menuing or gameing
+    public string CurrentSaveFileID { get; private set; } = "0";
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
     public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
@@ -184,6 +185,8 @@ public partial class GameState : Node
         PreviousWorld = data.PreviousWorld;
         CurrentLevel = data.CurrentLevel;
         PreviousLevel = data.PreviousLevel;
+
+        CurrentSaveFileID = id;
     }
 
     public void CreateNewSaveFile(string id)
@@ -195,6 +198,8 @@ public partial class GameState : Node
         CurrentWorld = "0";
         PreviousWorld = "0";
 
+        CurrentSaveFileID = id;
+
         SaveToSaveFile(id);
     }
 
@@ -202,6 +207,15 @@ public partial class GameState : Node
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
         return File.Exists(path);
+    }
+
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMCloseRequest)
+        {
+            if (IsGameplayActive)
+                SaveToSaveFile(CurrentSaveFileID);
+        }
     }
 
 
