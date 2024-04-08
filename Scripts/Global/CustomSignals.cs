@@ -37,6 +37,9 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void DialogBoxHideEventHandler();
 
+    [Signal]
+    public delegate void PopupResultEventHandler(bool result);
+
     // Gameplay
 
     [Signal]

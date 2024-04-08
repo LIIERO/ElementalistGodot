@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://d160o16ouxexp"]
+
+[ext_resource type="PackedScene" uid="uid://bwabd5uj1swuf" path="res://Scenes/Worlds/3/Base.tscn" id="1_gqo2d"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_5mktq"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_vd3ip"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="4_nes6t"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="5_sbon8"]
+[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="6_y0p3r"]
+[ext_resource type="PackedScene" uid="uid://cnwfel811ty30" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceDistantShoreline.tscn" id="7_id7pt"]
+[ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="8_rikt7"]
+[ext_resource type="Resource" uid="uid://cxdpmef6nfqrr" path="res://Data/LevelData/AshIsland/0.tres" id="9_dmtht"]
+
+[node name="Game" instance=ExtResource("1_gqo2d")]
+
+[node name="Zoe" parent="." index="1"]
+position = Vector2(0, 32)
+
+[node name="GroundTiles" parent="." index="3"]
+layer_0/tile_data = PackedInt32Array(524303, 720896, 3, 458767, 720896, 2, 524302, 589824, 3, 458766, 589824, 2, 524301, 589824, 3, 458765, 589824, 2, 524300, 589824, 3, 458764, 589824, 2, 524299, 589824, 3, 458763, 589824, 2, 524298, 589824, 3, 458762, 589824, 2, 524297, 589824, 3, 458761, 589824, 2, 524296, 589824, 3, 458760, 589824, 2, 524295, 589824, 3, 458759, 589824, 2, 524294, 589824, 3, 458758, 589824, 2, 524293, 589824, 3, 458757, 589824, 2, 524292, 589824, 3, 458756, 589824, 2, 524291, 589824, 3, 458755, 589824, 2, 524290, 589824, 3, 458754, 589824, 2, 524289, 589824, 3, 458753, 589824, 2, 524288, 589824, 3, 458752, 589824, 2, 589823, 589824, 3, 524287, 589824, 2, 589822, 589824, 3, 524286, 589824, 2, 589821, 589824, 3, 524285, 589824, 2, 589820, 589824, 3, 524284, 589824, 2, 589819, 589824, 3, 524283, 589824, 2, 589818, 589824, 3, 524282, 589824, 2, 589817, 589824, 3, 524281, 589824, 2, 589816, 589824, 3, 524280, 589824, 2, 589815, 589824, 3, 524279, 589824, 2, 589814, 589824, 3, 524278, 589824, 2, 589813, 589824, 3, 524277, 589824, 2, 589812, 589824, 3, 524276, 589824, 2, 589811, 589824, 3, 524275, 589824, 2, 589810, 589824, 3, 524274, 589824, 2, 589809, 589824, 3, 524273, 589824, 2, 589808, 524288, 3, 524272, 524288, 1, 458736, 262144, 1, 393200, 0, 1, 327664, 0, 1, 262128, 0, 1, 196592, 0, 1, 131056, 0, 1, 393231, 458752, 1, 393230, 655360, 0, 393229, 655360, 0, 393228, 655360, 0, 393227, 655360, 0, 393226, 655360, 0, 393225, 655360, 0, 393224, 655360, 0, 393223, 393216, 1, 393222, 589824, 2, 393221, 589824, 2, 393220, 589824, 2, 393219, 589824, 2, 393218, 589824, 2, 393217, 589824, 2, 393216, 589824, 2, 458751, 589824, 2, 458750, 589824, 2, 458749, 589824, 2, 458748, 589824, 2, 458747, 589824, 2, 458746, 589824, 2, 458745, 589824, 2, 458744, 327680, 1, 458743, 655360, 0, 458742, 655360, 0, 458741, 655360, 0, 458740, 655360, 0, 458739, 655360, 0, 458738, 655360, 0, 458737, 655360, 0, 327695, 0, 1, 262159, 0, 1, 196623, 0, 1, 131087, 0, 1, 65551, 0, 1, 15, 0, 1, -65521, 0, 1, -131057, 0, 1, -196593, 0, 1, -262129, 0, 1, -327665, 0, 1, -393201, 0, 1, -458737, 0, 1, -524273, 0, 1, -589809, 0, 1, -655345, 196608, 0, -655346, 131072, 3, -655347, 131072, 3, -655348, 131072, 3, -655349, 131072, 3, -655350, 131072, 3, -655351, 131072, 3, -655352, 131072, 3, -655353, 131072, 3, -655354, 131072, 3, -655355, 131072, 3, -655356, 131072, 3, -655357, 131072, 3, -655358, 131072, 3, -655359, 131072, 3, -655360, 131072, 3, -589825, 131072, 3, -589826, 131072, 3, -589827, 131072, 3, -589828, 131072, 3, -589829, 131072, 3, -589830, 131072, 3, -589831, 131072, 3, -589832, 131072, 3, -589833, 131072, 3, -589834, 131072, 3, -589835, 131072, 3, -589836, 131072, 3, -589837, 131072, 3, -589838, 131072, 3, -589839, 131072, 3, -589840, 65536, 0, 65520, 0, 1, -16, 0, 1, -65552, 0, 1, -131088, 0, 1, -196624, 0, 1, -262160, 0, 1, -327696, 0, 1, -393232, 0, 1, -458768, 0, 1, -524304, 0, 1, 196608, 589824, 2, 131072, 655360, 0, 262143, 589824, 2, 196607, 655360, 0, 262142, 327680, 1, 196606, 524288, 0, 196609, 393216, 1, 131073, 720896, 0, 262147, 393216, 1, 196611, 720896, 0, 262146, 589824, 2, 196610, 655360, 0, 262145, 589824, 2, 262144, 589824, 2, 327679, 589824, 2, 327678, 589824, 2, 327677, 589824, 2, 262141, 655360, 0, 327676, 327680, 1, 262140, 524288, 0, 327685, 393216, 1, 262149, 720896, 0, 327684, 589824, 2, 262148, 655360, 0, 327683, 589824, 2, 327682, 589824, 2, 327681, 589824, 2, 327680, 589824, 2, 393215, 589824, 2, 393214, 589824, 2, 393213, 589824, 2, 393212, 589824, 2, 393211, 589824, 2, 327675, 655360, 0, 393210, 327680, 1, 327674, 524288, 0, 393209, 655360, 0, 393208, 524288, 0, 327687, 720896, 0, 327686, 655360, 0)
+
+[node name="Orbs" type="Node2D" parent="." index="4"]
+
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_5mktq")]
+position = Vector2(-160, -112)
+
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_vd3ip")]
+position = Vector2(-176, -112)
+
+[node name="CopyTopOrb" parent="Orbs" index="2" instance=ExtResource("4_nes6t")]
+position = Vector2(-192, -112)
+
+[node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("5_sbon8")]
+position = Vector2(-208, -112)
+
+[node name="FireOrb" parent="Orbs" index="4" instance=ExtResource("6_y0p3r")]
+position = Vector2(-224, -112)
+
+[node name="Interactables" type="Node2D" parent="." index="5"]
+
+[node name="EntranceDistantShoreline" parent="Interactables" index="0" instance=ExtResource("7_id7pt")]
+position = Vector2(0, 32)
+
+[node name="Levels" type="Node2D" parent="Interactables" index="1"]
+
+[node name="LevelTeleport" parent="Interactables/Levels" index="0" instance=ExtResource("8_rikt7")]
+position = Vector2(-48, 48)
+levelToTeleportTo = ExtResource("9_dmtht")

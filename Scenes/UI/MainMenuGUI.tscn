@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://kb46qb43ayfp"]
+[gd_scene load_steps=11 format=3 uid="uid://kb46qb43ayfp"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_pqhl0"]
+[ext_resource type="PackedScene" uid="uid://bnk38gdh7ajcj" path="res://Scenes/UI/YesNoScreen.tscn" id="2_xl566"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/GrayOutContinueButton.cs" id="7_t0sbl"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="10_ul3lr"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="12_eg7p4"]
@@ -37,6 +38,7 @@ _data = {
 texture_filter = 1
 position = Vector2(0, 72)
 script = ExtResource("1_pqhl0")
+yesNoScreen = ExtResource("2_xl566")
 buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("OptionsButton"), NodePath("ExitButton")]
 
 [node name="NewGameButton" type="Node2D" parent="MainButtons"]

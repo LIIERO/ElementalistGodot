@@ -200,7 +200,7 @@ animations = [{
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npdoq"]
-size = Vector2(9, 19)
+size = Vector2(10, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5dbt"]
 
@@ -246,7 +246,7 @@ initial_velocity_max = 20.0
 color_ramp = SubResource("Gradient_n5bef")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -9.5)
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_npdoq")
 
 [node name="Wallcheck" type="ShapeCast2D" parent="."]

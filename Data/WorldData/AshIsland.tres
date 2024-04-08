@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3 uid="uid://bo6r2gn6ms0jg"]
+
+[ext_resource type="Script" path="res://Scripts/Data/WorldData.cs" id="1_yjani"]
+
+[resource]
+script = ExtResource("1_yjani")
+ID = "3"
+Name = "Islands of Ashes"

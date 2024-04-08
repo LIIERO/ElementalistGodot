@@ -64,6 +64,7 @@ public partial class Player : CharacterBody2D
 
     private string currentAnimation;
 	private float footstepTimer = 0.0f;
+	private float jumpPreventionTimer = -0.01f; // for teleport bug
 
     // Input
     float direction; // input direction
@@ -149,9 +150,10 @@ public partial class Player : CharacterBody2D
 
 	private void Jump(bool jumpPressed, bool jumpReleased, double delta)
 	{
-		if (isUsingAbility) return;
+        if (jumpPreventionTimer > 0.0f) jumpPreventionTimer -= (float)delta;
+        if (isUsingAbility || jumpPreventionTimer > 0.0f) return;
 
-		if (isGrounded)
+        if (isGrounded)
 		{
             coyoteTimeCounter = coyoteTime;
             canJumpCancel = true;
@@ -299,13 +301,12 @@ public partial class Player : CharacterBody2D
 
 	private void SpawnFireball()
 	{
-		float downOffset = -9f;
-		float rightOffset = isFacingRight ? 10f : -10f;
+		float rightOffset = isFacingRight ? 9f : -9f;
 
         Node2D instance = fireball.Instantiate() as Node2D;
 		(instance as Fireball).SetDirection(isFacingRight);
         spawner.AddChild(instance);
-        instance.GlobalPosition = GlobalPosition + new Vector2(rightOffset, downOffset);
+        instance.GlobalPosition = GlobalPosition + new Vector2(rightOffset, 0.0f);
 	}
 
     public void StartAbilityDust(ElementState elementState)
@@ -431,11 +432,18 @@ public partial class Player : CharacterBody2D
 
 	public void SetPosition(Vector2 position)
 	{
-		GlobalPosition = position;
+		jumpPreventionTimer = 0.1f;
+        coyoteTimeCounter = 0f;
+        jumpBufferTimeCounter = 0f;
+        canJumpCancel = false;
+		isGrounded = false;
+		Velocity = new Vector2(0f, 0f);
+
+        GlobalPosition = position;
 	}
 
     public void Kill()
     {
-		Die(deathTime);
+        Die(deathTime);
     }
 }

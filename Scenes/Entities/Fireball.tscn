@@ -1,48 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqil6g1p2c3cp"]
+[gd_scene load_steps=4 format=3 uid="uid://bqil6g1p2c3cp"]
 
-[ext_resource type="Texture2D" uid="uid://cxwurd5rcg82y" path="res://Graphics/Entities/fireball.png" id="1_rg0h7"]
 [ext_resource type="Script" path="res://Scripts/Entities/Fireball.cs" id="1_vefbd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cilp7"]
-size = Vector2(16, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ckb7"]
-atlas = ExtResource("1_rg0h7")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mgrgm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ckb7")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://buyfr2nnlr3qq" path="res://Graphics/Effects/ZoeEchoTrail/fire_echo.png" id="2_cjq2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uo3yn"]
-size = Vector2(14, 10)
+size = Vector2(10, 19)
 
-[node name="Fireball" type="Area2D" node_paths=PackedStringArray("spriteNode")]
-z_index = 4
+[node name="Fireball" type="CharacterBody2D" node_paths=PackedStringArray("spriteNode")]
+motion_mode = 1
 script = ExtResource("1_vefbd")
-spriteNode = NodePath("AnimatedSprite2D")
+spriteNode = NodePath("Sprite2D")
 
-[node name="AreaShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cilp7")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_mgrgm")
-animation = &"Idle"
-
-[node name="Hitbox" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_uo3yn")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("2_cjq2o")
 
-[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -9.5)
+scale = Vector2(1, 0.95)
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnVisibleOnScreenNotifier2dScreenExited"]

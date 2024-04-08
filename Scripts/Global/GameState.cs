@@ -14,7 +14,8 @@ public partial class GameState : Node
         { "H", new string[] { "HUB", "0" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "6S" } } // Cave Outskirts
+        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "6S" } }, // Cave Outskirts
+        { "3", new string[] { "HUB", "0"} } // Islands of Ashes
     };
 
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready

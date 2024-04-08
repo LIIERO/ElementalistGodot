@@ -31,23 +31,24 @@ public partial class ElementCharge : Area2D
         }
     }
 
-    void _OnBodyEntered(Node2D player)
+    void _OnBodyEntered(Node2D body)
     {
-        if (player is not Player) return;
-        playerInRange = player as Player;
-    }
-
-    void _OnBodyExited(Node2D player)
-    {
-        if (player is not Player) return;
-        playerInRange = null;
-    }
-
-    void _OnAreaEntered(Area2D fireball)
-    {
-        if (fireball is Fireball)
+        if (body is Player)
+        {
+            playerInRange = body as Player;
+        }
+        
+        if (body is Fireball)
         {
             Activate();
+        }
+    }
+
+    void _OnBodyExited(Node2D body)
+    {
+        if (body is Player)
+        {
+            playerInRange = null;
         }
     }
 

@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnk38gdh7ajcj"]
+
+[ext_resource type="Script" path="res://Scripts/UI/YesNoScreen.cs" id="1_3c260"]
+[ext_resource type="Texture2D" path="res://Graphics/UI/Menu/popup.png" id="2_b6uxu"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_5f4ao"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="4_ofjm8"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="5_rtp4m"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="6_aewcj"]
+[ext_resource type="Texture2D" uid="uid://boqmp3jhevoyc" path="res://Graphics/UI/Menu/menu_button_short.png" id="7_ck0nj"]
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
+[node name="YesNoScreen" type="CanvasLayer" node_paths=PackedStringArray("noButton", "yesButton", "popupText")]
+process_mode = 3
+script = ExtResource("1_3c260")
+noButton = NodePath("NO")
+yesButton = NodePath("YES")
+popupText = NodePath("DialogBox/Text")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.705882)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 488.0
+offset_bottom = 280.0
+
+[node name="DialogBox" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(240, 96)
+texture = ExtResource("2_b6uxu")
+
+[node name="Text" type="Label" parent="DialogBox"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -60.0
+offset_right = -149.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5f4ao")
+theme_override_font_sizes/font_size = 12
+text = "POPUP TEXT"
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="NO" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(112, 128)
+script = ExtResource("4_ofjm8")
+
+[node name="OrbSelection" type="Node2D" parent="NO"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NO/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("5_rtp4m")
+
+[node name="MovedByAnimation" type="Node2D" parent="NO/OrbSelection"]
+position = Vector2(0, 0.173541)
+
+[node name="Sprite2D" type="Sprite2D" parent="NO/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("6_aewcj")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="NO"]
+position = Vector2(32, 8)
+texture = ExtResource("7_ck0nj")
+
+[node name="Text" type="Label" parent="NO/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -32.0
+offset_top = -7.0
+offset_right = -31.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5f4ao")
+theme_override_font_sizes/font_size = 12
+text = "NO"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="YES" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(288, 128)
+script = ExtResource("4_ofjm8")
+
+[node name="OrbSelection" type="Node2D" parent="YES"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YES/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("5_rtp4m")
+
+[node name="MovedByAnimation" type="Node2D" parent="YES/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="YES/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("6_aewcj")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="YES"]
+position = Vector2(32, 8)
+texture = ExtResource("7_ck0nj")
+
+[node name="Text" type="Label" parent="YES/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -32.0
+offset_top = -7.0
+offset_right = -31.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5f4ao")
+theme_override_font_sizes/font_size = 12
+text = "YES"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2

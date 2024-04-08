@@ -1,15 +1,14 @@
 using Godot;
 using System;
 
-public partial class Fireball : Area2D
+public partial class Fireball : CharacterBody2D
 {
     private GameState gameState; // singleton
-    //private StaticBody2D hitbox;
 
-    [Export] AnimatedSprite2D spriteNode;
-	const float speed = 200.0f;
+    [Export] Sprite2D spriteNode;
+	const float speed = 150.0f;
     const float activationTime = 0.05f;
-    const float playerTeleportOffset = 8.0f;
+    //const float playerTeleportOffset = 2.0f;
 
     private float flyTime = 0.0f; 
 
@@ -18,13 +17,28 @@ public partial class Fireball : Area2D
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
-        //hitbox = GetNode<StaticBody2D>("Hitbox");
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
         flyTime += (float)delta;
-        Position += new Vector2((float)delta * direction * speed, 0.0f);
+        Velocity = new Vector2(direction * speed, 0.0f);
+
+        var collision = MoveAndCollide(Velocity * (float)delta);
+        if (collision != null)
+        {
+            if ((collision.GetCollider() as Node).IsInGroup("PlayerCollider"))
+            {
+                QueueFree();
+
+                if (flyTime > activationTime)
+                {
+                    //Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
+                    //gameState.SetPlayerPosition(GlobalPosition + playerOffset);
+                    gameState.SetPlayerPosition(GlobalPosition);
+                }
+            }
+        }
     }
 
 	public void SetDirection(bool right)
@@ -33,23 +47,9 @@ public partial class Fireball : Area2D
 		spriteNode.FlipH = !right;
     }
 
-    void _OnBodyEntered(Node2D body)
-	{
-		if (body.IsInGroup("PlayerCollider"))
-		{
-			QueueFree();
-
-            if (flyTime > activationTime)
-            {
-                Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
-                gameState.SetPlayerPosition(GlobalPosition + playerOffset);
-            }
-                
-		}
-	}
-
 	void _OnVisibleOnScreenNotifier2dScreenExited()
 	{
+        GD.Print("Exited Screen");
         QueueFree();
     }
 }

@@ -27,7 +27,8 @@ public partial class AudioManager : Node
             { "H", musicVoid },
             { "0", musicPurpleForest },
             { "1", musicDistantShore },
-            { "2", musicVoid }
+            { "2", musicVoid },
+            { "3", musicVoid }
         };
     }
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbf557hku721r"]
+
+[ext_resource type="PackedScene" uid="uid://cqushr7gr33sh" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceBase.tscn" id="1_iuegw"]
+[ext_resource type="Resource" uid="uid://bo6r2gn6ms0jg" path="res://Data/WorldData/AshIsland.tres" id="2_k31io"]
+
+[node name="Entrance" instance=ExtResource("1_iuegw")]
+worldToTeleportTo = ExtResource("2_k31io")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(48, 64, 48, 64)
