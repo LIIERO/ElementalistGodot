@@ -51,16 +51,22 @@ public partial class Goal : Area2D
         customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.DetatchFromObjectToFollow));
         initialPosition = Position;
 
+        bool lightActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
+        if (!lightActive)
+        {
+            backgroundLight.QueueFree();
+        }
+
         if (gameState.HasCurrentLevelBeenCompleted()) // White goal
         {
             sprite.Play("LevelCompleted");
-            backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.white];
+            if (lightActive) backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.white];
         }
 
         else // Yellow goal
         {
             sprite.Play("LevelNotCompleted");
-            backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.yellow];
+            if (lightActive) backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.yellow];
         }
     }
 

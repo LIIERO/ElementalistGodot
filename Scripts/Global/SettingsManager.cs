@@ -13,9 +13,10 @@ public partial class SettingsManager : Node
     const int baseWindowHeight = 270;
 
     public bool Fullscreen { get; private set; } = true;
-    public int WindowScale { get; private set; } = 2; // Set with resolution option TODO
+    public int WindowScale { get; private set; } = 2;
     public int SoundVolume { get; private set; } = 5;
     public int MusicVolume { get; private set; } = 5;
+    public bool LightParticlesActive {  get; private set; } = true;
 
     // audio volume stuff
     private const string soundBusName = "Sounds";
@@ -110,12 +111,17 @@ public partial class SettingsManager : Node
         AudioServer.SetBusVolumeDb(musicBusId, volume_db);
     }
 
+    public void SetLightAndParticlesVisibility(bool visible)
+    {
+        LightParticlesActive = visible;
+    }
+
 
     private const string preferencesPath = "user://preferences.json";
     public void SavePreferences()
     {
         string path = ProjectSettings.GlobalizePath(preferencesPath);
-        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume);
+        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume, LightParticlesActive);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -136,5 +142,6 @@ public partial class SettingsManager : Node
         WindowScale = data.WindowScale;
         SoundVolume = data.SoundVolume;
         MusicVolume = data.MusicVolume;
+        LightParticlesActive = data.LightParticlesActive;
     }
 }

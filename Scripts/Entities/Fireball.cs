@@ -6,7 +6,7 @@ public partial class Fireball : CharacterBody2D
     private GameState gameState; // singleton
 
     [Export] Sprite2D spriteNode;
-	const float speed = 150.0f;
+	const float speed = 200.0f;
     const float activationTime = 0.05f;
     //const float playerTeleportOffset = 2.0f;
 

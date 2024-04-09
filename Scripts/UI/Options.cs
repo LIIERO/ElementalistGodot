@@ -11,6 +11,7 @@ public partial class Options : ButtonManager
     private const int RESOLUTION = 2;
     private const int SOUNDVOLUME = 3;
     private const int MUSICVOLUME = 4;
+    private const int LIGHTPARTICLES = 5;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -70,6 +71,19 @@ public partial class Options : ButtonManager
                 }
             }
             
+            if (CurrentItemIndex == LIGHTPARTICLES) // toggle light and particles
+            {
+                if (settingsManager.LightParticlesActive)
+                {
+                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
+                    settingsManager.SetLightAndParticlesVisibility(false);
+                }
+                else
+                {
+                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
+                    settingsManager.SetLightAndParticlesVisibility(true);
+                }
+            }
         }
 
 
@@ -126,5 +140,6 @@ public partial class Options : ButtonManager
         (buttonList[RESOLUTION] as MenuSelection).SetCurrentValueIndex(settingsManager.WindowScale - 1); // Set to current resoluton option
         (buttonList[SOUNDVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.SoundVolume);
         (buttonList[MUSICVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.MusicVolume);
+        (buttonList[LIGHTPARTICLES] as MenuToggle).Toggle(settingsManager.LightParticlesActive);
     }
 }

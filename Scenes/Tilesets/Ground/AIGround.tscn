@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://2a8bmo5kgwif"]
 
-[ext_resource type="Texture2D" uid="uid://d2l53p8innrds" path="res://Graphics/Tiles/Ground/black_ground.png" id="1_tg4a4"]
+[ext_resource type="Texture2D" uid="uid://b13ev4nido8fv" path="res://Graphics/Tiles/Ground/island_of_ashes.png" id="1_hurvu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to7sr"]
-texture = ExtResource("1_tg4a4")
+texture = ExtResource("1_hurvu")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0

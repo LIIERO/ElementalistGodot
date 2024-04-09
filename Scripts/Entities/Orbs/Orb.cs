@@ -16,12 +16,20 @@ public abstract partial class Orb : Area2D
 	{
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
-
         backgroundLight = GetNode<PointLight2D>("MovedByAnimation/PointLight2D");
         particles = GetNode<CpuParticles2D>("MovedByAnimation/GPUParticles2D");
 
-        backgroundLight.Color = GameUtils.ColorsetToColor[refillColor];
-        particles.Color = GameUtils.ColorsetToColor[refillColor];
+        bool lightParticlesActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
+        if (!lightParticlesActive)
+        {
+            backgroundLight.QueueFree();
+            particles.QueueFree();
+        }
+        else
+        {
+            backgroundLight.Color = GameUtils.ColorsetToColor[refillColor];
+            particles.Color = GameUtils.ColorsetToColor[refillColor];
+        }
     }
 
 	protected virtual void ModifyElementStack(List<ElementState> elementStack) {}

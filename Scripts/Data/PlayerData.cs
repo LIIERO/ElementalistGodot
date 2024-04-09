@@ -6,11 +6,11 @@ using Godot;
 public class PlayerData
 {
     public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; }
-    public int NoSunFragments { get; private set; }
-    public string CurrentWorld { get; private set; }
-    public string PreviousWorld { get; private set; }
-    public string CurrentLevel { get; private set; }
-    public string PreviousLevel { get; private set; }
+    public int NoSunFragments { get; private set; } = 0;
+    public string CurrentWorld { get; private set; } = "0";
+    public string PreviousWorld { get; private set; } = "0";
+    public string CurrentLevel { get; private set; } = "HUB";
+    public string PreviousLevel { get; private set; } = "HUB";
 
     public PlayerData(Dictionary<string, Dictionary<string, bool>> CompletedLevels, int NoSunFragments, string CurrentWorld, string PreviousWorld, string CurrentLevel, string PreviousLevel)
     {

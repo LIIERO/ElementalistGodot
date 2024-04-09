@@ -7,9 +7,6 @@ using System.Reflection.Metadata;
 
 public partial class Player : CharacterBody2D
 {
-	// FOR TEMPORARY DEBUG RELOADING GAME SCENE
-	// [Export] private Node2D gameScene;
-
 	// Singletons
 	private CustomSignals customSignals;
     private GameState gameState;
@@ -65,6 +62,7 @@ public partial class Player : CharacterBody2D
     private string currentAnimation;
 	private float footstepTimer = 0.0f;
 	private float jumpPreventionTimer = -0.01f; // for teleport bug
+	private bool particlesActive;
 
     // Input
     float direction; // input direction
@@ -82,6 +80,9 @@ public partial class Player : CharacterBody2D
         gameState = GetNode<GameState>("/root/GameState");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
+
+		particlesActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
+		if (!particlesActive) particles.QueueFree();
 
         gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
@@ -251,7 +252,7 @@ public partial class Player : CharacterBody2D
 
 	async private void ExecuteAbilityAfterSeconds(float t)
 	{
-		await ToSignal(GetTree().CreateTimer(t), "timeout");
+		await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
 
 		isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
@@ -260,13 +261,13 @@ public partial class Player : CharacterBody2D
 		if (currentAbility == ElementState.air)
 		{
 			audioManager.airAbility.Play();
-			await ToSignal(GetTree().CreateTimer(dashTime), "timeout");
+			await ToSignal(GetTree().CreateTimer(dashTime, processInPhysics: true), "timeout");
 			StopAbility();
 		}
 		else if (currentAbility == ElementState.water)
 		{
             audioManager.waterAbility.Play();
-            await ToSignal(GetTree().CreateTimer(dashTime / 2f), "timeout");
+            await ToSignal(GetTree().CreateTimer(dashTime / 2f, processInPhysics: true), "timeout");
 			StopAbility();
 		}
 		else if (currentAbility == ElementState.fire)
@@ -274,7 +275,7 @@ public partial class Player : CharacterBody2D
 			SpawnFireball();
 			SparkleAbilityDust(ElementState.fire, 0.1f);
 			abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
-			await ToSignal(GetTree().CreateTimer(dashTime/4), "timeout");
+			await ToSignal(GetTree().CreateTimer(dashTime/4, processInPhysics: true), "timeout");
 			StopAbility();
 		}
 		else
@@ -311,19 +312,21 @@ public partial class Player : CharacterBody2D
 
     public void StartAbilityDust(ElementState elementState)
     {
+		if (!particlesActive) return;
 		particles.Color = GameUtils.ColorsetToColor[GameUtils.ElementToColorset[elementState]];
 		particles.Emitting = true;
     }
 
     public void StopAbilityDust()
     {
+		if (!particlesActive) return;
         particles.Emitting = false;
     }
 
     async private void SparkleAbilityDust(ElementState elementState, float time)
     {
         StartAbilityDust(elementState);
-        await ToSignal(GetTree().CreateTimer(time), "timeout");
+        await ToSignal(GetTree().CreateTimer(time, processInPhysics: true), "timeout");
         StopAbilityDust();
     }
 
@@ -383,7 +386,7 @@ public partial class Player : CharacterBody2D
         isDying = true;
         animatedSprite.Play("Die"); // death animation
 		audioManager.death.Play();
-        await ToSignal(GetTree().CreateTimer(t), "timeout");
+        await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
         levelTransitions.StartLevelReloadTransition();
     }
 
