@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dwu77gfjftgqo"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_k18h2"]
+
+[resource]
+script = ExtResource("1_k18h2")
+ID = "2"
+Name = "Burglary"
+NoCompletedToUnlock = 2
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

@@ -140,7 +140,7 @@ terrain_set_0/terrain_0/name = "PurpleGrass"
 terrain_set_0/terrain_0/color = Color(0.729412, 0, 0.117647, 1)
 sources/0 = SubResource("TileSetAtlasSource_to7sr")
 
-[node name="DangerTiles" type="TileMap" groups=["Danger"]]
+[node name="DangerTiles" type="TileMap" groups=["Danger", "PlayerCollider"]]
 z_index = -2
 texture_filter = 1
 position = Vector2(0, 8)
