@@ -41,7 +41,7 @@ _data = {
 [node name="Options" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
 texture_filter = 1
 script = ExtResource("1_3g4ri")
-buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle")]
+buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("WallslideSlowdownToggle")]
 
 [node name="MainMenuButton" type="Node2D" parent="Options"]
 texture_filter = 1
@@ -445,5 +445,61 @@ position = Vector2(160, 8)
 texture = ExtResource("7_jexq3")
 
 [node name="ToggleCheckmark" type="Sprite2D" parent="Options/LightParticlesToggle"]
+position = Vector2(160, 8)
+texture = ExtResource("8_1d85j")
+
+[node name="WallslideSlowdownToggle" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 184)
+script = ExtResource("7_fm3dv")
+
+[node name="OrbSelection" type="Node2D" parent="Options/WallslideSlowdownToggle"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/WallslideSlowdownToggle/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_x81f0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/WallslideSlowdownToggle/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/WallslideSlowdownToggle/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_tsktv")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/WallslideSlowdownToggle"]
+position = Vector2(64, 8)
+texture = ExtResource("5_ey2qm")
+
+[node name="Text" type="Label" parent="Options/WallslideSlowdownToggle/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "WALLSLIDE SLOWDOWN
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="ToggleBox" type="Sprite2D" parent="Options/WallslideSlowdownToggle"]
+position = Vector2(160, 8)
+texture = ExtResource("7_jexq3")
+
+[node name="ToggleCheckmark" type="Sprite2D" parent="Options/WallslideSlowdownToggle"]
 position = Vector2(160, 8)
 texture = ExtResource("8_1d85j")

@@ -12,6 +12,7 @@ public partial class Options : ButtonManager
     private const int SOUNDVOLUME = 3;
     private const int MUSICVOLUME = 4;
     private const int LIGHTPARTICLES = 5;
+    private const int WALLSLIDE = 6;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -57,14 +58,12 @@ public partial class Options : ButtonManager
             }
             if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
             {
-                if (settingsManager.Fullscreen)
-                {
+                if (settingsManager.Fullscreen) {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
                     (buttonList[RESOLUTION] as MenuSelection).Enable();
                     settingsManager.ChangeToWindowed();
                 }
-                else
-                {
+                else {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
                     (buttonList[RESOLUTION] as MenuSelection).Disable();
                     settingsManager.ChangeToFullscreen();
@@ -73,15 +72,25 @@ public partial class Options : ButtonManager
             
             if (CurrentItemIndex == LIGHTPARTICLES) // toggle light and particles
             {
-                if (settingsManager.LightParticlesActive)
-                {
+                if (settingsManager.LightParticlesActive) {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
                     settingsManager.SetLightAndParticlesVisibility(false);
                 }
-                else
-                {
+                else {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
                     settingsManager.SetLightAndParticlesVisibility(true);
+                }
+            }
+
+            if (CurrentItemIndex == WALLSLIDE) // toggle wallslide slowdown
+            {
+                if (settingsManager.WallslideSlowdownActive) {
+                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
+                    settingsManager.SetWallslideSlowdown(false);
+                }
+                else {
+                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
+                    settingsManager.SetWallslideSlowdown(true);
                 }
             }
         }
@@ -141,5 +150,6 @@ public partial class Options : ButtonManager
         (buttonList[SOUNDVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.SoundVolume);
         (buttonList[MUSICVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.MusicVolume);
         (buttonList[LIGHTPARTICLES] as MenuToggle).Toggle(settingsManager.LightParticlesActive);
+        (buttonList[WALLSLIDE] as MenuToggle).Toggle(settingsManager.WallslideSlowdownActive);
     }
 }

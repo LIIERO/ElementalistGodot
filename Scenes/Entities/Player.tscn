@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d0if8ksrlccpx"]
+[gd_scene load_steps=36 format=3 uid="uid://d0if8ksrlccpx"]
 
 [ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
@@ -204,6 +204,9 @@ size = Vector2(10, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5dbt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yphsf"]
+size = Vector2(2, 15)
+
 [node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spawner", "particles") groups=["Player"]]
 z_index = 5
 texture_filter = 1
@@ -260,3 +263,11 @@ max_results = 5
 [node name="Sounds" type="Node" parent="."]
 
 [node name="SoundPool" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_yphsf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_OnArea2dBodyEntered"]

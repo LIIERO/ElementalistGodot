@@ -34,6 +34,10 @@ position = Vector2(128, -48)
 Text = "Congratulations, you have failed the puzzle."
 SunHoldingText = "Congratulations, you have completed the puzzle."
 
+[node name="Sign2" parent="Interactables" index="2" instance=ExtResource("4_fwk14")]
+position = Vector2(64, 80)
+Text = "Make sure you use the ability at the peak of your jump to go as high as possible!"
+
 [node name="Goal" parent="." index="7" instance=ExtResource("5_3fmuc")]
 position = Vector2(0, -112)
 

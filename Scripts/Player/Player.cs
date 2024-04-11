@@ -7,8 +7,11 @@ using System.Reflection.Metadata;
 
 public partial class Player : CharacterBody2D
 {
-	// Singletons
-	private CustomSignals customSignals;
+    // Code is not good but I don't really care
+    // This whole script is me stubbornly refusing to implement a state machine for the player
+
+    // Singletons
+    private CustomSignals customSignals;
     private GameState gameState;
     private LevelTransitions levelTransitions;
     private AudioManager audioManager;
@@ -59,10 +62,13 @@ public partial class Player : CharacterBody2D
 	public bool canJumpCancel = true;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
+	private SceneTreeTimer abilityTimer = null;
+
     private string currentAnimation;
 	private float footstepTimer = 0.0f;
 	private float jumpPreventionTimer = -0.01f; // for teleport bug
 	private bool particlesActive;
+	private bool wallslideSlowdownActive;
 
     // Input
     float direction; // input direction
@@ -83,6 +89,7 @@ public partial class Player : CharacterBody2D
 
 		particlesActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
 		if (!particlesActive) particles.QueueFree();
+		wallslideSlowdownActive = GetNode<SettingsManager>("/root/SettingsManager").WallslideSlowdownActive;
 
         gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
@@ -143,15 +150,18 @@ public partial class Player : CharacterBody2D
 			Velocity = new Vector2(Velocity.X, maxFallingSpeed);
 
 		// resistance when clinging to a wall
-		if (isClinging)
+		if (isClinging && wallslideSlowdownActive)
 			Velocity = new Vector2(Velocity.X, Velocity.Y * clingDrag);
-
 	}
 
 
 	private void Jump(bool jumpPressed, bool jumpReleased, double delta)
 	{
-        if (jumpPreventionTimer > 0.0f) jumpPreventionTimer -= (float)delta;
+		if (jumpPreventionTimer > 0.0f)
+		{
+			Velocity = new Vector2(Velocity.X, 0.0f); // Fix of a very obscure earth ability tech
+			jumpPreventionTimer -= (float)delta;
+		}
         if (isUsingAbility || jumpPreventionTimer > 0.0f) return;
 
         if (isGrounded)
@@ -252,36 +262,45 @@ public partial class Player : CharacterBody2D
 
 	async private void ExecuteAbilityAfterSeconds(float t)
 	{
-		await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+        await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
 
-		isExecutingAbility = true;
+        isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
 		shaderScript.ActivateTrail(currentAbility);
 
 		if (currentAbility == ElementState.air)
 		{
 			audioManager.airAbility.Play();
-			await ToSignal(GetTree().CreateTimer(dashTime, processInPhysics: true), "timeout");
+			abilityTimer = GetTree().CreateTimer(dashTime, processInPhysics: true);
+			await ToSignal(abilityTimer, "timeout");
+			abilityTimer = null;
 			StopAbility();
 		}
 		else if (currentAbility == ElementState.water)
 		{
-            audioManager.waterAbility.Play();
-            await ToSignal(GetTree().CreateTimer(dashTime / 2f, processInPhysics: true), "timeout");
-			StopAbility();
+			audioManager.waterAbility.Play();
+            abilityTimer = GetTree().CreateTimer(dashTime / 2f, processInPhysics: true);
+			await ToSignal(abilityTimer, "timeout");
+			abilityTimer = null;
+
+            jumpPreventionTimer = -0.1f; // So your momentum doesnt get lost after teleporting
+            StopAbility();
 		}
 		else if (currentAbility == ElementState.fire)
 		{
 			SpawnFireball();
 			SparkleAbilityDust(ElementState.fire, 0.1f);
 			abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
-			await ToSignal(GetTree().CreateTimer(dashTime/4, processInPhysics: true), "timeout");
+			abilityTimer = GetTree().CreateTimer(dashTime / 4, processInPhysics: true);
+			await ToSignal(abilityTimer, "timeout");
+			abilityTimer = null;
 			StopAbility();
 		}
-		else
+		else if (currentAbility == ElementState.earth)
 		{
 			audioManager.earthAbilityStart.Play();
 		}
+		else GD.Print("Execute ability broke very badly.");
 	}
 
 	private void StopAbility()
@@ -300,7 +319,13 @@ public partial class Player : CharacterBody2D
 		canJumpCancel = false;
 	}
 
-	private void SpawnFireball()
+    private void CancelAbility()
+    {
+		if (!isUsingAbility) return;
+        if (abilityTimer != null) abilityTimer.TimeLeft = 0.0f;
+    }
+
+    private void SpawnFireball()
 	{
 		float rightOffset = isFacingRight ? 9f : -9f;
 
@@ -377,7 +402,13 @@ public partial class Player : CharacterBody2D
 
     // DYING
 
-	async void Die(float t)
+    void _OnArea2dBodyEntered(Node2D body) // This is a small area in the player, if a body enters it the player got crushed
+	{
+		if (body is not Player)
+			Kill();
+	}
+
+    async void Die(float t)
 	{
         if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf) // Dying in Hub (multiple checkpoints)
             setPlayerRespawnPosition = true;
@@ -435,7 +466,9 @@ public partial class Player : CharacterBody2D
 
 	public void SetPosition(Vector2 position)
 	{
-		jumpPreventionTimer = 0.1f;
+        //CancelAbility(); // Decided it was unnecessary
+
+        jumpPreventionTimer = abilityFreezeTime;
         coyoteTimeCounter = 0f;
         jumpBufferTimeCounter = 0f;
         canJumpCancel = false;
