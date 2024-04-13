@@ -13,6 +13,7 @@ public partial class Options : ButtonManager
     private const int MUSICVOLUME = 4;
     private const int LIGHTPARTICLES = 5;
     private const int WALLSLIDE = 6;
+    private const int INPUTSETTINGS = 7;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -50,13 +51,17 @@ public partial class Options : ButtonManager
             GoBack();
         }
 
-        if (Input.IsActionJustPressed("ui_accept"))
+        else if (Input.IsActionJustPressed("ui_accept"))
         {
             if (CurrentItemIndex == BACK)
             {
                 GoBack();
             }
-            if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
+            else if (CurrentItemIndex == INPUTSETTINGS)
+            {
+                gameState.LoadInputOptions();
+            }
+            else if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
             {
                 if (settingsManager.Fullscreen) {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
@@ -70,7 +75,7 @@ public partial class Options : ButtonManager
                 }
             }
             
-            if (CurrentItemIndex == LIGHTPARTICLES) // toggle light and particles
+            else if (CurrentItemIndex == LIGHTPARTICLES) // toggle light and particles
             {
                 if (settingsManager.LightParticlesActive) {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
@@ -82,7 +87,7 @@ public partial class Options : ButtonManager
                 }
             }
 
-            if (CurrentItemIndex == WALLSLIDE) // toggle wallslide slowdown
+            else if (CurrentItemIndex == WALLSLIDE) // toggle wallslide slowdown
             {
                 if (settingsManager.WallslideSlowdownActive) {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
@@ -109,17 +114,17 @@ public partial class Options : ButtonManager
             {
                 settingsManager.ChangeWindowScale(selection.CurrentValueIndex + 1);
             }
-            if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
+            else if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
             {
                 settingsManager.ChangeSoundVolume(selection.CurrentValueIndex);
             }
-            if (CurrentItemIndex == MUSICVOLUME) // change music volume
+            else if (CurrentItemIndex == MUSICVOLUME) // change music volume
             {
                 settingsManager.ChangeMusicVolume(selection.CurrentValueIndex);
             }
         }
 
-        if (Input.IsActionJustPressed("ui_left"))
+        else if (Input.IsActionJustPressed("ui_left"))
         {
             MenuSelection selection = buttonList[CurrentItemIndex] as MenuSelection;
             bool moved = selection.MoveLeft();
@@ -129,11 +134,11 @@ public partial class Options : ButtonManager
             {
                 settingsManager.ChangeWindowScale(selection.CurrentValueIndex + 1);
             }
-            if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
+            else if (CurrentItemIndex == SOUNDVOLUME) // change sound volume
             {
                 settingsManager.ChangeSoundVolume(selection.CurrentValueIndex);
             }
-            if (CurrentItemIndex == MUSICVOLUME) // change music volume
+            else if (CurrentItemIndex == MUSICVOLUME) // change music volume
             {
                 settingsManager.ChangeMusicVolume(selection.CurrentValueIndex);
             }

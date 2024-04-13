@@ -152,6 +152,11 @@ public partial class GameState : Node
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Options.tscn"));
     }
 
+    public void LoadInputOptions()
+    {
+        GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/InputOptions.tscn"));
+    }
+
     public void SetPlayerPosition(Vector2 position)
     {
         customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position);
