@@ -44,7 +44,9 @@ position = Vector2(-272, 32)
 
 [node name="Sign" parent="Interactables" index="3" instance=ExtResource("10_go0h5")]
 position = Vector2(32, 96)
-Text = "Press \"C\" to jump."
+Text = "Press {} to jump."
+BracketReplacingText = "inputJump"
+IsInputTutorialSign = true
 
 [node name="Levels" type="Node2D" parent="Interactables" index="4"]
 

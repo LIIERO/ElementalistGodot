@@ -155,9 +155,11 @@ theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
 text = "X"
 
-[node name="PauseMenu" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
+[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("buttonList")]
 process_mode = 3
 texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("11_ovtmv")
 buttonList = [NodePath("ContinueButton"), NodePath("MenuButton"), NodePath("ExitButton")]
 

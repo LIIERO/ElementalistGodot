@@ -32,7 +32,7 @@ public partial class GameState : Node
 
     // Data not loaded from the save file
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
-    public bool IsGameplayActive { get; private set; } = false; // Are we menuing or gameing
+    public bool IsGameplayActive { get; private set; } = false; // Is the root of menus the main menu or the gameplay
     public string CurrentSaveFileID { get; private set; } = "0";
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
@@ -240,7 +240,6 @@ public partial class GameState : Node
                         CompletedLevels[CurrentWorld][levelKey] = true;
                         NoSunFragments += 1;
                     }
-
                 }
             }
 
@@ -248,23 +247,23 @@ public partial class GameState : Node
             {
                 CompleteCurrentLevel();
             }
-            
+
             //isGameDebugUnlocked = true;
             RestartCurrentLevel();
         }
 
-
-        if (Input.IsActionJustPressed("inputDebugUnlockAll"))
+        else if (Input.IsActionJustPressed("inputDebugUnlockAll"))
         {
-                NoSunFragments = 999;
-                foreach (KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
+            NoSunFragments = 999;
+            foreach (KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
+            {
+                foreach (string levelKey in world.Value.Keys.ToList())
                 {
-                    foreach (string levelKey in world.Value.Keys.ToList())
-                    {
-                        CompletedLevels[world.Key][levelKey] = true;
-                    }
+                    CompletedLevels[world.Key][levelKey] = true;
                 }
-                RestartCurrentLevel();
+            }
+            RestartCurrentLevel();
         }
     }
 }
+

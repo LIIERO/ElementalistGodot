@@ -18,6 +18,7 @@ public partial class SettingsManager : Node
     public int MusicVolume { get; private set; } = 5;
     public bool LightParticlesActive {  get; private set; } = true;
     public bool WallslideSlowdownActive { get; private set; } = true;
+    
 
     // audio volume stuff
     private const string soundBusName = "Sounds";
@@ -34,6 +35,7 @@ public partial class SettingsManager : Node
         musicBusId = AudioServer.GetBusIndex(musicBusName);
 
         LoadPreferences();
+        LoadKeybinds();
 
         ChangeSoundVolume(SoundVolume);
         ChangeMusicVolume(MusicVolume);
@@ -136,7 +138,7 @@ public partial class SettingsManager : Node
         string path = ProjectSettings.GlobalizePath(preferencesPath);
         if (!File.Exists(path))
         {
-            GD.Print("Path not found");
+            GD.Print("Path not found (preferences)");
             gameState.FirstBoot = true;
             return;
         }
@@ -149,5 +151,34 @@ public partial class SettingsManager : Node
         MusicVolume = data.MusicVolume;
         LightParticlesActive = data.LightParticlesActive;
         WallslideSlowdownActive = data.WallslideSlowdownActive;
+    }
+
+    private const string inputPreferencesPath = "user://inputPreferences.json";
+    private void LoadKeybinds()
+    {
+        string path = ProjectSettings.GlobalizePath(inputPreferencesPath);
+        if (!File.Exists(path))
+        {
+            GD.Print("Path not found (input preferences)");
+            return;
+        }
+        string jsonString = File.ReadAllText(path);
+        InputPreferencesData data = JsonSerializer.Deserialize<InputPreferencesData>(jsonString)!;
+
+        if (data.Keybinds == null) return;
+
+        foreach (KeyValuePair<string, byte[]> actionEventPair in data.Keybinds)
+        {
+            InputMap.ActionEraseEvents(actionEventPair.Key);
+            InputMap.ActionAddEvent(actionEventPair.Key, (InputEventKey)GD.BytesToVarWithObjects(actionEventPair.Value));
+        }
+    }
+
+    public void SaveKeybinds(Dictionary<string, byte[]> keybinds)
+    {
+        string path = ProjectSettings.GlobalizePath(inputPreferencesPath);
+        InputPreferencesData data = new(keybinds);
+        string jsonString = JsonSerializer.Serialize(data);
+        File.WriteAllText(path, jsonString);
     }
 }

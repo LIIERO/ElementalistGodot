@@ -1,14 +1,16 @@
 using GlobalTypes;
 using Godot;
-using Godot.Collections;
-using System;
+using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 
 public partial class InputOptions : ButtonManager
 {
-    // Button indexes
     private const int BACK = 0;
+    private const int RESTOREDEFAULT = 8;
 
+    private bool isRemapping = false;
+    private bool isWaitingForInput = false;
+    private string actionToRemap = null;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -33,38 +35,84 @@ public partial class InputOptions : ButtonManager
 
     private void SetActionList()
     {
-        InputMap.LoadFromProjectSettings();
-        for (int i = 1; i < buttonList.Length; i++)
+        for (int i = 0; i < buttonList.Length; i++)
         {
-            ControlBind bindButton = buttonList[i] as ControlBind;
+            if (buttonList[i] is not ControlBind) continue;
             var inputEvent = InputMap.ActionGetEvents(elementIdToAction[i])[0];
-            bindButton.SetInputName(inputEvent.AsText().ToUpper());
+            (buttonList[i] as ControlBind).SetInputName(inputEvent.AsText().ToUpper());
         }
+    }
+
+    private void GoBack()
+    {
+        settingsManager.SaveKeybinds(CreateKeybindData());
+        gameState.LoadOptions();
     }
 
 
     public override void _Process(double delta)
 	{
         if (gameState.IsLevelTransitionPlaying) return;
+        if (isRemapping) return;
 
-		base._Process(delta);
+        base._Process(delta);
 
-        if (Input.IsActionJustPressed("ui_cancel"))
+        if (Input.IsActionJustPressed("ui_cancel")) GoBack();
+        
+
+        else if (Input.IsActionJustPressed("ui_accept"))
         {
-            gameState.LoadOptions();
+            if (CurrentItemIndex == BACK) GoBack();
+
+            else if (CurrentItemIndex == RESTOREDEFAULT)
+            {
+                InputMap.LoadFromProjectSettings();
+                SetActionList();
+            }
+
+            else // The rest of the buttons are control binds for input remapping
+            {
+                isRemapping = true;
+                isWaitingForInput = true;
+                actionToRemap = elementIdToAction[CurrentItemIndex];
+                (buttonList[CurrentItemIndex] as ControlBind).SetRebinding();
+            }
         }
+    }
 
-        if (Input.IsActionJustPressed("ui_accept"))
+    public override void _Input(InputEvent @event)
+    {
+        if (!isRemapping) return;
+        if (!isWaitingForInput) return;
+
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
         {
-            if (CurrentItemIndex == BACK)
-            {
-                gameState.LoadOptions();
-            }
+            InputMap.ActionEraseEvents(actionToRemap);
+            InputMap.ActionAddEvent(actionToRemap, keyEvent);
+            (buttonList[CurrentItemIndex] as ControlBind).SetInputName(keyEvent.Keycode.ToString().ToUpper());
+            SetRemappingFalseAfterDelay();
+            isWaitingForInput = false;
+            actionToRemap = null;
+            AcceptEvent();
+        }
+    }
 
-            else
-            {
+    private Dictionary<string, byte[]> CreateKeybindData()
+    {
+        Dictionary<string, byte[]> keybindData = new();
 
-            }
+        foreach (string action in elementIdToAction.Values)
+        {
+            keybindData.Add(action, GD.VarToBytesWithObjects(InputMap.ActionGetEvents(action)[0] as InputEventKey));
+        }
+        return keybindData;
+    }
+
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMCloseRequest)
+        {
+            settingsManager.SaveKeybinds(CreateKeybindData());
         }
     }
 
@@ -73,5 +121,12 @@ public partial class InputOptions : ButtonManager
         await ToSignal(GetTree(), "process_frame");
 
         SetActionList();
+    }
+
+    async void SetRemappingFalseAfterDelay()
+    {
+        await ToSignal(GetTree().CreateTimer(0.1f, processInPhysics: true), "timeout");
+
+        isRemapping = false;
     }
 }

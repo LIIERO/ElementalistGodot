@@ -38,8 +38,10 @@ _data = {
 
 [node name="GUI" type="CanvasLayer"]
 
-[node name="Options" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
+[node name="Options" type="Control" parent="." node_paths=PackedStringArray("buttonList")]
 texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_3g4ri")
 buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("WallslideSlowdownToggle"), NodePath("InputOptionsButton")]
 

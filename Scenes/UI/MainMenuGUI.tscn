@@ -34,9 +34,12 @@ _data = {
 
 [node name="GUI" type="CanvasLayer"]
 
-[node name="MainButtons" type="Node2D" parent="." node_paths=PackedStringArray("buttonList")]
+[node name="MainButtons" type="Control" parent="." node_paths=PackedStringArray("buttonList")]
 texture_filter = 1
-position = Vector2(0, 72)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 72.0
+offset_bottom = 72.0
 script = ExtResource("1_pqhl0")
 yesNoScreen = ExtResource("2_xl566")
 buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("OptionsButton"), NodePath("ExitButton")]

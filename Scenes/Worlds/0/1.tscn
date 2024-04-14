@@ -28,11 +28,15 @@ position = Vector2(-80, 80)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("4_qykbw")]
 position = Vector2(-32, 96)
-Text = "Press \"X\" to use an ability."
+Text = "Press {} to use an ability."
+BracketReplacingText = "inputAbility"
+IsInputTutorialSign = true
 
 [node name="Sign2" parent="Interactables" index="2" instance=ExtResource("4_qykbw")]
 position = Vector2(0, 96)
-Text = "Press \"R\" to retry."
+Text = "Press {} to retry."
+BracketReplacingText = "inputRestart"
+IsInputTutorialSign = true
 
 [node name="Goal" parent="." index="7" instance=ExtResource("5_ux2de")]
 position = Vector2(0, -32)

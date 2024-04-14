@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class ButtonManager : Node2D
+public abstract partial class ButtonManager : Control
 {
     protected GameState gameState;
     private AudioManager audioManager;
