@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://csm4ej3jgd43j"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_3efnp"]
+
+[resource]
+script = ExtResource("1_3efnp")
+ID = "E"
+Name = "Stalactite"
+NoCompletedToUnlock = 7
+SpecificLevelCompletedToUnlock = "D"
+IsSpecial = false

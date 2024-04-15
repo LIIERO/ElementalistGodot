@@ -13,9 +13,9 @@ public partial class GameState : Node
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
         { "H", new string[] { "HUB", "0" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
-        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "6S" } }, // Cave Outskirts
-        { "3", new string[] { "HUB", "0"} } // Islands of Ashes
+        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
+        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "7S" } }, // Cave Outskirts
+        { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "2S", "6S" } } // Islands of Ashes
     };
 
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
@@ -92,6 +92,15 @@ public partial class GameState : Node
     public bool HasLevelBeenCompleted(string levelID)
     {
         if (levelID == "HUB") return true;
+        if (!CompletedLevels.ContainsKey(CurrentWorld))
+        {
+            CompletedLevels.Add(CurrentWorld, new Dictionary<string, bool>());
+        }
+        if (!CompletedLevels[CurrentWorld].ContainsKey(levelID))
+        {
+            CompletedLevels[CurrentWorld].Add(levelID, false);
+        }
+
         return CompletedLevels[CurrentWorld][levelID] == true;
     }
     public bool HasCurrentLevelBeenCompleted() { return HasLevelBeenCompleted(CurrentLevel); }

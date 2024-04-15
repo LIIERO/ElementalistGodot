@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_jxuat")
 ID = "C"
-Name = "Stalactite"
+Name = "Energy Conservation"
 NoCompletedToUnlock = 7
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false

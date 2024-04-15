@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cumbokm56e1mv"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://befmg0py7p5k5"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_jhaf5"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_gkutq"]
 
 [resource]
-script = ExtResource("1_jhaf5")
+script = ExtResource("1_gkutq")
 ID = "4"
-Name = "Step by Step"
-NoCompletedToUnlock = 3
+Name = "Devious Platform"
+NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

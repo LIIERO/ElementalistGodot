@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cfp5ivsqc675t"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cml65haq8gwgp"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_6sjry"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_gftt6"]
 
 [resource]
-script = ExtResource("1_6sjry")
+script = ExtResource("1_gftt6")
 ID = "0"
 Name = "The Earth"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d0if8ksrlccpx"]
+[gd_scene load_steps=35 format=3 uid="uid://d0if8ksrlccpx"]
 
 [ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
@@ -202,8 +202,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npdoq"]
 size = Vector2(10, 19)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5dbt"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yphsf"]
 size = Vector2(2, 15)
 
@@ -251,18 +249,6 @@ color_ramp = SubResource("Gradient_n5bef")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_npdoq")
-
-[node name="Wallcheck" type="ShapeCast2D" parent="."]
-visible = false
-position = Vector2(-1, -9)
-scale = Vector2(0.2, 0.9)
-shape = SubResource("RectangleShape2D_a5dbt")
-target_position = Vector2(35, 0)
-max_results = 5
-
-[node name="Sounds" type="Node" parent="."]
-
-[node name="SoundPool" type="Node" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 

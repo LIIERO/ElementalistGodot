@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dcgbr5u5i4evu"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cojhmmr7g5mpx"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_yy8ts"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_2pu0v"]
 
 [resource]
-script = ExtResource("1_yy8ts")
+script = ExtResource("1_2pu0v")
 ID = "2"
-Name = "Two Birds"
-NoCompletedToUnlock = 1
+Name = "Chocolate Vanilla"
+NoCompletedToUnlock = 2
 SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

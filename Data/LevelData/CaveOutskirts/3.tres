@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://befmg0py7p5k5"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dcgbr5u5i4evu"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_gkutq"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_yy8ts"]
 
 [resource]
-script = ExtResource("1_gkutq")
+script = ExtResource("1_yy8ts")
 ID = "3"
-Name = "Devious Platform"
-NoCompletedToUnlock = 3
+Name = "Two Birds"
+NoCompletedToUnlock = 2
 SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

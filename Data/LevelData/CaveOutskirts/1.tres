@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cojhmmr7g5mpx"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cfp5ivsqc675t"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_2pu0v"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_6sjry"]
 
 [resource]
-script = ExtResource("1_2pu0v")
+script = ExtResource("1_6sjry")
 ID = "1"
-Name = "Chocolate Vanilla"
+Name = "It Comes on the Top"
 NoCompletedToUnlock = 1
 SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

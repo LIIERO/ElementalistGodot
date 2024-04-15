@@ -73,7 +73,7 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
     [Export] Node echoTrailSpawner;
     [Export] PackedScene echoTrailObject;
     const float timeBetweenSpawns = 0.02f;
-    const float removalTime = 2.0f;
+    const float removalTime = 1.0f;
 
     [Export] Texture2D waterAbility;
     [Export] Texture2D airAbility;
@@ -110,7 +110,7 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
         instance.GlobalPosition = GlobalPosition;
         //RemoveChild(instance);
 
-        await ToSignal(GetTree().CreateTimer(removalTime), "timeout");
+        await ToSignal(GetTree().CreateTimer(removalTime, processInPhysics: true), "timeout");
         instance.QueueFree();
     }
 
