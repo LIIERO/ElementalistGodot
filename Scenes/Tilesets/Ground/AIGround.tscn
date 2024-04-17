@@ -480,7 +480,7 @@ texture = ExtResource("1_hurvu")
 6:3/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSet" id="TileSet_yh4ff"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "PurpleGrass"
 terrain_set_0/terrain_0/color = Color(0.729412, 0, 0.117647, 1)

@@ -34,6 +34,7 @@ script = ExtResource("1_4ajf3")
 [node name="ToMove" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ToMove" groups=["HardMaterial", "PlayerCollider"]]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToMove/StaticBody2D"]
 shape = SubResource("RectangleShape2D_1n3eo")

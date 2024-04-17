@@ -134,13 +134,13 @@ texture = ExtResource("1_kcft7")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -1, 7, -1, 7, 0, 5, 0, 5, 1, -5, 1, -5, 0, -7, 0)
 
 [sub_resource type="TileSet" id="TileSet_yh4ff"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "PurpleGrass"
 terrain_set_0/terrain_0/color = Color(0.729412, 0, 0.117647, 1)
 sources/0 = SubResource("TileSetAtlasSource_to7sr")
 
-[node name="DangerTiles" type="TileMap" groups=["Danger", "PlayerCollider"]]
+[node name="DangerTiles" type="TileMap" groups=["Danger"]]
 z_index = -2
 texture_filter = 1
 position = Vector2(0, 8)

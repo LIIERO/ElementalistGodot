@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0yua0kswxklu"]
+[gd_scene load_steps=12 format=3 uid="uid://d0yua0kswxklu"]
 
 [ext_resource type="PackedScene" uid="uid://5yfpjixmnqxt" path="res://Scenes/Worlds/2/Base.tscn" id="1_tismv"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_kipld"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_21qm4"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="9_wpwkq"]
 [ext_resource type="PackedScene" uid="uid://qxymawh4pw5d" path="res://Scenes/Entities/Danger/EarthSpikeBall.tscn" id="10_tgy57"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="11_36tqa"]
 
 [node name="Game" instance=ExtResource("1_tismv")]
 
@@ -96,3 +97,12 @@ requiredCharges = 3
 
 [node name="ThornBall" parent="." index="11" instance=ExtResource("10_tgy57")]
 position = Vector2(0, 36)
+
+[node name="WaterIndicator" parent="." index="12" instance=ExtResource("11_36tqa")]
+position = Vector2(-32, 112)
+
+[node name="WaterIndicator2" parent="." index="13" instance=ExtResource("11_36tqa")]
+position = Vector2(-208, 96)
+
+[node name="WaterIndicator3" parent="." index="14" instance=ExtResource("11_36tqa")]
+position = Vector2(-208, 112)

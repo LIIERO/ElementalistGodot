@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cot06cfhp5qpi"]
+[gd_scene load_steps=8 format=3 uid="uid://cot06cfhp5qpi"]
 
 [ext_resource type="PackedScene" uid="uid://bwabd5uj1swuf" path="res://Scenes/Worlds/3/Base.tscn" id="1_p8sig"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_578nh"]
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="5_b0a18"]
 [ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="6_ckekq"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="7_6151o"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="7_p4f0w"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="8_lypde"]
 
 [node name="Game" instance=ExtResource("1_p8sig")]
@@ -39,3 +40,6 @@ position = Vector2(160, 16)
 
 [node name="DangerTiles" parent="." index="7"]
 layer_0/tile_data = PackedInt32Array(262148, 0, 2, 262147, 0, 0, 262146, 196608, 0, 262145, 0, 1, 65540, 65536, 1, 65539, 0, 0, 65538, 65536, 0, 65537, 131072, 1, -65535, 131072, 3, -65532, 0, 3, -131069, 196608, 3, -196606, 65536, 3)
+
+[node name="WaterIndicator" parent="." index="9" instance=ExtResource("7_p4f0w")]
+position = Vector2(160, 80)

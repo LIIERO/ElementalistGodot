@@ -7,6 +7,7 @@ size = Vector2(8, 8)
 
 [node name="ThornBall" type="StaticBody2D" groups=["Danger"]]
 position = Vector2(16, 36)
+collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -3

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg4ul6kr58ln8"]
+
+[ext_resource type="Texture2D" uid="uid://bm72v3s17tjl7" path="res://Graphics/Decals/Global/water_indicator.png" id="1_5o1cd"]
+
+[node name="WaterIndicator" type="Sprite2D"]
+position = Vector2(8, 8)
+texture = ExtResource("1_5o1cd")

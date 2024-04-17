@@ -50,16 +50,13 @@ public partial class Fireball : CharacterBody2D
         var collision = MoveAndCollide(Velocity * (float)delta);
         if (collision != null)
         {
-            if ((collision.GetCollider() as Node).IsInGroup("PlayerCollider"))
-            {
-                QueueFree();
+            QueueFree();
 
-                if (flyTime > activationTime)
-                {
-                    //Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
-                    //gameState.SetPlayerPosition(GlobalPosition + playerOffset);
-                    gameState.SetPlayerPosition(GlobalPosition);
-                }
+            if (flyTime > activationTime)
+            {
+                //Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
+                //gameState.SetPlayerPosition(GlobalPosition + playerOffset);
+                gameState.SetPlayerPosition(GlobalPosition);
             }
         }
     }

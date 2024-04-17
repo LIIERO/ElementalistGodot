@@ -48,7 +48,11 @@ Text = "Press {} to jump."
 BracketReplacingText = "inputJump"
 IsInputTutorialSign = true
 
-[node name="Levels" type="Node2D" parent="Interactables" index="4"]
+[node name="Sign2" parent="Interactables" index="4" instance=ExtResource("10_go0h5")]
+position = Vector2(128, 64)
+Text = "Remember that you can change your controls in the options menu."
+
+[node name="Levels" type="Node2D" parent="Interactables" index="5"]
 
 [node name="LevelTeleport" parent="Interactables/Levels" index="0" instance=ExtResource("2_2cuig")]
 position = Vector2(368, 96)

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwabd5uj1swuf"]
+[gd_scene load_steps=7 format=3 uid="uid://bwabd5uj1swuf"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_8ub2l"]
 [ext_resource type="PackedScene" uid="uid://2a8bmo5kgwif" path="res://Scenes/Tilesets/Ground/AIGround.tscn" id="2_nb220"]
 [ext_resource type="PackedScene" uid="uid://bf8033hjxavfa" path="res://Scenes/Tilesets/Danger/AIDanger.tscn" id="3_tvpfg"]
+[ext_resource type="Texture2D" uid="uid://c2lo8aibepmdy" path="res://Graphics/Backgrounds/AshIsland/bg_ash_island_0.png" id="4_jcfwj"]
+[ext_resource type="Texture2D" uid="uid://xco020v6ddri" path="res://Graphics/Backgrounds/AshIsland/bg_ash_island_1.png" id="5_8if5r"]
+[ext_resource type="Texture2D" uid="uid://b2ba51vtgwkog" path="res://Graphics/Backgrounds/CaveOutskirts/bg_cave_outskirts_2.png" id="6_172ri"]
 
 [node name="Game" instance=ExtResource("1_8ub2l")]
 
@@ -12,3 +15,37 @@ PlayerNode = NodePath("../Zoe")
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_nb220")]
 
 [node name="DangerTiles" parent="." index="4" instance=ExtResource("3_tvpfg")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="5"]
+scroll_base_scale = Vector2(1, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("4_jcfwj")
+offset = Vector2(240, 135)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("5_8if5r")
+offset = Vector2(240, 135)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
+motion_scale = Vector2(0.7, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
+visible = false
+z_index = -10
+texture_filter = 1
+texture = ExtResource("6_172ri")
+offset = Vector2(240, 135)

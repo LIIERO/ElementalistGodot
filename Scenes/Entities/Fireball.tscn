@@ -8,6 +8,8 @@
 size = Vector2(10, 19)
 
 [node name="Fireball" type="CharacterBody2D" node_paths=PackedStringArray("spriteNode")]
+collision_layer = 0
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_vefbd")
 spriteNode = NodePath("Sprite2D")

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6sjry")
 ID = "1"
-Name = "It Comes on the Top"
+Name = "Earth is 3, Water is 4"
 NoCompletedToUnlock = 1
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
