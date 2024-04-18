@@ -3,7 +3,9 @@ using System;
 
 public partial class Fireball : CharacterBody2D
 {
-    private GameState gameState; // singleton
+    // singletons
+    private GameState gameState;
+    private AudioManager audioManager;
 
     [Export] Sprite2D spriteNode;
 	const float speed = 200.0f;
@@ -26,6 +28,7 @@ public partial class Fireball : CharacterBody2D
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         timeBetweenSpawnsCounter = timeBetweenSpawns;
     }
 
@@ -56,6 +59,7 @@ public partial class Fireball : CharacterBody2D
             {
                 //Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
                 //gameState.SetPlayerPosition(GlobalPosition + playerOffset);
+                audioManager.earthAbilityStart.Play(); // The earth start sound is the same as fireball hitting wall for now
                 gameState.SetPlayerPosition(GlobalPosition);
             }
         }

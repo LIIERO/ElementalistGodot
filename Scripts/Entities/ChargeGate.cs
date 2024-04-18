@@ -4,6 +4,7 @@ using System;
 public partial class ChargeGate : Node2D
 {
     private CustomSignals customSignals; // Singleton
+    private AudioManager audioManager;
     private AnimationPlayer animator;
     private Label requiredFragmentsDisplay;
 
@@ -13,6 +14,7 @@ public partial class ChargeGate : Node2D
 
     public override void _Ready()
 	{
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.ElementChargeActivated, new Callable(this, MethodName.AddCharge));
 
@@ -27,6 +29,7 @@ public partial class ChargeGate : Node2D
 
         if (!isOpened && noCharges >= requiredCharges)
         {
+            audioManager.gateOpen.Play();
             isOpened = true;
             animator.Play("Open");
         }

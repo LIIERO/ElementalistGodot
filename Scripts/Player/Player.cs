@@ -62,7 +62,8 @@ public partial class Player : CharacterBody2D
 	public bool canJumpCancel = true;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
-	private SceneTreeTimer abilityTimer = null;
+	[Export] private Timer abilityTimer = null;
+	//private float timeLeftAfterPause = 0.0f;
 
     private string currentAnimation;
 	private float footstepTimer = 0.0f;
@@ -83,6 +84,7 @@ public partial class Player : CharacterBody2D
 	{
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
+        //customSignals.Connect(CustomSignals.SignalName.GamePaused, new Callable(this, MethodName.PauseAbilityTimer));
         gameState = GetNode<GameState>("/root/GameState");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
@@ -271,30 +273,36 @@ public partial class Player : CharacterBody2D
 		if (currentAbility == ElementState.air)
 		{
 			audioManager.airAbility.Play();
-			abilityTimer = GetTree().CreateTimer(dashTime, processInPhysics: true);
+
+			abilityTimer.Start(dashTime);
 			await ToSignal(abilityTimer, "timeout");
-			abilityTimer = null;
-			StopAbility();
+            abilityTimer.Stop();
+
+            StopAbility();
 		}
 		else if (currentAbility == ElementState.water)
 		{
 			audioManager.waterAbility.Play();
-            abilityTimer = GetTree().CreateTimer(dashTime / 2f, processInPhysics: true);
-			await ToSignal(abilityTimer, "timeout");
-			abilityTimer = null;
+
+            abilityTimer.Start(dashTime / 2f);
+            await ToSignal(abilityTimer, "timeout");
+			abilityTimer.Stop();
 
             jumpPreventionTimer = -0.1f; // So your momentum doesnt get lost after teleporting
             StopAbility();
 		}
 		else if (currentAbility == ElementState.fire)
 		{
-			SpawnFireball();
+            audioManager.fireAbility.Play();
+            SpawnFireball();
 			SparkleAbilityDust(ElementState.fire, 0.1f);
 			abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
-			abilityTimer = GetTree().CreateTimer(dashTime / 4, processInPhysics: true);
-			await ToSignal(abilityTimer, "timeout");
-			abilityTimer = null;
-			StopAbility();
+
+            abilityTimer.Start(dashTime / 4f);
+            await ToSignal(abilityTimer, "timeout");
+            abilityTimer.Stop();
+
+            StopAbility();
 		}
 		else if (currentAbility == ElementState.earth)
 		{
@@ -318,12 +326,6 @@ public partial class Player : CharacterBody2D
 		jumpBufferTimeCounter = 0f;
 		canJumpCancel = false;
 	}
-
-    private void CancelAbility()
-    {
-		if (!isUsingAbility) return;
-        if (abilityTimer != null) abilityTimer.TimeLeft = 0.0f;
-    }
 
     private void SpawnFireball()
 	{

@@ -98,6 +98,7 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer[] hardFootsteps;
     [Export] public AudioStreamPlayer waterAbility;
     [Export] public AudioStreamPlayer airAbility;
+    [Export] public AudioStreamPlayer fireAbility;
     [Export] public AudioStreamPlayer earthAbilityStart;
     [Export] public AudioStreamPlayer earthAbilityEnd;
 
@@ -107,6 +108,7 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer orbCollectSound;
     [Export] public AudioStreamPlayer sunCollectSound;
     [Export] public AudioStreamPlayer elementCharge;
+    [Export] public AudioStreamPlayer gateOpen;
 
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;

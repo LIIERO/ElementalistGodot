@@ -205,7 +205,7 @@ size = Vector2(10, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yphsf"]
 size = Vector2(2, 15)
 
-[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spawner", "particles") groups=["Player"]]
+[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spawner", "particles", "abilityTimer") groups=["Player"]]
 z_index = 5
 texture_filter = 1
 position = Vector2(16, 32)
@@ -214,6 +214,7 @@ fireball = ExtResource("2_e76yy")
 animatedSprite = NodePath("AnimatedSprite2D")
 spawner = NodePath("AnimatedSprite2D/EntitySpawner")
 particles = NodePath("AnimatedSprite2D/GPUParticles2D")
+abilityTimer = NodePath("AbilityTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("echoTrailSpawner")]
 material = SubResource("ShaderMaterial_q3van")
@@ -255,5 +256,8 @@ shape = SubResource("RectangleShape2D_npdoq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_yphsf")
+
+[node name="AbilityTimer" type="Timer" parent="."]
+process_callback = 0
 
 [connection signal="body_entered" from="Area2D" to="." method="_OnArea2dBodyEntered"]
