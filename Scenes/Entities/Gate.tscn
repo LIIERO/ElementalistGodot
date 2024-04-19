@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://blskr05twsghv"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Gate.cs" id="1_4ajf3"]
+[ext_resource type="Script" path="res://Scripts/Entities/Gates/SunGate.cs" id="1_g3a6p"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_r7521"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_n338q"]
 
@@ -29,7 +29,7 @@ _data = {
 
 [node name="Gate" type="Node2D"]
 z_index = -3
-script = ExtResource("1_4ajf3")
+script = ExtResource("1_g3a6p")
 
 [node name="ToMove" type="Node2D" parent="."]
 

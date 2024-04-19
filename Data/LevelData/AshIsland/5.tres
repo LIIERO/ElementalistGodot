@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_bhwnu")
 ID = "5"
-Name = "Optionless"
+Name = "Ash Roots"
 NoCompletedToUnlock = 5
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

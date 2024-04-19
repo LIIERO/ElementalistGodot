@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://clau3s1lggnyx"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/ChargeGate.cs" id="1_f8ub3"]
+[ext_resource type="Script" path="res://Scripts/Entities/Gates/ChargeGate.cs" id="1_f8ub3"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_w2jk2"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_ppg34"]
 
