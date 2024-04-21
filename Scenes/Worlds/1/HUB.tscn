@@ -45,7 +45,7 @@ layer_0/tile_data = PackedInt32Array(458747, 524288, 0, 524283, 327680, 1, 58981
 position = Vector2(0, 96)
 
 [node name="Entrance" parent="Interactables" index="1" instance=ExtResource("14_bdrl0")]
-position = Vector2(-384, 96)
+position = Vector2(-560, 80)
 
 [node name="Levels" type="Node2D" parent="Interactables" index="2"]
 
@@ -179,7 +179,7 @@ region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
 
 [node name="Entrance2" parent="Interactables" index="4" instance=ExtResource("19_oqi1u")]
-position = Vector2(-560, 80)
+position = Vector2(-384, 96)
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 
@@ -188,5 +188,5 @@ position = Vector2(-128, 48)
 
 [node name="Gate" parent="." index="8" node_paths=PackedStringArray("playerNode") instance=ExtResource("13_5j67r")]
 position = Vector2(-224, 80)
-requiredFragments = 20
+requiredFragments = 24
 playerNode = NodePath("../Zoe")

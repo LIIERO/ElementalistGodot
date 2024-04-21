@@ -23,22 +23,19 @@ layer_0/tile_data = PackedInt32Array(524301, 589824, 3, 458765, 589824, 2, 52430
 [node name="Orbs" type="Node2D" parent="." index="4"]
 
 [node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_1h07x")]
-position = Vector2(-128, -16)
+position = Vector2(-136, -16)
 
 [node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_1x4eq")]
-position = Vector2(48, 80)
+position = Vector2(64, 80)
 
 [node name="AirOrb2" parent="Orbs" index="2" instance=ExtResource("3_1x4eq")]
-position = Vector2(176, 80)
+position = Vector2(192, 80)
 
 [node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("4_o4tgt")]
+position = Vector2(-120, -16)
+
+[node name="FireOrb2" parent="Orbs" index="4" instance=ExtResource("5_od2jc")]
 position = Vector2(32, -32)
-
-[node name="FireOrb" parent="Orbs" index="4" instance=ExtResource("5_od2jc")]
-position = Vector2(-96, 32)
-
-[node name="FireOrb2" parent="Orbs" index="5" instance=ExtResource("5_od2jc")]
-position = Vector2(-112, 32)
 
 [node name="Interactables" type="Node2D" parent="." index="5"]
 

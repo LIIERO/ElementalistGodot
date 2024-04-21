@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_hgh4e")
 ID = "3"
-Name = "Quick Act"
+Name = "Multitasking"
 NoCompletedToUnlock = 3
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

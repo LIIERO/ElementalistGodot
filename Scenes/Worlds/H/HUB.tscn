@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn10ttq2evpac"]
+[gd_scene load_steps=10 format=3 uid="uid://cn10ttq2evpac"]
 
 [ext_resource type="PackedScene" uid="uid://dgm3ht0c8whkr" path="res://Scenes/Worlds/H/Base.tscn" id="1_stapj"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_qncnp"]
 [ext_resource type="PackedScene" uid="uid://cnwfel811ty30" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceDistantShoreline.tscn" id="3_hf137"]
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="4_dp1gh"]
 [ext_resource type="PackedScene" uid="uid://csujtn0jeug38" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceCaveOutskirts.tscn" id="4_g2r2f"]
+[ext_resource type="PackedScene" uid="uid://bbf557hku721r" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceAshIsland.tscn" id="5_gxmhf"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="5_r0uht"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="7_u3ckl"]
 [ext_resource type="Resource" uid="uid://d3ja8l4x8744j" path="res://Data/LevelData/Void/0.tres" id="8_d4rcp"]
@@ -31,6 +32,9 @@ position = Vector2(272, 80)
 [node name="EntranceCaveOutskirts" parent="WorldEntrances" index="2" instance=ExtResource("4_g2r2f")]
 position = Vector2(368, 80)
 
+[node name="Entrance" parent="WorldEntrances" index="3" instance=ExtResource("5_gxmhf")]
+position = Vector2(464, 80)
+
 [node name="Gates" type="Node2D" parent="." index="5"]
 
 [node name="Gate0" parent="Gates" index="0" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
@@ -45,12 +49,17 @@ playerNode = NodePath("../../Zoe")
 
 [node name="Gate2" parent="Gates" index="2" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(224, 48)
-requiredFragments = 20
+requiredFragments = 24
 playerNode = NodePath("../../Zoe")
 
 [node name="Gate3" parent="Gates" index="3" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(320, 48)
-requiredFragments = 27
+requiredFragments = 34
+playerNode = NodePath("../../Zoe")
+
+[node name="Gate4" parent="Gates" index="4" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
+position = Vector2(416, 48)
+requiredFragments = 41
 playerNode = NodePath("../../Zoe")
 
 [node name="Interactables" type="Node2D" parent="." index="6"]

@@ -241,8 +241,8 @@ public partial class Player : CharacterBody2D
 			}
 			else if (currentAbility == ElementState.fire)
 			{
-				if (isFacingRight) Velocity = new Vector2(-dashPower/4, 0f);
-				else Velocity = new Vector2(dashPower/4, 0f);
+				if (isFacingRight) Velocity = new Vector2(-dashPower/2f, 0f);
+				else Velocity = new Vector2(dashPower/2f, 0f);
 			}
 			else if (currentAbility == ElementState.earth)
 			{
@@ -298,7 +298,7 @@ public partial class Player : CharacterBody2D
 			SparkleAbilityDust(ElementState.fire, 0.1f);
 			abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
 
-            abilityTimer.Start(dashTime / 4f);
+            abilityTimer.Start(dashTime / 2f);
             await ToSignal(abilityTimer, "timeout");
             abilityTimer.Stop();
 
