@@ -81,6 +81,28 @@ public partial class GameState : Node
         return completedLevels;
     }
 
+    private void FixCompletedLevels()
+    {
+        foreach (KeyValuePair<string, string[]> world in levels)
+        {
+            if (!CompletedLevels.ContainsKey(world.Key))
+            {
+                CompletedLevels.Add(world.Key, new Dictionary<string, bool>());
+            }
+
+            foreach (string levelID in world.Value)
+            {
+                if (levelID != "HUB")
+                {
+                    if (!CompletedLevels[world.Key].ContainsKey(levelID))
+                    {
+                        CompletedLevels[world.Key].Add(levelID, false);
+                    }
+                }  
+            }
+        }
+    }
+
     public void CompleteCurrentLevel()
     {
         if (HasCurrentLevelBeenCompleted()) return;
@@ -92,15 +114,6 @@ public partial class GameState : Node
     public bool HasLevelBeenCompleted(string levelID)
     {
         if (levelID == "HUB") return true;
-        if (!CompletedLevels.ContainsKey(CurrentWorld))
-        {
-            CompletedLevels.Add(CurrentWorld, new Dictionary<string, bool>());
-        }
-        if (!CompletedLevels[CurrentWorld].ContainsKey(levelID))
-        {
-            CompletedLevels[CurrentWorld].Add(levelID, false);
-        }
-
         return CompletedLevels[CurrentWorld][levelID] == true;
     }
     public bool HasCurrentLevelBeenCompleted() { return HasLevelBeenCompleted(CurrentLevel); }
@@ -200,6 +213,8 @@ public partial class GameState : Node
         PreviousWorld = data.PreviousWorld;
         CurrentLevel = data.CurrentLevel;
         PreviousLevel = data.PreviousLevel;
+
+        FixCompletedLevels();
 
         CurrentSaveFileID = id;
     }

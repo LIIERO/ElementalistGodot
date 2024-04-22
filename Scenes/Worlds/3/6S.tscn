@@ -32,7 +32,7 @@ position = Vector2(64, 80)
 position = Vector2(192, 80)
 
 [node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("4_o4tgt")]
-position = Vector2(-120, -16)
+position = Vector2(-88, 32)
 
 [node name="FireOrb2" parent="Orbs" index="4" instance=ExtResource("5_od2jc")]
 position = Vector2(32, -32)
@@ -43,7 +43,7 @@ position = Vector2(32, -32)
 position = Vector2(-160, 0)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("7_v8r6b")]
-position = Vector2(-48, 32)
+position = Vector2(-112, 48)
 Text = "This level is stupid."
 
 [node name="Goal" parent="." index="6" instance=ExtResource("7_r842i")]
