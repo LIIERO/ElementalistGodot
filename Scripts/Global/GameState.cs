@@ -24,6 +24,7 @@ public partial class GameState : Node
     // Data loaded from the save file
     public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
     public int NoSunFragments { get; private set; } = 0;
+    public int NoRedFragments { get; private set; } = 0;
     public string CurrentWorld { get; private set; } = "0";
     public string PreviousWorld { get; private set; } = "0";
     public string CurrentLevel { get; private set; } = "0"; // Current level ID
@@ -37,7 +38,8 @@ public partial class GameState : Node
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
     public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
-    
+    public bool IsCurrentLevelSpecial { get; set; } = false; // For debug unlocking
+
 
 
     // METHODS ===========================================================================================================
@@ -106,7 +108,10 @@ public partial class GameState : Node
     public void CompleteCurrentLevel()
     {
         if (HasCurrentLevelBeenCompleted()) return;
-        NoSunFragments++;
+
+        if (IsCurrentLevelSpecial) NoRedFragments++;
+        else NoSunFragments++;
+
         CompletedLevels[CurrentWorld][CurrentLevel] = true;
     }
 
@@ -137,6 +142,7 @@ public partial class GameState : Node
 
     public void LoadWorld(string world)
     {
+        IsCurrentLevelSpecial = false;
         PreviousWorld = CurrentWorld;
         CurrentWorld = world;
         LoadLevel("HUB");
@@ -158,6 +164,7 @@ public partial class GameState : Node
 
     public void LoadHubLevel()
     {
+        IsCurrentLevelSpecial = false;
         LoadLevel("HUB");
         // Level enter player position set in LevelTeleport because it was easier that way
         LevelTeleport.setPlayerLevelEnterPosition = true;
@@ -191,7 +198,7 @@ public partial class GameState : Node
     public void SaveToSaveFile(string id)
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
-        PlayerData data = new(CompletedLevels, NoSunFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel);
+        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -209,6 +216,7 @@ public partial class GameState : Node
 
         CompletedLevels = data.CompletedLevels;
         NoSunFragments = data.NoSunFragments;
+        NoRedFragments = data.NoRedFragments;
         CurrentWorld = data.CurrentWorld;
         PreviousWorld = data.PreviousWorld;
         CurrentLevel = data.CurrentLevel;
@@ -223,6 +231,7 @@ public partial class GameState : Node
     {
         CompletedLevels = CreateNewCompletedLevelsDict();
         NoSunFragments = 0;
+        NoRedFragments = 0;
         CurrentLevel = "HUB";
         PreviousLevel = "HUB";
         CurrentWorld = "0";
@@ -262,7 +271,10 @@ public partial class GameState : Node
                     if (CompletedLevels[CurrentWorld][levelKey] == false)
                     {
                         CompletedLevels[CurrentWorld][levelKey] = true;
-                        NoSunFragments += 1;
+                        if (levelKey.EndsWith("S"))
+                            NoRedFragments += 1;
+                        else
+                            NoSunFragments += 1;
                     }
                 }
             }
@@ -279,6 +291,7 @@ public partial class GameState : Node
         else if (Input.IsActionJustPressed("inputDebugUnlockAll"))
         {
             NoSunFragments = 999;
+            NoRedFragments = 99;
             foreach (KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
             {
                 foreach (string levelKey in world.Value.Keys.ToList())

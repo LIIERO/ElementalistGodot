@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://eqqxlxvmmaaa"]
+[gd_scene load_steps=15 format=3 uid="uid://eqqxlxvmmaaa"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Goal.cs" id="1_5u0vj"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_52swv"]
@@ -33,9 +33,17 @@ _data = {
 atlas = ExtResource("2_52swv")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdux4"]
+atlas = ExtResource("2_52swv")
+region = Rect2(96, 64, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqjgx"]
 atlas = ExtResource("2_52swv")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng0um"]
+atlas = ExtResource("2_52swv")
+region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6dt8e"]
 animations = [{
@@ -49,10 +57,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fdux4")
+}],
+"loop": false,
+"name": &"LevelCompletedSpecial",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uqjgx")
 }],
 "loop": false,
 "name": &"LevelNotCompleted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng0um")
+}],
+"loop": false,
+"name": &"LevelNotCompletedSpecial",
 "speed": 5.0
 }]
 
@@ -86,13 +110,13 @@ autoplay = "Idle"
 script = ExtResource("2_ewlgh")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, 0.284063)
+position = Vector2(0, 1)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
 texture_filter = 1
 position = Vector2(0, 0.124914)
 sprite_frames = SubResource("SpriteFrames_6dt8e")
-animation = &"LevelNotCompleted"
+animation = &"LevelNotCompletedSpecial"
 
 [node name="PointLight2D" type="PointLight2D" parent="MovedByAnimation"]
 range_z_max = -1

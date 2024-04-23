@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=18 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -36,33 +36,6 @@ tracks/0/keys = {
 _data = {
 "Idle": SubResource("Animation_sgcxl")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vitxw"]
-atlas = ExtResource("17_x2t6e")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqjgx"]
-atlas = ExtResource("17_x2t6e")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qqdk7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vitxw")
-}],
-"loop": false,
-"name": &"LevelCompleted",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uqjgx")
-}],
-"loop": false,
-"name": &"LevelNotCompleted",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_porbe"]
 resource_name = "Idle"
@@ -119,10 +92,48 @@ text = "Sample text Sample text Sample text Sample text Sample text Sample text 
 autowrap_mode = 2
 text_overrun_behavior = 2
 
-[node name="SunCounter" type="Sprite2D" parent="." node_paths=PackedStringArray("counterText")]
+[node name="RedCounter" type="Sprite2D" parent="." node_paths=PackedStringArray("counterText")]
 process_mode = 3
 texture_filter = 1
 position = Vector2(448, 16)
+texture = ExtResource("16_g1udj")
+script = ExtResource("17_gsxjm")
+specialCounter = true
+counterText = NodePath("Label")
+
+[node name="SunSymbol" type="Node2D" parent="RedCounter"]
+position = Vector2(-14, -2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RedCounter/SunSymbol"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("15_1xd4b")
+
+[node name="MovedByAnimation" type="Node2D" parent="RedCounter/SunSymbol"]
+position = Vector2(0, 0.810619)
+
+[node name="Sprite2D" type="Sprite2D" parent="RedCounter/SunSymbol/MovedByAnimation"]
+texture_filter = 1
+position = Vector2(0, 0.124914)
+texture = ExtResource("17_x2t6e")
+region_enabled = true
+region_rect = Rect2(64, 64, 32, 32)
+
+[node name="Label" type="Label" parent="RedCounter"]
+texture_filter = 1
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 4.0
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "X"
+
+[node name="SunCounter" type="Sprite2D" parent="." node_paths=PackedStringArray("counterText")]
+process_mode = 3
+texture_filter = 1
+position = Vector2(448, 46)
 texture = ExtResource("16_g1udj")
 script = ExtResource("17_gsxjm")
 counterText = NodePath("Label")
@@ -138,13 +149,14 @@ autoplay = "Idle"
 script = ExtResource("15_1xd4b")
 
 [node name="MovedByAnimation" type="Node2D" parent="SunCounter/SunSymbol"]
-position = Vector2(0, 0.284063)
+position = Vector2(0, 1)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="SunCounter/SunSymbol/MovedByAnimation"]
+[node name="Sprite2D" type="Sprite2D" parent="SunCounter/SunSymbol/MovedByAnimation"]
 texture_filter = 1
 position = Vector2(0, 0.124914)
-sprite_frames = SubResource("SpriteFrames_qqdk7")
-animation = &"LevelNotCompleted"
+texture = ExtResource("17_x2t6e")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
 
 [node name="Label" type="Label" parent="SunCounter"]
 texture_filter = 1
@@ -165,6 +177,7 @@ buttonList = [NodePath("ContinueButton"), NodePath("MenuButton"), NodePath("Exit
 
 [node name="Panel" type="Panel" parent="PauseMenu"]
 modulate = Color(1, 1, 1, 0.705882)
+layout_mode = 0
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 488.0

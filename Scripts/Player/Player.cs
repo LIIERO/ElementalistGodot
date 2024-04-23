@@ -48,8 +48,9 @@ public partial class Player : CharacterBody2D
 	// Player state (move to a different class?)
 	public List<ElementState> AbilityList { get; private set; }
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
-    public bool IsHoldingGoal { get; set; } = false;
-	public bool IsFrozen => isDying || gameState.IsLevelTransitionPlaying;
+    public bool IsHoldingGoal { get; set; } = false; // Yellow or red
+    public bool IsHoldingSpecialGoal { get; set; } = false; // Red
+    public bool IsFrozen => isDying || gameState.IsLevelTransitionPlaying;
 
     ElementState currentAbility = ElementState.normal;
 	public bool isUsingAbility = false;

@@ -17,7 +17,7 @@ public partial class LevelExit : Interactable
     protected override void Interact()
     {
         base.Interact();
-
+        
         if (playerScriptReference.IsHoldingGoal)
             gameState.CompleteCurrentLevel();
 

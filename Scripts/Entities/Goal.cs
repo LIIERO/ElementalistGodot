@@ -4,6 +4,8 @@ using System;
 
 public partial class Goal : Area2D
 {
+    [Export] public bool IsSpecial { get; private set; } = false;
+
     const float smoothTime = 0.3f;
 
     // Singletons
@@ -40,6 +42,8 @@ public partial class Goal : Area2D
         if (player is not Player) return;
         (player as Player).IsHoldingGoal = true;
 
+        if (IsSpecial) (player as Player).IsHoldingSpecialGoal = true;
+
         AssignObjectToFollow(player);
     }
 
@@ -57,16 +61,31 @@ public partial class Goal : Area2D
             backgroundLight.QueueFree();
         }
 
+        SetAppearance(lightActive);
+    }
+
+    private void SetAppearance(bool lightActive)
+    {
         if (gameState.HasCurrentLevelBeenCompleted()) // White goal
         {
-            sprite.Play("LevelCompleted");
+            if (gameState.IsCurrentLevelSpecial) sprite.Play("LevelCompletedSpecial");
+            else sprite.Play("LevelCompleted");
+
             if (lightActive) backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.white];
         }
 
-        else // Yellow goal
+        else // Yellow goal (or red if special)
         {
-            sprite.Play("LevelNotCompleted");
-            if (lightActive) backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.yellow];
+            if (gameState.IsCurrentLevelSpecial)
+            {
+                sprite.Play("LevelNotCompletedSpecial");
+                if (lightActive) backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.red];
+            }
+            else
+            {
+                sprite.Play("LevelNotCompleted");
+                if (lightActive) backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.yellow];
+            }   
         }
     }
 

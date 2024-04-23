@@ -3,6 +3,7 @@ using System;
 
 public partial class SunCounter : Sprite2D
 {
+    [Export] private bool specialCounter = false;
 	[Export] private Label counterText;
 
     private GameState gameState;
@@ -12,6 +13,10 @@ public partial class SunCounter : Sprite2D
         gameState = GetNode<GameState>("/root/GameState");
 
         if (!gameState.IsHubLoaded()) Hide();
-        counterText.Text = gameState.NoSunFragments.ToString();
+
+        if (specialCounter)
+            counterText.Text = gameState.NoRedFragments.ToString();
+        else
+            counterText.Text = gameState.NoSunFragments.ToString();
     }
 }
