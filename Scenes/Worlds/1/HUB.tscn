@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bhgnc28l5o25c"]
+[gd_scene load_steps=23 format=3 uid="uid://bhgnc28l5o25c"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_5rch5"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_1r5da"]
@@ -19,7 +19,6 @@
 [ext_resource type="Resource" uid="uid://cfobx7h82mv4q" path="res://Data/LevelData/DistantShoreline/A.tres" id="14_cokb0"]
 [ext_resource type="Resource" uid="uid://bq44ex6bl6olc" path="res://Data/LevelData/DistantShoreline/7.tres" id="14_namc8"]
 [ext_resource type="Resource" uid="uid://c0ddo8q48cr6u" path="res://Data/LevelData/DistantShoreline/B.tres" id="15_fonnr"]
-[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_7sv8y"]
 [ext_resource type="Resource" uid="uid://chsk4x3e35qvt" path="res://Data/LevelData/DistantShoreline/D.tres" id="18_ky4vo"]
 [ext_resource type="PackedScene" uid="uid://bbf557hku721r" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceAshIsland.tscn" id="19_oqi1u"]
 [ext_resource type="Resource" uid="uid://csm4ej3jgd43j" path="res://Data/LevelData/DistantShoreline/E.tres" id="19_tnrsy"]
@@ -109,76 +108,7 @@ levelToTeleportTo = ExtResource("18_ky4vo")
 position = Vector2(-48, -32)
 levelToTeleportTo = ExtResource("19_tnrsy")
 
-[node name="LevelIndicators" type="Node2D" parent="Interactables" index="3"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/LevelIndicators" index="0"]
-position = Vector2(176, -16)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Interactables/LevelIndicators" index="1"]
-position = Vector2(240, 0)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Interactables/LevelIndicators" index="2"]
-position = Vector2(304, 0)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D4" type="Sprite2D" parent="Interactables/LevelIndicators" index="3"]
-position = Vector2(368, -16)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D5" type="Sprite2D" parent="Interactables/LevelIndicators" index="4"]
-position = Vector2(368, 64)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D6" type="Sprite2D" parent="Interactables/LevelIndicators" index="5"]
-position = Vector2(304, 80)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D7" type="Sprite2D" parent="Interactables/LevelIndicators" index="6"]
-position = Vector2(272, 96)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D8" type="Sprite2D" parent="Interactables/LevelIndicators" index="7"]
-position = Vector2(240, 80)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D9" type="Sprite2D" parent="Interactables/LevelIndicators" index="8"]
-position = Vector2(176, 64)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D10" type="Sprite2D" parent="Interactables/LevelIndicators" index="9"]
-position = Vector2(-128, -32)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Sprite2D11" type="Sprite2D" parent="Interactables/LevelIndicators" index="10"]
-position = Vector2(-224, -48)
-texture = ExtResource("17_7sv8y")
-region_enabled = true
-region_rect = Rect2(0, 64, 32, 32)
-
-[node name="Entrance2" parent="Interactables" index="4" instance=ExtResource("19_oqi1u")]
+[node name="Entrance2" parent="Interactables" index="3" instance=ExtResource("19_oqi1u")]
 position = Vector2(-384, 96)
 
 [node name="Orbs" type="Node2D" parent="." index="7"]

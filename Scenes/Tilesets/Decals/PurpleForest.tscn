@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://buawqddng5un7"]
+
+[ext_resource type="Texture2D" uid="uid://bwcysuilsaa2p" path="res://Graphics/Decals/purple_forest.png" id="1_hl7yl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjatp"]
+texture = ExtResource("1_hl7yl")
+0:0/size_in_atlas = Vector2i(3, 5)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(4, 4)
+3:1/size_in_atlas = Vector2i(1, 2)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(4, 12)
+3:3/size_in_atlas = Vector2i(1, 2)
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(4, 12)
+
+[sub_resource type="TileSet" id="TileSet_ouv4r"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_jjatp")
+
+[node name="Decals" type="TileMap"]
+z_index = -2
+tile_set = SubResource("TileSet_ouv4r")
+format = 2
