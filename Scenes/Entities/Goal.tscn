@@ -116,7 +116,7 @@ position = Vector2(0, 1)
 texture_filter = 1
 position = Vector2(0, 0.124914)
 sprite_frames = SubResource("SpriteFrames_6dt8e")
-animation = &"LevelNotCompletedSpecial"
+animation = &"LevelNotCompleted"
 
 [node name="PointLight2D" type="PointLight2D" parent="MovedByAnimation"]
 range_z_max = -1

@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://0fhq6bn18j5g"]
+
+[ext_resource type="Texture2D" uid="uid://bw8pghdy76h3n" path="res://Graphics/Decals/cave_outskirts.png" id="1_jsl5b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfm6w"]
+texture = ExtResource("1_jsl5b")
+texture_region_size = Vector2i(8, 8)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(4, 4)
+0:2/size_in_atlas = Vector2i(2, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(4, 4)
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(4, 4)
+4:0/size_in_atlas = Vector2i(2, 2)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(4, 4)
+2:2/size_in_atlas = Vector2i(2, 2)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(4, 4)
+4:2/size_in_atlas = Vector2i(2, 2)
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(4, 4)
+0:4/size_in_atlas = Vector2i(2, 2)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(4, 4)
+2:8/size_in_atlas = Vector2i(2, 2)
+2:8/0 = 0
+2:8/0/texture_origin = Vector2i(4, 4)
+4:8/size_in_atlas = Vector2i(2, 2)
+4:8/0 = 0
+4:8/0/texture_origin = Vector2i(4, 4)
+0:10/size_in_atlas = Vector2i(2, 2)
+0:10/0 = 0
+0:10/0/texture_origin = Vector2i(4, 4)
+2:10/size_in_atlas = Vector2i(2, 2)
+2:10/0 = 0
+2:10/0/texture_origin = Vector2i(4, 4)
+4:10/size_in_atlas = Vector2i(2, 2)
+4:10/0 = 0
+4:10/0/texture_origin = Vector2i(4, 4)
+0:12/size_in_atlas = Vector2i(2, 2)
+0:12/0 = 0
+0:12/0/texture_origin = Vector2i(4, 4)
+0:8/size_in_atlas = Vector2i(2, 2)
+0:8/0 = 0
+0:8/0/texture_origin = Vector2i(4, 4)
+0:6/size_in_atlas = Vector2i(2, 2)
+0:6/0 = 0
+0:6/0/texture_origin = Vector2i(4, 4)
+2:4/size_in_atlas = Vector2i(2, 2)
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(4, 4)
+4:4/size_in_atlas = Vector2i(2, 2)
+4:4/0 = 0
+4:4/0/texture_origin = Vector2i(4, 4)
+2:6/size_in_atlas = Vector2i(2, 2)
+2:6/0 = 0
+2:6/0/texture_origin = Vector2i(4, 4)
+4:6/size_in_atlas = Vector2i(2, 2)
+4:6/0 = 0
+4:6/0/texture_origin = Vector2i(4, 4)
+2:12/size_in_atlas = Vector2i(2, 2)
+2:12/0 = 0
+2:12/0/texture_origin = Vector2i(4, 4)
+4:12/size_in_atlas = Vector2i(2, 2)
+4:12/0 = 0
+4:12/0/texture_origin = Vector2i(4, 4)
+4:14/size_in_atlas = Vector2i(2, 2)
+4:14/0 = 0
+4:14/0/texture_origin = Vector2i(4, 4)
+2:14/size_in_atlas = Vector2i(2, 2)
+2:14/0 = 0
+2:14/0/texture_origin = Vector2i(4, 4)
+0:14/size_in_atlas = Vector2i(2, 2)
+0:14/0 = 0
+0:14/0/texture_origin = Vector2i(4, 4)
+
+[sub_resource type="TileSet" id="TileSet_vfk4c"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_mfm6w")
+
+[node name="Decals" type="TileMap"]
+z_index = -2
+tile_set = SubResource("TileSet_vfk4c")
+format = 2

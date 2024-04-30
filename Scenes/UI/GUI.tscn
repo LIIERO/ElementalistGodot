@@ -109,10 +109,9 @@ libraries = {
 "": SubResource("AnimationLibrary_6uqv8")
 }
 autoplay = "Idle"
-script = ExtResource("15_1xd4b")
 
 [node name="MovedByAnimation" type="Node2D" parent="RedCounter/SunSymbol"]
-position = Vector2(0, 0.810619)
+position = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="RedCounter/SunSymbol/MovedByAnimation"]
 texture_filter = 1
@@ -146,7 +145,6 @@ libraries = {
 "": SubResource("AnimationLibrary_6uqv8")
 }
 autoplay = "Idle"
-script = ExtResource("15_1xd4b")
 
 [node name="MovedByAnimation" type="Node2D" parent="SunCounter/SunSymbol"]
 position = Vector2(0, 1)
