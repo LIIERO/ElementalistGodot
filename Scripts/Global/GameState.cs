@@ -14,7 +14,7 @@ public partial class GameState : Node
         { "H", new string[] { "HUB", "0" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "7S" } }, // Cave Outskirts
+        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "4S", "8S" } }, // Cave Outskirts
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "2S", "6S" } } // Islands of Ashes
     };
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cjwt4dahx8trh"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_4qxoc"]
+
+[resource]
+script = ExtResource("1_4qxoc")
+ID = "4S"
+Name = "Usage of the Useless"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "4"
+IsSpecial = true

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_2pu0v")
 ID = "2"
-Name = "White Chocolate"
+Name = "Two Birds"
 NoCompletedToUnlock = 2
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

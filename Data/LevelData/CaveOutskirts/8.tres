@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_m6c1f")
 ID = "8"
-Name = "The Shaft"
+Name = "Brown Burden"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

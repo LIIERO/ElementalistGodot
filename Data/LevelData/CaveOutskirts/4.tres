@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_gkutq")
 ID = "4"
-Name = "Devious Platform"
-NoCompletedToUnlock = 4
+Name = "Later Usage"
+NoCompletedToUnlock = 3
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
