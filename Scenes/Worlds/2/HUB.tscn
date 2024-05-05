@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5ktwc4380unw"]
+[gd_scene load_steps=19 format=3 uid="uid://b5ktwc4380unw"]
 
 [ext_resource type="PackedScene" uid="uid://5yfpjixmnqxt" path="res://Scenes/Worlds/2/Base.tscn" id="1_et00c"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_bhi1m"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://gf6ebnqsmwal" path="res://Data/LevelData/CaveOutskirts/8S.tres" id="12_2cj48"]
 [ext_resource type="Resource" uid="uid://d2h5uwn3250kt" path="res://Data/LevelData/CaveOutskirts/8.tres" id="12_ww5ee"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="16_h2brp"]
+[ext_resource type="Resource" uid="uid://6ufvhrf6hv54" path="res://Data/LevelData/CaveOutskirts/9.tres" id="16_ykpu5"]
 
 [node name="Game" instance=ExtResource("1_et00c")]
 
@@ -41,11 +42,11 @@ position = Vector2(0, -48)
 [node name="Levels" type="Node2D" parent="Interactables" index="2"]
 
 [node name="LevelTeleport 0" parent="Interactables/Levels" index="0" instance=ExtResource("3_wj1er")]
-position = Vector2(80, -16)
+position = Vector2(48, 16)
 levelToTeleportTo = ExtResource("5_kfa5e")
 
 [node name="LevelTeleport 1" parent="Interactables/Levels" index="1" instance=ExtResource("3_wj1er")]
-position = Vector2(144, 48)
+position = Vector2(160, 48)
 levelToTeleportTo = ExtResource("4_pf526")
 
 [node name="LevelTeleport 2" parent="Interactables/Levels" index="2" instance=ExtResource("3_wj1er")]
@@ -65,7 +66,7 @@ position = Vector2(416, -32)
 levelToTeleportTo = ExtResource("10_hjy7l")
 
 [node name="LevelTeleport 5" parent="Interactables/Levels" index="6" instance=ExtResource("3_wj1er")]
-position = Vector2(16, 48)
+position = Vector2(0, 48)
 levelToTeleportTo = ExtResource("9_v6fqk")
 
 [node name="LevelTeleport 6" parent="Interactables/Levels" index="7" instance=ExtResource("3_wj1er")]
@@ -83,6 +84,10 @@ levelToTeleportTo = ExtResource("12_ww5ee")
 [node name="LevelTeleport 8S" parent="Interactables/Levels" index="10" instance=ExtResource("3_wj1er")]
 position = Vector2(-128, -16)
 levelToTeleportTo = ExtResource("12_2cj48")
+
+[node name="LevelTeleport 9" parent="Interactables/Levels" index="11" instance=ExtResource("3_wj1er")]
+position = Vector2(112, 16)
+levelToTeleportTo = ExtResource("16_ykpu5")
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 

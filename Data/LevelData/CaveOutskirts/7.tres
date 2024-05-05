@@ -6,6 +6,6 @@
 script = ExtResource("1_b3quv")
 ID = "7"
 Name = "The Shaft"
-NoCompletedToUnlock = 6
+NoCompletedToUnlock = 5
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

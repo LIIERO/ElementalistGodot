@@ -55,6 +55,7 @@ public partial class MainMenu : ButtonManager
             if (CurrentItemIndex == 1) // continue
             {
                 if (!gameState.SaveFileExists("0")) return;
+                gameState.ResetPersistentData();
                 gameState.LoadFromSaveFile("0");
                 levelTransitions.StartGameTransition(); // transition from menu to game
             }
@@ -75,6 +76,7 @@ public partial class MainMenu : ButtonManager
         newGameApprovalPopup = null;
 
         if (areYouSure == false) return;
+        gameState.ResetPersistentData();
         gameState.CreateNewSaveFile("0"); // Create a new save with the default values
         levelTransitions.StartGameTransition(); // transition from menu to game
     }

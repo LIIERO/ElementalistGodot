@@ -139,7 +139,7 @@ public partial class SettingsManager : Node
         if (!File.Exists(path))
         {
             GD.Print("Path not found (preferences)");
-            gameState.FirstBoot = true;
+            //gameState.FirstBoot = true;
             return;
         }
         string jsonString = File.ReadAllText(path);

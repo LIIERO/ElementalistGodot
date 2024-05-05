@@ -81,4 +81,9 @@ public static class GameUtils
             dB = -144.0f;
         return dB;
     }
+
+    public static bool LevelIDEndsWithLetter(string id, string letter)
+    {
+        return id.Length > 1 && id.EndsWith(letter);
+    }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using GlobalTypes;
 using System.Linq;
 using System.IO;
+using System.Reflection.Emit;
 
 public partial class GameState : Node
 {
@@ -14,7 +15,7 @@ public partial class GameState : Node
         { "H", new string[] { "HUB", "0" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "4S", "8S" } }, // Cave Outskirts
+        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "4S", "8S" } }, // Cave Outskirts
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "2S", "6S" } } // Islands of Ashes
     };
 
@@ -29,6 +30,7 @@ public partial class GameState : Node
     public string PreviousWorld { get; private set; } = "0";
     public string CurrentLevel { get; private set; } = "0"; // Current level ID
     public string PreviousLevel { get; private set; } = "0";
+    public bool IsCurrentLevelSpecial { get; set; } = false;
 
 
     // Data not loaded from the save file
@@ -37,10 +39,8 @@ public partial class GameState : Node
     public string CurrentSaveFileID { get; private set; } = "0";
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
-    public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
-    public bool IsCurrentLevelSpecial { get; set; } = false; // For debug unlocking
-
-
+    //public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
+    
 
     // METHODS ===========================================================================================================
     private CustomSignals customSignals; // singleton
@@ -105,6 +105,15 @@ public partial class GameState : Node
         }
     }
 
+    public void ResetPersistentData()
+    {
+        PlayerHubRespawnPosition = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
+        IsGameplayActive = false; // Is the root of menus the main menu or the gameplay
+        CurrentSaveFileID = "0";
+        IsGamePaused = false; // Pause is set in pause menu
+        IsLevelTransitionPlaying = false;
+    }
+
     public void CompleteCurrentLevel()
     {
         if (HasCurrentLevelBeenCompleted()) return;
@@ -124,12 +133,12 @@ public partial class GameState : Node
     public bool HasCurrentLevelBeenCompleted() { return HasLevelBeenCompleted(CurrentLevel); }
     public bool IsHubLoaded() { return CurrentLevel == "HUB"; }
 
-    public int GetNoLocalCompletedLevels()
+    public int GetNoLocalCompletedStandardLevels()
     {
         int noCompleted = 0;
-        foreach (bool isCompleted in CompletedLevels[CurrentWorld].Values)
+        foreach (KeyValuePair<string, bool> level in CompletedLevels[CurrentWorld])
         {
-            if (isCompleted) noCompleted++;
+            if (level.Value && !GameUtils.LevelIDEndsWithLetter(level.Key, "S")) noCompleted++;
         }
         return noCompleted;
     }
@@ -198,7 +207,7 @@ public partial class GameState : Node
     public void SaveToSaveFile(string id)
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
-        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel);
+        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -221,6 +230,7 @@ public partial class GameState : Node
         PreviousWorld = data.PreviousWorld;
         CurrentLevel = data.CurrentLevel;
         PreviousLevel = data.PreviousLevel;
+        IsCurrentLevelSpecial = data.IsCurrentLevelSpecial;
 
         FixCompletedLevels();
 
@@ -236,6 +246,7 @@ public partial class GameState : Node
         PreviousLevel = "HUB";
         CurrentWorld = "0";
         PreviousWorld = "0";
+        IsCurrentLevelSpecial = false;
 
         CurrentSaveFileID = id;
 
@@ -271,7 +282,7 @@ public partial class GameState : Node
                     if (CompletedLevels[CurrentWorld][levelKey] == false)
                     {
                         CompletedLevels[CurrentWorld][levelKey] = true;
-                        if (levelKey.EndsWith("S"))
+                        if (GameUtils.LevelIDEndsWithLetter(levelKey, "S"))
                             NoRedFragments += 1;
                         else
                             NoSunFragments += 1;

@@ -6,6 +6,6 @@
 script = ExtResource("1_jhaf5")
 ID = "5"
 Name = "Devious Platform"
-NoCompletedToUnlock = 4
+NoCompletedToUnlock = 3
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
