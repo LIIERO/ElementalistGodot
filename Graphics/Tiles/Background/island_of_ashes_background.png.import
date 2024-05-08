@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwpevfdvbddf2"
-path="res://.godot/imported/title1.png-e210e6cfb226af64acd968a6269994f6.ctex"
+uid="uid://boa1inyqxpj5g"
+path="res://.godot/imported/island_of_ashes_background.png-d051ebfeef480c2c3f3cecd1a0b30034.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Backgrounds/title1.png"
-dest_files=["res://.godot/imported/title1.png-e210e6cfb226af64acd968a6269994f6.ctex"]
+source_file="res://Graphics/Tiles/Background/island_of_ashes_background.png"
+dest_files=["res://.godot/imported/island_of_ashes_background.png-d051ebfeef480c2c3f3cecd1a0b30034.ctex"]
 
 [params]
 

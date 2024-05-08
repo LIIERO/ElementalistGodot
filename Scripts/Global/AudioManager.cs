@@ -27,7 +27,7 @@ public partial class AudioManager : Node
             { "H", musicVoid },
             { "0", musicPurpleForest },
             { "1", musicDistantShore },
-            { "2", musicVoid },
+            { "2", musicCaveOutskirts },
             { "3", musicVoid }
         };
     }
@@ -129,5 +129,6 @@ public partial class AudioManager : Node
     [ExportSubgroup("Music")]
     [Export] public AudioStreamPlayer musicPurpleForest;
     [Export] public AudioStreamPlayer musicDistantShore;
+    [Export] public AudioStreamPlayer musicCaveOutskirts;
     [Export] public AudioStreamPlayer musicVoid;
 }

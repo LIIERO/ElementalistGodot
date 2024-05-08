@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=28 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/Soft/walk_grass_1.ogg" id="2_3djbo"]
@@ -26,8 +26,9 @@
 [ext_resource type="AudioStream" uid="uid://c5sq1gld6p24d" path="res://Audio/Sounds/Transitions/fade_out.ogg" id="20_xgnnk"]
 [ext_resource type="AudioStream" uid="uid://bkvoj578rq8ll" path="res://Audio/Sounds/Transitions/fade_in.ogg" id="21_yfw4j"]
 [ext_resource type="AudioStream" uid="uid://ds1bl3hbn02qv" path="res://Audio/Music/void.ogg" id="24_dx6ev"]
+[ext_resource type="AudioStream" uid="uid://du041hny68iq" path="res://Audio/Music/cave_outskirts.ogg" id="26_gr8jn"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "buttonSelected", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicVoid")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "buttonSelected", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicVoid")]
 script = ExtResource("1_b82rj")
 softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
 hardFootsteps = [NodePath("Player/Footsteps/FH1"), NodePath("Player/Footsteps/FH2"), NodePath("Player/Footsteps/FH3"), NodePath("Player/Footsteps/FH4")]
@@ -47,6 +48,7 @@ fadeOut = NodePath("Transitions/FadeOut")
 fadeIn = NodePath("Transitions/FadeIn")
 musicPurpleForest = NodePath("Music/PurpleForest")
 musicDistantShore = NodePath("Music/DistantShore")
+musicCaveOutskirts = NodePath("Music/CaveOutskirts")
 musicVoid = NodePath("Music/Void")
 
 [node name="Player" type="Node" parent="."]
@@ -164,11 +166,16 @@ bus = &"Sounds"
 
 [node name="PurpleForest" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("16_hvofm")
-volume_db = -6.5
+volume_db = -7.5
 bus = &"Music"
 
 [node name="DistantShore" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("17_i7plo")
+volume_db = -2.5
+bus = &"Music"
+
+[node name="CaveOutskirts" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("26_gr8jn")
 volume_db = -3.0
 bus = &"Music"
 
