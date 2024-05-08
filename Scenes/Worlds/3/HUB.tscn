@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d160o16ouxexp"]
+[gd_scene load_steps=19 format=3 uid="uid://d160o16ouxexp"]
 
 [ext_resource type="PackedScene" uid="uid://bwabd5uj1swuf" path="res://Scenes/Worlds/3/Base.tscn" id="1_gqo2d"]
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="5_sbon8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cxdpmef6nfqrr" path="res://Data/LevelData/AshIsland/0.tres" id="9_dmtht"]
 [ext_resource type="Resource" uid="uid://qpm7fcxboxkm" path="res://Data/LevelData/AshIsland/2S.tres" id="9_laelt"]
 [ext_resource type="Resource" uid="uid://bq6xwjvsydalh" path="res://Data/LevelData/AshIsland/1.tres" id="10_hyhml"]
+[ext_resource type="Resource" uid="uid://qnee683vyrxg" path="res://Data/LevelData/AshIsland/8.tres" id="10_lg1xv"]
 [ext_resource type="Resource" uid="uid://pdy4cxabpbjb" path="res://Data/LevelData/AshIsland/4.tres" id="11_me4xy"]
 [ext_resource type="Resource" uid="uid://bs5hua26j5fxe" path="res://Data/LevelData/AshIsland/5.tres" id="12_4lcqm"]
 [ext_resource type="Resource" uid="uid://dfdej0qlxc4uh" path="res://Data/LevelData/AshIsland/6.tres" id="13_tukwj"]
@@ -19,6 +20,9 @@
 [ext_resource type="Resource" uid="uid://dwu77gfjftgqo" path="res://Data/LevelData/AshIsland/2.tres" id="17_s82m8"]
 
 [node name="Game" instance=ExtResource("1_gqo2d")]
+
+[node name="GUI" parent="." index="0"]
+visible = false
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(0, 112)
@@ -62,23 +66,27 @@ levelToTeleportTo = ExtResource("12_4lcqm")
 position = Vector2(160, 48)
 levelToTeleportTo = ExtResource("9_1ejno")
 
-[node name="LevelTeleport9" parent="Interactables/Levels" index="5" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport12" parent="Interactables/Levels" index="5" instance=ExtResource("8_rikt7")]
+position = Vector2(208, 64)
+levelToTeleportTo = ExtResource("10_lg1xv")
+
+[node name="LevelTeleport9" parent="Interactables/Levels" index="6" instance=ExtResource("8_rikt7")]
 position = Vector2(0, -16)
 levelToTeleportTo = ExtResource("13_tukwj")
 
-[node name="LevelTeleport10" parent="Interactables/Levels" index="6" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport10" parent="Interactables/Levels" index="7" instance=ExtResource("8_rikt7")]
 position = Vector2(0, -64)
 levelToTeleportTo = ExtResource("14_vnvxx")
 
-[node name="LevelTeleport4" parent="Interactables/Levels" index="7" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport4" parent="Interactables/Levels" index="8" instance=ExtResource("8_rikt7")]
 position = Vector2(-288, 64)
 levelToTeleportTo = ExtResource("9_dmtht")
 
-[node name="LevelTeleport5" parent="Interactables/Levels" index="8" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport5" parent="Interactables/Levels" index="9" instance=ExtResource("8_rikt7")]
 position = Vector2(-224, 48)
 levelToTeleportTo = ExtResource("16_ncb1d")
 
-[node name="LevelTeleport6" parent="Interactables/Levels" index="9" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport6" parent="Interactables/Levels" index="10" instance=ExtResource("8_rikt7")]
 position = Vector2(-384, 80)
 levelToTeleportTo = ExtResource("17_s82m8")
 

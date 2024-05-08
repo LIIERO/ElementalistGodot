@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://qnee683vyrxg"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_54lo6"]
+
+[resource]
+script = ExtResource("1_54lo6")
+ID = "8"
+Name = "Floating Island"
+NoCompletedToUnlock = 7
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false
