@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d160o16ouxexp"]
+[gd_scene load_steps=20 format=3 uid="uid://d160o16ouxexp"]
 
 [ext_resource type="PackedScene" uid="uid://bwabd5uj1swuf" path="res://Scenes/Worlds/3/Base.tscn" id="1_gqo2d"]
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="5_sbon8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://bq6xwjvsydalh" path="res://Data/LevelData/AshIsland/1.tres" id="10_hyhml"]
 [ext_resource type="Resource" uid="uid://qnee683vyrxg" path="res://Data/LevelData/AshIsland/8.tres" id="10_lg1xv"]
 [ext_resource type="Resource" uid="uid://pdy4cxabpbjb" path="res://Data/LevelData/AshIsland/4.tres" id="11_me4xy"]
+[ext_resource type="Resource" uid="uid://dmsmu1xt6h57d" path="res://Data/LevelData/AshIsland/9.tres" id="11_w83yx"]
 [ext_resource type="Resource" uid="uid://bs5hua26j5fxe" path="res://Data/LevelData/AshIsland/5.tres" id="12_4lcqm"]
 [ext_resource type="Resource" uid="uid://dfdej0qlxc4uh" path="res://Data/LevelData/AshIsland/6.tres" id="13_tukwj"]
 [ext_resource type="Resource" uid="uid://iojk22n3cq6s" path="res://Data/LevelData/AshIsland/6S.tres" id="14_vnvxx"]
@@ -20,9 +21,6 @@
 [ext_resource type="Resource" uid="uid://dwu77gfjftgqo" path="res://Data/LevelData/AshIsland/2.tres" id="17_s82m8"]
 
 [node name="Game" instance=ExtResource("1_gqo2d")]
-
-[node name="GUI" parent="." index="0"]
-visible = false
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(0, 112)
@@ -67,26 +65,30 @@ position = Vector2(160, 48)
 levelToTeleportTo = ExtResource("9_1ejno")
 
 [node name="LevelTeleport12" parent="Interactables/Levels" index="5" instance=ExtResource("8_rikt7")]
-position = Vector2(208, 64)
+position = Vector2(-48, 96)
 levelToTeleportTo = ExtResource("10_lg1xv")
 
-[node name="LevelTeleport9" parent="Interactables/Levels" index="6" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport13" parent="Interactables/Levels" index="6" instance=ExtResource("8_rikt7")]
+position = Vector2(48, 96)
+levelToTeleportTo = ExtResource("11_w83yx")
+
+[node name="LevelTeleport9" parent="Interactables/Levels" index="7" instance=ExtResource("8_rikt7")]
 position = Vector2(0, -16)
 levelToTeleportTo = ExtResource("13_tukwj")
 
-[node name="LevelTeleport10" parent="Interactables/Levels" index="7" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport10" parent="Interactables/Levels" index="8" instance=ExtResource("8_rikt7")]
 position = Vector2(0, -64)
 levelToTeleportTo = ExtResource("14_vnvxx")
 
-[node name="LevelTeleport4" parent="Interactables/Levels" index="8" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport4" parent="Interactables/Levels" index="9" instance=ExtResource("8_rikt7")]
 position = Vector2(-288, 64)
 levelToTeleportTo = ExtResource("9_dmtht")
 
-[node name="LevelTeleport5" parent="Interactables/Levels" index="9" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport5" parent="Interactables/Levels" index="10" instance=ExtResource("8_rikt7")]
 position = Vector2(-224, 48)
 levelToTeleportTo = ExtResource("16_ncb1d")
 
-[node name="LevelTeleport6" parent="Interactables/Levels" index="10" instance=ExtResource("8_rikt7")]
+[node name="LevelTeleport6" parent="Interactables/Levels" index="11" instance=ExtResource("8_rikt7")]
 position = Vector2(-384, 80)
 levelToTeleportTo = ExtResource("17_s82m8")
 
@@ -95,12 +97,19 @@ position = Vector2(384, 48)
 
 [node name="Sign" parent="Interactables" index="3" instance=ExtResource("16_y61t8")]
 position = Vector2(432, 48)
-Text = "You've completed all of the levels there are so far. Congratz!"
+Text = "You've completed all of the standard levels there are so far. Congratz!"
+
+[node name="Sign2" parent="Interactables" index="4" instance=ExtResource("16_y61t8")]
+position = Vector2(-80, 80)
+Text = "Levels in this whole area are definitely subject to change (especially their placements)."
 
 [node name="DangerTiles" parent="." index="6"]
 layer_0/tile_data = PackedInt32Array(655330, 196608, 1, 655329, 196608, 0, 655328, 0, 0, 655327, 196608, 0, 655326, 131072, 0, 655325, 131072, 0, 655324, 131072, 0, 655323, 196608, 0, 655322, 131072, 0, 655321, 0, 0, 655320, 65536, 2, 589863, 0, 2, 589862, 0, 0, 589861, 131072, 0, 589860, 65536, 0, 589859, 65536, 0, 589858, 65536, 0, 589857, 196608, 0, 589856, 65536, 0, 589855, 65536, 0, 589854, 65536, 0, 589853, 0, 0, 589852, 196608, 0, 589851, 131072, 0, 589850, 0, 0, 589849, 131072, 0, 589848, 0, 0, 589847, 0, 0, 589846, 131072, 0, 589845, 196608, 0, 589844, 131072, 0, 589843, 0, 0, 589842, 0, 0, 589841, 196608, 2)
 
 [node name="Gate" parent="." index="8" node_paths=PackedStringArray("playerNode") instance=ExtResource("17_bc1jx")]
 position = Vector2(336, 32)
-requiredFragments = 41
+requiredFragments = 39
 playerNode = NodePath("../Zoe")
+
+[node name="BackgroundTiles" parent="." index="9"]
+layer_0/tile_data = PackedInt32Array(196599, 0, 3, 327669, 720896, 3, 262133, 720896, 0, 327668, 589824, 3, 262132, 655360, 0, 327667, 589824, 3, 262131, 393216, 1, 327666, 327680, 3, 262130, 524288, 1, 196595, 720896, 0, 196594, 524288, 0, 393200, 589824, 3, 327664, 655360, 0, 393199, 589824, 3, 327663, 393216, 1, 393198, 524288, 3, 327662, 524288, 1, 393201, 720896, 3, 327665, 393216, 0, 262127, 720896, 0, 262126, 524288, 0, 458731, 720896, 3, 393195, 720896, 0, 458730, 589824, 3, 393194, 655360, 0, 458729, 589824, 3, 393193, 393216, 1, 458728, 589824, 3, 393192, 327680, 1, 327657, 720896, 0, 327656, 524288, 0, 458727, 589824, 3, 393191, 655360, 0, 458726, 589824, 3, 393190, 655360, 0, 458725, 589824, 3, 393189, 393216, 1, 458724, 327680, 3, 393188, 524288, 1, 327653, 720896, 0, 327652, 524288, 0, 524259, 720896, 3, 458723, 393216, 0, 524258, 393216, 2, 458722, 655360, 0, 524257, 327680, 1, 458721, 524288, 0, 655330, 720896, 2, 589794, 720896, 2, 655329, 589824, 2, 589793, 589824, 2, 655328, 589824, 2, 589792, 589824, 2, 524256, 655360, 0, 655327, 524288, 1, 589791, 524288, 1, 524255, 524288, 0, 720866, 720896, 3, 720865, 589824, 3, 720864, 589824, 3, 720863, 524288, 3, 458752, 589824, 3, 393216, 589824, 2, 327680, 393216, 1, 262144, 720896, 2, 196608, 720896, 2, 131072, 720896, 2, 0, 589824, 2, -65536, 589824, 2, 524287, 589824, 3, 458751, 589824, 2, 393215, 327680, 1, 327679, 524288, 1, 262143, 524288, 1, 196607, 524288, 1, 131071, 327680, 2, 65535, 589824, 2, -1, 589824, 2, 65534, 327680, 2, -2, 327680, 1, 1, 393216, 2, -65535, 393216, 1, 458754, 720896, 3, 458753, 589824, 3, 393217, 393216, 1, 327681, 720896, 0, 524286, 589824, 3, 458750, 327680, 1, 393214, 524288, 0, 524285, 524288, 3, 458749, 327680, 0, 458748, 393216, 3, 393212, 720896, 2, 458747, 524288, 3, 393211, 327680, 2, 393220, 720896, 3, 327684, 393216, 2, 393219, 327680, 3, 327683, 524288, 1, 327675, 393216, 1, 262139, 720896, 2, 196603, 720896, 2, 131067, 720896, 2, 65531, 720896, 0, 393210, 589824, 3, 327674, 589824, 2, 262138, 327680, 1, 196602, 524288, 1, 131066, 524288, 1, 65530, 524288, 0, 327685, 589824, 3, 262149, 589824, 2, 196613, 393216, 1, 131077, 720896, 2, 65541, 720896, 2, 5, 720896, 0, 262148, 327680, 1, 196612, 524288, 1, 131076, 524288, 1, 65540, 524288, 1, 4, 524288, 0, 131080, 0, 3, 327676, 720896, 0, 262147, 524288, 0, -131072, 393216, 1, -196608, 720896, 2, -262144, 720896, 0, -65537, 327680, 1, -131073, 524288, 1, -196609, 524288, 0, 393239, 589824, 2, 327703, 589824, 2, 262167, 655360, 0, 393238, 327680, 2, 327702, 589824, 2, 262166, 655360, 0, 393237, 524288, 3, 327701, 327680, 2, 262165, 655360, 0, 393242, 720896, 3, 327706, 393216, 2, 393241, 393216, 2, 327705, 589824, 2, 393240, 589824, 2, 327704, 589824, 2, 262170, 655360, 0, 262169, 655360, 0, 262168, 655360, 0, 655385, 720896, 3, 589849, 720896, 2, 524313, 720896, 2, 458777, 720896, 2, 655384, 589824, 3, 589848, 589824, 2, 524312, 589824, 2, 458776, 589824, 2, 655383, 589824, 3, 589847, 589824, 2, 524311, 589824, 2, 458775, 589824, 2, 655382, 524288, 3, 589846, 524288, 1, 524310, 524288, 1, 458774, 524288, 1, 327700, 524288, 3, 262164, 524288, 0, 262171, 720896, 0, 327707, 720896, 3, 65536, 393216, 2, 393218, 393216, 0, 393209, 524288, 3, 327673, 524288, 1, 262137, 524288, 0, 327686, 720896, 3, 262150, 720896, 2, 196614, 720896, 0, 65537, 720896, 3, 131070, 524288, 3, 65533, 524288, 3, -3, 524288, 0, 2, 720896, 3, -65534, 720896, 0, -131071, 720896, 0, -65538, 524288, 0)

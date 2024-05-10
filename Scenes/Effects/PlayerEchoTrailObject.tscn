@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5b36fnh8utbi"]
 
-[ext_resource type="Texture2D" uid="uid://buyfr2nnlr3qq" path="res://Graphics/Effects/ZoeEchoTrail/fire_echo.png" id="1_4g2b7"]
+[ext_resource type="Texture2D" uid="uid://dl5cab5u526qa" path="res://Graphics/Entities/fire_zoe.png" id="1_2jufh"]
 
 [sub_resource type="Animation" id="Animation_a4a5n"]
 resource_name = "FadeOut"
@@ -27,7 +27,7 @@ _data = {
 modulate = Color(1, 1, 1, 0.25098)
 z_index = 4
 texture_filter = 1
-texture = ExtResource("1_4g2b7")
+texture = ExtResource("1_2jufh")
 
 [node name="FadeOut" type="AnimationPlayer" parent="."]
 libraries = {

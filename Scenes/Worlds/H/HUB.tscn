@@ -49,17 +49,17 @@ playerNode = NodePath("../../Zoe")
 
 [node name="Gate2" parent="Gates" index="2" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(224, 48)
-requiredFragments = 24
+requiredFragments = 22
 playerNode = NodePath("../../Zoe")
 
 [node name="Gate3" parent="Gates" index="3" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(320, 48)
-requiredFragments = 34
+requiredFragments = 30
 playerNode = NodePath("../../Zoe")
 
 [node name="Gate4" parent="Gates" index="4" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(416, 48)
-requiredFragments = 41
+requiredFragments = 39
 playerNode = NodePath("../../Zoe")
 
 [node name="Interactables" type="Node2D" parent="." index="6"]
