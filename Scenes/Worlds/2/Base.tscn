@@ -16,9 +16,7 @@ PlayerNode = NodePath("../Zoe")
 
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_rlhp3")]
 
-[node name="DangerTiles" parent="." index="4" instance=ExtResource("3_tu7c0")]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="5"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
 scroll_base_scale = Vector2(1, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
@@ -51,9 +49,11 @@ texture_filter = 1
 texture = ExtResource("6_1ecya")
 offset = Vector2(240, 135)
 
-[node name="BackgroundTiles" parent="." index="6" instance=ExtResource("7_sy0g3")]
+[node name="BackgroundTiles" parent="." index="5" instance=ExtResource("7_sy0g3")]
 
-[node name="Decals" parent="." index="7" instance=ExtResource("8_1f0ai")]
+[node name="Decals" parent="." index="6" instance=ExtResource("8_1f0ai")]
 
-[node name="DecalsForeground" parent="." index="8" instance=ExtResource("8_1f0ai")]
+[node name="DecalsForeground" parent="." index="7" instance=ExtResource("8_1f0ai")]
 z_index = 0
+
+[node name="DangerTiles" parent="." index="8" instance=ExtResource("3_tu7c0")]
