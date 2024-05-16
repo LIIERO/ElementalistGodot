@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvcfjv4q8c13d"]
+[gd_scene load_steps=10 format=3 uid="uid://bvcfjv4q8c13d"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_b502t"]
 [ext_resource type="PackedScene" uid="uid://b1058bt1p1lbe" path="res://Scenes/Tilesets/Ground/DSGround.tscn" id="2_bqg7k"]
 [ext_resource type="PackedScene" uid="uid://hwrdn25v5eo3" path="res://Scenes/Tilesets/Background/DSBackground.tscn" id="2_myfgc"]
 [ext_resource type="PackedScene" uid="uid://bjy3ha4nvax5k" path="res://Scenes/Tilesets/Danger/DSDanger.tscn" id="3_dkysh"]
 [ext_resource type="Texture2D" uid="uid://bq7c64jtdli3" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_0.png" id="4_73alj"]
+[ext_resource type="PackedScene" uid="uid://d18ljxbmgba8q" path="res://Scenes/Tilesets/Decals/DistantShoreline.tscn" id="4_ojidg"]
 [ext_resource type="Texture2D" uid="uid://dtu6ycblst2ux" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_1.png" id="5_j3a1v"]
 [ext_resource type="Texture2D" uid="uid://dl54m5dbpugh7" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_2.png" id="6_6hleb"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="6_gavt2"]
@@ -18,9 +19,11 @@ PlayerNode = NodePath("../Zoe")
 
 [node name="GroundTiles" parent="." index="4" instance=ExtResource("2_bqg7k")]
 
-[node name="DangerTiles" parent="." index="5" instance=ExtResource("3_dkysh")]
+[node name="Decals" parent="." index="5" instance=ExtResource("4_ojidg")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="6"]
+[node name="DangerTiles" parent="." index="6" instance=ExtResource("3_dkysh")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="7"]
 scroll_base_scale = Vector2(1, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]

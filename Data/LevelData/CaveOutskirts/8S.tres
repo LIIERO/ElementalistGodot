@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://gf6ebnqsmwal"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cjwt4dahx8trh"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_ycnlx"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_fwbwo"]
 
 [resource]
-script = ExtResource("1_ycnlx")
+script = ExtResource("1_fwbwo")
 ID = "8S"
-Name = "Burden for Eternity"
+Name = "Usage of the Useless"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "8"
 IsSpecial = true

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://6ufvhrf6hv54"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://4gprdleep38y"]
 
 [ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_qs0lq"]
 
 [resource]
 script = ExtResource("1_qs0lq")
 ID = "9"
-Name = "The Concept is Baffling"
+Name = "The Shaft"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
