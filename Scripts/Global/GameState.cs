@@ -31,6 +31,7 @@ public partial class GameState : Node
     public string CurrentLevel { get; private set; } = "0"; // Current level ID
     public string PreviousLevel { get; private set; } = "0";
     public bool IsCurrentLevelSpecial { get; set; } = false;
+    public string CurrentLevelName { get; set; } = "";
 
 
     // Data not loaded from the save file
@@ -159,10 +160,12 @@ public partial class GameState : Node
         WorldEntrance.setPlayerWorldEnterPosition = true;
     }
 
-    public void LoadLevel(string id)
+    public void LoadLevel(string id, string name="HUB")
     {
         PreviousLevel = CurrentLevel;
         CurrentLevel = id;
+        CurrentLevelName = name;
+        GD.Print(CurrentLevelName);
         LoadGame();
     }
 
@@ -207,7 +210,7 @@ public partial class GameState : Node
     public void SaveToSaveFile(string id)
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
-        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial);
+        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial, CurrentLevelName);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -231,6 +234,7 @@ public partial class GameState : Node
         CurrentLevel = data.CurrentLevel;
         PreviousLevel = data.PreviousLevel;
         IsCurrentLevelSpecial = data.IsCurrentLevelSpecial;
+        CurrentLevelName = data.CurrentLevelName;
 
         FixCompletedLevels();
 
@@ -247,6 +251,7 @@ public partial class GameState : Node
         CurrentWorld = "0";
         PreviousWorld = "0";
         IsCurrentLevelSpecial = false;
+        CurrentLevelName = "HUB";
 
         CurrentSaveFileID = id;
 

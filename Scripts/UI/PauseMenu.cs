@@ -8,7 +8,7 @@ public partial class PauseMenu : ButtonManager
     //private SettingsManager settingsManager;
     private LevelTransitions levelTransitions;
     private AudioManager audioManager;
-    //private CustomSignals customSignals;
+    private CustomSignals customSignals;
 
     const float resumeDelay = 0.1f;
 
@@ -17,7 +17,7 @@ public partial class PauseMenu : ButtonManager
         //settingsManager = GetNode<SettingsManager>("/root/SettingsManager");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
-        //customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 
         base._Ready();
         Resume();
@@ -80,24 +80,22 @@ public partial class PauseMenu : ButtonManager
         Show();
         GetTree().Paused = true;
         gameState.IsGamePaused = true;
+        customSignals.EmitSignal(CustomSignals.SignalName.GamePaused, true);
     }
 
 	private void Resume()
 	{
         //Engine.TimeScale = 1;
-        //customSignals.EmitSignal(CustomSignals.SignalName.GamePaused, false);
         Hide();
+
         GetTree().Paused = false;
         gameState.IsGamePaused = false;
-        
+        customSignals.EmitSignal(CustomSignals.SignalName.GamePaused, false);
     }
 
     public async void DelayResume()
     {
-        Hide();
         await ToSignal(GetTree().CreateTimer(resumeDelay), "timeout");
-        //customSignals.EmitSignal(CustomSignals.SignalName.GamePaused, false);
-        GetTree().Paused = false;
-        gameState.IsGamePaused = false;
+        Resume();
     }
 }

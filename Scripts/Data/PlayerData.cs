@@ -13,8 +13,9 @@ public class PlayerData
     public string CurrentLevel { get; private set; } = "HUB";
     public string PreviousLevel { get; private set; } = "HUB";
     public bool IsCurrentLevelSpecial { get; private set; } = false;
+    public string CurrentLevelName { get; private set; } = "HUB";
 
-    public PlayerData(Dictionary<string, Dictionary<string, bool>> CompletedLevels, int NoSunFragments, int NoRedFragments, string CurrentWorld, string PreviousWorld, string CurrentLevel, string PreviousLevel, bool IsCurrentLevelSpecial)
+    public PlayerData(Dictionary<string, Dictionary<string, bool>> CompletedLevels, int NoSunFragments, int NoRedFragments, string CurrentWorld, string PreviousWorld, string CurrentLevel, string PreviousLevel, bool IsCurrentLevelSpecial, string CurrentLevelName)
     {
         this.CompletedLevels = CompletedLevels;
         this.NoSunFragments = NoSunFragments;
@@ -24,5 +25,6 @@ public class PlayerData
         this.CurrentLevel = CurrentLevel;
         this.PreviousLevel = PreviousLevel;
         this.IsCurrentLevelSpecial = IsCurrentLevelSpecial;
+        this.CurrentLevelName = CurrentLevelName;
     }
 }

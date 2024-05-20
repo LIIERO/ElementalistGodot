@@ -40,8 +40,8 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void PopupResultEventHandler(bool result);
 
-    //[Signal]
-    //public delegate void GamePausedEventHandler(bool paused);
+    [Signal]
+    public delegate void GamePausedEventHandler(bool paused);
 
     // Gameplay
 
