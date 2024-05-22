@@ -8,7 +8,7 @@ public partial class Fireball : CharacterBody2D
     private AudioManager audioManager;
 
     [Export] Sprite2D spriteNode;
-	const float speed = 200.0f;
+	const float speed = 180.0f;
     const float activationTime = 0.05f;
     //const float playerTeleportOffset = 2.0f;
 
