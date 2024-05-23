@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://k8kon06a3f8d"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_wmcsw"]
+
+[resource]
+script = ExtResource("1_wmcsw")
+ID = "B"
+Name = "Return Ticket"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "A"
+IsSpecial = false

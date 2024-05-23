@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cee8im26eefk4"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_05qvw"]
+
+[resource]
+script = ExtResource("1_05qvw")
+ID = "C"
+Name = "Abandoned Marketplace"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "B"
+IsSpecial = false

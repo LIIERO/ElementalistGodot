@@ -16,7 +16,7 @@ public partial class GameState : Node
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "4S", "8S" } }, // Cave Outskirts
-        { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "2S", "3S", "6S" } } // Islands of Ashes
+        { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "2S", "3S", "6S" } } // Islands of Ashes
     };
 
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
