@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bbf557hku721r" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceAshIsland.tscn" id="5_gxmhf"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="5_r0uht"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="7_u3ckl"]
-[ext_resource type="Resource" uid="uid://d3ja8l4x8744j" path="res://Data/LevelData/Void/0.tres" id="8_d4rcp"]
+[ext_resource type="Resource" uid="uid://d3ja8l4x8744j" path="res://Data/LevelData/Void/A.tres" id="8_d4rcp"]
 
 [node name="Game" instance=ExtResource("1_stapj")]
 
@@ -39,7 +39,7 @@ position = Vector2(464, 80)
 
 [node name="Gate0" parent="Gates" index="0" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(-128, 48)
-requiredFragments = 999
+requiredFragments = 40
 playerNode = NodePath("../../Zoe")
 
 [node name="Interactables" type="Node2D" parent="." index="6"]

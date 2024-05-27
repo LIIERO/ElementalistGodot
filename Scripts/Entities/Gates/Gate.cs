@@ -29,6 +29,6 @@ public abstract partial class Gate : Node2D
         if (!gameState.IsLevelTransitionPlaying) audioManager.gateOpen.Play();
         isOpened = true;
         animator.Play("Open");
-        gateSprite.Modulate = new Color(1.0f, 1.0f, 0.75f);
+        gateSprite.Modulate = new Color(1.0f, 1.0f, 0.5f);
     }
 }

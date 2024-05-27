@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc1ju7duas3qu"
-path="res://.godot/imported/sandcastle.png-a25ff4370dc737a66f586632d9bf29a9.ctex"
+uid="uid://caahg5skt8x6b"
+path="res://.godot/imported/void_thorns.png-c7834f726e66b59f91fb2ab08a1577f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Decals/DistantShoreline/sandcastle.png"
-dest_files=["res://.godot/imported/sandcastle.png-a25ff4370dc737a66f586632d9bf29a9.ctex"]
+source_file="res://Graphics/Tiles/Danger/Thorns/void_thorns.png"
+dest_files=["res://.godot/imported/void_thorns.png-c7834f726e66b59f91fb2ab08a1577f8.ctex"]
 
 [params]
 
