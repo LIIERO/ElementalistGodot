@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public partial class AudioManager : Node
 {
+    private GameState gameState;
+    private CustomSignals customSignals;
+
     readonly private Random random = new();
 
     private Dictionary<string, AudioStreamPlayer> worldMusicDictionary;
@@ -19,6 +22,9 @@ public partial class AudioManager : Node
 
     public override void _Ready()
     {
+        gameState = GetNode<GameState>("/root/GameState");
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.LevelTransitioned, new Callable(this, MethodName.PlayCurrentWorldMusicAfterFirstGoalGet));
         musicFadeBusId = AudioServer.GetBusIndex("MusicFade");
 
         // Create music dictionary
@@ -67,12 +73,23 @@ public partial class AudioManager : Node
 
     public void PlayWorldMusic(string worldId)
     {
+        if (gameState.MainCutsceneProgress == 0 && gameState.NoSunFragments == 0) return; // Dont play the music at the start
+
         fadingIn = true;
         fadingOut = false;
         fadeTimeProgress = FADEINTIME;
         AudioServer.SetBusVolumeDb(musicFadeBusId, 0f);
         currentMusic = worldMusicDictionary[worldId];
         currentMusic.Play();
+    }
+
+    public void PlayCurrentWorldMusicAfterFirstGoalGet() // Cutscene 0
+    {
+        if (gameState.MainCutsceneProgress == 0 && gameState.NoSunFragments > 0)
+        {
+            gameState.MainCutsceneProgress = 1;
+            PlayWorldMusic(gameState.CurrentWorld);
+        }
     }
 
     public void StopMusic()

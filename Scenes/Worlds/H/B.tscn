@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://s0tlgky2u32"]
+
+[ext_resource type="PackedScene" uid="uid://dgm3ht0c8whkr" path="res://Scenes/Worlds/H/Base.tscn" id="1_4fnuj"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_t64ua"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="4_kc2as"]
+[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_4v53l"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="7_i6lu0"]
+[ext_resource type="Texture2D" uid="uid://dfm4homqvu0dx" path="res://Graphics/Decals/Global/thanks_for_playing.png" id="8_2bil6"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="9_6rrcq"]
+
+[sub_resource type="Animation" id="Animation_sgcxl"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqv8"]
+_data = {
+"Idle": SubResource("Animation_sgcxl")
+}
+
+[node name="Game" instance=ExtResource("1_4fnuj")]
+
+[node name="Zoe" parent="." index="1"]
+position = Vector2(-224, 32)
+
+[node name="GroundTiles" parent="." index="3"]
+layer_0/tile_data = PackedInt32Array(524303, 720896, 3, 458767, 720896, 2, 393231, 720896, 2, 327695, 720896, 2, 262159, 720896, 2, 196623, 720896, 2, 524302, 589824, 3, 458766, 589824, 2, 393230, 589824, 2, 524301, 589824, 3, 458765, 589824, 2, 393229, 589824, 2, 524300, 589824, 3, 458764, 589824, 2, 393228, 589824, 2, 524299, 589824, 3, 458763, 589824, 2, 393227, 589824, 2, 524298, 589824, 3, 458762, 589824, 2, 393226, 589824, 2, 524297, 589824, 3, 458761, 589824, 2, 393225, 589824, 2, 524296, 589824, 3, 458760, 589824, 2, 393224, 589824, 2, 524295, 589824, 3, 458759, 589824, 2, 393223, 589824, 2, 524294, 589824, 3, 458758, 589824, 2, 393222, 589824, 2, 524293, 589824, 3, 458757, 589824, 2, 393221, 589824, 2, 524292, 589824, 3, 458756, 589824, 2, 393220, 589824, 2, 524291, 589824, 3, 458755, 589824, 2, 393219, 589824, 2, 524290, 589824, 3, 458754, 589824, 2, 393218, 589824, 2, 524289, 589824, 3, 458753, 589824, 2, 393217, 589824, 2, 524288, 589824, 3, 458752, 589824, 2, 393216, 589824, 2, 589823, 589824, 3, 524287, 589824, 2, 458751, 589824, 2, 589822, 589824, 3, 524286, 589824, 2, 458750, 589824, 2, 589821, 589824, 3, 524285, 589824, 2, 458749, 589824, 2, 589820, 589824, 3, 524284, 589824, 2, 458748, 589824, 2, 589819, 589824, 3, 524283, 589824, 2, 458747, 589824, 2, 589818, 589824, 3, 524282, 589824, 2, 458746, 589824, 2, 589817, 589824, 3, 524281, 589824, 2, 458745, 589824, 2, 589816, 589824, 3, 524280, 589824, 2, 458744, 589824, 2, 589815, 589824, 3, 524279, 589824, 2, 458743, 589824, 2, 589814, 589824, 3, 524278, 589824, 2, 458742, 589824, 2, 589813, 589824, 3, 524277, 589824, 2, 458741, 589824, 2, 589812, 589824, 3, 524276, 589824, 2, 458740, 589824, 2, 589811, 589824, 3, 524275, 589824, 2, 458739, 589824, 2, 589810, 589824, 3, 524274, 589824, 2, 458738, 589824, 2, 589809, 589824, 3, 524273, 589824, 2, 458737, 589824, 2, 589808, 524288, 3, 524272, 524288, 1, 458736, 524288, 1, 393200, 524288, 1, 327664, 524288, 1, 262128, 524288, 1, 196592, 262144, 1, 131056, 0, 1, 65520, 0, 1, -16, 0, 1, -65552, 0, 1, -131088, 0, 1, -196624, 0, 1, 131087, 458752, 1, 65551, 0, 1, 15, 0, 1, -65521, 0, 1, -131057, 0, 1, -196593, 0, 1, -262129, 0, 1, -327665, 0, 1, -393201, 0, 1, -458737, 0, 1, -262160, 0, 1, -327696, 0, 1, -393232, 0, 1, 393203, 589824, 2, 327667, 589824, 2, 262131, 589824, 2, 393202, 589824, 2, 327666, 589824, 2, 262130, 589824, 2, 393201, 589824, 2, 327665, 589824, 2, 262129, 589824, 2, 393204, 589824, 2, 327668, 589824, 2, 262132, 589824, 2, 327694, 589824, 2, 262158, 589824, 2, 196622, 589824, 2, 131086, 655360, 0, 327693, 589824, 2, 262157, 589824, 2, 196621, 589824, 2, 131085, 655360, 0, 327692, 589824, 2, 262156, 589824, 2, 196620, 589824, 2, 131084, 655360, 0, 327691, 589824, 2, 262155, 589824, 2, 196619, 589824, 2, 131083, 655360, 0, 196596, 655360, 0, 196595, 655360, 0, 196594, 655360, 0, 196593, 655360, 0, 393206, 655360, 0, 393205, 393216, 1, -458768, 0, 1, -524304, 0, 1, -589840, 0, 1, -655376, 65536, 0, -720881, 196608, 0, -720882, 131072, 3, -720883, 131072, 3, -720884, 131072, 3, -720885, 131072, 3, -720886, 131072, 3, -720887, 131072, 3, -720888, 131072, 3, -720889, 131072, 3, -720890, 131072, 3, -720891, 131072, 3, -720892, 131072, 3, -720893, 131072, 3, -720894, 131072, 3, -720895, 131072, 3, -720896, 131072, 3, -655361, 131072, 3, -655362, 131072, 3, -655363, 131072, 3, -655364, 131072, 3, -655365, 131072, 3, -655366, 131072, 3, -655367, 131072, 3, -655368, 131072, 3, -655369, 131072, 3, -655370, 131072, 3, -655371, 131072, 3, -655372, 131072, 3, -655373, 131072, 3, -655374, 131072, 3, -655375, 131072, 3, -524273, 0, 1, -589809, 0, 1, -655345, 0, 1, 327690, 327680, 1, 327689, 655360, 0, 327688, 655360, 0, 327687, 655360, 0, 327686, 655360, 0, 327685, 655360, 0, 327684, 655360, 0, 327683, 655360, 0, 327682, 655360, 0, 327681, 655360, 0, 327680, 655360, 0, 393215, 655360, 0, 393214, 655360, 0, 393213, 655360, 0, 393212, 655360, 0, 393211, 655360, 0, 393210, 655360, 0, 393209, 655360, 0, 393208, 655360, 0, 393207, 655360, 0, 262154, 524288, 1, 196618, 524288, 1, 131082, 524288, 0, 327669, 720896, 2, 262133, 720896, 2, 196597, 720896, 0)
+
+[node name="LevelExit" parent="." index="6" instance=ExtResource("2_t64ua")]
+position = Vector2(-224, 32)
+
+[node name="Goal" parent="." index="7" instance=ExtResource("4_kc2as")]
+position = Vector2(224, 16)
+
+[node name="Orbs" type="Node2D" parent="." index="8"]
+
+[node name="FireOrb" parent="Orbs" index="0" instance=ExtResource("5_4v53l")]
+position = Vector2(-176, 16)
+
+[node name="FireOrb2" parent="Orbs" index="1" instance=ExtResource("5_4v53l")]
+position = Vector2(-192, 16)
+
+[node name="Thanks" type="Node2D" parent="." index="9"]
+position = Vector2(0, -96)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Thanks" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("7_i6lu0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Thanks" index="1"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Thanks/MovedByAnimation" index="0"]
+texture_filter = 1
+texture = ExtResource("8_2bil6")
+region_enabled = true
+region_rect = Rect2(0, 0, 304, 64)
+
+[node name="For" type="Node2D" parent="." index="10"]
+position = Vector2(0, -32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="For" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("7_i6lu0")
+
+[node name="MovedByAnimation" type="Node2D" parent="For" index="1"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="For/MovedByAnimation" index="0"]
+texture_filter = 1
+texture = ExtResource("8_2bil6")
+region_enabled = true
+region_rect = Rect2(0, 64, 304, 64)
+
+[node name="Playing" type="Node2D" parent="." index="11"]
+position = Vector2(0, 32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playing" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("7_i6lu0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Playing" index="1"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Playing/MovedByAnimation" index="0"]
+texture_filter = 1
+texture = ExtResource("8_2bil6")
+region_enabled = true
+region_rect = Rect2(0, 128, 304, 56)
+
+[node name="Sign" parent="." index="12" instance=ExtResource("9_6rrcq")]
+position = Vector2(192, 32)
+Text = "Please wishlist the game if you enjoyed it!"

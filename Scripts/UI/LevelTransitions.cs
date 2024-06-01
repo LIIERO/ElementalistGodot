@@ -9,6 +9,7 @@ public partial class LevelTransitions : CanvasLayer
     // singletons
     private GameState gameState;
     private AudioManager audioManager;
+    private CustomSignals customSignals;
 
     [Export] private Label levelTextTopLabel;
     [Export] private Label levelTextBottomLabel;
@@ -22,6 +23,7 @@ public partial class LevelTransitions : CanvasLayer
 	{
         gameState = GetNode<GameState>("/root/GameState");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
         HideTransition();
@@ -33,6 +35,7 @@ public partial class LevelTransitions : CanvasLayer
         levelTextTopLabel.Hide();
         levelTextBottomLabel.Hide();
         gameState.IsLevelTransitionPlaying = false;
+        customSignals.EmitSignal(CustomSignals.SignalName.LevelTransitioned);
     }
 
     private void EndLevelTransition()

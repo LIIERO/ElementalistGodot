@@ -12,7 +12,7 @@ public partial class GameState : Node
     // Level loader stuff
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
-        { "H", new string[] { "HUB", "A" } }, // Main Hub (The Void)
+        { "H", new string[] { "HUB", "A", "B" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "4S", "8S" } }, // Cave Outskirts
@@ -32,6 +32,7 @@ public partial class GameState : Node
     public string PreviousLevel { get; private set; } = "0";
     public bool IsCurrentLevelSpecial { get; set; } = false;
     public string CurrentLevelName { get; set; } = "";
+    public int MainCutsceneProgress { get; set; } = 0;
 
 
     // Data not loaded from the save file
@@ -209,7 +210,7 @@ public partial class GameState : Node
     public void SaveToSaveFile(string id)
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
-        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial, CurrentLevelName);
+        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial, CurrentLevelName, MainCutsceneProgress);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -234,6 +235,7 @@ public partial class GameState : Node
         PreviousLevel = data.PreviousLevel;
         IsCurrentLevelSpecial = data.IsCurrentLevelSpecial;
         CurrentLevelName = data.CurrentLevelName;
+        MainCutsceneProgress = data.MainCutsceneProgress;
 
         FixCompletedLevels();
 
@@ -251,6 +253,7 @@ public partial class GameState : Node
         PreviousWorld = "0";
         IsCurrentLevelSpecial = false;
         CurrentLevelName = "HUB";
+        MainCutsceneProgress = 0;
 
         CurrentSaveFileID = id;
 
@@ -277,6 +280,7 @@ public partial class GameState : Node
     //private bool isGameDebugUnlocked = false;
     public override void _Process(double delta)
     {
+
         if (Input.IsActionJustPressed("inputDebugUnlockSpecific"))
         {
             if (IsHubLoaded()) // Unlock whole current world

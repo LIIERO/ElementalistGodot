@@ -48,4 +48,7 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void ElementChargeActivatedEventHandler();
 
+    [Signal]
+    public delegate void LevelTransitionedEventHandler();
+
 }
