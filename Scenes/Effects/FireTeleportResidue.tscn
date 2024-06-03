@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bf0pafb1nm8bk"]
+
+[ext_resource type="Texture2D" uid="uid://dl5cab5u526qa" path="res://Graphics/Entities/fire_zoe.png" id="1_srvm6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c6sr"]
+atlas = ExtResource("1_srvm6")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pbsu"]
+atlas = ExtResource("1_srvm6")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahvun"]
+atlas = ExtResource("1_srvm6")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy4gm"]
+atlas = ExtResource("1_srvm6")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23do5"]
+atlas = ExtResource("1_srvm6")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1ocy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c6sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pbsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahvun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy4gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23do5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="FireTeleportResidue" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_g1ocy")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0

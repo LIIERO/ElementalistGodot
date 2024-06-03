@@ -19,7 +19,7 @@ public partial class CustomSignals : Node
     public delegate void PlayerAbilityListUpdatedEventHandler(int[] abilityArray);
 
     [Signal]
-    public delegate void SetPlayerPositionEventHandler(Vector2 position);
+    public delegate void SetPlayerPositionEventHandler(Vector2 position, bool fireTeleport);
 
     // Camera
 

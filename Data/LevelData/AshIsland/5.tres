@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bs5hua26j5fxe"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dfdej0qlxc4uh"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_bhwnu"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_uqkmq"]
 
 [resource]
-script = ExtResource("1_bhwnu")
+script = ExtResource("1_uqkmq")
 ID = "5"
-Name = "Ash Roots"
+Name = "Fun Moment"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

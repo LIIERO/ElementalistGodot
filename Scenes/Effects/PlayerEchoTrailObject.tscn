@@ -28,6 +28,8 @@ modulate = Color(1, 1, 1, 0.25098)
 z_index = 4
 texture_filter = 1
 texture = ExtResource("1_2jufh")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 32)
 
 [node name="FadeOut" type="AnimationPlayer" parent="."]
 libraries = {

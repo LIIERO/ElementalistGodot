@@ -467,8 +467,9 @@ public partial class Player : CharacterBody2D
 		return effectiveElem;
 	}
 
-	public void SetPosition(Vector2 position)
+	public void SetPosition(Vector2 position, bool fireTeleport = false)
 	{
+		if (fireTeleport) shaderScript.SpawnFireTeleportResidue();
         //CancelAbility(); // Decided it was unnecessary
 
         jumpPreventionTimer = abilityFreezeTime;

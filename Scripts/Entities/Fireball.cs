@@ -60,7 +60,7 @@ public partial class Fireball : CharacterBody2D
                 //Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
                 //gameState.SetPlayerPosition(GlobalPosition + playerOffset);
                 audioManager.earthAbilityStart.Play(); // The earth start sound is the same as fireball hitting wall for now
-                gameState.SetPlayerPosition(GlobalPosition);
+                gameState.SetPlayerPosition(GlobalPosition, true);
             }
         }
     }

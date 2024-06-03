@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://daaay1frtn8oy"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://d1fp3jq0mhol3"]
 
 [ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_tdbf4"]
 
 [resource]
 script = ExtResource("1_tdbf4")
 ID = "7"
-Name = "Optionless"
-NoCompletedToUnlock = 5
+Name = "Blue Herring"
+NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

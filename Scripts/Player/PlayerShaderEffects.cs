@@ -72,6 +72,7 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
 
     [Export] Node echoTrailSpawner;
     [Export] PackedScene echoTrailObject;
+    [Export] PackedScene fireResidueObject;
     const float timeBetweenSpawns = 0.02f;
     const float removalTime = 1.0f;
 
@@ -132,5 +133,17 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
     public void DeactivateTrail()
     {
         trailActive = false;
+    }
+
+    public async void SpawnFireTeleportResidue()
+    {
+        AnimatedSprite2D instance = fireResidueObject.Instantiate() as AnimatedSprite2D;
+        instance.FlipH = FlipH;
+        echoTrailSpawner.AddChild(instance);
+        instance.GlobalPosition = GlobalPosition;
+        //RemoveChild(instance);
+
+        await ToSignal(GetTree().CreateTimer(removalTime, processInPhysics: true), "timeout");
+        instance.QueueFree();
     }
 }

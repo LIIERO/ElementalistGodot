@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dfdej0qlxc4uh"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://daaay1frtn8oy"]
 
 [ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_uqkmq"]
 
 [resource]
 script = ExtResource("1_uqkmq")
 ID = "6"
-Name = "Fun Moment"
+Name = "Optionless"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
