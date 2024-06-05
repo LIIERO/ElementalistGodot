@@ -6,6 +6,6 @@
 script = ExtResource("1_jxuat")
 ID = "C"
 Name = "Energy Conservation"
-NoCompletedToUnlock = 7
+NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false

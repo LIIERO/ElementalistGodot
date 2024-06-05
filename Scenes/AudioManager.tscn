@@ -59,22 +59,22 @@ musicVoid = NodePath("Music/Void")
 
 [node name="FS1" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("2_3djbo")
-volume_db = -7.0
+volume_db = -8.0
 bus = &"Sounds"
 
 [node name="FS2" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("3_8ila2")
-volume_db = -7.0
+volume_db = -8.0
 bus = &"Sounds"
 
 [node name="FS3" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("4_lgkml")
-volume_db = -7.0
+volume_db = -8.0
 bus = &"Sounds"
 
 [node name="FS4" type="AudioStreamPlayer" parent="Player/Footsteps"]
 stream = ExtResource("5_3qaf6")
-volume_db = -7.0
+volume_db = -8.0
 bus = &"Sounds"
 
 [node name="FH1" type="AudioStreamPlayer" parent="Player/Footsteps"]
@@ -173,7 +173,7 @@ bus = &"Music"
 
 [node name="DistantShore" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("17_i7plo")
-volume_db = -2.5
+volume_db = -2.0
 bus = &"Music"
 
 [node name="CaveOutskirts" type="AudioStreamPlayer" parent="Music"]

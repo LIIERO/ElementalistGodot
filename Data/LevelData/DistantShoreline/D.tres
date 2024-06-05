@@ -6,6 +6,6 @@
 script = ExtResource("1_h2u0v")
 ID = "D"
 Name = "Assassin"
-NoCompletedToUnlock = 7
+NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "C"
 IsSpecial = false

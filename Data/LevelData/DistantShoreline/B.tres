@@ -6,6 +6,6 @@
 script = ExtResource("1_qmj52")
 ID = "B"
 Name = "Over the Ditch"
-NoCompletedToUnlock = 7
+NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false

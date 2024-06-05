@@ -44,11 +44,11 @@ position = Vector2(0, 80)
 position = Vector2(0, -352)
 
 [node name="LevelTeleport 0" parent="Interactables/Levels" index="0" instance=ExtResource("8_rikt7")]
-position = Vector2(-112, 432)
+position = Vector2(-160, 416)
 levelToTeleportTo = ExtResource("9_dmtht")
 
 [node name="LevelTeleport 1" parent="Interactables/Levels" index="1" instance=ExtResource("8_rikt7")]
-position = Vector2(112, 432)
+position = Vector2(160, 416)
 levelToTeleportTo = ExtResource("10_hyhml")
 
 [node name="LevelTeleport 2" parent="Interactables/Levels" index="2" instance=ExtResource("8_rikt7")]

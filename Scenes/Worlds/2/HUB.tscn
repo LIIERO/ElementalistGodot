@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5ktwc4380unw"]
+[gd_scene load_steps=19 format=3 uid="uid://b5ktwc4380unw"]
 
 [ext_resource type="PackedScene" uid="uid://5yfpjixmnqxt" path="res://Scenes/Worlds/2/Base.tscn" id="1_et00c"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="2_bhi1m"]
@@ -18,7 +18,6 @@
 [ext_resource type="Resource" uid="uid://d2h5uwn3250kt" path="res://Data/LevelData/CaveOutskirts/4.tres" id="12_ww5ee"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="16_h2brp"]
 [ext_resource type="Resource" uid="uid://6ufvhrf6hv54" path="res://Data/LevelData/CaveOutskirts/7.tres" id="16_ykpu5"]
-[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="17_s16tn"]
 
 [node name="Game" instance=ExtResource("1_et00c")]
 
@@ -91,10 +90,6 @@ levelToTeleportTo = ExtResource("12_2cj48")
 [node name="LevelTeleport 9" parent="Interactables/Levels" index="11" instance=ExtResource("3_wj1er")]
 position = Vector2(112, 16)
 levelToTeleportTo = ExtResource("16_ykpu5")
-
-[node name="Sign" parent="Interactables" index="3" instance=ExtResource("17_s16tn")]
-position = Vector2(80, -16)
-Text = "These levels are getting hard! Remember that you don't have to complete all of them to progress. "
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 
