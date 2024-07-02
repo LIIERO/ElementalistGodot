@@ -108,15 +108,15 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-        // Get input
-        direction = Input.GetAxis("inputLeft", "inputRight");
-        restartPressed = Input.IsActionJustPressed("inputRestart");
-        jumpPressed = Input.IsActionJustPressed("inputJump");
-        jumpReleased = Input.IsActionJustReleased("inputJump");
-        abilityPressed = Input.IsActionJustPressed("inputAbility");
+		// Get input
+		direction = InputManager.GetLeftRightGameplayDirection();
+		restartPressed = InputManager.RestartPressed();
+        jumpPressed = InputManager.JumpPressed();
+        jumpReleased = InputManager.JumpReleased();
+        abilityPressed = InputManager.AbilityPressed();
 
-		// Pressed interact button
-		if (Input.IsActionJustPressed("inputUp") && !IsFrozen) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
+        // Pressed interact button
+        if (InputManager.UpInteractPressed() && !IsFrozen) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
 
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));

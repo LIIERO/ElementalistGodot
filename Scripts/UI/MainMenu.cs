@@ -13,7 +13,7 @@ public partial class MainMenu : ButtonManager
     private SettingsManager settingsManager;
     //private CustomSignals customSignals;
 
-    [Export] private PackedScene yesNoScreen; // cookie cutter
+    [Export] private PackedScene yesNoScreen;
     private YesNoScreen newGameApprovalPopup = null;
     private const string newGameApprovalPopupText = "Are you sure you want to reset your save file? All progress will be lost.";
 
@@ -39,7 +39,7 @@ public partial class MainMenu : ButtonManager
 
         base._Process(delta);
 
-        if (Input.IsActionJustPressed("ui_accept"))
+        if (InputManager.UIAcceptPressed())
         {
             if (CurrentItemIndex == 0) // new game
             {
@@ -67,6 +67,15 @@ public partial class MainMenu : ButtonManager
             {
                 settingsManager.SavePreferences();
                 GetTree().Quit();
+            }
+
+            if (CurrentItemIndex == 4) // credits
+            {
+                levelTransitions.StartCreditsTransition();
+            }
+            if (CurrentItemIndex == 5) // wishlist
+            {
+                OS.ShellOpen("https://store.steampowered.com/app/3029010/Elementalist/");
             }
         }
     }

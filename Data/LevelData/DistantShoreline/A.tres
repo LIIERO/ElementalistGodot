@@ -6,6 +6,6 @@
 script = ExtResource("1_kflt7")
 ID = "A"
 Name = "Doors and Keys"
-NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "5"
+NoCompletedToUnlock = 4
+SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

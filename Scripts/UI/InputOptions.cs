@@ -57,10 +57,10 @@ public partial class InputOptions : ButtonManager
 
         base._Process(delta);
 
-        if (Input.IsActionJustPressed("ui_cancel")) GoBack();
+        if (InputManager.UICancelPressed()) GoBack();
         
 
-        else if (Input.IsActionJustPressed("ui_accept"))
+        else if (InputManager.UIAcceptPressed())
         {
             if (CurrentItemIndex == BACK) GoBack();
 

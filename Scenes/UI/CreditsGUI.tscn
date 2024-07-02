@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://diopyhpmc2wwd"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Credits.cs" id="1_30g1i"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="2_xc8oh"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="3_0hdrg"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="4_bxm5u"]
+[ext_resource type="Texture2D" uid="uid://dtbtuholq2xi5" path="res://Graphics/UI/Menu/menu_button.png" id="5_12lkb"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="6_sdnaw"]
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Credits" type="Control" parent="." node_paths=PackedStringArray("buttonList")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_30g1i")
+buttonList = [NodePath("MainMenuButton")]
+
+[node name="MainMenuButton" type="Node2D" parent="Credits"]
+texture_filter = 1
+position = Vector2(16, 16)
+script = ExtResource("2_xc8oh")
+
+[node name="OrbSelection" type="Node2D" parent="Credits/MainMenuButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Credits/MainMenuButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_0hdrg")
+
+[node name="MovedByAnimation" type="Node2D" parent="Credits/MainMenuButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Credits/MainMenuButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_bxm5u")
+region_enabled = true
+region_rect = Rect2(112, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Credits/MainMenuButton"]
+position = Vector2(64, 8)
+texture = ExtResource("5_12lkb")
+
+[node name="Text" type="Label" parent="Credits/MainMenuButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_sdnaw")
+theme_override_font_sizes/font_size = 12
+text = "GO BACK"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2

@@ -42,7 +42,7 @@ offset_top = 72.0
 offset_bottom = 72.0
 script = ExtResource("1_pqhl0")
 yesNoScreen = ExtResource("2_xl566")
-buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("OptionsButton"), NodePath("ExitButton")]
+buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("OptionsButton"), NodePath("ExitButton"), NodePath("CreditsButton"), NodePath("SteamButton")]
 
 [node name="NewGameButton" type="Node2D" parent="MainButtons"]
 texture_filter = 1
@@ -229,6 +229,100 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("10_ul3lr")
 theme_override_font_sizes/font_size = 12
 text = "EXIT"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="CreditsButton" type="Node2D" parent="MainButtons"]
+texture_filter = 1
+position = Vector2(16, 136)
+script = ExtResource("12_eg7p4")
+
+[node name="OrbSelection" type="Node2D" parent="MainButtons/CreditsButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainButtons/CreditsButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("13_b1y81")
+
+[node name="MovedByAnimation" type="Node2D" parent="MainButtons/CreditsButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/CreditsButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("14_7fec3")
+region_enabled = true
+region_rect = Rect2(112, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/CreditsButton"]
+position = Vector2(64, 8)
+texture = ExtResource("15_j3jau")
+
+[node name="Text" type="Label" parent="MainButtons/CreditsButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ul3lr")
+theme_override_font_sizes/font_size = 12
+text = "CREDITS"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="SteamButton" type="Node2D" parent="MainButtons"]
+texture_filter = 1
+position = Vector2(16, 160)
+script = ExtResource("12_eg7p4")
+
+[node name="OrbSelection" type="Node2D" parent="MainButtons/SteamButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainButtons/SteamButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("13_b1y81")
+
+[node name="MovedByAnimation" type="Node2D" parent="MainButtons/SteamButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/SteamButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("14_7fec3")
+region_enabled = true
+region_rect = Rect2(112, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainButtons/SteamButton"]
+position = Vector2(64, 8)
+texture = ExtResource("15_j3jau")
+
+[node name="Text" type="Label" parent="MainButtons/SteamButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ul3lr")
+theme_override_font_sizes/font_size = 12
+text = "WISHLIST"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2

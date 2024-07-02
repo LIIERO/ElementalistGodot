@@ -25,7 +25,7 @@ public partial class PauseMenu : ButtonManager
 
     public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("inputPause"))
+        if (InputManager.PausePressed())
         {
             if (gameState.IsGamePaused)
             {
@@ -42,7 +42,7 @@ public partial class PauseMenu : ButtonManager
 
 		base._Process(delta); // button stuff
 
-        if (Input.IsActionJustPressed("ui_accept"))
+        if (InputManager.UIAcceptPressed())
         {
             if (CurrentItemIndex == 0) // resume
             {

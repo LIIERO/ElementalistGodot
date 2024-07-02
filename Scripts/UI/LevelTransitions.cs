@@ -19,6 +19,9 @@ public partial class LevelTransitions : CanvasLayer
 
     private ScreenTransition currentTransition;
 
+    private const float shortSpeedMul = 1.25f;
+    // Short transitions: reload, options, credits, menu
+
 	public override void _Ready()
 	{
         gameState = GetNode<GameState>("/root/GameState");
@@ -38,9 +41,9 @@ public partial class LevelTransitions : CanvasLayer
         customSignals.EmitSignal(CustomSignals.SignalName.LevelTransitioned);
     }
 
-    private void EndLevelTransition()
+    private void EndLevelTransition(float speedMul = 1.0f)
 	{
-		animationPlayer.Play("LevelEnter");
+		animationPlayer.Play("LevelEnter", customSpeed:speedMul);
         audioManager.fadeOut.Play();
     }
 
@@ -67,7 +70,7 @@ public partial class LevelTransitions : CanvasLayer
         currentTransition = ScreenTransition.restart;
         gameState.IsLevelTransitionPlaying = true;
         Show();
-        animationPlayer.Play("LevelExit");
+        animationPlayer.Play("LevelExit", customSpeed:shortSpeedMul);
         audioManager.fadeIn.Play();
     }
 
@@ -112,7 +115,16 @@ public partial class LevelTransitions : CanvasLayer
         currentTransition = ScreenTransition.optionsEntry;
         gameState.IsLevelTransitionPlaying = true;
         Show();
-        animationPlayer.Play("LevelExit");
+        animationPlayer.Play("LevelExit", customSpeed: shortSpeedMul);
+        audioManager.fadeIn.Play();
+    }
+
+    public void StartCreditsTransition()
+    {
+        currentTransition = ScreenTransition.creditsEntry;
+        gameState.IsLevelTransitionPlaying = true;
+        Show();
+        animationPlayer.Play("LevelExit", customSpeed: shortSpeedMul);
         audioManager.fadeIn.Play();
     }
 
@@ -121,7 +133,7 @@ public partial class LevelTransitions : CanvasLayer
         currentTransition = ScreenTransition.menuEntry;
         gameState.IsLevelTransitionPlaying = true;
         Show();
-        animationPlayer.Play("LevelExit");
+        animationPlayer.Play("LevelExit", customSpeed: shortSpeedMul);
         audioManager.fadeIn.Play();
     }
 
@@ -143,7 +155,7 @@ public partial class LevelTransitions : CanvasLayer
             {
                 case ScreenTransition.restart:
                     gameState.RestartCurrentLevel();
-                    EndLevelTransition(); break;
+                    EndLevelTransition(shortSpeedMul); break;
 
                 case ScreenTransition.hubEntry:
                     gameState.LoadHubLevel();
@@ -164,12 +176,16 @@ public partial class LevelTransitions : CanvasLayer
 
                 case ScreenTransition.optionsEntry:
                     gameState.LoadOptions();
-                    EndLevelTransition(); break;
+                    EndLevelTransition(shortSpeedMul); break;
+
+                case ScreenTransition.creditsEntry:
+                    gameState.LoadCredits();
+                    EndLevelTransition(shortSpeedMul); break;
 
                 case ScreenTransition.menuEntry:
                     audioManager.StopMusicWithFade();
                     gameState.LoadMenu();
-                    EndLevelTransition(); break;
+                    EndLevelTransition(shortSpeedMul); break;
 
                 case ScreenTransition.gameEntry:
                     gameState.LoadGame();
@@ -188,9 +204,9 @@ public partial class LevelTransitions : CanvasLayer
         }
 	}
 
-    private async void EndLevelTransitionAfterSeconds(float t)
+    private async void EndLevelTransitionAfterSeconds(float t, float speedMul = 1.0f)
     {
         await ToSignal(GetTree().CreateTimer(t), "timeout");
-        EndLevelTransition();
+        EndLevelTransition(speedMul);
     }
 }

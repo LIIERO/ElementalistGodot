@@ -27,7 +27,7 @@ public abstract partial class ButtonManager : Control
     {
         //if (!buttonList[0].activeInHierarchy) return;
 
-        if (Input.IsActionJustPressed("ui_down"))
+        if (InputManager.UIDownPressed())
         {
             audioManager.buttonSelected.Play();
             DeselectButton(CurrentItemIndex);
@@ -37,7 +37,7 @@ public abstract partial class ButtonManager : Control
             //hoverSound.Play();
         }
 
-        if (Input.IsActionJustPressed("ui_up"))
+        if (InputManager.UIUpPressed())
         {
             audioManager.buttonSelected.Play();
             DeselectButton(CurrentItemIndex);

@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg4segoqh138j"]
+
+[ext_resource type="PackedScene" uid="uid://diopyhpmc2wwd" path="res://Scenes/UI/CreditsGUI.tscn" id="1_rqrao"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_eal30"]
+
+[node name="Credits" type="Node2D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_rqrao")]
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 496.0
+offset_bottom = 288.0
+
+[node name="Text" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 480.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_eal30")
+theme_override_font_sizes/font_size = 12
+text = "A game developed by Dawid Maziarski (Liero)
+
+Developed in Godot 4.2.1. with .NET (coded in Visual Studio 2022)
+All of the graphics made only using GIMP 2
+Font made with FontForge
+Music made with FL Studio 20
+Sound effects also made with FL Studio (and random noises)
+
+Big thanks for playtesting to: Heagridswager, TuxPeepo26 lennygold, Syrenix, Butcherberries, Auribouros, jr2137, Bamaluko, BlindCrusaderPOL, areit, nafe_jl, and whyte_noise (I hope I didn't miss anyone)
+
+Special thanks to Heagridswager for being a big help for me throughout the whole development process (which is far from over btw, this is just a demo)
+
+
+
+
+
+"
+autowrap_mode = 2
+text_overrun_behavior = 2

@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_rr6mn")
 ID = "2"
-Name = "The Climb"
+Name = "Floating Island"
 NoCompletedToUnlock = 2
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

@@ -36,16 +36,16 @@ public partial class YesNoScreen : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("inputPause"))
+        if (InputManager.PausePressed())
         {
             ReturnFromPopup(false);
         }
-        else if (Input.IsActionJustPressed("ui_left") || Input.IsActionJustPressed("ui_right"))
+        else if (InputManager.UILeftPressed() || InputManager.UIRightPressed())
         {
             isYesSelected = !isYesSelected;
             SelectButton();
         }
-        else if (Input.IsActionJustPressed("ui_accept"))
+        else if (InputManager.UIAcceptPressed())
         {
             ReturnFromPopup(isYesSelected);
         }

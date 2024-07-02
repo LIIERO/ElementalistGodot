@@ -46,12 +46,12 @@ public partial class Options : ButtonManager
 
 		base._Process(delta);
 
-        if (Input.IsActionJustPressed("ui_cancel"))
+        if (InputManager.UICancelPressed())
         {
             GoBack();
         }
 
-        else if (Input.IsActionJustPressed("ui_accept"))
+        else if (InputManager.UIAcceptPressed())
         {
             if (CurrentItemIndex == BACK)
             {
@@ -104,7 +104,7 @@ public partial class Options : ButtonManager
         // Move right or left for selections
         if (buttonList[CurrentItemIndex] is not MenuSelection) return;
 
-        if (Input.IsActionJustPressed("ui_right"))
+        if (InputManager.UIRightPressed())
         {
             MenuSelection selection = buttonList[CurrentItemIndex] as MenuSelection;
             bool moved = selection.MoveRight();
@@ -124,7 +124,7 @@ public partial class Options : ButtonManager
             }
         }
 
-        else if (Input.IsActionJustPressed("ui_left"))
+        else if (InputManager.UILeftPressed())
         {
             MenuSelection selection = buttonList[CurrentItemIndex] as MenuSelection;
             bool moved = selection.MoveLeft();

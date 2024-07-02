@@ -15,7 +15,7 @@ public partial class GameState : Node
         { "H", new string[] { "HUB", "A", "B" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "4S", "8S" } }, // Cave Outskirts
+        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "9S" } }, // Cave Outskirts
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } } // Islands of Ashes
     };
 
@@ -193,6 +193,11 @@ public partial class GameState : Node
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Options.tscn"));
     }
 
+    public void LoadCredits()
+    {
+        GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Credits.tscn"));
+    }
+
     public void LoadInputOptions()
     {
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/InputOptions.tscn"));
@@ -280,6 +285,9 @@ public partial class GameState : Node
     //private bool isGameDebugUnlocked = false;
     public override void _Process(double delta)
     {
+        // Check if gamepad connected or not
+        InputManager.IsGamepadConnected = Input.GetConnectedJoypads().Count > 0;
+
 
         if (Input.IsActionJustPressed("inputDebugUnlockSpecific"))
         {

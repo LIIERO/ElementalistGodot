@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dcgbr5u5i4evu"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://d2h5uwn3250kt"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_yy8ts"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_gkutq"]
 
 [resource]
-script = ExtResource("1_yy8ts")
+script = ExtResource("1_gkutq")
 ID = "3"
-Name = "Mission Impossible"
+Name = "Brown Burden"
 NoCompletedToUnlock = 2
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_4qxoc")
-ID = "4S"
+ID = "3S"
 Name = "Burden for Eternity"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "4"
+SpecificLevelCompletedToUnlock = "3"
 IsSpecial = true
