@@ -40,6 +40,7 @@ public partial class Player : CharacterBody2D
 	public const float abilityFreezeTime = 0.05f;
 	public const float jumpCancelFraction = 0.2f;
 	public const float deathTime = 0.2f;
+	public const float floatyGravityMaxVelocity = 50.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -133,6 +134,7 @@ public partial class Player : CharacterBody2D
 
 		if (!IsFrozen)
 		{
+			AttemptVerticalCornerCorrection(4, (float)delta);
             MoveAndSlide();
             CheckForCollision(delta);
         }
@@ -143,10 +145,21 @@ public partial class Player : CharacterBody2D
 
 	private void Movement(float direction)
 	{
+		//GD.Print(Velocity.Y);
+
 		if (isUsingAbility) return;
 		
 		// left right movement
 		Velocity = new Vector2(direction * speed, Velocity.Y);
+
+		// lower gravity when close to no velocity for easier movement
+		/*if (gravity != 0f)
+		{
+            if (Velocity.Y >= 0.0f && Velocity.Y < floatyGravityMaxVelocity)
+                gravity = defaultGravity / 4f;
+            else
+                gravity = defaultGravity;
+        }*/
 
 		// Falling speed cap
 		if (Velocity.Y >= maxFallingSpeed)
@@ -239,6 +252,8 @@ public partial class Player : CharacterBody2D
 			{
 				if (isFacingRight) Velocity = new Vector2(dashPower, 0f);
 				else Velocity = new Vector2(-dashPower, 0f);
+
+				AttemptHorizontalCornerCorrection(6, (float)delta);
 			}
 			else if (currentAbility == ElementState.fire)
 			{
@@ -457,9 +472,43 @@ public partial class Player : CharacterBody2D
         }
     }
 
-	// PUBLIC ==================================================================================================================
+	private void AttemptHorizontalCornerCorrection(int allowedPixelsOff, float delta)
+	{
+		if (!TestMove(GlobalTransform, new Vector2(Velocity.X * delta, 0f))) return;
 
-	public ElementState GetEffectiveElement()
+		for (int i = 1; i <= allowedPixelsOff; i++)
+		{ 
+			foreach (int j in new int[]{ -1, 1})
+			{
+				if (!TestMove(GlobalTransform.Translated(new Vector2(0f, i*j)), new Vector2(Velocity.X * delta, 0f)))
+				{
+					Translate(new Vector2(0f, i * j));
+					return;
+				}
+			}
+		}
+	}
+
+    private void AttemptVerticalCornerCorrection(int allowedPixelsOff, float delta)
+    {
+        if (Velocity.Y >= 0f || !TestMove(GlobalTransform, new Vector2(0f, Velocity.Y * delta))) return;
+
+        for (int i = 1; i <= allowedPixelsOff; i++)
+        {
+            foreach (int j in new int[] { -1, 1 })
+            {
+                if (!TestMove(GlobalTransform.Translated(new Vector2(i * j, 0f)), new Vector2(0f, Velocity.Y * delta)))
+                {
+                    Translate(new Vector2(i * j, 0f));
+                    return;
+                }
+            }
+        }
+    }
+
+    // PUBLIC ==================================================================================================================
+
+    public ElementState GetEffectiveElement()
 	{
 		ElementState effectiveElem;
 		if (AbilityList.Count == 0) { effectiveElem = BaseAbility; }
