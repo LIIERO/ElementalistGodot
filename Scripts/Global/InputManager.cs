@@ -99,4 +99,9 @@ public static class InputManager
     {
         return Input.IsActionJustPressed("ui_cancel");
     }
+
+    public static bool UIGamepadCancelPressed()
+    {
+        return Input.IsActionJustPressed("ui_cancel_gamepad");
+    }
 }

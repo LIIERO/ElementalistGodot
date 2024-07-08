@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://blasdqabfchc"]
+[gd_scene load_steps=7 format=3 uid="uid://blasdqabfchc"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_0271v"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_tghq4"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="4_5i2e5"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="4_qykbw"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="5_ux2de"]
+[ext_resource type="PackedScene" uid="uid://cntugtkkwja6t" path="res://Scenes/Decals/Tutorials/AbilityTutorial.tscn" id="6_o2qfa"]
 
 [node name="Game" instance=ExtResource("1_0271v")]
 
@@ -46,6 +47,9 @@ layer_0/tile_data = PackedInt32Array(524266, 0, 0, 786413, 262144, 0, 786407, 32
 
 [node name="BackgroundTiles" parent="." index="9"]
 layer_0/tile_data = PackedInt32Array(-65536, 589824, 3, -131072, 589824, 2, -1, 393216, 2, -65537, 327680, 1, -196608, 589824, 2, -262144, 327680, 1, -131073, 524288, 1, -196609, 524288, 0, -262143, 589824, 2, -327679, 589824, 2, -327680, 524288, 1, -327678, 393216, 1, -393214, 720896, 2, -458750, 720896, 0, -393215, 589824, 2, -458751, 393216, 1, -524287, 720896, 0, -458752, 327680, 2, -524288, 655360, 0, -393217, 589824, 3, -458753, 393216, 1, -393216, 524288, 1, -393218, 262144, 2, -458754, 327680, 2, -327682, 0, 2, -524289, 720896, 0, -524290, 655360, 0, -458755, 524288, 3, -524291, 524288, 0, -2, 524288, 1, -65538, 524288, 0, 4, 720896, 3, -65532, 720896, 2, -131068, 720896, 2, -196604, 720896, 2, -262140, 720896, 0, 3, 589824, 3, -65533, 589824, 2, -131069, 589824, 2, -196605, 589824, 2, -262141, 393216, 1, 2, 589824, 3, -65534, 589824, 2, -131070, 589824, 2, -196606, 589824, 2, -262142, 589824, 2, 1, 524288, 3, -65535, 327680, 2, -131071, 589824, 2, -196607, 589824, 2, -327677, 720896, 0, 196607, 589824, 2, 131071, 393216, 1, 196606, 524288, 1, 131070, 524288, 1, 65535, 720896, 2, 65534, 524288, 1, 327678, 327680, 1, 262142, 524288, 1, 327677, 524288, 0, 458749, 589824, 3, 393213, 327680, 1, 458748, 524288, 3, 393217, 720896, 3, 327681, 720896, 2, 262145, 720896, 2, 196609, 720896, 2, 131073, 720896, 0, 393216, 589824, 3, 327680, 589824, 2, 262144, 589824, 2, 196608, 589824, 2, 131072, 393216, 1, 458751, 589824, 3, 393215, 589824, 2, 327679, 589824, 2, 262143, 589824, 2, 458750, 589824, 3, 393214, 589824, 2, 65536, 720896, 0, 393212, 524288, 0)
+
+[node name="AbilityTutorial" parent="." index="10" instance=ExtResource("6_o2qfa")]
+position = Vector2(-160, -128)
 
 [connection signal="body_entered" from="Orbs/WaterOrb" to="Orbs/WaterOrb" method="_on_body_entered"]
 [connection signal="body_entered" from="Orbs/WaterOrb2" to="Orbs/WaterOrb2" method="_on_body_entered"]

@@ -53,12 +53,12 @@ public partial class InputOptions : ButtonManager
     public override void _Process(double delta)
 	{
         if (gameState.IsLevelTransitionPlaying) return;
+        if (InputManager.UIGamepadCancelPressed()) GoBack(); // if someone is only using gamepad and tries to change keyboard settings, so they can get out
         if (isRemapping) return;
 
         base._Process(delta);
 
         if (InputManager.UICancelPressed()) GoBack();
-        
 
         else if (InputManager.UIAcceptPressed())
         {
