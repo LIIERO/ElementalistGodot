@@ -274,13 +274,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
-text = "GAME IS PAUSED"
+text = "PAUSED"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
 
 [node name="RedCounter" type="Sprite2D" parent="." node_paths=PackedStringArray("counterText")]
 process_mode = 3
+z_as_relative = false
 texture_filter = 1
 position = Vector2(448, 16)
 texture = ExtResource("16_g1udj")

@@ -43,7 +43,7 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3g4ri")
-buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("WallslideSlowdownToggle"), NodePath("InputOptionsButton")]
+buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("InputOptionsButton")]
 
 [node name="MainMenuButton" type="Node2D" parent="Options"]
 texture_filter = 1
@@ -451,6 +451,7 @@ position = Vector2(160, 8)
 texture = ExtResource("8_1d85j")
 
 [node name="WallslideSlowdownToggle" type="Node2D" parent="Options"]
+visible = false
 texture_filter = 1
 position = Vector2(16, 184)
 script = ExtResource("7_fm3dv")

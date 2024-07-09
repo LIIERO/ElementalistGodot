@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d160o16ouxexp"]
+[gd_scene load_steps=20 format=3 uid="uid://d160o16ouxexp"]
 
 [ext_resource type="PackedScene" uid="uid://bwabd5uj1swuf" path="res://Scenes/Worlds/3/Base.tscn" id="1_gqo2d"]
 [ext_resource type="PackedScene" uid="uid://cnwfel811ty30" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceDistantShoreline.tscn" id="7_id7pt"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="15_hla8e"]
 [ext_resource type="Resource" uid="uid://cgg4a4b6i3wkv" path="res://Data/LevelData/AshIsland/3S.tres" id="15_u6yya"]
 [ext_resource type="Resource" uid="uid://bnaur2axv8wig" path="res://Data/LevelData/AshIsland/3.tres" id="16_ncb1d"]
-[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="16_y61t8"]
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="17_bc1jx"]
 [ext_resource type="Resource" uid="uid://y4325p3x8fjh" path="res://Data/LevelData/AshIsland/A.tres" id="17_p4kjx"]
 [ext_resource type="Resource" uid="uid://dwu77gfjftgqo" path="res://Data/LevelData/AshIsland/2.tres" id="17_s82m8"]
@@ -101,10 +100,6 @@ levelToTeleportTo = ExtResource("19_6oeuv")
 
 [node name="EntranceVoid" parent="Interactables" index="2" instance=ExtResource("15_hla8e")]
 position = Vector2(384, 64)
-
-[node name="Sign2" parent="Interactables" index="3" instance=ExtResource("16_y61t8")]
-position = Vector2(192, 80)
-Text = "Levels in this whole area are definitely subject to change (especially their placements)."
 
 [node name="DangerTiles" parent="." index="6"]
 layer_0/tile_data = PackedInt32Array(589863, 0, 0, 589862, 0, 0, 589861, 131072, 0, 589860, 65536, 0, 589859, 65536, 0, 589858, 65536, 0, 589857, 196608, 0, 589856, 65536, 0, 589855, 65536, 0, 589854, 65536, 0, 589853, 0, 0, 589852, 196608, 0, 589851, 131072, 0, 589850, 0, 0, 589849, 131072, 0, 589848, 0, 1, 655329, 65536, 0, 655330, 196608, 0, 655331, 131072, 0, 655332, 196608, 0, 655333, 131072, 0, 655334, 131072, 0, 655335, 131072, 0, 655336, 196608, 0, 655337, 0, 0, 655338, 196608, 0, 655339, 65536, 0, 589879, 131072, 0, 589878, 131072, 0, 589877, 196608, 0, 589876, 0, 0, 589875, 131072, 0, 589874, 0, 0, 589873, 65536, 0, 589872, 65536, 0, 589871, 196608, 0, 589870, 65536, 0, 589869, 196608, 0, 589868, 65536, 0, 589867, 0, 0, 589866, 196608, 0, 589865, 0, 0, 589864, 131072, 0, 655328, 65536, 0, 655327, 131072, 0, 655326, 65536, 0, 655325, 196608, 0, 655324, 65536, 0, 655323, 131072, 0, 655322, 131072, 0, 655321, 65536, 0, 655320, 131072, 0, 655319, 0, 0, 655318, 65536, 0, 655317, 131072, 0, 655316, 0, 0, 655315, 0, 0, 655314, 0, 0, 655313, 131072, 1, 589889, 65536, 1, 589888, 131072, 0, 589887, 131072, 0, 589886, 65536, 0, 589885, 65536, 0, 589884, 0, 0, 589883, 131072, 0, 589882, 196608, 0, 589881, 196608, 0, 589880, 0, 0, 655340, 65536, 1, -65495, 0, 2, -65496, 131072, 1, 65581, 131072, 2, 65580, 131072, 1)

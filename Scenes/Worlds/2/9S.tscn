@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://qes4ifp8nadi"]
+[gd_scene load_steps=11 format=3 uid="uid://qes4ifp8nadi"]
 
 [ext_resource type="PackedScene" uid="uid://5yfpjixmnqxt" path="res://Scenes/Worlds/2/Base.tscn" id="1_adxlg"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_4j0sn"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_it0eu"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="3_k17j4"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_ckeif"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_5t1nk"]
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_x2de8"]
@@ -22,6 +23,11 @@ layer_0/tile_data = PackedInt32Array(-458768, 524288, 1, -393232, 524288, 1, -32
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_4j0sn")]
 position = Vector2(-104, 32)
+
+[node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_k17j4")]
+position = Vector2(-192, 112)
+Text = "Warning: the solution requires tricky platforming."
+SunHoldingText = "Excellent work!"
 
 [node name="Orbs" type="Node2D" parent="." index="6"]
 

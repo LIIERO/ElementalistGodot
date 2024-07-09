@@ -6,6 +6,6 @@
 script = ExtResource("1_68vrq")
 ID = "7"
 Name = "Reckless Fall"
-NoCompletedToUnlock = 6
-SpecificLevelCompletedToUnlock = ""
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "6"
 IsSpecial = false

@@ -32,7 +32,7 @@ position = Vector2(-128, 96)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("4_1o17v")]
 position = Vector2(-208, 32)
-Text = "Rectangular portals indicate special levels. These are significantly harder than normal ones, but are not needed to progress. Don't feel bad for skipping them!"
+Text = "Levels marked with S are completely optional. \\n\\nThey are usually very difficult, so don't feel bad for skipping them!"
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 

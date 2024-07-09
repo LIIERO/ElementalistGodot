@@ -21,6 +21,7 @@ public partial class GameState : Node
 
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
 
+    private const string specialLevelLetter = "S";
 
     // Data loaded from the save file
     public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
@@ -126,7 +127,18 @@ public partial class GameState : Node
         CompletedLevels[CurrentWorld][CurrentLevel] = true;
     }
 
-    public bool HasWorldBeenCompleted(string world) { return !CompletedLevels[world].Values.Any(l => l == false); }
+    public bool HasWorldBeenCompleted(string world)
+    {
+        //return !CompletedLevels[world].Values.Any(l => l == false);
+        foreach (KeyValuePair<string, bool> level in CompletedLevels[world])
+        {
+            if (!level.Value && !GameUtils.LevelIDEndsWithLetter(level.Key, specialLevelLetter))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     public bool HasLevelBeenCompleted(string levelID)
     {
         if (levelID == "HUB") return true;
@@ -140,7 +152,7 @@ public partial class GameState : Node
         int noCompleted = 0;
         foreach (KeyValuePair<string, bool> level in CompletedLevels[CurrentWorld])
         {
-            if (level.Value && !GameUtils.LevelIDEndsWithLetter(level.Key, "S")) noCompleted++;
+            if (level.Value && !GameUtils.LevelIDEndsWithLetter(level.Key, specialLevelLetter)) noCompleted++;
         }
         return noCompleted;
     }
@@ -298,7 +310,7 @@ public partial class GameState : Node
                     if (CompletedLevels[CurrentWorld][levelKey] == false)
                     {
                         CompletedLevels[CurrentWorld][levelKey] = true;
-                        if (GameUtils.LevelIDEndsWithLetter(levelKey, "S"))
+                        if (GameUtils.LevelIDEndsWithLetter(levelKey, specialLevelLetter))
                             NoRedFragments += 1;
                         else
                             NoSunFragments += 1;

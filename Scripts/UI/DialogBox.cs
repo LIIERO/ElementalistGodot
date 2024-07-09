@@ -28,9 +28,9 @@ public partial class DialogBox : Sprite2D
     public void UpdateDialogBox(string text)
     {
         Show();
-        
+
         //textObject.Text = AddKeyboardKeysToText(text);
-        textObject.Text = text;
+        textObject.Text = text.Replace("\\n", "\n");
     }
 
     public void HideDialogBox()

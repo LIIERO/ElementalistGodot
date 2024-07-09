@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bldfnu8oyyx7b"]
+[gd_scene load_steps=12 format=3 uid="uid://bldfnu8oyyx7b"]
 
 [ext_resource type="PackedScene" uid="uid://bwabd5uj1swuf" path="res://Scenes/Worlds/3/Base.tscn" id="1_x652m"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_1h07x"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_o4tgt"]
 [ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_od2jc"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="6_t0ggu"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="7_132lm"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="7_r842i"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="8_ea1j6"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="9_7af12"]
@@ -40,6 +41,11 @@ position = Vector2(32, -32)
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("6_t0ggu")]
 position = Vector2(-160, 0)
+
+[node name="Sign" parent="Interactables" index="1" instance=ExtResource("7_132lm")]
+position = Vector2(-48, 32)
+Text = "Warning: the solution requires tricky platforming."
+SunHoldingText = "Nice"
 
 [node name="Goal" parent="." index="6" instance=ExtResource("7_r842i")]
 position = Vector2(160, 80)

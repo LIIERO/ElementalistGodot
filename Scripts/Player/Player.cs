@@ -166,8 +166,8 @@ public partial class Player : CharacterBody2D
 			Velocity = new Vector2(Velocity.X, maxFallingSpeed);
 
 		// resistance when clinging to a wall
-		if (isClinging && wallslideSlowdownActive)
-			Velocity = new Vector2(Velocity.X, Velocity.Y * clingDrag);
+		if (isClinging) //  && wallslideSlowdownActive // taken away because its kinda cringe
+            Velocity = new Vector2(Velocity.X, Velocity.Y * clingDrag);
 	}
 
 
