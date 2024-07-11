@@ -26,14 +26,4 @@ public partial class Tutorial : Node2D
 		else
 			gamepadTutorial.QueueFree();
     }
-
-	/*private void CreateKeyboardTutorial()
-	{
-
-	}
-
-    private void CreateGamepadTutorial()
-    {
-
-    }*/
 }

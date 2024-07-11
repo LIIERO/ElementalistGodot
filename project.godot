@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Elementalist"
+config/name="Elementalist DEMO"
+config/version="0.1.0.0"
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 run/max_fps=60

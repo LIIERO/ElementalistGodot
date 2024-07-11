@@ -33,7 +33,7 @@ public partial class Player : CharacterBody2D
 	public const float earthJumpPower = -275.0f;
 	public const float dashPower = 230.0f;
 	public const float dashTime = 0.2f;
-	public const float waterJumpMomentumPreservation = 0.6f;
+	public const float waterJumpMomentumPreservation = 0.55f;
 	public const float clingDrag = 0.8f;
 	public const float coyoteTime = 0.1f;
 	public const float inputBufferTime = 0.1f;
@@ -41,9 +41,11 @@ public partial class Player : CharacterBody2D
 	public const float jumpCancelFraction = 0.2f;
 	public const float deathTime = 0.2f;
 	public const float floatyGravityMaxVelocity = 50.0f;
+	public const int windDashCornerCorrection = 5;
+	public const int verticalCornerCorrection = 4;
 
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+    // Get the gravity from the project settings to be synced with RigidBody nodes.
+    public float defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public float gravity;
 
 	// Player state (move to a different class?)
@@ -134,7 +136,7 @@ public partial class Player : CharacterBody2D
 
 		if (!IsFrozen)
 		{
-			AttemptVerticalCornerCorrection(4, (float)delta);
+			AttemptVerticalCornerCorrection(verticalCornerCorrection, (float)delta);
             MoveAndSlide();
             CheckForCollision(delta);
         }
@@ -151,15 +153,6 @@ public partial class Player : CharacterBody2D
 		
 		// left right movement
 		Velocity = new Vector2(direction * speed, Velocity.Y);
-
-		// lower gravity when close to no velocity for easier movement
-		/*if (gravity != 0f)
-		{
-            if (Velocity.Y >= 0.0f && Velocity.Y < floatyGravityMaxVelocity)
-                gravity = defaultGravity / 4f;
-            else
-                gravity = defaultGravity;
-        }*/
 
 		// Falling speed cap
 		if (Velocity.Y >= maxFallingSpeed)
@@ -253,7 +246,7 @@ public partial class Player : CharacterBody2D
 				if (isFacingRight) Velocity = new Vector2(dashPower, 0f);
 				else Velocity = new Vector2(-dashPower, 0f);
 
-				AttemptHorizontalCornerCorrection(6, (float)delta);
+				AttemptHorizontalCornerCorrection(windDashCornerCorrection, (float)delta);
 			}
 			else if (currentAbility == ElementState.fire)
 			{
@@ -414,7 +407,7 @@ public partial class Player : CharacterBody2D
 			else currentAnimation = "Idle";
         }
 
-		animatedSprite.Play(currentAnimation);
+		animatedSprite.Play(currentAnimation, customSpeed:Math.Abs(direction));
 	}
 
 

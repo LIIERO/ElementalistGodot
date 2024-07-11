@@ -1,8 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceyal433rjg2d"]
+[gd_scene load_steps=8 format=3 uid="uid://ceyal433rjg2d"]
 
 [ext_resource type="PackedScene" uid="uid://kb46qb43ayfp" path="res://Scenes/UI/MainMenuGUI.tscn" id="1_wggo7"]
 [ext_resource type="PackedScene" uid="uid://cep3g7i8o4gx4" path="res://Scenes/UI/MenuBackground.tscn" id="2_klgq3"]
-[ext_resource type="Texture2D" uid="uid://chkl7fub4c05g" path="res://Graphics/Backgrounds/title1.png" id="3_cj2ew"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="3_8fo6t"]
+[ext_resource type="Texture2D" uid="uid://chkl7fub4c05g" path="res://Graphics/title1.png" id="3_cj2ew"]
+[ext_resource type="Texture2D" uid="uid://bolh0sf67nxg5" path="res://Graphics/demo.png" id="4_ymxk2"]
+
+[sub_resource type="Animation" id="Animation_sgcxl"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqv8"]
+_data = {
+"Idle": SubResource("Animation_sgcxl")
+}
 
 [node name="MainMenu" type="Node2D"]
 
@@ -10,6 +35,34 @@
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_klgq3")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(240, 32)
+[node name="Title" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("3_8fo6t")
+
+[node name="MovedByAnimation" type="Node2D" parent="Title"]
+position = Vector2(0, 0.307335)
+
+[node name="TitleImg" type="Sprite2D" parent="Title/MovedByAnimation"]
+position = Vector2(240, 31.1998)
 texture = ExtResource("3_cj2ew")
+
+[node name="DEMO" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DEMO"]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("3_8fo6t")
+
+[node name="MovedByAnimation" type="Node2D" parent="DEMO"]
+position = Vector2(0, 0.330766)
+
+[node name="DemoImg" type="Sprite2D" parent="DEMO/MovedByAnimation"]
+position = Vector2(368, 80.9582)
+texture = ExtResource("4_ymxk2")

@@ -30,13 +30,13 @@ _data = {
 "Idle": SubResource("Animation_sgcxl")
 }
 
-[sub_resource type="Gradient" id="Gradient_kh12u"]
+[sub_resource type="Gradient" id="Gradient_nofm6"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.331169)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5oq0n"]
-gradient = SubResource("Gradient_kh12u")
+gradient = SubResource("Gradient_nofm6")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -59,7 +59,7 @@ autoplay = "Idle"
 script = ExtResource("2_ioeab")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, 0.284063)
+position = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovedByAnimation"]
 texture_filter = 1

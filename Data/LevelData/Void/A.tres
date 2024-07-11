@@ -8,4 +8,4 @@ ID = "A"
 Name = "The Finale"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
-IsSpecial = true
+IsSpecial = false

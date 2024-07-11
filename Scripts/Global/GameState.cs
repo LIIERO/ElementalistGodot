@@ -49,6 +49,9 @@ public partial class GameState : Node
     private CustomSignals customSignals; // singleton
     public override void _EnterTree()
     {
+        Input.Singleton.Connect("joy_connection_changed", new Callable(this, nameof(OnJoyConnectionChanged)));
+        InputManager.IsGamepadConnected = Input.GetConnectedJoypads().Count > 0;
+
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 
         // Initialize LevelIDToLevel
@@ -292,15 +295,17 @@ public partial class GameState : Node
         }
     }
 
+    private void OnJoyConnectionChanged(int device, bool connected)
+    {
+        InputManager.IsGamepadConnected = connected;
+        RestartCurrentLevel();
+    }
 
-    // DEBUG
+
     //private bool isGameDebugUnlocked = false;
+    // DEBUG
     public override void _Process(double delta)
     {
-        // Check if gamepad connected or not
-        InputManager.IsGamepadConnected = Input.GetConnectedJoypads().Count > 0;
-
-
         if (Input.IsActionJustPressed("inputDebugUnlockSpecific"))
         {
             if (IsHubLoaded()) // Unlock whole current world

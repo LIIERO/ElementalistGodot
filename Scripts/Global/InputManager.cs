@@ -3,7 +3,7 @@ using System;
 
 public static class InputManager
 {
-    public static bool IsGamepadConnected { get; set; } = false; // set in gameState every frame
+    public static bool IsGamepadConnected { get; set; } = false; // set in gameState
 
 
     // Gameplay
@@ -28,7 +28,7 @@ public static class InputManager
             if (!Input.IsActionJustPressed("inputUpGamepad")) return false;
             float Xaxis = Input.GetAxis("inputLeftGamepad", "inputRightGamepad");
             float Yaxis = Input.GetAxis("inputDownGamepad", "inputUpGamepad");
-            return Xaxis == 0f && Yaxis > 0.1f;
+            return Xaxis == 0f && Yaxis > 0.0f;
         }
         return Input.IsActionJustPressed("inputUp");
     }

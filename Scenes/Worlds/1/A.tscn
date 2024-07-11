@@ -30,13 +30,13 @@ position = Vector2(-64, 48)
 [node name="Orbs" type="Node2D" parent="." index="8"]
 
 [node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_a8r6u")]
-position = Vector2(96, 16)
+position = Vector2(91, 16)
 
 [node name="WaterOrb3" parent="Orbs" index="1" instance=ExtResource("3_a8r6u")]
-position = Vector2(97, 15)
+position = Vector2(101, 16)
 
 [node name="WaterOrb2" parent="Orbs" index="2" instance=ExtResource("3_a8r6u")]
-position = Vector2(96, 80)
+position = Vector2(-32, 32)
 
 [node name="Charges" type="Node2D" parent="." index="9"]
 

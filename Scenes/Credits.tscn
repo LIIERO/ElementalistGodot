@@ -29,7 +29,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_eal30")
 theme_override_font_sizes/font_size = 12
-text = "A game developed by Dawid Maziarski (Liero)
+text = "A game by Dawid Maziarski (also known as Liero)
 
 Developed in Godot 4.2.1. with .NET (coded in Visual Studio 2022)
 All of the graphics made only using GIMP 2
@@ -37,9 +37,11 @@ Font made with FontForge
 Music made with FL Studio 20
 Sound effects also made with FL Studio (and random noises)
 
-Big thanks for playtesting to: Heagridswager, TuxPeepo26 lennygold, Syrenix, Butcherberries, Auribouros, jr2137, Bamaluko, BlindCrusaderPOL, areit, nafe_jl, and whyte_noise (I hope I didn't miss anyone)
+Special thanks to Heagridswager for being a huge help for me throughout the whole development process!
 
-Special thanks to Heagridswager for being a big help for me throughout the whole development process (which is far from over btw, this is just a demo)
+Big thanks to everyone who playtested, or gave me feedback on this game!
+
+The development is far from being over, this is just a demo.
 
 
 
