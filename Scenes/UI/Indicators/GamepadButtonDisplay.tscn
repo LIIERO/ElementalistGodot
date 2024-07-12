@@ -1,0 +1,191 @@
+[gd_scene load_steps=18 format=3 uid="uid://301obwpu5ghw"]
+
+[ext_resource type="Texture2D" uid="uid://0wnjfw5sq0dw" path="res://Graphics/UI/InputOverlay/xbox_controller.png" id="1_76rco"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mv81"]
+atlas = ExtResource("1_76rco")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roepj"]
+atlas = ExtResource("1_76rco")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npt4n"]
+atlas = ExtResource("1_76rco")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii30m"]
+atlas = ExtResource("1_76rco")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pduld"]
+atlas = ExtResource("1_76rco")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yen3p"]
+atlas = ExtResource("1_76rco")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo11a"]
+atlas = ExtResource("1_76rco")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhbkr"]
+atlas = ExtResource("1_76rco")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lpwv"]
+atlas = ExtResource("1_76rco")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl3vv"]
+atlas = ExtResource("1_76rco")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri1np"]
+atlas = ExtResource("1_76rco")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1py1"]
+atlas = ExtResource("1_76rco")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trrig"]
+atlas = ExtResource("1_76rco")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cac46"]
+atlas = ExtResource("1_76rco")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul1rl"]
+atlas = ExtResource("1_76rco")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibh3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mv81")
+}],
+"loop": false,
+"name": &"A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roepj")
+}],
+"loop": false,
+"name": &"B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npt4n")
+}],
+"loop": false,
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii30m")
+}],
+"loop": false,
+"name": &"DpadDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pduld")
+}],
+"loop": false,
+"name": &"DpadLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yen3p")
+}],
+"loop": false,
+"name": &"DpadRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo11a")
+}],
+"loop": false,
+"name": &"DpadUp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhbkr")
+}],
+"loop": false,
+"name": &"LeftShoulder",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lpwv")
+}],
+"loop": false,
+"name": &"LeftStick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl3vv")
+}],
+"loop": false,
+"name": &"RightShoulder",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri1np")
+}],
+"loop": false,
+"name": &"RightStick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1py1")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrig")
+}],
+"loop": false,
+"name": &"X",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cac46")
+}],
+"loop": false,
+"name": &"Y",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul1rl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GamepadButtonDisplay" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ibh3s")
+animation = &"DpadUp"
+autoplay = "default"

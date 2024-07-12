@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfmn7yp2rc0ms"]
+
+[ext_resource type="PackedScene" uid="uid://cxqrk1qq4twqu" path="res://Scenes/UI/InputOptionsGamepadGUI.tscn" id="1_8j86d"]
+[ext_resource type="PackedScene" uid="uid://cep3g7i8o4gx4" path="res://Scenes/UI/MenuBackground.tscn" id="2_omay3"]
+
+[node name="InputOptions" type="Node2D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_8j86d")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_omay3")]

@@ -218,6 +218,11 @@ public partial class GameState : Node
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/InputOptions.tscn"));
     }
 
+    public void LoadGamepadInputOptions()
+    {
+        GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/InputOptionsGamepad.tscn"));
+    }
+
     public void SetPlayerPosition(Vector2 position, bool fireTeleport = false)
     {
         customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position, fireTeleport);
@@ -298,7 +303,6 @@ public partial class GameState : Node
     private void OnJoyConnectionChanged(int device, bool connected)
     {
         InputManager.IsGamepadConnected = connected;
-        RestartCurrentLevel();
     }
 
 

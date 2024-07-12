@@ -29,7 +29,7 @@ public partial class PauseMenu : ButtonManager
         {
             if (gameState.IsGamePaused)
             {
-                Resume();
+                DelayResume();
             }
             else if (!gameState.IsLevelTransitionPlaying) // Cant pause during transitions
             {
@@ -37,6 +37,8 @@ public partial class PauseMenu : ButtonManager
                 Pause();
             }
         }
+        else if (InputManager.UICancelPressed() && gameState.IsGamePaused)
+            DelayResume();
 
         if (!gameState.IsGamePaused) return;
 

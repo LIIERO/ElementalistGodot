@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0wnjfw5sq0dw"
-path="res://.godot/imported/xbox_controller.png-9456bfbe79c4e8dd2d417a23449011d1.ctex"
+path="res://.godot/imported/xbox_controller.png-2e88a4439c888c4eb9ca6e40cb753f7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/UI/Gameplay/InputOverlay/xbox_controller.png"
-dest_files=["res://.godot/imported/xbox_controller.png-9456bfbe79c4e8dd2d417a23449011d1.ctex"]
+source_file="res://Graphics/UI/InputOverlay/xbox_controller.png"
+dest_files=["res://.godot/imported/xbox_controller.png-2e88a4439c888c4eb9ca6e40cb753f7d.ctex"]
 
 [params]
 

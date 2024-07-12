@@ -3,10 +3,10 @@ using Godot;
 using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 
-public partial class InputOptions : ButtonManager
+public partial class InputOptionsGamepad : ButtonManager
 {
     private const int BACK = 0;
-    private const int RESTOREDEFAULT = 8;
+    private const int RESTOREDEFAULT = 5;
 
     private bool isRemapping = false;
     private bool isWaitingForInput = false;
@@ -16,14 +16,11 @@ public partial class InputOptions : ButtonManager
     private LevelTransitions levelTransitions;
     private SettingsManager settingsManager;
 
-    private Dictionary<int, string> elementIdToAction = new() { 
-        { 1, "inputLeft" }, 
-        { 2, "inputRight" }, 
-        { 3, "inputUp" }, 
-        { 4, "inputJump" },
-        { 5, "inputAbility" },
-        { 6, "inputRestart" },
-        { 7, "inputPause" }};
+    private Dictionary<int, string> elementIdToAction = new() {  
+        { 1, "inputJumpGamepad" },
+        { 2, "inputAbilityGamepad" },
+        { 3, "inputRestartGamepad" },
+        { 4, "inputPauseGamepad" }};
 
     public override void _Ready()
 	{
@@ -37,15 +34,14 @@ public partial class InputOptions : ButtonManager
     {
         for (int i = 0; i < buttonList.Length; i++)
         {
-            if (buttonList[i] is not ControlBind) continue;
-            var inputEvent = InputMap.ActionGetEvents(elementIdToAction[i])[0];
-            (buttonList[i] as ControlBind).SetInputName(inputEvent.AsText().ToUpper());
+            if (buttonList[i] is not ControlBindGamepad) continue;
+            (buttonList[i] as ControlBindGamepad).SetInputName((InputMap.ActionGetEvents(elementIdToAction[i])[0] as InputEventJoypadButton).ButtonIndex.ToString());
         }
     }
 
     private void GoBack()
     {
-        settingsManager.SaveKeybinds(CreateKeybindData());
+        settingsManager.SaveKeybinds(CreateKeybindData(), gamepad:true);
         gameState.LoadOptions();
     }
 
@@ -53,7 +49,7 @@ public partial class InputOptions : ButtonManager
     public override void _Process(double delta)
 	{
         if (gameState.IsLevelTransitionPlaying) return;
-        if (InputManager.UIGamepadCancelPressed()) GoBack(); // if someone is only using gamepad and tries to change keyboard settings, so they can get out
+        if (InputManager.UIKeyboardCancelPressed()) GoBack(); // if someone is only using keyboard and tries to change gamepad settings, so they can get out
         if (isRemapping) return;
 
         base._Process(delta);
@@ -67,7 +63,7 @@ public partial class InputOptions : ButtonManager
             else if (CurrentItemIndex == RESTOREDEFAULT)
             {
                 InputMap.LoadFromProjectSettings();
-                settingsManager.LoadGamepadKeybinds(); // we dont wanna erase them
+                settingsManager.LoadKeyboardKeybinds(); // we dont wanna erase them
                 SetActionList();
             }
 
@@ -76,7 +72,7 @@ public partial class InputOptions : ButtonManager
                 isRemapping = true;
                 isWaitingForInput = true;
                 actionToRemap = elementIdToAction[CurrentItemIndex];
-                (buttonList[CurrentItemIndex] as ControlBind).SetRebinding();
+                (buttonList[CurrentItemIndex] as ControlBindGamepad).SetRebinding();
             }
         }
     }
@@ -86,11 +82,11 @@ public partial class InputOptions : ButtonManager
         if (!isRemapping) return;
         if (!isWaitingForInput) return;
 
-        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+        if (@event is InputEventJoypadButton buttonEvent && buttonEvent.Pressed)
         {
             InputMap.ActionEraseEvents(actionToRemap);
-            InputMap.ActionAddEvent(actionToRemap, keyEvent);
-            (buttonList[CurrentItemIndex] as ControlBind).SetInputName(keyEvent.Keycode.ToString().ToUpper());
+            InputMap.ActionAddEvent(actionToRemap, buttonEvent);
+            (buttonList[CurrentItemIndex] as ControlBindGamepad).SetInputName(buttonEvent.ButtonIndex.ToString());
             SetRemappingFalseAfterDelay();
             isWaitingForInput = false;
             actionToRemap = null;
@@ -103,8 +99,10 @@ public partial class InputOptions : ButtonManager
         Dictionary<string, byte[]> keybindData = new();
 
         foreach (string action in elementIdToAction.Values)
-        {
-            keybindData.Add(action, GD.VarToBytesWithObjects(InputMap.ActionGetEvents(action)[0] as InputEventKey));
+        {    
+            var inputEvent = InputMap.ActionGetEvents(action)[0];
+            keybindData.Add(action, GD.VarToBytesWithObjects(inputEvent as InputEventJoypadButton));
+            
         }
         return keybindData;
     }
@@ -113,7 +111,7 @@ public partial class InputOptions : ButtonManager
     {
         if (what == NotificationWMCloseRequest)
         {
-            settingsManager.SaveKeybinds(CreateKeybindData());
+            settingsManager.SaveKeybinds(CreateKeybindData(), gamepad: true);
         }
     }
 

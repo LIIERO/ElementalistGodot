@@ -1,0 +1,432 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxqrk1qq4twqu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/InputOptionsGamepad.cs" id="1_wnb6c"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="2_esynt"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="3_onigi"]
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="4_25drf"]
+[ext_resource type="Texture2D" uid="uid://dtbtuholq2xi5" path="res://Graphics/UI/Menu/menu_button.png" id="5_cnbi4"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="6_e44cw"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/ControlBindGamepad.cs" id="7_houmx"]
+[ext_resource type="PackedScene" uid="uid://301obwpu5ghw" path="res://Scenes/UI/Indicators/GamepadButtonDisplay.tscn" id="8_cswvv"]
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Options" type="Control" parent="." node_paths=PackedStringArray("buttonList")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wnb6c")
+buttonList = [NodePath("OptionsButton"), NodePath("Jump"), NodePath("Ability"), NodePath("Retry"), NodePath("Pause"), NodePath("ResetDefaultButton")]
+
+[node name="OptionsButton" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 16)
+script = ExtResource("2_esynt")
+
+[node name="OrbSelection" type="Node2D" parent="Options/OptionsButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/OptionsButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/OptionsButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/OptionsButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/OptionsButton"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/OptionsButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "GO BACK"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="Jump" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 40)
+script = ExtResource("7_houmx")
+
+[node name="OrbSelection" type="Node2D" parent="Options/Jump"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Jump/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/Jump/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Jump/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Jump"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Jump/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "JUMP"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="InputSprite" type="Sprite2D" parent="Options/Jump"]
+position = Vector2(208, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Jump/InputSprite"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "input key"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="Options/Jump" instance=ExtResource("8_cswvv")]
+position = Vector2(296, 8)
+animation = &"default"
+
+[node name="Ability" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 64)
+script = ExtResource("7_houmx")
+
+[node name="OrbSelection" type="Node2D" parent="Options/Ability"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Ability/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/Ability/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Ability/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Ability"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Ability/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "USE ABILITY"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="InputSprite" type="Sprite2D" parent="Options/Ability"]
+position = Vector2(208, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Ability/InputSprite"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "input key"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="Options/Ability" instance=ExtResource("8_cswvv")]
+position = Vector2(296, 8)
+animation = &"default"
+
+[node name="Retry" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 88)
+script = ExtResource("7_houmx")
+
+[node name="OrbSelection" type="Node2D" parent="Options/Retry"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Retry/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/Retry/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Retry/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Retry"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Retry/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "RETRY LEVEL"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="InputSprite" type="Sprite2D" parent="Options/Retry"]
+position = Vector2(208, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Retry/InputSprite"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "input key"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="Options/Retry" instance=ExtResource("8_cswvv")]
+position = Vector2(296, 8)
+animation = &"default"
+
+[node name="Pause" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 112)
+script = ExtResource("7_houmx")
+
+[node name="OrbSelection" type="Node2D" parent="Options/Pause"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Pause/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/Pause/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Pause/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Pause"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Pause/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "PAUSE"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="InputSprite" type="Sprite2D" parent="Options/Pause"]
+position = Vector2(208, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Pause/InputSprite"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "input key"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="Options/Pause" instance=ExtResource("8_cswvv")]
+position = Vector2(296, 8)
+animation = &"default"
+
+[node name="ResetDefaultButton" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 136)
+script = ExtResource("2_esynt")
+
+[node name="OrbSelection" type="Node2D" parent="Options/ResetDefaultButton"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/ResetDefaultButton/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/ResetDefaultButton/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/ResetDefaultButton/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/ResetDefaultButton"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/ResetDefaultButton/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "RESET TO DEFAULT"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2

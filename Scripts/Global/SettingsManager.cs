@@ -35,7 +35,8 @@ public partial class SettingsManager : Node
         musicBusId = AudioServer.GetBusIndex(musicBusName);
 
         LoadPreferences();
-        LoadKeybinds();
+        LoadKeyboardKeybinds();
+        LoadGamepadKeybinds();
 
         ChangeSoundVolume(SoundVolume);
         ChangeMusicVolume(MusicVolume);
@@ -154,7 +155,8 @@ public partial class SettingsManager : Node
     }
 
     private const string inputPreferencesPath = "user://inputPreferences.json";
-    private void LoadKeybinds()
+    private const string inputPreferencesGamepadPath = "user://inputPreferencesGamepad.json";
+    public void LoadKeyboardKeybinds()
     {
         string path = ProjectSettings.GlobalizePath(inputPreferencesPath);
         if (!File.Exists(path))
@@ -171,14 +173,35 @@ public partial class SettingsManager : Node
         {
             InputMap.ActionEraseEvents(actionEventPair.Key);
             InputMap.ActionAddEvent(actionEventPair.Key, (InputEventKey)GD.BytesToVarWithObjects(actionEventPair.Value));
+        }  
+    }
+
+    public void LoadGamepadKeybinds()
+    {
+        string pathGamepad = ProjectSettings.GlobalizePath(inputPreferencesGamepadPath);
+        if (!File.Exists(pathGamepad))
+        {
+            GD.Print("Path not found (input preferences gamepad)");
+            return;
+        }
+        string jsonStringGamepad = File.ReadAllText(pathGamepad);
+        InputPreferencesData dataGamepad = JsonSerializer.Deserialize<InputPreferencesData>(jsonStringGamepad)!;
+
+        if (dataGamepad.Keybinds == null) return;
+
+        foreach (KeyValuePair<string, byte[]> actionEventPair in dataGamepad.Keybinds)
+        {
+            InputMap.ActionEraseEvents(actionEventPair.Key);
+            InputMap.ActionAddEvent(actionEventPair.Key, (InputEventJoypadButton)GD.BytesToVarWithObjects(actionEventPair.Value));
         }
     }
 
-    public void SaveKeybinds(Dictionary<string, byte[]> keybinds)
+    public void SaveKeybinds(Dictionary<string, byte[]> keybinds, bool gamepad = false)
     {
-        string path = ProjectSettings.GlobalizePath(inputPreferencesPath);
+        string path = gamepad ? inputPreferencesGamepadPath : inputPreferencesPath;
+        string pathG = ProjectSettings.GlobalizePath(path);
         InputPreferencesData data = new(keybinds);
         string jsonString = JsonSerializer.Serialize(data);
-        File.WriteAllText(path, jsonString);
+        File.WriteAllText(pathG, jsonString);
     }
 }

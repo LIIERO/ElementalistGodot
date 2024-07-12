@@ -14,6 +14,7 @@ public partial class Options : ButtonManager
     private const int LIGHTPARTICLES = 5;
     //private const int WALLSLIDE = 6;
     private const int INPUTSETTINGS = 6;
+    private const int GAMEPADINPUTSETTINGS = 7;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -60,6 +61,10 @@ public partial class Options : ButtonManager
             else if (CurrentItemIndex == INPUTSETTINGS)
             {
                 gameState.LoadInputOptions();
+            }
+            else if (CurrentItemIndex == GAMEPADINPUTSETTINGS)
+            {
+                gameState.LoadGamepadInputOptions();
             }
             else if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
             {

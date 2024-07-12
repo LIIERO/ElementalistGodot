@@ -9,65 +9,57 @@ public static class InputManager
     // Gameplay
 	public static float GetLeftRightGameplayDirection()
 	{
-        if (IsGamepadConnected)
+        if (!IsGamepadConnected)
+            return Input.GetAxis("inputLeft", "inputRight");
+
+        float axis = Input.GetAxis("inputLeftGamepad", "inputRightGamepad");
+        if (axis == 0.0f) return Input.GetAxis("inputLeft", "inputRight");
+        else
         {
-            float axis = Input.GetAxis("inputLeftGamepad", "inputRightGamepad");
             if (axis > 0.01f && axis < 0.5f) axis = 0.5f;
             if (axis < -0.01f && axis > -0.5f) axis = -0.5f;
             if (axis > 0.8f) axis = 1.0f;
             if (axis < -0.8f) axis = -1.0f;
             return axis;
-        }   
-		return Input.GetAxis("inputLeft", "inputRight");
+        }
     }
 
     public static bool UpInteractPressed()
 	{
-        if (IsGamepadConnected)
-        {
-            if (!Input.IsActionJustPressed("inputUpGamepad")) return false;
-            float Xaxis = Input.GetAxis("inputLeftGamepad", "inputRightGamepad");
-            float Yaxis = Input.GetAxis("inputDownGamepad", "inputUpGamepad");
-            return Xaxis == 0f && Yaxis > 0.0f;
-        }
-        return Input.IsActionJustPressed("inputUp");
+        if (Input.IsActionJustPressed("inputUp"))
+            return true;
+
+        if (!Input.IsActionJustPressed("inputUpGamepad")) return false;
+        float Xaxis = Input.GetAxis("inputLeftGamepad", "inputRightGamepad");
+        float Yaxis = Input.GetAxis("inputDownGamepad", "inputUpGamepad");
+        return Xaxis == 0f && Yaxis > 0.0f;
     }
 
     public static bool JumpPressed()
     {
-        if (IsGamepadConnected)
-            return Input.IsActionJustPressed("inputJumpGamepad");
-        return Input.IsActionJustPressed("inputJump");
+        return Input.IsActionJustPressed("inputJump") || Input.IsActionJustPressed("inputJumpGamepad");
     }
 
     public static bool AbilityPressed()
     {
-        if (IsGamepadConnected)
-            return Input.IsActionJustPressed("inputAbilityGamepad");
-        return Input.IsActionJustPressed("inputAbility");
+        return Input.IsActionJustPressed("inputAbility") || Input.IsActionJustPressed("inputAbilityGamepad");
     }
 
     public static bool RestartPressed()
     {
-        if (IsGamepadConnected)
-            return Input.IsActionJustPressed("inputRestartGamepad");
-        return Input.IsActionJustPressed("inputRestart");
+        return Input.IsActionJustPressed("inputRestart") || Input.IsActionJustPressed("inputRestartGamepad");
     }
 
     public static bool JumpReleased()
     {
-        if (IsGamepadConnected)
-            return Input.IsActionJustReleased("inputJumpGamepad");
-        return Input.IsActionJustReleased("inputJump");
+        return Input.IsActionJustReleased("inputJump") || Input.IsActionJustReleased("inputJumpGamepad");
     }
     
 
     // Menus
     public static bool PausePressed()
     {
-        if (IsGamepadConnected)
-            return Input.IsActionJustPressed("inputPauseGamepad");
-        return Input.IsActionJustPressed("inputPause");
+        return Input.IsActionJustPressed("inputPause") || Input.IsActionJustPressed("inputPauseGamepad");
     }
 
     public static bool UIUpPressed()
@@ -103,5 +95,10 @@ public static class InputManager
     public static bool UIGamepadCancelPressed()
     {
         return Input.IsActionJustPressed("ui_cancel_gamepad");
+    }
+
+    public static bool UIKeyboardCancelPressed()
+    {
+        return Input.IsActionJustPressed("ui_cancel_keyboard");
     }
 }
