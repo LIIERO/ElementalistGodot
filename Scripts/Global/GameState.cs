@@ -15,7 +15,7 @@ public partial class GameState : Node
         { "H", new string[] { "HUB", "A", "B" } }, // Main Hub (The Void)
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "9S" } }, // Cave Outskirts
+        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "8S" } }, // Cave Outskirts
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } } // Islands of Ashes
     };
 
@@ -49,11 +49,6 @@ public partial class GameState : Node
     private CustomSignals customSignals; // singleton
     public override void _EnterTree()
     {
-        Input.Singleton.Connect("joy_connection_changed", new Callable(this, nameof(OnJoyConnectionChanged)));
-        InputManager.IsGamepadConnected = Input.GetConnectedJoypads().Count > 0;
-
-        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-
         // Initialize LevelIDToLevel
         foreach (KeyValuePair<string, string[]> world in levels)
         {
@@ -69,6 +64,11 @@ public partial class GameState : Node
 
         // Initialize previous world, TODO: do this in save file
         PreviousWorld = CurrentWorld;
+
+        Input.Singleton.Connect("joy_connection_changed", new Callable(this, nameof(OnJoyConnectionChanged)));
+        InputManager.IsGamepadConnected = Input.GetConnectedJoypads().Count > 0;
+
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
     }
 
 
@@ -308,7 +308,7 @@ public partial class GameState : Node
 
     //private bool isGameDebugUnlocked = false;
     // DEBUG
-    public override void _Process(double delta)
+    /*public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("inputDebugUnlockSpecific"))
         {
@@ -349,6 +349,6 @@ public partial class GameState : Node
             }
             RestartCurrentLevel();
         }
-    }
+    }*/
 }
 

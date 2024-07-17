@@ -34,8 +34,9 @@ text = "A game by Dawid Maziarski (also known as Liero)
 Developed in Godot 4.2.1. with .NET (coded in Visual Studio 2022)
 All of the graphics made only using GIMP 2
 Font made with FontForge
-Music made with FL Studio 20
-Sound effects also made with FL Studio (and random noises)
+Music and sound effects made with FL Studio 20
+
+Main inspirations: Celeste by EXOK Games, I Wanna Lockpick by LAWatson
 
 Special thanks to Heagridswager for being a huge help for me throughout the whole development process!
 

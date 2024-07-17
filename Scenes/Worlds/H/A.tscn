@@ -23,7 +23,7 @@ layer_0/tile_data = PackedInt32Array(-917520, 65536, 0, -851984, 0, 1, -786448, 
 
 [node name="Sign" parent="." index="5" instance=ExtResource("2_fjh03")]
 position = Vector2(96, 96)
-Text = "This is it, the final level of the demo."
+Text = "This is it, the final level of the demo.\\n\\nGood luck!"
 SunHoldingText = "You did it! Congrats!"
 
 [node name="LevelExit" parent="." index="6" instance=ExtResource("3_byqi0")]

@@ -12,21 +12,21 @@ public static class InputManager
         if (!IsGamepadConnected)
             return Input.GetAxis("inputLeft", "inputRight");
 
-        float axis = Input.GetAxis("inputLeftGamepad", "inputRightGamepad");
-        if (axis == 0.0f) return Input.GetAxis("inputLeft", "inputRight");
+        float analogAxis = Input.GetAxis("inputLeftGamepad", "inputRightGamepad");
+        if (analogAxis == 0.0f) return Input.GetAxis("inputLeft", "inputRight");
         else
         {
-            if (axis > 0.01f && axis < 0.5f) axis = 0.5f;
-            if (axis < -0.01f && axis > -0.5f) axis = -0.5f;
-            if (axis > 0.8f) axis = 1.0f;
-            if (axis < -0.8f) axis = -1.0f;
-            return axis;
+            if (analogAxis > 0.01f && analogAxis < 0.5f) analogAxis = 0.5f;
+            if (analogAxis < -0.01f && analogAxis > -0.5f) analogAxis = -0.5f;
+            if (analogAxis > 0.8f) analogAxis = 1.0f;
+            if (analogAxis < -0.8f) analogAxis = -1.0f;
+            return analogAxis;
         }
     }
 
     public static bool UpInteractPressed()
 	{
-        if (Input.IsActionJustPressed("inputUp"))
+        if (Input.IsActionJustPressed("inputUp") || Input.IsActionJustPressed("inputUpGamepadSecond"))
             return true;
 
         if (!Input.IsActionJustPressed("inputUpGamepad")) return false;

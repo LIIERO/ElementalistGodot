@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 public partial class InputOptionsGamepad : ButtonManager
 {
     private const int BACK = 0;
-    private const int RESTOREDEFAULT = 5;
+    private const int RESTOREDEFAULT = 6;
 
     private bool isRemapping = false;
     private bool isWaitingForInput = false;
@@ -16,11 +16,14 @@ public partial class InputOptionsGamepad : ButtonManager
     private LevelTransitions levelTransitions;
     private SettingsManager settingsManager;
 
-    private Dictionary<int, string> elementIdToAction = new() {  
-        { 1, "inputJumpGamepad" },
-        { 2, "inputAbilityGamepad" },
-        { 3, "inputRestartGamepad" },
-        { 4, "inputPauseGamepad" }};
+    private Dictionary<int, string> elementIdToAction = new() {
+        //{ 1, "inputLeftGamepadSecond" },
+        //{ 2, "inputRightGamepadSecond" },
+        { 1, "inputUpGamepadSecond" },
+        { 2, "inputJumpGamepad" },
+        { 3, "inputAbilityGamepad" },
+        { 4, "inputRestartGamepad" },
+        { 5, "inputPauseGamepad" }};
 
     public override void _Ready()
 	{

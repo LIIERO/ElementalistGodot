@@ -39,7 +39,7 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wnb6c")
-buttonList = [NodePath("OptionsButton"), NodePath("Jump"), NodePath("Ability"), NodePath("Retry"), NodePath("Pause"), NodePath("ResetDefaultButton")]
+buttonList = [NodePath("OptionsButton"), NodePath("Interact"), NodePath("Jump"), NodePath("Ability"), NodePath("Retry"), NodePath("Pause"), NodePath("ResetDefaultButton")]
 
 [node name="OptionsButton" type="Node2D" parent="Options"]
 texture_filter = 1
@@ -88,9 +88,233 @@ horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
 
+[node name="Left" type="Node2D" parent="Options"]
+visible = false
+texture_filter = 1
+position = Vector2(16, 64)
+script = ExtResource("7_houmx")
+
+[node name="OrbSelection" type="Node2D" parent="Options/Left"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Left/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/Left/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Left/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Left"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Left/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "MOVE LEFT (ALT)"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="InputSprite" type="Sprite2D" parent="Options/Left"]
+position = Vector2(208, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Left/InputSprite"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "input key"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="Options/Left" instance=ExtResource("8_cswvv")]
+position = Vector2(296, 8)
+animation = &"default"
+
+[node name="Right" type="Node2D" parent="Options"]
+visible = false
+texture_filter = 1
+position = Vector2(16, 88)
+script = ExtResource("7_houmx")
+
+[node name="OrbSelection" type="Node2D" parent="Options/Right"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Right/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/Right/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Right/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Right"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Right/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "MOVE RIGHT (ALT)"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="InputSprite" type="Sprite2D" parent="Options/Right"]
+position = Vector2(208, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Right/InputSprite"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "input key"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="Options/Right" instance=ExtResource("8_cswvv")]
+position = Vector2(296, 8)
+animation = &"default"
+
+[node name="Interact" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 64)
+script = ExtResource("7_houmx")
+
+[node name="OrbSelection" type="Node2D" parent="Options/Interact"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Interact/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_onigi")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/Interact/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Interact/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_25drf")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/Interact"]
+position = Vector2(64, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Interact/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "INTERACT/UP (ALT)"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="InputSprite" type="Sprite2D" parent="Options/Interact"]
+position = Vector2(208, 8)
+texture = ExtResource("5_cnbi4")
+
+[node name="Text" type="Label" parent="Options/Interact/InputSprite"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_e44cw")
+theme_override_font_sizes/font_size = 12
+text = "input key"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="Options/Interact" instance=ExtResource("8_cswvv")]
+position = Vector2(296, 8)
+animation = &"default"
+
 [node name="Jump" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 40)
+position = Vector2(16, 88)
 script = ExtResource("7_houmx")
 
 [node name="OrbSelection" type="Node2D" parent="Options/Jump"]
@@ -164,7 +388,7 @@ animation = &"default"
 
 [node name="Ability" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 64)
+position = Vector2(16, 112)
 script = ExtResource("7_houmx")
 
 [node name="OrbSelection" type="Node2D" parent="Options/Ability"]
@@ -238,7 +462,7 @@ animation = &"default"
 
 [node name="Retry" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 88)
+position = Vector2(16, 136)
 script = ExtResource("7_houmx")
 
 [node name="OrbSelection" type="Node2D" parent="Options/Retry"]
@@ -312,7 +536,7 @@ animation = &"default"
 
 [node name="Pause" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 112)
+position = Vector2(16, 160)
 script = ExtResource("7_houmx")
 
 [node name="OrbSelection" type="Node2D" parent="Options/Pause"]
@@ -386,7 +610,7 @@ animation = &"default"
 
 [node name="ResetDefaultButton" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 136)
+position = Vector2(16, 232)
 script = ExtResource("2_esynt")
 
 [node name="OrbSelection" type="Node2D" parent="Options/ResetDefaultButton"]

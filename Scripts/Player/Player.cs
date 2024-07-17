@@ -27,7 +27,7 @@ public partial class Player : CharacterBody2D
 	private PlayerShaderEffects shaderScript;
 
 	// Parameters
-	public const float speed = 110.0f;
+	public const float speed = 109.0f;
 	public const float jumpVelocity = -220.0f;
 	public const float maxFallingSpeed = 250f;
 	public const float earthJumpPower = -275.0f;
@@ -39,6 +39,7 @@ public partial class Player : CharacterBody2D
 	public const float inputBufferTime = 0.1f;
 	public const float abilityFreezeTime = 0.05f;
 	public const float jumpCancelFraction = 0.2f;
+	public const float jumpPreventionTime = 0.15f;
 	public const float deathTime = 0.2f;
 	public const float floatyGravityMaxVelocity = 50.0f;
 	public const int windDashCornerCorrection = 5;
@@ -71,7 +72,7 @@ public partial class Player : CharacterBody2D
 
     private string currentAnimation;
 	private float footstepTimer = 0.0f;
-	private float jumpPreventionTimer = -0.01f; // for teleport bug
+	private float jumpPreventionTimer = -0.1f; // for teleport bug
 	private bool particlesActive;
 	private bool wallslideSlowdownActive;
 
@@ -168,7 +169,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (jumpPreventionTimer > 0.0f)
 		{
-			Velocity = new Vector2(Velocity.X, 0.0f); // Fix of a very obscure earth ability tech
+			//Velocity = new Vector2(Velocity.X, 0.0f); // Fix of a very obscure earth ability tech
 			jumpPreventionTimer -= (float)delta;
 		}
         if (isUsingAbility || jumpPreventionTimer > 0.0f) return;
@@ -373,6 +374,8 @@ public partial class Player : CharacterBody2D
 		if (gameState.IsLevelTransitionPlaying && !isDying) animatedSprite.Play("Idle"); // Level transition animation
         if (IsFrozen) return;
 
+		float animationSpeed = 1.0f;
+
 		// change direction facing
 		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency
 		{
@@ -397,7 +400,11 @@ public partial class Player : CharacterBody2D
 		{
 			if (direction == 0.0f || IsOnWall())
 				currentAnimation = "Idle";
-			else currentAnimation = "Run";
+			else
+			{
+				currentAnimation = "Run";
+				animationSpeed = Math.Abs(direction);
+            }
 		}
 		else
 		{
@@ -407,7 +414,7 @@ public partial class Player : CharacterBody2D
 			else currentAnimation = "Idle";
         }
 
-		animatedSprite.Play(currentAnimation, customSpeed:Math.Abs(direction));
+		animatedSprite.Play(currentAnimation, customSpeed:animationSpeed);
 	}
 
 
@@ -514,15 +521,15 @@ public partial class Player : CharacterBody2D
 		if (fireTeleport) shaderScript.SpawnFireTeleportResidue();
         //CancelAbility(); // Decided it was unnecessary
 
-        jumpPreventionTimer = abilityFreezeTime;
+        GlobalPosition = position;
+        Velocity = new Vector2(0f, 0f);
+
+        jumpPreventionTimer = jumpPreventionTime;
         coyoteTimeCounter = 0f;
         jumpBufferTimeCounter = 0f;
         canJumpCancel = false;
 		isGrounded = false;
-		Velocity = new Vector2(0f, 0f);
-
-        GlobalPosition = position;
-	}
+    }
 
     public void Kill()
     {

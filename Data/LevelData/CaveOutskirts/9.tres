@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://befmg0py7p5k5"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c7nu5xtxo6j4y"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_7j7th"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_6xydo"]
 
 [resource]
-script = ExtResource("1_7j7th")
+script = ExtResource("1_6xydo")
 ID = "9"
-Name = "Later Usage"
+Name = "The Shaft"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

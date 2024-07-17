@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ng8sl")
 ID = "A"
-Name = "The Finale"
+Name = "The Demo Finale"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
