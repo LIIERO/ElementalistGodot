@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://4mpfpc802n76"]
+
+[ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/OrbBase.tscn" id="1_bcwv8"]
+[ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbReverse.cs" id="2_1wcw7"]
+
+[node name="ReverseOrb" instance=ExtResource("1_bcwv8")]
+script = ExtResource("2_1wcw7")
+refillColor = 6
+
+[node name="Sprite2D" parent="MovedByAnimation" index="0"]
+region_rect = Rect2(0, 16, 16, 16)

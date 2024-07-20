@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcrot6fbv4eag"]
+
+[ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/5/Base.tscn" id="1_6sq5c"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_hx4jc"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_s4f6n"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_s3ll7"]
+[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_sqqcg"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="6_wan0o"]
+[ext_resource type="PackedScene" uid="uid://4mpfpc802n76" path="res://Scenes/Entities/Orbs/ReverseOrb.tscn" id="7_ddx0w"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="8_8ubto"]
+[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="9_t42wm"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="10_4rsxi"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="11_53u7x"]
+
+[node name="Game" instance=ExtResource("1_6sq5c")]
+
+[node name="Zoe" parent="." index="1"]
+position = Vector2(0, 96)
+
+[node name="GroundTiles" parent="." index="3"]
+layer_0/tile_data = PackedInt32Array(524303, 720896, 3, 458767, 720896, 2, 524302, 589824, 3, 458766, 589824, 2, 524301, 589824, 3, 458765, 589824, 2, 524300, 589824, 3, 458764, 589824, 2, 524299, 589824, 3, 458763, 589824, 2, 524298, 589824, 3, 458762, 589824, 2, 524297, 589824, 3, 458761, 589824, 2, 524296, 589824, 3, 458760, 589824, 2, 524295, 589824, 3, 458759, 589824, 2, 524294, 589824, 3, 458758, 589824, 2, 524293, 589824, 3, 458757, 589824, 2, 524292, 589824, 3, 458756, 589824, 2, 524291, 589824, 3, 458755, 589824, 2, 524290, 589824, 3, 458754, 589824, 2, 524289, 589824, 3, 458753, 589824, 2, 524288, 589824, 3, 458752, 589824, 2, 589823, 589824, 3, 524287, 589824, 2, 589822, 589824, 3, 524286, 589824, 2, 589821, 589824, 3, 524285, 589824, 2, 589820, 589824, 3, 524284, 589824, 2, 589819, 589824, 3, 524283, 589824, 2, 589818, 589824, 3, 524282, 589824, 2, 589817, 589824, 3, 524281, 589824, 2, 589816, 589824, 3, 524280, 589824, 2, 589815, 589824, 3, 524279, 589824, 2, 589814, 589824, 3, 524278, 589824, 2, 589813, 589824, 3, 524277, 589824, 2, 589812, 589824, 3, 524276, 589824, 2, 589811, 589824, 3, 524275, 589824, 2, 589810, 589824, 3, 524274, 589824, 2, 589809, 589824, 3, 524273, 589824, 2, 589808, 524288, 3, 524272, 524288, 1, 393231, 720896, 2, 393230, 589824, 2, 393229, 327680, 1, 393228, 655360, 0, 393227, 655360, 0, 393226, 655360, 0, 393225, 655360, 0, 393224, 655360, 0, 393223, 655360, 0, 393222, 655360, 0, 393221, 655360, 0, 393220, 655360, 0, 393219, 655360, 0, 393218, 655360, 0, 393217, 655360, 0, 393216, 655360, 0, 458751, 655360, 0, 458750, 655360, 0, 458749, 655360, 0, 458748, 655360, 0, 458747, 655360, 0, 458746, 655360, 0, 458745, 655360, 0, 458744, 655360, 0, 458743, 655360, 0, 458742, 655360, 0, 458741, 655360, 0, 458740, 655360, 0, 458739, 655360, 0, 458738, 393216, 1, 458737, 589824, 2, 458736, 524288, 1, 393202, 720896, 2, 327666, 720896, 0, 393201, 589824, 2, 327665, 655360, 0, 393200, 524288, 1, 327695, 720896, 2, 262159, 458752, 1, 327694, 589824, 2, 262158, 655360, 0, 327693, 524288, 1, 262157, 524288, 0, 327664, 262144, 1, 262128, 0, 1, 196592, 0, 1, 131056, 0, 1, 65520, 0, 1, -16, 0, 1, -65552, 0, 1, -131088, 0, 1, -196624, 0, 1, -262160, 0, 1, -327696, 0, 1, -393232, 0, 1, -458768, 0, 1, -524304, 0, 1, -589840, 65536, 0, -655345, 196608, 0, -655346, 131072, 3, -655347, 131072, 3, -655348, 131072, 3, -655349, 131072, 3, -655350, 131072, 3, -655351, 131072, 3, -655352, 131072, 3, -655353, 131072, 3, -655354, 131072, 3, -655355, 131072, 3, -655356, 131072, 3, -655357, 131072, 3, -655358, 131072, 3, -655359, 131072, 3, -655360, 131072, 3, -589825, 131072, 3, -589826, 131072, 3, -589827, 131072, 3, -589828, 131072, 3, -589829, 131072, 3, -589830, 131072, 3, -589831, 131072, 3, -589832, 131072, 3, -589833, 131072, 3, -589834, 131072, 3, -589835, 131072, 3, -589836, 131072, 3, -589837, 131072, 3, -589838, 131072, 3, -589839, 131072, 3, 196623, 0, 1, 131087, 0, 1, 65551, 0, 1, 15, 0, 1, -65521, 0, 1, -131057, 0, 1, -196593, 0, 1, -262129, 0, 1, -327665, 0, 1, -393201, 0, 1, -458737, 0, 1, -524273, 0, 1, -589809, 0, 1)
+
+[node name="Orbs" type="Node2D" parent="." index="6"]
+
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_hx4jc")]
+position = Vector2(-224, -120)
+
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_s4f6n")]
+position = Vector2(-200, -120)
+
+[node name="EarthOrb" parent="Orbs" index="2" instance=ExtResource("4_s3ll7")]
+position = Vector2(-176, -120)
+
+[node name="FireOrb" parent="Orbs" index="3" instance=ExtResource("5_sqqcg")]
+position = Vector2(-152, -120)
+
+[node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("6_wan0o")]
+position = Vector2(-128, -120)
+
+[node name="ReverseOrb" parent="Orbs" index="5" instance=ExtResource("7_ddx0w")]
+position = Vector2(-104, -120)
+
+[node name="Interactables" type="Node2D" parent="." index="7"]
+
+[node name="Charges" type="Node2D" parent="." index="8"]
+
+[node name="ChargeGate" parent="Charges" index="0" instance=ExtResource("8_8ubto")]
+position = Vector2(-192, 80)
+
+[node name="ElementCharge" parent="Charges" index="1" instance=ExtResource("9_t42wm")]
+position = Vector2(-160, 80)
+
+[node name="LevelExit" parent="." index="9" instance=ExtResource("10_4rsxi")]
+position = Vector2(0, 96)
+
+[node name="Goal" parent="." index="10" instance=ExtResource("11_53u7x")]
+position = Vector2(-224, 48)
