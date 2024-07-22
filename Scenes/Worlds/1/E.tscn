@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_rkvcw"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_l8oxb"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="6_7k52k"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="7_ske0g"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="7_ske0g"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_jreot"]
 
 [node name="Game" instance=ExtResource("1_x86jm")]

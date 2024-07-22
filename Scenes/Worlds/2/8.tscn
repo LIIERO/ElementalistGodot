@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_u7ap3"]
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_kh4nu"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="7_bgrfj"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="8_utvjt"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="8_utvjt"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="9_sv4mp"]
 
 [node name="Game" instance=ExtResource("1_oclls")]

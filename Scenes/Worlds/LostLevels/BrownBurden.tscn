@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_wqj7i"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="7_jwx4n"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_rxl2v"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="9_gym84"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="9_gym84"]
 [ext_resource type="PackedScene" uid="uid://qxymawh4pw5d" path="res://Scenes/Entities/Danger/EarthSpikeBall.tscn" id="10_q35l1"]
 [ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="11_isuiy"]
 

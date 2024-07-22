@@ -308,7 +308,7 @@ public partial class GameState : Node
 
     //private bool isGameDebugUnlocked = false;
     // DEBUG
-    /*public override void _Process(double delta)
+    public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("inputDebugUnlockSpecific"))
         {
@@ -349,6 +349,6 @@ public partial class GameState : Node
             }
             RestartCurrentLevel();
         }
-    }*/
+    }
 }
 

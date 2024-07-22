@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://k50bvsnwfd4u"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Gates/OrderGate.cs" id="1_2voic"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_mahqh"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_773t3"]
+[ext_resource type="PackedScene" uid="uid://bl5uxmwj5uuut" path="res://Scenes/UI/Elements/ElementSymbolSmall.tscn" id="4_e8fp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n3eo"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_foprm"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToMove:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g26fh"]
+_data = {
+"Open": SubResource("Animation_foprm")
+}
+
+[node name="OrderGate" type="Node2D"]
+z_index = -3
+script = ExtResource("1_2voic")
+
+[node name="ToMove" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ToMove" groups=["HardMaterial", "PlayerCollider"]]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToMove/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1n3eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="ToMove"]
+texture_filter = 1
+texture = ExtResource("2_mahqh")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="Text" type="Node2D" parent="ToMove"]
+visible = false
+position = Vector2(-3, -11)
+
+[node name="Label" type="Label" parent="ToMove/Text"]
+texture_filter = 1
+offset_left = -11.0
+offset_right = 18.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("3_773t3")
+theme_override_font_sizes/font_size = 12
+text = "X"
+horizontal_alignment = 1
+
+[node name="RequiredAbilities" type="Node2D" parent="ToMove"]
+
+[node name="Ability0" parent="ToMove/RequiredAbilities" instance=ExtResource("4_e8fp2")]
+position = Vector2(-7, -7)
+
+[node name="Ability1" parent="ToMove/RequiredAbilities" instance=ExtResource("4_e8fp2")]
+position = Vector2(7, -7)
+
+[node name="Ability2" parent="ToMove/RequiredAbilities" instance=ExtResource("4_e8fp2")]
+position = Vector2(-7, 7)
+
+[node name="Ability3" parent="ToMove/RequiredAbilities" instance=ExtResource("4_e8fp2")]
+position = Vector2(7, 7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g26fh")
+}

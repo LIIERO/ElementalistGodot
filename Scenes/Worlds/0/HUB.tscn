@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://csujtn0jeug38" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceCaveOutskirts.tscn" id="4_68r2e"]
 [ext_resource type="Resource" uid="uid://ccv8non0rky78" path="res://Data/LevelData/PurpleForest/2.tres" id="5_dg7oy"]
 [ext_resource type="Resource" uid="uid://bmeecknwyt4sb" path="res://Data/LevelData/PurpleForest/3.tres" id="7_cgfnr"]
-[ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="8_ekp26"]
+[ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gates/SunGate.tscn" id="8_ekp26"]
 [ext_resource type="Resource" uid="uid://b2bv3ngdmig0o" path="res://Data/LevelData/PurpleForest/4.tres" id="8_wyoy1"]
 [ext_resource type="Resource" uid="uid://s3ceyew3kfmc" path="res://Data/LevelData/PurpleForest/5.tres" id="9_q1053"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="10_go0h5"]

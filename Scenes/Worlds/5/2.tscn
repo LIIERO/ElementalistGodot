@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dptwwpnpd8wey"]
+[gd_scene load_steps=9 format=3 uid="uid://dptwwpnpd8wey"]
 
 [ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/5/Base.tscn" id="1_sok8n"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_3tl4g"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_ares6"]
 [ext_resource type="PackedScene" uid="uid://4mpfpc802n76" path="res://Scenes/Entities/Orbs/ReverseOrb.tscn" id="7_j36p5"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="7_sit73"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="8_mmh8w"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="10_8ubuv"]
 
 [node name="Game" instance=ExtResource("1_sok8n")]
@@ -52,3 +53,6 @@ position = Vector2(-96, 48)
 
 [node name="Goal" parent="." index="9" instance=ExtResource("7_sit73")]
 position = Vector2(224, 80)
+
+[node name="WaterIndicator" parent="." index="10" instance=ExtResource("8_mmh8w")]
+position = Vector2(64, 120)

@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://bl5uxmwj5uuut"]
+
+[ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="1_lxpb8"]
+[ext_resource type="Script" path="res://Scripts/UI/Visual/ElementSymbol.cs" id="2_nx753"]
+[ext_resource type="Texture2D" uid="uid://c34gfguj4cc2w" path="res://Graphics/UI/Gameplay/ElementOverlay/current_element_indicator_small.png" id="3_pwtos"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1agrn"]
+atlas = ExtResource("1_lxpb8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lvft"]
+atlas = ExtResource("1_lxpb8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubfsi"]
+atlas = ExtResource("1_lxpb8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whutt"]
+atlas = ExtResource("1_lxpb8")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysiga"]
+atlas = ExtResource("1_lxpb8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trbb7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1agrn")
+}],
+"loop": false,
+"name": &"Air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lvft")
+}],
+"loop": false,
+"name": &"Earth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubfsi")
+}],
+"loop": false,
+"name": &"Fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whutt")
+}],
+"loop": false,
+"name": &"Normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysiga")
+}],
+"loop": false,
+"name": &"Water",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxilg"]
+atlas = ExtResource("3_pwtos")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or4q3"]
+atlas = ExtResource("3_pwtos")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rff10"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_yxilg")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_or4q3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ElementSymbolSmall" type="AnimatedSprite2D" groups=["ElementSymbol"]]
+texture_filter = 1
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_trbb7")
+animation = &"Normal"
+autoplay = "default"
+script = ExtResource("2_nx753")
+
+[node name="Indicator" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_rff10")
+frame_progress = 0.366172

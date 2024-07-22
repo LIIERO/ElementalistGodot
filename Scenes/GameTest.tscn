@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bjy3ha4nvax5k" path="res://Scenes/Tilesets/Danger/DSDanger.tscn" id="14_qg2l5"]
 [ext_resource type="PackedScene" uid="uid://8fiiiupclrw5" path="res://Scenes/Tilesets/Ground/PFGround.tscn" id="15_rq13c"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="15_yrvsc"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/ChargeGate.tscn" id="16_q3iiy"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="16_q3iiy"]
 
 [node name="Game" type="Node2D"]
 

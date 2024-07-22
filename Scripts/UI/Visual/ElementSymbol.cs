@@ -25,6 +25,8 @@ public partial class ElementSymbol : AnimatedSprite2D
                 Show(); Play("Earth"); break;
             case ElementState.fire:
                 Show(); Play("Fire"); break;
+            case ElementState.normal:
+                Show(); Play("Normal"); break;
             default:
                 Hide(); break;   
         }

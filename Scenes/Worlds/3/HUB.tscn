@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="15_hla8e"]
 [ext_resource type="Resource" uid="uid://cgg4a4b6i3wkv" path="res://Data/LevelData/AshIsland/3S.tres" id="15_u6yya"]
 [ext_resource type="Resource" uid="uid://bnaur2axv8wig" path="res://Data/LevelData/AshIsland/3.tres" id="16_ncb1d"]
-[ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="17_bc1jx"]
+[ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gates/SunGate.tscn" id="17_bc1jx"]
 [ext_resource type="Resource" uid="uid://y4325p3x8fjh" path="res://Data/LevelData/AshIsland/A.tres" id="17_p4kjx"]
 [ext_resource type="Resource" uid="uid://dwu77gfjftgqo" path="res://Data/LevelData/AshIsland/2.tres" id="17_s82m8"]
 [ext_resource type="Resource" uid="uid://k8kon06a3f8d" path="res://Data/LevelData/AshIsland/B.tres" id="18_qaapx"]

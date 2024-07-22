@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://cmkd26ndnqqqd" path="res://Data/LevelData/DistantShoreline/6.tres" id="11_3jaxu"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="11_sinnj"]
 [ext_resource type="Resource" uid="uid://blkrhmixjp22l" path="res://Data/LevelData/DistantShoreline/C.tres" id="12_8u8dg"]
-[ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gate.tscn" id="13_5j67r"]
+[ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gates/SunGate.tscn" id="13_5j67r"]
 [ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="14_bdrl0"]
 [ext_resource type="Resource" uid="uid://cfobx7h82mv4q" path="res://Data/LevelData/DistantShoreline/A.tres" id="14_cokb0"]
 [ext_resource type="Resource" uid="uid://bq44ex6bl6olc" path="res://Data/LevelData/DistantShoreline/7.tres" id="14_namc8"]
