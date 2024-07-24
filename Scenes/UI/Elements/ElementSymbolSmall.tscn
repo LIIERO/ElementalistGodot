@@ -95,6 +95,7 @@ animations = [{
 }]
 
 [node name="ElementSymbolSmall" type="AnimatedSprite2D" groups=["ElementSymbol"]]
+z_index = 1
 texture_filter = 1
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_trbb7")
@@ -103,6 +104,7 @@ autoplay = "default"
 script = ExtResource("2_nx753")
 
 [node name="Indicator" type="AnimatedSprite2D" parent="."]
+z_index = -1
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_rff10")
 frame_progress = 0.366172

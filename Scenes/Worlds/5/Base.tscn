@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cjmafchdfb1o7" path="res://Scenes/Tilesets/Ground/OperatoriumGround.tscn" id="2_7e85u"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="3_dyj1f"]
 [ext_resource type="Texture2D" uid="uid://coltt4aa4xebf" path="res://Graphics/Backgrounds/Void/bg_void_0.png" id="4_jwo5c"]
-[ext_resource type="PackedScene" uid="uid://5jvvffijwrcq" path="res://Scenes/Tilesets/Danger/VoidDanger.tscn" id="5_bnsdd"]
+[ext_resource type="PackedScene" uid="uid://cwhp7w8jmlgt8" path="res://Scenes/Tilesets/Danger/OperatoriumDanger.tscn" id="5_nf6as"]
 
 [node name="Game" instance=ExtResource("1_spcht")]
 
@@ -29,4 +29,4 @@ texture_filter = 1
 texture = ExtResource("4_jwo5c")
 offset = Vector2(240, 144)
 
-[node name="DangerTiles" parent="." index="5" instance=ExtResource("5_bnsdd")]
+[node name="DangerTiles" parent="." index="5" instance=ExtResource("5_nf6as")]

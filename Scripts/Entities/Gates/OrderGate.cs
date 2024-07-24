@@ -38,7 +38,8 @@ public partial class OrderGate : Gate
 
         if (correctAbility == ElementState.normal || (ElementState)ability == correctAbility)
         {
-            abilityDisplayList[abilitiesCounted].Modulate = new Color(1.0f, 1.0f, 1.0f, 0.5f); // lower opacity
+            //abilityDisplayList[abilitiesCounted].Modulate = new Color(1.0f, 1.0f, 1.0f, 0.5f); // lower opacity
+            abilityDisplayList[abilitiesCounted].Hide();
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted++;
 
@@ -54,9 +55,10 @@ public partial class OrderGate : Gate
         {
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted = 0;
-            foreach (ElementSymbol el in abilityDisplayList)
+            for (int i = 0; i < sequenceLength; i++)
             {
-                el.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                //abilityDisplayList[i].Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                abilityDisplayList[i].Show();
             }
             abilityDisplayList[abilitiesCounted].ShowIndicator();
         }       
