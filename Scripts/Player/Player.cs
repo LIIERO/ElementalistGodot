@@ -190,7 +190,8 @@ public partial class Player : CharacterBody2D
 			//audioManager.softFootsteps[audioManager.softFootsteps.Length - 1].Play();
 			// CreateJumpDust();
 			Velocity = new Vector2(Velocity.X, jumpVelocity);
-			jumpBufferTimeCounter = 0f;
+            coyoteTimeCounter = 0f;
+            jumpBufferTimeCounter = 0f;
 			footstepTimer = -0.1f; // random negative number so player makes sound falling on the ground
 		}
 
@@ -198,7 +199,8 @@ public partial class Player : CharacterBody2D
 		{
 			Velocity = new Vector2(Velocity.X, Velocity.Y * jumpCancelFraction);
 			coyoteTimeCounter = 0f;
-		}
+            jumpBufferTimeCounter = 0f;
+        }
 	}
 
 
