@@ -35,7 +35,7 @@ position = Vector2(-128, 96)
 position = Vector2(-160, 80)
 
 [node name="AirOrb2" parent="Orbs" index="1" instance=ExtResource("4_fx4nn")]
-position = Vector2(-32, 48)
+position = Vector2(-48, 48)
 
 [node name="AirOrb4" parent="Orbs" index="2" instance=ExtResource("4_fx4nn")]
 position = Vector2(-208, 16)
@@ -44,7 +44,7 @@ position = Vector2(-208, 16)
 position = Vector2(80, 48)
 
 [node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("5_r5mr7")]
-position = Vector2(0, 48)
+position = Vector2(-32, 48)
 
 [node name="CopyTopOrb2" parent="Orbs" index="5" instance=ExtResource("5_r5mr7")]
 position = Vector2(-64, 48)
