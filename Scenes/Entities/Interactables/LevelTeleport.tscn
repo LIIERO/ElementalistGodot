@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccg8gwtjisj4"]
+[gd_scene load_steps=15 format=3 uid="uid://ccg8gwtjisj4"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/LevelTeleport.cs" id="1_npe73"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_tx6ga"]
@@ -82,6 +82,39 @@ _data = {
 "Idle": SubResource("Animation_porbe")
 }
 
+[sub_resource type="Animation" id="Animation_v7oyq"]
+resource_name = "Appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelName:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector2(-96, -48), Vector2(-96, -56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjii5"]
+_data = {
+"Appear": SubResource("Animation_v7oyq")
+}
+
 [node name="LevelTeleport" type="Area2D"]
 script = ExtResource("1_npe73")
 arrowYOffset = -2.5
@@ -116,6 +149,25 @@ libraries = {
 "": SubResource("AnimationLibrary_c15ny")
 }
 autoplay = "Idle"
+
+[node name="LevelName" type="Label" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = -96.0
+offset_top = -56.0
+offset_right = 96.0
+offset_bottom = -44.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_pew6j")
+theme_override_font_sizes/font_size = 12
+text = "LevelName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yjii5")
+}
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

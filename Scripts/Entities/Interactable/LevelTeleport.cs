@@ -12,6 +12,8 @@ public partial class LevelTeleport : Interactable
 
     private AnimatedSprite2D currentSprite;
     private Label teleportText;
+    private Label levelNameDisplay;
+    private AnimationPlayer nameDisplayAnimation;
 
     [Export] private LevelData levelToTeleportTo;
 
@@ -24,6 +26,10 @@ public partial class LevelTeleport : Interactable
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         currentSprite = GetNode<AnimatedSprite2D>("MovedByAnimation/AnimatedSprite2D");
         teleportText = GetNode<Label>("MovedByAnimation/Text/Label");
+        nameDisplayAnimation = GetNode<AnimationPlayer>("InfoAnimation");
+        levelNameDisplay = GetNode<Label>("LevelName");
+        levelNameDisplay.Text = levelToTeleportTo.Name;
+        levelNameDisplay.Hide();
         base._Ready();
 
         teleportText.Text = levelToTeleportTo.ID[0].ToString();
@@ -56,6 +62,21 @@ public partial class LevelTeleport : Interactable
             setPlayerLevelEnterPosition = false;
             gameState.SetPlayerPosition(GlobalPosition);
         }
+    }
+
+    protected override void PlayerEntered()
+    {
+        base.PlayerEntered();
+        levelNameDisplay.Show();
+        nameDisplayAnimation.Play("Appear");
+    }
+
+    protected override void PlayerExited()
+    {
+        base.PlayerExited();
+        //levelNameDisplay.Hide();
+        //nameDisplayAnimation.CurrentAnimationPosition
+        nameDisplayAnimation.PlayBackwards("Appear");
     }
 
     protected override void Interact()

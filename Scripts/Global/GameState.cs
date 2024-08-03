@@ -150,14 +150,46 @@ public partial class GameState : Node
     public bool HasCurrentLevelBeenCompleted() { return HasLevelBeenCompleted(CurrentLevel); }
     public bool IsHubLoaded() { return CurrentLevel == "HUB"; }
 
-    public int GetNoLocalCompletedStandardLevels()
+    public int GetNoLocalCompletedStandardLevels() { return GetNoCompletedStandardLevelsInWorld(CurrentWorld); }
+
+    public int GetNoCompletedStandardLevelsInWorld(string world)
     {
         int noCompleted = 0;
-        foreach (KeyValuePair<string, bool> level in CompletedLevels[CurrentWorld])
+        foreach (KeyValuePair<string, bool> level in CompletedLevels[world])
         {
             if (level.Value && !GameUtils.LevelIDEndsWithLetter(level.Key, specialLevelLetter)) noCompleted++;
         }
         return noCompleted;
+    }
+
+    public int GetNoStandardLevelsInWorld(string world)
+    {
+        int noLevels = 0;
+        foreach (KeyValuePair<string, bool> level in CompletedLevels[world])
+        {
+            if (!GameUtils.LevelIDEndsWithLetter(level.Key, specialLevelLetter)) noLevels++;
+        }
+        return noLevels;
+    }
+
+    public int GetNoCompletedSpecialLevelsInWorld(string world)
+    {
+        int noCompleted = 0;
+        foreach (KeyValuePair<string, bool> level in CompletedLevels[world])
+        {
+            if (level.Value && GameUtils.LevelIDEndsWithLetter(level.Key, specialLevelLetter)) noCompleted++;
+        }
+        return noCompleted;
+    }
+
+    public int GetNoSpecialLevelsInWorld(string world)
+    {
+        int noLevels = 0;
+        foreach (KeyValuePair<string, bool> level in CompletedLevels[world])
+        {
+            if (GameUtils.LevelIDEndsWithLetter(level.Key, specialLevelLetter)) noLevels++;
+        }
+        return noLevels;
     }
 
     public void LoadGame()

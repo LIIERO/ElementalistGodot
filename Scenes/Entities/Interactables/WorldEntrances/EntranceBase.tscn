@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqushr7gr33sh"]
+[gd_scene load_steps=11 format=3 uid="uid://cqushr7gr33sh"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/WorldEntrance.cs" id="1_k7ws4"]
 [ext_resource type="Texture2D" uid="uid://p2loqqfdl0eb" path="res://Graphics/Entities/entrances.png" id="1_o7n1y"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_jcid6"]
+[ext_resource type="Texture2D" uid="uid://17px6mn32gtt" path="res://Graphics/UI/Gameplay/world_info.png" id="4_k2bme"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="5_omkl3"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="6_oxp3l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xl8ud"]
 atlas = ExtResource("1_o7n1y")
@@ -55,6 +58,73 @@ animation = &"NotCompleted"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_jd17k")
+
+[node name="InfoCard" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -112)
+texture = ExtResource("4_k2bme")
+
+[node name="WorldNumber" type="Label" parent="InfoCard"]
+texture_filter = 1
+offset_left = -96.0
+offset_top = -24.0
+offset_right = 96.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("5_omkl3")
+theme_override_font_sizes/font_size = 12
+text = "World X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldName" type="Label" parent="InfoCard"]
+texture_filter = 1
+offset_left = -96.0
+offset_top = -8.0
+offset_right = 96.0
+offset_bottom = 4.0
+theme_override_fonts/font = ExtResource("5_omkl3")
+theme_override_font_sizes/font_size = 12
+text = "WorldName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelsCompleted" type="Label" parent="InfoCard"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = 11.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_omkl3")
+theme_override_font_sizes/font_size = 12
+text = "X/X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpecialLevelsCompleted" type="Label" parent="InfoCard"]
+texture_filter = 1
+offset_left = 24.0
+offset_top = 11.0
+offset_right = 64.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_omkl3")
+theme_override_font_sizes/font_size = 12
+text = "X/X
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sun" type="Sprite2D" parent="InfoCard"]
+position = Vector2(-48, 16)
+texture = ExtResource("6_oxp3l")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="RedSun" type="Sprite2D" parent="InfoCard"]
+position = Vector2(16, 16)
+texture = ExtResource("6_oxp3l")
+region_enabled = true
+region_rect = Rect2(64, 64, 32, 32)
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

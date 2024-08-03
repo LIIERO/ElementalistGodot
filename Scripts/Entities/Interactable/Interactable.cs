@@ -46,7 +46,7 @@ public abstract partial class Interactable : Area2D
         PlayerExited();
     }
 
-    protected void PlayerEntered()
+    protected virtual void PlayerEntered()
     {
         IsActive = true;
         arrowIndicator.Show();
