@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqushr7gr33sh"]
+[gd_scene load_steps=14 format=3 uid="uid://cqushr7gr33sh"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/WorldEntrance.cs" id="1_k7ws4"]
 [ext_resource type="Texture2D" uid="uid://p2loqqfdl0eb" path="res://Graphics/Entities/entrances.png" id="1_o7n1y"]
@@ -37,6 +37,55 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd17k"]
 size = Vector2(48, 1)
 
+[sub_resource type="Animation" id="Animation_v7oyq"]
+resource_name = "Appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InfoCard:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InfoCard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector2(0, -104), Vector2(0, -112)]
+}
+
+[sub_resource type="Animation" id="Animation_a01k7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InfoCard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -112)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjii5"]
+_data = {
+"Appear": SubResource("Animation_v7oyq"),
+"RESET": SubResource("Animation_a01k7")
+}
+
 [node name="Entrance" type="Area2D"]
 script = ExtResource("1_k7ws4")
 arrowYOffset = -3.0
@@ -60,6 +109,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_jd17k")
 
 [node name="InfoCard" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(0, -112)
 texture = ExtResource("4_k2bme")
@@ -125,6 +175,11 @@ position = Vector2(16, 16)
 texture = ExtResource("6_oxp3l")
 region_enabled = true
 region_rect = Rect2(64, 64, 32, 32)
+
+[node name="InfoAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yjii5")
+}
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

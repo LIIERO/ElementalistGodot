@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dk4nonpvnf4a6"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_bthcm"]
+
+[resource]
+script = ExtResource("1_bthcm")
+ID = "DS"
+Name = "Forcing Impossible Actions"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "D"
+IsSpecial = true

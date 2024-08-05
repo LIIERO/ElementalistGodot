@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://podvoc8q15nb"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_j5egt"]
+
+[resource]
+script = ExtResource("1_j5egt")
+ID = "4"
+Name = "Brain Scrambler"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

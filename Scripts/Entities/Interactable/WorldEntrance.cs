@@ -18,6 +18,7 @@ public partial class WorldEntrance : Interactable
 
     // Info card
     private Sprite2D infoCard;
+    private AnimationPlayer infoDisplayAnimation;
 
     public override void _Ready()
     {
@@ -28,6 +29,7 @@ public partial class WorldEntrance : Interactable
         //customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         outlineSprite = GetNode<AnimatedSprite2D>("Foreground");
+        infoDisplayAnimation = GetNode<AnimationPlayer>("InfoAnimation");
 
         infoCard = GetNode<Sprite2D>("InfoCard");
         infoCard.GetNode<Label>("WorldNumber").Text = $"World {worldToTeleportTo.ID}";
@@ -59,12 +61,13 @@ public partial class WorldEntrance : Interactable
     {
         base.PlayerEntered();
         infoCard.Show();
+        infoDisplayAnimation.Play("Appear");
     }
 
     protected override void PlayerExited()
     {
         base.PlayerExited();
-        infoCard.Hide();
+        infoDisplayAnimation.PlayBackwards("Appear");
     }
 
     protected override void Interact()

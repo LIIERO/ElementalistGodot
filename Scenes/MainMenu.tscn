@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceyal433rjg2d"]
+[gd_scene load_steps=9 format=3 uid="uid://ceyal433rjg2d"]
 
 [ext_resource type="PackedScene" uid="uid://kb46qb43ayfp" path="res://Scenes/UI/MainMenuGUI.tscn" id="1_wggo7"]
 [ext_resource type="PackedScene" uid="uid://cep3g7i8o4gx4" path="res://Scenes/UI/MenuBackground.tscn" id="2_klgq3"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="3_8fo6t"]
 [ext_resource type="Texture2D" uid="uid://chkl7fub4c05g" path="res://Graphics/title1.png" id="3_cj2ew"]
 [ext_resource type="Texture2D" uid="uid://bolh0sf67nxg5" path="res://Graphics/demo.png" id="4_ymxk2"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="6_7ucia"]
 
 [sub_resource type="Animation" id="Animation_sgcxl"]
 resource_name = "Idle"
@@ -52,6 +53,7 @@ position = Vector2(240, 31.1998)
 texture = ExtResource("3_cj2ew")
 
 [node name="DEMO" type="Node2D" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DEMO"]
 libraries = {
@@ -66,3 +68,15 @@ position = Vector2(0, 0.330766)
 [node name="DemoImg" type="Sprite2D" parent="DEMO/MovedByAnimation"]
 position = Vector2(368, 80.9582)
 texture = ExtResource("4_ymxk2")
+
+[node name="Version" type="Label" parent="."]
+texture_filter = 1
+offset_left = 320.0
+offset_top = 240.0
+offset_right = 512.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_7ucia")
+theme_override_font_sizes/font_size = 12
+text = "PLAYTEST VERSION 0.2.1.3"
+vertical_alignment = 1

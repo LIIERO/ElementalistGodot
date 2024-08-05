@@ -27,7 +27,7 @@ public partial class LevelTeleport : Interactable
         currentSprite = GetNode<AnimatedSprite2D>("MovedByAnimation/AnimatedSprite2D");
         teleportText = GetNode<Label>("MovedByAnimation/Text/Label");
         nameDisplayAnimation = GetNode<AnimationPlayer>("InfoAnimation");
-        levelNameDisplay = GetNode<Label>("LevelName");
+        levelNameDisplay = GetNode<Label>("InfoCard");
         levelNameDisplay.Text = levelToTeleportTo.Name;
         levelNameDisplay.Hide();
         base._Ready();

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b7obxn3k5xr38"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_seeax"]
+
+[resource]
+script = ExtResource("1_seeax")
+ID = "AS"
+Name = "In The Wrong Order"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "A"
+IsSpecial = true

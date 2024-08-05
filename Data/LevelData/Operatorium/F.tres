@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://u4pyh12ain5n"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_mthqq"]
+
+[resource]
+script = ExtResource("1_mthqq")
+ID = "F"
+Name = "Waste Disposal"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false
