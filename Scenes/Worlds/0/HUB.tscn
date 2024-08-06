@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cx47v4hw8lhtm"]
+[gd_scene load_steps=20 format=3 uid="uid://cx47v4hw8lhtm"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_xgcwe"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="2_2cuig"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://be7bo2mjleqao" path="res://Data/LevelData/PurpleForest/1.tres" id="4_2x1f6"]
 [ext_resource type="PackedScene" uid="uid://csujtn0jeug38" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceCaveOutskirts.tscn" id="4_68r2e"]
 [ext_resource type="Resource" uid="uid://ccv8non0rky78" path="res://Data/LevelData/PurpleForest/2.tres" id="5_dg7oy"]
+[ext_resource type="PackedScene" uid="uid://3os40f4i3267" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceOperatorium.tscn" id="5_epi0o"]
 [ext_resource type="Resource" uid="uid://bmeecknwyt4sb" path="res://Data/LevelData/PurpleForest/3.tres" id="7_cgfnr"]
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gates/SunGate.tscn" id="8_ekp26"]
 [ext_resource type="Resource" uid="uid://b2bv3ngdmig0o" path="res://Data/LevelData/PurpleForest/4.tres" id="8_wyoy1"]
@@ -43,11 +44,14 @@ position = Vector2(-528, 112)
 [node name="EntranceCaveOutskirts" parent="Interactables" index="2" instance=ExtResource("4_68r2e")]
 position = Vector2(-272, 32)
 
-[node name="Sign2" parent="Interactables" index="3" instance=ExtResource("10_go0h5")]
+[node name="EntranceOperatorium" parent="Interactables" index="3" instance=ExtResource("5_epi0o")]
+position = Vector2(-48, 96)
+
+[node name="Sign2" parent="Interactables" index="4" instance=ExtResource("10_go0h5")]
 position = Vector2(208, 48)
 Text = "Press up to interact with interactable objects. \\n\\nNo need to thank me."
 
-[node name="Levels" type="Node2D" parent="Interactables" index="4"]
+[node name="Levels" type="Node2D" parent="Interactables" index="5"]
 
 [node name="LevelTeleport" parent="Interactables/Levels" index="0" instance=ExtResource("2_2cuig")]
 position = Vector2(368, 96)

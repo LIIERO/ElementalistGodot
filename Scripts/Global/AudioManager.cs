@@ -34,7 +34,8 @@ public partial class AudioManager : Node
             { "0", musicPurpleForest },
             { "1", musicDistantShore },
             { "2", musicCaveOutskirts },
-            { "3", musicIslandsOfAshes }
+            { "3", musicIslandsOfAshes },
+            { "5", musicVoid }
         };
     }
 

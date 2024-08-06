@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://3os40f4i3267"]
+
+[ext_resource type="PackedScene" uid="uid://cqushr7gr33sh" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceBase.tscn" id="1_4eyj7"]
+[ext_resource type="Resource" uid="uid://bjvmi1d3ouk88" path="res://Data/WorldData/Operatorium.tres" id="2_onqx3"]
+
+[node name="EntranceOperatorium" instance=ExtResource("1_4eyj7")]
+worldToTeleportTo = ExtResource("2_onqx3")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(144, 64, 48, 64)

@@ -151,12 +151,13 @@ libraries = {
 autoplay = "Idle"
 
 [node name="InfoCard" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 texture_filter = 1
 offset_left = -96.0
-offset_top = -64.0
+offset_top = -56.0
 offset_right = 96.0
-offset_bottom = -52.0
+offset_bottom = -44.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_pew6j")
 theme_override_font_sizes/font_size = 12

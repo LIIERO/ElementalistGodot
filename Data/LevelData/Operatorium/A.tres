@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_j5egt")
-ID = "4"
-Name = "Brain Scrambler"
+ID = "A"
+Name = "In The Right Order"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

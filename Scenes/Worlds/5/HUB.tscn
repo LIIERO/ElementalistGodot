@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxdknctbn4pnq"]
+[gd_scene load_steps=23 format=3 uid="uid://dxdknctbn4pnq"]
 
 [ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/5/Base.tscn" id="1_011wx"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_ap3vt"]
@@ -8,6 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="6_nrp80"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="8_7gque"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="8_8g2tp"]
+[ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="8_fsb1o"]
+[ext_resource type="Resource" uid="uid://dji1nbxu3hvhb" path="res://Data/LevelData/Operatorium/0.tres" id="9_y3vs0"]
+[ext_resource type="Resource" uid="uid://741ghp118g3y" path="res://Data/LevelData/Operatorium/1.tres" id="10_4kjql"]
+[ext_resource type="Resource" uid="uid://c1uhusqk8jcnc" path="res://Data/LevelData/Operatorium/2.tres" id="11_a0l1u"]
+[ext_resource type="Resource" uid="uid://e4kgm1uqodms" path="res://Data/LevelData/Operatorium/3.tres" id="12_kf4bn"]
+[ext_resource type="Resource" uid="uid://hkt4nuo7p3ew" path="res://Data/LevelData/Operatorium/4.tres" id="13_pdnjn"]
+[ext_resource type="Resource" uid="uid://podvoc8q15nb" path="res://Data/LevelData/Operatorium/A.tres" id="14_oc6ho"]
+[ext_resource type="Resource" uid="uid://kq7m7clos4hx" path="res://Data/LevelData/Operatorium/B.tres" id="15_5dkdx"]
+[ext_resource type="Resource" uid="uid://blg55oktxxg50" path="res://Data/LevelData/Operatorium/C.tres" id="16_qv5dr"]
+[ext_resource type="Resource" uid="uid://k2pf3lvcxs07" path="res://Data/LevelData/Operatorium/D.tres" id="17_6kd54"]
+[ext_resource type="Resource" uid="uid://c3qcr28tbj4ox" path="res://Data/LevelData/Operatorium/E.tres" id="18_7gngk"]
+[ext_resource type="Resource" uid="uid://u4pyh12ain5n" path="res://Data/LevelData/Operatorium/F.tres" id="19_bdrob"]
+[ext_resource type="Resource" uid="uid://b7obxn3k5xr38" path="res://Data/LevelData/Operatorium/AS.tres" id="20_2c8i2"]
+[ext_resource type="Resource" uid="uid://dk4nonpvnf4a6" path="res://Data/LevelData/Operatorium/DS.tres" id="21_mm2gq"]
 
 [node name="Game" instance=ExtResource("1_011wx")]
 
@@ -45,7 +59,61 @@ position = Vector2(-152, -200)
 
 [node name="Sign" parent="Interactables" index="0" instance=ExtResource("8_8g2tp")]
 position = Vector2(240, -80)
-Text = "Hi"
+Text = "Hello, you are behind the textbox"
+
+[node name="Levels" type="Node2D" parent="Interactables" index="1"]
+
+[node name="LevelTeleport0" parent="Interactables/Levels" index="0" instance=ExtResource("8_fsb1o")]
+position = Vector2(-56, 48)
+levelToTeleportTo = ExtResource("9_y3vs0")
+
+[node name="LevelTeleport1" parent="Interactables/Levels" index="1" instance=ExtResource("8_fsb1o")]
+position = Vector2(-88, 48)
+levelToTeleportTo = ExtResource("10_4kjql")
+
+[node name="LevelTeleport2" parent="Interactables/Levels" index="2" instance=ExtResource("8_fsb1o")]
+position = Vector2(-120, 48)
+levelToTeleportTo = ExtResource("11_a0l1u")
+
+[node name="LevelTeleport3" parent="Interactables/Levels" index="3" instance=ExtResource("8_fsb1o")]
+position = Vector2(-152, 48)
+levelToTeleportTo = ExtResource("12_kf4bn")
+
+[node name="LevelTeleport4" parent="Interactables/Levels" index="4" instance=ExtResource("8_fsb1o")]
+position = Vector2(-240, 64)
+levelToTeleportTo = ExtResource("13_pdnjn")
+
+[node name="LevelTeleportA" parent="Interactables/Levels" index="5" instance=ExtResource("8_fsb1o")]
+position = Vector2(56, 48)
+levelToTeleportTo = ExtResource("14_oc6ho")
+
+[node name="LevelTeleportB" parent="Interactables/Levels" index="6" instance=ExtResource("8_fsb1o")]
+position = Vector2(88, 48)
+levelToTeleportTo = ExtResource("15_5dkdx")
+
+[node name="LevelTeleportC" parent="Interactables/Levels" index="7" instance=ExtResource("8_fsb1o")]
+position = Vector2(120, 48)
+levelToTeleportTo = ExtResource("16_qv5dr")
+
+[node name="LevelTeleportD" parent="Interactables/Levels" index="8" instance=ExtResource("8_fsb1o")]
+position = Vector2(152, 48)
+levelToTeleportTo = ExtResource("17_6kd54")
+
+[node name="LevelTeleportE" parent="Interactables/Levels" index="9" instance=ExtResource("8_fsb1o")]
+position = Vector2(224, 64)
+levelToTeleportTo = ExtResource("18_7gngk")
+
+[node name="LevelTeleportF" parent="Interactables/Levels" index="10" instance=ExtResource("8_fsb1o")]
+position = Vector2(256, 64)
+levelToTeleportTo = ExtResource("19_bdrob")
+
+[node name="LevelTeleportAS" parent="Interactables/Levels" index="11" instance=ExtResource("8_fsb1o")]
+position = Vector2(80, 0)
+levelToTeleportTo = ExtResource("20_2c8i2")
+
+[node name="LevelTeleportDS" parent="Interactables/Levels" index="12" instance=ExtResource("8_fsb1o")]
+position = Vector2(152, -16)
+levelToTeleportTo = ExtResource("21_mm2gq")
 
 [node name="Gates" type="Node2D" parent="." index="8"]
 
