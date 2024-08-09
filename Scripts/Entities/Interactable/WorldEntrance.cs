@@ -12,6 +12,7 @@ public partial class WorldEntrance : Interactable
 
     private AnimatedSprite2D outlineSprite;
 
+    [Export] bool showCardDownwards = false;
     [Export] WorldData worldToTeleportTo;
 
     public static bool setPlayerWorldEnterPosition = false;
@@ -19,6 +20,7 @@ public partial class WorldEntrance : Interactable
     // Info card
     private Sprite2D infoCard;
     private AnimationPlayer infoDisplayAnimation;
+    private string appearAnimationName;
 
     public override void _Ready()
     {
@@ -37,6 +39,8 @@ public partial class WorldEntrance : Interactable
         infoCard.GetNode<Label>("LevelsCompleted").Text = $"{gameState.GetNoCompletedStandardLevelsInWorld(worldToTeleportTo.ID)}/{gameState.GetNoStandardLevelsInWorld(worldToTeleportTo.ID)}";
         infoCard.GetNode<Label>("SpecialLevelsCompleted").Text = $"{gameState.GetNoCompletedSpecialLevelsInWorld(worldToTeleportTo.ID)}/{gameState.GetNoSpecialLevelsInWorld(worldToTeleportTo.ID)}";
         infoCard.Hide();
+
+        appearAnimationName = showCardDownwards ? "AppearDown" : "Appear";
 
         if (gameState.HasWorldBeenCompleted(worldToTeleportTo.ID)) // Yellow outline
         {
@@ -61,13 +65,13 @@ public partial class WorldEntrance : Interactable
     {
         base.PlayerEntered();
         infoCard.Show();
-        infoDisplayAnimation.Play("Appear");
+        infoDisplayAnimation.Play(appearAnimationName);
     }
 
     protected override void PlayerExited()
     {
         base.PlayerExited();
-        infoDisplayAnimation.PlayBackwards("Appear");
+        infoDisplayAnimation.PlayBackwards(appearAnimationName);
     }
 
     protected override void Interact()

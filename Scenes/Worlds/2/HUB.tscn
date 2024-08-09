@@ -36,9 +36,11 @@ layer_0/tile_data = PackedInt32Array(65521, 524288, 0, 131057, 524288, 1, 196593
 
 [node name="EntranceVoid" parent="Interactables" index="0" instance=ExtResource("2_kcd7w")]
 position = Vector2(208, -48)
+showCardDownwards = true
 
 [node name="EntrancePurpleForest" parent="Interactables" index="1" instance=ExtResource("2_bhi1m")]
 position = Vector2(0, -48)
+showCardDownwards = true
 
 [node name="Levels" type="Node2D" parent="Interactables" index="2"]
 

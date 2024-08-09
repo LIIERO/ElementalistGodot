@@ -64,6 +64,7 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
         {
             UpdatePlayerColor((ElementState)elementArray[^1]);
         }
+        else UpdatePlayerColor(ElementState.normal);
     }
 
 

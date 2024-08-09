@@ -6,6 +6,7 @@ public partial class Fireball : CharacterBody2D
     // singletons
     private GameState gameState;
     private AudioManager audioManager;
+    private CustomSignals customSignals;
 
     [Export] Sprite2D spriteNode;
 	const float speed = 180.0f;
@@ -29,6 +30,8 @@ public partial class Fireball : CharacterBody2D
     {
         gameState = GetNode<GameState>("/root/GameState");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.Remove));
         timeBetweenSpawnsCounter = timeBetweenSpawns;
     }
 
@@ -86,5 +89,10 @@ public partial class Fireball : CharacterBody2D
 
         await ToSignal(GetTree().CreateTimer(removalTime, processInPhysics: true), "timeout");
         instance.QueueFree();
+    }
+
+    private void Remove()
+    {
+        QueueFree();
     }
 }

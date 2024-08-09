@@ -1,6 +1,7 @@
 using GlobalTypes;
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Goal : Area2D
 {
@@ -22,19 +23,30 @@ public partial class Goal : Area2D
     private float velocityX = 0.0f;
     private float velocityY = 0.0f;
 
-    private bool assigned = false;
+    private bool assigned = false; // Gets set to true after getting collected and stays true (unless undone)
+
+    // Undo system
+    private List<bool> goalStateCheckpoints = new List<bool>();
+    private bool isHolding = false;
 
     public void AssignObjectToFollow(Node2D player)
     {
         if (assigned || gameState.IsLevelTransitionPlaying) return;
         assigned = true;
+        isHolding = true;
         objectToFollow = player;
         audioManager.sunCollectSound.Play();
     }
 
     public void DetatchFromObjectToFollow()
     {
+        if (objectToFollow is Player player)
+        {
+            player.IsHoldingGoal = false;
+            player.IsHoldingSpecialGoal = false;
+        }
         objectToFollow = null;
+        isHolding = false;
     }
 
     void _OnBodyEntered(Node2D player)
@@ -53,6 +65,8 @@ public partial class Goal : Area2D
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.DetatchFromObjectToFollow));
+        customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
+        customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
         initialPosition = Position;
 
         bool lightActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
@@ -104,5 +118,29 @@ public partial class Goal : Area2D
         float smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, 200, (float)delta);
         float smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, 200, (float)delta);
         Position = new Vector2(smoothedX, smoothedY);
+    }
+
+    private void AddLocalCheckpoint()
+    {
+        goalStateCheckpoints.Add(isHolding);
+    }
+
+    private void UndoLocalCheckpoint()
+    {
+        if (goalStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(goalStateCheckpoints);
+        isHolding = goalStateCheckpoints[^1];
+
+        if (!isHolding)
+        {
+            DetatchFromObjectToFollow();
+            GlobalPosition = initialPosition;
+            RemoveAssignedAfterDelay();
+        }
+    }
+
+    async private void RemoveAssignedAfterDelay() // If it's done too fast player can get the goal when no supposed to
+    {
+        await ToSignal(GetTree().CreateTimer(0.5f, processInPhysics: true), "timeout");
+        assigned = false;
     }
 }

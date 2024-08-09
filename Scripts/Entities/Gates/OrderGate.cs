@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using GlobalTypes;
+using System.Collections.Generic;
 
 public partial class OrderGate : Gate
 {
@@ -14,6 +15,9 @@ public partial class OrderGate : Gate
     private int abilitiesCounted = 0;
 
     private ElementSymbol[] abilityDisplayList = new ElementSymbol[4];
+
+    // Undo system
+    private List<int> orderGateCountCheckpoints = new List<int>();
 
     public override void _Ready()
 	{
@@ -42,6 +46,7 @@ public partial class OrderGate : Gate
             abilityDisplayList[abilitiesCounted].Hide();
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted++;
+            GD.Print(abilitiesCounted);
 
             if (abilitiesCounted == sequenceLength)
             {
@@ -62,5 +67,44 @@ public partial class OrderGate : Gate
             }
             abilityDisplayList[abilitiesCounted].ShowIndicator();
         }       
+    }
+
+    private void SetGateCountState(int count)
+    {
+        for (int i = 0; i < sequenceLength; i++)
+        {
+            if (i < count)
+            {
+                abilityDisplayList[i].Hide();
+                abilityDisplayList[i].HideIndicator();
+            }
+            else if (i == count)
+            {
+                abilityDisplayList[i].Show();
+                abilityDisplayList[i].ShowIndicator();
+            }
+            else
+            {
+                abilityDisplayList[i].Show();
+                abilityDisplayList[i].HideIndicator();
+            }
+        }
+    }
+
+    protected override void AddLocalCheckpoint()
+    {
+        base.AddLocalCheckpoint();
+        orderGateCountCheckpoints.Add(abilitiesCounted);
+    }
+
+    protected override void UndoLocalCheckpoint()
+    {
+        base.UndoLocalCheckpoint();
+
+        if (orderGateCountCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(orderGateCountCheckpoints);
+        abilitiesCounted = orderGateCountCheckpoints[^1];
+        GD.Print(abilitiesCounted);
+
+        SetGateCountState(abilitiesCounted);
     }
 }

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uqyig")
 ID = "E"
-Name = "Interruption"
+Name = "System Reset"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

@@ -87,4 +87,9 @@ public static class GameUtils
     {
         return id.Length > 1 && id.EndsWith(letter);
     }
+
+    public static void ListRemoveLastElement<T>(List<T> list)
+    {
+        list.RemoveAt(list.Count - 1);
+    }
 }

@@ -54,7 +54,12 @@ public static class InputManager
     {
         return Input.IsActionJustReleased("inputJump") || Input.IsActionJustReleased("inputJumpGamepad");
     }
-    
+
+    public static bool UndoPressed()
+    {
+        return Input.IsActionJustReleased("inputUndo") || Input.IsActionJustReleased("inputUndoGamepad");
+    }
+
 
     // Menus
     public static bool PausePressed()

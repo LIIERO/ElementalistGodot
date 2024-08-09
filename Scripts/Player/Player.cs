@@ -56,7 +56,7 @@ public partial class Player : CharacterBody2D
     public bool IsHoldingSpecialGoal { get; set; } = false; // Red
     public bool IsFrozen => isDying || gameState.IsLevelTransitionPlaying;
 
-    ElementState currentAbility = ElementState.normal;
+    ElementState currentAbility = ElementState.normal; // Different from normal only while using it
 	public bool isUsingAbility = false;
 	bool isExecutingAbility = false;
 	bool canUseBaseAbility = false;
@@ -85,9 +85,18 @@ public partial class Player : CharacterBody2D
 
 	private static bool setPlayerRespawnPosition = false; // Flag that adjusts player respawn position after restarting in hub
 
+	// Undo system
+	private bool checkpointRequested = false;
+	private List<Vector2> playerPositionCheckpoints = new List<Vector2>();
+	private List<List<ElementState>> playerAbilitiesCheckpoints = new List<List<ElementState>>();
+
     public override void _Ready()
 	{
-		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+
+        // Undo system
+        customSignals.Connect(CustomSignals.SignalName.RequestCheckpoint, new Callable(this, MethodName.CheckpointRequested));
+
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
         //customSignals.Connect(CustomSignals.SignalName.GamePaused, new Callable(this, MethodName.PauseAbilityTimer));
         gameState = GetNode<GameState>("/root/GameState");
@@ -108,6 +117,8 @@ public partial class Player : CharacterBody2D
             setPlayerRespawnPosition = false;
 			SetPosition(gameState.PlayerHubRespawnPosition);
         }
+
+		checkpointRequested = true;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -140,6 +151,10 @@ public partial class Player : CharacterBody2D
 			AttemptVerticalCornerCorrection(verticalCornerCorrection, (float)delta);
             MoveAndSlide();
             CheckForCollision(delta);
+
+            // Undo system
+			if (InputManager.UndoPressed()) UndoCheckpoint();
+            TryAddCheckpoint(); 
         }
         UpdateAnimation(direction);
     }
@@ -229,7 +244,7 @@ public partial class Player : CharacterBody2D
 				{
 					// REMOVE TOP ABILITY AND INVOKE ABILITY USED EVENT
 					currentAbility = AbilityList[^1];
-					AbilityList.RemoveAt(AbilityList.Count - 1);
+					GameUtils.ListRemoveLastElement(AbilityList);
 					customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityUsed, (int)currentAbility);
 				}
 
@@ -533,8 +548,52 @@ public partial class Player : CharacterBody2D
 		isGrounded = false;
     }
 
+	public void HardSetPosition(Vector2 position) // For undoing
+    {
+		StopAbility();
+		SetPosition(position);
+	}
+
     public void Kill()
     {
         Die(deathTime);
+    }
+
+	// UNDO SYSTEM =============================================================================================================
+	
+	private void CheckpointRequested()
+	{
+		checkpointRequested = true;
+	}
+
+	private void TryAddCheckpoint()
+	{
+		if (checkpointRequested && isGrounded)
+		{
+			checkpointRequested = false;
+            customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
+
+            playerPositionCheckpoints.Add(GlobalPosition);
+			playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
+			//GD.Print($"Added {playerAbilitiesCheckpoints.Count}");
+        }
+    }
+
+	private void UndoCheckpoint()
+	{
+        customSignals.EmitSignal(CustomSignals.SignalName.UndoCheckpoint);
+
+		if (playerPositionCheckpoints.Count > 1)
+		{
+			GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
+            GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
+        }
+
+		HardSetPosition(playerPositionCheckpoints[^1]);
+		AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
+
+
+
+        customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
     }
 }

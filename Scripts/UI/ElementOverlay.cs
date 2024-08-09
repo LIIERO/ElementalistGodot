@@ -43,7 +43,12 @@ public partial class ElementOverlay : Node2D
 		if (firstEmptyIndex > 0)
 			overlayElements[firstEmptyIndex - 1].ShowIndicator();
 		if (firstEmptyIndex > 1)
-            overlayElements[firstEmptyIndex - 2].HideIndicator();
+		{
+			for (int i = 0; i < firstEmptyIndex - 1; i++)
+			{
+                overlayElements[i].HideIndicator();
+            }
+        } 
     }
 
     public void InsertElement(ElementState element)

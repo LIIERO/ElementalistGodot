@@ -24,22 +24,22 @@ layer_0/tile_data = PackedInt32Array(524303, 720896, 2, 458767, 720896, 2, 52430
 [node name="Orbs" type="Node2D" parent="." index="6"]
 
 [node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_hx4jc")]
-position = Vector2(-216, -120)
+position = Vector2(-64, 40)
 
 [node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_s4f6n")]
-position = Vector2(-192, -120)
+position = Vector2(-32, 40)
 
 [node name="EarthOrb" parent="Orbs" index="2" instance=ExtResource("4_s3ll7")]
-position = Vector2(-168, -120)
+position = Vector2(0, 40)
 
 [node name="FireOrb" parent="Orbs" index="3" instance=ExtResource("5_sqqcg")]
-position = Vector2(-144, -120)
+position = Vector2(32, 40)
 
 [node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("6_wan0o")]
-position = Vector2(-120, -120)
+position = Vector2(64, 40)
 
 [node name="ReverseOrb" parent="Orbs" index="5" instance=ExtResource("7_ddx0w")]
-position = Vector2(-96, -120)
+position = Vector2(96, 40)
 
 [node name="Interactables" type="Node2D" parent="." index="7"]
 
@@ -47,12 +47,17 @@ position = Vector2(-96, -120)
 
 [node name="ChargeGate" parent="Gates" index="0" instance=ExtResource("8_8ubto")]
 position = Vector2(-192, 80)
+requiredCharges = 1
 
 [node name="ElementCharge" parent="Gates" index="1" instance=ExtResource("9_t42wm")]
 position = Vector2(-160, 80)
 
 [node name="OrderGate" parent="Gates" index="2" instance=ExtResource("10_sdko5")]
 position = Vector2(-112, 80)
+ability0 = 2
+ability1 = 3
+ability2 = 4
+ability3 = 5
 
 [node name="LevelExit" parent="." index="9" instance=ExtResource("10_4rsxi")]
 position = Vector2(0, 96)

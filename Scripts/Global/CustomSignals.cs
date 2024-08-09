@@ -51,4 +51,15 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void LevelTransitionedEventHandler();
 
+    // Undo system
+
+    [Signal]
+    public delegate void RequestCheckpointEventHandler();
+
+    [Signal]
+    public delegate void AddCheckpointEventHandler();
+
+    [Signal]
+    public delegate void UndoCheckpointEventHandler();
+
 }
