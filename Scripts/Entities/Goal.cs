@@ -36,6 +36,7 @@ public partial class Goal : Area2D
         isHolding = true;
         objectToFollow = player;
         audioManager.sunCollectSound.Play();
+        customSignals.EmitSignal(CustomSignals.SignalName.RequestCheckpoint);
     }
 
     public void DetatchFromObjectToFollow()

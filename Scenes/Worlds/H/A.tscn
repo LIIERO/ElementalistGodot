@@ -15,6 +15,9 @@
 
 [node name="Game" instance=ExtResource("1_do25s")]
 
+[node name="GUI" parent="." index="0"]
+visible = true
+
 [node name="Zoe" parent="." index="1"]
 position = Vector2(192, 48)
 

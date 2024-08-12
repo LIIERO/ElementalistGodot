@@ -56,7 +56,9 @@ public partial class Fireball : CharacterBody2D
         var collision = MoveAndCollide(Velocity * (float)delta);
         if (collision != null)
         {
-            QueueFree();
+            if (AttemptHorizontalCornerCorrection((float)delta)) return;
+
+            Remove();
 
             if (flyTime > activationTime)
             {
@@ -94,5 +96,18 @@ public partial class Fireball : CharacterBody2D
     private void Remove()
     {
         QueueFree();
+    }
+
+    private bool AttemptHorizontalCornerCorrection(float delta) // 1 pixel only
+    {
+        if (!TestMove(GlobalTransform, new Vector2(Velocity.X * delta, 0f))) return false;
+
+        if (!TestMove(GlobalTransform.Translated(new Vector2(0f, -1)), new Vector2(Velocity.X * delta, 0f)))
+        {
+            Translate(new Vector2(0f, -1));
+            return true;
+        }
+
+        return false;
     }
 }

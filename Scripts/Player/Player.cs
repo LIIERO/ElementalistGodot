@@ -118,7 +118,7 @@ public partial class Player : CharacterBody2D
 			SetPosition(gameState.PlayerHubRespawnPosition);
         }
 
-		checkpointRequested = true;
+		CheckpointRequested();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -275,6 +275,7 @@ public partial class Player : CharacterBody2D
 			{
 				if (isGrounded)
 				{
+					RequestCheckpointAfterTime(0.05f);
                     StopAbility();
                     SparkleAbilityDust(ElementState.earth, 0.1f);
                     abilityBufferTimeCounter = 0f; // Preventing overlapping abilities
@@ -306,7 +307,9 @@ public partial class Player : CharacterBody2D
             abilityTimer.Stop();
 
             StopAbility();
-		}
+
+            CheckpointRequested();
+        }
 		else if (currentAbility == ElementState.water)
 		{
 			audioManager.waterAbility.Play();
@@ -317,6 +320,8 @@ public partial class Player : CharacterBody2D
 
             jumpPreventionTimer = -0.1f; // So your momentum doesnt get lost after teleporting
             StopAbility();
+
+			CheckpointRequested();
 		}
 		else if (currentAbility == ElementState.fire)
 		{
@@ -362,7 +367,8 @@ public partial class Player : CharacterBody2D
 		(instance as Fireball).SetDirection(isFacingRight);
         spawner.AddChild(instance);
         instance.GlobalPosition = GlobalPosition + new Vector2(rightOffset, 0.0f);
-	}
+		instance.AddToGroup("Fireball"); // For checking how many there are
+    }
 
     public void StartAbilityDust(ElementState elementState)
     {
@@ -535,7 +541,11 @@ public partial class Player : CharacterBody2D
 
 	public void SetPosition(Vector2 position, bool fireTeleport = false)
 	{
-		if (fireTeleport) shaderScript.SpawnFireTeleportResidue();
+		if (fireTeleport)
+		{
+			shaderScript.SpawnFireTeleportResidue();
+			CheckpointRequested();
+        }
         //CancelAbility(); // Decided it was unnecessary
 
         GlobalPosition = position;
@@ -566,16 +576,24 @@ public partial class Player : CharacterBody2D
 		checkpointRequested = true;
 	}
 
+	private async void RequestCheckpointAfterTime(float t)
+	{
+        await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+		CheckpointRequested();
+    }
+
 	private void TryAddCheckpoint()
 	{
-		if (checkpointRequested && isGrounded)
+		if (!checkpointRequested) return;
+
+        // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump
+        if (isGrounded && jumpPreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0)
 		{
 			checkpointRequested = false;
             customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
 
             playerPositionCheckpoints.Add(GlobalPosition);
 			playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
-			//GD.Print($"Added {playerAbilitiesCheckpoints.Count}");
         }
     }
 

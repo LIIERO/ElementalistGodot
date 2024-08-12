@@ -46,7 +46,6 @@ public partial class OrderGate : Gate
             abilityDisplayList[abilitiesCounted].Hide();
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted++;
-            GD.Print(abilitiesCounted);
 
             if (abilitiesCounted == sequenceLength)
             {
@@ -103,7 +102,6 @@ public partial class OrderGate : Gate
 
         if (orderGateCountCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(orderGateCountCheckpoints);
         abilitiesCounted = orderGateCountCheckpoints[^1];
-        GD.Print(abilitiesCounted);
 
         SetGateCountState(abilitiesCounted);
     }
