@@ -65,7 +65,7 @@ public partial class Goal : Area2D
         gameState = GetNode<GameState>("/root/GameState");
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
-        customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.DetatchFromObjectToFollow));
+        //customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.DetatchFromObjectToFollow));
         customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
         initialPosition = Position;
@@ -126,9 +126,9 @@ public partial class Goal : Area2D
         goalStateCheckpoints.Add(isHolding);
     }
 
-    private void UndoLocalCheckpoint()
+    private void UndoLocalCheckpoint(bool nextCpRequested)
     {
-        if (goalStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(goalStateCheckpoints);
+        if (!nextCpRequested && goalStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(goalStateCheckpoints);
         isHolding = goalStateCheckpoints[^1];
 
         if (!isHolding)

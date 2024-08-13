@@ -50,9 +50,9 @@ public abstract partial class Gate : Node2D
         gateStateCheckpoints.Add(isOpened);
     }
 
-    protected virtual void UndoLocalCheckpoint()
+    protected virtual void UndoLocalCheckpoint(bool nextCpRequested)
     {
-        if (gateStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(gateStateCheckpoints);
+        if (!nextCpRequested && gateStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(gateStateCheckpoints);
         isOpened = gateStateCheckpoints[^1];
 
         if (!isOpened) Reset();

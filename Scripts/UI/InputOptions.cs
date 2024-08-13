@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 public partial class InputOptions : ButtonManager
 {
     private const int BACK = 0;
-    private const int RESTOREDEFAULT = 8;
+    private const int RESTOREDEFAULT = 1;
 
     private bool isRemapping = false;
     private bool isWaitingForInput = false;
@@ -17,13 +17,14 @@ public partial class InputOptions : ButtonManager
     private SettingsManager settingsManager;
 
     private Dictionary<int, string> elementIdToAction = new() { 
-        { 1, "inputLeft" }, 
-        { 2, "inputRight" }, 
-        { 3, "inputUp" }, 
-        { 4, "inputJump" },
-        { 5, "inputAbility" },
-        { 6, "inputRestart" },
-        { 7, "inputPause" }};
+        { 2, "inputLeft" }, 
+        { 3, "inputRight" }, 
+        { 4, "inputUp" }, 
+        { 5, "inputJump" },
+        { 6, "inputAbility" },
+        { 7, "inputUndo" },
+        { 8, "inputRestart" },
+        { 9, "inputPause" }};
 
     public override void _Ready()
 	{

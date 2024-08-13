@@ -8,7 +8,6 @@
 [node name="Game" type="Node2D"]
 
 [node name="GUI" parent="." instance=ExtResource("1_ac16r")]
-visible = false
 
 [node name="Zoe" parent="." instance=ExtResource("2_t2ulh")]
 position = Vector2(0, 48)

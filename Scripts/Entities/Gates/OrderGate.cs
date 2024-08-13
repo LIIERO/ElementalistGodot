@@ -96,11 +96,11 @@ public partial class OrderGate : Gate
         orderGateCountCheckpoints.Add(abilitiesCounted);
     }
 
-    protected override void UndoLocalCheckpoint()
+    protected override void UndoLocalCheckpoint(bool nextCpRequested)
     {
-        base.UndoLocalCheckpoint();
+        base.UndoLocalCheckpoint(nextCpRequested);
 
-        if (orderGateCountCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(orderGateCountCheckpoints);
+        if (!nextCpRequested && orderGateCountCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(orderGateCountCheckpoints);
         abilitiesCounted = orderGateCountCheckpoints[^1];
 
         SetGateCountState(abilitiesCounted);

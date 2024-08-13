@@ -54,7 +54,7 @@ public partial class Player : CharacterBody2D
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
     public bool IsHoldingGoal { get; set; } = false; // Yellow or red
     public bool IsHoldingSpecialGoal { get; set; } = false; // Red
-    public bool IsFrozen => isDying || gameState.IsLevelTransitionPlaying;
+    public bool IsFrozen => isDead || gameState.IsLevelTransitionPlaying;
 
     ElementState currentAbility = ElementState.normal; // Different from normal only while using it
 	public bool isUsingAbility = false;
@@ -63,7 +63,7 @@ public partial class Player : CharacterBody2D
     public bool isFacingRight = true;
 	public bool isGrounded = false;
 	public bool isClinging = false;
-	public bool isDying = false;
+	public bool isDead = false;
 	public bool canJumpCancel = true;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
@@ -82,6 +82,7 @@ public partial class Player : CharacterBody2D
     bool jumpPressed;
     bool jumpReleased;
     bool abilityPressed;
+	bool undoPressed;
 
 	private static bool setPlayerRespawnPosition = false; // Flag that adjusts player respawn position after restarting in hub
 
@@ -129,6 +130,7 @@ public partial class Player : CharacterBody2D
         jumpPressed = InputManager.JumpPressed();
         jumpReleased = InputManager.JumpReleased();
         abilityPressed = InputManager.AbilityPressed();
+		undoPressed = InputManager.UndoPressed();
 
         // Pressed interact button
         if (InputManager.UpInteractPressed() && !IsFrozen) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
@@ -136,7 +138,11 @@ public partial class Player : CharacterBody2D
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));
         
-		if (restartPressed && !IsFrozen) Kill(); // Retry level
+		if (!gameState.IsLevelTransitionPlaying)
+		{
+			if (restartPressed) ReloadLevel();
+			if (undoPressed) UndoCheckpoint();
+        }
 
 		// Add the gravity
 		if (!isGrounded)
@@ -146,14 +152,11 @@ public partial class Player : CharacterBody2D
 		Ability(abilityPressed, delta);
 		Movement(direction);
 
-		if (!IsFrozen)
+        if (!IsFrozen)
 		{
 			AttemptVerticalCornerCorrection(verticalCornerCorrection, (float)delta);
             MoveAndSlide();
             CheckForCollision(delta);
-
-            // Undo system
-			if (InputManager.UndoPressed()) UndoCheckpoint();
             TryAddCheckpoint(); 
         }
         UpdateAnimation(direction);
@@ -394,7 +397,7 @@ public partial class Player : CharacterBody2D
 
     private void UpdateAnimation(float direction)
 	{
-		if (gameState.IsLevelTransitionPlaying && !isDying) animatedSprite.Play("Idle"); // Level transition animation
+		if (gameState.IsLevelTransitionPlaying && !isDead) animatedSprite.Play("Idle"); // Level transition animation
         if (IsFrozen) return;
 
 		float animationSpeed = 1.0f;
@@ -449,17 +452,26 @@ public partial class Player : CharacterBody2D
 			Kill();
 	}
 
-    async void Die(float t)
+	void ReloadLevel()
 	{
         if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf) // Dying in Hub (multiple checkpoints)
             setPlayerRespawnPosition = true;
 
-        customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
-        isDying = true;
+        isDead = true;
+		if (animatedSprite.Animation != "Die" && !isGrounded) animatedSprite.Play("Die", customSpeed:1.8f);
+        levelTransitions.StartLevelReloadTransition();
+    }
+
+    void Die(float t)
+	{
+		checkpointRequested = true; // So we don't loose too much progress when undoing after death
+        //AddCheckpoint(); // This checkpoint will be deleted anyway, it's so you don't loose progress
+        isDead = true;
         animatedSprite.Play("Die"); // death animation
 		audioManager.death.Play();
-        await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
-        levelTransitions.StartLevelReloadTransition();
+        customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
+
+        //await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
     }
 
     // COLLISIONS
@@ -589,29 +601,40 @@ public partial class Player : CharacterBody2D
         // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump
         if (isGrounded && jumpPreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0)
 		{
-			checkpointRequested = false;
-            customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
-
-            playerPositionCheckpoints.Add(GlobalPosition);
-			playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
+			AddCheckpoint();
         }
+    }
+
+	private void AddCheckpoint()
+	{
+        checkpointRequested = false;
+        customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
+
+        playerPositionCheckpoints.Add(GlobalPosition);
+        playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
     }
 
 	private void UndoCheckpoint()
 	{
-        customSignals.EmitSignal(CustomSignals.SignalName.UndoCheckpoint);
+		if (isDead)
+		{
+			isDead = false;
+		}
 
-		if (playerPositionCheckpoints.Count > 1)
+        customSignals.EmitSignal(CustomSignals.SignalName.UndoCheckpoint, checkpointRequested);
+
+		if (!checkpointRequested && playerPositionCheckpoints.Count > 1)
 		{
 			GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
             GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
         }
 
+		checkpointRequested = false;
+
 		HardSetPosition(playerPositionCheckpoints[^1]);
 		AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
 
-
-
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
+		customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
     }
 }

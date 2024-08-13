@@ -88,9 +88,9 @@ public partial class ElementCharge : Area2D
         chargeStateCheckpoints.Add(IsActivated);
     }
 
-    private void UndoLocalCheckpoint()
+    private void UndoLocalCheckpoint(bool nextCpRequested)
     {
-        if (chargeStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(chargeStateCheckpoints);
+        if (!nextCpRequested && chargeStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(chargeStateCheckpoints);
         IsActivated = chargeStateCheckpoints[^1];
 
         if (!IsActivated) Deactivate();
