@@ -58,8 +58,6 @@ public partial class Fireball : CharacterBody2D
         {
             if (AttemptHorizontalCornerCorrection((float)delta)) return;
 
-            Remove();
-
             if (flyTime > activationTime)
             {
                 //Vector2 playerOffset = new(-direction * playerTeleportOffset, 0.0f);
@@ -67,6 +65,8 @@ public partial class Fireball : CharacterBody2D
                 audioManager.earthAbilityStart.Play(); // The earth start sound is the same as fireball hitting wall for now
                 gameState.SetPlayerPosition(GlobalPosition, true);
             }
+
+            Remove();
         }
     }
 
@@ -93,8 +93,9 @@ public partial class Fireball : CharacterBody2D
         instance.QueueFree();
     }
 
-    private void Remove()
+    private void Remove(bool _ = false)
     {
+        SetPhysicsProcess(false);
         QueueFree();
     }
 

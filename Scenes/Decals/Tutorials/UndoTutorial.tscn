@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://e114nhf158xy"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Visual/Tutorial.cs" id="1_kljvp"]
+[ext_resource type="Texture2D" uid="uid://du3g4tuj65wbn" path="res://Graphics/Decals/Global/tutorial_panel.png" id="2_qyf8m"]
+[ext_resource type="Texture2D" uid="uid://bik6ug73ks52" path="res://Graphics/Decals/Global/control_decals.png" id="3_1lbgs"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="4_atnny"]
+[ext_resource type="PackedScene" uid="uid://301obwpu5ghw" path="res://Scenes/UI/Indicators/GamepadButtonDisplay.tscn" id="5_sk73m"]
+
+[node name="UndoTutorial" type="Node2D"]
+script = ExtResource("1_kljvp")
+actionName = "inputUndo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(52, 16)
+texture = ExtResource("2_qyf8m")
+
+[node name="KeyboardTutorial" type="Node2D" parent="."]
+
+[node name="KeyImage" type="Sprite2D" parent="KeyboardTutorial"]
+position = Vector2(60, 17)
+texture = ExtResource("3_1lbgs")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 24)
+
+[node name="Text" type="Label" parent="KeyboardTutorial"]
+texture_filter = 1
+offset_top = 4.0
+offset_right = 64.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_atnny")
+theme_override_font_sizes/font_size = 12
+text = "X"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="GamepadButtonDisplay" parent="." instance=ExtResource("5_sk73m")]
+position = Vector2(60, 17)
+
+[node name="decal" type="Sprite2D" parent="."]
+position = Vector2(84, 16)
+texture = ExtResource("3_1lbgs")
+region_enabled = true
+region_rect = Rect2(32, 16, 32, 16)

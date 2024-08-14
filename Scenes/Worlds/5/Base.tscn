@@ -22,8 +22,8 @@ scroll_base_scale = Vector2(1, 0)
 motion_scale = Vector2(0.2, 0)
 motion_mirroring = Vector2(512, 256)
 script = ExtResource("3_6yms0")
-speedX = -3.0
-speedY = -3.0
+speedX = -1.0
+speedY = -1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
 z_index = -10
@@ -35,8 +35,8 @@ offset = Vector2(256, 128)
 motion_scale = Vector2(0.2, 0)
 motion_mirroring = Vector2(512, 256)
 script = ExtResource("3_6yms0")
-speedX = 3.0
-speedY = 3.0
+speedX = 1.0
+speedY = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 z_index = -10

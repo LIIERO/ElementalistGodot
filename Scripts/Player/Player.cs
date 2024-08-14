@@ -97,6 +97,8 @@ public partial class Player : CharacterBody2D
 
         // Undo system
         customSignals.Connect(CustomSignals.SignalName.RequestCheckpoint, new Callable(this, MethodName.CheckpointRequested));
+        customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
+        customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
 
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
         //customSignals.Connect(CustomSignals.SignalName.GamePaused, new Callable(this, MethodName.PauseAbilityTimer));
@@ -137,12 +139,6 @@ public partial class Player : CharacterBody2D
 
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));
-        
-		if (!gameState.IsLevelTransitionPlaying)
-		{
-			if (restartPressed) ReloadLevel();
-			if (undoPressed) UndoCheckpoint();
-        }
 
 		// Add the gravity
 		if (!isGrounded)
@@ -160,6 +156,14 @@ public partial class Player : CharacterBody2D
             TryAddCheckpoint(); 
         }
         UpdateAnimation(direction);
+
+        if (!gameState.IsLevelTransitionPlaying)
+        {
+            if (restartPressed) ReloadLevel();
+            if (undoPressed) UndoCheckpoint();
+        }
+
+        //GD.Print(checkpointRequested);
     }
 
 	// MOVEMENT ==================================================================================================================
@@ -371,6 +375,8 @@ public partial class Player : CharacterBody2D
         spawner.AddChild(instance);
         instance.GlobalPosition = GlobalPosition + new Vector2(rightOffset, 0.0f);
 		instance.AddToGroup("Fireball"); // For checking how many there are
+
+		CheckpointRequested();
     }
 
     public void StartAbilityDust(ElementState elementState)
@@ -464,7 +470,7 @@ public partial class Player : CharacterBody2D
 
     void Die(float t)
 	{
-		checkpointRequested = true; // So we don't loose too much progress when undoing after death
+		CheckpointRequested(); // So we don't loose too much progress when undoing after death
         //AddCheckpoint(); // This checkpoint will be deleted anyway, it's so you don't loose progress
         isDead = true;
         animatedSprite.Play("Die"); // death animation
@@ -599,42 +605,43 @@ public partial class Player : CharacterBody2D
 		if (!checkpointRequested) return;
 
         // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump
-        if (isGrounded && jumpPreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0)
+        if (isGrounded && !isUsingAbility && jumpPreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0)
 		{
-			AddCheckpoint();
+            checkpointRequested = false;
+            customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
         }
-    }
-
-	private void AddCheckpoint()
-	{
-        checkpointRequested = false;
-        customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
-
-        playerPositionCheckpoints.Add(GlobalPosition);
-        playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
     }
 
 	private void UndoCheckpoint()
 	{
-		if (isDead)
-		{
-			isDead = false;
-		}
+		if (isUsingAbility) return;
 
         customSignals.EmitSignal(CustomSignals.SignalName.UndoCheckpoint, checkpointRequested);
+        checkpointRequested = false;
+    }
 
-		if (!checkpointRequested && playerPositionCheckpoints.Count > 1)
-		{
-			GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
+    private void AddLocalCheckpoint()
+    {
+        playerPositionCheckpoints.Add(GlobalPosition);
+        playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
+    }
+
+    private void UndoLocalCheckpoint(bool nextCpRequested)
+    {
+        animatedSprite.Play("Idle");
+
+        if (isDead) isDead = false;
+
+        if (!checkpointRequested && playerPositionCheckpoints.Count > 1)
+        {
+            GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
             GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
         }
 
-		checkpointRequested = false;
-
-		HardSetPosition(playerPositionCheckpoints[^1]);
-		AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
+        HardSetPosition(playerPositionCheckpoints[^1]);
+        AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
 
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
-		customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
+        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
     }
 }
