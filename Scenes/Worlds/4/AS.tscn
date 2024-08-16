@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b171popyx07qu"]
 
-[ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/5/Base.tscn" id="1_saxbt"]
+[ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/4/Base.tscn" id="1_saxbt"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_bbrak"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_d5dnk"]
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_c00w4"]

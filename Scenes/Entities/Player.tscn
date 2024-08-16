@@ -206,13 +206,14 @@ size = Vector2(10, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yphsf"]
 size = Vector2(2, 15)
 
-[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "spawner", "particles", "abilityTimer") groups=["Player"]]
+[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "hitbox", "spawner", "particles", "abilityTimer") groups=["Player"]]
 z_index = 5
 texture_filter = 1
 position = Vector2(16, 32)
 script = ExtResource("1_ttwdh")
 fireball = ExtResource("2_e76yy")
 animatedSprite = NodePath("AnimatedSprite2D")
+hitbox = NodePath("CollisionShape2D")
 spawner = NodePath("AnimatedSprite2D/EntitySpawner")
 particles = NodePath("AnimatedSprite2D/GPUParticles2D")
 abilityTimer = NodePath("AbilityTimer")

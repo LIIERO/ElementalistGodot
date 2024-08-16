@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6gi1rur3t3m0"]
+[gd_scene load_steps=17 format=3 uid="uid://c6gi1rur3t3m0"]
 
 [ext_resource type="PackedScene" uid="uid://ciq4cuqvua4tl" path="res://Scenes/UI/GUI.tscn" id="1_kql8m"]
 [ext_resource type="PackedScene" uid="uid://d0if8ksrlccpx" path="res://Scenes/Entities/Player.tscn" id="2_66axb"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bjy3ha4nvax5k" path="res://Scenes/Tilesets/Danger/DSDanger.tscn" id="14_qg2l5"]
 [ext_resource type="PackedScene" uid="uid://8fiiiupclrw5" path="res://Scenes/Tilesets/Ground/PFGround.tscn" id="15_rq13c"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="15_yrvsc"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="16_mt50n"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="16_q3iiy"]
 
 [node name="Game" type="Node2D"]
@@ -21,7 +22,7 @@
 [node name="GUI" parent="." instance=ExtResource("1_kql8m")]
 
 [node name="Zoe" parent="." instance=ExtResource("2_66axb")]
-position = Vector2(0, 80)
+position = Vector2(-112, -112)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("PlayerNode")]
 position_smoothing_enabled = true
@@ -113,6 +114,9 @@ position = Vector2(144, -48)
 [node name="ChargeGate" parent="." instance=ExtResource("16_q3iiy")]
 position = Vector2(128, 66)
 requiredCharges = 1
+
+[node name="Goal" parent="." instance=ExtResource("16_mt50n")]
+position = Vector2(-112, -80)
 
 [connection signal="body_entered" from="Orbs/WaterOrb" to="Orbs/WaterOrb" method="_on_body_entered"]
 [connection signal="body_entered" from="Orbs/WaterOrb2" to="Orbs/WaterOrb2" method="_on_body_entered"]

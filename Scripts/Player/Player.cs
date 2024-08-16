@@ -21,7 +21,7 @@ public partial class Player : CharacterBody2D
 
     // Child nodes
     [Export] private AnimatedSprite2D animatedSprite;
-	//[Export] private ShapeCast2D wallcheck;
+	[Export] private CollisionShape2D hitbox;
 	[Export] private Node spawner;
 	[Export] private CpuParticles2D particles;
 	private PlayerShaderEffects shaderScript;
@@ -65,6 +65,7 @@ public partial class Player : CharacterBody2D
 	public bool isClinging = false;
 	public bool isDead = false;
 	public bool canJumpCancel = true;
+	public bool isUndoing = false;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
 	[Export] private Timer abilityTimer = null;
@@ -163,7 +164,7 @@ public partial class Player : CharacterBody2D
             if (undoPressed) UndoCheckpoint();
         }
 
-        //GD.Print(checkpointRequested);
+        //GD.Print(playerPositionCheckpoints.Count);
     }
 
 	// MOVEMENT ==================================================================================================================
@@ -282,7 +283,7 @@ public partial class Player : CharacterBody2D
 			{
 				if (isGrounded)
 				{
-					RequestCheckpointAfterTime(0.05f);
+					RequestCheckpointAfterTime(inputBufferTime);
                     StopAbility();
                     SparkleAbilityDust(ElementState.earth, 0.1f);
                     abilityBufferTimeCounter = 0f; // Preventing overlapping abilities
@@ -559,10 +560,12 @@ public partial class Player : CharacterBody2D
 
 	public void SetPosition(Vector2 position, bool fireTeleport = false)
 	{
-		if (fireTeleport)
+        hitbox.Disabled = true; // bugfix
+
+        if (fireTeleport)
 		{
 			shaderScript.SpawnFireTeleportResidue();
-			CheckpointRequested();
+            RequestCheckpointAfterTime(inputBufferTime);
         }
         //CancelAbility(); // Decided it was unnecessary
 
@@ -574,13 +577,15 @@ public partial class Player : CharacterBody2D
         jumpBufferTimeCounter = 0f;
         canJumpCancel = false;
 		isGrounded = false;
+
+        ReformHitboxEndFrame();
     }
 
-	public void HardSetPosition(Vector2 position) // For undoing
+    private async void ReformHitboxEndFrame()
     {
-		StopAbility();
-		SetPosition(position);
-	}
+        await ToSignal(GetTree(), "process_frame");
+        hitbox.Disabled = false;
+    }
 
     public void Kill()
     {
@@ -591,6 +596,7 @@ public partial class Player : CharacterBody2D
 	
 	private void CheckpointRequested()
 	{
+		if (isUndoing) return;
 		checkpointRequested = true;
 	}
 
@@ -616,6 +622,9 @@ public partial class Player : CharacterBody2D
 	{
 		if (isUsingAbility) return;
 
+		isUndoing = true;
+		hitbox.Disabled = true; // bugfix
+
         customSignals.EmitSignal(CustomSignals.SignalName.UndoCheckpoint, checkpointRequested);
         checkpointRequested = false;
     }
@@ -638,10 +647,23 @@ public partial class Player : CharacterBody2D
             GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
         }
 
-        HardSetPosition(playerPositionCheckpoints[^1]);
+        SetUndoPosition(playerPositionCheckpoints[^1]);
         AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
 
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
         customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
+    }
+
+    public void SetUndoPosition(Vector2 position)
+    {
+        StopAbility();
+        SetPosition(position);
+		StopUndoAfterTime(inputBufferTime);
+    }
+
+    private async void StopUndoAfterTime(float t)
+    {
+        await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+		isUndoing = false;
     }
 }

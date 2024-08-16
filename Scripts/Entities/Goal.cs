@@ -23,11 +23,10 @@ public partial class Goal : Area2D
     private float velocityX = 0.0f;
     private float velocityY = 0.0f;
 
-    private bool assigned = false; // Gets set to true after getting collected and stays true (unless undone)
-
     // Undo system
     private List<bool> goalStateCheckpoints = new List<bool>();
     private bool isHolding = false;
+    private bool assigned = false; // Gets set to true after getting collected and stays true (unless undone)
 
     public void AssignObjectToFollow(Node2D player)
     {
@@ -50,14 +49,15 @@ public partial class Goal : Area2D
         isHolding = false;
     }
 
-    void _OnBodyEntered(Node2D player)
+    void _OnBodyEntered(Node2D obj)
     {
-        if (player is not Player) return;
-        (player as Player).IsHoldingGoal = true;
+        if (obj is not Player player) return;
 
-        if (IsSpecial) (player as Player).IsHoldingSpecialGoal = true;
+        player.IsHoldingGoal = true;
 
-        AssignObjectToFollow(player);
+        if (IsSpecial) player.IsHoldingSpecialGoal = true;
+
+        AssignObjectToFollow(obj);
     }
 
     public override void _Ready()
@@ -139,7 +139,7 @@ public partial class Goal : Area2D
         }
     }
 
-    async private void RemoveAssignedAfterDelay() // If it's done too fast player can get the goal when no supposed to
+    async private void RemoveAssignedAfterDelay() // If it's done too fast player can get the goal when not supposed to
     {
         await ToSignal(GetTree().CreateTimer(0.5f, processInPhysics: true), "timeout");
         assigned = false;

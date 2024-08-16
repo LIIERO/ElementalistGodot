@@ -12,6 +12,7 @@
 [node name="Zoe" parent="." instance=ExtResource("2_t2ulh")]
 position = Vector2(0, 48)
 
-[node name="Camera2D" parent="." instance=ExtResource("3_qsafc")]
+[node name="Camera2D" parent="." node_paths=PackedStringArray("PlayerNode") instance=ExtResource("3_qsafc")]
+PlayerNode = NodePath("../Zoe")
 
 [node name="AccesibilityGrid" parent="." instance=ExtResource("4_ptvp0")]

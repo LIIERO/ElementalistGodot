@@ -31,7 +31,8 @@ public partial class Fireball : CharacterBody2D
         gameState = GetNode<GameState>("/root/GameState");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-        customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.Remove));
+        customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.RemoveSignalWrapper));
+        customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.Remove));
         timeBetweenSpawnsCounter = timeBetweenSpawns;
     }
 
@@ -93,7 +94,12 @@ public partial class Fireball : CharacterBody2D
         instance.QueueFree();
     }
 
-    private void Remove(bool _ = false)
+    private void RemoveSignalWrapper(bool _ = false)
+    {
+        Remove();
+    }
+
+    private void Remove()
     {
         SetPhysicsProcess(false);
         QueueFree();

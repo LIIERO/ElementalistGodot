@@ -1,16 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://hyvbpvxcprcy"]
+[gd_scene load_steps=11 format=3 uid="uid://ciguyeoq4hsg7"]
 
-[ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/5/Base.tscn" id="1_u14rv"]
-[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_5jtuf"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_173c8"]
-[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_tch8g"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="6_pkym8"]
-[ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="10_7ptbt"]
-[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="10_okvpr"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="11_opn64"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="12_oymwh"]
+[ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/4/Base.tscn" id="1_8hh76"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_jol4v"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_ei5p4"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_r6pw5"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_4t7vx"]
+[ext_resource type="PackedScene" uid="uid://4mpfpc802n76" path="res://Scenes/Entities/Orbs/ReverseOrb.tscn" id="6_30x84"]
+[ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="7_nj0nj"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="8_uog26"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="9_11cvr"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="10_d4qhw"]
 
-[node name="Game" instance=ExtResource("1_u14rv")]
+[node name="Game" instance=ExtResource("1_8hh76")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-32, 96)
@@ -23,56 +24,49 @@ layer_0/tile_data = PackedInt32Array(65543, 65536, 2, 262151, 131072, 1, 65544, 
 
 [node name="Orbs" type="Node2D" parent="." index="6"]
 
-[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_5jtuf")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_jol4v")]
 position = Vector2(-112, 48)
 
-[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_173c8")]
-position = Vector2(-32, 48)
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_ei5p4")]
+position = Vector2(-16, 48)
 
-[node name="AirOrb2" parent="Orbs" index="2" instance=ExtResource("3_173c8")]
+[node name="AirOrb2" parent="Orbs" index="2" instance=ExtResource("3_ei5p4")]
 position = Vector2(208, 80)
 
-[node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("4_tch8g")]
+[node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("4_r6pw5")]
 position = Vector2(-80, 48)
 
-[node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("6_pkym8")]
+[node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("5_4t7vx")]
 position = Vector2(16, 48)
 
-[node name="CopyTopOrb3" parent="Orbs" index="5" instance=ExtResource("6_pkym8")]
-position = Vector2(-224, 32)
-
-[node name="CopyTopOrb2" parent="Orbs" index="6" instance=ExtResource("6_pkym8")]
+[node name="CopyTopOrb2" parent="Orbs" index="5" instance=ExtResource("5_4t7vx")]
 position = Vector2(48, 48)
+
+[node name="ReverseOrb" parent="Orbs" index="6" instance=ExtResource("6_30x84")]
+position = Vector2(-48, 48)
 
 [node name="Interactables" type="Node2D" parent="." index="7"]
 
 [node name="Gates" type="Node2D" parent="." index="8"]
 
-[node name="OrderGate" parent="Gates" index="0" instance=ExtResource("10_7ptbt")]
+[node name="OrderGate" parent="Gates" index="0" instance=ExtResource("7_nj0nj")]
 position = Vector2(-48, -80)
 ability0 = 5
 ability1 = 4
 ability2 = 4
 ability3 = 2
 
-[node name="OrderGate2" parent="Gates" index="1" instance=ExtResource("10_7ptbt")]
+[node name="OrderGate2" parent="Gates" index="1" instance=ExtResource("7_nj0nj")]
 position = Vector2(-16, -80)
 sequenceLength = 2
 ability0 = 2
 ability1 = 5
 
-[node name="LevelExit" parent="." index="9" instance=ExtResource("11_opn64")]
+[node name="LevelExit" parent="." index="9" instance=ExtResource("8_uog26")]
 position = Vector2(-32, 96)
 
-[node name="Goal" parent="." index="10" instance=ExtResource("12_oymwh")]
+[node name="Goal" parent="." index="10" instance=ExtResource("9_11cvr")]
 position = Vector2(80, -96)
 
-[node name="WaterIndicator" parent="." index="12" instance=ExtResource("10_okvpr")]
+[node name="WaterIndicator" parent="." index="12" instance=ExtResource("10_d4qhw")]
 position = Vector2(-136, -8)
-
-[node name="ParallaxLayer" parent="Grid" index="0"]
-motion_mirroring = Vector2(0, 0)
-
-[node name="Sprite2D" parent="Grid/ParallaxLayer" index="0"]
-texture = null
-offset = Vector2(0, 0)
