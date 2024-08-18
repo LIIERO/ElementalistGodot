@@ -10,9 +10,6 @@
 
 [node name="Game" instance=ExtResource("1_qj3jk")]
 
-[node name="Camera2D" parent="." index="2" node_paths=PackedStringArray("PlayerNode")]
-PlayerNode = NodePath("../Zoe")
-
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_njoi7")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]

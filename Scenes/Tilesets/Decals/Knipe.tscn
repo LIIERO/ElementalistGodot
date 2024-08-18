@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://7qgdsi1wt4up"]
+
+[ext_resource type="Texture2D" uid="uid://dpxbgu02yff15" path="res://Graphics/Decals/knipe.png" id="1_ymdfu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjatp"]
+texture = ExtResource("1_ymdfu")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(4, 4)
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(4, 4)
+4:0/size_in_atlas = Vector2i(2, 2)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(4, 4)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(4, 4)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(4, 4)
+7:1/0 = 0
+7:1/0/texture_origin = Vector2i(4, 4)
+6:1/0 = 0
+6:1/0/texture_origin = Vector2i(4, 4)
+0:2/size_in_atlas = Vector2i(2, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(4, 4)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(4, 4)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(4, 4)
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(4, 4)
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(4, 4)
+
+[sub_resource type="TileSet" id="TileSet_ouv4r"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_jjatp")
+
+[node name="Decals" type="TileMap"]
+z_index = -2
+tile_set = SubResource("TileSet_ouv4r")
+format = 2
