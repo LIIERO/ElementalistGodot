@@ -42,10 +42,14 @@ public partial class OrderGate : Gate
 
         if (correctAbility == ElementState.normal || (ElementState)ability == correctAbility)
         {
+            
+
             //abilityDisplayList[abilitiesCounted].Modulate = new Color(1.0f, 1.0f, 1.0f, 0.5f); // lower opacity
             abilityDisplayList[abilitiesCounted].Hide();
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted++;
+
+            audioManager.orderGateSounds[abilitiesCounted].Play();
 
             if (abilitiesCounted == sequenceLength)
             {
@@ -57,6 +61,8 @@ public partial class OrderGate : Gate
         }
         else // reset
         {
+            if (abilitiesCounted > 0) audioManager.orderGateSounds[0].Play();
+
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted = 0;
             for (int i = 0; i < sequenceLength; i++)

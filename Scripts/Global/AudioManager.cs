@@ -127,6 +127,7 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer sunCollectSound;
     [Export] public AudioStreamPlayer elementCharge;
     [Export] public AudioStreamPlayer gateOpen;
+    [Export] public AudioStreamPlayer[] orderGateSounds; // From lowest pitch to highest
 
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;

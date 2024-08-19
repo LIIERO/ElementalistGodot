@@ -69,10 +69,3 @@ position = Vector2(80, -96)
 
 [node name="WaterIndicator" parent="." index="12" instance=ExtResource("10_okvpr")]
 position = Vector2(-136, -8)
-
-[node name="ParallaxLayer" parent="Grid" index="0"]
-motion_mirroring = Vector2(0, 0)
-
-[node name="Sprite2D" parent="Grid/ParallaxLayer" index="0"]
-texture = null
-offset = Vector2(0, 0)
