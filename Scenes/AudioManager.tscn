@@ -153,27 +153,22 @@ bus = &"Sounds"
 
 [node name="1" type="AudioStreamPlayer" parent="Entities/OrderGate"]
 stream = ExtResource("20_fyix3")
-volume_db = -3.0
 bus = &"Sounds"
 
 [node name="2" type="AudioStreamPlayer" parent="Entities/OrderGate"]
 stream = ExtResource("21_gsfqe")
-volume_db = -4.0
 bus = &"Sounds"
 
 [node name="3" type="AudioStreamPlayer" parent="Entities/OrderGate"]
 stream = ExtResource("22_4leaj")
-volume_db = -4.5
 bus = &"Sounds"
 
 [node name="4" type="AudioStreamPlayer" parent="Entities/OrderGate"]
 stream = ExtResource("23_loc0k")
-volume_db = -5.0
 bus = &"Sounds"
 
 [node name="Reset" type="AudioStreamPlayer" parent="Entities/OrderGate"]
 stream = ExtResource("24_vcxwr")
-volume_db = -14.0
 bus = &"Sounds"
 
 [node name="UI" type="Node" parent="."]
