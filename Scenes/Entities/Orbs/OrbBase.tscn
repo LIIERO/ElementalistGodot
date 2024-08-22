@@ -68,6 +68,7 @@ region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
 [node name="PointLight2D" type="PointLight2D" parent="MovedByAnimation"]
+energy = 0.5
 range_z_max = -1
 range_layer_min = -100
 texture = SubResource("GradientTexture2D_5oq0n")

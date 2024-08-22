@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs7v22papc08q"]
+
+[ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/OrbBase.tscn" id="1_yraha"]
+[ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbRemoveTopElement.cs" id="2_g4h5h"]
+
+[node name="RemoveTopOrb" instance=ExtResource("1_yraha")]
+script = ExtResource("2_g4h5h")
+refillColor = 0
+
+[node name="Sprite2D" parent="MovedByAnimation" index="0"]
+region_rect = Rect2(80, 0, 16, 16)

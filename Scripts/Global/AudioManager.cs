@@ -35,7 +35,7 @@ public partial class AudioManager : Node
             { "1", musicDistantShore },
             { "2", musicCaveOutskirts },
             { "3", musicIslandsOfAshes },
-            { "4", musicVoid }
+            { "4", musicOperatorium }
         };
     }
 
@@ -150,5 +150,6 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer musicDistantShore;
     [Export] public AudioStreamPlayer musicCaveOutskirts;
     [Export] public AudioStreamPlayer musicIslandsOfAshes;
+    [Export] public AudioStreamPlayer musicOperatorium;
     [Export] public AudioStreamPlayer musicVoid;
 }

@@ -35,6 +35,10 @@ public abstract partial class Orb : Area2D
         else
         {
             backgroundLight.Color = GameUtils.ColorsetToColor[refillColor];
+            if (refillColor == ColorSet.white)
+            {
+                backgroundLight.Energy *= 0.75f;
+            }
             particles.Color = GameUtils.ColorsetToColor[refillColor];
         }
     }
