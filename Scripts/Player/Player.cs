@@ -302,6 +302,15 @@ public partial class Player : CharacterBody2D
 	{
         await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
 
+        if (currentAbility == ElementState.love)
+        {
+            abilityBufferTimeCounter = -0.1f;
+            StopAbility();
+            SparkleAbilityDust(ElementState.love, 0.1f);
+            CheckpointRequested();
+            return;
+        }
+
         isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
 		shaderScript.ActivateTrail(currentAbility);

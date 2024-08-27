@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuxshltrytaqn"]
+[gd_scene load_steps=13 format=3 uid="uid://cuxshltrytaqn"]
 
 [ext_resource type="Texture2D" uid="uid://c04lj3qwlcsey" path="res://Graphics/UI/Gameplay/ElementOverlay/element_overlay.png" id="1_t6jse"]
 [ext_resource type="Script" path="res://Scripts/UI/Visual/ElementSymbol.cs" id="2_hq4ja"]
@@ -15,6 +15,10 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8jk0"]
 atlas = ExtResource("1_t6jse")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h7kv"]
+atlas = ExtResource("1_t6jse")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rylvy"]
 atlas = ExtResource("1_t6jse")
@@ -44,6 +48,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"Fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h7kv")
+}],
+"loop": false,
+"name": &"Love",
 "speed": 5.0
 }, {
 "frames": [{
@@ -86,7 +98,7 @@ animations = [{
 texture_filter = 1
 position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_trbb7")
-animation = &"Air"
+animation = &"Love"
 autoplay = "default"
 script = ExtResource("2_hq4ja")
 

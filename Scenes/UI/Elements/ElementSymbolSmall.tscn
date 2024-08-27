@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bl5uxmwj5uuut"]
+[gd_scene load_steps=14 format=3 uid="uid://bl5uxmwj5uuut"]
 
 [ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="1_lxpb8"]
 [ext_resource type="Script" path="res://Scripts/UI/Visual/ElementSymbol.cs" id="2_nx753"]
@@ -15,6 +15,10 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubfsi"]
 atlas = ExtResource("1_lxpb8")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax0vj"]
+atlas = ExtResource("1_lxpb8")
+region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whutt"]
 atlas = ExtResource("1_lxpb8")
@@ -48,6 +52,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"Fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax0vj")
+}],
+"loop": false,
+"name": &"Love",
 "speed": 5.0
 }, {
 "frames": [{
@@ -99,7 +111,7 @@ z_index = 1
 texture_filter = 1
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_trbb7")
-animation = &"Normal"
+animation = &"Love"
 autoplay = "default"
 script = ExtResource("2_nx753")
 

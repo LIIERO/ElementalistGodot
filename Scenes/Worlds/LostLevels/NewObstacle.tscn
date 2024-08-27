@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://bv4wr84rxfpv1"]
 
-[ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/4/Base.tscn" id="1_fehxl"]
-[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_x3n8o"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_3iedr"]
-[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_yb3qk"]
-[ext_resource type="PackedScene" uid="uid://4mpfpc802n76" path="res://Scenes/Entities/Orbs/ReverseOrb.tscn" id="5_7iba4"]
-[ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="6_p60lc"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="7_ictxy"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="8_ahvc5"]
+[ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/4/Base.tscn" id="1_mxib6"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_o61eb"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_iw3ih"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_uuakn"]
+[ext_resource type="PackedScene" uid="uid://4mpfpc802n76" path="res://Scenes/Entities/Orbs/ReverseOrb.tscn" id="5_risea"]
+[ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="6_cofir"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="7_1qmue"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="8_sxmhs"]
 
-[node name="Game" instance=ExtResource("1_fehxl")]
+[node name="Game" instance=ExtResource("1_mxib6")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-64, 32)
@@ -22,42 +22,45 @@ layer_0/tile_data = PackedInt32Array(196614, 131072, 1, 196615, 131072, 0, 19661
 
 [node name="Orbs" type="Node2D" parent="." index="6"]
 
-[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_x3n8o")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_o61eb")]
 position = Vector2(-128, 16)
 
-[node name="WaterOrb2" parent="Orbs" index="1" instance=ExtResource("2_x3n8o")]
+[node name="WaterOrb2" parent="Orbs" index="1" instance=ExtResource("2_o61eb")]
 position = Vector2(-96, 16)
 
-[node name="AirOrb" parent="Orbs" index="2" instance=ExtResource("3_3iedr")]
+[node name="AirOrb" parent="Orbs" index="2" instance=ExtResource("3_iw3ih")]
 position = Vector2(-144, 16)
 
-[node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("4_yb3qk")]
+[node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("4_uuakn")]
 position = Vector2(-112, 16)
 
-[node name="ReverseOrb" parent="Orbs" index="4" instance=ExtResource("5_7iba4")]
+[node name="ReverseOrb" parent="Orbs" index="4" instance=ExtResource("5_risea")]
 position = Vector2(-32, -16)
 
-[node name="ReverseOrb2" parent="Orbs" index="5" instance=ExtResource("5_7iba4")]
+[node name="ReverseOrb2" parent="Orbs" index="5" instance=ExtResource("5_risea")]
 position = Vector2(32, 80)
 
 [node name="Interactables" type="Node2D" parent="." index="7"]
 
 [node name="Gates" type="Node2D" parent="." index="8"]
 
-[node name="OrderGate" parent="Gates" index="0" instance=ExtResource("6_p60lc")]
+[node name="OrderGate" parent="Gates" index="0" instance=ExtResource("6_cofir")]
 position = Vector2(-96, 80)
 sequenceLength = 2
 ability0 = 5
 ability1 = 2
 
-[node name="OrderGate2" parent="Gates" index="1" instance=ExtResource("6_p60lc")]
+[node name="OrderGate2" parent="Gates" index="1" instance=ExtResource("6_cofir")]
 position = Vector2(-32, 80)
 sequenceLength = 2
 ability0 = 2
 ability1 = 2
 
-[node name="LevelExit" parent="." index="9" instance=ExtResource("7_ictxy")]
+[node name="LevelExit" parent="." index="9" instance=ExtResource("7_1qmue")]
 position = Vector2(-64, 32)
 
-[node name="Goal" parent="." index="10" instance=ExtResource("8_ahvc5")]
+[node name="Goal" parent="." index="10" instance=ExtResource("8_sxmhs")]
 position = Vector2(208, 80)
+
+[node name="BackgroundTiles" parent="." index="11"]
+layer_0/tile_data = PackedInt32Array(196601, 589824, 2, 131065, 589824, 2, 65529, 589824, 2, -7, 655360, 0, 196600, 327680, 2, 131064, 589824, 2, 65528, 589824, 2, -8, 655360, 0, 196599, 524288, 3, 131063, 524288, 1, 65527, 327680, 2, -9, 393216, 1, 458750, 589824, 3, 393214, 589824, 2, 327678, 589824, 2, 262142, 393216, 1, 196606, 720896, 0, 458749, 589824, 3, 393213, 589824, 2, 327677, 589824, 2, 262141, 589824, 2, 196605, 393216, 1, 458748, 589824, 3, 393212, 589824, 2, 327676, 589824, 2, 262140, 589824, 2, 196604, 589824, 2, 458747, 589824, 3, 393211, 589824, 2, 327675, 589824, 2, 262139, 589824, 2, 196603, 589824, 2, 458746, 589824, 3, 393210, 589824, 2, 327674, 589824, 2, 262138, 589824, 2, 196602, 589824, 2, 458745, 589824, 3, 393209, 327680, 1, 327673, 524288, 1, 262137, 327680, 2, 393218, 589824, 3, 327682, 393216, 1, 262146, 720896, 2, 196610, 720896, 0, 393217, 589824, 3, 327681, 589824, 2, 262145, 327680, 1, 196609, 524288, 0, 393216, 589824, 3, 327680, 589824, 2, 262144, 655360, 0, 458751, 589824, 3, 393215, 589824, 2, 327679, 393216, 1, 393219, 589824, 3, 327683, 655360, 0, 393220, 720896, 3, 327684, 720896, 0, 262143, 720896, 0, 458744, 589824, 3, 393208, 655360, 0, 458743, 524288, 3, 393207, 524288, 0, 262136, 524288, 3, -65545, 720896, 2, -131081, 720896, 2, -196617, 720896, 2, -262153, 720896, 0, -65546, 327680, 2, -131082, 589824, 2, -196618, 589824, 2, -262154, 393216, 1, -65547, 524288, 3, -131083, 524288, 1, -196619, 524288, 1, -262155, 524288, 1, 65526, 524288, 3, -10, 524288, 1, -327690, 720896, 2, -393226, 720896, 0, -327691, 327680, 2, -393227, 393216, 1, -458763, 720896, 2, -524299, 720896, 2, -589835, 720896, 0, -327692, 589824, 3, -393228, 589824, 2, -458764, 589824, 2, -524300, 589824, 2, -589836, 655360, 0, -327693, 524288, 3, -393229, 524288, 1, -458765, 524288, 1, -524301, 327680, 2, -589837, 655360, 0, -524302, 589824, 3, -589838, 655360, 0, -524303, 524288, 3, -589839, 524288, 0, 131067, 655360, 0, 131066, 393216, 1, 65530, 720896, 2, -6, 720896, 0, 131069, 720896, 0, 131068, 655360, 0)

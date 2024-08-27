@@ -15,21 +15,24 @@ public static class GameUtils
         { ColorSet.brown, new Color(0.588f, 0.353f, 0.118f) },
         { ColorSet.green, new Color(0.2f, 1f, 0.2f) },
         { ColorSet.yellow, new Color(1f, 1f, 0.2f) },
-        { ColorSet.purple, new Color(1f, 0.2f, 1f) }
+        { ColorSet.purple, new Color(1f, 0.2f, 1f) },
+        { ColorSet.pink, new Color(1f, 0.0f, 0.5f) }
     };
 
     public static readonly Dictionary<ColorSet, ElementState> ColorsetToElement = new() {
         { ColorSet.red, ElementState.fire },
         { ColorSet.blue, ElementState.water },
         { ColorSet.white, ElementState.air },
-        { ColorSet.brown, ElementState.earth }
+        { ColorSet.brown, ElementState.earth },
+        { ColorSet.pink, ElementState.love }
     };
 
     public static readonly Dictionary<ElementState, ColorSet> ElementToColorset = new() {
         { ElementState.fire, ColorSet.red },
         { ElementState.water , ColorSet.blue },
         { ElementState.air , ColorSet.white },
-        { ElementState.earth , ColorSet.brown }
+        { ElementState.earth , ColorSet.brown },
+        { ElementState.love , ColorSet.pink },
     };
 
     public static int[] ElementListToIntArray(List<ElementState> elementList)
