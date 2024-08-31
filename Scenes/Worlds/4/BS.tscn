@@ -50,14 +50,14 @@ position = Vector2(-48, 48)
 [node name="Gates" type="Node2D" parent="." index="8"]
 
 [node name="OrderGate" parent="Gates" index="0" instance=ExtResource("7_nj0nj")]
-position = Vector2(-48, -80)
+position = Vector2(-16, -80)
 ability0 = 5
 ability1 = 4
 ability2 = 4
 ability3 = 2
 
 [node name="OrderGate2" parent="Gates" index="1" instance=ExtResource("7_nj0nj")]
-position = Vector2(-16, -80)
+position = Vector2(-48, -80)
 sequenceLength = 2
 ability0 = 2
 ability1 = 5

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_b4yvl")
 ID = "4"
-Name = "Brain Scrambler"
+Name = "Indifference"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = ""
+SpecificLevelCompletedToUnlock = "2"
 IsSpecial = false

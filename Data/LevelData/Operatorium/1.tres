@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_05jrt")
 ID = "1"
-Name = "Electrician"
+Name = "Inversion"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = ""
+SpecificLevelCompletedToUnlock = "0"
 IsSpecial = false

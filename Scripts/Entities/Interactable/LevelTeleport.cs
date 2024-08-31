@@ -29,6 +29,7 @@ public partial class LevelTeleport : Interactable
         nameDisplayAnimation = GetNode<AnimationPlayer>("InfoAnimation");
         levelNameDisplay = GetNode<Label>("InfoCard");
         levelNameDisplay.Text = levelToTeleportTo.Name;
+        levelNameDisplay.GetNode<Label>("Shadow").Text = levelToTeleportTo.Name;
         levelNameDisplay.Hide();
         base._Ready();
 

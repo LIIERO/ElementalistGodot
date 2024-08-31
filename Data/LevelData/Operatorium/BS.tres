@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_bthcm")
-ID = "DS"
-Name = "Forcing Impossible Actions"
+ID = "BS"
+Name = "Impossible Actions"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "D"
+SpecificLevelCompletedToUnlock = "B"
 IsSpecial = true

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ixsvy")
 ID = "3"
-Name = "Extraction"
+Name = "Cancellation"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = ""
+SpecificLevelCompletedToUnlock = "2"
 IsSpecial = false
