@@ -166,6 +166,7 @@ vertical_alignment = 1
 [node name="Shadow" type="Label" parent="InfoCard"]
 z_index = -1
 texture_filter = 1
+layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 193.0

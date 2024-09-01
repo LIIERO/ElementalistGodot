@@ -40,10 +40,10 @@ layer_0/tile_data = PackedInt32Array(393231, 589824, 2, 393230, 589824, 2, 39322
 position = Vector2(360, -56)
 
 [node name="EarthOrb" parent="Orbs" index="1" instance=ExtResource("4_x15lc")]
-position = Vector2(-64, -32)
+position = Vector2(-96, 80)
 
 [node name="EarthOrb2" parent="Orbs" index="2" instance=ExtResource("4_x15lc")]
-position = Vector2(56, -40)
+position = Vector2(-112, 80)
 
 [node name="LoveOrb" parent="Orbs" index="3" instance=ExtResource("4_uo4of")]
 position = Vector2(-64, 96)

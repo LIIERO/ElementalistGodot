@@ -293,6 +293,10 @@ public partial class Player : CharacterBody2D
 				}
 				else Velocity = new Vector2(0f, dashPower);
 			}
+			else if (currentAbility == ElementState.love)
+			{
+                Velocity = new Vector2(0f, 0f);
+            }
 		}
 
 		else if (isGrounded) canUseBaseAbility = true;
@@ -302,18 +306,9 @@ public partial class Player : CharacterBody2D
 	{
         await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
 
-        if (currentAbility == ElementState.love)
-        {
-            abilityBufferTimeCounter = -0.1f;
-            StopAbility();
-            SparkleAbilityDust(ElementState.love, 0.1f);
-            CheckpointRequested();
-            return;
-        }
-
         isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
-		shaderScript.ActivateTrail(currentAbility);
+		if (currentAbility != ElementState.love) shaderScript.ActivateTrail(currentAbility);
 
 		if (currentAbility == ElementState.air)
 		{
@@ -353,7 +348,21 @@ public partial class Player : CharacterBody2D
 
             StopAbility();
 		}
-		else if (currentAbility == ElementState.earth)
+        else if (currentAbility == ElementState.love)
+        {
+            // TODO: sound effect and spawn hearts
+            SparkleAbilityDust(ElementState.love, 0.1f);
+            abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
+
+            abilityTimer.Start(dashTime);
+            await ToSignal(abilityTimer, "timeout");
+            abilityTimer.Stop();
+
+            StopAbility();
+
+            CheckpointRequested();
+        }
+        else if (currentAbility == ElementState.earth)
 		{
 			audioManager.earthAbilityStart.Play();
 		}
@@ -434,11 +443,20 @@ public partial class Player : CharacterBody2D
 		}
 
 		// animations
-		if (currentAbility == ElementState.air || currentAbility == ElementState.water || currentAbility == ElementState.earth)
+		if (currentAbility == ElementState.air)
 			currentAnimation = "Dash";
+        else if (currentAbility == ElementState.earth)
+            currentAnimation = "Dive";
+        else if (currentAbility == ElementState.water)
+			currentAnimation = "Jump";
 		else if (currentAbility == ElementState.fire)
 			currentAnimation = "Fireball";
-		else if (isGrounded)
+        else if (currentAbility == ElementState.love)
+		{
+			currentAnimation = "Love";
+			if (isGrounded) currentAnimation = "LoveGrounded";
+        } 
+        else if (isGrounded)
 		{
 			if (direction == 0.0f || IsOnWall())
 				currentAnimation = "Idle";
@@ -446,7 +464,7 @@ public partial class Player : CharacterBody2D
 			{
 				currentAnimation = "Run";
 				animationSpeed = Math.Abs(direction);
-            }
+			}
 		}
 		else
 		{
@@ -454,7 +472,7 @@ public partial class Player : CharacterBody2D
 			else if (isClinging) currentAnimation = "Cling";
 			else if (Velocity.Y > 1.0f) currentAnimation = "Fall";
 			else currentAnimation = "Idle";
-        }
+		}
 
 		animatedSprite.Play(currentAnimation, customSpeed:animationSpeed);
 	}
