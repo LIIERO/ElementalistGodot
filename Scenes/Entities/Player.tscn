@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d0if8ksrlccpx"]
+[gd_scene load_steps=40 format=3 uid="uid://d0if8ksrlccpx"]
 
 [ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c6hrw8tpcgsae" path="res://Graphics/Effects/ZoeEchoTrail/air_echo.png" id="7_ol6ge"]
 [ext_resource type="Texture2D" uid="uid://yhfqnqjvtmru" path="res://Graphics/Effects/ZoeEchoTrail/earth_echo.png" id="8_8uvrg"]
 [ext_resource type="Texture2D" uid="uid://buyfr2nnlr3qq" path="res://Graphics/Effects/ZoeEchoTrail/fire_echo.png" id="9_kgryv"]
+[ext_resource type="PackedScene" uid="uid://di32mft4nuhq2" path="res://Scenes/Effects/HeartParticle.tscn" id="12_sr06h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3van"]
 resource_local_to_scene = true
@@ -258,7 +259,7 @@ abilityTimer = NodePath("AbilityTimer")
 material = SubResource("ShaderMaterial_q3van")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ir13h")
-animation = &"Love"
+animation = &"Idle"
 script = ExtResource("4_grl6q")
 echoTrailSpawner = NodePath("EntitySpawner")
 echoTrailObject = ExtResource("5_xlh2h")
@@ -267,6 +268,7 @@ waterAbility = ExtResource("6_wxj53")
 airAbility = ExtResource("7_ol6ge")
 earthAbility = ExtResource("8_8uvrg")
 fireAbility = ExtResource("9_kgryv")
+heartObject = ExtResource("12_sr06h")
 
 [node name="EntitySpawner" type="Node" parent="AnimatedSprite2D"]
 

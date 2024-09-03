@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=33 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/Soft/walk_grass_1.ogg" id="2_3djbo"]
@@ -20,22 +20,20 @@
 [ext_resource type="AudioStream" uid="uid://bnhiyx516x2ll" path="res://Audio/Sounds/Transitions/level_complete.ogg" id="10_v3dar"]
 [ext_resource type="AudioStream" uid="uid://jqom2n7sddb2" path="res://Audio/Sounds/Entities/element_charge.ogg" id="12_06771"]
 [ext_resource type="AudioStream" uid="uid://dukpgk853ll0j" path="res://Audio/Sounds/Zoe/Abilities/ability_fire_start.ogg" id="12_k6xt1"]
+[ext_resource type="AudioStream" uid="uid://82cb3hqnb3vy" path="res://Audio/Sounds/Zoe/Abilities/ability_love.ogg" id="13_ci8qw"]
 [ext_resource type="AudioStream" uid="uid://bhmoon5pwhm3g" path="res://Audio/Music/purple_forest.ogg" id="16_hvofm"]
 [ext_resource type="AudioStream" uid="uid://crgpglfsjb8f2" path="res://Audio/Music/distant_shore.ogg" id="17_i7plo"]
 [ext_resource type="AudioStream" uid="uid://dvsm0waov44fn" path="res://Audio/Sounds/Entities/gate_open.ogg" id="19_1ek7g"]
-[ext_resource type="AudioStream" uid="uid://bje6684itr1fn" path="res://Audio/Sounds/Entities/OrderGate/ordergate_1.ogg" id="20_fyix3"]
 [ext_resource type="AudioStream" uid="uid://c5sq1gld6p24d" path="res://Audio/Sounds/Transitions/fade_out.ogg" id="20_xgnnk"]
 [ext_resource type="AudioStream" uid="uid://cai54elqb5q6u" path="res://Audio/Sounds/Entities/OrderGate/ordergate_2.ogg" id="21_gsfqe"]
 [ext_resource type="AudioStream" uid="uid://bkvoj578rq8ll" path="res://Audio/Sounds/Transitions/fade_in.ogg" id="21_yfw4j"]
-[ext_resource type="AudioStream" uid="uid://ca7xn7c0pnact" path="res://Audio/Sounds/Entities/OrderGate/ordergate_3.ogg" id="22_4leaj"]
-[ext_resource type="AudioStream" uid="uid://bfx1bsx3bfx5y" path="res://Audio/Sounds/Entities/OrderGate/ordergate_4.ogg" id="23_loc0k"]
 [ext_resource type="AudioStream" uid="uid://ds1bl3hbn02qv" path="res://Audio/Music/void.ogg" id="24_dx6ev"]
 [ext_resource type="AudioStream" uid="uid://no6kp8jd0kob" path="res://Audio/Sounds/Entities/OrderGate/ordergate_reset.ogg" id="24_vcxwr"]
 [ext_resource type="AudioStream" uid="uid://du041hny68iq" path="res://Audio/Music/cave_outskirts.ogg" id="26_gr8jn"]
 [ext_resource type="AudioStream" uid="uid://b1365t3r0vb5l" path="res://Audio/Music/islands_of_ashes.ogg" id="28_0tyw5"]
 [ext_resource type="AudioStream" uid="uid://cim0omrrl52a" path="res://Audio/Music/amor_operatorium.ogg" id="33_1imw8"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "orderGateSounds", "buttonSelected", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicVoid")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "loveAbility", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "orderGateProgress", "orderGateReset", "buttonSelected", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicVoid")]
 script = ExtResource("1_b82rj")
 softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
 hardFootsteps = [NodePath("Player/Footsteps/FH1"), NodePath("Player/Footsteps/FH2"), NodePath("Player/Footsteps/FH3"), NodePath("Player/Footsteps/FH4")]
@@ -44,12 +42,14 @@ airAbility = NodePath("Player/Abilities/Air")
 fireAbility = NodePath("Player/Abilities/Fire")
 earthAbilityStart = NodePath("Player/Abilities/EarthStart")
 earthAbilityEnd = NodePath("Player/Abilities/EarthEnd")
+loveAbility = NodePath("Player/Abilities/Love")
 death = NodePath("Player/Death")
 orbCollectSound = NodePath("Entities/orbCollect")
 sunCollectSound = NodePath("Entities/sunCollect")
 elementCharge = NodePath("Entities/elementCharge")
 gateOpen = NodePath("Entities/gateOpen")
-orderGateSounds = [NodePath("Entities/OrderGate/Reset"), NodePath("Entities/OrderGate/1"), NodePath("Entities/OrderGate/2"), NodePath("Entities/OrderGate/3"), NodePath("Entities/OrderGate/4")]
+orderGateProgress = NodePath("Entities/OrderGate/Progress")
+orderGateReset = NodePath("Entities/OrderGate/Reset")
 buttonSelected = NodePath("UI/Select")
 levelCompleted = NodePath("Transitions/LevelComplete")
 fadeOut = NodePath("Transitions/FadeOut")
@@ -119,6 +119,10 @@ bus = &"Sounds"
 stream = ExtResource("12_k6xt1")
 bus = &"Sounds"
 
+[node name="Love" type="AudioStreamPlayer" parent="Player/Abilities"]
+stream = ExtResource("13_ci8qw")
+bus = &"Sounds"
+
 [node name="EarthStart" type="AudioStreamPlayer" parent="Player/Abilities"]
 stream = ExtResource("8_br0le")
 bus = &"Sounds"
@@ -153,20 +157,9 @@ bus = &"Sounds"
 
 [node name="OrderGate" type="Node" parent="Entities"]
 
-[node name="1" type="AudioStreamPlayer" parent="Entities/OrderGate"]
-stream = ExtResource("20_fyix3")
-bus = &"Sounds"
-
-[node name="2" type="AudioStreamPlayer" parent="Entities/OrderGate"]
+[node name="Progress" type="AudioStreamPlayer" parent="Entities/OrderGate"]
 stream = ExtResource("21_gsfqe")
-bus = &"Sounds"
-
-[node name="3" type="AudioStreamPlayer" parent="Entities/OrderGate"]
-stream = ExtResource("22_4leaj")
-bus = &"Sounds"
-
-[node name="4" type="AudioStreamPlayer" parent="Entities/OrderGate"]
-stream = ExtResource("23_loc0k")
+volume_db = 6.0
 bus = &"Sounds"
 
 [node name="Reset" type="AudioStreamPlayer" parent="Entities/OrderGate"]

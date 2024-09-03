@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uqyig")
 ID = "E"
-Name = "System Reset"
+Name = "Telepathy"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = ""
+SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

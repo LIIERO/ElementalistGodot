@@ -77,7 +77,7 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
     [Export] PackedScene echoTrailObject;
     [Export] PackedScene fireResidueObject;
     const float timeBetweenSpawns = 0.02f;
-    const float removalTime = 1.0f;
+    const float removalTime = 1.2f;
 
     [Export] Texture2D waterAbility;
     [Export] Texture2D airAbility;
@@ -145,6 +145,20 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
         echoTrailSpawner.AddChild(instance);
         instance.GlobalPosition = GlobalPosition;
         //RemoveChild(instance);
+
+        await ToSignal(GetTree().CreateTimer(removalTime, processInPhysics: true), "timeout");
+        instance.QueueFree();
+    }
+
+
+    // HEART ABILITY
+    [Export] PackedScene heartObject;
+
+    public async void SpawnHeart()
+    {
+        Node2D instance = heartObject.Instantiate() as Node2D;
+        echoTrailSpawner.AddChild(instance);
+        instance.GlobalPosition = GlobalPosition + new Vector2(0f, 6f);
 
         await ToSignal(GetTree().CreateTimer(removalTime, processInPhysics: true), "timeout");
         instance.QueueFree();

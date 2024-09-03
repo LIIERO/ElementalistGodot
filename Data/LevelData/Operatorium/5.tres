@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://ddc5brdxp2ew0"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_7kri7"]
+
+[resource]
+script = ExtResource("1_7kri7")
+ID = "5"
+Name = "Parity"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "3"
+IsSpecial = false

@@ -39,9 +39,6 @@ position = Vector2(176, 64)
 [node name="WaterOrb" parent="Orbs" index="5" instance=ExtResource("5_2y5hv")]
 position = Vector2(-85, 32)
 
-[node name="WaterOrb2" parent="Orbs" index="6" instance=ExtResource("5_2y5hv")]
-position = Vector2(-232, 32)
-
 [node name="Interactables" type="Node2D" parent="." index="5"]
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("6_k80qj")]

@@ -47,7 +47,7 @@ public partial class OrderGate : Gate
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted++;
 
-            audioManager.orderGateSounds[4 - sequenceLength + abilitiesCounted].Play();
+            audioManager.orderGateProgress.Play();
 
             if (abilitiesCounted == sequenceLength)
             {
@@ -59,7 +59,7 @@ public partial class OrderGate : Gate
         }
         else // reset
         {
-            if (abilitiesCounted > 0) audioManager.orderGateSounds[0].Play();
+            if (abilitiesCounted > 0) audioManager.orderGateReset.Play();
 
             abilityDisplayList[abilitiesCounted].HideIndicator();
             abilitiesCounted = 0;

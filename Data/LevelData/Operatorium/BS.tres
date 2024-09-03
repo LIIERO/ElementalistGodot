@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_bthcm")
 ID = "BS"
-Name = "Impossible Actions"
+Name = "Forcing Impossible"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = true

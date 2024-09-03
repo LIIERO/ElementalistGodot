@@ -350,7 +350,8 @@ public partial class Player : CharacterBody2D
 		}
         else if (currentAbility == ElementState.love)
         {
-            // TODO: sound effect and spawn hearts
+			audioManager.loveAbility.Play();
+            shaderScript.SpawnHeart();
             SparkleAbilityDust(ElementState.love, 0.1f);
             abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
 

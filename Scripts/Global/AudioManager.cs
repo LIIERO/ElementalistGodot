@@ -119,6 +119,7 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer fireAbility;
     [Export] public AudioStreamPlayer earthAbilityStart;
     [Export] public AudioStreamPlayer earthAbilityEnd;
+    [Export] public AudioStreamPlayer loveAbility;
 
     [Export] public AudioStreamPlayer death;
 
@@ -127,7 +128,8 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer sunCollectSound;
     [Export] public AudioStreamPlayer elementCharge;
     [Export] public AudioStreamPlayer gateOpen;
-    [Export] public AudioStreamPlayer[] orderGateSounds; // From lowest pitch to highest
+    [Export] public AudioStreamPlayer orderGateProgress;
+    [Export] public AudioStreamPlayer orderGateReset;
 
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;
