@@ -483,7 +483,7 @@ public partial class Player : CharacterBody2D
 
     void _OnArea2dBodyEntered(Node2D body) // This is a small area in the player, if a body enters it the player got crushed
 	{
-		if (body is not Player && body is not Fireball)
+		if (body is not Player && body is not Fireball && body is not TileMap)
 			Kill();
 	}
 

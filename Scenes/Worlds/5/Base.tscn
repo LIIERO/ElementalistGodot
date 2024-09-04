@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://eh4s841nggxg"]
+[gd_scene load_steps=11 format=3 uid="uid://eh4s841nggxg"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_nw6h8"]
 [ext_resource type="PackedScene" uid="uid://dwqp240ruly34" path="res://Scenes/Tilesets/Ground/KnipeGround.tscn" id="2_2ksdx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqn56g3lt5eka" path="res://Scenes/Tilesets/Background/KnipeBackground.tscn" id="7_0c88j"]
 [ext_resource type="PackedScene" uid="uid://bs0h84kspyis7" path="res://Scenes/Tilesets/Danger/KnipeDanger.tscn" id="7_cky8y"]
 [ext_resource type="PackedScene" uid="uid://7qgdsi1wt4up" path="res://Scenes/Tilesets/Decals/Knipe.tscn" id="8_42r1k"]
+[ext_resource type="PackedScene" uid="uid://bc3u03bpdjvjw" path="res://Scenes/Tilesets/Semisolid/SemisolidUp.tscn" id="10_d2vmy"]
 
 [node name="Game" instance=ExtResource("1_nw6h8")]
 
@@ -58,3 +59,17 @@ offset = Vector2(240, 144)
 [node name="DangerTiles" parent="." index="7" instance=ExtResource("7_cky8y")]
 
 [node name="BackgroundTiles" parent="." index="8" instance=ExtResource("7_0c88j")]
+
+[node name="Semisolids" type="Node2D" parent="." index="9"]
+
+[node name="SemisolidUp" parent="Semisolids" index="0" instance=ExtResource("10_d2vmy")]
+
+[node name="SemisolidDown" parent="Semisolids" index="1" instance=ExtResource("10_d2vmy")]
+rotation = 3.14159
+
+[node name="SemisolidLeft" parent="Semisolids" index="2" instance=ExtResource("10_d2vmy")]
+rotation = -1.5708
+layer_0/tile_data = PackedInt32Array(-1250885635, 196608, 0)
+
+[node name="SemisolidRight" parent="Semisolids" index="3" instance=ExtResource("10_d2vmy")]
+rotation = 1.5708
