@@ -7,4 +7,4 @@
 worldToTeleportTo = ExtResource("2_onqx3")
 
 [node name="Background" parent="." index="0"]
-region_rect = Rect2(144, 64, 48, 64)
+region_rect = Rect2(96, 64, 48, 64)
