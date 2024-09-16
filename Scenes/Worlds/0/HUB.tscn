@@ -47,7 +47,11 @@ position = Vector2(-272, 32)
 position = Vector2(208, 48)
 Text = "Press up to interact with interactable objects. \\n\\nNo need to thank me."
 
-[node name="Levels" type="Node2D" parent="Interactables" index="4"]
+[node name="Sign3" parent="Interactables" index="4" instance=ExtResource("10_go0h5")]
+position = Vector2(-40, 96)
+Text = "The new areas are accessible via the Void."
+
+[node name="Levels" type="Node2D" parent="Interactables" index="5"]
 
 [node name="LevelTeleport" parent="Interactables/Levels" index="0" instance=ExtResource("2_2cuig")]
 position = Vector2(368, 96)

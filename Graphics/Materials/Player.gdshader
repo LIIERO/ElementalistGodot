@@ -12,11 +12,11 @@ void fragment() {
 	vec4 pixelColor = texture(TEXTURE, UV);
 
 	if (abs(pixelColor.b - 1.0f) < 0.0001) {
-		COLOR = vec4(sleeveColor.r, sleeveColor.g, sleeveColor.b, 1.0f);
+		COLOR = vec4(sleeveColor.r, sleeveColor.g, sleeveColor.b, COLOR.a);
 	}
 
 	if (abs(pixelColor.g - 1.0f) < 0.0001) {
-		COLOR = vec4(shirtColor.r, shirtColor.g, shirtColor.b, 1.0f);
+		COLOR = vec4(shirtColor.r, shirtColor.g, shirtColor.b, COLOR.a);
 	}
 }
 

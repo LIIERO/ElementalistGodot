@@ -140,17 +140,22 @@ position = Vector2(432, 128)
 
 [node name="SunGate" parent="Gates" index="0" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
 position = Vector2(-272, -16)
-requiredFragments = 48
+requiredFragments = 50
 playerNode = NodePath("../../Zoe")
 
-[node name="SunGate2" parent="Gates" index="1" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
+[node name="SunGate4" parent="Gates" index="1" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
+position = Vector2(-272, 64)
+requiredFragments = 45
+playerNode = NodePath("../../Zoe")
+
+[node name="SunGate2" parent="Gates" index="2" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
 position = Vector2(272, -16)
-requiredFragments = 42
+requiredFragments = 50
 playerNode = NodePath("../../Zoe")
 
-[node name="SunGate3" parent="Gates" index="2" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
+[node name="SunGate3" parent="Gates" index="3" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
 position = Vector2(336, 80)
-requiredFragments = 42
+requiredFragments = 45
 playerNode = NodePath("../../Zoe")
 
 [node name="BackgroundTiles" parent="." index="9"]

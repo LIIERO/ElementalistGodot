@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uyrnc")
 ID = "3"
-Name = "Guilt Tripping"
+Name = "Love Bombing"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

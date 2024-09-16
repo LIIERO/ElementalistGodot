@@ -59,7 +59,7 @@ playerNode = NodePath("../../Zoe")
 
 [node name="Gate2" parent="Gates" index="2" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
 position = Vector2(608, 48)
-requiredFragments = 48
+requiredFragments = 50
 playerNode = NodePath("../../Zoe")
 
 [node name="Interactables" type="Node2D" parent="." index="6"]
@@ -68,11 +68,7 @@ playerNode = NodePath("../../Zoe")
 position = Vector2(0, 96)
 Text = "Welcome to the Void, you can access every single world here."
 
-[node name="Sign2" parent="Interactables" index="1" instance=ExtResource("5_r0uht")]
-position = Vector2(80, 80)
-Text = "Go to the Purple Forest to access the new playtest world"
-
-[node name="Levels" type="Node2D" parent="Interactables" index="2"]
+[node name="Levels" type="Node2D" parent="Interactables" index="1"]
 
 [node name="LevelTeleport A" parent="Interactables/Levels" index="0" instance=ExtResource("7_u3ckl")]
 position = Vector2(-176, 80)

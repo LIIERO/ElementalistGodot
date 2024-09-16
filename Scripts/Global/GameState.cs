@@ -256,9 +256,9 @@ public partial class GameState : Node
         GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/InputOptionsGamepad.tscn"));
     }
 
-    public void SetPlayerPosition(Vector2 position, bool fireTeleport = false)
+    public void SetPlayerPosition(Vector2 position, bool fireTeleport = false, float fireballDirection = 0f)
     {
-        customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position, fireTeleport);
+        customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position, fireTeleport, fireballDirection);
     }
 
 

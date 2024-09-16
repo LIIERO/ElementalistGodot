@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_hff64")
 ID = "2"
-Name = "Love Bombing"
+Name = "Guilt Tripping"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

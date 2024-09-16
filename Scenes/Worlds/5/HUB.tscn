@@ -80,5 +80,5 @@ Text = "I only managed to make a few Knipe levels, not much order to them."
 
 [node name="SunGate" parent="Gates" index="0" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_qfrvw")]
 position = Vector2(192, 32)
-requiredFragments = 48
+requiredFragments = 50
 playerNode = NodePath("../../Zoe")

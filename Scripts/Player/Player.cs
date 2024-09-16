@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GlobalTypes;
 using System.Reflection.Metadata;
+using System.Net.Http.Headers;
 
 public partial class Player : CharacterBody2D
 {
@@ -24,6 +25,7 @@ public partial class Player : CharacterBody2D
 	[Export] private CollisionShape2D hitbox;
 	[Export] private Node spawner;
 	[Export] private CpuParticles2D particles;
+	[Export] private AnimationPlayer propertyAnimations;
 	private PlayerShaderEffects shaderScript;
 
 	// Parameters
@@ -54,7 +56,7 @@ public partial class Player : CharacterBody2D
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
     public bool IsHoldingGoal { get; set; } = false; // Yellow or red
     public bool IsHoldingSpecialGoal { get; set; } = false; // Red
-    public bool IsFrozen => isDead || gameState.IsLevelTransitionPlaying;
+    public bool IsFrozen => isDead || isUndoing || gameState.IsLevelTransitionPlaying;
 
     ElementState currentAbility = ElementState.normal; // Different from normal only while using it
 	public bool isUsingAbility = false;
@@ -73,7 +75,7 @@ public partial class Player : CharacterBody2D
 
     private string currentAnimation;
 	private float footstepTimer = 0.0f;
-	private float jumpPreventionTimer = -0.1f; // for teleport bug
+	private float jumpMovePreventionTimer = -0.1f; // for teleport bug
 	private bool particlesActive;
 	private bool wallslideSlowdownActive;
 
@@ -163,8 +165,6 @@ public partial class Player : CharacterBody2D
             if (restartPressed) ReloadLevel();
             if (undoPressed) UndoCheckpoint();
         }
-
-        //GD.Print(playerPositionCheckpoints.Count);
     }
 
 	// MOVEMENT ==================================================================================================================
@@ -176,7 +176,8 @@ public partial class Player : CharacterBody2D
 		if (isUsingAbility) return;
 		
 		// left right movement
-		Velocity = new Vector2(direction * speed, Velocity.Y);
+		if (jumpMovePreventionTimer <= 0.0f)
+			Velocity = new Vector2(direction * speed, Velocity.Y);
 
 		// Falling speed cap
 		if (Velocity.Y >= maxFallingSpeed)
@@ -190,12 +191,12 @@ public partial class Player : CharacterBody2D
 
 	private void Jump(bool jumpPressed, bool jumpReleased, double delta)
 	{
-		if (jumpPreventionTimer > 0.0f)
+		if (jumpMovePreventionTimer > 0.0f)
 		{
 			//Velocity = new Vector2(Velocity.X, 0.0f); // Fix of a very obscure earth ability tech
-			jumpPreventionTimer -= (float)delta;
+			jumpMovePreventionTimer -= (float)delta;
 		}
-        if (isUsingAbility || jumpPreventionTimer > 0.0f) return;
+        if (isUsingAbility || jumpMovePreventionTimer > 0.0f) return;
 
         if (isGrounded)
 		{
@@ -330,7 +331,7 @@ public partial class Player : CharacterBody2D
             await ToSignal(abilityTimer, "timeout");
 			abilityTimer.Stop();
 
-            jumpPreventionTimer = -0.1f; // So your momentum doesnt get lost after teleporting
+            jumpMovePreventionTimer = -0.1f; // So your momentum doesnt get lost after teleporting
             StopAbility();
 
 			CheckpointRequested();
@@ -459,7 +460,7 @@ public partial class Player : CharacterBody2D
         } 
         else if (isGrounded)
 		{
-			if (direction == 0.0f || IsOnWall())
+			if (direction == 0.0f || IsOnWall() || jumpMovePreventionTimer > 0.0f)
 				currentAnimation = "Idle";
 			else
 			{
@@ -484,7 +485,7 @@ public partial class Player : CharacterBody2D
     void _OnArea2dBodyEntered(Node2D body) // This is a small area in the player, if a body enters it the player got crushed
 	{
 		if (body is not Player && body is not Fireball && body is not TileMap)
-			Kill();
+			Kill(crushed:true);
 	}
 
 	void ReloadLevel()
@@ -497,12 +498,13 @@ public partial class Player : CharacterBody2D
         levelTransitions.StartLevelReloadTransition();
     }
 
-    void Die(float t)
+    void Die(float t, bool crushed = false)
 	{
-		CheckpointRequested(); // So we don't loose too much progress when undoing after death
+		if (!crushed) CheckpointRequested(); // So we don't loose too much progress when undoing after death (unless crushed cuz it glitches)
         //AddCheckpoint(); // This checkpoint will be deleted anyway, it's so you don't loose progress
         isDead = true;
         animatedSprite.Play("Die"); // death animation
+		currentAnimation = "Die";
 		audioManager.death.Play();
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
 
@@ -586,25 +588,26 @@ public partial class Player : CharacterBody2D
 		return effectiveElem;
 	}
 
-	public void SetPosition(Vector2 position, bool fireTeleport = false)
+	public void SetPosition(Vector2 position, bool fireTeleport = false, float fireballDirection = 0f) // TODO: have fire direction here
 	{
         hitbox.Disabled = true; // bugfix
-
-        if (fireTeleport)
-		{
-			shaderScript.SpawnFireTeleportResidue();
-            RequestCheckpointAfterTime(inputBufferTime);
-        }
-        //CancelAbility(); // Decided it was unnecessary
-
-        GlobalPosition = position;
+		
         Velocity = new Vector2(0f, 0f);
-
-        jumpPreventionTimer = jumpPreventionTime;
+        jumpMovePreventionTimer = jumpPreventionTime;
         coyoteTimeCounter = 0f;
         jumpBufferTimeCounter = 0f;
         canJumpCancel = false;
-		isGrounded = false;
+        isGrounded = false;
+
+        if (fireTeleport)
+        {
+            shaderScript.SpawnFireTeleportResidue();
+            RequestCheckpointAfterTime(inputBufferTime);
+
+            //position = new Vector2(position.X - (fireballDirection * 2), position.Y);
+        }
+
+        GlobalPosition = new Vector2(position.X, (float)Math.Floor(position.Y));
 
         ReformHitboxEndFrame();
     }
@@ -615,9 +618,9 @@ public partial class Player : CharacterBody2D
         hitbox.Disabled = false;
     }
 
-    public void Kill()
+    public void Kill(bool crushed = false)
     {
-        Die(deathTime);
+        Die(deathTime, crushed:true);
     }
 
 	// UNDO SYSTEM =============================================================================================================
@@ -639,7 +642,7 @@ public partial class Player : CharacterBody2D
 		if (!checkpointRequested) return;
 
         // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump
-        if (isGrounded && !isUsingAbility && jumpPreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0)
+        if (isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0)
 		{
             checkpointRequested = false;
             customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
@@ -649,6 +652,7 @@ public partial class Player : CharacterBody2D
 	private void UndoCheckpoint()
 	{
 		if (isUsingAbility) return;
+		if (playerPositionCheckpoints.Count == 0) return;
 
 		isUndoing = true;
 		hitbox.Disabled = true; // bugfix
@@ -665,8 +669,6 @@ public partial class Player : CharacterBody2D
 
     private void UndoLocalCheckpoint(bool nextCpRequested)
     {
-        animatedSprite.Play("Idle");
-
         if (isDead) isDead = false;
 
         if (!checkpointRequested && playerPositionCheckpoints.Count > 1)
@@ -674,6 +676,8 @@ public partial class Player : CharacterBody2D
             GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
             GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
         }
+
+        propertyAnimations.Play("FadeOut");
 
         SetUndoPosition(playerPositionCheckpoints[^1]);
         AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
@@ -685,13 +689,14 @@ public partial class Player : CharacterBody2D
     public void SetUndoPosition(Vector2 position)
     {
         StopAbility();
-        SetPosition(position);
-		StopUndoAfterTime(inputBufferTime);
+        SetUndoPositionAfterTime(inputBufferTime, position);
     }
 
-    private async void StopUndoAfterTime(float t)
+    private async void SetUndoPositionAfterTime(float t, Vector2 position)
     {
         await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
-		isUndoing = false;
+        SetPosition(position);
+        isUndoing = false;
+		propertyAnimations.Play("FadeIn");
     }
 }
