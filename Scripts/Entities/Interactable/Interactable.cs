@@ -6,7 +6,7 @@ public abstract partial class Interactable : Area2D
 {
     [Export] public float arrowYOffset = -2.0f;
     [Export] private PackedScene arrowIndicatorPrefab;
-    private AnimatedSprite2D arrowIndicator;
+    protected AnimatedSprite2D arrowIndicator;
     protected Player playerScriptReference;
     public bool IsActive { get; private set; } = false;
 
@@ -61,6 +61,6 @@ public abstract partial class Interactable : Area2D
 
     protected virtual void Interact()
     {
-
+        //arrowIndicator.Hide();
     }
 }

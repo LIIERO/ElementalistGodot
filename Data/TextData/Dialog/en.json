@@ -1,3 +1,16 @@
 {
-  "signPFInteractableObjects": [ "Press up to interact with interactable objects. \n\nNo need to thank me." ]
+  "": [{"characterID": "", "emotionID": "", "text": ""}],
+
+  "0_HUB_interacting": [{"characterID": "", "emotionID": "", "text": "Press up to interact with interactable objects."},
+						{"characterID": "", "emotionID": "", "text": "No need to thank me."}],
+
+  "0_2_failed": [{"characterID": "", "emotionID": "", "text": "Congratulations, you have failed the puzzle."}],
+
+  "0_2_completed": [{"characterID": "", "emotionID": "", "text": "Congratulations, you have completed the puzzle."}],
+
+  "0_3_retry": [{"characterID": "", "emotionID": "", "text": "In situations like this, use your retry button."}],
+
+  "0_5_undo": [{"characterID": "", "emotionID": "", "text": "Did you know? Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."}],
+
+  "1_4S_special": [{"characterID": "", "emotionID": "", "text": "Levels marked with S are completely optional. \n\nThey are usually very difficult, so don't feel bad for skipping them!"}]
 }

@@ -134,6 +134,7 @@ public partial class AudioManager : Node
 
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;
+    [Export] public AudioStreamPlayer textNoise;
 
     [ExportSubgroup("Transitions")]
     [Export] public AudioStreamPlayer levelCompleted;

@@ -6,7 +6,7 @@ public partial class Sign : Interactable
 {
     private CustomSignals customSignals; // Singleton
 
-    [Export] public string Text { get; set; }
+    [Export] public string Text { get; set; } // TODO: rename to dialogID, make sign into an npc class to handle this for every single npc
     [Export] public string SunHoldingText { get; set; }
 
     // TODO bool checkbox whether dialog should be on top or bottom
@@ -26,18 +26,16 @@ public partial class Sign : Interactable
         // This middle bit is only for easter eggs where sign says something different when you carry a sun
         if (playerScriptReference.IsHoldingGoal)
         {
-            string t = string.IsNullOrEmpty(SunHoldingText) ? Text : SunHoldingText;
-            customSignals.EmitSignal(CustomSignals.SignalName.DialogBoxShow, t);
-            return;
+            Text = string.IsNullOrEmpty(SunHoldingText) ? Text : SunHoldingText;
         }
 
-        customSignals.EmitSignal(CustomSignals.SignalName.DialogBoxShow, Text);
+        customSignals.EmitSignal(CustomSignals.SignalName.StartDialog, Text);
     }
 
     protected override void PlayerExited()
     {
         base.PlayerExited();
 
-        customSignals.EmitSignal(CustomSignals.SignalName.DialogBoxHide);
+        customSignals.EmitSignal(CustomSignals.SignalName.EndDialog);
     }
 }

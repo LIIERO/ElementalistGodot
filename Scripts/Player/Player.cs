@@ -56,7 +56,7 @@ public partial class Player : CharacterBody2D
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
     public bool IsHoldingGoal { get; set; } = false; // Yellow or red
     public bool IsHoldingSpecialGoal { get; set; } = false; // Red
-    public bool IsFrozen => isDead || isUndoing || gameState.IsLevelTransitionPlaying;
+    public bool IsFrozen => isDead || isUndoing || gameState.IsLevelTransitionPlaying || gameState.IsDialogActive;
 
     ElementState currentAbility = ElementState.normal; // Different from normal only while using it
 	public bool isUsingAbility = false;
@@ -137,23 +137,20 @@ public partial class Player : CharacterBody2D
         abilityPressed = InputManager.AbilityPressed();
 		undoPressed = InputManager.UndoPressed();
 
-        // Pressed interact button
-        if (InputManager.UpInteractPressed() && !IsFrozen) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
-
         isGrounded = IsOnFloor();
 		isClinging = IsOnWallOnly() && Velocity.Y > 0.001f && ((!isFacingRight && direction < 0.0f) || (isFacingRight && direction > 0.0f));
 
-		// Add the gravity
-		if (!isGrounded)
-			Velocity += new Vector2(0.0f, gravity * (float)delta);
-
-		Jump(jumpPressed, jumpReleased, delta);
-		Ability(abilityPressed, delta);
-		Movement(direction);
-
         if (!IsFrozen)
 		{
-			AttemptVerticalCornerCorrection(verticalCornerCorrection, (float)delta);
+            // Gravity
+            if (!isGrounded)
+                Velocity += new Vector2(0.0f, gravity * (float)delta);
+
+            Jump(jumpPressed, jumpReleased, delta);
+            Ability(abilityPressed, delta);
+            Movement(direction);
+
+            AttemptVerticalCornerCorrection(verticalCornerCorrection, (float)delta);
             MoveAndSlide();
             CheckForCollision(delta);
             TryAddCheckpoint(); 
@@ -164,6 +161,16 @@ public partial class Player : CharacterBody2D
         {
             if (restartPressed) ReloadLevel();
             if (undoPressed) UndoCheckpoint();
+        }
+
+        // Pressed interact button
+        if (InputManager.UpInteractPressed() && !IsFrozen) customSignals.EmitSignal(CustomSignals.SignalName.PlayerInteracted);
+
+        // Progressed dialog
+        if (gameState.CanProgressDialog)
+        {
+            if (InputManager.UpInteractPressed() || InputManager.JumpPressed())
+                customSignals.EmitSignal(CustomSignals.SignalName.ProgressDialog);
         }
     }
 
@@ -425,6 +432,7 @@ public partial class Player : CharacterBody2D
     private void UpdateAnimation(float direction)
 	{
 		if (gameState.IsLevelTransitionPlaying && !isDead) animatedSprite.Play("Idle"); // Level transition animation
+		if (gameState.IsDialogActive) animatedSprite.Play("Idle"); // dialog animation
         if (IsFrozen) return;
 
 		float animationSpeed = 1.0f;

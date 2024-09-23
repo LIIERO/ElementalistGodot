@@ -28,7 +28,7 @@ position = Vector2(192, -16)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("4_ip7im")]
 position = Vector2(-128, 80)
-Text = "Pro tip - in situations like this, use your retry button."
+Text = "0_3_retry"
 
 [node name="Goal" parent="." index="7" instance=ExtResource("5_u1eyk")]
 position = Vector2(-160, 0)

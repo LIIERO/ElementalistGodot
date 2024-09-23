@@ -32,10 +32,13 @@ public partial class CustomSignals : Node
     // UI
 
     [Signal]
-    public delegate void DialogBoxShowEventHandler(string text); // Much later gonna probably add other stuff like dialog box style or something
+    public delegate void StartDialogEventHandler(string dialogID);
 
     [Signal]
-    public delegate void DialogBoxHideEventHandler();
+    public delegate void EndDialogEventHandler();
+
+    [Signal]
+    public delegate void ProgressDialogEventHandler();
 
     [Signal]
     public delegate void PopupResultEventHandler(bool result);

@@ -32,7 +32,7 @@ position = Vector2(-128, 96)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("4_1o17v")]
 position = Vector2(-208, 32)
-Text = "Levels marked with S are completely optional. \\n\\nThey are usually very difficult, so don't feel bad for skipping them!"
+Text = "1_4S_special"
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 

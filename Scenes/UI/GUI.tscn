@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=27 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="6_mk8rw"]
 [ext_resource type="Script" path="res://Scripts/UI/Visual/DeathScreen.cs" id="6_otvw6"]
 [ext_resource type="Texture2D" uid="uid://du3g4tuj65wbn" path="res://Graphics/Decals/Global/tutorial_panel.png" id="8_rpln8"]
 [ext_resource type="Texture2D" uid="uid://ds6o5r41hh4he" path="res://Graphics/UI/Gameplay/textbox_sign.png" id="8_vda0l"]
@@ -119,6 +120,10 @@ text = "Sample text Sample text Sample text Sample text Sample text Sample text 
 autowrap_mode = 2
 text_overrun_behavior = 2
 
+[node name="AnimatedSprite2D" parent="DialogBox" instance=ExtResource("6_mk8rw")]
+z_index = 0
+position = Vector2(132, 16)
+
 [node name="DeathScreen" type="Control" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -132,6 +137,7 @@ script = ExtResource("6_otvw6")
 [node name="Panel" type="Panel" parent="DeathScreen"]
 visible = false
 modulate = Color(1, 1, 1, 0.705882)
+layout_mode = 0
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 488.0

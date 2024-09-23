@@ -38,11 +38,14 @@ public partial class GameState : Node
 
 
     // Data not loaded from the save file
+    public Dictionary<string, List<Dictionary<string, string>>> DialogData { get; private set; }
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGameplayActive { get; private set; } = false; // Is the root of menus the main menu or the gameplay
     public string CurrentSaveFileID { get; private set; } = "0";
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
+    public bool IsDialogActive { get; set; } = false;
+    public bool CanProgressDialog { get; set; } = false;
     //public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
     
 
@@ -50,6 +53,9 @@ public partial class GameState : Node
     private CustomSignals customSignals; // singleton
     public override void _EnterTree()
     {
+        LoadDialogData("en");
+        GD.Print(DialogData);
+
         // Initialize LevelIDToLevel
         foreach (KeyValuePair<string, string[]> world in levels)
         {
@@ -261,13 +267,28 @@ public partial class GameState : Node
         customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position, fireTeleport, fireballDirection);
     }
 
+    // TEXT DATA
+    string dialogDataPath = "res://Data/TextData/Dialog/";
+    private const string jsonFormat = ".json";
+
+    private void LoadDialogData(string languageCode)
+    {
+        string path = dialogDataPath + languageCode + jsonFormat;
+        if (!Godot.FileAccess.FileExists(path))
+        {
+            GD.Print("Path not found (dialog data file)");
+            return;
+        }
+        var dataFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
+        DialogData = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, string>>>>(dataFile.GetAsText());
+    }
 
     // SAVE LOAD
     private const string savesPath = "user://save";
-    private const string savesFormat = ".json";
+    
     public void SaveToSaveFile(string id)
     {
-        string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
+        string path = ProjectSettings.GlobalizePath(savesPath + id + jsonFormat);
         PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial, CurrentLevelName, MainCutsceneProgress);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
@@ -275,10 +296,10 @@ public partial class GameState : Node
 
     public void LoadFromSaveFile(string id)
     {
-        string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
+        string path = ProjectSettings.GlobalizePath(savesPath + id + jsonFormat);
         if (!File.Exists(path))
         {
-            GD.Print("Path not found");
+            GD.Print("Path not found (save file)");
             return;
         }
         string jsonString = File.ReadAllText(path);
@@ -320,7 +341,7 @@ public partial class GameState : Node
 
     public bool SaveFileExists(string id)
     {
-        string path = ProjectSettings.GlobalizePath(savesPath + id + savesFormat);
+        string path = ProjectSettings.GlobalizePath(savesPath + id + jsonFormat);
         return File.Exists(path);
     }
 

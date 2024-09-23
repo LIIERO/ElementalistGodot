@@ -33,7 +33,7 @@ position = Vector2(-112, 80)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("5_s5cfo")]
 position = Vector2(160, 64)
-Text = "Did you know? Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."
+Text = "0_5_undo"
 
 [node name="Goal" parent="." index="7" instance=ExtResource("5_8022l")]
 position = Vector2(208, -96)

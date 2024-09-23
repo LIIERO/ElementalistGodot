@@ -1,14 +1,31 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public partial class DialogBox : Sprite2D
 {
-    // Signals
+    // Singletons
     private CustomSignals customSignals;
+    private GameState gameState;
+    private AudioManager audioManager;
 
     [Export] private Label textObject;
+
+    protected AnimatedSprite2D arrowIndicator;
+
+    private List<Dictionary<string, string>> currentDialog = null;
+    private string currentDialogLine = null;
+    private int currentDialogLineID;
+    private bool currentDialogLineDisplayed = false;
+    private int currentLetterID;
+
+    const float dialogMinimalSkipTime = 0.1f;
+
+    public const float timeBetweenLetters = 0.01f;
+    private float letterTimer = -0.1f;
 
     /*private readonly Dictionary<string, string> keyDict = new()
     { {"$kcJump", GlobalUtils.GetKeyName("inputJump")},
@@ -18,23 +35,108 @@ public partial class DialogBox : Sprite2D
 
     public override void _Ready()
 	{
+        gameState = GetNode<GameState>("/root/GameState");
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-        customSignals.Connect(CustomSignals.SignalName.DialogBoxShow, new Callable(this, MethodName.UpdateDialogBox));
-        customSignals.Connect(CustomSignals.SignalName.DialogBoxHide, new Callable(this, MethodName.HideDialogBox));
+        customSignals.Connect(CustomSignals.SignalName.StartDialog, new Callable(this, MethodName.StartDialog));
+        customSignals.Connect(CustomSignals.SignalName.ProgressDialog, new Callable(this, MethodName.ProgressDialog));
+        customSignals.Connect(CustomSignals.SignalName.EndDialog, new Callable(this, MethodName.EndDialog));
 
-        HideDialogBox();
+        arrowIndicator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        arrowIndicator.Hide();
+
+        EndDialog();
     }
 
-    public void UpdateDialogBox(string text)
+    public override void _Process(double delta)
     {
+        DisplayDialog(delta);
+    }
+
+    public void StartDialog(string textID)
+    {
+        gameState.CanProgressDialog = false;
+        arrowIndicator.Hide();
+
+        if (gameState.DialogData.ContainsKey(textID))
+        {
+            currentDialog = gameState.DialogData[textID];
+        }
+        else // in case there is no such ID
+        {
+            currentDialog = gameState.DialogData[""];
+            currentDialog[0]["text"] = textID;
+        }
+
         Show();
 
-        //textObject.Text = AddKeyboardKeysToText(text);
-        textObject.Text = text.Replace("\\n", "\n");
+        gameState.IsDialogActive = true;
+        currentDialogLineID = 0;
+
+        currentDialogLineDisplayed = true; // So the scroll progress doesnt trigger immediately upon starting a new dialog
+        ProgressDialog();
     }
 
-    public void HideDialogBox()
+    public async void ProgressDialog()
     {
+        if (currentDialog == null) return;
+
+        if (!currentDialogLineDisplayed) // Progress the text scroll immediately
+        {
+            currentDialogLineDisplayed = true;
+            textObject.Text = currentDialogLine;
+            arrowIndicator.Show();
+            return;
+        }
+
+        gameState.CanProgressDialog = false;
+        arrowIndicator.Hide();
+
+        if (currentDialog.Count <= currentDialogLineID)
+        {
+            EndDialog();
+            return;
+        }
+
+        currentDialogLine = currentDialog[currentDialogLineID]["text"].Replace("\\n", "\n");
+        currentLetterID = 0;
+        textObject.Text = "";
+        currentDialogLineDisplayed = false;
+
+        currentDialogLineID++;
+
+        await ToSignal(GetTree().CreateTimer(dialogMinimalSkipTime, processInPhysics: true), "timeout");
+
+        gameState.CanProgressDialog = true;
+    }
+
+    private void DisplayDialog(double delta)
+    {
+        if (currentDialogLineDisplayed) return;
+        if (currentDialogLine == null) return;
+
+        if (letterTimer > 0.0f)
+        {
+            letterTimer -= (float)delta;
+            return;
+        }
+
+        letterTimer = timeBetweenLetters;
+        textObject.Text = currentDialogLine[..currentLetterID]; // More of text is displayed each iteration
+        audioManager.textNoise.Play();
+        currentLetterID++;
+
+        if (currentLetterID > currentDialogLine.Length)
+        {
+            currentDialogLineDisplayed = true;
+            arrowIndicator.Show();
+        }
+    }
+
+    public void EndDialog()
+    {
+        gameState.IsDialogActive = false;
+
         Hide();
     }
 
