@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=39 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
+[ext_resource type="Texture2D" uid="uid://ct1cn368noy1g" path="res://Graphics/UI/Gameplay/portraits.png" id="6_kqd18"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="6_mk8rw"]
 [ext_resource type="Script" path="res://Scripts/UI/Visual/DeathScreen.cs" id="6_otvw6"]
+[ext_resource type="Texture2D" uid="uid://lrksilmi5nus" path="res://Graphics/UI/Gameplay/portraits_backgrounds.png" id="6_thq10"]
 [ext_resource type="Texture2D" uid="uid://du3g4tuj65wbn" path="res://Graphics/Decals/Global/tutorial_panel.png" id="8_rpln8"]
 [ext_resource type="Texture2D" uid="uid://ds6o5r41hh4he" path="res://Graphics/UI/Gameplay/textbox_sign.png" id="8_vda0l"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="9_3cem8"]
@@ -20,6 +22,118 @@
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="16_s0b1u"]
 [ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egim0"]
+atlas = ExtResource("6_thq10")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6q6i"]
+atlas = ExtResource("6_thq10")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ry4j"]
+atlas = ExtResource("6_thq10")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjbfr"]
+atlas = ExtResource("6_thq10")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnjkw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egim0")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6q6i")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ry4j")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjbfr")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heo24"]
+atlas = ExtResource("6_kqd18")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y87x3"]
+atlas = ExtResource("6_kqd18")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpxfb"]
+atlas = ExtResource("6_kqd18")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn56e"]
+atlas = ExtResource("6_kqd18")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6e0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heo24")
+}],
+"loop": false,
+"name": &"SignNormal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y87x3")
+}],
+"loop": false,
+"name": &"ZoeHappy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpxfb")
+}],
+"loop": false,
+"name": &"ZoeSad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn56e")
+}],
+"loop": false,
+"name": &"ZoeSmug",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_v4qqi"]
 resource_name = "Appear"
@@ -96,19 +210,21 @@ position = Vector2(8, 8)
 script = ExtResource("2_00r7b")
 elementSymbol = ExtResource("1_rymwl")
 
-[node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObject")]
+[node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObject", "characterPortrait", "portraitBackground")]
 texture_filter = 1
 position = Vector2(240, 48)
 texture = ExtResource("8_vda0l")
 script = ExtResource("9_ko3ni")
 textObject = NodePath("DialogText")
+characterPortrait = NodePath("Portrait")
+portraitBackground = NodePath("PortraitBackground")
 
 [node name="DialogText" type="Label" parent="DialogBox"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -139.0
+offset_left = -81.0
 offset_top = -28.0
 offset_right = -149.0
 offset_bottom = -34.0
@@ -116,9 +232,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
-text = "Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text "
+text = "Sample text"
 autowrap_mode = 2
 text_overrun_behavior = 2
+visible_characters_behavior = 1
+visible_ratio = -0.0909091
+
+[node name="PortraitBackground" type="AnimatedSprite2D" parent="DialogBox"]
+position = Vector2(-112, 0)
+sprite_frames = SubResource("SpriteFrames_nnjkw")
+animation = &"0"
+autoplay = "default"
+
+[node name="Portrait" type="AnimatedSprite2D" parent="DialogBox"]
+position = Vector2(-112, 0)
+sprite_frames = SubResource("SpriteFrames_v6e0d")
+animation = &"ZoeSmug"
+autoplay = "default"
 
 [node name="AnimatedSprite2D" parent="DialogBox" instance=ExtResource("6_mk8rw")]
 z_index = 0

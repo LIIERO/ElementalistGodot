@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcrot6fbv4eag"]
+[gd_scene load_steps=14 format=3 uid="uid://dcrot6fbv4eag"]
 
 [ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/4/Base.tscn" id="1_6sq5c"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_hx4jc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="6_wan0o"]
 [ext_resource type="PackedScene" uid="uid://4mpfpc802n76" path="res://Scenes/Entities/Orbs/ReverseOrb.tscn" id="7_ddx0w"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="8_8ubto"]
+[ext_resource type="PackedScene" uid="uid://bs7v22papc08q" path="res://Scenes/Entities/Orbs/RemoveTopOrb.tscn" id="8_v20i6"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="9_t42wm"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="10_4rsxi"]
 [ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="10_sdko5"]
@@ -24,22 +25,25 @@ layer_0/tile_data = PackedInt32Array(524303, 720896, 2, 458767, 720896, 2, 52430
 [node name="Orbs" type="Node2D" parent="." index="6"]
 
 [node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_hx4jc")]
-position = Vector2(-64, 40)
+position = Vector2(-64, -48)
 
 [node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_s4f6n")]
-position = Vector2(-32, 40)
+position = Vector2(-32, -48)
 
 [node name="EarthOrb" parent="Orbs" index="2" instance=ExtResource("4_s3ll7")]
-position = Vector2(0, 40)
+position = Vector2(0, -48)
 
 [node name="FireOrb" parent="Orbs" index="3" instance=ExtResource("5_sqqcg")]
-position = Vector2(32, 40)
+position = Vector2(32, -48)
 
 [node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("6_wan0o")]
-position = Vector2(64, 40)
+position = Vector2(64, -48)
 
 [node name="ReverseOrb" parent="Orbs" index="5" instance=ExtResource("7_ddx0w")]
-position = Vector2(96, 40)
+position = Vector2(96, -48)
+
+[node name="RemoveTopOrb" parent="Orbs" index="6" instance=ExtResource("8_v20i6")]
+position = Vector2(128, -48)
 
 [node name="Interactables" type="Node2D" parent="." index="7"]
 

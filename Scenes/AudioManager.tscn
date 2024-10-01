@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=36 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/Soft/walk_grass_1.ogg" id="2_3djbo"]
@@ -29,13 +29,14 @@
 [ext_resource type="AudioStream" uid="uid://bkvoj578rq8ll" path="res://Audio/Sounds/Transitions/fade_in.ogg" id="21_yfw4j"]
 [ext_resource type="AudioStream" uid="uid://ds1bl3hbn02qv" path="res://Audio/Music/void.ogg" id="24_dx6ev"]
 [ext_resource type="AudioStream" uid="uid://no6kp8jd0kob" path="res://Audio/Sounds/Entities/OrderGate/ordergate_reset.ogg" id="24_vcxwr"]
-[ext_resource type="AudioStream" uid="uid://c2r1qgl5trwwj" path="res://Audio/Sounds/UI/text.ogg" id="24_vwl5q"]
+[ext_resource type="AudioStream" uid="uid://c2r1qgl5trwwj" path="res://Audio/Sounds/Dialog/text.ogg" id="24_vwl5q"]
 [ext_resource type="AudioStream" uid="uid://du041hny68iq" path="res://Audio/Music/cave_outskirts.ogg" id="26_gr8jn"]
 [ext_resource type="AudioStream" uid="uid://b1365t3r0vb5l" path="res://Audio/Music/islands_of_ashes.ogg" id="28_0tyw5"]
 [ext_resource type="AudioStream" uid="uid://c6e8t2hr7n4ny" path="res://Audio/Music/knipe.ogg" id="31_ne6ya"]
 [ext_resource type="AudioStream" uid="uid://cim0omrrl52a" path="res://Audio/Music/amor_operatorium.ogg" id="33_1imw8"]
+[ext_resource type="AudioStream" uid="uid://d11f00iak27em" path="res://Audio/Sounds/Dialog/zoe_normal.ogg" id="34_61eul"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "loveAbility", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "orderGateProgress", "orderGateReset", "buttonSelected", "textNoise", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicKnipe", "musicVoid")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "loveAbility", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "orderGateProgress", "orderGateReset", "buttonSelected", "textNoise", "zoeNormalNoise", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicKnipe", "musicVoid")]
 script = ExtResource("1_b82rj")
 softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
 hardFootsteps = [NodePath("Player/Footsteps/FH1"), NodePath("Player/Footsteps/FH2"), NodePath("Player/Footsteps/FH3"), NodePath("Player/Footsteps/FH4")]
@@ -53,7 +54,8 @@ gateOpen = NodePath("Entities/gateOpen")
 orderGateProgress = NodePath("Entities/OrderGate/Progress")
 orderGateReset = NodePath("Entities/OrderGate/Reset")
 buttonSelected = NodePath("UI/Select")
-textNoise = NodePath("UI/Text")
+textNoise = NodePath("Dialog/Text")
+zoeNormalNoise = NodePath("Dialog/ZoeNormal")
 levelCompleted = NodePath("Transitions/LevelComplete")
 fadeOut = NodePath("Transitions/FadeOut")
 fadeIn = NodePath("Transitions/FadeIn")
@@ -177,10 +179,6 @@ stream = ExtResource("7_v72p3")
 volume_db = -12.0
 bus = &"Sounds"
 
-[node name="Text" type="AudioStreamPlayer" parent="UI"]
-stream = ExtResource("24_vwl5q")
-bus = &"Sounds"
-
 [node name="Transitions" type="Node" parent="."]
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="Transitions"]
@@ -230,3 +228,14 @@ bus = &"Music"
 stream = ExtResource("28_0tyw5")
 volume_db = -2.0
 bus = &"Music"
+
+[node name="Dialog" type="Node" parent="."]
+
+[node name="ZoeNormal" type="AudioStreamPlayer" parent="Dialog"]
+stream = ExtResource("34_61eul")
+volume_db = -4.0
+bus = &"Sounds"
+
+[node name="Text" type="AudioStreamPlayer" parent="Dialog"]
+stream = ExtResource("24_vwl5q")
+bus = &"Sounds"

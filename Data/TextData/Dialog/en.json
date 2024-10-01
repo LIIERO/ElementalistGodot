@@ -1,16 +1,33 @@
 {
-  "": [{"characterID": "", "emotionID": "", "text": ""}],
+  "": [
+	{"background": "", "portrait": "", "text": ""}
+  ],
 
-  "0_HUB_interacting": [{"characterID": "", "emotionID": "", "text": "Press up to interact with interactable objects."},
-						{"characterID": "", "emotionID": "", "text": "No need to thank me."}],
+  "0_HUB_interacting": [
+	{"background": "0", "portrait": "SignNormal", "text": "Press up to interact with interactable objects."},
+	{"background": "0", "portrait": "SignNormal", "text": "No need to thank me."},
+	{"background": "0", "portrait": "ZoeSmug", "text": "..."}
+  ],
 
-  "0_2_failed": [{"characterID": "", "emotionID": "", "text": "Congratulations, you have failed the puzzle."}],
+  "0_2_failed": [
+	{"background": "0", "portrait": "SignNormal", "text": "Congratulations, you have failed the puzzle."}
+  ],
 
-  "0_2_completed": [{"characterID": "", "emotionID": "", "text": "Congratulations, you have completed the puzzle."}],
+  "0_2_completed": [
+	{"background": "0", "portrait": "SignNormal", "text": "Congratulations, you have completed the puzzle."}
+  ],
 
-  "0_3_retry": [{"characterID": "", "emotionID": "", "text": "In situations like this, use your retry button."}],
+  "0_3_retry": [
+	{"background": "0", "portrait": "SignNormal", "text": "In situations like this, use your retry button."}
+  ],
 
-  "0_5_undo": [{"characterID": "", "emotionID": "", "text": "Did you know? Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."}],
+  "0_5_undo": [
+	{"background": "0", "portrait": "SignNormal", "text": "Did you know? Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."}
+  ],
 
-  "1_4S_special": [{"characterID": "", "emotionID": "", "text": "Levels marked with S are completely optional. \n\nThey are usually very difficult, so don't feel bad for skipping them!"}]
+  "1_4S_special": [
+	{"background": "1", "portrait": "SignNormal", "text": "Levels marked with S are completely optional."},
+	{"background": "1", "portrait": "SignNormal", "text": "They are usually very difficult, so don't feel bad for skipping them!"},
+	{"background": "1", "portrait": "ZoeSad", "text": "But this red fragment looks so tempting..."}
+  ]
 }

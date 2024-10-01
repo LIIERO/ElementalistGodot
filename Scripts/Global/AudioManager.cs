@@ -134,7 +134,10 @@ public partial class AudioManager : Node
 
     [ExportSubgroup("UI")]
     [Export] public AudioStreamPlayer buttonSelected;
+
+    [ExportSubgroup("Dialog")]
     [Export] public AudioStreamPlayer textNoise;
+    [Export] public AudioStreamPlayer zoeNormalNoise;
 
     [ExportSubgroup("Transitions")]
     [Export] public AudioStreamPlayer levelCompleted;
@@ -157,4 +160,16 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer musicOperatorium;
     [Export] public AudioStreamPlayer musicKnipe;
     [Export] public AudioStreamPlayer musicVoid;
+
+
+    public void PlayDialogSoundEffect(string portrait)
+    {
+        switch (portrait)
+        {
+            case "ZoeHappy": zoeNormalNoise.Play(); break;
+            case "ZoeSmug": zoeNormalNoise.Play(); break;
+            case "ZoeSad": zoeNormalNoise.Play(); break;
+            default: textNoise.Play(); break;
+        }
+    }
 }

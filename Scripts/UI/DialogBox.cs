@@ -13,11 +13,14 @@ public partial class DialogBox : Sprite2D
     private AudioManager audioManager;
 
     [Export] private Label textObject;
+    [Export] private AnimatedSprite2D characterPortrait;
+    [Export] private AnimatedSprite2D portraitBackground;
 
     protected AnimatedSprite2D arrowIndicator;
 
     private List<Dictionary<string, string>> currentDialog = null;
     private string currentDialogLine = null;
+    private string currentPortrait = null;
     private int currentDialogLineID;
     private bool currentDialogLineDisplayed = false;
     private int currentLetterID;
@@ -25,6 +28,9 @@ public partial class DialogBox : Sprite2D
     const float dialogMinimalSkipTime = 0.1f;
 
     public const float timeBetweenLetters = 0.01f;
+    public const float timeAfterComa = 0.1f;
+    public const float timeAfterDot = 0.3f;
+
     private float letterTimer = -0.1f;
 
     /*private readonly Dictionary<string, string> keyDict = new()
@@ -84,7 +90,7 @@ public partial class DialogBox : Sprite2D
         if (!currentDialogLineDisplayed) // Progress the text scroll immediately
         {
             currentDialogLineDisplayed = true;
-            textObject.Text = currentDialogLine;
+            textObject.VisibleCharacters = -1;
             arrowIndicator.Show();
             return;
         }
@@ -100,7 +106,13 @@ public partial class DialogBox : Sprite2D
 
         currentDialogLine = currentDialog[currentDialogLineID]["text"].Replace("\\n", "\n");
         currentLetterID = 0;
-        textObject.Text = "";
+
+        textObject.VisibleCharacters = 0;
+        textObject.Text = currentDialogLine;
+        currentPortrait = currentDialog[currentDialogLineID]["portrait"];
+        characterPortrait.Play(currentPortrait);
+        portraitBackground.Play(currentDialog[currentDialogLineID]["background"]);
+
         currentDialogLineDisplayed = false;
 
         currentDialogLineID++;
@@ -121,16 +133,28 @@ public partial class DialogBox : Sprite2D
             return;
         }
 
-        letterTimer = timeBetweenLetters;
-        textObject.Text = currentDialogLine[..currentLetterID]; // More of text is displayed each iteration
-        audioManager.textNoise.Play();
         currentLetterID++;
 
         if (currentLetterID > currentDialogLine.Length)
         {
             currentDialogLineDisplayed = true;
             arrowIndicator.Show();
+            return;
         }
+
+        textObject.VisibleCharacters = currentLetterID; // More of text is displayed each iteration
+        audioManager.PlayDialogSoundEffect(currentPortrait);
+
+
+        
+        letterTimer = timeBetweenLetters;
+
+        char latestLetter = currentDialogLine[currentLetterID - 1];
+
+        if (latestLetter == ',')
+            letterTimer = timeAfterComa;
+        if (".!?".Contains(latestLetter))
+            letterTimer = timeAfterDot;
     }
 
     public void EndDialog()
