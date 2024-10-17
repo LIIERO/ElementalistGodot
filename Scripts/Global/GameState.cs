@@ -54,7 +54,6 @@ public partial class GameState : Node
     public override void _EnterTree()
     {
         LoadDialogData("en");
-        GD.Print(DialogData);
 
         // Initialize LevelIDToLevel
         foreach (KeyValuePair<string, string[]> world in levels)

@@ -107,6 +107,7 @@ offset_top = 270.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
 
 [node name="TopLabel" type="Label" parent="ColorRect"]

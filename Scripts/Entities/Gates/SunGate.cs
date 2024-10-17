@@ -18,6 +18,8 @@ public partial class SunGate : Gate
 
 	public override void _Process(double delta)
 	{
+        base._Process(delta);
+
         if (Position.DistanceTo(playerNode.Position) > detectionRangeUnits) return;
 
         if (!isOpened && gameState.NoSunFragments >= requiredFragments)

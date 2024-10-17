@@ -68,6 +68,7 @@ public partial class Player : CharacterBody2D
 	public bool isDead = false;
 	public bool canJumpCancel = true;
 	public bool isUndoing = false;
+	//public bool isOnMovingEntity = false;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
 	[Export] private Timer abilityTimer = null;
@@ -528,17 +529,24 @@ public partial class Player : CharacterBody2D
             KinematicCollision2D collision = GetSlideCollision(i);
             Node collider = collision.GetCollider() as Node;
 
+            float angle = collision.GetAngle();
+			bool isOnTopOfCollision = angle <= 0.001f && angle >= -0.001f;
+
             if (collider.IsInGroup("Danger"))
 			{
 				Kill();
 				break;
 			}
 
+            /*if (collider.IsInGroup("Gate") && isOnTopOfCollision)
+			{
+				isOnMovingEntity = true;
+			}*/
+
 			// Making proper sound when walking on something
             if (collider.IsInGroup("PlayerCollider"))
             {
-                float angle = collision.GetAngle();
-                if (angle > 0.001f || angle < -0.001f) continue; // Check if is touching floor
+                if (!isOnTopOfCollision) continue; // Check if is touching floor
 
                 if (currentAnimation == "Run") footstepTimer -= (float)delta; // if running count down to the next sound
 				if (footstepTimer >= 0.0f) continue;
@@ -613,6 +621,7 @@ public partial class Player : CharacterBody2D
             RequestCheckpointAfterTime(inputBufferTime);
 
             //position = new Vector2(position.X - (fireballDirection * 2), position.Y);
+			position = new Vector2(position.X, position.Y - 1f);
         }
 
         GlobalPosition = new Vector2(position.X, (float)Math.Floor(position.Y));
@@ -649,8 +658,8 @@ public partial class Player : CharacterBody2D
 	{
 		if (!checkpointRequested) return;
 
-        // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump
-        if (isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0)
+        // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate
+        if (isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !Gate.IsAnyGateMoving)
 		{
             checkpointRequested = false;
             customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);

@@ -57,6 +57,12 @@ public partial class Fireball : CharacterBody2D
         var collision = MoveAndCollide(Velocity * (float)delta);
         if (collision != null)
         {
+            /*if ((collision.GetCollider() as Node).IsInGroup("Danger"))
+            {
+                Remove();
+                return;
+            }*/
+
             if (AttemptHorizontalCornerCorrection((float)delta)) return;
 
             if (flyTime > activationTime)

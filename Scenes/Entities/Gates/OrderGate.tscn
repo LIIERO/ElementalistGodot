@@ -51,7 +51,7 @@ script = ExtResource("1_2voic")
 
 [node name="ToMove" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ToMove" groups=["HardMaterial", "PlayerCollider"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="ToMove" groups=["Gate", "HardMaterial", "PlayerCollider"]]
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToMove/StaticBody2D"]
@@ -95,3 +95,5 @@ position = Vector2(7, 7)
 libraries = {
 "": SubResource("AnimationLibrary_g26fh")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
