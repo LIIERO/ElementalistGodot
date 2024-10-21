@@ -202,6 +202,7 @@ public partial class GameState : Node
     {
         IsGameplayActive = true;
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
+        if (CurrentLevel == "HUB") WorldEntrance.setPlayerWorldEnterPosition = true;
     }
 
     public void LoadWorld(string world)
