@@ -295,7 +295,7 @@ public partial class Player : CharacterBody2D
 					RequestCheckpointAfterTime(inputBufferTime);
                     StopAbility();
                     SparkleAbilityDust(ElementState.earth, 0.1f);
-                    abilityBufferTimeCounter = 0f; // Preventing overlapping abilities
+                    abilityBufferTimeCounter = -0.1f; // Preventing overlapping abilities
 					isGrounded = false;
 					Velocity = new Vector2(Velocity.X, earthJumpPower);
 					audioManager.earthAbilityEnd.Play();
@@ -314,6 +314,12 @@ public partial class Player : CharacterBody2D
 	async private void ExecuteAbilityAfterSeconds(float t)
 	{
         await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+
+		if (isDead) // In case you die in the short period between starting and executing ability
+		{
+			StopAbility();
+			return;
+		}
 
         isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
@@ -430,6 +436,20 @@ public partial class Player : CharacterBody2D
 
     // ANIMATION ==================================================================================================================
 
+	private void SetDirection(float direction)
+	{
+        if (isFacingRight && direction < 0.0f)
+        {
+            isFacingRight = false;
+            animatedSprite.FlipH = true;
+        }
+        else if (!isFacingRight && direction > 0.0f)
+        {
+            isFacingRight = true;
+            animatedSprite.FlipH = false;
+        }
+    }
+
     private void UpdateAnimation(float direction)
 	{
 		if (gameState.IsLevelTransitionPlaying && !isDead) animatedSprite.Play("Idle"); // Level transition animation
@@ -438,19 +458,9 @@ public partial class Player : CharacterBody2D
 
 		float animationSpeed = 1.0f;
 
-		// change direction facing
-		if (!isExecutingAbility) // you can change direction after you started ability before it executed for input leniency
+		if (!isExecutingAbility && jumpMovePreventionTimer <= 0.0f) // you can change direction after you started ability before it executed for input leniency
 		{
-			if (isFacingRight && direction < 0.0f)
-			{
-				isFacingRight = false;
-				animatedSprite.FlipH = true;
-			}
-			else if (!isFacingRight && direction > 0.0f)
-			{
-				isFacingRight = true;
-				animatedSprite.FlipH = false;
-			}
+			SetDirection(direction);
 		}
 
 		// animations
@@ -489,15 +499,15 @@ public partial class Player : CharacterBody2D
 	}
 
 
-    // DYING
+    // DYING ======================================================================================================================
 
-    void _OnArea2dBodyEntered(Node2D body) // This is a small area in the player, if a body enters it the player got crushed
+    private void _OnArea2dBodyEntered(Node2D body) // This is a small area in the player, if a body enters it the player got crushed
 	{
 		if (body is not Player && body is not Fireball && body is not TileMap)
 			Kill(crushed:true);
 	}
 
-	void ReloadLevel()
+	private void ReloadLevel()
 	{
         if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf) // Dying in Hub (multiple checkpoints)
             setPlayerRespawnPosition = true;
@@ -507,14 +517,15 @@ public partial class Player : CharacterBody2D
         levelTransitions.StartLevelReloadTransition();
     }
 
-    void Die(float t, bool crushed = false)
-	{
-		if (!crushed) CheckpointRequested(); // So we don't loose too much progress when undoing after death (unless crushed cuz it glitches)
-        //AddCheckpoint(); // This checkpoint will be deleted anyway, it's so you don't loose progress
+    private void Kill(bool crushed = false)
+    {
+        if (!crushed) CheckpointRequested(); // So we don't loose too much progress when undoing after death (unless crushed cuz it glitches)
+        StopAbility();
         isDead = true;
+        abilityBufferTimeCounter = -0.1f;
         animatedSprite.Play("Die"); // death animation
-		currentAnimation = "Die";
-		audioManager.death.Play();
+        currentAnimation = "Die";
+        audioManager.death.Play();
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerDied);
 
         //await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
@@ -537,11 +548,6 @@ public partial class Player : CharacterBody2D
 				Kill();
 				break;
 			}
-
-            /*if (collider.IsInGroup("Gate") && isOnTopOfCollision)
-			{
-				isOnMovingEntity = true;
-			}*/
 
 			// Making proper sound when walking on something
             if (collider.IsInGroup("PlayerCollider"))
@@ -604,7 +610,7 @@ public partial class Player : CharacterBody2D
 		return effectiveElem;
 	}
 
-	public void SetPosition(Vector2 position, bool fireTeleport = false, float fireballDirection = 0f) // TODO: have fire direction here
+	public void SetPosition(Vector2 position, bool fireTeleport = false, float fireballDirection = 0f)
 	{
         hitbox.Disabled = true; // bugfix
 		
@@ -620,6 +626,7 @@ public partial class Player : CharacterBody2D
             shaderScript.SpawnFireTeleportResidue();
             RequestCheckpointAfterTime(inputBufferTime);
 
+			SetDirection(fireballDirection);
             //position = new Vector2(position.X - (fireballDirection * 2), position.Y);
 			position = new Vector2(position.X, position.Y - 1f);
         }
@@ -635,14 +642,9 @@ public partial class Player : CharacterBody2D
         hitbox.Disabled = false;
     }
 
-    public void Kill(bool crushed = false)
-    {
-        Die(deathTime, crushed:true);
-    }
+    // UNDO SYSTEM =============================================================================================================
 
-	// UNDO SYSTEM =============================================================================================================
-	
-	private void CheckpointRequested()
+    private void CheckpointRequested()
 	{
 		if (isUndoing) return;
 		checkpointRequested = true;

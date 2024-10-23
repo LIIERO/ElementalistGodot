@@ -24,7 +24,7 @@ public static class GameUtils
         { ColorSet.blue, ElementState.water },
         { ColorSet.white, ElementState.air },
         { ColorSet.brown, ElementState.earth },
-        { ColorSet.pink, ElementState.love }
+        { ColorSet.pink, ElementState.love },
     };
 
     public static readonly Dictionary<ElementState, ColorSet> ElementToColorset = new() {
@@ -33,6 +33,7 @@ public static class GameUtils
         { ElementState.air , ColorSet.white },
         { ElementState.earth , ColorSet.brown },
         { ElementState.love , ColorSet.pink },
+        { ElementState.normal , ColorSet.green }
     };
 
     public static int[] ElementListToIntArray(List<ElementState> elementList)
