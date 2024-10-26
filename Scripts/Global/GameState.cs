@@ -35,6 +35,7 @@ public partial class GameState : Node
     public bool IsCurrentLevelSpecial { get; set; } = false;
     public string CurrentLevelName { get; set; } = "";
     public int MainCutsceneProgress { get; set; } = 0;
+    public double InGameTime { get; set; } = 0.0; // Set in game time display class
 
 
     // Data not loaded from the save file
@@ -289,7 +290,7 @@ public partial class GameState : Node
     public void SaveToSaveFile(string id)
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + jsonFormat);
-        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial, CurrentLevelName, MainCutsceneProgress);
+        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial, CurrentLevelName, MainCutsceneProgress, InGameTime);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -315,6 +316,7 @@ public partial class GameState : Node
         IsCurrentLevelSpecial = data.IsCurrentLevelSpecial;
         CurrentLevelName = data.CurrentLevelName;
         MainCutsceneProgress = data.MainCutsceneProgress;
+        InGameTime = data.InGameTime;
 
         FixCompletedLevels();
 
@@ -333,6 +335,7 @@ public partial class GameState : Node
         IsCurrentLevelSpecial = false;
         CurrentLevelName = "HUB";
         MainCutsceneProgress = 0;
+        InGameTime = 0.0;
 
         CurrentSaveFileID = id;
 

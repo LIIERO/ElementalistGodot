@@ -38,7 +38,7 @@ public partial class Player : CharacterBody2D
 	public const float waterJumpMomentumPreservation = 0.55f;
 	public const float clingDrag = 0.8f;
 	public const float coyoteTime = 0.1f;
-	public const float inputBufferTime = 0.1f;
+	public const float inputBufferTime = 0.1f; // Multi purposed for a plenty of tiny counters
 	public const float abilityFreezeTime = 0.05f;
 	public const float jumpCancelFraction = 0.2f;
 	public const float jumpPreventionTime = 0.15f;
@@ -46,6 +46,7 @@ public partial class Player : CharacterBody2D
 	public const float floatyGravityMaxVelocity = 50.0f;
 	public const int windDashCornerCorrection = 5;
 	public const int verticalCornerCorrection = 4;
+	public const float timeJustAboveFrame = 0.02f;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -68,6 +69,8 @@ public partial class Player : CharacterBody2D
 	public bool isDead = false;
 	public bool canJumpCancel = true;
 	public bool isUndoing = false;
+	public bool isAddingCheckpoint = false;
+	//public float checkpointTimer = -0.1f;
 	//public bool isOnMovingEntity = false;
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
@@ -100,7 +103,7 @@ public partial class Player : CharacterBody2D
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 
         // Undo system
-        customSignals.Connect(CustomSignals.SignalName.RequestCheckpoint, new Callable(this, MethodName.CheckpointRequested));
+        customSignals.Connect(CustomSignals.SignalName.RequestCheckpoint, new Callable(this, MethodName.RequestCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
 
@@ -125,7 +128,7 @@ public partial class Player : CharacterBody2D
 			SetPosition(gameState.PlayerHubRespawnPosition);
         }
 
-		CheckpointRequested();
+		RequestCheckpoint();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -154,7 +157,8 @@ public partial class Player : CharacterBody2D
             AttemptVerticalCornerCorrection(verticalCornerCorrection, (float)delta);
             MoveAndSlide();
             CheckForCollision(delta);
-            TryAddCheckpoint(); 
+            TryAddCheckpoint();
+            //if (checkpointTimer > 0.0f) checkpointTimer -= (float)delta; // So cp cannot be requested multiple times in quick succession
         }
         UpdateAnimation(direction);
 
@@ -335,7 +339,7 @@ public partial class Player : CharacterBody2D
 
             StopAbility();
 
-            CheckpointRequested();
+            RequestCheckpoint();
         }
 		else if (currentAbility == ElementState.water)
 		{
@@ -348,7 +352,7 @@ public partial class Player : CharacterBody2D
             jumpMovePreventionTimer = -0.1f; // So your momentum doesnt get lost after teleporting
             StopAbility();
 
-			CheckpointRequested();
+			RequestCheckpoint();
 		}
 		else if (currentAbility == ElementState.fire)
 		{
@@ -376,7 +380,7 @@ public partial class Player : CharacterBody2D
 
             StopAbility();
 
-            CheckpointRequested();
+            RequestCheckpoint();
         }
         else if (currentAbility == ElementState.earth)
 		{
@@ -411,7 +415,7 @@ public partial class Player : CharacterBody2D
         instance.GlobalPosition = GlobalPosition + new Vector2(rightOffset, 0.0f);
 		instance.AddToGroup("Fireball"); // For checking how many there are
 
-		CheckpointRequested();
+		RequestCheckpoint();
     }
 
     public void StartAbilityDust(ElementState elementState)
@@ -519,7 +523,7 @@ public partial class Player : CharacterBody2D
 
     private void Kill(bool crushed = false)
     {
-        if (!crushed) CheckpointRequested(); // So we don't loose too much progress when undoing after death (unless crushed cuz it glitches)
+        if (!crushed) RequestCheckpoint(); // So we don't loose too much progress when undoing after death (unless crushed cuz it glitches)
         StopAbility();
         isDead = true;
         abilityBufferTimeCounter = -0.1f;
@@ -644,25 +648,36 @@ public partial class Player : CharacterBody2D
 
     // UNDO SYSTEM =============================================================================================================
 
-    private void CheckpointRequested()
+    private void RequestCheckpoint()
 	{
 		if (isUndoing) return;
-		checkpointRequested = true;
-	}
+		//if (checkpointTimer > 0.0f) return;
+        checkpointRequested = true;
+		//checkpointTimer = inputBufferTime; // Bugfix - 2 checkpoints cannot be requested very shortly after eachother
+    }
 
 	private async void RequestCheckpointAfterTime(float t)
 	{
         await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
-		CheckpointRequested();
+		RequestCheckpoint();
     }
 
-	private void TryAddCheckpoint()
-	{
-		if (!checkpointRequested) return;
+    // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate
+    private bool CanAddCheckpoint() => isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !Gate.IsAnyGateMoving;
 
-        // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate
-        if (isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !Gate.IsAnyGateMoving)
+    private async void TryAddCheckpoint()
+	{
+        if (!checkpointRequested) return;
+
+        if (CanAddCheckpoint())
 		{
+			// bugfix (annoying ass one frame bug)
+            if (isAddingCheckpoint) return;
+            isAddingCheckpoint = true;
+            await ToSignal(GetTree().CreateTimer(timeJustAboveFrame, processInPhysics: true), "timeout");
+			if (!CanAddCheckpoint()) return;
+			// end of bugfix
+
             checkpointRequested = false;
             customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
         }
@@ -684,6 +699,8 @@ public partial class Player : CharacterBody2D
     {
         playerPositionCheckpoints.Add(GlobalPosition);
         playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
+		isAddingCheckpoint = false;
+		//GD.Print("CP added");
     }
 
     private void UndoLocalCheckpoint(bool nextCpRequested)

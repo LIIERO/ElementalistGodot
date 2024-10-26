@@ -15,6 +15,7 @@ public class PlayerData
     public bool IsCurrentLevelSpecial { get; private set; } = false;
     public string CurrentLevelName { get; private set; } = "HUB";
     public int MainCutsceneProgress { get; private set; } = 0;
+    public double InGameTime { get; private set; } = 0.0;
 
     public PlayerData(Dictionary<string, Dictionary<string, bool>> CompletedLevels, 
         int NoSunFragments, 
@@ -25,7 +26,8 @@ public class PlayerData
         string PreviousLevel, 
         bool IsCurrentLevelSpecial, 
         string CurrentLevelName,
-        int MainCutsceneProgress)
+        int MainCutsceneProgress,
+        double InGameTime)
     {
         this.CompletedLevels = CompletedLevels;
         this.NoSunFragments = NoSunFragments;
@@ -37,5 +39,6 @@ public class PlayerData
         this.IsCurrentLevelSpecial = IsCurrentLevelSpecial;
         this.CurrentLevelName = CurrentLevelName;
         this.MainCutsceneProgress = MainCutsceneProgress;
+        this.InGameTime = InGameTime;
     }
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqil6g1p2c3cp"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Fireball.cs" id="1_vefbd"]
+[ext_resource type="Script" path="res://Scripts/Entities/Other/Fireball.cs" id="1_vefbd"]
 [ext_resource type="PackedScene" uid="uid://c5b36fnh8utbi" path="res://Scenes/Effects/PlayerEchoTrailObject.tscn" id="2_fcini"]
 [ext_resource type="Texture2D" uid="uid://dl5cab5u526qa" path="res://Graphics/Entities/fire_zoe.png" id="3_y47qh"]
 

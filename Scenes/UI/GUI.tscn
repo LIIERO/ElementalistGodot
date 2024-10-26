@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=41 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -15,13 +15,15 @@
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="11_ovtmv"]
 [ext_resource type="Texture2D" uid="uid://dtbtuholq2xi5" path="res://Graphics/UI/Menu/menu_button.png" id="12_v0wth"]
 [ext_resource type="Texture2D" uid="uid://6pc5u1hcthbt" path="res://Graphics/Entities/orbs.png" id="13_ykw2f"]
-[ext_resource type="Texture2D" uid="uid://dfxae37yskpna" path="res://Graphics/UI/Menu/current_level_display.png" id="14_e7o7i"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="15_1xd4b"]
 [ext_resource type="Script" path="res://Scripts/UI/CurrentLevelDisplay.cs" id="15_dq4b2"]
 [ext_resource type="Texture2D" uid="uid://bc7aiqfid7inw" path="res://Graphics/UI/Gameplay/sun_counter_background.png" id="16_g1udj"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="16_s0b1u"]
 [ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
+[ext_resource type="Texture2D" uid="uid://dfxae37yskpna" path="res://Graphics/UI/Gameplay/current_level_display.png" id="21_ltbdn"]
+[ext_resource type="Script" path="res://Scripts/UI/InGameTimeDisplay.cs" id="23_la0yc"]
+[ext_resource type="Texture2D" uid="uid://djo8vl1x4wk5p" path="res://Graphics/UI/Gameplay/time_display.png" id="23_t0g6t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egim0"]
 atlas = ExtResource("6_thq10")
@@ -235,8 +237,9 @@ theme_override_font_sizes/font_size = 12
 text = "Sample text"
 autowrap_mode = 2
 text_overrun_behavior = 2
+visible_characters = 0
 visible_characters_behavior = 1
-visible_ratio = -0.0909091
+visible_ratio = 0.0
 
 [node name="PortraitBackground" type="AnimatedSprite2D" parent="DialogBox"]
 position = Vector2(-112, 0)
@@ -287,6 +290,22 @@ position = Vector2(164, 124)
 libraries = {
 "": SubResource("AnimationLibrary_75bre")
 }
+
+[node name="InGameTimeDisplay" type="Sprite2D" parent="."]
+position = Vector2(0, 270)
+texture = ExtResource("23_t0g6t")
+script = ExtResource("23_la0yc")
+
+[node name="Label" type="Label" parent="InGameTimeDisplay"]
+texture_filter = 1
+offset_left = -64.0
+offset_top = -12.0
+offset_right = 168.0
+offset_bottom = 2.0
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "SAMPLE TEXT"
+horizontal_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("buttonList")]
 process_mode = 3
@@ -549,7 +568,7 @@ text = "X"
 
 [node name="CurrentLevelDisplay" type="Sprite2D" parent="."]
 position = Vector2(112, 0)
-texture = ExtResource("14_e7o7i")
+texture = ExtResource("21_ltbdn")
 script = ExtResource("15_dq4b2")
 
 [node name="Label" type="Label" parent="CurrentLevelDisplay"]

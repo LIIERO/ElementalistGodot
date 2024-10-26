@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfxae37yskpna"
-path="res://.godot/imported/current_level_display.png-cedd4d0fdeb5ba4923ad33a9ba71fbee.ctex"
+uid="uid://djo8vl1x4wk5p"
+path="res://.godot/imported/time_display.png-cfa4e3a20f464a61b3afcf5347c7ada5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/UI/Menu/current_level_display.png"
-dest_files=["res://.godot/imported/current_level_display.png-cedd4d0fdeb5ba4923ad33a9ba71fbee.ctex"]
+source_file="res://Graphics/UI/Gameplay/time_display.png"
+dest_files=["res://.godot/imported/time_display.png-cfa4e3a20f464a61b3afcf5347c7ada5.ctex"]
 
 [params]
 
