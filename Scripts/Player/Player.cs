@@ -6,7 +6,7 @@ using GlobalTypes;
 using System.Reflection.Metadata;
 using System.Net.Http.Headers;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D, IUndoable
 {
     // Code is not good but I don't really care
     // This whole script is me stubbornly refusing to implement a state machine for the player
@@ -25,6 +25,7 @@ public partial class Player : CharacterBody2D
 	[Export] private CollisionShape2D hitbox;
 	[Export] private Node spawner;
 	[Export] private CpuParticles2D particles;
+	[Export] private Sprite2D checkpointIndicator;
 	[Export] private AnimationPlayer propertyAnimations;
 	private PlayerShaderEffects shaderScript;
 
@@ -46,7 +47,6 @@ public partial class Player : CharacterBody2D
 	public const float floatyGravityMaxVelocity = 50.0f;
 	public const int windDashCornerCorrection = 5;
 	public const int verticalCornerCorrection = 4;
-	public const float timeJustAboveFrame = 0.02f;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -69,12 +69,13 @@ public partial class Player : CharacterBody2D
 	public bool isDead = false;
 	public bool canJumpCancel = true;
 	public bool isUndoing = false;
-	public bool isAddingCheckpoint = false;
-	//public float checkpointTimer = -0.1f;
-	//public bool isOnMovingEntity = false;
+	//public bool isAddingCheckpoint = false;
+	public float checkpointTimer = -0.1f;
+	public bool isOnMovingEntity = false; // For now only true when standing on a gate that is moving up
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
 
 	[Export] private Timer abilityTimer = null;
+	private SceneTreeTimer addAbilityTimer = null;
 	//private float timeLeftAfterPause = 0.0f;
 
     private string currentAnimation;
@@ -106,6 +107,7 @@ public partial class Player : CharacterBody2D
         customSignals.Connect(CustomSignals.SignalName.RequestCheckpoint, new Callable(this, MethodName.RequestCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
+        customSignals.Connect(CustomSignals.SignalName.ReplaceTopCheckpoint, new Callable(this, MethodName.ReplaceTopLocalCheckpoint));
 
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
         //customSignals.Connect(CustomSignals.SignalName.GamePaused, new Callable(this, MethodName.PauseAbilityTimer));
@@ -115,7 +117,7 @@ public partial class Player : CharacterBody2D
 
 		particlesActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
 		if (!particlesActive) particles.QueueFree();
-		wallslideSlowdownActive = GetNode<SettingsManager>("/root/SettingsManager").WallslideSlowdownActive;
+		wallslideSlowdownActive = GetNode<SettingsManager>("/root/SettingsManager").SpeedrunTimerVisible;
 
         gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
@@ -128,6 +130,7 @@ public partial class Player : CharacterBody2D
 			SetPosition(gameState.PlayerHubRespawnPosition);
         }
 
+		//RequestCheckpointAfterTime(inputBufferTime);
 		RequestCheckpoint();
     }
 
@@ -157,7 +160,7 @@ public partial class Player : CharacterBody2D
             AttemptVerticalCornerCorrection(verticalCornerCorrection, (float)delta);
             MoveAndSlide();
             CheckForCollision(delta);
-            TryAddCheckpoint();
+            TryAddCheckpoint(delta);
             //if (checkpointTimer > 0.0f) checkpointTimer -= (float)delta; // So cp cannot be requested multiple times in quick succession
         }
         UpdateAnimation(direction);
@@ -177,6 +180,9 @@ public partial class Player : CharacterBody2D
             if (InputManager.UpInteractPressed() || InputManager.JumpPressed())
                 customSignals.EmitSignal(CustomSignals.SignalName.ProgressDialog);
         }
+
+		//GD.Print(CanAddCheckpoint());
+        //GD.Print(isOnMovingEntity);
     }
 
 	// MOVEMENT ==================================================================================================================
@@ -339,7 +345,7 @@ public partial class Player : CharacterBody2D
 
             StopAbility();
 
-            RequestCheckpoint();
+            RequestCheckpointAfterTime(abilityFreezeTime); // Horizontal ability bugfix
         }
 		else if (currentAbility == ElementState.water)
 		{
@@ -539,6 +545,8 @@ public partial class Player : CharacterBody2D
 
     private void CheckForCollision(double delta)
 	{
+		isOnMovingEntity = false;
+
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
             KinematicCollision2D collision = GetSlideCollision(i);
@@ -552,6 +560,12 @@ public partial class Player : CharacterBody2D
 				Kill();
 				break;
 			}
+
+			if (collider.IsInGroup("Gate"))
+			{
+				Gate gate = collider.GetParent().GetParent() as Gate; // Accessing the root node of the gate (where the script is)
+				if (gate.IsMovingUp) isOnMovingEntity = true;
+            }
 
 			// Making proper sound when walking on something
             if (collider.IsInGroup("PlayerCollider"))
@@ -651,9 +665,8 @@ public partial class Player : CharacterBody2D
     private void RequestCheckpoint()
 	{
 		if (isUndoing) return;
-		//if (checkpointTimer > 0.0f) return;
         checkpointRequested = true;
-		//checkpointTimer = inputBufferTime; // Bugfix - 2 checkpoints cannot be requested very shortly after eachother
+		SetCheckpointIndicatorPosition();
     }
 
 	private async void RequestCheckpointAfterTime(float t)
@@ -662,24 +675,51 @@ public partial class Player : CharacterBody2D
 		RequestCheckpoint();
     }
 
-    // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate
-    private bool CanAddCheckpoint() => isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !Gate.IsAnyGateMoving;
-
-    private async void TryAddCheckpoint()
+	private void SetCheckpointIndicatorPosition(bool undone = false)
 	{
+        if (playerPositionCheckpoints.Count == 0) return;
+
+        checkpointIndicator.Show();
+
+        if (checkpointRequested && !undone)
+		{
+            checkpointIndicator.GlobalPosition = playerPositionCheckpoints[^1] - new Vector2(0, GameUtils.gameUnitSize);
+        }
+		else if (playerPositionCheckpoints.Count > 1)
+		{
+			checkpointIndicator.GlobalPosition = playerPositionCheckpoints[^2] - new Vector2(0, GameUtils.gameUnitSize);
+        }
+		else
+		{
+            checkpointIndicator.GlobalPosition = playerPositionCheckpoints[^1] - new Vector2(0, GameUtils.gameUnitSize);
+        }
+    }
+
+    // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate
+    private bool CanAddCheckpoint() => isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !isOnMovingEntity && !IsOnWall();
+
+    private void TryAddCheckpoint(double delta)
+	{
+		checkpointTimer -= (float)delta;
+
         if (!checkpointRequested) return;
 
         if (CanAddCheckpoint())
 		{
-			// bugfix (annoying ass one frame bug)
-            if (isAddingCheckpoint) return;
-            isAddingCheckpoint = true;
-            await ToSignal(GetTree().CreateTimer(timeJustAboveFrame, processInPhysics: true), "timeout");
-			if (!CanAddCheckpoint()) return;
-			// end of bugfix
-
             checkpointRequested = false;
-            customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
+
+            if (playerPositionCheckpoints.Count == 0 || checkpointTimer <= 0.0f)
+			{
+				//GD.Print("CP Added");
+                customSignals.EmitSignal(CustomSignals.SignalName.AddCheckpoint);
+            }
+			else
+			{
+                //GD.Print("CP Replaced");
+                customSignals.EmitSignal(CustomSignals.SignalName.ReplaceTopCheckpoint);
+            }
+
+            checkpointTimer = inputBufferTime;
         }
     }
 
@@ -695,15 +735,14 @@ public partial class Player : CharacterBody2D
         checkpointRequested = false;
     }
 
-    private void AddLocalCheckpoint()
+    public void AddLocalCheckpoint()
     {
         playerPositionCheckpoints.Add(GlobalPosition);
         playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
-		isAddingCheckpoint = false;
-		//GD.Print("CP added");
+        SetCheckpointIndicatorPosition();
     }
 
-    private void UndoLocalCheckpoint(bool nextCpRequested)
+    public void UndoLocalCheckpoint(bool nextCpRequested)
     {
         if (isDead) isDead = false;
 
@@ -720,6 +759,15 @@ public partial class Player : CharacterBody2D
 
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
         customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
+
+        SetCheckpointIndicatorPosition(true);
+    }
+
+    public void ReplaceTopLocalCheckpoint()
+    {
+        GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
+        GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
+        AddLocalCheckpoint();
     }
 
     public void SetUndoPosition(Vector2 position)

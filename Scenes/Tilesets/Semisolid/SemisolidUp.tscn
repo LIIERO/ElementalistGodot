@@ -38,7 +38,7 @@ texture = ExtResource("1_dg41g")
 3:0/0/physics_layer_0/polygon_0/one_way = true
 
 [sub_resource type="TileSet" id="TileSet_gd802"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Semisolid"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.25098, 1)

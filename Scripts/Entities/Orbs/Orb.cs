@@ -2,7 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using GlobalTypes;
 
-public abstract partial class Orb : Area2D
+public abstract partial class Orb : Area2D, IUndoable
 {
 	[Export] public ColorSet refillColor;
 	private Light2D backgroundLight;
@@ -21,6 +21,7 @@ public abstract partial class Orb : Area2D
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
+        customSignals.Connect(CustomSignals.SignalName.ReplaceTopCheckpoint, new Callable(this, MethodName.ReplaceTopLocalCheckpoint));
 
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         backgroundLight = GetNode<PointLight2D>("MovedByAnimation/PointLight2D");
@@ -62,18 +63,24 @@ public abstract partial class Orb : Area2D
         customSignals.EmitSignal(CustomSignals.SignalName.RequestCheckpoint);
 	}
 
-    private void AddLocalCheckpoint()
+    public void AddLocalCheckpoint()
     {
         orbStateCheckpoints.Add(isActive);
     }
 
-    private void UndoLocalCheckpoint(bool nextCpRequested)
+    public void UndoLocalCheckpoint(bool nextCpRequested)
     {
         if (!nextCpRequested && orbStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(orbStateCheckpoints);
         isActive = orbStateCheckpoints[^1];
         
         if (isActive) Enable();
         else Disable();
+    }
+
+    public void ReplaceTopLocalCheckpoint()
+    {
+        GameUtils.ListRemoveLastElement(orbStateCheckpoints);
+        AddLocalCheckpoint();
     }
 
     private void Enable()

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SunGate : Gate
+public partial class SunGate : Gate, IUndoable
 {
 
     private float detectionRangeUnits = 7.0f;

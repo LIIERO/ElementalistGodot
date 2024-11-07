@@ -43,7 +43,7 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3g4ri")
-buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("InputOptionsButton"), NodePath("GamepadInputOptionsButton")]
+buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("SpeedrunTimerToggle"), NodePath("InputOptionsButton"), NodePath("GamepadInputOptionsButton")]
 
 [node name="MainMenuButton" type="Node2D" parent="Options"]
 texture_filter = 1
@@ -450,36 +450,35 @@ texture = ExtResource("7_jexq3")
 position = Vector2(160, 8)
 texture = ExtResource("8_1d85j")
 
-[node name="WallslideSlowdownToggle" type="Node2D" parent="Options"]
-visible = false
+[node name="SpeedrunTimerToggle" type="Node2D" parent="Options"]
 texture_filter = 1
 position = Vector2(16, 184)
 script = ExtResource("7_fm3dv")
 
-[node name="OrbSelection" type="Node2D" parent="Options/WallslideSlowdownToggle"]
+[node name="OrbSelection" type="Node2D" parent="Options/SpeedrunTimerToggle"]
 position = Vector2(-8, 8)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/WallslideSlowdownToggle/OrbSelection"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/SpeedrunTimerToggle/OrbSelection"]
 libraries = {
 "": SubResource("AnimationLibrary_c15ny")
 }
 autoplay = "Idle"
 script = ExtResource("3_x81f0")
 
-[node name="MovedByAnimation" type="Node2D" parent="Options/WallslideSlowdownToggle/OrbSelection"]
+[node name="MovedByAnimation" type="Node2D" parent="Options/SpeedrunTimerToggle/OrbSelection"]
 position = Vector2(0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/WallslideSlowdownToggle/OrbSelection/MovedByAnimation"]
+[node name="Sprite2D" type="Sprite2D" parent="Options/SpeedrunTimerToggle/OrbSelection/MovedByAnimation"]
 texture_filter = 1
 texture = ExtResource("4_tsktv")
 region_enabled = true
 region_rect = Rect2(64, 0, 16, 16)
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/WallslideSlowdownToggle"]
+[node name="Sprite2D" type="Sprite2D" parent="Options/SpeedrunTimerToggle"]
 position = Vector2(64, 8)
 texture = ExtResource("5_ey2qm")
 
-[node name="Text" type="Label" parent="Options/WallslideSlowdownToggle/Sprite2D"]
+[node name="Text" type="Label" parent="Options/SpeedrunTimerToggle/Sprite2D"]
 texture_filter = 1
 anchors_preset = -1
 anchor_top = 0.125
@@ -493,17 +492,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_0it6a")
 theme_override_font_sizes/font_size = 12
-text = "WALLSLIDE SLOWDOWN
+text = "SPEEDRUN TIMER
 "
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
 
-[node name="ToggleBox" type="Sprite2D" parent="Options/WallslideSlowdownToggle"]
+[node name="ToggleBox" type="Sprite2D" parent="Options/SpeedrunTimerToggle"]
 position = Vector2(160, 8)
 texture = ExtResource("7_jexq3")
 
-[node name="ToggleCheckmark" type="Sprite2D" parent="Options/WallslideSlowdownToggle"]
+[node name="ToggleCheckmark" type="Sprite2D" parent="Options/SpeedrunTimerToggle"]
 position = Vector2(160, 8)
 texture = ExtResource("8_1d85j")
 

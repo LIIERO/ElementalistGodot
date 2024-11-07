@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class ElementCharge : Area2D
+public partial class ElementCharge : Area2D, IUndoable
 {
 	public bool IsActivated { get; private set; } = false;
     private Player playerInRange = null;
@@ -26,6 +26,7 @@ public partial class ElementCharge : Area2D
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
+        customSignals.Connect(CustomSignals.SignalName.ReplaceTopCheckpoint, new Callable(this, MethodName.ReplaceTopLocalCheckpoint));
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
 
         lightActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
@@ -83,16 +84,22 @@ public partial class ElementCharge : Area2D
         light.Hide();
     }
 
-    private void AddLocalCheckpoint()
+    public void AddLocalCheckpoint()
     {
         chargeStateCheckpoints.Add(IsActivated);
     }
 
-    private void UndoLocalCheckpoint(bool nextCpRequested)
+    public void UndoLocalCheckpoint(bool nextCpRequested)
     {
         if (!nextCpRequested && chargeStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(chargeStateCheckpoints);
         IsActivated = chargeStateCheckpoints[^1];
 
         if (!IsActivated) Deactivate();
+    }
+
+    public void ReplaceTopLocalCheckpoint()
+    {
+        GameUtils.ListRemoveLastElement(chargeStateCheckpoints);
+        AddLocalCheckpoint();
     }
 }

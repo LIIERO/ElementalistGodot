@@ -35,7 +35,7 @@ position = Vector2(-80, 64)
 position = Vector2(-224, 64)
 
 [node name="AirOrb2" parent="Orbs" index="3" instance=ExtResource("4_gwoxh")]
-position = Vector2(192, -64)
+position = Vector2(208, -64)
 
 [node name="Goal" parent="." index="7" instance=ExtResource("5_3o1hq")]
 position = Vector2(-192, 64)

@@ -17,7 +17,7 @@ public partial class SettingsManager : Node
     public int SoundVolume { get; private set; } = 5;
     public int MusicVolume { get; private set; } = 5;
     public bool LightParticlesActive {  get; private set; } = true;
-    public bool WallslideSlowdownActive { get; private set; } = true;
+    public bool SpeedrunTimerVisible { get; private set; } = true;
     
 
     // audio volume stuff
@@ -120,16 +120,16 @@ public partial class SettingsManager : Node
         LightParticlesActive = visible;
     }
 
-    public void SetWallslideSlowdown(bool active)
+    public void SetTimerVisibility(bool active)
     {
-        WallslideSlowdownActive = active;
+        SpeedrunTimerVisible = active;
     }
 
     private const string preferencesPath = "user://preferences.json";
     public void SavePreferences()
     {
         string path = ProjectSettings.GlobalizePath(preferencesPath);
-        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume, LightParticlesActive, WallslideSlowdownActive);
+        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume, LightParticlesActive, SpeedrunTimerVisible);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -151,7 +151,7 @@ public partial class SettingsManager : Node
         SoundVolume = data.SoundVolume;
         MusicVolume = data.MusicVolume;
         LightParticlesActive = data.LightParticlesActive;
-        WallslideSlowdownActive = data.WallslideSlowdownActive;
+        SpeedrunTimerVisible = data.SpeedrunTimerVisible;
     }
 
     private const string inputPreferencesPath = "user://inputPreferences.json";

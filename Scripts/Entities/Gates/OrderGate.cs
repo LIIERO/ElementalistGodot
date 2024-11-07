@@ -3,7 +3,7 @@ using System;
 using GlobalTypes;
 using System.Collections.Generic;
 
-public partial class OrderGate : Gate
+public partial class OrderGate : Gate, IUndoable
 {
     [Export] private int sequenceLength = 4;
     [Export] private ElementState ability0;
@@ -94,13 +94,13 @@ public partial class OrderGate : Gate
         }
     }
 
-    protected override void AddLocalCheckpoint()
+    public override void AddLocalCheckpoint()
     {
         base.AddLocalCheckpoint();
         orderGateCountCheckpoints.Add(abilitiesCounted);
     }
 
-    protected override void UndoLocalCheckpoint(bool nextCpRequested)
+    public override void UndoLocalCheckpoint(bool nextCpRequested)
     {
         base.UndoLocalCheckpoint(nextCpRequested);
 
@@ -108,5 +108,12 @@ public partial class OrderGate : Gate
         abilitiesCounted = orderGateCountCheckpoints[^1];
 
         SetGateCountState(abilitiesCounted);
+    }
+
+    public override void ReplaceTopLocalCheckpoint()
+    {
+        base.ReplaceTopLocalCheckpoint();
+        GameUtils.ListRemoveLastElement(orderGateCountCheckpoints);
+        orderGateCountCheckpoints.Add(abilitiesCounted);
     }
 }

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class ChargeGate : Gate
+public partial class ChargeGate : Gate, IUndoable
 {
 
     [Export] private int requiredCharges;
@@ -29,17 +29,24 @@ public partial class ChargeGate : Gate
         }
     }
 
-    protected override void AddLocalCheckpoint()
+    public override void AddLocalCheckpoint()
     {
         base.AddLocalCheckpoint();
         chargeGateCountCheckpoints.Add(noCharges);
     }
 
-    protected override void UndoLocalCheckpoint(bool nextCpRequested)
+    public override void UndoLocalCheckpoint(bool nextCpRequested)
     {
         base.UndoLocalCheckpoint(nextCpRequested);
 
         if (!nextCpRequested && chargeGateCountCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(chargeGateCountCheckpoints);
         noCharges = chargeGateCountCheckpoints[^1];
+    }
+
+    public override void ReplaceTopLocalCheckpoint()
+    {
+        base.ReplaceTopLocalCheckpoint();
+        GameUtils.ListRemoveLastElement(chargeGateCountCheckpoints);
+        chargeGateCountCheckpoints.Add(noCharges);
     }
 }

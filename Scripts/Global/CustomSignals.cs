@@ -63,6 +63,9 @@ public partial class CustomSignals : Node
     public delegate void AddCheckpointEventHandler();
 
     [Signal]
+    public delegate void ReplaceTopCheckpointEventHandler();
+
+    [Signal]
     public delegate void UndoCheckpointEventHandler(bool nextCheckpointRequested);
 
 }

@@ -12,9 +12,9 @@ public partial class Options : ButtonManager
     private const int SOUNDVOLUME = 3;
     private const int MUSICVOLUME = 4;
     private const int LIGHTPARTICLES = 5;
-    //private const int WALLSLIDE = 6;
-    private const int INPUTSETTINGS = 6;
-    private const int GAMEPADINPUTSETTINGS = 7;
+    private const int TIMER = 6;
+    private const int INPUTSETTINGS = 7;
+    private const int GAMEPADINPUTSETTINGS = 8;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -92,17 +92,17 @@ public partial class Options : ButtonManager
                 }
             }
 
-            /*else if (CurrentItemIndex == WALLSLIDE) // toggle wallslide slowdown
+            else if (CurrentItemIndex == TIMER) // toggle wallslide slowdown
             {
-                if (settingsManager.WallslideSlowdownActive) {
+                if (settingsManager.SpeedrunTimerVisible) {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
-                    settingsManager.SetWallslideSlowdown(false);
+                    settingsManager.SetTimerVisibility(false);
                 }
                 else {
                     (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
-                    settingsManager.SetWallslideSlowdown(true);
+                    settingsManager.SetTimerVisibility(true);
                 }
-            }*/
+            }
         }
 
 
@@ -160,6 +160,6 @@ public partial class Options : ButtonManager
         (buttonList[SOUNDVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.SoundVolume);
         (buttonList[MUSICVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.MusicVolume);
         (buttonList[LIGHTPARTICLES] as MenuToggle).Toggle(settingsManager.LightParticlesActive);
-        //(buttonList[WALLSLIDE] as MenuToggle).Toggle(settingsManager.WallslideSlowdownActive);
+        (buttonList[TIMER] as MenuToggle).Toggle(settingsManager.SpeedrunTimerVisible);
     }
 }

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class AbilityGate : Gate
+public partial class AbilityGate : Gate, IUndoable
 {
 
     public override void _Ready()
@@ -24,18 +24,18 @@ public partial class AbilityGate : Gate
     {
         if (!gameState.IsLevelTransitionPlaying) audioManager.gateOpen.Play();
         isOpened = true;
-        IsAnyGateMovingPrev = true;
+        IsMovingUp = false;
         gateSprite.FlipV = true;
-        animator.Play("Open", customSpeed: 0.8f);
+        animator.Play("Open", customSpeed: openAnimationSpeed);
     }
 
     protected void Close()
     {
         if (!gameState.IsLevelTransitionPlaying) audioManager.gateOpen.Play();
         isOpened = false;
-        IsAnyGateMovingPrev = true;
+        IsMovingUp = true; // When it closes it moves back up
         gateSprite.FlipV = false;
-        animator.Play("Open", customSpeed: -0.8f, fromEnd:true);
+        animator.Play("Open", customSpeed: -openAnimationSpeed, fromEnd:true);
     }
 
     protected override void Reset()
@@ -47,17 +47,12 @@ public partial class AbilityGate : Gate
     protected void SetOpen()
     {
         isOpened = true;
-        IsAnyGateMovingPrev = false;
+        IsMovingUp = false;
         gateSprite.FlipV = true;
         animator.Play("SetOpen");
     }
 
-    protected override void AddLocalCheckpoint()
-    {
-        base.AddLocalCheckpoint();
-    }
-
-    protected override void UndoLocalCheckpoint(bool nextCpRequested)
+    public override void UndoLocalCheckpoint(bool nextCpRequested)
     {
         base.UndoLocalCheckpoint(nextCpRequested);
 

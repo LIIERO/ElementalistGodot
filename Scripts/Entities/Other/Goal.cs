@@ -2,8 +2,9 @@ using GlobalTypes;
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
-public partial class Goal : Area2D
+public partial class Goal : Area2D, IUndoable
 {
     [Export] public bool IsSpecial { get; private set; } = false;
 
@@ -68,6 +69,7 @@ public partial class Goal : Area2D
         //customSignals.Connect(CustomSignals.SignalName.PlayerDied, new Callable(this, MethodName.DetatchFromObjectToFollow));
         customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
+        customSignals.Connect(CustomSignals.SignalName.ReplaceTopCheckpoint, new Callable(this, MethodName.ReplaceTopLocalCheckpoint));
         initialPosition = Position;
 
         bool lightActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
@@ -121,12 +123,12 @@ public partial class Goal : Area2D
         Position = new Vector2(smoothedX, smoothedY);
     }
 
-    private void AddLocalCheckpoint()
+    public void AddLocalCheckpoint()
     {
         goalStateCheckpoints.Add(isHolding);
     }
 
-    private void UndoLocalCheckpoint(bool nextCpRequested)
+    public void UndoLocalCheckpoint(bool nextCpRequested)
     {
         if (!nextCpRequested && goalStateCheckpoints.Count > 1) GameUtils.ListRemoveLastElement(goalStateCheckpoints);
         isHolding = goalStateCheckpoints[^1];
@@ -137,6 +139,12 @@ public partial class Goal : Area2D
             GlobalPosition = initialPosition;
             RemoveAssignedAfterDelay();
         }
+    }
+
+    public void ReplaceTopLocalCheckpoint()
+    {
+        GameUtils.ListRemoveLastElement(goalStateCheckpoints);
+        AddLocalCheckpoint();
     }
 
     async private void RemoveAssignedAfterDelay() // If it's done too fast player can get the goal when not supposed to
