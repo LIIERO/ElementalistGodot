@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_buxxy")
 ID = "0"
-Name = "Useless Orb?"
+Name = "One Way"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

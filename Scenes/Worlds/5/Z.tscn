@@ -1,17 +1,17 @@
 [gd_scene load_steps=11 format=3 uid="uid://63f6k8dmj7cu"]
 
-[ext_resource type="PackedScene" uid="uid://eh4s841nggxg" path="res://Scenes/Worlds/5/Base.tscn" id="1_bnl57"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_1qad8"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="3_kmh1s"]
-[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_8sxrr"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_i5wfr"]
-[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_8xe4k"]
-[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="7_chmqp"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="8_fndtn"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="12_w0c5j"]
-[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="13_7djd1"]
+[ext_resource type="PackedScene" uid="uid://eh4s841nggxg" path="res://Scenes/Worlds/5/Base.tscn" id="1_rrc7i"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="2_3q5kf"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_dow8k"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_j2ao8"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="5_bxmu4"]
+[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="6_spakk"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="7_scdcc"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="8_pyc7j"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="9_pbs8d"]
+[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="10_1px81"]
 
-[node name="Game" instance=ExtResource("1_bnl57")]
+[node name="Game" instance=ExtResource("1_rrc7i")]
 
 [node name="GroundTiles" parent="." index="4"]
 layer_0/tile_data = PackedInt32Array(-589840, 65536, 0, -524304, 0, 1, -458768, 0, 1, -393232, 0, 1, -327696, 0, 1, -262160, 0, 1, -196624, 0, 1, -131088, 0, 1, -65552, 0, 1, -16, 0, 1, 65520, 262144, 1, 131056, 262144, 2, 196592, 0, 1, 262128, 0, 1, 327664, 0, 1, 393200, 262144, 1, 458736, 262144, 2, 524272, 0, 1, 589808, 262144, 1, -589839, 131072, 3, 65521, 720896, 0, 131057, 393216, 3, 393201, 720896, 0, 458737, 393216, 3, 589809, 655360, 0, -589838, 131072, 3, 131058, 196608, 3, 458738, 196608, 3, 589810, 655360, 0, -589837, 131072, 3, 589811, 655360, 0, -589836, 131072, 3, 589812, 589824, 0, -589835, 131072, 3, 589813, 655360, 0, -589834, 131072, 3, 458742, 65536, 2, 589814, 655360, 0, -589833, 131072, 3, -9, 65536, 3, 131063, 65536, 3, 458743, 131072, 3, 589815, 655360, 0, -589832, 131072, 3, -65544, 0, 0, -8, 196608, 1, 65528, 65536, 1, 393208, 65536, 0, 458744, 196608, 1, 524280, 0, 1, 589816, 589824, 0, -589831, 131072, 3, 65529, 131072, 3, 393209, 131072, 3, 589817, 655360, 0, -589830, 131072, 3, -6, 0, 0, 65530, 196608, 1, 131066, 0, 2, 393210, 196608, 3, 589818, 655360, 0, -589829, 131072, 3, 589819, 655360, 0, -589828, 131072, 3, 589820, 655360, 0, -589827, 131072, 3, 458749, 65536, 0, 524285, 0, 1, 589821, 458752, 1, -589826, 131072, 3, 458750, 196608, 3, -589825, 131072, 3, -655360, 131072, 3, -655359, 131072, 3, 393217, 65536, 3, -655358, 131072, 3, 393218, 196608, 0, 458754, 0, 1, 524290, 262144, 1, -655357, 131072, 3, 524291, 655360, 0, -655356, 131072, 3, 524292, 655360, 0, -655355, 131072, 3, -65531, 0, 0, 5, 65536, 1, 327685, 65536, 3, 524293, 655360, 0, -655354, 131072, 3, 6, 131072, 3, 327686, 131072, 3, 524294, 655360, 0, -655353, 131072, 3, -131065, 0, 0, -65529, 65536, 1, 7, 196608, 1, 327687, 196608, 0, 393223, 65536, 1, 458759, 0, 1, 524295, 589824, 0, -655352, 131072, 3, -65528, 196608, 3, 65544, 196608, 3, 393224, 131072, 3, 524296, 655360, 0, -655351, 131072, 3, 393225, 196608, 2, 524297, 655360, 0, -655350, 131072, 3, 524298, 655360, 0, -655349, 131072, 3, 524299, 589824, 0, -655348, 131072, 3, 524300, 655360, 0, -655347, 131072, 3, 65549, 65536, 3, 524301, 655360, 0, -655346, 131072, 3, 14, 524288, 0, 65550, 327680, 3, 327694, 524288, 0, 393230, 327680, 3, 524302, 655360, 0, -655345, 196608, 0, -589809, 0, 1, -524273, 0, 1, -458737, 0, 1, -393201, 0, 1, -327665, 0, 1, -262129, 0, 1, -196593, 0, 1, -131057, 0, 1, -65521, 0, 1, 15, 458752, 1, 65551, 458752, 2, 131087, 0, 1, 196623, 0, 1, 262159, 0, 1, 327695, 458752, 1, 393231, 458752, 2, 458767, 0, 1, 524303, 458752, 1, 262142, 65536, 3, 196609, 196608, 3, 393206, 0, 0, 327689, 0, 0, 65541, 0, 2, 131064, 196608, 2, 65543, 65536, 2, 589838, 589824, 3, 589837, 589824, 3, 589836, 589824, 3, 589835, 589824, 3, 589834, 589824, 3, 589833, 589824, 3, 589832, 589824, 3, 589831, 589824, 3, 589830, 589824, 3, 589829, 589824, 3, 589828, 589824, 3, 589827, 589824, 3, 589826, 327680, 3, 589825, 131072, 3, 589824, 131072, 3, 655359, 131072, 3, 655358, 131072, 3, 655357, 393216, 3, 655356, 589824, 3, 655355, 589824, 3, 655354, 589824, 3, 655353, 589824, 3, 655352, 589824, 3, 655351, 589824, 3, 655350, 589824, 3, 655349, 589824, 3, 655348, 589824, 3, 655347, 589824, 3, 655346, 589824, 3, 655345, 589824, 3, 655344, 524288, 3, 589839, 720896, 3, 196608, 131072, 3, 262143, 131072, 3, 393229, 65536, 3, 458763, 0, 1, 393227, 0, 0, 524276, 0, 1, 458740, 0, 0)
@@ -31,7 +31,7 @@ layer_0/tile_data = PackedInt32Array(131056, 196608, 2, 327664, 196608, 2, -15, 
 [node name="BackgroundTiles" parent="." index="8"]
 layer_0/tile_data = PackedInt32Array(589816, 720896, 3, 524280, 720896, 2, 458744, 720896, 2, 589815, 589824, 3, 524279, 589824, 2, 458743, 589824, 2, 589814, 589824, 3, 524278, 327680, 1, 458742, 524288, 1, 589813, 524288, 3, 524277, 524288, 0, 589810, 589824, 3, 524274, 393216, 1, 458738, 720896, 0, 589809, 589824, 3, 524273, 589824, 2, 458737, 393216, 1, 589808, 524288, 3, 524272, 524288, 1, 458736, 524288, 1, 589811, 720896, 3, 524275, 720896, 0, 524297, 589824, 3, 458761, 393216, 1, 393225, 720896, 2, 524296, 589824, 3, 458760, 589824, 2, 393224, 589824, 2, 524295, 524288, 3, 458759, 524288, 1, 393223, 524288, 1, 524298, 720896, 3, 458762, 720896, 0, 524303, 720896, 3, 458767, 720896, 2, 524302, 589824, 3, 458766, 589824, 2, 524301, 589824, 3, 458765, 327680, 1, 393230, 327680, 1, 393229, 524288, 0, 393231, 720896, 2, 524300, 524288, 3, 458764, 524288, 0, 393201, 720896, 0, 262129, 720896, 3, 196593, 393216, 2, 131057, 655360, 0, 393200, 262144, 1, 327664, 0, 1, 262128, 262144, 2, 196592, 524288, 1, 131056, 524288, 0, 196594, 720896, 3, 131058, 720896, 0, 327695, 458752, 1, 262159, 0, 1, 196623, 458752, 2, 131087, 720896, 2, 65551, 720896, 0, 327694, 524288, 0, 196622, 524288, 3, 131086, 327680, 2, 65550, 655360, 0, 131085, 524288, 3, 65549, 524288, 0, 131064, 589824, 3, 65528, 589824, 2, -8, 327680, 1, 131063, 524288, 3, 65527, 524288, 1, -9, 524288, 0, 65530, 720896, 2, -6, 720896, 0, 65529, 589824, 2, -7, 393216, 1, -65543, 720896, 0, -65544, 524288, 0, 65544, 720896, 3, 8, 720896, 2, -65528, 720896, 0, 65543, 589824, 3, 7, 589824, 2, -65529, 393216, 1, -131065, 720896, 0, -65530, 327680, 1, -131066, 524288, 0, 6, 589824, 2, -65531, 524288, 0, 65542, 589824, 3, 65541, 524288, 3, 5, 524288, 1, 131066, 720896, 3, 131065, 589824, 3, 393208, 720896, 0, 393207, 655360, 0, 393206, 524288, 0, 327689, 720896, 0, 327688, 655360, 0, 327687, 524288, 0, 655358, 720896, 3, 589822, 720896, 2, 524286, 393216, 2, 458750, 655360, 0, 655357, 524288, 3, 589821, 524288, 1, 524285, 524288, 1, 458749, 524288, 0, 524287, 589824, 3, 458751, 655360, 0, 458753, 327680, 2, 393217, 655360, 0, 458752, 589824, 3, 393216, 655360, 0, 524290, 720896, 2, 458754, 720896, 2, 524289, 524288, 1, 393218, 720896, 0, 589826, 720896, 3, 589825, 524288, 3)
 
-[node name="Goal" parent="." index="9" instance=ExtResource("3_kmh1s")]
+[node name="Goal" parent="." index="9" instance=ExtResource("2_3q5kf")]
 position = Vector2(-96, 112)
 
 [node name="SemisolidUp" parent="Semisolids" index="0"]
@@ -45,44 +45,44 @@ layer_0/tile_data = PackedInt32Array(-917502, 0, 0, -917501, 131072, 0, -917500,
 
 [node name="Orbs" type="Node2D" parent="." index="11"]
 
-[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("4_8sxrr")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_dow8k")]
 position = Vector2(-32, 32)
 
-[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("5_i5wfr")]
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("4_j2ao8")]
 position = Vector2(-16, 0)
 
-[node name="EarthOrb2" parent="Orbs" index="2" instance=ExtResource("6_8xe4k")]
+[node name="EarthOrb2" parent="Orbs" index="2" instance=ExtResource("5_bxmu4")]
 position = Vector2(16, 0)
 
-[node name="EarthOrb3" parent="Orbs" index="3" instance=ExtResource("6_8xe4k")]
+[node name="EarthOrb3" parent="Orbs" index="3" instance=ExtResource("5_bxmu4")]
 position = Vector2(96, 112)
 
-[node name="FireOrb3" parent="Orbs" index="4" instance=ExtResource("7_chmqp")]
+[node name="FireOrb3" parent="Orbs" index="4" instance=ExtResource("6_spakk")]
 position = Vector2(-208, 80)
 
-[node name="FireOrb2" parent="Orbs" index="5" instance=ExtResource("7_chmqp")]
+[node name="FireOrb2" parent="Orbs" index="5" instance=ExtResource("6_spakk")]
 position = Vector2(32, 32)
 
-[node name="CopyTopOrb" parent="Orbs" index="6" instance=ExtResource("8_fndtn")]
+[node name="CopyTopOrb" parent="Orbs" index="6" instance=ExtResource("7_scdcc")]
 position = Vector2(208, 80)
 
 [node name="Interactables" type="Node2D" parent="." index="12"]
 
-[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_1qad8")]
+[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("8_pyc7j")]
 position = Vector2(0, 48)
 
 [node name="Charges" type="Node2D" parent="." index="13"]
 
-[node name="ChargeGate" parent="Charges" index="0" instance=ExtResource("12_w0c5j")]
+[node name="ChargeGate" parent="Charges" index="0" instance=ExtResource("9_pbs8d")]
 position = Vector2(-64, 112)
 requiredCharges = 2
 
-[node name="ChargeGate2" parent="Charges" index="1" instance=ExtResource("12_w0c5j")]
+[node name="ChargeGate2" parent="Charges" index="1" instance=ExtResource("9_pbs8d")]
 position = Vector2(64, 112)
 requiredCharges = 2
 
-[node name="ElementCharge" parent="Charges" index="2" instance=ExtResource("13_7djd1")]
+[node name="ElementCharge" parent="Charges" index="2" instance=ExtResource("10_1px81")]
 position = Vector2(-128, 48)
 
-[node name="ElementCharge2" parent="Charges" index="3" instance=ExtResource("13_7djd1")]
+[node name="ElementCharge2" parent="Charges" index="3" instance=ExtResource("10_1px81")]
 position = Vector2(128, 48)

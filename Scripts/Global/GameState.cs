@@ -18,7 +18,7 @@ public partial class GameState : Node
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "8S" } }, // Cave Outskirts
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
         { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "AS", "BS" } }, // Operatorium
-        { "5", new string[] { "HUB", "0", "1", "2", "3", "1S" } } // Knipe
+        { "5", new string[] { "HUB", "0", "1", "2", "A", "B", "C", "D", "E", "X", "Y", "Z", "2S", "BS" } } // Knipe
     };
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
 

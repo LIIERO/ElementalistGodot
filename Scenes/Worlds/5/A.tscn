@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3e45hf1wa660"]
+
+[ext_resource type="PackedScene" uid="uid://eh4s841nggxg" path="res://Scenes/Worlds/5/Base.tscn" id="1_262d2"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_yid68"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="3_bfkle"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_lhm5k"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_5wk0f"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="6_7hpf3"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="8_dcvrj"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="11_gkbuf"]
+[ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="11_jhqfh"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="12_26d7k"]
+[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="13_atsap"]
+
+[node name="Game" instance=ExtResource("1_262d2")]
+
+[node name="Zoe" parent="." index="1"]
+position = Vector2(208, -16)
+
+[node name="GroundTiles" parent="." index="4"]
+layer_0/tile_data = PackedInt32Array(65520, 0, 1, -16, 0, 1, -65552, 0, 1, -131088, 0, 1, -196624, 0, 1, -262160, 0, 1, -327696, 0, 1, -393232, 0, 1, -458768, 0, 1, -524304, 0, 1, -589840, 65536, 0, -655345, 196608, 0, -655346, 131072, 3, -655347, 131072, 3, -655348, 131072, 3, -655349, 131072, 3, -655350, 131072, 3, -655351, 131072, 3, -655352, 131072, 3, -655353, 131072, 3, -655354, 131072, 3, -655355, 131072, 3, -655356, 131072, 3, -655357, 131072, 3, -655358, 131072, 3, -655359, 131072, 3, -655360, 131072, 3, -589825, 131072, 3, -589826, 131072, 3, -589827, 131072, 3, -589828, 131072, 3, -589829, 131072, 3, -589830, 131072, 3, -589831, 131072, 3, -589832, 131072, 3, -589833, 131072, 3, -589834, 131072, 3, -589835, 131072, 3, -589836, 131072, 3, -589837, 131072, 3, -589838, 131072, 3, -589839, 131072, 3, 262159, 720896, 3, 196623, 720896, 2, 131087, 458752, 1, 65551, 0, 1, 15, 0, 1, -65521, 0, 1, -131057, 0, 1, -196593, 0, 1, -262129, 0, 1, -327665, 0, 1, -393201, 0, 1, -458737, 0, 1, -524273, 0, 1, -589809, 0, 1, 393202, 458752, 2, 327666, 720896, 2, 262129, 524288, 1, 196593, 327680, 2, 131057, 655360, 0, 196594, 720896, 2, 131058, 720896, 0, 327671, 524288, 1, 393207, 262144, 2, 458743, 0, 2, 327672, 720896, 2, 393208, 720896, 3, 458749, 524288, 3, 458750, 458752, 2, 131081, 720896, 0, 196617, 393216, 3, 196618, 196608, 3, 262135, 524288, 0, 262136, 720896, 0, 393213, 524288, 0, 393214, 720896, 0, 131079, 524288, 0, 196615, 524288, 3, 131080, 655360, 0, 196616, 589824, 3, -65527, 524288, 0, 9, 524288, 3, -65526, 720896, 0, 10, 720896, 3, 393230, 720896, 3, 327694, 720896, 2, 262158, 589824, 1, 458765, 0, 2, 393229, 262144, 2, 327693, 327680, 2, 262157, 655360, 0, -65523, 196608, 3, 327692, 524288, 3, 262156, 262144, 1, 196620, 0, 0, 12, 0, 2, -65524, 65536, 0, 196592, 524288, 3, 131056, 262144, 1, 262130, 720896, 2, 524286, 0, 2, 327665, 524288, 1, 458738, 0, 1, 393201, 524288, 3, 524274, 0, 2, 196622, 524288, 1, 131086, 524288, 0)
+
+[node name="ParallaxLayer2" parent="ParallaxBackground" index="1"]
+motion_mirroring = Vector2(480, 288)
+
+[node name="ParallaxLayer3" parent="ParallaxBackground" index="2"]
+motion_mirroring = Vector2(480, 288)
+
+[node name="Decals" parent="." index="6"]
+layer_0/tile_data = PackedInt32Array(196637, 0, 0, 327702, 131072, 268435456, 1048584, 131072, 0, 1114090, 0, 268435456, 393243, 262144, 268435456, 1048587, 262144, 0, 1048605, 131072, 805306368, 983025, 0, 805306368, 917529, 0, 536870912, 131097, 262144, 536870912, 1048571, 262144, 805306368, 1048594, 393216, 1, 196627, 458752, 1, 65563, 458752, 805306368, 1179628, 393216, 268435456, 1048559, 458752, 536870913, 1179621, 458752, 805306368, 851938, 131072, 536870912)
+
+[node name="DangerTiles" parent="." index="7"]
+layer_0/tile_data = PackedInt32Array(10, 131072, 2, 9, 196608, 2, 12, 196608, 3, -65523, 65536, 1, -65524, 196608, 2, 196622, 196608, 1, 196621, 0, 0, 196620, 196608, 2, 65551, 196608, 1, 65550, 131072, 1, 131084, 131072, 3, 131082, 196608, 1, 131081, 196608, 2, 458750, 0, 2, 458749, 0, 1, 524286, 0, 3, 458743, 196608, 3, 524274, 0, 3, 393202, 131072, 2, 393201, 65536, 2, 458765, 131072, 3, 393230, 0, 2, 393229, 65536, 2)
+
+[node name="BackgroundTiles" parent="." index="8"]
+layer_0/tile_data = PackedInt32Array(262157, 589824, 2, 196621, 589824, 2, 131085, 589824, 2, 262156, 524288, 1, 196620, 327680, 2, 131084, 327680, 1, 262158, 393216, 1, 196622, 720896, 2, 65549, 393216, 1, 13, 720896, 2, 65548, 524288, 1, 12, 327680, 2, 131086, 720896, 2, 65550, 720896, 0, -65523, 720896, 0, -65524, 655360, 0, 196619, 589824, 3, 131083, 655360, 0, 65546, 720896, 2, 10, 589824, 1, 65545, 524288, 1, 9, 524288, 0, 131082, 393216, 1, 131081, 524288, 1, 196618, 589824, 3, 196617, 524288, 3, 458765, 327680, 2, 393229, 589824, 2, 327693, 589824, 2, 458764, 524288, 3, 393228, 524288, 1, 327692, 524288, 1, 524302, 393216, 2, 458766, 589824, 2, 393230, 589824, 2, 524301, 524288, 1, 524303, 720896, 3, 458767, 720896, 2, 393231, 720896, 2, 327695, 720896, 2, 327694, 589824, 2, 262159, 720896, 0, 589838, 720896, 3, 589837, 524288, 3, -65525, 655360, 0, -65526, 524288, 0, 11, 589824, 3, 524274, 720896, 3, 458738, 720896, 2, 393202, 720896, 2, 524273, 524288, 3, 458737, 327680, 2, 393201, 589824, 2, 327666, 720896, 0, 327665, 655360, 0, 458736, 524288, 3, 393200, 524288, 1, 327664, 524288, 0, 393207, 327680, 2, 327671, 655360, 0, 393206, 524288, 3, 327670, 327680, 0, 524280, 720896, 3, 458744, 720896, 2, 393208, 720896, 2, 524279, 524288, 3, 458743, 524288, 1, 327672, 720896, 0, 524286, 393216, 1, 458750, 720896, 0, 524285, 327680, 2, 458749, 655360, 0, 524284, 524288, 3, 458748, 524288, 0, 589822, 393216, 2, 589821, 524288, 1, 655358, 720896, 3, 655357, 524288, 3, 589823, 720896, 3, 524287, 720896, 0, 524293, 393216, 1, 458757, 720896, 0, 524292, 327680, 1, 458756, 524288, 0, 589830, 720896, 3, 524294, 720896, 0, 589829, 589824, 3, 524291, 524288, 0, 589828, 589824, 3, 589827, 524288, 3, 589833, 720896, 3, 524297, 720896, 0, 589832, 524288, 3, 524296, 524288, 0, 327669, 65536, 3, 655349, 589824, 3, 589813, 655360, 0, 655348, 524288, 3, 589812, 524288, 0, 655350, 720896, 3, 589814, 720896, 0)
+
+[node name="LevelExit" parent="." index="9" instance=ExtResource("2_yid68")]
+position = Vector2(208, -16)
+
+[node name="Goal" parent="." index="10" instance=ExtResource("3_bfkle")]
+position = Vector2(-224, 0)
+
+[node name="Orbs" type="Node2D" parent="." index="11"]
+
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("4_lhm5k")]
+position = Vector2(176, 80)
+
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("5_5wk0f")]
+position = Vector2(-64, 80)
+
+[node name="CopyTopOrb" parent="Orbs" index="2" instance=ExtResource("8_dcvrj")]
+position = Vector2(160, 80)
+
+[node name="LoveOrb" parent="Orbs" index="3" instance=ExtResource("11_jhqfh")]
+position = Vector2(128, 80)
+
+[node name="LoveOrb2" parent="Orbs" index="4" instance=ExtResource("11_jhqfh")]
+position = Vector2(48, 80)
+
+[node name="EarthOrb" parent="Orbs" index="5" instance=ExtResource("6_7hpf3")]
+position = Vector2(144, 80)
+
+[node name="Interactables" type="Node2D" parent="." index="12"]
+
+[node name="Gates" type="Node2D" parent="." index="13"]
+
+[node name="ChargeGate" parent="Gates" index="0" instance=ExtResource("12_26d7k")]
+position = Vector2(160, -32)
+requiredCharges = 2
+
+[node name="ElementCharge" parent="Gates" index="1" instance=ExtResource("13_atsap")]
+position = Vector2(-96, 80)
+
+[node name="ElementCharge2" parent="Gates" index="2" instance=ExtResource("13_atsap")]
+position = Vector2(-224, -32)
+
+[node name="SemisolidUp" parent="Semisolids" index="0"]
+layer_0/tile_data = PackedInt32Array(458748, 65536, 0, 458747, 131072, 0, 458746, 131072, 0, 458745, 131072, 0, 458744, 0, 0, 393228, 65536, 0, 393227, 131072, 0, 393226, 131072, 0, 393225, 131072, 0, 393224, 131072, 0, 393223, 131072, 0, 393222, 131072, 0, 393221, 131072, 0, 393220, 131072, 0, 393219, 131072, 0, 393218, 131072, 0, 393217, 131072, 0, 393216, 131072, 0, 458751, 0, 0, 327670, 65536, 0, 327669, 131072, 0, 327668, 131072, 0, 327667, 0, 0, -65525, 196608, 0, -65522, 196608, 0)
+
+[node name="SemisolidDown" parent="Semisolids" index="1"]
+layer_0/tile_data = PackedInt32Array(-196620, 196608, 0)
+
+[node name="WaterIndicator" parent="." index="15" instance=ExtResource("11_gkbuf")]
+position = Vector2(128, 48)

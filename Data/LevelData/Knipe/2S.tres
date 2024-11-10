@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_uyrnc")
-ID = "3"
-Name = "Love Bombing"
+ID = "2S"
+Name = "Get Burried Alive"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = ""
-IsSpecial = false
+SpecificLevelCompletedToUnlock = "2"
+IsSpecial = true

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_hff64")
 ID = "2"
-Name = "Guilt Tripping"
+Name = "Dig Yourself Out"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = ""
+SpecificLevelCompletedToUnlock = "0"
 IsSpecial = false
