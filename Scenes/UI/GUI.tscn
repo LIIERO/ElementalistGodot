@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=43 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -41,6 +41,10 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("6_thq10")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7dfv"]
+atlas = ExtResource("6_thq10")
+region = Rect2(0, 64, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nnjkw"]
 animations = [{
 "frames": [{
@@ -75,7 +79,10 @@ animations = [{
 "name": &"3",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7dfv")
+}],
 "loop": false,
 "name": &"default",
 "speed": 5.0
@@ -96,6 +103,10 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mn56e"]
 atlas = ExtResource("6_kqd18")
 region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jxmh"]
+atlas = ExtResource("6_kqd18")
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v6e0d"]
 animations = [{
@@ -131,7 +142,10 @@ animations = [{
 "name": &"ZoeSmug",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jxmh")
+}],
 "loop": false,
 "name": &"default",
 "speed": 5.0
@@ -244,13 +258,11 @@ visible_ratio = 0.0
 [node name="PortraitBackground" type="AnimatedSprite2D" parent="DialogBox"]
 position = Vector2(-112, 0)
 sprite_frames = SubResource("SpriteFrames_nnjkw")
-animation = &"0"
 autoplay = "default"
 
 [node name="Portrait" type="AnimatedSprite2D" parent="DialogBox"]
 position = Vector2(-112, 0)
 sprite_frames = SubResource("SpriteFrames_v6e0d")
-animation = &"ZoeSmug"
 autoplay = "default"
 
 [node name="AnimatedSprite2D" parent="DialogBox" instance=ExtResource("6_mk8rw")]

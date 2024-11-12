@@ -17,7 +17,7 @@ public partial class GameState : Node
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "8S" } }, // Cave Outskirts
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
-        { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "AS", "BS" } }, // Operatorium
+        { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "J", "K", "L", "AS", "BS" } }, // Operatorium
         { "5", new string[] { "HUB", "0", "1", "2", "A", "B", "C", "D", "E", "X", "Y", "Z", "2S", "BS" } } // Knipe
     };
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
@@ -203,7 +203,7 @@ public partial class GameState : Node
     {
         IsGameplayActive = true;
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
-        if (CurrentLevel == "HUB") WorldEntrance.setPlayerWorldEnterPosition = true;
+        if (CurrentLevel == "HUB" && !LevelTeleport.setPlayerLevelEnterPosition) WorldEntrance.setPlayerWorldEnterPosition = true;
     }
 
     public void LoadWorld(string world)
@@ -231,10 +231,9 @@ public partial class GameState : Node
 
     public void LoadHubLevel()
     {
+        LevelTeleport.setPlayerLevelEnterPosition = true; // Level enter player position set in LevelTeleport because it was easier that way
         IsCurrentLevelSpecial = false;
         LoadLevel("HUB");
-        // Level enter player position set in LevelTeleport because it was easier that way
-        LevelTeleport.setPlayerLevelEnterPosition = true;
     }
 
     public void LoadMenu()

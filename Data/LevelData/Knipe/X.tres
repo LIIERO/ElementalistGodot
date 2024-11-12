@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_5se4r")
-ID = "E"
-Name = "Love Bombing"
+ID = "X"
+Name = "Mouse Trap"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "D"
+SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
