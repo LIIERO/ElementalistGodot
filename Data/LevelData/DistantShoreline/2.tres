@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_cibys")
 ID = "2"
-Name = "Useless Orb"
+Name = "The Copy"
 NoCompletedToUnlock = 2
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

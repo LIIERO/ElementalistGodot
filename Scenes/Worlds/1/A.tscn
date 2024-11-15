@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_ermym"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="4_ywnxy"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="5_2gkv4"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_igwuq"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="6_joygv"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="8_ly1k2"]
 
 [node name="Game" instance=ExtResource("1_tkv4l")]
 
@@ -37,11 +37,11 @@ position = Vector2(-144, 48)
 [node name="WaterOrb2" parent="Orbs" index="0" instance=ExtResource("3_a8r6u")]
 position = Vector2(-16, 80)
 
-[node name="AirOrb2" parent="Orbs" index="1" instance=ExtResource("4_ermym")]
-position = Vector2(-112, 32)
-
-[node name="CopyTopOrb" parent="Orbs" index="2" instance=ExtResource("5_igwuq")]
+[node name="WaterOrb3" parent="Orbs" index="1" instance=ExtResource("3_a8r6u")]
 position = Vector2(48, 16)
+
+[node name="AirOrb2" parent="Orbs" index="2" instance=ExtResource("4_ermym")]
+position = Vector2(-112, 32)
 
 [node name="Charges" type="Node2D" parent="." index="9"]
 
@@ -58,5 +58,12 @@ position = Vector2(16, 32)
 position = Vector2(-112, 64)
 requiredCharges = 3
 
-[node name="Goal" parent="." index="11" instance=ExtResource("6_joygv")]
+[node name="ChargeGate2" parent="." index="11" instance=ExtResource("5_2gkv4")]
+position = Vector2(48, 80)
+requiredCharges = 1
+
+[node name="Goal" parent="." index="12" instance=ExtResource("6_joygv")]
 position = Vector2(224, 48)
+
+[node name="WaterIndicator" parent="." index="15" instance=ExtResource("8_ly1k2")]
+position = Vector2(-16, 32)

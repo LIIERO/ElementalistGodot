@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckmrfvu4re74u"]
+[gd_scene load_steps=13 format=3 uid="uid://ckmrfvu4re74u"]
 
 [ext_resource type="PackedScene" uid="uid://eh4s841nggxg" path="res://Scenes/Worlds/5/Base.tscn" id="1_me5xx"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_4qu41"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://4mpfpc802n76" path="res://Scenes/Entities/Orbs/ReverseOrb.tscn" id="9_q0pnb"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="10_or74x"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="11_4hye0"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="12_jdc8k"]
 
 [node name="Game" instance=ExtResource("1_me5xx")]
 
@@ -99,3 +100,6 @@ layer_0/tile_data = PackedInt32Array(-1250885635, 196608, 0, 917511, 65536, 0, 9
 
 [node name="SemisolidRight" parent="Semisolids" index="3"]
 layer_0/tile_data = PackedInt32Array(-589827, 131072, 0, -589826, 65536, 0, -589830, 0, 0, -589829, 131072, 0, -589828, 131072, 0)
+
+[node name="WaterIndicator" parent="." index="15" instance=ExtResource("12_jdc8k")]
+position = Vector2(80, 0)
