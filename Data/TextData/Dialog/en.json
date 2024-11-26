@@ -3,10 +3,13 @@
 	{"background": "default", "portrait": "default", "text": ""}
   ],
 
-  "0_HUB_interacting": [
-	{"background": "0", "portrait": "SignNormal", "text": "Press up to interact with interactable objects."},
-	{"background": "0", "portrait": "SignNormal", "text": "No need to thank me."},
-	{"background": "0", "portrait": "ZoeSmug", "text": "..."}
+  "0_HUB_jump": [
+	{"background": "0", "portrait": "SignNormal", "text": "Hold the jump button to jump higher."}
+  ],
+
+  "0_HUB_controls": [
+	{"background": "0", "portrait": "SignNormal", "text": "You can adjust your controls in the options menu."},
+  {"background": "0", "portrait": "SignNormal", "text": "Unless you are satisfied with the default ones, of course."}
   ],
 
   "0_2_failed": [
@@ -22,12 +25,42 @@
   ],
 
   "0_5_undo": [
-	{"background": "0", "portrait": "SignNormal", "text": "Did you know? Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."}
+	{"background": "0", "portrait": "SignNormal", "text": "Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."}
   ],
+
+  "1_HUB_reminder": [
+	{"background": "1", "portrait": "SignNormal", "text": "Don't forget about the left side of the Forest."}
+  ],
+
+  "1_HUB_warning": [
+	{"background": "1", "portrait": "SignNormal", "text": "20 fragments for harder execution."},
+	{"background": "1", "portrait": "SignNormal", "text": "30 fragments for hardest execution"}
+	],
 
   "1_4S_special": [
 	{"background": "1", "portrait": "SignNormal", "text": "Levels marked with S are completely optional."},
-	{"background": "1", "portrait": "SignNormal", "text": "They are usually very difficult, so don't feel bad for skipping them!"},
-	{"background": "1", "portrait": "ZoeSad", "text": "But this red fragment looks so tempting..."}
+	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels, usually with much higher difficulty."},
+  {"background": "1", "portrait": "SignNormal", "text": "Don't feel bad for skipping them! \nYou can always come back later."}
+  ],
+
+  "2_8S_warning": [
+	{"background": "2", "portrait": "SignNormal", "text": "Levels of execution are high."}
+  ],
+
+  "3_5S_warning": [
+	{"background": "3", "portrait": "SignNormal", "text": "You will never have to do this again."}
+  ],
+
+  "H_A_finale": [
+	{"background": "H", "portrait": "SignNormal", "text": "This is it, the final level of the demo."},
+  {"background": "H", "portrait": "SignNormal", "text": "Good luck!"}
+  ],
+
+  "H_A_congrats": [
+	{"background": "H", "portrait": "SignNormal", "text": "You did it! Congrats!"}
+  ],
+
+  "H_B_wishlist": [
+	{"background": "H", "portrait": "SignNormal", "text": "Please wishlist the game if you enjoyed it!"}
   ]
 }

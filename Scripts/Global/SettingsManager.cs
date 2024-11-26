@@ -17,7 +17,7 @@ public partial class SettingsManager : Node
     public int SoundVolume { get; private set; } = 5;
     public int MusicVolume { get; private set; } = 5;
     public bool LightParticlesActive {  get; private set; } = true;
-    public bool SpeedrunTimerVisible { get; private set; } = true;
+    public bool SpeedrunTimerVisible { get; private set; } = false;
     
 
     // audio volume stuff

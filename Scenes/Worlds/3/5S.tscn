@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkb7ovkgssthe"]
+[gd_scene load_steps=11 format=3 uid="uid://dkb7ovkgssthe"]
 
 [ext_resource type="PackedScene" uid="uid://bwabd5uj1swuf" path="res://Scenes/Worlds/3/Base.tscn" id="1_g5ogs"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_mlma7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="8_o7h88"]
 [ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="9_gvt1d"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="9_ikmgu"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="10_blidp"]
 
 [node name="Game" instance=ExtResource("1_g5ogs")]
 
@@ -67,3 +68,7 @@ layer_0/tile_data = PackedInt32Array(65527, 589824, 2, -9, 393216, 1, 65526, 589
 
 [node name="WaterIndicator" parent="." index="12" instance=ExtResource("9_gvt1d")]
 position = Vector2(-48, 64)
+
+[node name="Sign" parent="." index="13" instance=ExtResource("10_blidp")]
+position = Vector2(-64, 32)
+Text = "3_5S_warning"

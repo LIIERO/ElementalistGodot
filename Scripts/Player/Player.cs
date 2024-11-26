@@ -666,7 +666,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	{
 		if (isUndoing) return;
         checkpointRequested = true;
-		SetCheckpointIndicatorPosition();
+		//SetCheckpointIndicatorPosition();
     }
 
 	private async void RequestCheckpointAfterTime(float t)
@@ -739,7 +739,7 @@ public partial class Player : CharacterBody2D, IUndoable
     {
         playerPositionCheckpoints.Add(GlobalPosition);
         playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
-        SetCheckpointIndicatorPosition();
+        //SetCheckpointIndicatorPosition();
     }
 
     public void UndoLocalCheckpoint(bool nextCpRequested)
@@ -760,7 +760,7 @@ public partial class Player : CharacterBody2D, IUndoable
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
         customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
 
-        SetCheckpointIndicatorPosition(true);
+        //SetCheckpointIndicatorPosition(true);
     }
 
     public void ReplaceTopLocalCheckpoint()

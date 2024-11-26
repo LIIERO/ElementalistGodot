@@ -26,8 +26,7 @@ position = Vector2(-104, 32)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_k17j4")]
 position = Vector2(-192, 112)
-Text = "Warning: the solution requires tricky platforming."
-SunHoldingText = "Excellent work!"
+Text = "2_8S_warning"
 
 [node name="Orbs" type="Node2D" parent="." index="6"]
 

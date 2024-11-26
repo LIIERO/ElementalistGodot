@@ -60,8 +60,8 @@ playerNode = NodePath("../../Zoe")
 [node name="Interactables" type="Node2D" parent="." index="6"]
 
 [node name="Sign" parent="Interactables" index="0" instance=ExtResource("5_r0uht")]
-position = Vector2(0, 96)
-Text = "Welcome to the Void, you can access every single world here."
+position = Vector2(416, 64)
+Text = "If you are only playtesting the demo, don't go past the gate on the right."
 
 [node name="Levels" type="Node2D" parent="Interactables" index="1"]
 

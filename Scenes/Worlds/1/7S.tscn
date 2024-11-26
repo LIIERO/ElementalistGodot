@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b18mw6thes2qy"]
+[gd_scene load_steps=7 format=3 uid="uid://b18mw6thes2qy"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_2gyii"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_xr7oy"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_5diiy"]
-[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="3_iclna"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="4_owekw"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_igjge"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="6_3x6gi"]
@@ -23,10 +22,6 @@ layer_0/tile_data = PackedInt32Array(524304, 720896, 3, 458768, 720896, 2, 39323
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_xr7oy")]
 position = Vector2(-192, -48)
-
-[node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_iclna")]
-position = Vector2(16, 112)
-Text = "Warning: the solution requires tricky platforming."
 
 [node name="Orbs" type="Node2D" parent="." index="6"]
 

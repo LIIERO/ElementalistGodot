@@ -10,7 +10,7 @@ public class PreferencesData
     public int SoundVolume { get; private set; } = 5;
     public int MusicVolume { get; private set; } = 5;
     public bool LightParticlesActive { get; private set; } = true;
-    public bool SpeedrunTimerVisible { get; private set; } = true;
+    public bool SpeedrunTimerVisible { get; private set; } = false;
     
 
     public PreferencesData(bool Fullscreen, int WindowScale, int SoundVolume, int MusicVolume, bool LightParticlesActive, bool SpeedrunTimerVisible)

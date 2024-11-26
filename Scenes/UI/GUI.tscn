@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=44 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -41,6 +41,10 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("6_thq10")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_od41x"]
+atlas = ExtResource("6_thq10")
+region = Rect2(256, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7dfv"]
 atlas = ExtResource("6_thq10")
 region = Rect2(0, 64, 64, 64)
@@ -77,6 +81,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od41x")
+}],
+"loop": false,
+"name": &"H",
 "speed": 5.0
 }, {
 "frames": [{
