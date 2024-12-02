@@ -181,7 +181,7 @@ public partial class Player : CharacterBody2D, IUndoable
                 customSignals.EmitSignal(CustomSignals.SignalName.ProgressDialog);
         }
 
-		//GD.Print(CanAddCheckpoint());
+        //GD.Print(CanAddCheckpoint());
         //GD.Print(isOnMovingEntity);
     }
 

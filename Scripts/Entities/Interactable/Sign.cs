@@ -24,12 +24,13 @@ public partial class Sign : Interactable
 		base.Interact();
 
         // This middle bit is only for easter eggs where sign says something different when you carry a sun
+        string text = Text;
         if (playerScriptReference.IsHoldingGoal)
         {
-            Text = string.IsNullOrEmpty(SunHoldingText) ? Text : SunHoldingText;
+            text = string.IsNullOrEmpty(SunHoldingText) ? Text : SunHoldingText;
         }
 
-        customSignals.EmitSignal(CustomSignals.SignalName.StartDialog, Text);
+        customSignals.EmitSignal(CustomSignals.SignalName.StartDialog, text);
     }
 
     protected override void PlayerExited()

@@ -316,6 +316,7 @@ libraries = {
 }
 
 [node name="InGameTimeDisplay" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(0, 270)
 texture = ExtResource("23_t0g6t")
 script = ExtResource("23_la0yc")

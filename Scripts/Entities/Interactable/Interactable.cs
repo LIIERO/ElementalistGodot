@@ -37,6 +37,7 @@ public abstract partial class Interactable : Area2D
     {
         if (body is not Player) return;
         playerScriptReference = body as Player;
+        
         PlayerEntered();
     }
 
