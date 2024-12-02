@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://lh2n3vbo60wm"]
+[gd_scene load_steps=5 format=3 uid="uid://lh2n3vbo60wm"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_ltph2"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_r2veq"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="4_6tjxf"]
-[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="4_ip7im"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="5_u1eyk"]
 
 [node name="Game" instance=ExtResource("1_ltph2")]
@@ -25,10 +24,6 @@ position = Vector2(160, -32)
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("4_6tjxf")]
 position = Vector2(192, -16)
-
-[node name="Sign" parent="Interactables" index="1" instance=ExtResource("4_ip7im")]
-position = Vector2(-128, 80)
-Text = "0_3_retry"
 
 [node name="Goal" parent="." index="7" instance=ExtResource("5_u1eyk")]
 position = Vector2(-160, 0)

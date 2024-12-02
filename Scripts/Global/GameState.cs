@@ -16,9 +16,7 @@ public partial class GameState : Node
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "8S" } }, // Cave Outskirts
-        { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
-        { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "J", "K", "L", "AS", "BS" } }, // Operatorium
-        { "5", new string[] { "HUB", "0", "1", "2", "A", "B", "C", "D", "E", "X", "Y", "Z", "2S", "BS" } } // Knipe
+        { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } } // Islands of Ashes
     };
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
 
@@ -364,7 +362,7 @@ public partial class GameState : Node
 
     //private bool isGameDebugUnlocked = false;
     // DEBUG
-    public override void _Process(double delta)
+    /*public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("inputDebugUnlockSpecific"))
         {
@@ -405,6 +403,6 @@ public partial class GameState : Node
             }
             RestartCurrentLevel();
         }
-    }
+    }*/
 }
 

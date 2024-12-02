@@ -20,10 +20,6 @@
 	{"background": "0", "portrait": "SignNormal", "text": "Congratulations, you have completed the puzzle."}
   ],
 
-  "0_3_retry": [
-	{"background": "0", "portrait": "SignNormal", "text": "In situations like this, use your retry button."}
-  ],
-
   "0_5_undo": [
 	{"background": "0", "portrait": "SignNormal", "text": "Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."}
   ],
@@ -39,7 +35,7 @@
 
   "1_4S_special": [
 	{"background": "1", "portrait": "SignNormal", "text": "Levels marked with S are completely optional."},
-	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels, usually with much higher difficulty."},
+	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels,\nusually of much higher difficulty,\nboth in puzzle solving, and execution."},
   {"background": "1", "portrait": "SignNormal", "text": "Don't feel bad for skipping them! \nYou can always come back later."}
   ],
 

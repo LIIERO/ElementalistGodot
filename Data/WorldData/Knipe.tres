@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3 uid="uid://xorj61d17itt"]
-
-[ext_resource type="Script" path="res://Scripts/Data/WorldData.cs" id="1_0oa0s"]
-
-[resource]
-script = ExtResource("1_0oa0s")
-ID = "5"
-Name = "Amor Knipe"
