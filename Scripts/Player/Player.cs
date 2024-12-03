@@ -643,9 +643,7 @@ public partial class Player : CharacterBody2D, IUndoable
         {
             shaderScript.SpawnFireTeleportResidue();
             RequestCheckpointAfterTime(inputBufferTime);
-
-			SetDirection(fireballDirection);
-            //position = new Vector2(position.X - (fireballDirection * 2), position.Y);
+			//SetDirection(fireballDirection);
 			position = new Vector2(position.X, position.Y - 1f);
         }
 
