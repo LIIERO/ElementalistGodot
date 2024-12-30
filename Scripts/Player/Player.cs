@@ -121,8 +121,15 @@ public partial class Player : CharacterBody2D, IUndoable
 
         gravity = defaultGravity;
 		shaderScript = animatedSprite as PlayerShaderEffects;
-		AbilityList = new List<ElementState>();
-		BaseAbility = ElementState.normal;
+
+		if (gameState.IsAbilitySalvagingUnlocked)
+		{
+			AbilityList = new List<ElementState>(gameState.SalvagedAbilities);
+            customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
+        }
+		else AbilityList = new List<ElementState>();
+
+        BaseAbility = ElementState.normal;
 
 		if (setPlayerRespawnPosition == true) // Respawning after dying in a Hub (multiple checkpoints)
         {
@@ -644,7 +651,7 @@ public partial class Player : CharacterBody2D, IUndoable
             shaderScript.SpawnFireTeleportResidue();
             RequestCheckpointAfterTime(inputBufferTime);
 
-			SetDirection(fireballDirection);
+			//SetDirection(fireballDirection);
             //position = new Vector2(position.X - (fireballDirection * 2), position.Y);
 			position = new Vector2(position.X, position.Y - 1f);
         }

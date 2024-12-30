@@ -1,5 +1,7 @@
+using GlobalTypes;
 using Godot;
 using System;
+using System.Collections.Generic;
 
 
 public partial class LevelExit : Interactable
@@ -17,9 +19,18 @@ public partial class LevelExit : Interactable
     protected override void Interact()
     {
         base.Interact();
-        
+
+        gameState.SalvagedAbilities = new();
+
         if (playerScriptReference.IsHoldingGoal)
+        {
+            // Ability salvaging
+            if (gameState.IsAbilitySalvagingUnlocked && playerScriptReference.AbilityList.Count > 0)
+                gameState.SalvagedAbilities = new List<ElementState>(playerScriptReference.AbilityList);
+            
             gameState.CompleteCurrentLevel();
+        }
+            
 
         levelTransitions.StartHubTransition(playerScriptReference.IsHoldingGoal);  
     }

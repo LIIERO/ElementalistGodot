@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://pv1wjlxg44q7"]
+
+[ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_elgmb"]
+[ext_resource type="PackedScene" uid="uid://3as1eyujrdpc" path="res://Scenes/Tilesets/Ground/MeadowlandsGround.tscn" id="2_ge2n7"]
+[ext_resource type="Texture2D" uid="uid://b4tsick4g8d2i" path="res://Graphics/Backgrounds/Meadowlands/bg_meadowlands_0.png" id="3_40e68"]
+[ext_resource type="PackedScene" uid="uid://bc3u03bpdjvjw" path="res://Scenes/Tilesets/Semisolid/SemisolidUp.tscn" id="10_cddb6"]
+
+[node name="Game" instance=ExtResource("1_elgmb")]
+
+[node name="GroundTiles" parent="." index="4" instance=ExtResource("2_ge2n7")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="5"]
+scroll_base_scale = Vector2(1, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("3_40e68")
+offset = Vector2(240, 135)
+
+[node name="Semisolids" type="Node2D" parent="." index="6"]
+
+[node name="SemisolidUp" parent="Semisolids" index="0" instance=ExtResource("10_cddb6")]
+
+[node name="SemisolidDown" parent="Semisolids" index="1" instance=ExtResource("10_cddb6")]
+rotation = 3.14159
+
+[node name="SemisolidLeft" parent="Semisolids" index="2" instance=ExtResource("10_cddb6")]
+rotation = -1.5708
+layer_0/tile_data = PackedInt32Array(-1250885635, 196608, 0)
+
+[node name="SemisolidRight" parent="Semisolids" index="3" instance=ExtResource("10_cddb6")]
+rotation = 1.5708

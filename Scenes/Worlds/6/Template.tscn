@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://1tnd4y6c72ux"]
+
+[ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_rc03m"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_syx4g"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_xqp41"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_34xhr"]
+[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_wu8fh"]
+[ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="6_c6kus"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="7_1tpfp"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="7_sj4w7"]
+[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_41orp"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="8_v2uqm"]
+
+[node name="Game" instance=ExtResource("1_rc03m")]
+
+[node name="Zoe" parent="." index="1"]
+position = Vector2(0, 96)
+
+[node name="GroundTiles" parent="." index="4"]
+layer_0/tile_data = PackedInt32Array(589839, 720896, 3, 524303, 720896, 2, 458767, 720896, 2, 393231, 458752, 1, 589838, 589824, 3, 524302, 589824, 2, 458766, 589824, 2, 393230, 655360, 0, 589837, 589824, 3, 524301, 589824, 2, 458765, 589824, 2, 393229, 655360, 0, 589836, 589824, 3, 524300, 589824, 2, 458764, 589824, 2, 393228, 655360, 0, 589835, 589824, 3, 524299, 589824, 2, 458763, 589824, 2, 393227, 655360, 0, 589834, 589824, 3, 524298, 589824, 2, 458762, 589824, 2, 393226, 655360, 0, 589833, 589824, 3, 524297, 589824, 2, 458761, 589824, 2, 393225, 655360, 0, 589832, 589824, 3, 524296, 589824, 2, 458760, 589824, 2, 393224, 655360, 0, 589831, 589824, 3, 524295, 589824, 2, 458759, 589824, 2, 393223, 655360, 0, 589830, 589824, 3, 524294, 589824, 2, 458758, 589824, 2, 393222, 655360, 0, 589829, 589824, 3, 524293, 589824, 2, 458757, 589824, 2, 393221, 655360, 0, 589828, 589824, 3, 524292, 589824, 2, 458756, 589824, 2, 393220, 655360, 0, 589827, 589824, 3, 524291, 589824, 2, 458755, 589824, 2, 393219, 655360, 0, 589826, 589824, 3, 524290, 589824, 2, 458754, 589824, 2, 393218, 655360, 0, 589825, 589824, 3, 524289, 589824, 2, 458753, 589824, 2, 393217, 655360, 0, 589824, 589824, 3, 524288, 589824, 2, 458752, 589824, 2, 393216, 655360, 0, 655359, 589824, 3, 589823, 589824, 2, 524287, 589824, 2, 458751, 655360, 0, 655358, 589824, 3, 589822, 589824, 2, 524286, 589824, 2, 458750, 655360, 0, 655357, 589824, 3, 589821, 589824, 2, 524285, 589824, 2, 458749, 655360, 0, 655356, 589824, 3, 589820, 589824, 2, 524284, 589824, 2, 458748, 655360, 0, 655355, 589824, 3, 589819, 589824, 2, 524283, 589824, 2, 458747, 655360, 0, 655354, 589824, 3, 589818, 589824, 2, 524282, 589824, 2, 458746, 655360, 0, 655353, 589824, 3, 589817, 589824, 2, 524281, 589824, 2, 458745, 655360, 0, 655352, 589824, 3, 589816, 589824, 2, 524280, 589824, 2, 458744, 655360, 0, 655351, 589824, 3, 589815, 589824, 2, 524279, 589824, 2, 458743, 655360, 0, 655350, 589824, 3, 589814, 589824, 2, 524278, 589824, 2, 458742, 655360, 0, 655349, 589824, 3, 589813, 589824, 2, 524277, 589824, 2, 458741, 655360, 0, 655348, 589824, 3, 589812, 589824, 2, 524276, 589824, 2, 458740, 655360, 0, 655347, 589824, 3, 589811, 589824, 2, 524275, 589824, 2, 458739, 655360, 0, 655346, 589824, 3, 589810, 589824, 2, 524274, 589824, 2, 458738, 655360, 0, 655345, 589824, 3, 589809, 589824, 2, 524273, 589824, 2, 458737, 655360, 0, 655344, 524288, 3, 589808, 524288, 1, 524272, 524288, 1, 458736, 262144, 1, 393200, 0, 1, 327664, 0, 1, 262128, 0, 1, 196592, 0, 1, 131056, 0, 1, 65520, 0, 1, -16, 0, 1, -65552, 0, 1, -131088, 0, 1, -196624, 0, 1, -262160, 0, 1, -327696, 0, 1, -393232, 0, 1, -458768, 0, 1, -524304, 0, 1, -589840, 65536, 0, -655345, 196608, 0, -655346, 131072, 3, -655347, 131072, 3, -655348, 131072, 3, -655349, 131072, 3, -655350, 131072, 3, -655351, 131072, 3, -655352, 131072, 3, -655353, 131072, 3, -655354, 131072, 3, -655355, 131072, 3, -655356, 131072, 3, -655357, 131072, 3, -655358, 131072, 3, -655359, 131072, 3, -655360, 131072, 3, -589825, 131072, 3, -589826, 131072, 3, -589827, 131072, 3, -589828, 131072, 3, -589829, 131072, 3, -589830, 131072, 3, -589831, 131072, 3, -589832, 131072, 3, -589833, 131072, 3, -589834, 131072, 3, -589835, 131072, 3, -589836, 131072, 3, -589837, 131072, 3, -589838, 131072, 3, -589839, 131072, 3, 327695, 0, 1, 262159, 0, 1, 196623, 0, 1, 131087, 0, 1, 65551, 0, 1, 15, 0, 1, -65521, 0, 1, -131057, 0, 1, -196593, 0, 1, -262129, 0, 1, -327665, 0, 1, -393201, 0, 1, -458737, 0, 1, -524273, 0, 1, -589809, 0, 1)
+
+[node name="Orbs" type="Node2D" parent="." index="7"]
+
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_syx4g")]
+position = Vector2(-224, 80)
+
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_xqp41")]
+position = Vector2(-200, 80)
+
+[node name="EarthOrb" parent="Orbs" index="2" instance=ExtResource("4_34xhr")]
+position = Vector2(-176, 80)
+
+[node name="FireOrb" parent="Orbs" index="3" instance=ExtResource("5_wu8fh")]
+position = Vector2(-152, 80)
+
+[node name="Interactables" type="Node2D" parent="." index="8"]
+
+[node name="Gates" type="Node2D" parent="." index="9"]
+
+[node name="AbilityGate" parent="Gates" index="0" instance=ExtResource("6_c6kus")]
+position = Vector2(-112, 80)
+
+[node name="ChargeGate" parent="Gates" index="1" instance=ExtResource("7_1tpfp")]
+position = Vector2(-80, 80)
+
+[node name="ElementCharge" parent="Gates" index="2" instance=ExtResource("8_41orp")]
+position = Vector2(-80, 48)
+
+[node name="LevelExit" parent="." index="10" instance=ExtResource("7_sj4w7")]
+position = Vector2(0, 96)
+
+[node name="Goal" parent="." index="11" instance=ExtResource("8_v2uqm")]
+position = Vector2(-112, 48)

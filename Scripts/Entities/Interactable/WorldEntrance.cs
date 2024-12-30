@@ -77,6 +77,9 @@ public partial class WorldEntrance : Interactable
     protected override void Interact()
     {
         base.Interact();
+
+        gameState.SalvagedAbilities = new();
+
         levelTransitions.StartWorldTransition(worldToTeleportTo);
     }
 

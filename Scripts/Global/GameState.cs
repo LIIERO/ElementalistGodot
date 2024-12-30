@@ -36,6 +36,9 @@ public partial class GameState : Node
     public string CurrentLevelName { get; set; } = "";
     public int MainCutsceneProgress { get; set; } = 0;
     public double InGameTime { get; set; } = 0.0; // Set in game time display class
+    public bool IsAbilitySalvagingUnlocked { get; set; } = true;
+    public List<ElementState> SalvagedAbilities { get; set; } = new();
+
 
 
     // Data not loaded from the save file
@@ -289,7 +292,25 @@ public partial class GameState : Node
     public void SaveToSaveFile(string id)
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + jsonFormat);
-        PlayerData data = new(CompletedLevels, NoSunFragments, NoRedFragments, CurrentWorld, PreviousWorld, CurrentLevel, PreviousLevel, IsCurrentLevelSpecial, CurrentLevelName, MainCutsceneProgress, InGameTime);
+
+        List<int> salvagedAbilitiesInt = new();
+        foreach (ElementState state in SalvagedAbilities)
+            salvagedAbilitiesInt.Add((int)state);
+
+        PlayerData data = new(CompletedLevels, 
+            NoSunFragments, 
+            NoRedFragments, 
+            CurrentWorld, 
+            PreviousWorld, 
+            CurrentLevel, 
+            PreviousLevel, 
+            IsCurrentLevelSpecial, 
+            CurrentLevelName, 
+            MainCutsceneProgress, 
+            InGameTime, 
+            IsAbilitySalvagingUnlocked,
+            salvagedAbilitiesInt);
+
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -316,6 +337,10 @@ public partial class GameState : Node
         CurrentLevelName = data.CurrentLevelName;
         MainCutsceneProgress = data.MainCutsceneProgress;
         InGameTime = data.InGameTime;
+        IsAbilitySalvagingUnlocked = data.IsAbilitySalvagingUnlocked;
+        SalvagedAbilities = new();
+        foreach (int stateInt in data.SalvagedAbilities)
+            SalvagedAbilities.Add((ElementState)stateInt);
 
         FixCompletedLevels();
 
@@ -335,6 +360,8 @@ public partial class GameState : Node
         CurrentLevelName = "HUB";
         MainCutsceneProgress = 0;
         InGameTime = 0.0;
+        IsAbilitySalvagingUnlocked = true;
+        SalvagedAbilities = new();
 
         CurrentSaveFileID = id;
 

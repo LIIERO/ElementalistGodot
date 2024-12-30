@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GlobalTypes;
 using Godot;
 
 [System.Serializable]
@@ -16,6 +17,8 @@ public class PlayerData
     public string CurrentLevelName { get; private set; } = "HUB";
     public int MainCutsceneProgress { get; private set; } = 0;
     public double InGameTime { get; private set; } = 0.0;
+    public bool IsAbilitySalvagingUnlocked { get; private set; } = false;
+    public List<int> SalvagedAbilities { get; private set; } = new();
 
     public PlayerData(Dictionary<string, Dictionary<string, bool>> CompletedLevels, 
         int NoSunFragments, 
@@ -27,7 +30,9 @@ public class PlayerData
         bool IsCurrentLevelSpecial, 
         string CurrentLevelName,
         int MainCutsceneProgress,
-        double InGameTime)
+        double InGameTime,
+        bool IsAbilitySalvagingUnlocked,
+        List<int> SalvagedAbilities)
     {
         this.CompletedLevels = CompletedLevels;
         this.NoSunFragments = NoSunFragments;
@@ -40,5 +45,7 @@ public class PlayerData
         this.CurrentLevelName = CurrentLevelName;
         this.MainCutsceneProgress = MainCutsceneProgress;
         this.InGameTime = InGameTime;
+        this.IsAbilitySalvagingUnlocked = IsAbilitySalvagingUnlocked;
+        this.SalvagedAbilities = SalvagedAbilities;
     }
 }

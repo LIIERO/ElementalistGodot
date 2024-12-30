@@ -83,6 +83,9 @@ public partial class LevelTeleport : Interactable
     protected override void Interact()
     {
         base.Interact();
+
+        gameState.SalvagedAbilities = new();
+
         levelTransitions.StartLevelTransition(levelToTeleportTo);
         if (levelToTeleportTo.IsSpecial) gameState.IsCurrentLevelSpecial = true;
     }
