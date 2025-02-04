@@ -12,9 +12,6 @@
 
 [node name="Game" instance=ExtResource("1_b502t")]
 
-[node name="Camera2D" parent="." index="2" node_paths=PackedStringArray("PlayerNode")]
-PlayerNode = NodePath("../Zoe")
-
 [node name="BackgroundTiles" parent="." index="3" instance=ExtResource("2_myfgc")]
 
 [node name="GroundTiles" parent="." index="4" instance=ExtResource("2_bqg7k")]
