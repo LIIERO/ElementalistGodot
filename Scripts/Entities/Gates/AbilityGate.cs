@@ -4,58 +4,60 @@ using System.Collections.Generic;
 
 public partial class AbilityGate : Gate, IUndoable
 {
-
-    public override void _Ready()
+	[Export] private bool startOpen = false;
+	public override void _Ready()
 	{
-        base._Ready();
+		base._Ready();
 
-        customSignals.Connect(CustomSignals.SignalName.PlayerAbilityUsed, new Callable(this, MethodName.Toggle));
-    }
+		if (startOpen) SetOpen();
 
-    private void Toggle(int _) // No matter which ability, the gate will toggle its state
-    {
-        if (isOpened)
-            Close();
-        else
-            Open();
-    }
+		customSignals.Connect(CustomSignals.SignalName.PlayerAbilityUsed, new Callable(this, MethodName.Toggle));
+	}
 
-    protected override void Open()
-    {
-        if (!gameState.IsLevelTransitionPlaying) audioManager.gateOpen.Play();
-        isOpened = true;
-        IsMovingUp = false;
-        gateSprite.FlipV = true;
-        animator.Play("Open", customSpeed: openAnimationSpeed);
-    }
+	private void Toggle(int _) // No matter which ability, the gate will toggle its state
+	{
+		if (isOpened)
+			Close();
+		else
+			Open();
+	}
 
-    protected void Close()
-    {
-        if (!gameState.IsLevelTransitionPlaying) audioManager.gateOpen.Play();
-        isOpened = false;
-        IsMovingUp = true; // When it closes it moves back up
-        gateSprite.FlipV = false;
-        animator.Play("Open", customSpeed: -openAnimationSpeed, fromEnd:true);
-    }
+	protected override void Open()
+	{
+		if (!gameState.IsLevelTransitionPlaying) audioManager.gateOpen.Play();
+		isOpened = true;
+		IsMovingUp = false;
+		gateSprite.FlipV = true;
+		animator.Play("Open", customSpeed: openAnimationSpeed);
+	}
 
-    protected override void Reset()
-    {
-        base.Reset();
-        gateSprite.FlipV = false;
-    }
+	protected void Close()
+	{
+		if (!gameState.IsLevelTransitionPlaying) audioManager.gateOpen.Play();
+		isOpened = false;
+		IsMovingUp = true; // When it closes it moves back up
+		gateSprite.FlipV = false;
+		animator.Play("Open", customSpeed: -openAnimationSpeed, fromEnd:true);
+	}
 
-    protected void SetOpen()
-    {
-        isOpened = true;
-        IsMovingUp = false;
-        gateSprite.FlipV = true;
-        animator.Play("SetOpen");
-    }
+	protected override void Reset()
+	{
+		base.Reset();
+		gateSprite.FlipV = false;
+	}
 
-    public override void UndoLocalCheckpoint(bool nextCpRequested)
-    {
-        base.UndoLocalCheckpoint(nextCpRequested);
+	protected void SetOpen()
+	{
+		isOpened = true;
+		IsMovingUp = false;
+		gateSprite.FlipV = true;
+		animator.Play("SetOpen");
+	}
 
-        if (isOpened) SetOpen();
-    }
+	public override void UndoLocalCheckpoint(bool nextCpRequested)
+	{
+		base.UndoLocalCheckpoint(nextCpRequested);
+
+		if (isOpened) SetOpen();
+	}
 }

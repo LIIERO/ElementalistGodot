@@ -46,6 +46,12 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void GamePausedEventHandler(bool paused);
 
+    [Signal]
+    public delegate void SwitchToSelectSaveFileModeEventHandler(bool newGame);
+
+    [Signal]
+    public delegate void SwitchNormalMenuModeEventHandler();
+
     // Gameplay
 
     [Signal]

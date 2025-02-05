@@ -6,6 +6,7 @@ using GlobalTypes;
 using System.Linq;
 using System.IO;
 using System.Reflection.Emit;
+using System.Transactions;
 
 public partial class GameState : Node
 {
@@ -35,9 +36,14 @@ public partial class GameState : Node
     public bool IsCurrentLevelSpecial { get; set; } = false;
     public string CurrentLevelName { get; set; } = "";
     public int MainCutsceneProgress { get; set; } = 0;
-    public double InGameTime { get; set; } = 0.0; // Set in game time display class
     public bool IsAbilitySalvagingUnlocked { get; set; } = true;
     public List<ElementState> SalvagedAbilities { get; set; } = new();
+
+    // Save file stats
+    public double InGameTime { get; set; } = 0.0; // Set in game time display class
+    public int NoDeaths { get; set; } = 0;
+    public int NoRestarts { get; set; } = 0;
+    public int NoUndos { get; set; } = 0;
 
 
 
@@ -308,6 +314,9 @@ public partial class GameState : Node
             CurrentLevelName, 
             MainCutsceneProgress, 
             InGameTime, 
+            NoDeaths,
+            NoRestarts,
+            NoUndos,
             IsAbilitySalvagingUnlocked,
             salvagedAbilitiesInt);
 
@@ -315,16 +324,24 @@ public partial class GameState : Node
         File.WriteAllText(path, jsonString);
     }
 
-    public void LoadFromSaveFile(string id)
+    public PlayerData GetSaveFileData(string id)
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + jsonFormat);
         if (!File.Exists(path))
+            return null;
+
+        string jsonString = File.ReadAllText(path);
+        return JsonSerializer.Deserialize<PlayerData>(jsonString)!;
+    }
+
+    public void LoadFromSaveFile(string id)
+    {
+        PlayerData data = GetSaveFileData(id);
+        if (data == null)
         {
             GD.Print("Path not found (save file)");
             return;
         }
-        string jsonString = File.ReadAllText(path);
-        PlayerData data = JsonSerializer.Deserialize<PlayerData>(jsonString)!;
 
         CompletedLevels = data.CompletedLevels;
         NoSunFragments = data.NoSunFragments;
@@ -337,6 +354,9 @@ public partial class GameState : Node
         CurrentLevelName = data.CurrentLevelName;
         MainCutsceneProgress = data.MainCutsceneProgress;
         InGameTime = data.InGameTime;
+        NoDeaths = data.NoDeaths;
+        NoRestarts = data.NoRestarts;
+        NoUndos = data.NoUndos;
         IsAbilitySalvagingUnlocked = data.IsAbilitySalvagingUnlocked;
         SalvagedAbilities = new();
         foreach (int stateInt in data.SalvagedAbilities)
@@ -360,6 +380,9 @@ public partial class GameState : Node
         CurrentLevelName = "HUB";
         MainCutsceneProgress = 0;
         InGameTime = 0.0;
+        NoDeaths = 0;
+        NoRestarts = 0;
+        NoUndos = 0;
         IsAbilitySalvagingUnlocked = true;
         SalvagedAbilities = new();
 

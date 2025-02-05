@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://kb46qb43ayfp"]
+[gd_scene load_steps=12 format=3 uid="uid://kb46qb43ayfp"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_pqhl0"]
 [ext_resource type="PackedScene" uid="uid://bnk38gdh7ajcj" path="res://Scenes/UI/YesNoScreen.tscn" id="2_xl566"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/GrayOutContinueButton.cs" id="7_t0sbl"]
+[ext_resource type="PackedScene" uid="uid://bde2w5k23cett" path="res://Scenes/UI/Elements/SaveSlot.tscn" id="9_8e3aw"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="10_ul3lr"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="12_eg7p4"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="13_b1y81"]
@@ -326,3 +327,20 @@ text = "WISHLIST"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+
+[node name="SaveSlots" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SaveSlot" parent="SaveSlots" instance=ExtResource("9_8e3aw")]
+position = Vector2(160, 88)
+
+[node name="SaveSlot2" parent="SaveSlots" instance=ExtResource("9_8e3aw")]
+position = Vector2(264, 88)
+slotID = "1"
+
+[node name="SaveSlot3" parent="SaveSlots" instance=ExtResource("9_8e3aw")]
+position = Vector2(368, 88)
+slotID = "2"

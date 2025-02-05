@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://1tnd4y6c72ux"]
+[gd_scene load_steps=13 format=3 uid="uid://1tnd4y6c72ux"]
 
 [ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_rc03m"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_syx4g"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_xqp41"]
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_34xhr"]
 [ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_wu8fh"]
+[ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="6_4jhna"]
 [ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="6_c6kus"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="7_1tpfp"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="7_sj4w7"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_41orp"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="8_v2uqm"]
+[ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="8_ynjbr"]
 
 [node name="Game" instance=ExtResource("1_rc03m")]
 
@@ -33,17 +35,23 @@ position = Vector2(-176, 80)
 [node name="FireOrb" parent="Orbs" index="3" instance=ExtResource("5_wu8fh")]
 position = Vector2(-152, 80)
 
+[node name="LoveOrb" parent="Orbs" index="4" instance=ExtResource("6_4jhna")]
+position = Vector2(-224, 56)
+
 [node name="Interactables" type="Node2D" parent="." index="8"]
 
 [node name="Gates" type="Node2D" parent="." index="9"]
 
-[node name="AbilityGate" parent="Gates" index="0" instance=ExtResource("6_c6kus")]
-position = Vector2(-112, 80)
-
-[node name="ChargeGate" parent="Gates" index="1" instance=ExtResource("7_1tpfp")]
+[node name="ChargeGate" parent="Gates" index="0" instance=ExtResource("7_1tpfp")]
 position = Vector2(-80, 80)
 
-[node name="ElementCharge" parent="Gates" index="2" instance=ExtResource("8_41orp")]
+[node name="OrderGate" parent="Gates" index="1" instance=ExtResource("8_ynjbr")]
+position = Vector2(-48, 80)
+
+[node name="AbilityGate" parent="Gates" index="2" instance=ExtResource("6_c6kus")]
+position = Vector2(-112, 80)
+
+[node name="ElementCharge" parent="Gates" index="3" instance=ExtResource("8_41orp")]
 position = Vector2(-80, 48)
 
 [node name="LevelExit" parent="." index="10" instance=ExtResource("7_sj4w7")]

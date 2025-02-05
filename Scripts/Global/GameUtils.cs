@@ -96,4 +96,13 @@ public static class GameUtils
     {
         list.RemoveAt(list.Count - 1);
     }
+
+    public static string FormatTime(double time)
+    {
+        int seconds = (int)time;
+        int miliseconds = (int)(time%1 * 1000);
+
+        TimeSpan span = new(0, 0, seconds);
+        return string.Format("{0:0}:{1:00}:{2:00}.{3:000}", span.Hours, span.Minutes, span.Seconds, miliseconds);
+    }
 }

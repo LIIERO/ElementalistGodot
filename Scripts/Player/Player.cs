@@ -174,7 +174,7 @@ public partial class Player : CharacterBody2D, IUndoable
 
         if (!gameState.IsLevelTransitionPlaying)
         {
-            if (restartPressed) ReloadLevel();
+            if (restartPressed) RestartLevel();
             if (undoPressed) UndoCheckpoint();
         }
 
@@ -524,8 +524,10 @@ public partial class Player : CharacterBody2D, IUndoable
 			Kill(crushed:true);
 	}
 
-	private void ReloadLevel()
+	private void RestartLevel()
 	{
+		gameState.NoRestarts++;
+
         if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf) // Dying in Hub (multiple checkpoints)
             setPlayerRespawnPosition = true;
 
@@ -536,6 +538,8 @@ public partial class Player : CharacterBody2D, IUndoable
 
     private void Kill(bool crushed = false)
     {
+		gameState.NoDeaths++;
+
         if (!crushed) RequestCheckpoint(); // So we don't loose too much progress when undoing after death (unless crushed cuz it glitches)
         StopAbility();
         isDead = true;
@@ -734,6 +738,8 @@ public partial class Player : CharacterBody2D, IUndoable
 	{
 		if (isUsingAbility || gameState.IsDialogActive) return;
 		if (playerPositionCheckpoints.Count == 0) return;
+
+		gameState.NoUndos++;
 
 		isUndoing = true;
 		hitbox.Disabled = true; // bugfix
