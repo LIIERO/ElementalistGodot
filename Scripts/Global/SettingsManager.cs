@@ -18,7 +18,9 @@ public partial class SettingsManager : Node
     public int MusicVolume { get; private set; } = 5;
     public bool LightParticlesActive {  get; private set; } = true;
     public bool SpeedrunTimerVisible { get; private set; } = false;
-    
+
+    public string LastlyUsedSaveFile { get; private set; } = "";
+
 
     // audio volume stuff
     private const string soundBusName = "Sounds";
@@ -129,7 +131,7 @@ public partial class SettingsManager : Node
     public void SavePreferences()
     {
         string path = ProjectSettings.GlobalizePath(preferencesPath);
-        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume, LightParticlesActive, SpeedrunTimerVisible);
+        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume, LightParticlesActive, SpeedrunTimerVisible, gameState.CurrentSaveFileID);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -152,6 +154,10 @@ public partial class SettingsManager : Node
         MusicVolume = data.MusicVolume;
         LightParticlesActive = data.LightParticlesActive;
         SpeedrunTimerVisible = data.SpeedrunTimerVisible;
+
+        gameState.CurrentSaveFileID = data.LastlyUsedSaveFile;
+        gameState.CurrentSaveFileID ??= "";
+        GD.Print($"Lastly used save file: {gameState.CurrentSaveFileID}");   
     }
 
     private const string inputPreferencesPath = "user://inputPreferences.json";

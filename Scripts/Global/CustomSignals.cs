@@ -50,7 +50,7 @@ public partial class CustomSignals : Node
     public delegate void SwitchToSelectSaveFileModeEventHandler(bool newGame);
 
     [Signal]
-    public delegate void SwitchNormalMenuModeEventHandler();
+    public delegate void SwitchToNormalMenuModeEventHandler();
 
     // Gameplay
 

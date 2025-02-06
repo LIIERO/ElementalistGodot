@@ -268,6 +268,7 @@ public partial class Player : CharacterBody2D, IUndoable
 				isUsingAbility = true;
 				gravity = 0f;
 				Velocity = new Vector2(0f, 0f);
+				gameState.NoAbilityUses++;
 
 				if (AbilityList.Count == 0)
 				{

@@ -11,9 +11,11 @@ public class PreferencesData
     public int MusicVolume { get; private set; } = 5;
     public bool LightParticlesActive { get; private set; } = true;
     public bool SpeedrunTimerVisible { get; private set; } = false;
+
+    public string LastlyUsedSaveFile { get; private set; } = "";
     
 
-    public PreferencesData(bool Fullscreen, int WindowScale, int SoundVolume, int MusicVolume, bool LightParticlesActive, bool SpeedrunTimerVisible)
+    public PreferencesData(bool Fullscreen, int WindowScale, int SoundVolume, int MusicVolume, bool LightParticlesActive, bool SpeedrunTimerVisible, string LastlyUsedSaveFile)
     {
         this.Fullscreen = Fullscreen;
         this.WindowScale = WindowScale;
@@ -21,5 +23,6 @@ public class PreferencesData
         this.MusicVolume = MusicVolume;
         this.LightParticlesActive = LightParticlesActive;
         this.SpeedrunTimerVisible = SpeedrunTimerVisible;
+        this.LastlyUsedSaveFile = LastlyUsedSaveFile;
     }
 }

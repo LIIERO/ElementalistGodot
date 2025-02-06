@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_pqhl0"]
 [ext_resource type="PackedScene" uid="uid://bnk38gdh7ajcj" path="res://Scenes/UI/YesNoScreen.tscn" id="2_xl566"]
-[ext_resource type="Script" path="res://Scripts/Behaviors/GrayOutContinueButton.cs" id="7_t0sbl"]
 [ext_resource type="PackedScene" uid="uid://bde2w5k23cett" path="res://Scenes/UI/Elements/SaveSlot.tscn" id="9_8e3aw"]
+[ext_resource type="Script" path="res://Scripts/UI/SaveSlotManager.cs" id="9_clr3t"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="10_ul3lr"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="12_eg7p4"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="13_b1y81"]
@@ -42,7 +42,6 @@ anchors_preset = 0
 offset_top = 72.0
 offset_bottom = 72.0
 script = ExtResource("1_pqhl0")
-yesNoScreen = ExtResource("2_xl566")
 buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("OptionsButton"), NodePath("ExitButton"), NodePath("CreditsButton"), NodePath("SteamButton")]
 
 [node name="NewGameButton" type="Node2D" parent="MainButtons"]
@@ -119,7 +118,6 @@ region_rect = Rect2(32, 0, 16, 16)
 [node name="Sprite2D" type="Sprite2D" parent="MainButtons/ContinueButton"]
 position = Vector2(64, 8)
 texture = ExtResource("15_j3jau")
-script = ExtResource("7_t0sbl")
 
 [node name="Text" type="Label" parent="MainButtons/ContinueButton/Sprite2D"]
 texture_filter = 1
@@ -328,19 +326,23 @@ horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
 
-[node name="SaveSlots" type="Control" parent="."]
+[node name="SaveSlotSelection" type="Control" parent="." node_paths=PackedStringArray("saveSlotList")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("9_clr3t")
+saveSlotList = [NodePath("SaveSlot0"), NodePath("SaveSlot1"), NodePath("SaveSlot2")]
+yesNoScreen = ExtResource("2_xl566")
 
-[node name="SaveSlot" parent="SaveSlots" instance=ExtResource("9_8e3aw")]
-position = Vector2(160, 88)
+[node name="SaveSlot0" parent="SaveSlotSelection" instance=ExtResource("9_8e3aw")]
+position = Vector2(176, 88)
 
-[node name="SaveSlot2" parent="SaveSlots" instance=ExtResource("9_8e3aw")]
+[node name="SaveSlot1" parent="SaveSlotSelection" instance=ExtResource("9_8e3aw")]
 position = Vector2(264, 88)
-slotID = "1"
+SlotID = "1"
 
-[node name="SaveSlot3" parent="SaveSlots" instance=ExtResource("9_8e3aw")]
-position = Vector2(368, 88)
-slotID = "2"
+[node name="SaveSlot2" parent="SaveSlotSelection" instance=ExtResource("9_8e3aw")]
+position = Vector2(352, 88)
+SlotID = "2"

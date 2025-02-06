@@ -8,10 +8,10 @@ public abstract partial class ButtonManager : Control
 
     public int CurrentItemIndex { get; private set; }
     protected int startingIndex = 0;
-    [Export] protected Node2D[] buttonList; // not only buttons but all interactable stuff from menus like toggles
+    [Export] protected UIInteractable[] buttonList; // not only buttons but all interactable stuff from menus like toggles
     //[SerializeField] AudioSource hoverSound;
 
-    int maxButtonIndex;
+    private int maxButtonIndex;
 
     public override void _Ready()
     {
@@ -20,7 +20,7 @@ public abstract partial class ButtonManager : Control
 
         maxButtonIndex = buttonList.Length - 1;
         CurrentItemIndex = startingIndex;
-        SelectStartingButtonEndFrame(CurrentItemIndex); // TODO at the end of the frame
+        SelectStartingButtonEndFrame(CurrentItemIndex);
     }
 
     public override void _Process(double delta)
@@ -50,12 +50,12 @@ public abstract partial class ButtonManager : Control
 
     void SelectButton(int index)
     {
-        (buttonList[index] as UIInteractable).Select();
+        buttonList[index].Select();
     }
 
     void DeselectButton(int index)
     {
-        (buttonList[index] as UIInteractable).Deselect();
+        buttonList[index].Deselect();
     }
 
     async void SelectStartingButtonEndFrame(int index)

@@ -5,15 +5,14 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class MainMenu : ButtonManager
 {
-	private const int NEWGAME = 0;
+	private bool saveSlotSelectionActive = false;
+
+    private const int NEWGAME = 0;
 	private const int CONTINUE = 1;
 	private const int OPTIONS = 2;
 	private const int EXIT = 3;
 	private const int CREDITS = 4;
 	private const int WISHLIST = 5;
-
-
-
 
 	public static int sceneEnterItemIndex = 0; // which button is selected upon entering menu, set before switching to menu
 
@@ -21,31 +20,29 @@ public partial class MainMenu : ButtonManager
 	private CustomSignals customSignals;
 	private LevelTransitions levelTransitions;
 	private SettingsManager settingsManager;
-	//private CustomSignals customSignals;
-
-	[Export] private PackedScene yesNoScreen;
-	private YesNoScreen newGameApprovalPopup = null;
-	private const string newGameApprovalPopupText = "Are you sure you want to reset your save file? All progress will be lost.";
 
 	public override void _Ready()
 	{
 		customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-		customSignals.Connect(CustomSignals.SignalName.PopupResult, new Callable(this, MethodName.NewGame));
+        customSignals.Connect(CustomSignals.SignalName.SwitchToNormalMenuMode, new Callable(this, MethodName.DisableSaveSlotSelection));
 
-		settingsManager = GetNode<SettingsManager>("/root/SettingsManager");
+        settingsManager = GetNode<SettingsManager>("/root/SettingsManager");
 		levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
 		gameState = GetNode<GameState>("/root/GameState");
 
-		if (sceneEnterItemIndex == 0 && gameState.SaveFileExists("0")) // If there is a save file, the "continue" button will be selected first
-			sceneEnterItemIndex = 1;
+		if (sceneEnterItemIndex == NEWGAME && !gameState.NoSaveFileExists()) // If there is a save file, the "continue" button will be selected first
+			sceneEnterItemIndex = CONTINUE;
 
 		startingIndex = sceneEnterItemIndex;
 		base._Ready();
-	}
+
+        if (gameState.NoSaveFileExists()) buttonList[CONTINUE].SetOpacityToHalf();
+
+    }
 
 	public override void _Process(double delta)
 	{
-		if (gameState.IsLevelTransitionPlaying) return;
+		if (gameState.IsLevelTransitionPlaying || saveSlotSelectionActive) return;
 
 		base._Process(delta);
 
@@ -53,22 +50,16 @@ public partial class MainMenu : ButtonManager
 		{
 			if (CurrentItemIndex == NEWGAME)
 			{
-				if (gameState.SaveFileExists("0")) // Make sure player wants to reset their progress
-				{
-					newGameApprovalPopup = yesNoScreen.Instantiate() as YesNoScreen;
-					AddChild(newGameApprovalPopup);
-					newGameApprovalPopup.SetText(newGameApprovalPopupText);
-					newGameApprovalPopup.CreatePopup();
-				}
-				else NewGame(true);
-			}
+				saveSlotSelectionActive = true;
+				SwitchToSaveSlotModeEndFrame(true); // new game = true
+            }
 			if (CurrentItemIndex == CONTINUE)
 			{
-				if (!gameState.SaveFileExists("0")) return;
-				gameState.ResetPersistentData();
-				gameState.LoadFromSaveFile("0");
-				levelTransitions.StartGameTransition(); // transition from menu to game
-			}
+				if (gameState.NoSaveFileExists()) return;
+
+                saveSlotSelectionActive = true;
+                SwitchToSaveSlotModeEndFrame(false); // new game = false
+            }
 			if (CurrentItemIndex == OPTIONS)
 			{
 				levelTransitions.StartOptionsTransition();
@@ -90,13 +81,15 @@ public partial class MainMenu : ButtonManager
 		}
 	}
 
-	private void NewGame(bool areYouSure)
-	{
-		newGameApprovalPopup = null;
+    async void SwitchToSaveSlotModeEndFrame(bool newGame)
+    {
+        await ToSignal(GetTree(), "process_frame");
+        customSignals.EmitSignal(CustomSignals.SignalName.SwitchToSelectSaveFileMode, newGame); // Handled in SaveSlotManager
+    }
 
-		if (areYouSure == false) return;
-		gameState.ResetPersistentData();
-		gameState.CreateNewSaveFile("0"); // Create a new save with the default values
-		levelTransitions.StartGameTransition(); // transition from menu to game
-	}
+    private void DisableSaveSlotSelection()
+	{
+        saveSlotSelectionActive = false;
+    }
+
 }

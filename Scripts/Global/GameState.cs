@@ -44,14 +44,14 @@ public partial class GameState : Node
     public int NoDeaths { get; set; } = 0;
     public int NoRestarts { get; set; } = 0;
     public int NoUndos { get; set; } = 0;
-
+    public int NoAbilityUses { get; set; } = 0;
 
 
     // Data not loaded from the save file
     public Dictionary<string, List<Dictionary<string, string>>> DialogData { get; private set; }
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGameplayActive { get; private set; } = false; // Is the root of menus the main menu or the gameplay
-    public string CurrentSaveFileID { get; private set; } = "0";
+    public string CurrentSaveFileID { get; set; } = ""; // Loaded in SettingsManager
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
     public bool IsLevelTransitionPlaying { get; set; } = false;
     public bool IsDialogActive { get; set; } = false;
@@ -317,6 +317,7 @@ public partial class GameState : Node
             NoDeaths,
             NoRestarts,
             NoUndos,
+            NoAbilityUses,
             IsAbilitySalvagingUnlocked,
             salvagedAbilitiesInt);
 
@@ -357,6 +358,7 @@ public partial class GameState : Node
         NoDeaths = data.NoDeaths;
         NoRestarts = data.NoRestarts;
         NoUndos = data.NoUndos;
+        NoAbilityUses = data.NoAbilityUses;
         IsAbilitySalvagingUnlocked = data.IsAbilitySalvagingUnlocked;
         SalvagedAbilities = new();
         foreach (int stateInt in data.SalvagedAbilities)
@@ -383,6 +385,7 @@ public partial class GameState : Node
         NoDeaths = 0;
         NoRestarts = 0;
         NoUndos = 0;
+        NoAbilityUses = 0;
         IsAbilitySalvagingUnlocked = true;
         SalvagedAbilities = new();
 
@@ -395,6 +398,11 @@ public partial class GameState : Node
     {
         string path = ProjectSettings.GlobalizePath(savesPath + id + jsonFormat);
         return File.Exists(path);
+    }
+
+    public bool NoSaveFileExists()
+    {
+        return CurrentSaveFileID == ""; // It didn't get overwritten by the setting manager so no save file was created
     }
 
     public override void _Notification(int what)

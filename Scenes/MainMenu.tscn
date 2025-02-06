@@ -70,6 +70,7 @@ position = Vector2(368, 80.9582)
 texture = ExtResource("4_ymxk2")
 
 [node name="Version" type="Label" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 320.0
 offset_top = 240.0

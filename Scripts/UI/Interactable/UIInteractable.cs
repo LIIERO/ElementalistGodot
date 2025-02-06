@@ -26,4 +26,14 @@ public abstract partial class UIInteractable : Node2D
         orbSelection.Hide();
         Position = basePosition;
     }
+
+	public virtual void SetOpacityToHalf()
+	{
+        Modulate = new Color(1f, 1f, 1f, 0.5f);
+    }
+
+	public virtual void SetOpacityToNormal()
+	{
+        Modulate = new Color(1f, 1f, 1f, 1f);
+    }
 }

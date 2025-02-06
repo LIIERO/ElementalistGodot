@@ -20,6 +20,7 @@ public class PlayerData
     public int NoDeaths { get; private set; } = 0;
     public int NoRestarts { get; private set; } = 0;
     public int NoUndos { get; private set; } = 0;
+    public int NoAbilityUses { get; private set; } = 0;
     public bool IsAbilitySalvagingUnlocked { get; private set; } = false;
     public List<int> SalvagedAbilities { get; private set; } = new();
 
@@ -37,6 +38,7 @@ public class PlayerData
         int NoDeaths,
         int NoRestarts,
         int NoUndos,
+        int NoAbilityUses,
         bool IsAbilitySalvagingUnlocked,
         List<int> SalvagedAbilities)
     {
@@ -54,6 +56,7 @@ public class PlayerData
         this.NoDeaths = NoDeaths;
         this.NoRestarts = NoRestarts;
         this.NoUndos = NoUndos;
+        this.NoAbilityUses = NoAbilityUses;
         this.IsAbilitySalvagingUnlocked = IsAbilitySalvagingUnlocked;
         this.SalvagedAbilities = SalvagedAbilities;
     }
