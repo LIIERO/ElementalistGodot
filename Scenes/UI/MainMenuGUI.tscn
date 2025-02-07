@@ -337,10 +337,10 @@ saveSlotList = [NodePath("SaveSlot0"), NodePath("SaveSlot1"), NodePath("SaveSlot
 yesNoScreen = ExtResource("2_xl566")
 
 [node name="SaveSlot0" parent="SaveSlotSelection" instance=ExtResource("9_8e3aw")]
-position = Vector2(176, 88)
+position = Vector2(160, 88)
 
 [node name="SaveSlot1" parent="SaveSlotSelection" instance=ExtResource("9_8e3aw")]
-position = Vector2(264, 88)
+position = Vector2(256, 88)
 SlotID = "1"
 
 [node name="SaveSlot2" parent="SaveSlotSelection" instance=ExtResource("9_8e3aw")]

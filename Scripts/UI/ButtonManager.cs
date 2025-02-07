@@ -48,12 +48,12 @@ public abstract partial class ButtonManager : Control
         }
     }
 
-    void SelectButton(int index)
+    protected void SelectButton(int index)
     {
         buttonList[index].Select();
     }
 
-    void DeselectButton(int index)
+    protected void DeselectButton(int index)
     {
         buttonList[index].Deselect();
     }

@@ -20,7 +20,7 @@ public partial class SaveSlotManager : Control
     // Save file override popup
     [Export] private PackedScene yesNoScreen;
     private YesNoScreen newGameApprovalPopup = null;
-    private const string newGameApprovalPopupText = "Are you sure you want to reset your save file? All progress will be lost.";
+    private const string newGameApprovalPopupText = "Are you sure you want to reset this save file? All progress will be lost.";
 
     public override void _Ready()
 	{
@@ -106,7 +106,7 @@ public partial class SaveSlotManager : Control
             }
         }
 
-        if (InputManager.UICancelPressed())
+        if (InputManager.UICancelPressed() || InputManager.UIUpPressed() || InputManager.UIDownPressed())
         {
             Hide();
             selectionMode = SelectionMode.disabled;

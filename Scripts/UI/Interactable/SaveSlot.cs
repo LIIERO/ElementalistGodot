@@ -7,7 +7,12 @@ public partial class SaveSlot : Node2D
 
 	private GameState gameState;
 
-	private Label slotName;
+	private Node2D arrowIndicator;
+
+	private Color selectedModulate = new(1f, 1f, 1f);
+	private Color deselectedModulate = new(0.6f, 0.6f, 0.6f);
+
+    private Label slotName;
 	private Label worldName;
 	private Label sunFragments;
     private Label redFragments;
@@ -25,8 +30,12 @@ public partial class SaveSlot : Node2D
 		gameState = GetNode<GameState>("/root/GameState");
 
         basePosition = Position;
-        offsetPosition = basePosition + new Vector2(0.0f, GameUtils.gameUnitSize * 1.5f);
+        offsetPosition = basePosition + new Vector2(0.0f, GameUtils.gameUnitSize);
 
+		Modulate = deselectedModulate;
+
+		arrowIndicator = GetNode<Node2D>("ArrowIndicatorThick");
+		arrowIndicator.Hide();
         slotName = GetNode<Label>("Sprite2D/SlotName");
 		worldName = GetNode<Label>("Sprite2D/WorldName");
 		sunFragments = GetNode<Label>("Sprite2D/SunFragments");
@@ -57,15 +66,14 @@ public partial class SaveSlot : Node2D
 	public void Select()
 	{
         Position = offsetPosition;
+		arrowIndicator.Show();
+		Modulate = selectedModulate;
     }
 
     public void Deselect()
     {
+		arrowIndicator.Hide();
         Position = basePosition;
+		Modulate = deselectedModulate;
     }
-
-
-    public override void _Process(double delta)
-	{
-	}
 }

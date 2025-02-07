@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bde2w5k23cett"]
+[gd_scene load_steps=5 format=3 uid="uid://bde2w5k23cett"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/SaveSlot.cs" id="1_c0blg"]
 [ext_resource type="Texture2D" uid="uid://cnfo4cscx2kjf" path="res://Graphics/UI/Menu/save_slot.png" id="1_gqg52"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="2_m23at"]
+[ext_resource type="PackedScene" uid="uid://f8vlqpiinn75" path="res://Scenes/UI/Indicators/ArrowIndicatorThick.tscn" id="4_rmsdl"]
 
 [node name="SaveSlot" type="Node2D"]
 script = ExtResource("1_c0blg")
@@ -168,3 +169,8 @@ theme_override_fonts/font = ExtResource("2_m23at")
 theme_override_font_sizes/font_size = 12
 text = "0"
 text_overrun_behavior = 2
+
+[node name="ArrowIndicatorThick" parent="." instance=ExtResource("4_rmsdl")]
+visible = false
+position = Vector2(40, -14)
+frame_progress = 0.957917

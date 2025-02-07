@@ -35,3 +35,4 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_hq105")
 animation = &"Pointing"
 autoplay = "Pointing"
+frame_progress = 0.48643

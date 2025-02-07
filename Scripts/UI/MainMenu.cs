@@ -50,13 +50,15 @@ public partial class MainMenu : ButtonManager
 		{
 			if (CurrentItemIndex == NEWGAME)
 			{
-				saveSlotSelectionActive = true;
+				DeselectButton(CurrentItemIndex);
+                saveSlotSelectionActive = true;
 				SwitchToSaveSlotModeEndFrame(true); // new game = true
             }
 			if (CurrentItemIndex == CONTINUE)
 			{
 				if (gameState.NoSaveFileExists()) return;
 
+                DeselectButton(CurrentItemIndex);
                 saveSlotSelectionActive = true;
                 SwitchToSaveSlotModeEndFrame(false); // new game = false
             }
@@ -89,6 +91,7 @@ public partial class MainMenu : ButtonManager
 
     private void DisableSaveSlotSelection()
 	{
+        SelectButton(CurrentItemIndex);
         saveSlotSelectionActive = false;
     }
 
