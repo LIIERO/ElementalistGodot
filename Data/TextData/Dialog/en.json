@@ -4,7 +4,9 @@
   ],
 
   "0_HUB_jump": [
-	{"background": "0", "portrait": "SignNormal", "text": "Hold the jump button to jump higher."}
+	{"background": "0", "portrait": "SignNormal", "text": "Press up to interact with interactable objects."},
+	{"background": "0", "portrait": "SignNormal", "text": "No need to thank me."},
+	{"background": "0", "portrait": "SignNormal", "text": "Also, hold the jump button to jump higher."}
   ],
 
   "0_HUB_controls": [
@@ -20,12 +22,8 @@
 	{"background": "0", "portrait": "SignNormal", "text": "Congratulations, you have completed the puzzle."}
   ],
 
-  "0_3_retry": [
-	{"background": "0", "portrait": "SignNormal", "text": "In situations like this, use your retry button."}
-  ],
-
   "0_5_undo": [
-	{"background": "0", "portrait": "SignNormal", "text": "Undo system's checkpoints are created when you land on the ground after collecting, or using, an ability."}
+	{"background": "0", "portrait": "SignNormal", "text": "Undo checkpoints are created when you land on the ground after collecting, or using, an ability."}
   ],
 
   "1_HUB_reminder": [
@@ -38,13 +36,13 @@
 	],
 
   "1_4S_special": [
-	{"background": "1", "portrait": "SignNormal", "text": "Levels marked with S are completely optional."},
-	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels, usually with much higher difficulty."},
+	{"background": "1", "portrait": "SignNormal", "text": "Levels marked with an S are completely optional."},
+	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels,\nusually of much higher difficulty,\nboth in puzzle solving, and execution."},
   {"background": "1", "portrait": "SignNormal", "text": "Don't feel bad for skipping them! \nYou can always come back later."}
   ],
 
   "2_8S_warning": [
-	{"background": "2", "portrait": "SignNormal", "text": "Levels of execution are high."}
+	{"background": "2", "portrait": "SignNormal", "text": "High level execution required."}
   ],
 
   "3_5S_warning": [

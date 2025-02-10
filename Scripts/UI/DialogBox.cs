@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
@@ -45,6 +46,7 @@ public partial class DialogBox : Sprite2D
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.StartDialog, new Callable(this, MethodName.StartDialog));
+        customSignals.Connect(CustomSignals.SignalName.StartHintDialog, new Callable(this, MethodName.StartHintDialog));
         customSignals.Connect(CustomSignals.SignalName.ProgressDialog, new Callable(this, MethodName.ProgressDialog));
         customSignals.Connect(CustomSignals.SignalName.EndDialog, new Callable(this, MethodName.EndDialog));
 
@@ -61,9 +63,6 @@ public partial class DialogBox : Sprite2D
 
     public void StartDialog(string textID)
     {
-        gameState.CanProgressDialog = false;
-        arrowIndicator.Hide();
-
         if (gameState.DialogData.ContainsKey(textID))
         {
             currentDialog = gameState.DialogData[textID];
@@ -73,6 +72,46 @@ public partial class DialogBox : Sprite2D
             currentDialog = gameState.DialogData[""];
             currentDialog[0]["text"] = textID;
         }
+
+        TriggerDialogSequence();
+    }
+
+    public void StartHintDialog(string worldID, string levelID)
+    {
+        if (!gameState.HintsData.ContainsKey(worldID))
+        {
+            GD.Print("No such world exists! (hints data)");
+            return;
+        }
+
+        Dictionary<string, string> dialogTemplate = gameState.DialogData[""][0];
+        dialogTemplate["background"] = worldID;
+
+        if (gameState.HintsData[worldID].ContainsKey(levelID))
+        {
+            int l = gameState.HintsData[worldID][levelID].Count;
+            
+            currentDialog = new();
+            for (int i = 0; i < l; i++)
+            {
+                Dictionary<string, string> line = new(dialogTemplate);
+                line["text"] = gameState.HintsData[worldID][levelID][i];
+                currentDialog.Add(line);
+            }
+        }
+        else
+        {
+            dialogTemplate["text"] = "This level has no hint, sorry :(";
+            currentDialog = new() { dialogTemplate };
+        }
+
+        TriggerDialogSequence();
+    }
+
+    private void TriggerDialogSequence()
+    {
+        gameState.CanProgressDialog = false;
+        arrowIndicator.Hide();
 
         Show();
 

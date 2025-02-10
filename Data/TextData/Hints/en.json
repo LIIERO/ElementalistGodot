@@ -1,0 +1,19 @@
+{
+  "0": {
+    "0": ["Exit the level while holding the Sun Fragment."],
+    "1": ["Press the ability button to jump in the air.", "Each ability usage requires collecting an orb."],
+    "2": ["Get abilities on the right.", "Climb on the left."],
+    "3": ["Jump over the first pit to save a dash."],
+    "4": ["Jump over the air orb to collect water first.", "The most recently collected ability will be the first one to use."],
+    "5": ["The order of ability usage is opposite to the order you collected them in.", "Imagine in which order you need the abilities and then collect them in the opposite."]
+  },
+
+  "1": {
+    "0": [""],
+    "1": [""],
+    "2": [""],
+    "3": [""],
+    "4": [""],
+    "5": [""]
+  }
+}

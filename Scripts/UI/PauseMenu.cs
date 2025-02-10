@@ -4,6 +4,12 @@ using static System.Net.Mime.MediaTypeNames;
 
 public partial class PauseMenu : ButtonManager
 {
+    const int RESUME = 0;
+    const int HINTSKIP = 1;
+    const int OPTIONS = 2;
+    const int EXIT = 3;
+
+
     // singletons
     //private SettingsManager settingsManager;
     private LevelTransitions levelTransitions;
@@ -46,18 +52,25 @@ public partial class PauseMenu : ButtonManager
 
         if (InputManager.UIAcceptPressed())
         {
-            if (CurrentItemIndex == 0) // resume
+            if (CurrentItemIndex == RESUME)
             {
                 DelayResume();
             }
-            if (CurrentItemIndex == 1) // options
+            if (CurrentItemIndex == HINTSKIP)
+            {
+                // TODO: Make the button conditional on whats happening, make it skip dialog too
+
+                DelayResumeAndShowHint();
+            }
+
+            if (CurrentItemIndex == OPTIONS)
             {
                 gameState.SaveToSaveFile(gameState.CurrentSaveFileID);
                 audioManager.StopMusic();
                 Resume();
                 levelTransitions.StartOptionsTransition();
             }
-            if (CurrentItemIndex == 2) // main menu (save and exit)
+            if (CurrentItemIndex == EXIT)
             {
                 gameState.SaveToSaveFile(gameState.CurrentSaveFileID);
                 audioManager.StopMusic();
@@ -99,5 +112,12 @@ public partial class PauseMenu : ButtonManager
     {
         await ToSignal(GetTree().CreateTimer(resumeDelay), "timeout");
         Resume();
+    }
+
+    public async void DelayResumeAndShowHint()
+    {
+        await ToSignal(GetTree().CreateTimer(resumeDelay), "timeout");
+        Resume();
+        customSignals.EmitSignal(CustomSignals.SignalName.StartHintDialog, gameState.CurrentWorld, gameState.CurrentLevel);
     }
 }

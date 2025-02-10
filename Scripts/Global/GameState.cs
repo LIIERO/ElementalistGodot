@@ -49,6 +49,7 @@ public partial class GameState : Node
 
     // Data not loaded from the save file
     public Dictionary<string, List<Dictionary<string, string>>> DialogData { get; private set; }
+    public Dictionary<string, Dictionary<string, List<string>>> HintsData { get; private set; }
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGameplayActive { get; private set; } = false; // Is the root of menus the main menu or the gameplay
     public string CurrentSaveFileID { get; set; } = ""; // Loaded in SettingsManager
@@ -63,7 +64,9 @@ public partial class GameState : Node
     private CustomSignals customSignals; // singleton
     public override void _EnterTree()
     {
-        LoadDialogData("en");
+        string languageCode = "en"; // TODO: Language option in settings or when loading the game (OR WITH THE STEAM THINGY)
+        LoadDialogData(languageCode);
+        LoadHintData(languageCode);
 
         // Initialize LevelIDToLevel
         foreach (KeyValuePair<string, string[]> world in levels)
@@ -77,9 +80,6 @@ public partial class GameState : Node
         }
 
         CompletedLevels = CreateNewCompletedLevelsDict(); // Initialize CompletedLevels
-
-        // Initialize previous world, TODO: do this in save file
-        PreviousWorld = CurrentWorld;
 
         Input.Singleton.Connect("joy_connection_changed", new Callable(this, nameof(OnJoyConnectionChanged)));
         InputManager.IsGamepadConnected = Input.GetConnectedJoypads().Count > 0;
@@ -278,6 +278,7 @@ public partial class GameState : Node
 
     // TEXT DATA
     string dialogDataPath = "res://Data/TextData/Dialog/";
+    string hintsDataPath = "res://Data/TextData/Hints/";
     private const string jsonFormat = ".json";
 
     private void LoadDialogData(string languageCode)
@@ -290,6 +291,18 @@ public partial class GameState : Node
         }
         var dataFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
         DialogData = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, string>>>>(dataFile.GetAsText());
+    }
+
+    private void LoadHintData(string languageCode)
+    {
+        string path = hintsDataPath + languageCode + jsonFormat;
+        if (!Godot.FileAccess.FileExists(path))
+        {
+            GD.Print("Path not found (hints data file)");
+            return;
+        }
+        var dataFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
+        HintsData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(dataFile.GetAsText());
     }
 
     // SAVE LOAD
