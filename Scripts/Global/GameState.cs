@@ -48,8 +48,12 @@ public partial class GameState : Node
 
 
     // Data not loaded from the save file
+    // Text data
     public Dictionary<string, List<Dictionary<string, string>>> DialogData { get; private set; }
     public Dictionary<string, Dictionary<string, List<string>>> HintsData { get; private set; }
+    public Dictionary<string, string> UITextData { get; private set; }
+
+    // Other
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGameplayActive { get; private set; } = false; // Is the root of menus the main menu or the gameplay
     public string CurrentSaveFileID { get; set; } = ""; // Loaded in SettingsManager
@@ -65,8 +69,9 @@ public partial class GameState : Node
     public override void _EnterTree()
     {
         string languageCode = "en"; // TODO: Language option in settings or when loading the game (OR WITH THE STEAM THINGY)
-        LoadDialogData(languageCode);
-        LoadHintData(languageCode);
+        DialogData = LoadTextData<Dictionary<string, List<Dictionary<string, string>>>>("Dialog", languageCode);
+        HintsData = LoadTextData<Dictionary<string, Dictionary<string, List<string>>>>("Hints", languageCode);
+        UITextData = LoadTextData<Dictionary<string, string>>("UI", languageCode);
 
         // Initialize LevelIDToLevel
         foreach (KeyValuePair<string, string[]> world in levels)
@@ -277,33 +282,19 @@ public partial class GameState : Node
     }
 
     // TEXT DATA
-    string dialogDataPath = "res://Data/TextData/Dialog/";
-    string hintsDataPath = "res://Data/TextData/Hints/";
+    string textDataPath = "res://Data/TextData/";
     private const string jsonFormat = ".json";
 
-    private void LoadDialogData(string languageCode)
+    private T LoadTextData<T>(string textDataFolderName, string languageCode)
     {
-        string path = dialogDataPath + languageCode + jsonFormat;
+        string path = textDataPath + textDataFolderName + "/" + languageCode + jsonFormat;
         if (!Godot.FileAccess.FileExists(path))
-        {
-            GD.Print("Path not found (dialog data file)");
-            return;
-        }
+            throw new GameUtils.DataFileDoesntExistException($"Path ({path}) not found ({textDataFolderName} data file)");
+        
         var dataFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
-        DialogData = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, string>>>>(dataFile.GetAsText());
+        return JsonSerializer.Deserialize<T>(dataFile.GetAsText());
     }
 
-    private void LoadHintData(string languageCode)
-    {
-        string path = hintsDataPath + languageCode + jsonFormat;
-        if (!Godot.FileAccess.FileExists(path))
-        {
-            GD.Print("Path not found (hints data file)");
-            return;
-        }
-        var dataFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
-        HintsData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(dataFile.GetAsText());
-    }
 
     // SAVE LOAD
     private const string savesPath = "user://save";

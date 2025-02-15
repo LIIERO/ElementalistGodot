@@ -48,6 +48,7 @@ buttonList = [NodePath("NewGameButton"), NodePath("ContinueButton"), NodePath("O
 texture_filter = 1
 position = Vector2(16, 16)
 script = ExtResource("12_eg7p4")
+interactableTextID = "new_game"
 
 [node name="OrbSelection" type="Node2D" parent="MainButtons/NewGameButton"]
 position = Vector2(-8, 8)
@@ -95,6 +96,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 40)
 script = ExtResource("12_eg7p4")
+interactableTextID = "continue"
 
 [node name="OrbSelection" type="Node2D" parent="MainButtons/ContinueButton"]
 position = Vector2(-8, 8)
@@ -142,6 +144,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 64)
 script = ExtResource("12_eg7p4")
+interactableTextID = "options"
 
 [node name="OrbSelection" type="Node2D" parent="MainButtons/OptionsButton"]
 position = Vector2(-8, 8)
@@ -189,6 +192,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 88)
 script = ExtResource("12_eg7p4")
+interactableTextID = "exit"
 
 [node name="OrbSelection" type="Node2D" parent="MainButtons/ExitButton"]
 position = Vector2(-8, 8)
@@ -236,6 +240,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 136)
 script = ExtResource("12_eg7p4")
+interactableTextID = "credits"
 
 [node name="OrbSelection" type="Node2D" parent="MainButtons/CreditsButton"]
 position = Vector2(-8, 8)
@@ -283,6 +288,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 160)
 script = ExtResource("12_eg7p4")
+interactableTextID = "wishlist"
 
 [node name="OrbSelection" type="Node2D" parent="MainButtons/SteamButton"]
 position = Vector2(-8, 8)

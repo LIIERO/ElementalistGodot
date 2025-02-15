@@ -49,6 +49,7 @@ buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath
 texture_filter = 1
 position = Vector2(16, 16)
 script = ExtResource("2_ilks8")
+interactableTextID = "go_back"
 
 [node name="OrbSelection" type="Node2D" parent="Options/MainMenuButton"]
 position = Vector2(-8, 8)
@@ -96,6 +97,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 64)
 script = ExtResource("7_fm3dv")
+interactableTextID = "fullscreen"
 
 [node name="OrbSelection" type="Node2D" parent="Options/FullscreenToggle"]
 position = Vector2(-8, 8)
@@ -152,6 +154,7 @@ texture_filter = 1
 position = Vector2(16, 88)
 script = ExtResource("10_rob1m")
 values = PackedStringArray("480x270", "960x540", "1440x810", "1920x1080")
+interactableTextID = "resolution"
 
 [node name="OrbSelection" type="Node2D" parent="Options/ResolutionSlide"]
 position = Vector2(-8, 8)
@@ -233,6 +236,7 @@ texture_filter = 1
 position = Vector2(16, 112)
 script = ExtResource("10_rob1m")
 values = PackedStringArray("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
+interactableTextID = "sound_volume"
 
 [node name="OrbSelection" type="Node2D" parent="Options/SfxVolumeSlide"]
 position = Vector2(-8, 8)
@@ -316,6 +320,7 @@ texture_filter = 1
 position = Vector2(16, 136)
 script = ExtResource("10_rob1m")
 values = PackedStringArray("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
+interactableTextID = "music_volume"
 
 [node name="OrbSelection" type="Node2D" parent="Options/MusicVolumeSlide"]
 position = Vector2(-8, 8)
@@ -398,6 +403,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 160)
 script = ExtResource("7_fm3dv")
+interactableTextID = "light_particles"
 
 [node name="OrbSelection" type="Node2D" parent="Options/LightParticlesToggle"]
 position = Vector2(-8, 8)
@@ -454,6 +460,7 @@ texture = ExtResource("8_1d85j")
 texture_filter = 1
 position = Vector2(16, 184)
 script = ExtResource("7_fm3dv")
+interactableTextID = "speedrun_timer"
 
 [node name="OrbSelection" type="Node2D" parent="Options/SpeedrunTimerToggle"]
 position = Vector2(-8, 8)
@@ -510,6 +517,7 @@ texture = ExtResource("8_1d85j")
 texture_filter = 1
 position = Vector2(16, 208)
 script = ExtResource("2_ilks8")
+interactableTextID = "keyboard_config"
 
 [node name="OrbSelection" type="Node2D" parent="Options/InputOptionsButton"]
 position = Vector2(-8, 8)
@@ -559,6 +567,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 232)
 script = ExtResource("2_ilks8")
+interactableTextID = "controller_config"
 
 [node name="OrbSelection" type="Node2D" parent="Options/GamepadInputOptionsButton"]
 position = Vector2(-8, 8)

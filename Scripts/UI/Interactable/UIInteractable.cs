@@ -3,12 +3,22 @@ using System;
 
 public abstract partial class UIInteractable : Node2D
 {
+	[Export] private string interactableTextID = "";
+	protected Label interactableLabel;
+
 	private Node2D orbSelection;
 	private Vector2 basePosition;
 	private Vector2 offsetPosition;
 
-	public override void _Ready()
+    protected GameState gameState; // Singleton
+
+    public override void _Ready()
 	{
+        gameState = GetNode<GameState>("/root/GameState");
+        interactableLabel = GetNode<Label>("Sprite2D/Text");
+
+		interactableLabel.Text = gameState.UITextData[interactableTextID];
+
 		orbSelection = GetNode("./OrbSelection") as Node2D;
 		basePosition = Position;
 		offsetPosition = basePosition + new Vector2(GameUtils.gameUnitSize, 0.0f);
@@ -27,13 +37,23 @@ public abstract partial class UIInteractable : Node2D
         Position = basePosition;
     }
 
-	public virtual void SetOpacityToHalf()
+	public virtual void SetModulateToYellow()
 	{
-        Modulate = new Color(1f, 1f, 1f, 0.5f);
+        Modulate = new Color(1.0f, 1.0f, 0.0f, Modulate.A);
+    }
+
+    public virtual void SetModulateToWhite()
+    {
+        Modulate = new Color(1.0f, 1.0f, 1.0f, Modulate.A);
+    }
+
+    public virtual void SetOpacityToHalf()
+	{
+        Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, 0.5f);
     }
 
 	public virtual void SetOpacityToNormal()
 	{
-        Modulate = new Color(1f, 1f, 1f, 1f);
+        Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, 1f);
     }
 }

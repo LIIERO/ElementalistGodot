@@ -44,6 +44,7 @@ buttonList = [NodePath("OptionsButton"), NodePath("ResetDefaultButton"), NodePat
 texture_filter = 1
 position = Vector2(16, 16)
 script = ExtResource("2_c74tv")
+interactableTextID = "go_back"
 
 [node name="OrbSelection" type="Node2D" parent="Options/OptionsButton"]
 position = Vector2(-8, 8)
@@ -91,6 +92,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 40)
 script = ExtResource("2_c74tv")
+interactableTextID = "reset_default"
 
 [node name="OrbSelection" type="Node2D" parent="Options/ResetDefaultButton"]
 position = Vector2(-8, 8)
@@ -138,6 +140,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 64)
 script = ExtResource("6_farmp")
+interactableTextID = "move_left"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Left"]
 position = Vector2(-8, 8)
@@ -208,6 +211,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 88)
 script = ExtResource("6_farmp")
+interactableTextID = "move_right"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Right"]
 position = Vector2(-8, 8)
@@ -278,6 +282,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 112)
 script = ExtResource("6_farmp")
+interactableTextID = "interact_up"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Interact"]
 position = Vector2(-8, 8)
@@ -348,6 +353,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 136)
 script = ExtResource("6_farmp")
+interactableTextID = "jump"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Jump"]
 position = Vector2(-8, 8)
@@ -418,6 +424,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 160)
 script = ExtResource("6_farmp")
+interactableTextID = "use_ability"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Ability"]
 position = Vector2(-8, 8)
@@ -488,6 +495,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 184)
 script = ExtResource("6_farmp")
+interactableTextID = "undo"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Undo"]
 position = Vector2(-8, 8)
@@ -559,6 +567,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 208)
 script = ExtResource("6_farmp")
+interactableTextID = "retry"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Retry"]
 position = Vector2(-8, 8)
@@ -629,6 +638,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(16, 232)
 script = ExtResource("6_farmp")
+interactableTextID = "pause"
 
 [node name="OrbSelection" type="Node2D" parent="Options/Pause"]
 position = Vector2(-8, 8)

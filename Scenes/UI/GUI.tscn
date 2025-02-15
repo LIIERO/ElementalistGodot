@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=45 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="16_s0b1u"]
 [ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
+[ext_resource type="Script" path="res://Scripts/UI/Interactable/HintSkipMenuButton.cs" id="20_afawl"]
 [ext_resource type="Texture2D" uid="uid://dfxae37yskpna" path="res://Graphics/UI/Gameplay/current_level_display.png" id="21_ltbdn"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameTimeDisplay.cs" id="23_la0yc"]
 [ext_resource type="Texture2D" uid="uid://djo8vl1x4wk5p" path="res://Graphics/UI/Gameplay/time_display.png" id="23_t0g6t"]
@@ -353,6 +354,7 @@ process_mode = 2
 texture_filter = 1
 position = Vector2(176, 136)
 script = ExtResource("16_s0b1u")
+interactableTextID = "unpause_game"
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/ContinueButton"]
 position = Vector2(-8, 8)
@@ -400,7 +402,7 @@ text_overrun_behavior = 2
 process_mode = 2
 texture_filter = 1
 position = Vector2(176, 160)
-script = ExtResource("16_s0b1u")
+script = ExtResource("20_afawl")
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/HintSkipButton"]
 position = Vector2(-8, 8)
@@ -450,6 +452,7 @@ process_mode = 2
 texture_filter = 1
 position = Vector2(176, 184)
 script = ExtResource("16_s0b1u")
+interactableTextID = "options"
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/OptionsButton"]
 position = Vector2(-8, 8)
@@ -499,6 +502,7 @@ process_mode = 2
 texture_filter = 1
 position = Vector2(176, 208)
 script = ExtResource("16_s0b1u")
+interactableTextID = "save_and_exit"
 
 [node name="OrbSelection" type="Node2D" parent="PauseMenu/ExitButton"]
 position = Vector2(-8, 8)

@@ -48,11 +48,11 @@ public partial class SaveSlot : Node2D
 
         PlayerData savefileData = gameState.GetSaveFileData(SlotID);
 
-		slotName.Text = $"SLOT {SlotID}";
+		slotName.Text = $"{gameState.UITextData["slot"]} {SlotID}";
 
 		if (savefileData != null)
 		{
-			worldName.Text = $"Level {savefileData.CurrentWorld}-{savefileData.CurrentLevel}";
+			worldName.Text = $"{gameState.UITextData["level"]} {savefileData.CurrentWorld}-{savefileData.CurrentLevel}";
 			sunFragments.Text = savefileData.NoSunFragments.ToString();
 			redFragments.Text = savefileData.NoRedFragments.ToString();
 			time.Text = GameUtils.FormatTime(savefileData.InGameTime);

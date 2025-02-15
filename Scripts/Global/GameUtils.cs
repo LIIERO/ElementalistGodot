@@ -105,4 +105,10 @@ public static class GameUtils
         TimeSpan span = new(0, 0, seconds);
         return string.Format("{0:0}:{1:00}:{2:00}.{3:000}", span.Hours, span.Minutes, span.Seconds, miliseconds);
     }
+
+
+    public class DataFileDoesntExistException : Exception
+    {
+        public DataFileDoesntExistException(string message) : base(message) { }
+    }
 }

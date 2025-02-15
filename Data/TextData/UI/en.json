@@ -1,0 +1,41 @@
+{
+  "": "",
+
+  "new_game": "NEW GAME",
+  "continue": "CONTINUE",
+  "options": "OPTIONS",
+  "exit": "EXIT",
+  "credits": "CREDITS",
+  "wishlist": "WISHLIST",
+
+  "go_back": "GO BACK",
+
+  "fullscreen": "FULLSCREEN",
+  "resolution": "RESOLUTION",
+  "sound_volume": "SOUND VOLUME",
+  "music_volume": "MUSIC VOLUME",
+  "light_particles": "LIGHT AND PARTICLES",
+  "speedrun_timer": "SPEEDRUN TIMER",
+  "keyboard_config": "KEYBOARD CONFIG",
+  "controller_config": "CONTROLLER CONFIG",
+
+  "reset_default": "RESET TO DEFAULT",
+  "move_left": "MOVE LEFT",
+  "move_right": "MOVE RIGHT",
+  "interact_up": "INTERACT/UP",
+  "interact_up_alt": "INTERACT/UP (ALT)",
+  "jump": "JUMP",
+  "use_ability": "USE ABILITY",
+  "undo": "UNDO",
+  "retry": "RETRY",
+  "pause": "PAUSE",
+
+  "game_paused": "PAUSED",
+  "unpause_game": "CONTINUE",
+  "hint": "HINT",
+  "skip_cutscene": "SKIP CUTSCENE",
+  "save_and_exit": "SAVE AND EXIT",
+
+  "slot": "SLOT",
+  "level": "LEVEL"
+}
