@@ -61,7 +61,7 @@ public partial class DialogBox : Sprite2D
         DisplayDialog(delta);
     }
 
-    public void StartDialog(string textID)
+    public void StartDialog(string textID) // Start dialog cutscene for everything but hints
     {
         if (gameState.DialogData.ContainsKey(textID))
         {
@@ -76,7 +76,7 @@ public partial class DialogBox : Sprite2D
         TriggerDialogSequence();
     }
 
-    public void StartHintDialog(string worldID, string levelID)
+    public void StartHintDialog(string worldID, string levelID) // Start dialog cutscene for hints specifically
     {
         if (!gameState.HintsData.ContainsKey(worldID))
         {

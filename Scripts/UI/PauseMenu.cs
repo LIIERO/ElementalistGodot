@@ -9,6 +9,9 @@ public partial class PauseMenu : ButtonManager
     const int OPTIONS = 2;
     const int EXIT = 3;
 
+    [Export] private PackedScene yesNoScreen;
+    private YesNoScreen hintApprovalPopup = null;
+    private string hintApprovalPopupText;
 
     // singletons
     //private SettingsManager settingsManager;
@@ -24,13 +27,19 @@ public partial class PauseMenu : ButtonManager
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.PopupResult, new Callable(this, MethodName.DelayResumeAndShowHint));
 
         base._Ready();
+
+        hintApprovalPopupText = gameState.UITextData["hint_warning"];
+
         Resume();
 	}
 
     public override void _Process(double delta)
 	{
+        if (hintApprovalPopup != null) return;
+
         if (InputManager.PausePressed())
         {
             if (gameState.IsGamePaused)
@@ -58,9 +67,18 @@ public partial class PauseMenu : ButtonManager
             }
             if (CurrentItemIndex == HINTSKIP)
             {
-                // TODO: Make the button conditional on whats happening, make it skip dialog too
-
-                DelayResumeAndShowHint();
+                // The button works conditionally based on whats happening, the appearance of the button is set in HintSkipMenuButton.cs
+                if (gameState.IsDialogActive) // If the dialog is active it skips it
+                {
+                    DelayResumeAndSkipCutscene();
+                }
+                else if (!gameState.IsHubLoaded()) // If no dialog and player in a non hub level it shows hint after a warning
+                {
+                    hintApprovalPopup = yesNoScreen.Instantiate() as YesNoScreen;
+                    AddChild(hintApprovalPopup);
+                    hintApprovalPopup.SetText(hintApprovalPopupText);
+                    hintApprovalPopup.CreatePopup();
+                }
             }
 
             if (CurrentItemIndex == OPTIONS)
@@ -114,10 +132,19 @@ public partial class PauseMenu : ButtonManager
         Resume();
     }
 
-    public async void DelayResumeAndShowHint()
+    private async void DelayResumeAndShowHint(bool showHint)
     {
         await ToSignal(GetTree().CreateTimer(resumeDelay), "timeout");
         Resume();
-        customSignals.EmitSignal(CustomSignals.SignalName.StartHintDialog, gameState.CurrentWorld, gameState.CurrentLevel);
+        hintApprovalPopup = null;
+
+        if (showHint) customSignals.EmitSignal(CustomSignals.SignalName.StartHintDialog, gameState.CurrentWorld, gameState.CurrentLevel);
+    }
+
+    private async void DelayResumeAndSkipCutscene()
+    {
+        await ToSignal(GetTree().CreateTimer(resumeDelay), "timeout");
+        customSignals.EmitSignal(CustomSignals.SignalName.EndDialog);
+        Resume();
     }
 }

@@ -1,19 +1,60 @@
 {
   "0": {
-    "0": ["Exit the level while holding the Sun Fragment."],
-    "1": ["Press the ability button to jump in the air.", "Each ability usage requires collecting an orb."],
-    "2": ["Get abilities on the right.", "Climb on the left."],
-    "3": ["Jump over the first pit to save a dash."],
-    "4": ["Jump over the air orb to collect water first.", "The most recently collected ability will be the first one to use."],
-    "5": ["The order of ability usage is opposite to the order you collected them in.", "Imagine in which order you need the abilities and then collect them in the opposite."]
+	"0": ["Exit the level while holding the Sun Fragment."],
+	"1": ["Press the ability button to jump in the air. Each ability usage requires collecting an orb."],
+	"2": ["Get abilities on the right and climb on the left."],
+	"3": ["Jump over the first pit to save a dash."],
+	"4": ["The most recently collected ability will be used first.", "Jump over the air orb to collect water first."],
+	"5": ["The order of use is opposite to the order of collection.", "Think about the order in which you need the abilities, and then collect them in reverse order."]
   },
 
   "1": {
-    "0": [""],
-    "1": [""],
-    "2": [""],
-    "3": [""],
-    "4": [""],
-    "5": [""]
+	"0": ["You can cross the tunnel with air only.", "Jump over the spike gap, get the air with water."],
+	"1": ["You don't need the water at all.", "Get air first, double jump with water to get air."],
+	"2": ["Green orbs copy your current top element.", "Don't collect the last green orb before using air, you don't need two airs."],
+	"3": ["Think in reverse, plan when you need the water", "Get both of the green orbs last."],
+	"4": ["You have one more orb than you need.", "Get the green orb first, you don't need it."],
+	"5": ["You don't have to collect every single orb on the left before going for the goal."],
+	"6": ["You have to use 4 abilities before landing on the ground.", "air, water, water, air."],
+	"7": ["Dodge the water on your way down.", "Finish the level like the previous one."],
+	"A": ["You activate the charges by touching them while using an ability.", "Count the charges and abilities.", "Activate the rightmost charge last."],
+	"B": ["Use the gate to your advantage, don't open it too early.", "Jump and dash from the gate to clear the gap."],
+	"C": ["Some gates shall remain unopened.", "You can use the air to activate the leftmost charge."],
+	"D": ["You can activate more than one charge with one ability.", "Activate the two middle charges with air at the end."],
+	"E": ["Leave the green orb on the left for later.", "Dodge the charge when going up.", ""],
+	"4S": ["The top path is useless in this one.", "If you use an ability and go through a copy orb, the next one will be copied."],
+	"7S": ["Use the wall to squeeze on the left side of stacked waters.", "Hold left to collect and use the air to cross the gap from the right side."]
+  },
+
+  "2": {
+	"0": ["Earth will always make you go down to the ground before launching you up. You can't chain it.", "Earth gives you less height than water, but more than a jump. Use it to climb up from the right."],
+	"1": ["You have way more earth than you need. Make sure water is at the bottom of the stack.", "Don't collect more earth than you need so that it can be used as soon as you collect it.", "To get the water, you should get two earths from the higher ground."],
+	"2": ["Earth activates charges when you fly down towards the ground.", "Use only air and earth to activate all four charges."],
+	"3": ["You must copy air whenever you can.", "Leave one earth on the bottom before going up."],
+	"4": ["Save your starting air by jumping onto the platform with earth and air.", "Use the earth to activate the charge and jump back up at the same time."],
+	"5": ["Don't activate all three charges, it will never work.", "Activating the leftmost charge is inevitable, but you cannot activate the same charge twice.", "Activate the leftmost charge with air and ignore the middle one."],
+	"6": ["Collect only as many orbs as you need to activate one charge. Come back and repeat.", "Use the earth orb from the left corridor first."],
+	"7": ["If you use earth in the air over an orb, you will collect it and still bounce.", "Leave the water untouched until the very end.", "Copy the earth so you can do the previously mentioned trick on air and water."],
+	"8": ["Activate the leftmost charge with air.", "Leave one of the bottom water orbs untouched, you will need it to get back up.", "Don't collect the rightmost water until you've activated the leftmost charge."],
+	"9": ["You don't have to use earth to activate charges in the shaft. You can use two other elements.", "Use your water immediately. I mean it."],
+	"3S": ["The charge at the top is a bait.", "Quick fingers can save you from certain death."],
+	"8S": ["The bottom air orb is the last one you collect on the left side. Earth is the second to last.", "See the hole to the right of the portal? At some point you will have to go down the hole, activate the charge, and get back up... somehow.", "At some point you will have to jump off of a moving object. It's quite evil."]
+  },
+
+  "3": {
+	"0": [""],
+	"1": [""],
+	"2": [""],
+	"3": [""],
+	"4": [""],
+	"5": [""],
+	"6": [""],
+	"7": [""],
+	"A": [""],
+	"B": [""],
+	"C": [""],
+	"2S": [""],
+	"3S": [""],
+	"5S": [""]
   }
 }

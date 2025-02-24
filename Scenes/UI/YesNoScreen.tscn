@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bnk38gdh7ajcj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/YesNoScreen.cs" id="1_3c260"]
-[ext_resource type="Texture2D" path="res://Graphics/UI/Menu/popup.png" id="2_b6uxu"]
+[ext_resource type="Texture2D" uid="uid://j3826e3thw63" path="res://Graphics/UI/Menu/popup.png" id="2_b6uxu"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_5f4ao"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="4_ofjm8"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="5_rtp4m"]
@@ -33,6 +33,7 @@ _data = {
 
 [node name="YesNoScreen" type="CanvasLayer" node_paths=PackedStringArray("noButton", "yesButton", "popupText")]
 process_mode = 3
+layer = 5
 script = ExtResource("1_3c260")
 noButton = NodePath("NO")
 yesButton = NodePath("YES")
@@ -71,6 +72,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(112, 128)
 script = ExtResource("4_ofjm8")
+interactableTextID = "no"
 
 [node name="OrbSelection" type="Node2D" parent="NO"]
 position = Vector2(-8, 8)
@@ -118,6 +120,7 @@ text_overrun_behavior = 2
 texture_filter = 1
 position = Vector2(288, 128)
 script = ExtResource("4_ofjm8")
+interactableTextID = "yes"
 
 [node name="OrbSelection" type="Node2D" parent="YES"]
 position = Vector2(-8, 8)

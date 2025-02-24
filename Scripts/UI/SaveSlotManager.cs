@@ -20,7 +20,7 @@ public partial class SaveSlotManager : Control
     // Save file override popup
     [Export] private PackedScene yesNoScreen;
     private YesNoScreen newGameApprovalPopup = null;
-    private const string newGameApprovalPopupText = "Are you sure you want to reset this save file? All progress will be lost.";
+    private string newGameApprovalPopupText;
 
     public override void _Ready()
 	{
@@ -34,6 +34,8 @@ public partial class SaveSlotManager : Control
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.PopupResult, new Callable(this, MethodName.NewGame));
         customSignals.Connect(CustomSignals.SignalName.SwitchToSelectSaveFileMode, new Callable(this, MethodName.ActivateSaveSlotSelection));
+
+        newGameApprovalPopupText = gameState.UITextData["new_save_warning"];
 
         maxSlotIndex = saveSlotList.Length - 1;
     }

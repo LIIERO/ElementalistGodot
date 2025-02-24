@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=46 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/CurrentLevelDisplay.cs" id="15_dq4b2"]
 [ext_resource type="Texture2D" uid="uid://bc7aiqfid7inw" path="res://Graphics/UI/Gameplay/sun_counter_background.png" id="16_g1udj"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="16_s0b1u"]
+[ext_resource type="PackedScene" uid="uid://bnk38gdh7ajcj" path="res://Scenes/UI/YesNoScreen.tscn" id="16_x302d"]
 [ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/HintSkipMenuButton.cs" id="20_afawl"]
@@ -339,6 +340,7 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("11_ovtmv")
+yesNoScreen = ExtResource("16_x302d")
 buttonList = [NodePath("ContinueButton"), NodePath("HintSkipButton"), NodePath("OptionsButton"), NodePath("ExitButton")]
 
 [node name="Panel" type="Panel" parent="PauseMenu"]
@@ -421,7 +423,7 @@ position = Vector2(0, 1)
 texture_filter = 1
 texture = ExtResource("13_ykw2f")
 region_enabled = true
-region_rect = Rect2(80, 0, 16, 16)
+region_rect = Rect2(64, 0, 16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="PauseMenu/HintSkipButton"]
 position = Vector2(64, 8)
@@ -441,7 +443,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
-text = "HINT"
+text = "HINT/SKIP"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2

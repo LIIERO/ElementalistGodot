@@ -1,6 +1,9 @@
 {
   "": "",
 
+  "yes": "YES",
+  "no": "NO",
+
   "new_game": "NEW GAME",
   "continue": "CONTINUE",
   "options": "OPTIONS",
@@ -37,5 +40,8 @@
   "save_and_exit": "SAVE AND EXIT",
 
   "slot": "SLOT",
-  "level": "LEVEL"
+  "level": "LEVEL",
+
+  "new_save_warning": "Are you sure you want to reset this save file? \n\nAll progress will be lost.",
+  "hint_warning": "Are you sure you want to see a hint? \n\nPause and use the \"SKIP CUTSCENE\" button whenever you feel like you don't want more information (there usually is more than one panel)."
 }
