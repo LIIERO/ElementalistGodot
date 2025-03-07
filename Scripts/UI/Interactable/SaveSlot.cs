@@ -9,9 +9,6 @@ public partial class SaveSlot : Node2D
 
 	private Node2D arrowIndicator;
 
-	private Color selectedModulate = new(1f, 1f, 1f);
-	private Color deselectedModulate = new(0.6f, 0.6f, 0.6f);
-
     private Label slotName;
 	private Label worldName;
 	private Label sunFragments;
@@ -32,7 +29,7 @@ public partial class SaveSlot : Node2D
         basePosition = Position;
         offsetPosition = basePosition + new Vector2(0.0f, GameUtils.gameUnitSize);
 
-		Modulate = deselectedModulate;
+        SetModulateToDeselected();
 
 		arrowIndicator = GetNode<Node2D>("ArrowIndicatorThick");
 		arrowIndicator.Hide();
@@ -61,19 +58,39 @@ public partial class SaveSlot : Node2D
 			undos.Text = savefileData.NoUndos.ToString();
 			abilityUses.Text = savefileData.NoAbilityUses.ToString();
 		}
-	}
+    }
 
 	public void Select()
 	{
         Position = offsetPosition;
 		arrowIndicator.Show();
-		Modulate = selectedModulate;
+		SetModulateToSelected();
     }
 
     public void Deselect()
     {
 		arrowIndicator.Hide();
         Position = basePosition;
-		Modulate = deselectedModulate;
+		SetModulateToDeselected();
+    }
+
+    public void SetModulateToSelected()
+    {
+        Modulate = new Color(1f, 1f, 1f, Modulate.A);
+    }
+
+    public void SetModulateToDeselected()
+    {
+        Modulate = new Color(0.6f, 0.6f, 0.6f, Modulate.A);
+    }
+
+    public void SetOpacityToHalf()
+    {
+        Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, 0.5f);
+    }
+
+    public void SetOpacityToNormal()
+    {
+        Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, 1f);
     }
 }

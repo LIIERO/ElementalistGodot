@@ -198,6 +198,8 @@ public partial class DialogBox : Sprite2D
 
     public void EndDialog()
     {
+        currentDialog = null;
+        currentDialogLineDisplayed = true;
         gameState.IsDialogActive = false;
 
         Hide();

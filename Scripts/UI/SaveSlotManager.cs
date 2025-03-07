@@ -43,15 +43,22 @@ public partial class SaveSlotManager : Control
     private void ActivateSaveSlotSelection(bool newGame)
     {
         selectionMode = newGame ? SelectionMode.newGamePressed : SelectionMode.continuePressed;
-
-        // Find save slot index with given ID
+        
         for (int i = 0; i <= maxSlotIndex; i++)
         {
-            if (saveSlotList[i].SlotID == gameState.CurrentSaveFileID)
+            string slot = saveSlotList[i].SlotID;
+
+            // Find save slot index with given ID to start on the latest save file
+            if (slot == gameState.CurrentSaveFileID)
             {
                 CurrentItemIndex = i;
-                break;
             }
+            
+            // Make unavailable save slots have opacity
+            if (selectionMode == SelectionMode.continuePressed && !gameState.SaveFileExists(slot))
+                saveSlotList[i].SetOpacityToHalf();      
+            else
+                saveSlotList[i].SetOpacityToNormal();
         }
 
         SelectSlot(CurrentItemIndex);

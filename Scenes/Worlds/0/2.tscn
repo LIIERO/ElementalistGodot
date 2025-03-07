@@ -35,6 +35,11 @@ position = Vector2(128, -48)
 Text = "0_2_failed"
 SunHoldingText = "0_2_completed"
 
+[node name="Sign2" parent="Interactables" index="2" instance=ExtResource("4_fwk14")]
+position = Vector2(-32, 112)
+Text = "0_2_hintful"
+SunHoldingText = "0_2_hintless"
+
 [node name="Goal" parent="." index="7" instance=ExtResource("5_3fmuc")]
 position = Vector2(0, -112)
 

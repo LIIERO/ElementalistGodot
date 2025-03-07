@@ -36,7 +36,7 @@ public partial class GameState : Node
     public bool IsCurrentLevelSpecial { get; set; } = false;
     public string CurrentLevelName { get; set; } = "";
     public int MainCutsceneProgress { get; set; } = 0;
-    public bool IsAbilitySalvagingUnlocked { get; set; } = true;
+    public bool IsAbilitySalvagingUnlocked { get; set; } = false;
     public List<ElementState> SalvagedAbilities { get; set; } = new();
 
     // Save file stats
@@ -390,7 +390,7 @@ public partial class GameState : Node
         NoRestarts = 0;
         NoUndos = 0;
         NoAbilityUses = 0;
-        IsAbilitySalvagingUnlocked = true;
+        IsAbilitySalvagingUnlocked = false;
         SalvagedAbilities = new();
 
         CurrentSaveFileID = id;

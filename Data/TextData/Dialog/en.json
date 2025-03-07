@@ -11,7 +11,7 @@
 
   "0_HUB_controls": [
 	{"background": "0", "portrait": "SignNormal", "text": "You can adjust your controls in the options menu."},
-  {"background": "0", "portrait": "SignNormal", "text": "Unless you are satisfied with the default ones, of course."}
+  {"background": "0", "portrait": "SignNormal", "text": "Unless, of course, you are satisfied with the defaults."}
   ],
 
   "0_2_failed": [
@@ -21,6 +21,15 @@
   "0_2_completed": [
 	{"background": "0", "portrait": "SignNormal", "text": "Congratulations, you have completed the puzzle."}
   ],
+
+  "0_2_hintful": [
+	{"background": "0", "portrait": "SignNormal", "text": "If you get stuck, you can access hints from the pause menu."}
+  ],
+
+  "0_2_hintless": [
+	{"background": "0", "portrait": "SignNormal", "text": "I would tell you about the hints in the pause menu, but it seems you don't need them."}
+  ],
+
 
   "0_5_undo": [
 	{"background": "0", "portrait": "SignNormal", "text": "Undo checkpoints are created when you land on the ground after collecting, or using, an ability."}
@@ -37,7 +46,7 @@
 
   "1_4S_special": [
 	{"background": "1", "portrait": "SignNormal", "text": "Levels marked with an S are completely optional."},
-	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels,\nusually of much higher difficulty,\nboth in puzzle solving, and execution."},
+	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels,\nusually with a much higher level of difficulty, both in puzzle solving, and execution."},
   {"background": "1", "portrait": "SignNormal", "text": "Don't feel bad for skipping them! \nYou can always come back later."}
   ],
 
