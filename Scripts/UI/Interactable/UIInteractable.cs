@@ -17,9 +17,16 @@ public abstract partial class UIInteractable : Node2D
         gameState = GetNode<GameState>("/root/GameState");
         interactableLabel = GetNode<Label>("Sprite2D/Text");
 
-		interactableLabel.Text = gameState.UITextData[interactableTextID];
+        try
+        {
+            interactableLabel.Text = gameState.UITextData[interactableTextID];
+        }
+        catch
+        {
+            interactableLabel.Text = interactableTextID;
+        }
 
-		orbSelection = GetNode("./OrbSelection") as Node2D;
+        orbSelection = GetNode<Node2D>("./OrbSelection");
 		basePosition = Position;
 		offsetPosition = basePosition + new Vector2(GameUtils.gameUnitSize, 0.0f);
         orbSelection.Hide();

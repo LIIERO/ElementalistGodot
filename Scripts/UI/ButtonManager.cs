@@ -34,7 +34,6 @@ public abstract partial class ButtonManager : Control
             CurrentItemIndex += 1;
             if (CurrentItemIndex > maxButtonIndex) CurrentItemIndex = 0;
             SelectButton(CurrentItemIndex);
-            //hoverSound.Play();
         }
 
         if (InputManager.UIUpPressed())
@@ -44,7 +43,6 @@ public abstract partial class ButtonManager : Control
             CurrentItemIndex -= 1;
             if (CurrentItemIndex < 0) CurrentItemIndex = maxButtonIndex;
             SelectButton(CurrentItemIndex);
-            //hoverSound.Play();
         }
     }
 

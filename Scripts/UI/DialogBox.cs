@@ -76,7 +76,7 @@ public partial class DialogBox : Sprite2D
         TriggerDialogSequence();
     }
 
-    public void StartHintDialog(string worldID, string levelID) // Start dialog cutscene for hints specifically
+    public void StartHintDialog(string worldID, string levelID, int noHint) // Start dialog cutscene for hints specifically
     {
         if (!gameState.HintsData.ContainsKey(worldID))
         {
@@ -89,7 +89,8 @@ public partial class DialogBox : Sprite2D
 
         if (gameState.HintsData[worldID].ContainsKey(levelID))
         {
-            int l = gameState.HintsData[worldID][levelID].Count;
+            dialogTemplate["text"] = gameState.HintsData[worldID][levelID][noHint - 1];
+            /*int l = gameState.HintsData[worldID][levelID].Count;
             
             currentDialog = new();
             for (int i = 0; i < l; i++)
@@ -97,13 +98,14 @@ public partial class DialogBox : Sprite2D
                 Dictionary<string, string> line = new(dialogTemplate);
                 line["text"] = gameState.HintsData[worldID][levelID][i];
                 currentDialog.Add(line);
-            }
+            }*/
         }
         else
         {
             dialogTemplate["text"] = "This level has no hint, sorry :(";
-            currentDialog = new() { dialogTemplate };
+            //currentDialog = new() { dialogTemplate };
         }
+        currentDialog = new() { dialogTemplate };
 
         TriggerDialogSequence();
     }

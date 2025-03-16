@@ -6,6 +6,7 @@ public partial class YesNoScreen : CanvasLayer
     // singletons
     private CustomSignals customSignals;
     protected GameState gameState;
+    private AudioManager audioManager;
 
     [Export] private MenuButton noButton;
     [Export] private MenuButton yesButton;
@@ -17,6 +18,7 @@ public partial class YesNoScreen : CanvasLayer
 	{
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         gameState = GetNode<GameState>("/root/GameState");
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
     }
 
     public void SetText(string text)
@@ -61,6 +63,8 @@ public partial class YesNoScreen : CanvasLayer
 
     private void SelectButton()
     {
+        audioManager.buttonSelected.Play();
+
         if (isYesSelected)
         {
             yesButton.Select();

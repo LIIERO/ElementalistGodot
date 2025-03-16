@@ -9,8 +9,8 @@ public partial class PauseMenu : ButtonManager
     const int OPTIONS = 2;
     const int EXIT = 3;
 
-    [Export] private PackedScene yesNoScreen;
-    private YesNoScreen hintApprovalPopup = null;
+    [Export] private PackedScene hintPopup;
+    private HintPopup hintApprovalPopup = null;
     private string hintApprovalPopupText;
 
     // singletons
@@ -27,7 +27,7 @@ public partial class PauseMenu : ButtonManager
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-        customSignals.Connect(CustomSignals.SignalName.PopupResult, new Callable(this, MethodName.DelayResumeAndShowHint));
+        customSignals.Connect(CustomSignals.SignalName.HintPopupResult, new Callable(this, MethodName.DelayResumeAndShowHint));
 
         base._Ready();
 
@@ -74,7 +74,7 @@ public partial class PauseMenu : ButtonManager
                 }
                 else if (!gameState.IsHubLoaded()) // If no dialog and player in a non hub level it shows hint after a warning
                 {
-                    hintApprovalPopup = yesNoScreen.Instantiate() as YesNoScreen;
+                    hintApprovalPopup = hintPopup.Instantiate() as HintPopup;
                     AddChild(hintApprovalPopup);
                     hintApprovalPopup.SetText(hintApprovalPopupText);
                     hintApprovalPopup.CreatePopup();
@@ -132,13 +132,13 @@ public partial class PauseMenu : ButtonManager
         Resume();
     }
 
-    private async void DelayResumeAndShowHint(bool showHint)
+    private async void DelayResumeAndShowHint(bool showHint, int noHint)
     {
         await ToSignal(GetTree().CreateTimer(resumeDelay), "timeout");
         Resume();
         hintApprovalPopup = null;
 
-        if (showHint) customSignals.EmitSignal(CustomSignals.SignalName.StartHintDialog, gameState.CurrentWorld, gameState.CurrentLevel);
+        if (showHint) customSignals.EmitSignal(CustomSignals.SignalName.StartHintDialog, gameState.CurrentWorld, gameState.CurrentLevel, noHint);
     }
 
     private async void DelayResumeAndSkipCutscene()

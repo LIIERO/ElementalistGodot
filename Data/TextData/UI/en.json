@@ -43,5 +43,5 @@
   "level": "LEVEL",
 
   "new_save_warning": "Are you sure you want to reset this save file? \n\nAll progress will be lost.",
-  "hint_warning": "Are you sure you want to see the hints? \n\nPause and use the \"SKIP CUTSCENE\" button whenever you feel like you don't want more information (there is usually more than one hint per level)."
+  "hint_warning": "Are you sure you want to see a hint?"
 }

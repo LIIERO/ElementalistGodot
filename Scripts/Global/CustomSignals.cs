@@ -35,7 +35,7 @@ public partial class CustomSignals : Node
     public delegate void StartDialogEventHandler(string dialogID);
 
     [Signal]
-    public delegate void StartHintDialogEventHandler(string worldID, string levelID);
+    public delegate void StartHintDialogEventHandler(string worldID, string levelID, int noHint);
 
     [Signal]
     public delegate void EndDialogEventHandler();
@@ -45,6 +45,9 @@ public partial class CustomSignals : Node
 
     [Signal]
     public delegate void PopupResultEventHandler(bool result);
+
+    [Signal]
+    public delegate void HintPopupResultEventHandler(bool result, int noHint);
 
     [Signal]
     public delegate void GamePausedEventHandler(bool paused);

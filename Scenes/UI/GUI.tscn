@@ -18,8 +18,8 @@
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="15_1xd4b"]
 [ext_resource type="Script" path="res://Scripts/UI/CurrentLevelDisplay.cs" id="15_dq4b2"]
 [ext_resource type="Texture2D" uid="uid://bc7aiqfid7inw" path="res://Graphics/UI/Gameplay/sun_counter_background.png" id="16_g1udj"]
+[ext_resource type="PackedScene" uid="uid://crb0a3rgctlxs" path="res://Scenes/UI/HintPopup.tscn" id="16_jkwau"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="16_s0b1u"]
-[ext_resource type="PackedScene" uid="uid://bnk38gdh7ajcj" path="res://Scenes/UI/YesNoScreen.tscn" id="16_x302d"]
 [ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/HintSkipMenuButton.cs" id="20_afawl"]
@@ -340,7 +340,7 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("11_ovtmv")
-yesNoScreen = ExtResource("16_x302d")
+hintPopup = ExtResource("16_jkwau")
 buttonList = [NodePath("ContinueButton"), NodePath("HintSkipButton"), NodePath("OptionsButton"), NodePath("ExitButton")]
 
 [node name="Panel" type="Panel" parent="PauseMenu"]
