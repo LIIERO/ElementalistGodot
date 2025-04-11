@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ay112fsiir6"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ay112fsiir6"]
 
 [ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_11mhi"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_ocfba"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_2s5bq"]
 [ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_2egw6"]
 [ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="6_c3sff"]
+[ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="6_ldou4"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="7_tqxjn"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_qvjxd"]
 
@@ -39,6 +40,9 @@ position = Vector2(-192, 368)
 position = Vector2(-168, 368)
 
 [node name="Interactables" type="Node2D" parent="." index="8"]
+
+[node name="EntranceVoid" parent="Interactables" index="0" instance=ExtResource("6_ldou4")]
+position = Vector2(0, 112)
 
 [node name="Gates" type="Node2D" parent="." index="9"]
 
