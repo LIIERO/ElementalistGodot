@@ -32,7 +32,7 @@ public partial class ControlBind : UIInteractable
 
     public void SetRebinding()
     {
-        inputLabel.Text = "...WAITING FOR INPUT...";
+        inputLabel.Text = gameState.UITextData["awaiting_input"];
         inputLabel.Set("theme_override_colors/font_color", yellow);
     }
 }

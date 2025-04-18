@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfmn7yp2rc0ms"]
+[gd_scene load_steps=5 format=3 uid="uid://bfmn7yp2rc0ms"]
 
 [ext_resource type="PackedScene" uid="uid://cxqrk1qq4twqu" path="res://Scenes/UI/InputOptionsGamepadGUI.tscn" id="1_8j86d"]
 [ext_resource type="PackedScene" uid="uid://cep3g7i8o4gx4" path="res://Scenes/UI/MenuBackground.tscn" id="2_omay3"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="3_bo05a"]
+[ext_resource type="Script" path="res://Scripts/UI/Visual/GamepadNote.cs" id="4_gn8g0"]
 
 [node name="InputOptions" type="Node2D"]
 
@@ -25,7 +26,8 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bo05a")
 theme_override_font_sizes/font_size = 12
-text = "Note: The left analog stick and Dpad always control directional input."
+text = "Note: The left analog stick and Dpad always control directional input. (hcoded)"
 vertical_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+script = ExtResource("4_gn8g0")

@@ -22,6 +22,7 @@
   "keyboard_config": "KEYBOARD CONFIG",
   "controller_config": "CONTROLLER CONFIG",
 
+  "awaiting_input": "...WAITING FOR INPUT...",
   "reset_default": "RESET TO DEFAULT",
   "move_left": "MOVE LEFT",
   "move_right": "MOVE RIGHT",
@@ -43,5 +44,6 @@
   "level": "LEVEL",
 
   "new_save_warning": "Are you sure you want to reset this save file? \n\nAll progress will be lost.",
-  "hint_warning": "Are you sure you want to see a hint?"
+  "hint_warning": "Are you sure you want to see a hint?",
+  "gamepad_note": "Note: The left analog stick and Dpad always control directional input."
 }

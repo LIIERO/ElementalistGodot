@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_hqq5x")
 ID = "B"
-Name = "Thanks for playing the demo!"
+Name = "Elemental Shell"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false
