@@ -31,12 +31,14 @@ public partial class AudioManager : Node
         worldMusicDictionary = new Dictionary<string, AudioStreamPlayer>()
         {
             { "H", musicVoid },
+            { "L", musicVoid },
             { "0", musicPurpleForest },
             { "1", musicDistantShore },
             { "2", musicCaveOutskirts },
             { "3", musicIslandsOfAshes },
             { "4", musicOperatorium },
-            { "5", musicKnipe }
+            { "5", musicKnipe },
+            { "H", musicVoid }
         };
     }
 

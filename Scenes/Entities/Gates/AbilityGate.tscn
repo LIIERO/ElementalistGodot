@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7kt0e8nafbrp"]
+[gd_scene load_steps=10 format=3 uid="uid://b7kt0e8nafbrp"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Gates/AbilityGate.cs" id="1_8412g"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_vksme"]
@@ -54,8 +54,24 @@ tracks/0/keys = {
 "values": [Vector2(0, 32)]
 }
 
+[sub_resource type="Animation" id="Animation_2c4vc"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToMove:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g26fh"]
 _data = {
+"Close": SubResource("Animation_2c4vc"),
 "Open": SubResource("Animation_foprm"),
 "Reset": SubResource("Animation_xsvqg"),
 "SetOpen": SubResource("Animation_6pfoh")

@@ -43,6 +43,11 @@
   "slot": "SLOT",
   "level": "LEVEL",
 
+  "level_transition": "Level",
+  "world_transition": "World",
+  "level_complete": "Sun Fragment collected",
+  "level_complete_special": "Red Fragment collected",
+
   "new_save_warning": "Are you sure you want to reset this save file? \n\nAll progress will be lost.",
   "hint_warning": "Are you sure you want to see a hint?",
   "gamepad_note": "Note: The left analog stick and Dpad always control directional input."
