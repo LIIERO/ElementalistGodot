@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://cf4k0twdc7q22"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/Librarian.cs" id="1_m85ha"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_enkby"]
+[ext_resource type="Texture2D" uid="uid://cykev2uk1662r" path="res://Graphics/Entities/library.png" id="3_ab12x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7onrw"]
+size = Vector2(39, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dba1d"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od4ot"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it68g"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0grj"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_dba1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od4ot")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_it68g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od4ot")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc7er"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(0, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lmtc"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(0, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdacd"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(48, 96, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xgbyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc7er")
+}],
+"loop": false,
+"name": &"Sleeping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 11.0,
+"texture": SubResource("AtlasTexture_6lmtc")
+}, {
+"duration": 11.0,
+"texture": SubResource("AtlasTexture_fdacd")
+}],
+"loop": true,
+"name": &"SleepingIdle",
+"speed": 12.0
+}]
+
+[node name="Librarian" type="Area2D"]
+script = ExtResource("1_m85ha")
+Text = "Librarian"
+arrowYOffset = -4.0
+arrowIndicatorPrefab = ExtResource("2_enkby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_7onrw")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Librarian" type="AnimatedSprite2D" parent="Body"]
+position = Vector2(0, -31)
+sprite_frames = SubResource("SpriteFrames_w0grj")
+animation = &"Idle"
+
+[node name="Table" type="AnimatedSprite2D" parent="Body"]
+position = Vector2(4, -8)
+sprite_frames = SubResource("SpriteFrames_xgbyl")
+animation = &"Sleeping"
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="_OnBodyExited"]

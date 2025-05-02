@@ -2,20 +2,26 @@ using Godot;
 using System;
 using static System.Collections.Specialized.BitVector32;
 
-public partial class Sign : Interactable
+public partial class Librarian : Interactable
 {
     private CustomSignals customSignals; // Singleton
 
     [Export] public string Text { get; set; } // TODO: rename to dialogID, make sign into an npc class to handle this for every single npc
     [Export] public string SunHoldingText { get; set; }
 
-    // TODO bool checkbox whether dialog should be on top or bottom
+    private AnimatedSprite2D tableAnimation;
+    private AnimatedSprite2D librarianAnimation;
 
     public override void _Ready()
 	{
 		base._Ready();
 
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+
+        tableAnimation = GetNode<AnimatedSprite2D>("Body/Table");
+        librarianAnimation = GetNode<AnimatedSprite2D>("Body/Librarian");
+        tableAnimation.Play("SleepingIdle");
+        librarianAnimation.Play("Idle");
     }
 
     protected override void Interact()

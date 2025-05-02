@@ -78,7 +78,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7onrw"]
 size = Vector2(25, 1)
 
-[node name="Area2D" type="Area2D"]
+[node name="Madeline" type="Area2D"]
 script = ExtResource("2_yf1qn")
 Text = "Knipe by Liero"
 arrowIndicatorPrefab = ExtResource("2_37tp5")
