@@ -26,10 +26,4 @@ texture = ExtResource("3_y47qh")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 32)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, -9.5)
-scale = Vector2(1, 0.95)
-
 [node name="EchoSpawner" type="Node" parent="."]
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnVisibleOnScreenNotifier2dScreenExited"]
