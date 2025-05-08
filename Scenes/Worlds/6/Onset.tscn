@@ -1,16 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjvv2aq4pkj2o"]
+[gd_scene load_steps=11 format=3 uid="uid://xjjly4itgq2k"]
 
-[ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_2tny8"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_8by4j"]
-[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_bsugx"]
-[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_1hov8"]
-[ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="6_disw3"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="7_av568"]
-[ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="9_hws31"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="11_2nscj"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="12_v0dav"]
+[ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_5u63i"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_rs4hm"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_c8b0t"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_hdexe"]
+[ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="5_k66h1"]
+[ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="6_160bg"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="7_ojwsk"]
+[ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="8_tacyw"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="9_g4sws"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="10_hl2y7"]
 
-[node name="Game" instance=ExtResource("1_2tny8")]
+[node name="Game" instance=ExtResource("1_5u63i")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-176, 96)
@@ -26,37 +27,40 @@ layer_0/tile_data = PackedInt32Array(-655350, 0, 0, 786403, 262144, 0, 786416, 6
 
 [node name="Orbs" type="Node2D" parent="." index="7"]
 
-[node name="AirOrb" parent="Orbs" index="0" instance=ExtResource("3_8by4j")]
-position = Vector2(-224, 32)
-
-[node name="EarthOrb" parent="Orbs" index="1" instance=ExtResource("4_bsugx")]
-position = Vector2(-144, 32)
-
-[node name="FireOrb" parent="Orbs" index="2" instance=ExtResource("5_1hov8")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("2_rs4hm")]
 position = Vector2(-144, 80)
 
-[node name="LoveOrb" parent="Orbs" index="3" instance=ExtResource("6_disw3")]
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("3_c8b0t")]
+position = Vector2(-224, 32)
+
+[node name="EarthOrb" parent="Orbs" index="2" instance=ExtResource("4_hdexe")]
+position = Vector2(-144, 32)
+
+[node name="FireOrb" parent="Orbs" index="3" instance=ExtResource("5_k66h1")]
+position = Vector2(224, 64)
+
+[node name="LoveOrb" parent="Orbs" index="4" instance=ExtResource("6_160bg")]
 position = Vector2(-208, 80)
 
-[node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("7_av568")]
+[node name="CopyTopOrb" parent="Orbs" index="5" instance=ExtResource("7_ojwsk")]
 position = Vector2(-112, 80)
 
 [node name="Interactables" type="Node2D" parent="." index="8"]
 
 [node name="Gates" type="Node2D" parent="." index="9"]
 
-[node name="AbilityGate" parent="Gates" index="0" instance=ExtResource("9_hws31")]
+[node name="AbilityGate" parent="Gates" index="0" instance=ExtResource("8_tacyw")]
 position = Vector2(-16, 48)
 startOpen = true
 
-[node name="AbilityGate2" parent="Gates" index="1" instance=ExtResource("9_hws31")]
+[node name="AbilityGate2" parent="Gates" index="1" instance=ExtResource("8_tacyw")]
 position = Vector2(80, -16)
 startOpen = true
 
-[node name="LevelExit" parent="." index="10" instance=ExtResource("11_2nscj")]
+[node name="LevelExit" parent="." index="10" instance=ExtResource("9_g4sws")]
 position = Vector2(-176, 96)
 
-[node name="Goal" parent="." index="11" instance=ExtResource("12_v0dav")]
+[node name="Goal" parent="." index="11" instance=ExtResource("10_hl2y7")]
 position = Vector2(192, 96)
 
 [node name="DangerTiles" parent="." index="12"]
