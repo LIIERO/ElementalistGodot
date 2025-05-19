@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_dl25m")
 ID = "3"
-Name = "The Air"
+Name = "the_air"
 NoCompletedToUnlock = 3
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

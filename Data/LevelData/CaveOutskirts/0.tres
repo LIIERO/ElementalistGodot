@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_gftt6")
 ID = "0"
-Name = "The Earth"
+Name = "the_earth"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

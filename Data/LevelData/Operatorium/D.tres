@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_8ivei")
 ID = "D"
-Name = "Interruption"
+Name = "interruption"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uqyig")
 ID = "E"
-Name = "Telepathy"
+Name = "telepathy"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

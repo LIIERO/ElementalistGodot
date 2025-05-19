@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_u7ske")
 ID = "Z"
-Name = "Weave In"
+Name = "weave_in"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "X"
 IsSpecial = false

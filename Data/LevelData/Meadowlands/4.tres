@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dv34hgm8ye70f"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_ilspv"]
+
+[resource]
+script = ExtResource("1_ilspv")
+ID = "4"
+Name = "inertia"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

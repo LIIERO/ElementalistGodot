@@ -59,7 +59,7 @@ public partial class LevelTransitions : CanvasLayer
         levelTextTopLabel.Show();
         levelTextBottomLabel.Show();
         levelTextTopLabel.Text = string.Format($"{gameState.UITextData["level_transition"]} {gameState.CurrentWorld}-{levelToTransitionTo.ID}");
-        levelTextBottomLabel.Text = levelToTransitionTo.Name;
+        levelTextBottomLabel.Text = gameState.GetLevelName(levelToTransitionTo.Name);
 
         animationPlayer.Play("LevelExit");
         audioManager.fadeIn.Play();
@@ -102,7 +102,7 @@ public partial class LevelTransitions : CanvasLayer
         levelTextTopLabel.Show();
         levelTextBottomLabel.Show();
         levelTextTopLabel.Text = string.Format($"{gameState.UITextData["world_transition"]} {worldToTransitionTo.ID}");
-        levelTextBottomLabel.Text = worldToTransitionTo.Name;
+        levelTextBottomLabel.Text = gameState.GetLevelName(worldToTransitionTo.Name);
 
         animationPlayer.Play("LevelExit");
         audioManager.fadeIn.Play();
@@ -166,7 +166,7 @@ public partial class LevelTransitions : CanvasLayer
                     EndLevelTransitionAfterSeconds(0.5f); break;
 
                 case ScreenTransition.levelEntry:
-                    gameState.LoadLevel(transitionLevel.ID, transitionLevel.Name);
+                    gameState.LoadLevel(transitionLevel.ID, gameState.GetLevelName(transitionLevel.Name));
                     EndLevelTransitionAfterSeconds(1.5f); break;
 
                 case ScreenTransition.worldEntry:

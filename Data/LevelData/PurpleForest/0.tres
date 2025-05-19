@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_nrte4")
 ID = "0"
-Name = "Sun Collector"
+Name = "sun_collector"
 NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

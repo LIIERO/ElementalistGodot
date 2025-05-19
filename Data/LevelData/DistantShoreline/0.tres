@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_iijul")
 ID = "0"
-Name = "Sharp Reefs"
+Name = "sharp_reefs"
 NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

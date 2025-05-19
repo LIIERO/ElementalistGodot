@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_s51x4")
 ID = "1"
-Name = "Loop"
+Name = "loop"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "0"
 IsSpecial = false

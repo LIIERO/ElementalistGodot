@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_wmcsw")
 ID = "B"
-Name = "Return Ticket"
+Name = "return_ticket"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false

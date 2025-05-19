@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uc1ho")
 ID = "6"
-Name = "Elemental Stack v2"
+Name = "elemental_stack_v2"
 NoCompletedToUnlock = 5
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

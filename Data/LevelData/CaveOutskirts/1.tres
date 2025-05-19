@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6sjry")
 ID = "1"
-Name = "Portable Trampoline"
+Name = "portable_trampoline"
 NoCompletedToUnlock = 1
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

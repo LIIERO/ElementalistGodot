@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_nx0om")
 ID = "4"
-Name = "Extra Piece"
+Name = "extra_piece"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

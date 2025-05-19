@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_nvtiv")
 ID = "1"
-Name = "Ambush"
+Name = "ambush"
 NoCompletedToUnlock = 1
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

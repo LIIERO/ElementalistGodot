@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6xydo")
 ID = "9"
-Name = "The Shaft"
+Name = "the_shaft"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = "5"
 IsSpecial = false

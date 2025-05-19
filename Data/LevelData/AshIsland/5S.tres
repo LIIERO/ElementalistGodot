@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_s5ndv")
 ID = "5S"
-Name = "Bruh Moment"
+Name = "bruh_moment"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "5"
 IsSpecial = true

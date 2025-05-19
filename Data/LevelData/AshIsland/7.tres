@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_tdbf4")
 ID = "7"
-Name = "Blue Herring"
+Name = "blue_herring"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

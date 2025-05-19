@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_kqynl")
 ID = "2"
-Name = "Cave Outskirts"
+Name = "cave_outskirts_world"

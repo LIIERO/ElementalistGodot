@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_oiwyo")
 ID = "E"
-Name = "Love Bombing"
+Name = "love_bombing"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

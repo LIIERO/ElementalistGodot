@@ -21,7 +21,7 @@ public partial class GameState : Node
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
         { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "J", "K", "L", "AS", "BS" } }, // Operatorium
         { "5", new string[] { "HUB", "0", "1", "2", "A", "B", "C", "D", "E", "X", "Y", "Z", "2S", "BS" } }, // Knipe
-        { "6", new string[] { "HUB" } } // Meadowlands
+        { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "6S" } } // Meadowlands
     };
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
 
@@ -54,6 +54,7 @@ public partial class GameState : Node
     public Dictionary<string, List<Dictionary<string, string>>> DialogData { get; private set; }
     public Dictionary<string, Dictionary<string, List<string>>> HintsData { get; private set; }
     public Dictionary<string, string> UITextData { get; private set; }
+    public Dictionary<string, string> LevelNameData { get; private set; }
 
     // Other
     public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
@@ -74,6 +75,7 @@ public partial class GameState : Node
         DialogData = LoadTextData<Dictionary<string, List<Dictionary<string, string>>>>("Dialog", languageCode);
         HintsData = LoadTextData<Dictionary<string, Dictionary<string, List<string>>>>("Hints", languageCode);
         UITextData = LoadTextData<Dictionary<string, string>>("UI", languageCode);
+        LevelNameData = LoadTextData<Dictionary<string, string>>("LevelNames", languageCode);
 
         // Initialize LevelIDToLevel
         foreach (KeyValuePair<string, string[]> world in levels)
@@ -129,7 +131,7 @@ public partial class GameState : Node
                     {
                         CompletedLevels[world.Key].Add(levelID, false);
                     }
-                }  
+                }
             }
         }
     }
@@ -238,6 +240,13 @@ public partial class GameState : Node
         CurrentLevel = id;
         CurrentLevelName = name;
         LoadGame();
+    }
+
+    public string GetLevelName(string name_id)
+    {
+        if (LevelNameData.ContainsKey(name_id))
+            return LevelNameData[name_id];
+        return "NAME NOT FOUND";
     }
 
     public void RestartCurrentLevel()

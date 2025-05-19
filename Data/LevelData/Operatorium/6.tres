@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_55yej")
 ID = "6"
-Name = "Parity"
+Name = "parity"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "4"
 IsSpecial = false

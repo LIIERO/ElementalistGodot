@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_qfoa1")
 ID = "6"
-Name = "Step by Step"
+Name = "step_by_step"
 NoCompletedToUnlock = 5
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

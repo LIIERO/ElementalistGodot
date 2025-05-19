@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_lgtr6")
 ID = "1"
-Name = "The Water"
+Name = "the_water"
 NoCompletedToUnlock = 1
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false

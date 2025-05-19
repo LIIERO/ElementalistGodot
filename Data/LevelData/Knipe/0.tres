@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_buxxy")
 ID = "0"
-Name = "One Way"
+Name = "one_way"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

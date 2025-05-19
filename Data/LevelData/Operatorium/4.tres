@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_b4yvl")
 ID = "4"
-Name = "Indifference"
+Name = "indifference"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "3"
 IsSpecial = false

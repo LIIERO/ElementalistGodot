@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_gkutq")
 ID = "3"
-Name = "Brown Burden"
+Name = "brown_burden"
 NoCompletedToUnlock = 2
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

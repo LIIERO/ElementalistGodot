@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_jhaf5")
 ID = "5"
-Name = "Devious Platform"
+Name = "devious_platform"
 NoCompletedToUnlock = 3
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

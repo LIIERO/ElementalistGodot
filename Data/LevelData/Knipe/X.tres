@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_5se4r")
 ID = "X"
-Name = "Mouse Trap"
+Name = "mouse_trap"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

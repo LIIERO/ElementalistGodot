@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://vfh2kaclntjf"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_rtmen"]
+
+[resource]
+script = ExtResource("1_rtmen")
+ID = "1"
+Name = "incompetence"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "0"
+IsSpecial = false

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_seeax")
 ID = "AS"
-Name = "The Wrong Order"
+Name = "wrong_order"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = true

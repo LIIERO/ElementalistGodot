@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ed1cl")
 ID = "L"
-Name = "Abandon"
+Name = "abandon"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "J"
 IsSpecial = false

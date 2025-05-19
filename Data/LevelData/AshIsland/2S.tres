@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_awscg")
 ID = "2S"
-Name = "Theft"
+Name = "theft"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "2"
 IsSpecial = true

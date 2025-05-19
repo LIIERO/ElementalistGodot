@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uqkmq")
 ID = "5"
-Name = "Fun Moment"
+Name = "fun_moment"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

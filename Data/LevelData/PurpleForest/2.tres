@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_rr6mn")
 ID = "2"
-Name = "Floating Island"
+Name = "floating_island"
 NoCompletedToUnlock = 2
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

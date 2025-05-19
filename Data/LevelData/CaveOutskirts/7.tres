@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_lr11c")
 ID = "7"
-Name = "The Concept is Baffling"
+Name = "concept_is_baffling"
 NoCompletedToUnlock = 5
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_j5egt")
 ID = "A"
-Name = "The Right Order"
+Name = "right_order"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

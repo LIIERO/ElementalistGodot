@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_7j7th")
 ID = "8"
-Name = "Later Usage"
+Name = "later_usage"
 NoCompletedToUnlock = 6
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

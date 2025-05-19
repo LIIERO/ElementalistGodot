@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_l50g3")
 ID = "C"
-Name = "Hard To Reach"
+Name = "hard_to_reach"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false

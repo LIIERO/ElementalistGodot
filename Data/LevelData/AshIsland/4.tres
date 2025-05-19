@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_jttok")
 ID = "4"
-Name = "Quick Act"
+Name = "quick_act"
 NoCompletedToUnlock = 3
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

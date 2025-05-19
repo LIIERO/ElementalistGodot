@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ehsbq")
 ID = "0"
-Name = "The Forward Thinker"
+Name = "forward_thinker"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

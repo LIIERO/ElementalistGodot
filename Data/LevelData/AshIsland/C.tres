@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_05qvw")
 ID = "C"
-Name = "Abandoned Marketplace"
+Name = "abandoned_marketplace"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uqkmq")
 ID = "6"
-Name = "Optionless"
+Name = "optionless"
 NoCompletedToUnlock = 4
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

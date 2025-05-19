@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_0eipm")
 ID = "7S"
-Name = "Reckless Squeeze"
+Name = "reckless_squeeze"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "7"
 IsSpecial = true

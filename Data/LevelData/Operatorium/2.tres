@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_kiubo")
 ID = "2"
-Name = "Extraction"
+Name = "extraction"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "0"
 IsSpecial = false

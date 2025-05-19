@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uyrnc")
 ID = "2S"
-Name = "Get Burried Alive"
+Name = "get_buried_alive"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "2"
 IsSpecial = true

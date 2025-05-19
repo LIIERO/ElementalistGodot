@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_fwbwo")
 ID = "8S"
-Name = "Usage of the Useless"
+Name = "usage_of_useless"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "8"
 IsSpecial = true

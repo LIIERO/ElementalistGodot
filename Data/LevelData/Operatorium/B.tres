@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_78u3h")
 ID = "B"
-Name = "Forcing Unnecessary"
+Name = "forcing_unnecessary"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false

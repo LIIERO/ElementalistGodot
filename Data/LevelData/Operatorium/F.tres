@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_mthqq")
 ID = "F"
-Name = "Waste Disposal"
+Name = "waste_disposal"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

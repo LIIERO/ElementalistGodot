@@ -35,7 +35,7 @@ public partial class WorldEntrance : Interactable
 
         infoCard = GetNode<Sprite2D>("InfoCard");
         infoCard.GetNode<Label>("WorldNumber").Text = $"World {worldToTeleportTo.ID}";
-        infoCard.GetNode<Label>("WorldName").Text = worldToTeleportTo.Name;
+        infoCard.GetNode<Label>("WorldName").Text = gameState.GetLevelName(worldToTeleportTo.Name);
         infoCard.GetNode<Label>("LevelsCompleted").Text = $"{gameState.GetNoCompletedStandardLevelsInWorld(worldToTeleportTo.ID)}/{gameState.GetNoStandardLevelsInWorld(worldToTeleportTo.ID)}";
         infoCard.GetNode<Label>("SpecialLevelsCompleted").Text = $"{gameState.GetNoCompletedSpecialLevelsInWorld(worldToTeleportTo.ID)}/{gameState.GetNoSpecialLevelsInWorld(worldToTeleportTo.ID)}";
         infoCard.Hide();
