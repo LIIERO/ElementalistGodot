@@ -60,6 +60,7 @@ public partial class LevelTeleport : Interactable
         // setPlayerLevelEnterPosition set to true in GameState
         if (setPlayerLevelEnterPosition && levelToTeleportTo.ID == gameState.PreviousLevel)
         {
+            gameState.PlayerHubRespawnPosition = GlobalPosition;
             setPlayerLevelEnterPosition = false;
             gameState.SetPlayerPosition(GlobalPosition);
         }

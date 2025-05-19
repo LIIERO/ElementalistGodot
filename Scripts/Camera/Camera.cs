@@ -41,7 +41,7 @@ public partial class Camera : Camera2D
 
         initialPosition = Position;
 
-        if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf)
+        if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Zero)
             Position = gameState.PlayerHubRespawnPosition;
 
         leftLimit = (leftLimit * GameUtils.gameUnitSize) + initialPosition.X;

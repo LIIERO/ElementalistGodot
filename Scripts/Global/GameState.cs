@@ -28,6 +28,7 @@ public partial class GameState : Node
     private const string specialLevelLetter = "S";
 
     // Data loaded from the save file
+    public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Zero; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; } = new(); // Initialized in _Ready if first game launch, or from save
     public int NoSunFragments { get; private set; } = 0;
     public int NoRedFragments { get; private set; } = 0;
@@ -57,7 +58,6 @@ public partial class GameState : Node
     public Dictionary<string, string> LevelNameData { get; private set; }
 
     // Other
-    public Vector2 PlayerHubRespawnPosition { get; set; } = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
     public bool IsGameplayActive { get; private set; } = false; // Is the root of menus the main menu or the gameplay
     public string CurrentSaveFileID { get; set; } = ""; // Loaded in SettingsManager
     public bool IsGamePaused { get; set; } = false; // Pause is set in pause menu
@@ -138,7 +138,7 @@ public partial class GameState : Node
 
     public void ResetPersistentData()
     {
-        PlayerHubRespawnPosition = Vector2.Inf; // Hubs have multiple respawn points, Inf means base position in engine will be used
+        PlayerHubRespawnPosition = Vector2.Zero; // Hubs have multiple respawn points, Zero means base position in engine will be used
         IsGameplayActive = false; // Is the root of menus the main menu or the gameplay
         CurrentSaveFileID = "0";
         IsGamePaused = false; // Pause is set in pause menu
@@ -221,7 +221,16 @@ public partial class GameState : Node
     {
         IsGameplayActive = true;
         GetTree().ChangeSceneToPacked(LevelIDToLevel[CurrentWorld][CurrentLevel]);
-        if (CurrentLevel == "HUB" && !LevelTeleport.setPlayerLevelEnterPosition) WorldEntrance.setPlayerWorldEnterPosition = true;
+
+        if (!IsHubLoaded()) return;
+
+        Player.setPlayerRespawnPosition = true;
+
+        //if (!LevelTeleport.setPlayerLevelEnterPosition)
+        //    WorldEntrance.setPlayerWorldEnterPosition = true;
+
+        //if (!WorldEntrance.setPlayerWorldEnterPosition && PlayerHubRespawnPosition != Vector2.Zero)
+        //    LevelTeleport.setPlayerLevelEnterPosition = true;
     }
 
     public void LoadWorld(string world)
@@ -318,7 +327,9 @@ public partial class GameState : Node
         foreach (ElementState state in SalvagedAbilities)
             salvagedAbilitiesInt.Add((int)state);
 
-        PlayerData data = new(CompletedLevels, 
+        PlayerData data = new(
+            PlayerHubRespawnPosition.X, PlayerHubRespawnPosition.Y,
+            CompletedLevels, 
             NoSunFragments, 
             NoRedFragments, 
             CurrentWorld, 
@@ -359,6 +370,7 @@ public partial class GameState : Node
             return;
         }
 
+        PlayerHubRespawnPosition = new Vector2(data.PlayerHubRespawnX, data.PlayerHubRespawnY);
         CompletedLevels = data.CompletedLevels;
         NoSunFragments = data.NoSunFragments;
         NoRedFragments = data.NoRedFragments;
@@ -386,6 +398,7 @@ public partial class GameState : Node
 
     public void CreateNewSaveFile(string id)
     {
+        PlayerHubRespawnPosition = Vector2.Zero;
         CompletedLevels = CreateNewCompletedLevelsDict();
         NoSunFragments = 0;
         NoRedFragments = 0;

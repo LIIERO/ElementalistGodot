@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using GlobalTypes;
 using System.Reflection.Metadata;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
 public partial class Player : CharacterBody2D, IUndoable
 {
@@ -92,7 +93,7 @@ public partial class Player : CharacterBody2D, IUndoable
     bool abilityPressed;
 	bool undoPressed;
 
-	private static bool setPlayerRespawnPosition = false; // Flag that adjusts player respawn position after restarting in hub
+	public static bool setPlayerRespawnPosition = false; // Flag that adjusts player respawn position after restarting in hub
 
 	// Undo system
 	private bool checkpointRequested = false;
@@ -143,6 +144,8 @@ public partial class Player : CharacterBody2D, IUndoable
 
     public override void _PhysicsProcess(double delta)
 	{
+		Debug.WriteLine(gameState.PlayerHubRespawnPosition);
+
 		// Get input
 		direction = InputManager.GetLeftRightGameplayDirection();
 		restartPressed = InputManager.RestartPressed();
@@ -529,7 +532,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	{
 		gameState.NoRestarts++;
 
-        if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Inf) // Dying in Hub (multiple checkpoints)
+        if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Zero) // Dying in Hub (multiple checkpoints)
             setPlayerRespawnPosition = true;
 
         isDead = true;

@@ -6,6 +6,8 @@ using Godot;
 [System.Serializable]
 public class PlayerData
 {
+    public float PlayerHubRespawnX { get; private set; } = 0f;
+    public float PlayerHubRespawnY { get; private set; } = 0f;
     public Dictionary<string, Dictionary<string, bool>> CompletedLevels { get; private set; }
     public int NoSunFragments { get; private set; } = 0;
     public int NoRedFragments { get; private set; } = 0;
@@ -24,7 +26,9 @@ public class PlayerData
     public bool IsAbilitySalvagingUnlocked { get; private set; } = false;
     public List<int> SalvagedAbilities { get; private set; } = new();
 
-    public PlayerData(Dictionary<string, Dictionary<string, bool>> CompletedLevels, 
+    public PlayerData(
+        float PlayerHubRespawnX, float PlayerHubRespawnY,
+        Dictionary<string, Dictionary<string, bool>> CompletedLevels, 
         int NoSunFragments, 
         int NoRedFragments, 
         string CurrentWorld, 
@@ -42,6 +46,7 @@ public class PlayerData
         bool IsAbilitySalvagingUnlocked,
         List<int> SalvagedAbilities)
     {
+        this.PlayerHubRespawnX = PlayerHubRespawnX; this.PlayerHubRespawnY = PlayerHubRespawnY;
         this.CompletedLevels = CompletedLevels;
         this.NoSunFragments = NoSunFragments;
         this.NoRedFragments = NoRedFragments;
