@@ -13,7 +13,9 @@ public partial class DialogBox : Sprite2D
     private GameState gameState;
     private AudioManager audioManager;
 
-    [Export] private Label textObject;
+    private Label currentTextObject = null;
+    [Export] private Label textObjectPortrait;
+    [Export] private Label textObjectNoPortrait;
     [Export] private AnimatedSprite2D characterPortrait;
     [Export] private AnimatedSprite2D portraitBackground;
 
@@ -131,7 +133,7 @@ public partial class DialogBox : Sprite2D
         if (!currentDialogLineDisplayed) // Progress the text scroll immediately
         {
             currentDialogLineDisplayed = true;
-            textObject.VisibleCharacters = -1;
+            currentTextObject.VisibleCharacters = -1;
             arrowIndicator.Show();
             return;
         }
@@ -146,16 +148,31 @@ public partial class DialogBox : Sprite2D
         }
 
         currentDialogLine = currentDialog[currentDialogLineID]["text"].Replace("\\n", "\n");
+        currentPortrait = currentDialog[currentDialogLineID]["portrait"];
+        string name = currentDialog[currentDialogLineID]["name"];
         currentLetterID = 0;
 
-        textObject.VisibleCharacters = 0;
-        textObject.Text = currentDialogLine;
-        currentPortrait = currentDialog[currentDialogLineID]["portrait"];
-        characterPortrait.Play(currentPortrait);
-        portraitBackground.Play(currentDialog[currentDialogLineID]["background"]);
+        if (name == "")
+        {
+            // TODO: Hide name
+            currentTextObject = textObjectNoPortrait;
+            textObjectNoPortrait.Show(); textObjectPortrait.Hide();
+            characterPortrait.Hide(); portraitBackground.Hide();
+        }
+        else
+        {
+            // TODO: Show name
+            currentTextObject = textObjectPortrait;
+            textObjectPortrait.Show(); textObjectNoPortrait.Hide();
+            characterPortrait.Show(); portraitBackground.Show();
+            characterPortrait.Play(currentPortrait);
+            portraitBackground.Play(currentDialog[currentDialogLineID]["background"]);
+        }
+
+        currentTextObject.VisibleCharacters = 0;
+        currentTextObject.Text = currentDialogLine;
 
         currentDialogLineDisplayed = false;
-
         currentDialogLineID++;
 
         await ToSignal(GetTree().CreateTimer(dialogMinimalSkipTime, processInPhysics: true), "timeout");
@@ -183,11 +200,9 @@ public partial class DialogBox : Sprite2D
             return;
         }
 
-        textObject.VisibleCharacters = currentLetterID; // More of text is displayed each iteration
+        currentTextObject.VisibleCharacters = currentLetterID; // More of text is displayed each iteration
         audioManager.PlayDialogSoundEffect(currentPortrait);
 
-
-        
         letterTimer = timeBetweenLetters;
 
         char latestLetter = currentDialogLine[currentLetterID - 1];

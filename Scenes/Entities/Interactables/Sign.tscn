@@ -12,16 +12,16 @@ script = ExtResource("1_556lc")
 Text = "Text from a sign"
 arrowIndicatorPrefab = ExtResource("2_k02hu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_3qu6i")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
 texture = ExtResource("1_uod1i")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_3qu6i")
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

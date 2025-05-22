@@ -1,73 +1,86 @@
 {
   "": [
-	{"background": "default", "portrait": "default", "text": ""}
+	{"name": "", "background": "default", "portrait": "default", "text": ""}
   ],
 
-  "0_HUB_jump": [
-	{"background": "0", "portrait": "SignNormal", "text": "Press up to interact with interactable objects."},
-	{"background": "0", "portrait": "SignNormal", "text": "No need to thank me."},
-	{"background": "0", "portrait": "SignNormal", "text": "Also, hold the jump button to jump higher."}
+  "L_HUB_jump": [
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Press up to interact with interactable objects."},
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "No need to thank me."},
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Also, hold the jump button to jump higher."}
   ],
 
-  "0_HUB_controls": [
-	{"background": "0", "portrait": "SignNormal", "text": "You can adjust your controls in the options menu."},
-  {"background": "0", "portrait": "SignNormal", "text": "Unless, of course, you are satisfied with the defaults."}
+  "L_HUB_controls": [
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "You can adjust your controls in the options menu."},
+  {"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Unless, of course, you are satisfied with the defaults."}
   ],
+
+  "L_HUB_shelf_empty": [
+	{"name": "", "background": "default", "portrait": "default", "text": "This shelf is empty."}
+  ],
+
+
 
   "0_2_failed": [
-	{"background": "0", "portrait": "SignNormal", "text": "Congratulations, you have failed the puzzle."}
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Congratulations, you have failed the puzzle."}
   ],
 
   "0_2_completed": [
-	{"background": "0", "portrait": "SignNormal", "text": "Congratulations, you have completed the puzzle."}
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Congratulations, you have completed the puzzle."}
   ],
 
   "0_2_hintful": [
-	{"background": "0", "portrait": "SignNormal", "text": "If you get stuck, you can access hints from the pause menu."}
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "If you get stuck, you can access hints from the pause menu."}
   ],
 
   "0_2_hintless": [
-	{"background": "0", "portrait": "SignNormal", "text": "I would tell you about the hints in the pause menu, but it seems you don't need them."}
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "I would tell you about the hints in the pause menu, but it seems you don't need them."}
   ],
-
 
   "0_5_undo": [
-	{"background": "0", "portrait": "SignNormal", "text": "Undo checkpoints are created when you land on the ground after collecting, or using, an ability."}
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Undo checkpoints are created when you land on the ground after collecting, or using, an ability."}
   ],
 
+
+
   "1_HUB_reminder": [
-	{"background": "1", "portrait": "SignNormal", "text": "Don't forget about the left side of the Forest."}
+	{"name": "Sign", "background": "1", "portrait": "SignNormal", "text": "Don't forget about the left side of the Forest."}
   ],
 
   "1_HUB_warning": [
-	{"background": "1", "portrait": "SignNormal", "text": "20 fragments for harder execution."},
-	{"background": "1", "portrait": "SignNormal", "text": "30 fragments for hardest execution"}
+	{"name": "Sign", "background": "1", "portrait": "SignNormal", "text": "20 fragments for harder execution."},
+	{"name": "Sign", "background": "1", "portrait": "SignNormal", "text": "30 fragments for hardest execution"}
 	],
 
   "1_4S_special": [
-	{"background": "1", "portrait": "SignNormal", "text": "Levels marked with an S are completely optional."},
-	{"background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels,\nusually with a much higher level of difficulty, both in puzzle solving, and execution."},
-  {"background": "1", "portrait": "SignNormal", "text": "Don't feel bad for skipping them! \nYou can always come back later."}
+	{"name": "Sign", "background": "1", "portrait": "SignNormal", "text": "Levels marked with an S are completely optional."},
+	{"name": "Sign", "background": "1", "portrait": "SignNormal", "text": "They are remixes of existing levels,\nusually with a much higher level of difficulty, both in puzzle solving, and execution."},
+  {"name": "Sign", "background": "1", "portrait": "SignNormal", "text": "Don't feel bad for skipping them! \nYou can always come back later."}
   ],
+
+
 
   "2_8S_warning": [
-	{"background": "2", "portrait": "SignNormal", "text": "High level execution required."}
+	{"name": "Sign", "background": "2", "portrait": "SignNormal", "text": "High level execution required."}
   ],
+
+
 
   "3_5S_warning": [
-	{"background": "3", "portrait": "SignNormal", "text": "You will never have to do this again."}
+	{"name": "Sign", "background": "3", "portrait": "SignNormal", "text": "You will never have to do this again."}
   ],
 
+
+  
   "H_A_finale": [
-	{"background": "H", "portrait": "SignNormal", "text": "This is it, the final level of the demo."},
-  {"background": "H", "portrait": "SignNormal", "text": "Good luck!"}
+	{"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "This is it, the final level of the demo."},
+  {"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "Good luck!"}
   ],
 
   "H_A_congrats": [
-	{"background": "H", "portrait": "SignNormal", "text": "You did it! Congrats!"}
+	{"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "You did it! Congrats!"}
   ],
 
   "H_B_wishlist": [
-	{"background": "H", "portrait": "SignNormal", "text": "Please wishlist the game if you enjoyed it!"}
+	{"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "Please wishlist the game if you enjoyed it!"}
   ]
 }

@@ -76,7 +76,7 @@ animations = [{
 [node name="Librarian" type="Area2D"]
 script = ExtResource("1_m85ha")
 Text = "Librarian"
-arrowYOffset = -4.0
+arrowYOffset = -3.0
 arrowIndicatorPrefab = ExtResource("2_enkby")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

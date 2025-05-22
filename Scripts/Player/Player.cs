@@ -144,8 +144,6 @@ public partial class Player : CharacterBody2D, IUndoable
 
     public override void _PhysicsProcess(double delta)
 	{
-		Debug.WriteLine(gameState.PlayerHubRespawnPosition);
-
 		// Get input
 		direction = InputManager.GetLeftRightGameplayDirection();
 		restartPressed = InputManager.RestartPressed();

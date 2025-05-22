@@ -240,21 +240,42 @@ position = Vector2(8, 8)
 script = ExtResource("2_00r7b")
 elementSymbol = ExtResource("1_rymwl")
 
-[node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObject", "characterPortrait", "portraitBackground")]
+[node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObjectPortrait", "textObjectNoPortrait", "characterPortrait", "portraitBackground")]
 texture_filter = 1
 position = Vector2(240, 48)
 texture = ExtResource("8_vda0l")
 script = ExtResource("9_ko3ni")
-textObject = NodePath("DialogText")
+textObjectPortrait = NodePath("DialogTextPortrait")
+textObjectNoPortrait = NodePath("DialogTextNoPortrait")
 characterPortrait = NodePath("Portrait")
 portraitBackground = NodePath("PortraitBackground")
 
-[node name="DialogText" type="Label" parent="DialogBox"]
+[node name="DialogTextPortrait" type="Label" parent="DialogBox"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -81.0
+offset_top = -28.0
+offset_right = -149.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "Sample text"
+autowrap_mode = 2
+text_overrun_behavior = 2
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="DialogTextNoPortrait" type="Label" parent="DialogBox"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
 offset_top = -28.0
 offset_right = -149.0
 offset_bottom = -34.0
