@@ -41,6 +41,7 @@ public partial class GameState : Node
     public int MainCutsceneProgress { get; set; } = 0;
     public bool IsAbilitySalvagingUnlocked { get; set; } = false;
     public List<ElementState> SalvagedAbilities { get; set; } = new();
+    public List<string> UnlockedLetters { get; set; }
 
     // Save file stats
     public double InGameTime { get; set; } = 0.0; // Set in game time display class

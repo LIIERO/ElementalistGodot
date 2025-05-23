@@ -18,6 +18,11 @@ public partial class DialogBox : Sprite2D
     [Export] private Label textObjectNoPortrait;
     [Export] private AnimatedSprite2D characterPortrait;
     [Export] private AnimatedSprite2D portraitBackground;
+    [Export] private Sprite2D nameSlotSmall;
+    [Export] private Sprite2D nameSlotBig;
+    [Export] private Label nameLabel;
+
+    private const int noCharsForBigNameSlot = 6;
 
     protected AnimatedSprite2D arrowIndicator;
 
@@ -154,14 +159,25 @@ public partial class DialogBox : Sprite2D
 
         if (name == "")
         {
-            // TODO: Hide name
+            nameLabel.Hide();
+            nameSlotBig.Hide(); nameSlotSmall.Hide();
             currentTextObject = textObjectNoPortrait;
             textObjectNoPortrait.Show(); textObjectPortrait.Hide();
             characterPortrait.Hide(); portraitBackground.Hide();
         }
         else
         {
-            // TODO: Show name
+            if (name.Length >= noCharsForBigNameSlot)
+            {
+                nameSlotBig.Show(); nameSlotSmall.Hide();
+            }
+            else
+            {
+                nameSlotBig.Hide(); nameSlotSmall.Show();
+            }
+
+            nameLabel.Text = name.ToUpper();
+            nameLabel.Show();
             currentTextObject = textObjectPortrait;
             textObjectPortrait.Show(); textObjectNoPortrait.Hide();
             characterPortrait.Show(); portraitBackground.Show();

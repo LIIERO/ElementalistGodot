@@ -132,10 +132,11 @@ public partial class Player : CharacterBody2D, IUndoable
 
         BaseAbility = ElementState.normal;
 
-		if (setPlayerRespawnPosition == true) // Respawning after dying in a Hub (multiple checkpoints)
+		if (setPlayerRespawnPosition == true) // Respawning after dying or loading in a Hub (multiple checkpoints)
         {
             setPlayerRespawnPosition = false;
-			SetPosition(gameState.PlayerHubRespawnPosition);
+			if (gameState.PlayerHubRespawnPosition != Vector2.Zero)
+				SetPosition(gameState.PlayerHubRespawnPosition);
         }
 
 		//RequestCheckpointAfterTime(inputBufferTime);

@@ -18,6 +18,10 @@
 	{"name": "", "background": "default", "portrait": "default", "text": "This shelf is empty."}
   ],
 
+  "L_HUB_librarian_test": [
+	{"name": "Librarian", "background": "default", "portrait": "default", "text": "Hi, I run this library."}
+  ],
+
 
 
   "0_2_failed": [

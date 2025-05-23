@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=47 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ds6o5r41hh4he" path="res://Graphics/UI/Gameplay/textbox_sign.png" id="8_vda0l"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="9_3cem8"]
 [ext_resource type="Script" path="res://Scripts/UI/DialogBox.cs" id="9_ko3ni"]
+[ext_resource type="Texture2D" uid="uid://bt1r3yow7y133" path="res://Graphics/UI/Gameplay/name_slots.png" id="9_plsp2"]
 [ext_resource type="PackedScene" uid="uid://bb4t2p0sg3gcq" path="res://Scenes/Decals/Tutorials/RetryTutorial.tscn" id="9_x5esc"]
 [ext_resource type="PackedScene" uid="uid://e114nhf158xy" path="res://Scenes/Decals/Tutorials/UndoTutorial.tscn" id="10_wdchy"]
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="11_ovtmv"]
@@ -240,7 +241,7 @@ position = Vector2(8, 8)
 script = ExtResource("2_00r7b")
 elementSymbol = ExtResource("1_rymwl")
 
-[node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObjectPortrait", "textObjectNoPortrait", "characterPortrait", "portraitBackground")]
+[node name="DialogBox" type="Sprite2D" parent="." node_paths=PackedStringArray("textObjectPortrait", "textObjectNoPortrait", "characterPortrait", "portraitBackground", "nameSlotSmall", "nameSlotBig", "nameLabel")]
 texture_filter = 1
 position = Vector2(240, 48)
 texture = ExtResource("8_vda0l")
@@ -249,6 +250,9 @@ textObjectPortrait = NodePath("DialogTextPortrait")
 textObjectNoPortrait = NodePath("DialogTextNoPortrait")
 characterPortrait = NodePath("Portrait")
 portraitBackground = NodePath("PortraitBackground")
+nameSlotSmall = NodePath("NameSlotSmall")
+nameSlotBig = NodePath("NameSlotBig")
+nameLabel = NodePath("Name")
 
 [node name="DialogTextPortrait" type="Label" parent="DialogBox"]
 texture_filter = 1
@@ -303,6 +307,36 @@ autoplay = "default"
 [node name="AnimatedSprite2D" parent="DialogBox" instance=ExtResource("6_mk8rw")]
 z_index = 0
 position = Vector2(132, 16)
+
+[node name="NameSlotSmall" type="Sprite2D" parent="DialogBox"]
+position = Vector2(0, -37)
+texture = ExtResource("9_plsp2")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 16)
+
+[node name="NameSlotBig" type="Sprite2D" parent="DialogBox"]
+position = Vector2(0, -37)
+texture = ExtResource("9_plsp2")
+region_enabled = true
+region_rect = Rect2(64, 0, 96, 16)
+
+[node name="Name" type="Label" parent="DialogBox"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -41.0
+offset_right = -243.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_3cem8")
+theme_override_font_sizes/font_size = 12
+text = "NAME"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
 
 [node name="DeathScreen" type="Control" parent="."]
 visible = false

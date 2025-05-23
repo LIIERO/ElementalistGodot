@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnlr6afbs8vo1"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Collectables/ElementalShell.cs" id="1_0t2jw"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="1_m1lxa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfvn0"]
+size = Vector2(10, 11)
+
+[sub_resource type="Animation" id="Animation_sgcxl"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqv8"]
+_data = {
+"Idle": SubResource("Animation_sgcxl")
+}
+
+[sub_resource type="Gradient" id="Gradient_nofm6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.331169)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5oq0n"]
+gradient = SubResource("Gradient_nofm6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ejmvq"]
+colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0)
+
+[node name="Collectable" type="Area2D"]
+script = ExtResource("1_0t2jw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_kfvn0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+
+[node name="MovedByAnimation" type="Node2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("1_m1lxa")
+region_enabled = true
+region_rect = Rect2(48, 96, 16, 16)
+
+[node name="PointLight2D" type="PointLight2D" parent="MovedByAnimation"]
+energy = 0.5
+range_z_max = -1
+range_layer_min = -100
+texture = SubResource("GradientTexture2D_5oq0n")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="MovedByAnimation"]
+z_index = 1
+texture_filter = 1
+lifetime = 0.8
+fixed_fps = 30
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+color_ramp = SubResource("Gradient_ejmvq")
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]

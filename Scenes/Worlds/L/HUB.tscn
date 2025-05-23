@@ -26,6 +26,7 @@ layer_0/tile_data = PackedInt32Array(589839, 589824, 3, 589838, 589824, 3, 58983
 
 [node name="Librarian" parent="." index="9" instance=ExtResource("2_t5y61")]
 position = Vector2(288, 48)
+Text = "L_HUB_librarian_test"
 
 [node name="WaterIndicator" parent="." index="10" instance=ExtResource("3_24epn")]
 position = Vector2(-192, 48)
