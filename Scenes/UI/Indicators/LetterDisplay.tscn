@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://vyur3cc764pk"]
+
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="1_rr52u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg4s6"]
+atlas = ExtResource("1_rr52u")
+region = Rect2(64, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvcoj"]
+atlas = ExtResource("1_rr52u")
+region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uon1c"]
+atlas = ExtResource("1_rr52u")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fa40"]
+atlas = ExtResource("1_rr52u")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_af10t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lg4s6")
+}],
+"loop": false,
+"name": &"E",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvcoj")
+}],
+"loop": false,
+"name": &"O",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uon1c")
+}],
+"loop": false,
+"name": &"Z",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fa40")
+}],
+"loop": false,
+"name": &"_",
+"speed": 5.0
+}]
+
+[node name="LetterDisplay" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_af10t")
+animation = &"_"

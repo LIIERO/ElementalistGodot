@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=49 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
@@ -21,12 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://bc7aiqfid7inw" path="res://Graphics/UI/Gameplay/sun_counter_background.png" id="16_g1udj"]
 [ext_resource type="PackedScene" uid="uid://crb0a3rgctlxs" path="res://Scenes/UI/HintPopup.tscn" id="16_jkwau"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/MenuButton.cs" id="16_s0b1u"]
-[ext_resource type="Script" path="res://Scripts/UI/SunCounter.cs" id="17_gsxjm"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="17_x2t6e"]
 [ext_resource type="Script" path="res://Scripts/UI/Interactable/HintSkipMenuButton.cs" id="20_afawl"]
 [ext_resource type="Texture2D" uid="uid://dfxae37yskpna" path="res://Graphics/UI/Gameplay/current_level_display.png" id="21_ltbdn"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameTimeDisplay.cs" id="23_la0yc"]
 [ext_resource type="Texture2D" uid="uid://djo8vl1x4wk5p" path="res://Graphics/UI/Gameplay/time_display.png" id="23_t0g6t"]
+[ext_resource type="Script" path="res://Scripts/UI/Visual/SunCounter.cs" id="24_aqw1k"]
+[ext_resource type="PackedScene" uid="uid://vyur3cc764pk" path="res://Scenes/UI/Indicators/LetterDisplay.tscn" id="26_ck12r"]
+[ext_resource type="Script" path="res://Scripts/UI/Visual/CollectableDisplay.cs" id="26_i88l1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egim0"]
 atlas = ExtResource("6_thq10")
@@ -635,7 +637,7 @@ z_as_relative = false
 texture_filter = 1
 position = Vector2(448, 16)
 texture = ExtResource("16_g1udj")
-script = ExtResource("17_gsxjm")
+script = ExtResource("24_aqw1k")
 specialCounter = true
 counterText = NodePath("Label")
 
@@ -672,7 +674,7 @@ process_mode = 3
 texture_filter = 1
 position = Vector2(448, 46)
 texture = ExtResource("16_g1udj")
-script = ExtResource("17_gsxjm")
+script = ExtResource("24_aqw1k")
 counterText = NodePath("Label")
 
 [node name="SunSymbol" type="Node2D" parent="SunCounter"]
@@ -702,6 +704,28 @@ offset_bottom = 4.0
 theme_override_fonts/font = ExtResource("9_3cem8")
 theme_override_font_sizes/font_size = 12
 text = "X"
+
+[node name="PermanentUnlocks" type="Sprite2D" parent="." node_paths=PackedStringArray("elementalShell", "letters")]
+position = Vector2(448, 76)
+texture = ExtResource("16_g1udj")
+script = ExtResource("26_i88l1")
+elementalShell = NodePath("ElementalShell")
+letters = [NodePath("Z"), NodePath("O"), NodePath("E")]
+
+[node name="ElementalShell" type="Sprite2D" parent="PermanentUnlocks"]
+position = Vector2(20, -1)
+texture = ExtResource("17_x2t6e")
+region_enabled = true
+region_rect = Rect2(48, 96, 16, 16)
+
+[node name="Z" parent="PermanentUnlocks" instance=ExtResource("26_ck12r")]
+position = Vector2(-21, -1)
+
+[node name="O" parent="PermanentUnlocks" instance=ExtResource("26_ck12r")]
+position = Vector2(-9, -1)
+
+[node name="E" parent="PermanentUnlocks" instance=ExtResource("26_ck12r")]
+position = Vector2(3, -1)
 
 [node name="CurrentLevelDisplay" type="Sprite2D" parent="."]
 position = Vector2(112, 0)

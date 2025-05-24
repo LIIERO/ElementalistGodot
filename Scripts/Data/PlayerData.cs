@@ -25,6 +25,7 @@ public class PlayerData
     public int NoAbilityUses { get; private set; } = 0;
     public bool IsAbilitySalvagingUnlocked { get; private set; } = false;
     public List<int> SalvagedAbilities { get; private set; } = new();
+    public List<string> UnlockedLetters { get; set; } = new();
 
     public PlayerData(
         float PlayerHubRespawnX, float PlayerHubRespawnY,
@@ -44,7 +45,8 @@ public class PlayerData
         int NoUndos,
         int NoAbilityUses,
         bool IsAbilitySalvagingUnlocked,
-        List<int> SalvagedAbilities)
+        List<int> SalvagedAbilities,
+        List<string> UnlockedLetters)
     {
         this.PlayerHubRespawnX = PlayerHubRespawnX; this.PlayerHubRespawnY = PlayerHubRespawnY;
         this.CompletedLevels = CompletedLevels;
@@ -64,5 +66,6 @@ public class PlayerData
         this.NoAbilityUses = NoAbilityUses;
         this.IsAbilitySalvagingUnlocked = IsAbilitySalvagingUnlocked;
         this.SalvagedAbilities = SalvagedAbilities;
+        this.UnlockedLetters = UnlockedLetters;
     }
 }

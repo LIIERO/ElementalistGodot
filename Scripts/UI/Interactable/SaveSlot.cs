@@ -19,6 +19,10 @@ public partial class SaveSlot : Node2D
 	private Label undos;
     private Label abilityUses;
 
+    private Node2D permanentUnlocks;
+    private Sprite2D elementalShell;
+    private AnimatedSprite2D[] letters = new AnimatedSprite2D[GameUtils.wordToMake.Length];
+
     private Vector2 basePosition;
     private Vector2 offsetPosition;
 
@@ -43,6 +47,12 @@ public partial class SaveSlot : Node2D
 		undos = GetNode<Label>("Sprite2D/Undos");
         abilityUses = GetNode<Label>("Sprite2D/AbilityUses");
 
+        permanentUnlocks = GetNode<Node2D>("Sprite2D/PermanentUnlocks");
+        permanentUnlocks.Hide();
+        elementalShell = GetNode<Sprite2D>("Sprite2D/PermanentUnlocks/ElementalShell");
+        for (int i = 0; i < letters.Length; i++)
+            letters[i] = GetNode<AnimatedSprite2D>("Sprite2D/PermanentUnlocks/" + GameUtils.wordToMake[i]);
+        
         PlayerData savefileData = gameState.GetSaveFileData(SlotID);
 
 		slotName.Text = $"{gameState.UITextData["slot"]} {SlotID}";
@@ -57,6 +67,8 @@ public partial class SaveSlot : Node2D
 			restarts.Text = savefileData.NoRestarts.ToString();
 			undos.Text = savefileData.NoUndos.ToString();
 			abilityUses.Text = savefileData.NoAbilityUses.ToString();
+
+            SetCollectableDisplay(savefileData);
 		}
     }
 
@@ -92,5 +104,35 @@ public partial class SaveSlot : Node2D
     public void SetOpacityToNormal()
     {
         Modulate = new Color(Modulate.R, Modulate.G, Modulate.B, 1f);
+    }
+
+    private void SetCollectableDisplay(PlayerData saveData) // Code copied from CollectableDisplay.cs, too lazy to make another class to reuse it
+    {
+        if (!saveData.IsAbilitySalvagingUnlocked && saveData.UnlockedLetters.Count == 0)
+        {
+            return;
+        }
+
+        permanentUnlocks.Show();
+
+        if (saveData.IsAbilitySalvagingUnlocked)
+            elementalShell.Show();
+        else
+            elementalShell.Hide();
+
+        if (saveData.UnlockedLetters == null) saveData.UnlockedLetters = new(); // Incompatible save file fix
+
+        for (int i = 0; i < GameUtils.wordToMake.Length; i++)
+        {
+            string l = GameUtils.wordToMake[i].ToString();
+            if (saveData.UnlockedLetters.Contains(l))
+            {
+                letters[i].Play(l);
+            }
+            else
+            {
+                letters[i].Play("_");
+            }
+        }
     }
 }

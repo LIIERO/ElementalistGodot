@@ -41,7 +41,7 @@ public partial class GameState : Node
     public int MainCutsceneProgress { get; set; } = 0;
     public bool IsAbilitySalvagingUnlocked { get; set; } = false;
     public List<ElementState> SalvagedAbilities { get; set; } = new();
-    public List<string> UnlockedLetters { get; set; }
+    public List<string> UnlockedLetters { get; set; } = new();
 
     // Save file stats
     public double InGameTime { get; set; } = 0.0; // Set in game time display class
@@ -346,7 +346,8 @@ public partial class GameState : Node
             NoUndos,
             NoAbilityUses,
             IsAbilitySalvagingUnlocked,
-            salvagedAbilitiesInt);
+            salvagedAbilitiesInt,
+            UnlockedLetters);
 
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
@@ -391,6 +392,9 @@ public partial class GameState : Node
         SalvagedAbilities = new();
         foreach (int stateInt in data.SalvagedAbilities)
             SalvagedAbilities.Add((ElementState)stateInt);
+        UnlockedLetters = data.UnlockedLetters;
+
+        if (UnlockedLetters == null) UnlockedLetters = new(); // Incompatible save file fix
 
         FixCompletedLevels();
 
@@ -417,6 +421,7 @@ public partial class GameState : Node
         NoAbilityUses = 0;
         IsAbilitySalvagingUnlocked = false;
         SalvagedAbilities = new();
+        UnlockedLetters = new();
 
         CurrentSaveFileID = id;
 
