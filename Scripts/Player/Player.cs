@@ -774,8 +774,7 @@ public partial class Player : CharacterBody2D, IUndoable
         AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
 
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
-        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
-
+        
         //SetCheckpointIndicatorPosition(true);
     }
 
@@ -796,6 +795,7 @@ public partial class Player : CharacterBody2D, IUndoable
     {
         await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
         SetPosition(position);
+        customSignals.EmitSignal(CustomSignals.SignalName.SetCameraPosition, GlobalPosition);
         isUndoing = false;
 		propertyAnimations.Play("FadeIn");
     }

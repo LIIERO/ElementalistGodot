@@ -35,12 +35,17 @@ public abstract partial class Orb : Area2D, IUndoable
         }
         else
         {
-            backgroundLight.Color = GameUtils.ColorsetToColor[refillColor];
+            Color color = GameUtils.ColorsetToColor[refillColor];
+            particles.Color = color;
+            backgroundLight.Color = color;
             if (refillColor == ColorSet.white)
-            {
                 backgroundLight.Energy *= 0.75f;
+            if (refillColor == ColorSet.black)
+            {
+                backgroundLight.BlendMode = Light2D.BlendModeEnum.Sub;
+                backgroundLight.Energy *= 1.5f;
             }
-            particles.Color = GameUtils.ColorsetToColor[refillColor];
+                
         }
     }
 

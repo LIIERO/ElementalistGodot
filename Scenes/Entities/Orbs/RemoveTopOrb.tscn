@@ -5,7 +5,7 @@
 
 [node name="RemoveTopOrb" instance=ExtResource("1_yraha")]
 script = ExtResource("2_g4h5h")
-refillColor = 0
+refillColor = 8
 
 [node name="Sprite2D" parent="MovedByAnimation" index="0"]
 region_rect = Rect2(80, 0, 16, 16)

@@ -371,6 +371,6 @@ modulate = Color(1, 1, 1, 0.501961)
 top_level = true
 texture = ExtResource("13_w8olu")
 region_enabled = true
-region_rect = Rect2(32, 96, 16, 32)
+region_rect = Rect2(32, 96, 16, 16)
 
 [connection signal="body_entered" from="Area2D" to="." method="_OnArea2dBodyEntered"]

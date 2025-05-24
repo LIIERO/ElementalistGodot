@@ -16,6 +16,7 @@ public partial class LevelTeleport : Interactable
     private AnimationPlayer nameDisplayAnimation;
 
     [Export] private LevelData levelToTeleportTo;
+    [Export] private bool elementalShellRequired = false;
 
     public static bool setPlayerLevelEnterPosition = false;
 
@@ -39,22 +40,28 @@ public partial class LevelTeleport : Interactable
         if (gameState.GetNoLocalCompletedStandardLevels() < levelToTeleportTo.NoCompletedToUnlock || (levelToTeleportTo.SpecificLevelCompletedToUnlock != string.Empty && !gameState.HasLevelBeenCompleted(levelToTeleportTo.SpecificLevelCompletedToUnlock)))
         {
             QueueFree();
+            return;
         }
-        else
+
+        if (elementalShellRequired && !gameState.IsAbilitySalvagingUnlocked) // Special case - softlock prevention for one level in void
         {
-            if (gameState.HasLevelBeenCompleted(levelToTeleportTo.ID)) // Level is completed - gold outline
-            {
-                if (levelToTeleportTo.IsSpecial)
-                    currentSprite.Play("LevelCompletedSpecial");
-                else currentSprite.Play("LevelCompleted");
-            }
-            else // Level is not completed - no outline
-            {
-                if (levelToTeleportTo.IsSpecial)
-                    currentSprite.Play("LevelNotCompletedSpecial");
-                else currentSprite.Play("LevelNotCompleted");
-            }
+            QueueFree();
+            return;
         }
+
+        if (gameState.HasLevelBeenCompleted(levelToTeleportTo.ID)) // Level is completed - gold outline
+        {
+            if (levelToTeleportTo.IsSpecial)
+                currentSprite.Play("LevelCompletedSpecial");
+            else currentSprite.Play("LevelCompleted");
+        }
+        else // Level is not completed - no outline
+        {
+            if (levelToTeleportTo.IsSpecial)
+                currentSprite.Play("LevelNotCompletedSpecial");
+            else currentSprite.Play("LevelNotCompleted");
+        }
+        
 
         // Change player position according to world they are coming from, when entering a hub
         // setPlayerLevelEnterPosition set to true in GameState

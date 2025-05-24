@@ -14,7 +14,13 @@ public partial class CollectableDisplay : Node2D
         gameState = GetNode<GameState>("/root/GameState");
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.GamePaused, new Callable(this, MethodName.OnPauseAndResume));
+        customSignals.Connect(CustomSignals.SignalName.CollectedPermanent, new Callable(this, MethodName.RefreshDisplay));
 
+        RefreshDisplay();
+    }
+
+    private void RefreshDisplay()
+    {
         OnPauseAndResume(false);
     }
 

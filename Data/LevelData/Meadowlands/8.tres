@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://s8h12dvrgxaq"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_sulpq"]
+
+[resource]
+script = ExtResource("1_sulpq")
+ID = "8"
+Name = "compound"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "1"
+IsSpecial = false

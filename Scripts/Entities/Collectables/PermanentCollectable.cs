@@ -4,12 +4,12 @@ using System;
 public abstract partial class PermanentCollectable : Area2D
 {
     private AudioManager audioManager;
-    //private CustomSignals customSignals;
+    private CustomSignals customSignals;
     protected GameState gameState;
 
     public override void _Ready()
     {
-        //customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
         gameState = GetNode<GameState>("/root/GameState");
 
@@ -30,6 +30,7 @@ public abstract partial class PermanentCollectable : Area2D
         audioManager.orbCollectSound.Play(); // TODO: Zmienić dźwięk
         Hide();
         QueueFree();
+        customSignals.EmitSignal(CustomSignals.SignalName.CollectedPermanent);
     }
 
 

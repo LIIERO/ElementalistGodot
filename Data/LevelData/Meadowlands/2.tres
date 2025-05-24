@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cc5gir0o57hts"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_sulpq"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_pm6um"]
 
 [resource]
-script = ExtResource("1_sulpq")
+script = ExtResource("1_pm6um")
 ID = "2"
-Name = "compound"
+Name = "fight_the_movement"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "1"
 IsSpecial = false

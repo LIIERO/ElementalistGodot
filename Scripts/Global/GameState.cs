@@ -13,7 +13,7 @@ public partial class GameState : Node
     // Level loader stuff
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
     private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
-        { "H", new string[] { "HUB", "A", "B" } }, // Main Hub (The Void)
+        { "H", new string[] { "HUB", "A", "B", "C" } }, // Main Hub (The Void)
         { "L", new string[] { "HUB" } }, // Library
         { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
         { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "4S", "7S" } }, // Distant Shores
@@ -21,7 +21,7 @@ public partial class GameState : Node
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
         { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "J", "K", "L", "AS", "BS" } }, // Operatorium
         { "5", new string[] { "HUB", "0", "1", "2", "A", "B", "C", "D", "E", "X", "Y", "Z", "2S", "BS" } }, // Knipe
-        { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "6S" } } // Meadowlands
+        { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "6S" } } // Meadowlands
     };
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
 
@@ -486,13 +486,14 @@ public partial class GameState : Node
 
         else if (Input.IsActionJustPressed("inputDebugUnlockAll"))
         {
-            NoSunFragments = 999;
-            NoRedFragments = 99;
+            NoSunFragments = 900;
+            NoRedFragments = 90;
             foreach (KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
             {
                 foreach (string levelKey in world.Value.Keys.ToList())
                 {
-                    CompletedLevels[world.Key][levelKey] = true;
+                    if (world.Key != "6" && !(world.Key == "H" && levelKey != "A")) // TODO: temporary for playtesting
+                        CompletedLevels[world.Key][levelKey] = true;
                 }
             }
             RestartCurrentLevel();

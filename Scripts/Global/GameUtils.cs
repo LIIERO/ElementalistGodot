@@ -17,7 +17,8 @@ public static class GameUtils
         { ColorSet.green, new Color(0.2f, 1f, 0.2f) },
         { ColorSet.yellow, new Color(1f, 1f, 0.2f) },
         { ColorSet.purple, new Color(1f, 0.2f, 1f) },
-        { ColorSet.pink, new Color(1f, 0.0f, 0.5f) }
+        { ColorSet.pink, new Color(1f, 0.0f, 0.5f) },
+        { ColorSet.black, new Color(0.2f, 0.2f, 0.2f) }
     };
 
     public static readonly Dictionary<ColorSet, ElementState> ColorsetToElement = new() {

@@ -64,6 +64,9 @@ public partial class CustomSignals : Node
     public delegate void ElementChargeActivatedEventHandler();
 
     [Signal]
+    public delegate void CollectedPermanentEventHandler();
+
+    [Signal]
     public delegate void LevelTransitionedEventHandler();
 
     // Undo system
