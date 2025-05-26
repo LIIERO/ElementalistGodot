@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_sulpq")
 ID = "8"
-Name = "compound"
+Name = "fight_the_movement"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "1"
 IsSpecial = false

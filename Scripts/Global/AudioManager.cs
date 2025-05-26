@@ -38,7 +38,7 @@ public partial class AudioManager : Node
             { "3", musicIslandsOfAshes },
             { "4", musicOperatorium },
             { "5", musicKnipe },
-            { "6", musicVoid }
+            { "6", musicMeadowlands }
         };
     }
 
@@ -161,17 +161,22 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer musicIslandsOfAshes;
     [Export] public AudioStreamPlayer musicOperatorium;
     [Export] public AudioStreamPlayer musicKnipe;
+    [Export] public AudioStreamPlayer musicMeadowlands;
     [Export] public AudioStreamPlayer musicVoid;
 
 
     public void PlayDialogSoundEffect(string portrait)
     {
-        switch (portrait)
+        textNoise.Play();
+
+        // TODO - cool noises
+
+        /*switch (portrait)
         {
             case "ZoeHappy": zoeNormalNoise.Play(); break;
             case "ZoeSmug": zoeNormalNoise.Play(); break;
             case "ZoeSad": zoeNormalNoise.Play(); break;
             default: textNoise.Play(); break;
-        }
+        }*/
     }
 }

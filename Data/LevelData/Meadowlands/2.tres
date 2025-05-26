@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_pm6um")
 ID = "2"
-Name = "fight_the_movement"
+Name = "inertia"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "1"
 IsSpecial = false

@@ -83,6 +83,13 @@ public partial class LevelTransitions : CanvasLayer
         if (levelCompleted)
         {
             currentTransition = ScreenTransition.hubEntryCompleted;
+
+            if (gameState.SalvagedAbilities.Count > 0) // Salvaged abilities
+            {
+                levelTextTopLabel.Show();
+                levelTextTopLabel.Text = gameState.UITextData["abilities_salvaged"];
+            }
+
             levelTextBottomLabel.Show();
             levelTextBottomLabel.Text = gameState.IsCurrentLevelSpecial ? gameState.UITextData["level_complete_special"] : gameState.UITextData["level_complete"];
             audioManager.levelCompleted.Play();

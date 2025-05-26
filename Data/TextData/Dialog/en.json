@@ -74,6 +74,17 @@
   ],
 
 
+
+  "6_HUB_campfire": [
+	{"name": "Zoe", "background": "6", "portrait": "ZoeSmug", "text": "Weird place for a campfire..."},
+	{"name": "Zoe", "background": "6", "portrait": "ZoeSmug", "text": "Though I feel my life regenerating faster, not complaining."}
+  ],
+
+  "6_3_retake": [
+	{"name": "Sign", "background": "6", "portrait": "SignNormal", "text": "Remember to grab some water, this is a good place to do so."}
+  ],
+
+
   
   "H_A_finale": [
 	{"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "This is it, the final level of the demo."},

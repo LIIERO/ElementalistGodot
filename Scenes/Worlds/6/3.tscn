@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkdcpcjtedde6"]
+[gd_scene load_steps=9 format=3 uid="uid://bkdcpcjtedde6"]
 
 [ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_078aq"]
 [ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="2_3dxss"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_qsio0"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="5_3eml7"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="5_dvgso"]
 [ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="6_jgm3y"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="7_qyjxm"]
@@ -40,6 +41,10 @@ position = Vector2(32, 48)
 position = Vector2(128, 80)
 
 [node name="Interactables" type="Node2D" parent="." index="8"]
+
+[node name="Sign" parent="Interactables" index="0" instance=ExtResource("5_3eml7")]
+position = Vector2(0, 96)
+Text = "6_3_retake"
 
 [node name="Gates" type="Node2D" parent="." index="9"]
 

@@ -244,6 +244,7 @@ public partial class Player : CharacterBody2D, IUndoable
             coyoteTimeCounter = 0f;
             jumpBufferTimeCounter = 0f;
 			footstepTimer = -0.1f; // random negative number so player makes sound falling on the ground
+			isGrounded = false;
 		}
 
 		if (canJumpCancel && Velocity.Y < 0.0f && jumpReleased) // cancel jump

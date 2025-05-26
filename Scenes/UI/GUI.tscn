@@ -304,6 +304,7 @@ autoplay = "default"
 [node name="Portrait" type="AnimatedSprite2D" parent="DialogBox"]
 position = Vector2(-112, 0)
 sprite_frames = SubResource("SpriteFrames_v6e0d")
+animation = &"ZoeSmug"
 autoplay = "default"
 
 [node name="AnimatedSprite2D" parent="DialogBox" instance=ExtResource("6_mk8rw")]

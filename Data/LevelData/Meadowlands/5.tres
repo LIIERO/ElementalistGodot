@@ -7,5 +7,5 @@ script = ExtResource("1_l5ldx")
 ID = "5"
 Name = "greatest_deal"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "4"
+SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

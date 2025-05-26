@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ilspv")
 ID = "4"
-Name = "inertia"
+Name = "compound"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

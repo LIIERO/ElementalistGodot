@@ -96,7 +96,10 @@ public partial class DialogBox : Sprite2D
 
         if (gameState.HintsData[worldID].ContainsKey(levelID))
         {
-            dialogTemplate["text"] = gameState.HintsData[worldID][levelID][noHint - 1];
+            if (noHint > gameState.HintsData[worldID][levelID].Count())
+                dialogTemplate["text"] = gameState.UITextData["hint_missing"];
+            else
+                dialogTemplate["text"] = gameState.HintsData[worldID][levelID][noHint - 1];
             /*int l = gameState.HintsData[worldID][levelID].Count;
             
             currentDialog = new();
@@ -109,7 +112,7 @@ public partial class DialogBox : Sprite2D
         }
         else
         {
-            dialogTemplate["text"] = "This level has no hint, sorry :(";
+            dialogTemplate["text"] = gameState.UITextData["hint_missing"];
             //currentDialog = new() { dialogTemplate };
         }
         currentDialog = new() { dialogTemplate };

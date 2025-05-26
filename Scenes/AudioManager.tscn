@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=37 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/Soft/walk_grass_1.ogg" id="2_3djbo"]
@@ -35,8 +35,9 @@
 [ext_resource type="AudioStream" uid="uid://c6e8t2hr7n4ny" path="res://Audio/Music/knipe.ogg" id="31_ne6ya"]
 [ext_resource type="AudioStream" uid="uid://cim0omrrl52a" path="res://Audio/Music/amor_operatorium.ogg" id="33_1imw8"]
 [ext_resource type="AudioStream" uid="uid://d11f00iak27em" path="res://Audio/Sounds/Dialog/zoe_normal.ogg" id="34_61eul"]
+[ext_resource type="AudioStream" uid="uid://bttdadtpp6mfd" path="res://Audio/Music/meadowlands.ogg" id="34_don3y"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "loveAbility", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "orderGateProgress", "orderGateReset", "buttonSelected", "textNoise", "zoeNormalNoise", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicKnipe", "musicVoid")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "loveAbility", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "orderGateProgress", "orderGateReset", "buttonSelected", "textNoise", "zoeNormalNoise", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicKnipe", "musicMeadowlands", "musicVoid")]
 script = ExtResource("1_b82rj")
 softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
 hardFootsteps = [NodePath("Player/Footsteps/FH1"), NodePath("Player/Footsteps/FH2"), NodePath("Player/Footsteps/FH3"), NodePath("Player/Footsteps/FH4")]
@@ -65,6 +66,7 @@ musicCaveOutskirts = NodePath("Music/CaveOutskirts")
 musicIslandsOfAshes = NodePath("Music/IslandsOfAshes")
 musicOperatorium = NodePath("Music/Operatorium")
 musicKnipe = NodePath("Music/Knipe")
+musicMeadowlands = NodePath("Music/Meadowlands")
 musicVoid = NodePath("Music/Void")
 
 [node name="Player" type="Node" parent="."]
@@ -227,6 +229,11 @@ bus = &"Music"
 [node name="IslandsOfAshes" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("28_0tyw5")
 volume_db = -2.0
+bus = &"Music"
+
+[node name="Meadowlands" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("34_don3y")
+volume_db = -2.5
 bus = &"Music"
 
 [node name="Dialog" type="Node" parent="."]

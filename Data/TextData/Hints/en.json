@@ -45,8 +45,8 @@
 	"7": ["Finish the level just like the previous one.", 
 	"The green orbs are a bait", 
 	"Dodge the stacked water orbs on your way down."],
-	"A": ["You activate the charges by touching them while using an ability.", "Activate the rightmost charge last."],
-	"B": ["Use the gate on the left to your advantage, don't open it too early.", "Jump and dash from the gate to clear the gap."],
+	"A": ["You activate the charges by touching them while using an ability.", "Activate the rightmost charge last.", ""],
+	"B": ["Use the gate on the left to your advantage, don't open it too early.", "Jump and dash from the gate to clear the gap.", ""],
 	"C": ["Some gates shall remain unopened.", "You should use air to activate the leftmost charge."],
 	"D": ["You can activate more than one charge with one ability.", "Activate the two middle charges with one air at the end."],
 	"E": ["Leave the green orb on the left for later.", "Avoid the charge when going up with water."],
@@ -86,8 +86,61 @@
 	"5S": ["Whenever you use fire, it gives you a backward boost, which is just enough to get you through a short spike tunnel. I'm sorry.", "To make it easier: Hold right, jump, and when you are about to touch the spikes, release right and tap left and the ability button all at the same time."]
   },
 
+  "4": { 
+	"0": [], 
+	"1": [], 
+	"2": [], 
+	"3": [], 
+	"4": [], 
+	"5": [], 
+	"6": [], 
+	"A": [], 
+	"B": [], 
+	"C": [], 
+	"D": [], 
+	"E": [], 
+	"F": [], 
+	"J": [], 
+	"K": [], 
+	"L": [], 
+	"AS": [],
+	"BS": [] 
+  },
+
+  "5": { 
+	"0": [], 
+	"1": [], 
+	"2": [], 
+	"A": [], 
+	"B": [], 
+	"C": [], 
+	"D": [], 
+	"E": [], 
+	"X": [], 
+	"Y": [], 
+	"Z": [], 
+	"2S": [], 
+	"BS": [] 
+  },
+
+  "6": { 
+	"0": [], 
+	"1": [], 
+	"2": [], 
+	"3": [], 
+	"4": [], 
+	"5": [], 
+	"6": [], 
+	"7": [], 
+	"8": [], 
+	"6S": [] 
+  },
+
   "H": {
-	"A": ["You can activate the bottom left charge without going through the spike tunnel.", "The solution requires you to use fire... three times in a row."],
-	"B": ["You should wishlist the game.", "It would also be nice if you shared it around."]
+	"A": ["You can activate the bottom left charge without going through the spike tunnel.", 
+	"The solution requires you to use fire... three times in a row.", 
+	"The green orb in the bottom-left corner shall be collected last."],
+	"B": [],
+	"C": []
   }
 }
