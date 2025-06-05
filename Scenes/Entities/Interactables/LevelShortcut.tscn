@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk4yhvhin4myw"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/LevelShortcut.cs" id="1_md641"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_0kfaf"]
+[ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="3_27fnc"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="4_lit5s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]
+size = Vector2(16, 1)
+
+[sub_resource type="Animation" id="Animation_porbe"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c15ny"]
+_data = {
+"Idle": SubResource("Animation_porbe")
+}
+
+[node name="LevelShortcut" type="Area2D"]
+script = ExtResource("1_md641")
+arrowYOffset = -2.5
+arrowIndicatorPrefab = ExtResource("2_0kfaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_3qu6i")
+
+[node name="MovedByAnimation" type="Node2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovedByAnimation"]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("3_27fnc")
+region_enabled = true
+region_rect = Rect2(80, 96, 16, 32)
+
+[node name="Text" type="Node2D" parent="MovedByAnimation"]
+position = Vector2(-3, -21)
+
+[node name="Label" type="Label" parent="MovedByAnimation/Text"]
+texture_filter = 1
+offset_right = 6.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("4_lit5s")
+theme_override_font_sizes/font_size = 12
+text = "X"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="_OnBodyExited"]

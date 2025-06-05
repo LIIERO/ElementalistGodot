@@ -3,6 +3,12 @@
 	{"name": "", "background": "default", "portrait": "default", "text": ""}
   ],
 
+  "level_shortcut_info": [
+	{"name": "", "background": "default", "portrait": "default", "text": "It seems like this portal will take you to a level that you might want to come back to."}
+  ],
+
+
+
   "L_HUB_jump": [
 	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Press up to interact with interactable objects."},
 	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "No need to thank me."},

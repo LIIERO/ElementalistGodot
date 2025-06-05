@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmbbx58crl5g2"]
+[gd_scene load_steps=8 format=3 uid="uid://cm1dwfo07amnk"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_jjr2h"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_56hub"]
@@ -27,10 +27,17 @@ position = Vector2(-192, -48)
 [node name="Orbs" type="Node2D" parent="." index="6"]
 
 [node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_hh6w1")]
-position = Vector2(-47, -17)
+position = Vector2(-48, -16)
+
+[node name="AnimationPlayer" parent="Orbs/WaterOrb" index="1"]
+useSetOffsetInstead = true
 
 [node name="WaterOrb2" parent="Orbs" index="1" instance=ExtResource("3_hh6w1")]
 position = Vector2(-48, -16)
+
+[node name="AnimationPlayer" parent="Orbs/WaterOrb2" index="1"]
+useSetOffsetInstead = true
+setOffset = 1.5
 
 [node name="WaterOrb3" parent="Orbs" index="2" instance=ExtResource("3_hh6w1")]
 position = Vector2(-128, 80)
@@ -64,3 +71,6 @@ layer_0/tile_data = PackedInt32Array(-262149, 131072, 2, -262150, 0, 0, -262151,
 
 [node name="WaterIndicator" parent="." index="12" instance=ExtResource("7_378sp")]
 position = Vector2(176, 16)
+
+[editable path="Orbs/WaterOrb"]
+[editable path="Orbs/WaterOrb2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b3ay112fsiir6"]
+[gd_scene load_steps=37 format=3 uid="uid://b3ay112fsiir6"]
 
 [ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_11mhi"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="2_ocfba"]
@@ -10,20 +10,23 @@
 [ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="7_q5dqd"]
 [ext_resource type="PackedScene" uid="uid://ccg8gwtjisj4" path="res://Scenes/Entities/Interactables/LevelTeleport.tscn" id="8_umfyq"]
 [ext_resource type="Resource" uid="uid://d33lbru0ahlct" path="res://Data/LevelData/Meadowlands/0.tres" id="9_qfywx"]
+[ext_resource type="PackedScene" uid="uid://bk4yhvhin4myw" path="res://Scenes/Entities/Interactables/LevelShortcut.tscn" id="9_rybi7"]
 [ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="10_gatgj"]
 [ext_resource type="Resource" uid="uid://vfh2kaclntjf" path="res://Data/LevelData/Meadowlands/1.tres" id="10_hlf6t"]
 [ext_resource type="Resource" uid="uid://cc5gir0o57hts" path="res://Data/LevelData/Meadowlands/2.tres" id="11_bmdxf"]
 [ext_resource type="Resource" uid="uid://cjwrv45r8waan" path="res://Data/LevelData/Meadowlands/3.tres" id="12_gshaw"]
-[ext_resource type="Resource" uid="uid://dv34hgm8ye70f" path="res://Data/LevelData/Meadowlands/4.tres" id="13_m0xhk"]
-[ext_resource type="Resource" uid="uid://c4m5uqdd4lfb1" path="res://Data/LevelData/Meadowlands/5.tres" id="14_35802"]
-[ext_resource type="Resource" uid="uid://dpgujkjjcoxya" path="res://Data/LevelData/Meadowlands/6.tres" id="15_e3orq"]
-[ext_resource type="Resource" uid="uid://c0owt3rqnpk4m" path="res://Data/LevelData/Meadowlands/7.tres" id="16_4t4fk"]
-[ext_resource type="Resource" uid="uid://5s5ovoa3jiaq" path="res://Data/LevelData/Meadowlands/6S.tres" id="17_65sys"]
-[ext_resource type="Resource" uid="uid://s8h12dvrgxaq" path="res://Data/LevelData/Meadowlands/8.tres" id="18_a3chb"]
+[ext_resource type="Resource" uid="uid://dv34hgm8ye70f" path="res://Data/LevelData/Meadowlands/C.tres" id="13_m0xhk"]
+[ext_resource type="Resource" uid="uid://c4m5uqdd4lfb1" path="res://Data/LevelData/Meadowlands/4.tres" id="14_35802"]
+[ext_resource type="Resource" uid="uid://dpgujkjjcoxya" path="res://Data/LevelData/Meadowlands/5.tres" id="15_e3orq"]
+[ext_resource type="Resource" uid="uid://c0owt3rqnpk4m" path="res://Data/LevelData/Meadowlands/6.tres" id="16_4t4fk"]
+[ext_resource type="Resource" uid="uid://5s5ovoa3jiaq" path="res://Data/LevelData/Meadowlands/5S.tres" id="17_65sys"]
+[ext_resource type="Resource" uid="uid://s8h12dvrgxaq" path="res://Data/LevelData/Meadowlands/M.tres" id="18_a3chb"]
 [ext_resource type="PackedScene" uid="uid://6fdinduem110" path="res://Scenes/Entities/PermanentCollectables/Letter.tscn" id="19_a677n"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="20_a80nx"]
 [ext_resource type="Texture2D" uid="uid://dj5g6aqwkobr8" path="res://Graphics/Decals/Global/terraria_campfire.png" id="21_lnl1e"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="23_n74ra"]
+[ext_resource type="PackedScene" uid="uid://bgt3h8gpgargk" path="res://Scenes/Entities/Interactables/Watchtower.tscn" id="25_pcgjx"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="26_imdjo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7d7lw"]
 atlas = ExtResource("21_lnl1e")
@@ -202,8 +205,9 @@ position = Vector2(-272, 16)
 
 [node name="Interactables" type="Node2D" parent="." index="9"]
 
-[node name="EntranceVoid" parent="Interactables" index="0" instance=ExtResource("6_ldou4")]
-position = Vector2(0, 112)
+[node name="LevelShortcut" parent="Interactables" index="0" instance=ExtResource("9_rybi7")]
+position = Vector2(64, 96)
+orderedLevels = Array[Object]([ExtResource("12_gshaw"), ExtResource("14_35802"), ExtResource("16_4t4fk")])
 
 [node name="Levels" type="Node2D" parent="Interactables" index="1"]
 
@@ -216,7 +220,7 @@ position = Vector2(-80, 112)
 levelToTeleportTo = ExtResource("10_hlf6t")
 
 [node name="Level2" parent="Interactables/Levels" index="2" instance=ExtResource("8_umfyq")]
-position = Vector2(64, 96)
+position = Vector2(-112, 112)
 levelToTeleportTo = ExtResource("11_bmdxf")
 
 [node name="Level3" parent="Interactables/Levels" index="3" instance=ExtResource("8_umfyq")]
@@ -239,7 +243,7 @@ levelToTeleportTo = ExtResource("15_e3orq")
 position = Vector2(-416, 0)
 levelToTeleportTo = ExtResource("16_4t4fk")
 
-[node name="Level8" parent="Interactables/Levels" index="8" instance=ExtResource("8_umfyq")]
+[node name="LevelM" parent="Interactables/Levels" index="8" instance=ExtResource("8_umfyq")]
 position = Vector2(400, 112)
 levelToTeleportTo = ExtResource("18_a3chb")
 
@@ -247,7 +251,10 @@ levelToTeleportTo = ExtResource("18_a3chb")
 position = Vector2(448, 0)
 levelToTeleportTo = ExtResource("17_65sys")
 
-[node name="TerrariaCampfire" parent="Interactables" index="2" instance=ExtResource("20_a80nx")]
+[node name="EntranceVoid" parent="Interactables" index="2" instance=ExtResource("6_ldou4")]
+position = Vector2(0, 112)
+
+[node name="TerrariaCampfire" parent="Interactables" index="3" instance=ExtResource("20_a80nx")]
 position = Vector2(-368, -96)
 Text = "6_HUB_campfire"
 
@@ -260,10 +267,16 @@ frame_progress = 0.466599
 [node name="Sprite2D" parent="Interactables/TerrariaCampfire" index="1"]
 visible = false
 
-[node name="EntrancePurpleForest" parent="Interactables" index="3" instance=ExtResource("23_n74ra")]
+[node name="EntrancePurpleForest" parent="Interactables" index="4" instance=ExtResource("23_n74ra")]
 position = Vector2(528, 128)
+
+[node name="Watchtower" parent="Interactables" index="5" instance=ExtResource("25_pcgjx")]
+position = Vector2(-48, 112)
 
 [node name="Letter" parent="." index="13" instance=ExtResource("19_a677n")]
 position = Vector2(752, 0)
+
+[node name="WaterIndicator" parent="." index="14" instance=ExtResource("26_imdjo")]
+position = Vector2(-208, -64)
 
 [editable path="Interactables/TerrariaCampfire"]

@@ -27,10 +27,17 @@ position = Vector2(-192, -48)
 [node name="Orbs" type="Node2D" parent="." index="6"]
 
 [node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("3_5diiy")]
-position = Vector2(-47, -17)
+position = Vector2(-48, -16)
+
+[node name="AnimationPlayer" parent="Orbs/WaterOrb" index="1"]
+useSetOffsetInstead = true
 
 [node name="WaterOrb2" parent="Orbs" index="1" instance=ExtResource("3_5diiy")]
 position = Vector2(-48, -16)
+
+[node name="AnimationPlayer" parent="Orbs/WaterOrb2" index="1"]
+useSetOffsetInstead = true
+setOffset = 1.5
 
 [node name="WaterOrb3" parent="Orbs" index="2" instance=ExtResource("3_5diiy")]
 position = Vector2(-128, 16)
@@ -64,3 +71,6 @@ layer_0/tile_data = PackedInt32Array(-262149, 131072, 2, -262150, 0, 0, -262151,
 
 [node name="WaterIndicator" parent="." index="12" instance=ExtResource("7_iqix5")]
 position = Vector2(176, 16)
+
+[editable path="Orbs/WaterOrb"]
+[editable path="Orbs/WaterOrb2"]

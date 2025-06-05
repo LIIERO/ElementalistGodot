@@ -21,9 +21,9 @@ public partial class GameState : Node
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
         { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "J", "K", "L", "AS", "BS" } }, // Operatorium
         { "5", new string[] { "HUB", "0", "1", "2", "A", "B", "C", "D", "E", "X", "Y", "Z", "2S", "BS" } }, // Knipe
-        { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "6S" } } // Meadowlands
+        { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "C", "M", "5S" } } // Meadowlands
     };
-    private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _Ready
+    private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _EnterTree
 
     private const string specialLevelLetter = "S";
 
@@ -65,6 +65,8 @@ public partial class GameState : Node
     public bool IsLevelTransitionPlaying { get; set; } = false;
     public bool IsDialogActive { get; set; } = false;
     public bool CanProgressDialog { get; set; } = false;
+    public bool WatchtowerActive { get; set; } = false;
+    public (bool left, bool right) CameraTouchingBorders { get; set; } = (false, false);
     //public bool FirstBoot { get; set; } = false; // Set to true in SettingManager when creating preferences file
     
 

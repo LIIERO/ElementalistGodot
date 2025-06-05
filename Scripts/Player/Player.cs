@@ -58,7 +58,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
     public bool IsHoldingGoal { get; set; } = false; // Yellow or red
     public bool IsHoldingSpecialGoal { get; set; } = false; // Red
-    public bool IsFrozen => isDead || isUndoing || gameState.IsLevelTransitionPlaying || gameState.IsDialogActive;
+    public bool IsFrozen => isDead || isUndoing || gameState.IsLevelTransitionPlaying || gameState.IsDialogActive || gameState.WatchtowerActive;
 
     ElementState currentAbility = ElementState.normal; // Different from normal only while using it
 	public bool isUsingAbility = false;
@@ -475,6 +475,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	{
 		if (gameState.IsLevelTransitionPlaying && !isDead) animatedSprite.Play("Idle"); // Level transition animation
 		if (gameState.IsDialogActive) animatedSprite.Play("Idle"); // dialog animation
+		if (gameState.WatchtowerActive) animatedSprite.Play("Idle"); // watchtower animation
         if (IsFrozen) return;
 
 		float animationSpeed = 1.0f;

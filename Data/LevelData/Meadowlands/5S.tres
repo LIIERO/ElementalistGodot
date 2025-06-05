@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_a1cpw")
-ID = "6S"
+ID = "5S"
 Name = "offset"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "6"
+SpecificLevelCompletedToUnlock = "5"
 IsSpecial = true

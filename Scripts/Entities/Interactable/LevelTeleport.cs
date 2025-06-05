@@ -63,7 +63,7 @@ public partial class LevelTeleport : Interactable
         }
         
 
-        // Change player position according to world they are coming from, when entering a hub
+        // Change player position according to level they are coming from, when entering a hub
         // setPlayerLevelEnterPosition set to true in GameState
         if (setPlayerLevelEnterPosition && levelToTeleportTo.ID == gameState.PreviousLevel)
         {

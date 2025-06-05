@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dpgujkjjcoxya"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c0owt3rqnpk4m"]
 
 [ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_ohgp6"]
 
 [resource]
 script = ExtResource("1_ohgp6")
 ID = "6"
-Name = "onset"
+Name = "quest_for_fire"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = ""
+SpecificLevelCompletedToUnlock = "5"
 IsSpecial = false

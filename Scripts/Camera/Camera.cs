@@ -7,7 +7,6 @@ public partial class Camera : Camera2D
     private GameState gameState;
     private CustomSignals customSignals;
 
-    public static bool FreeViewModeEnabled { get; set; } = false; // TODO: move to a freeviewcontroller
     [Export] private Node2D PlayerNode { get; set; }
 
     Vector2 initialPosition;
@@ -16,6 +15,7 @@ public partial class Camera : Camera2D
     private float velocityY = 0.0f;
 
     const float smoothTime = 0.2f;
+    const float maxSmoothSpeed = 400.0f;
 
     // How far in each direction can camera go in grid units
     [Export] private float leftLimit = -99f;
@@ -24,7 +24,7 @@ public partial class Camera : Camera2D
     [Export] private float downLimit = 99f;
     private float baseLeftLimit, baseRightLimit, baseDownLimit, baseUpLimit;
 
-    private const float freeViewSpeed = 200.0f;
+    private const float freeViewSpeed = 400.0f;
 
     private Vector2 desiredPosition;
 
@@ -60,23 +60,22 @@ public partial class Camera : Camera2D
 
     private void ApplyPosition(double delta)
     {
-        /*if (FreeViewModeEnabled)
+        if (gameState.WatchtowerActive)
         {
-            Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-            float changeInPosition = freeViewSpeed * (float)delta;
-            if (Input.GetKey(Global.kcUp)) desiredPosition += new Vector3(0, changeInPosition, 0);
-            else if (Input.GetKey(Global.kcDown)) desiredPosition += new Vector3(0, -changeInPosition, 0);
-            if (Input.GetKey(Global.kcRight)) desiredPosition += new Vector3(changeInPosition, 0, 0);
-            else if (Input.GetKey(Global.kcLeft)) desiredPosition += new Vector3(-changeInPosition, 0, 0);
-        }
-        else desiredPosition = playerNode.Position;*/
+            float direction = InputManager.GetLeftRightGameplayDirection();
+            float changeInPosition = freeViewSpeed * (float)delta * direction;
 
-        desiredPosition = PlayerNode.Position;
+            desiredPosition += new Vector2(changeInPosition, 0f);
+        }
+        else desiredPosition = PlayerNode.GlobalPosition;
+
+
         desiredPosition = ApplyCameraLimits(desiredPosition);
 
         float smoothedX, smoothedY;
-        smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, 200, (float)delta);
-        smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, 200, (float)delta);
+        smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, maxSmoothSpeed, (float)delta);
+        //smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, maxSmoothSpeed, (float)delta);
+        smoothedY = desiredPosition.Y; // No need for Y smoothing
 
         if (snap) // Snap the camera during transition so it doesnt scroll towards you slowly
         {
@@ -95,11 +94,21 @@ public partial class Camera : Camera2D
 
     private Vector2 ApplyCameraLimits(Vector2 position)
     {
-        if (position.X < leftLimit) position.X = leftLimit;
-        else if (position.X > rightLimit) position.X = rightLimit;
+        gameState.CameraTouchingBorders = (false, false);
+
+        if (position.X <= leftLimit)
+        {
+            position.X = leftLimit;
+            gameState.CameraTouchingBorders = (true, false);
+        }
+        if (position.X >= rightLimit)
+        {
+            position.X = rightLimit;
+            gameState.CameraTouchingBorders = (gameState.CameraTouchingBorders.left, true);
+        }
         
-        if (position.Y < upLimit) position.Y = upLimit;
-        else if (position.Y > downLimit) position.Y = downLimit;
+        if (position.Y <= upLimit) position.Y = upLimit;
+        else if (position.Y >= downLimit) position.Y = downLimit;
 
         return position;
     }
