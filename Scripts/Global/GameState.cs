@@ -20,7 +20,7 @@ public partial class GameState : Node
         { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "8S" } }, // Cave Outskirts
         { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
         { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "J", "K", "L", "AS", "BS" } }, // Operatorium
-        { "5", new string[] { "HUB", "0", "1", "2", "A", "B", "C", "D", "E", "X", "Y", "Z", "2S", "BS" } }, // Knipe
+        { "5", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "F", "G", "1S", "2S", "CS" } }, // Knipe
         { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "C", "M", "5S" } } // Meadowlands
     };
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _EnterTree
@@ -494,7 +494,7 @@ public partial class GameState : Node
             {
                 foreach (string levelKey in world.Value.Keys.ToList())
                 {
-                    if (world.Key != "6" && !(world.Key == "H" && levelKey != "A")) // TODO: temporary for playtesting
+                    if (world.Key != "5" && world.Key != "6" && !(world.Key == "H" && levelKey != "A")) // TODO: temporary for playtesting
                         CompletedLevels[world.Key][levelKey] = true;
                 }
             }

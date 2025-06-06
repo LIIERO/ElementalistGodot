@@ -58,6 +58,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	public ElementState BaseAbility { get; private set; } // Unused for now, Zoe can use this type of ability without orbs (standing on the ground refreshes it)
     public bool IsHoldingGoal { get; set; } = false; // Yellow or red
     public bool IsHoldingSpecialGoal { get; set; } = false; // Red
+	public bool SqueezeDeathDisabled { get; set; } = false; // Immune from a gate crush death
     public bool IsFrozen => isDead || isUndoing || gameState.IsLevelTransitionPlaying || gameState.IsDialogActive || gameState.WatchtowerActive;
 
     ElementState currentAbility = ElementState.normal; // Different from normal only while using it
@@ -525,7 +526,7 @@ public partial class Player : CharacterBody2D, IUndoable
 
     private void _OnArea2dBodyEntered(Node2D body) // This is a small area in the player, if a body enters it the player got crushed
 	{
-		if (body is not Player && body is not Fireball && body is not TileMap)
+		if (body is not Player && body is not Fireball && body is not TileMap && !SqueezeDeathDisabled)
 			Kill(crushed:true);
 	}
 
@@ -711,8 +712,8 @@ public partial class Player : CharacterBody2D, IUndoable
         }
     }
 
-    // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate
-    private bool CanAddCheckpoint() => isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !isOnMovingEntity && !IsOnWall();
+    // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate and you need to be able to die from being crushed
+    private bool CanAddCheckpoint() => isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !isOnMovingEntity && !IsOnWall() && !SqueezeDeathDisabled;
 
     private void TryAddCheckpoint(double delta)
 	{

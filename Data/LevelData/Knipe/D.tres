@@ -7,5 +7,5 @@ script = ExtResource("1_ehcn4")
 ID = "D"
 Name = "guilt_tripping"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "B"
+SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false

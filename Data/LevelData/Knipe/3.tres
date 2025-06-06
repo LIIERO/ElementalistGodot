@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b6nvorkworxre"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_s4vlk"]
+
+[resource]
+script = ExtResource("1_s4vlk")
+ID = "3"
+Name = "the_escapist"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "1"
+IsSpecial = false

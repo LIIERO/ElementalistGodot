@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_rqf22")
-ID = "Y"
+ID = "7"
 Name = "indiana_zoe"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "X"
+SpecificLevelCompletedToUnlock = "3"
 IsSpecial = false

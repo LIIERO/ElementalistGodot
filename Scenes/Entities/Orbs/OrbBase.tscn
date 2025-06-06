@@ -30,13 +30,13 @@ _data = {
 "Idle": SubResource("Animation_sgcxl")
 }
 
-[sub_resource type="Gradient" id="Gradient_nofm6"]
+[sub_resource type="Gradient" id="Gradient_a5whb"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.331169)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5oq0n"]
-gradient = SubResource("Gradient_nofm6")
+gradient = SubResource("Gradient_a5whb")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 

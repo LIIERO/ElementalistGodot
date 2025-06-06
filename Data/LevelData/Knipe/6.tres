@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://8435ho54x2xj"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_l0lyh"]
+
+[resource]
+script = ExtResource("1_l0lyh")
+ID = "6"
+Name = "loop"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "3"
+IsSpecial = false

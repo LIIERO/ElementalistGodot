@@ -7,5 +7,5 @@ script = ExtResource("1_hff64")
 ID = "2"
 Name = "dig_yourself_out"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "0"
+SpecificLevelCompletedToUnlock = "1"
 IsSpecial = false

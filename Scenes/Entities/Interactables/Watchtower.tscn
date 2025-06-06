@@ -1,11 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgt3h8gpgargk"]
+[gd_scene load_steps=10 format=3 uid="uid://bgt3h8gpgargk"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/Watchtower.cs" id="1_qpkbc"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_n8ovl"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="3_ujrgo"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="4_4bwsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]
-size = Vector2(16, 1)
+size = Vector2(12, 1)
+
+[sub_resource type="Animation" id="Animation_sgcxl"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovedByAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.503, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqv8"]
+_data = {
+"Idle": SubResource("Animation_sgcxl")
+}
+
+[sub_resource type="Gradient" id="Gradient_ggc57"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.331169)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eoq54"]
+gradient = SubResource("Gradient_ggc57")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Watchtower" type="Area2D"]
 script = ExtResource("1_qpkbc")
@@ -13,14 +47,38 @@ arrowIndicatorPrefab = ExtResource("2_n8ovl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -16)
+position = Vector2(0, -8)
 texture = ExtResource("3_ujrgo")
 region_enabled = true
-region_rect = Rect2(48, 0, 16, 32)
+region_rect = Rect2(96, 112, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3qu6i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6uqv8")
+}
+autoplay = "Idle"
+script = ExtResource("4_4bwsh")
+
+[node name="MovedByAnimation" type="Node2D" parent="."]
+position = Vector2(0, 0.805789)
+
+[node name="CrystalBall" type="Sprite2D" parent="MovedByAnimation"]
+position = Vector2(0, -16.8058)
+texture = ExtResource("3_ujrgo")
+region_enabled = true
+region_rect = Rect2(96, 96, 16, 16)
+
+[node name="PointLight2D" type="PointLight2D" parent="MovedByAnimation"]
+position = Vector2(0, -16.8058)
+color = Color(0, 1, 1, 1)
+energy = 0.4
+range_z_max = -1
+range_layer_min = -100
+texture = SubResource("GradientTexture2D_eoq54")
 
 [connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="_OnBodyExited"]

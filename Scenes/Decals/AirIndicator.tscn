@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bjj0smaaj82m" path="res://Graphics/Decals/Global/indicators.png" id="1_ctjry"]
 
-[node name="WaterIndicator" type="Sprite2D"]
+[node name="AirIndicator" type="Sprite2D"]
 position = Vector2(8, 8)
 texture = ExtResource("1_ctjry")
 region_enabled = true

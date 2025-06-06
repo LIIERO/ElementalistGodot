@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dnx5dcnhrffxo"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_u7ske"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_cmpw8"]
 
 [resource]
-script = ExtResource("1_u7ske")
-ID = "Z"
+script = ExtResource("1_cmpw8")
+ID = "4"
 Name = "weave_in"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "X"
+SpecificLevelCompletedToUnlock = "3"
 IsSpecial = false

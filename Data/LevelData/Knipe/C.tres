@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://7adtcj3e1aeh"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c57d5tpnbm0u6"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_dg36k"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_4aqqd"]
 
 [resource]
-script = ExtResource("1_dg36k")
+script = ExtResource("1_4aqqd")
 ID = "C"
-Name = "you_need_it"
+Name = "resolving_issues"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false

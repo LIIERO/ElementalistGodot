@@ -1,17 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://corlc2n0tq2ih"]
+[gd_scene load_steps=11 format=3 uid="uid://d4ee33xlmiuhi"]
 
-[ext_resource type="PackedScene" uid="uid://eh4s841nggxg" path="res://Scenes/Worlds/5/Base.tscn" id="1_qgi22"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_qkc1t"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="3_bbheh"]
-[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_rrvgk"]
-[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_dobpq"]
-[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="8_4kqf6"]
-[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="11_esa7s"]
-[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="12_n5hew"]
-[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="13_anhf5"]
-[ext_resource type="PackedScene" uid="uid://bgfresrqk3jrw" path="res://Scenes/Triggers/DisableSqueezeDeath.tscn" id="15_s2x70"]
+[ext_resource type="PackedScene" uid="uid://eh4s841nggxg" path="res://Scenes/Worlds/5/Base.tscn" id="1_7d5oo"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_vbeif"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="3_mf03l"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_mduqu"]
+[ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_msucj"]
+[ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="6_v7cov"]
+[ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="7_i151l"]
+[ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="8_kqms4"]
+[ext_resource type="PackedScene" uid="uid://bgfresrqk3jrw" path="res://Scenes/Triggers/DisableSqueezeDeath.tscn" id="9_3353f"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="10_ohul8"]
 
-[node name="Game" instance=ExtResource("1_qgi22")]
+[node name="Game" instance=ExtResource("1_7d5oo")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-224, 48)
@@ -34,51 +34,51 @@ layer_0/tile_data = PackedInt32Array(131065, 0, 2, 131064, 131072, 0, 131063, 13
 [node name="BackgroundTiles" parent="." index="8"]
 layer_0/tile_data = PackedInt32Array(-196622, 589824, 3, -262158, 589824, 2, -196623, 589824, 3, -262159, 327680, 1, -196624, 524288, 3, -262160, 524288, 0, -262157, 589824, 2, -327693, 393216, 1, -327694, 327680, 1, -327695, 524288, 0, -196621, 589824, 3, -131082, 589824, 3, -196618, 589824, 2, -262154, 655360, 0, -131083, 589824, 3, -196619, 589824, 2, -262155, 393216, 1, -131084, 524288, 3, -196620, 327680, 2, -262156, 589824, 2, -327691, 720896, 0, -327692, 655360, 0, -262151, 720896, 2, -327687, 720896, 0, -262152, 327680, 1, -327688, 262144, 1, -196615, 720896, 3, -196616, 393216, 2, -196617, 589824, 2, -262153, 655360, 0, -131080, 720896, 3, -131081, 589824, 3, -458760, 720896, 2, -524296, 589824, 1, -458761, 327680, 2, -524297, 655360, 0, -458762, 524288, 3, -524298, 524288, 0, -393224, 458752, 2, -393225, 524288, 3, -524295, 720896, 3, -589831, 720896, 0, -589832, 524288, 0, -458766, 327680, 2, -524302, 589824, 2, -589838, 655360, 0, -458767, 589824, 3, -524303, 589824, 2, -589839, 655360, 0, -458768, 524288, 3, -524304, 524288, 1, -589840, 524288, 0, -524301, 589824, 2, -589837, 655360, 0, -458764, 720896, 3, -524300, 720896, 2, -589836, 720896, 0, -458765, 393216, 2, -393229, 720896, 2, -393230, 524288, 1, -524282, 393216, 1, -589818, 720896, 2, -655354, 720896, 0, -524283, 327680, 2, -589819, 589824, 2, -655355, 655360, 0, -524284, 524288, 3, -589820, 524288, 1, -655356, 524288, 0, -458746, 393216, 2, -458747, 524288, 1, -524279, 393216, 2, -589815, 655360, 0, -524280, 327680, 1, -589816, 524288, 0, -524278, 720896, 3, -589814, 589824, 1, -458743, 720896, 3, -458744, 589824, 3, -458745, 589824, 3, -524281, 655360, 0, -589813, 720896, 3, -655349, 720896, 0, -655350, 524288, 0, -393210, 720896, 3, -393211, 524288, 3, 524301, 720896, 3, 458765, 393216, 2, 393229, 327680, 1, 524300, 589824, 3, 458764, 327680, 1, 393228, 524288, 0, 458767, 720896, 3, 393231, 720896, 2, 327695, 720896, 0, 458766, 589824, 3, 393230, 589824, 2, 327694, 393216, 1, 327693, 524288, 1, 262158, 720896, 2, 196622, 720896, 0, 262157, 524288, 1, 196621, 524288, 0, 524294, 720896, 3, 458758, 720896, 2, 393222, 393216, 2, 524293, 589824, 3, 458757, 589824, 2, 393221, 327680, 1, 524292, 524288, 3, 458756, 524288, 1, 393220, 524288, 0, 327686, 327680, 1, 327685, 524288, 0, 327687, 589824, 2, 262151, 589824, 2, 196615, 655360, 0, 262150, 524288, 1, 196614, 524288, 0, 262152, 393216, 1, 196616, 720896, 0, 327688, 589824, 2, 393223, 589824, 3, 393225, 393216, 1, 327689, 720896, 2, 393224, 327680, 2, 262153, 720896, 0, 524298, 589824, 2, 458762, 393216, 1, 393226, 720896, 0, 524297, 524288, 1, 458761, 327680, 2, 458760, 524288, 3, 589834, 589824, 3, 589833, 524288, 3, 524299, 393216, 2, 458763, 655360, 0, 589835, 720896, 3, 327677, 720896, 2, 262141, 720896, 0, 327676, 589824, 2, 262140, 655360, 0, 327675, 327680, 1, 262139, 524288, 0, 393212, 393216, 2, 393211, 589824, 2, 327674, 655360, 0, 327673, 393216, 1, 327672, 589824, 2, 262137, 720896, 0, 262136, 655360, 0, 327671, 524288, 1, 262135, 524288, 0, 655356, 589824, 3, 589820, 589824, 2, 655355, 589824, 3, 589819, 327680, 1, 589821, 720896, 2, 524285, 720896, 0, 524284, 393216, 1, 655357, 720896, 3, 589813, 524288, 3, 524277, 327680, 2, 524276, 524288, 3, 655354, 589824, 3, 589818, 655360, 0, 393210, 327680, 2, 655353, 524288, 3, 589817, 524288, 0, 393209, 589824, 3, 393208, 393216, 2, 393207, 327680, 1, 458743, 393216, 2, 458742, 589824, 2, 393206, 655360, 0, 458741, 589824, 2, 393205, 655360, 0, 524278, 393216, 2, 458740, 524288, 1, 589814, 720896, 3, 458744, 720896, 3, 524279, 720896, 3, 524283, 524288, 1, 458748, 720896, 2, 458747, 327680, 2, 393213, 720896, 3, 458746, 524288, 3, 393204, 524288, 0, 458738, 720896, 2, 393202, 720896, 2, 327666, 720896, 0, 458737, 589824, 2, 393201, 589824, 2, 327665, 655360, 0, 458736, 524288, 1, 393200, 524288, 1, 327664, 524288, 0, 524274, 720896, 3, 524273, 393216, 2, 524272, 524288, 1, 589809, 720896, 3, 589808, 524288, 3, 10, 720896, 3, -65526, 720896, 0, 9, 589824, 3, -65527, 655360, 0, 8, 524288, 3, -65528, 524288, 0)
 
-[node name="LevelExit" parent="." index="9" instance=ExtResource("2_qkc1t")]
+[node name="LevelExit" parent="." index="9" instance=ExtResource("2_vbeif")]
 position = Vector2(-224, 48)
 
-[node name="Goal" parent="." index="10" instance=ExtResource("3_bbheh")]
+[node name="Goal" parent="." index="10" instance=ExtResource("3_mf03l")]
 position = Vector2(-160, 64)
 
 [node name="Orbs" type="Node2D" parent="." index="11"]
 
-[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("4_rrvgk")]
+[node name="WaterOrb" parent="Orbs" index="0" instance=ExtResource("4_mduqu")]
 position = Vector2(16, 32)
 
-[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("5_dobpq")]
+[node name="AirOrb" parent="Orbs" index="1" instance=ExtResource("5_msucj")]
 position = Vector2(80, -32)
 
-[node name="AirOrb3" parent="Orbs" index="2" instance=ExtResource("5_dobpq")]
+[node name="AirOrb3" parent="Orbs" index="2" instance=ExtResource("5_msucj")]
 position = Vector2(-192, 32)
 
-[node name="AirOrb2" parent="Orbs" index="3" instance=ExtResource("5_dobpq")]
+[node name="AirOrb2" parent="Orbs" index="3" instance=ExtResource("5_msucj")]
 position = Vector2(176, 32)
 
-[node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("8_4kqf6")]
+[node name="CopyTopOrb" parent="Orbs" index="4" instance=ExtResource("6_v7cov")]
 position = Vector2(112, 32)
 
-[node name="CopyTopOrb2" parent="Orbs" index="5" instance=ExtResource("8_4kqf6")]
+[node name="CopyTopOrb2" parent="Orbs" index="5" instance=ExtResource("6_v7cov")]
 position = Vector2(80, 32)
 
 [node name="Interactables" type="Node2D" parent="." index="12"]
 
 [node name="Gates" type="Node2D" parent="." index="13"]
 
-[node name="ChargeGate" parent="Gates" index="0" instance=ExtResource("12_n5hew")]
+[node name="ChargeGate" parent="Gates" index="0" instance=ExtResource("7_i151l")]
 position = Vector2(48, 0)
 requiredCharges = 2
 
-[node name="ChargeGate2" parent="Gates" index="1" instance=ExtResource("12_n5hew")]
+[node name="ChargeGate2" parent="Gates" index="1" instance=ExtResource("7_i151l")]
 position = Vector2(-192, 64)
 requiredCharges = 3
 
-[node name="ElementCharge" parent="Gates" index="2" instance=ExtResource("13_anhf5")]
+[node name="ElementCharge" parent="Gates" index="2" instance=ExtResource("8_kqms4")]
 position = Vector2(-32, 32)
 
-[node name="ElementCharge3" parent="Gates" index="3" instance=ExtResource("13_anhf5")]
-position = Vector2(160, -88)
+[node name="ElementCharge3" parent="Gates" index="3" instance=ExtResource("8_kqms4")]
+position = Vector2(-32, 112)
 
-[node name="ElementCharge2" parent="Gates" index="4" instance=ExtResource("13_anhf5")]
+[node name="ElementCharge2" parent="Gates" index="4" instance=ExtResource("8_kqms4")]
 position = Vector2(-80, 32)
 
 [node name="SemisolidUp" parent="Semisolids" index="0"]
@@ -90,8 +90,8 @@ layer_0/tile_data = PackedInt32Array(-12, 65536, 0, -13, 131072, 0, -14, 0, 0)
 [node name="SemisolidLeft" parent="Semisolids" index="2"]
 layer_0/tile_data = PackedInt32Array(-1250885635, 196608, 0, 589821, 0, 0, 589822, 65536, 0)
 
-[node name="DisableSqueezeDeath" parent="." index="15" instance=ExtResource("15_s2x70")]
+[node name="DisableSqueezeDeath" parent="." index="15" instance=ExtResource("9_3353f")]
 position = Vector2(48, 48)
 
-[node name="WaterIndicator" parent="." index="16" instance=ExtResource("11_esa7s")]
+[node name="WaterIndicator" parent="." index="16" instance=ExtResource("10_ohul8")]
 position = Vector2(192, -48)

@@ -7,5 +7,5 @@ script = ExtResource("1_qu0nj")
 ID = "M"
 Name = "fight_the_movement"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "1"
+SpecificLevelCompletedToUnlock = "C"
 IsSpecial = false
