@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://corlc2n0tq2ih"]
+[gd_scene load_steps=12 format=3 uid="uid://corlc2n0tq2ih"]
 
 [ext_resource type="PackedScene" uid="uid://eh4s841nggxg" path="res://Scenes/Worlds/5/Base.tscn" id="1_qgi22"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_qkc1t"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_dobpq"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="8_4kqf6"]
 [ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="11_esa7s"]
+[ext_resource type="PackedScene" uid="uid://dddf0e3rgqswt" path="res://Scenes/Decals/AirIndicator.tscn" id="11_uvgdl"]
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="12_n5hew"]
 [ext_resource type="PackedScene" uid="uid://bn587plam4h6o" path="res://Scenes/Entities/ElementCharge.tscn" id="13_anhf5"]
 [ext_resource type="PackedScene" uid="uid://bgfresrqk3jrw" path="res://Scenes/Triggers/DisableSqueezeDeath.tscn" id="15_s2x70"]
@@ -73,13 +74,13 @@ position = Vector2(-192, 64)
 requiredCharges = 3
 
 [node name="ElementCharge" parent="Gates" index="2" instance=ExtResource("13_anhf5")]
-position = Vector2(-32, 32)
+position = Vector2(-32, 42)
 
 [node name="ElementCharge3" parent="Gates" index="3" instance=ExtResource("13_anhf5")]
 position = Vector2(160, -88)
 
 [node name="ElementCharge2" parent="Gates" index="4" instance=ExtResource("13_anhf5")]
-position = Vector2(-80, 32)
+position = Vector2(-80, 42)
 
 [node name="SemisolidUp" parent="Semisolids" index="0"]
 layer_0/tile_data = PackedInt32Array(196610, 131072, 0, 196609, 131072, 0, 196608, 131072, 0, 262143, 0, 0, 196611, 131072, 0, 196614, 65536, 0, 196613, 131072, 0, 196612, 131072, 0, 393209, 65536, 0, 393208, 131072, 0, 393207, 131072, 0, 393206, 131072, 0, 393205, 0, 0, 262140, 196608, 0, 196620, 65536, 0, 196619, 131072, 0, 196618, 0, 0)
@@ -95,3 +96,6 @@ position = Vector2(48, 48)
 
 [node name="WaterIndicator" parent="." index="16" instance=ExtResource("11_esa7s")]
 position = Vector2(192, -48)
+
+[node name="AirIndicator" parent="." index="17" instance=ExtResource("11_uvgdl")]
+position = Vector2(-128, 48)
