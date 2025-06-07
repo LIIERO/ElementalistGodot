@@ -742,7 +742,7 @@ public partial class Player : CharacterBody2D, IUndoable
 
 	private void UndoCheckpoint()
 	{
-		if (isUsingAbility || gameState.IsDialogActive) return;
+		if (isUsingAbility || gameState.IsDialogActive || gameState.WatchtowerActive) return;
 		if (playerPositionCheckpoints.Count == 0) return;
 
 		gameState.NoUndos++;

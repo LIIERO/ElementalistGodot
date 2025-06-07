@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dnx5dcnhrffxo"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dmw65pwwipceu"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_cmpw8"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_5se4r"]
 
 [resource]
-script = ExtResource("1_cmpw8")
+script = ExtResource("1_5se4r")
 ID = "4"
-Name = "weave_in"
+Name = "mouse_trap"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "3"
+SpecificLevelCompletedToUnlock = "2"
 IsSpecial = false

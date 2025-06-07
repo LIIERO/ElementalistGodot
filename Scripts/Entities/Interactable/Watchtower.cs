@@ -8,11 +8,18 @@ public partial class Watchtower : Interactable
     private GameState gameState; // Singleton
     //private bool unlockNextFrame = false;
 
+    private Light2D backgroundLight;
+
     public override void _Ready()
 	{
 		base._Ready();
 
         gameState = GetNode<GameState>("/root/GameState");
+        backgroundLight = GetNode<PointLight2D>("MovedByAnimation/PointLight2D");
+
+        bool lightParticlesActive = GetNode<SettingsManager>("/root/SettingsManager").LightParticlesActive;
+        if (!lightParticlesActive)
+            backgroundLight.QueueFree();
     }
 
     public override void _Process(double delta)
@@ -26,7 +33,7 @@ public partial class Watchtower : Interactable
 
         if (!gameState.WatchtowerActive) return;
 
-        if (InputManager.JumpPressed() || InputManager.AbilityPressed())
+        if (InputManager.JumpPressed() || InputManager.AbilityPressed() || InputManager.UndoPressed())
         {
             gameState.WatchtowerActive = false;
             //unlockNextFrame = true;

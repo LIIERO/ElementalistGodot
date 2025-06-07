@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_reqbx")
-ID = "CS"
+ID = "BS"
 Name = "ignoring_issues"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "C"
+SpecificLevelCompletedToUnlock = "B"
 IsSpecial = true

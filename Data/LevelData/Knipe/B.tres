@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_vjq4a")
 ID = "B"
-Name = "complications"
+Name = "resolving_issues"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false

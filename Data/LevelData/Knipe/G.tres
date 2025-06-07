@@ -7,5 +7,5 @@ script = ExtResource("1_geg8s")
 ID = "G"
 Name = "love_gives_wings"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "C"
+SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false
