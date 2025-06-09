@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_h2u0v")
 ID = "D"
-Name = "assassin"
+Name = "energy_conservation"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "C"
 IsSpecial = false

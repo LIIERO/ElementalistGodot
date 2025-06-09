@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_qmj52")
 ID = "B"
-Name = "over_the_ditch"
+Name = "in_charge"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false

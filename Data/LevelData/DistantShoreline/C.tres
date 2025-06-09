@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_jxuat")
 ID = "C"
-Name = "energy_conservation"
+Name = "over_the_ditch"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false

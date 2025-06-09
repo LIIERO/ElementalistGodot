@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_3efnp")
 ID = "E"
-Name = "stalactite"
+Name = "assassin"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false
