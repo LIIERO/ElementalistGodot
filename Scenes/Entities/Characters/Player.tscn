@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d0if8ksrlccpx"]
+[gd_scene load_steps=46 format=3 uid="uid://d0if8ksrlccpx"]
 
 [ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://buyfr2nnlr3qq" path="res://Graphics/Effects/ZoeEchoTrail/fire_echo.png" id="9_kgryv"]
 [ext_resource type="PackedScene" uid="uid://di32mft4nuhq2" path="res://Scenes/Effects/HeartParticle.tscn" id="12_sr06h"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="13_w8olu"]
+[ext_resource type="Texture2D" uid="uid://dxsabyrs3jqg1" path="res://Graphics/Characters/zoe_red_eyes.png" id="14_dt5oa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3van"]
 resource_local_to_scene = true
@@ -372,5 +373,10 @@ top_level = true
 texture = ExtResource("13_w8olu")
 region_enabled = true
 region_rect = Rect2(32, 96, 16, 16)
+
+[node name="RedEyes" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -13)
+texture = ExtResource("14_dt5oa")
 
 [connection signal="body_entered" from="Area2D" to="." method="_OnArea2dBodyEntered"]

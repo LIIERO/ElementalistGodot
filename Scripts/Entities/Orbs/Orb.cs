@@ -5,6 +5,7 @@ using GlobalTypes;
 public abstract partial class Orb : Area2D, IUndoable
 {
 	[Export] public ColorSet refillColor;
+    [Export] public bool modifiesStack = true;
 	private Light2D backgroundLight;
     private CpuParticles2D particles;
 
@@ -49,22 +50,38 @@ public abstract partial class Orb : Area2D, IUndoable
         }
     }
 
-	protected virtual void ModifyElementStack(List<ElementState> elementStack) {}
+	protected virtual void ModifyElementStack(List<ElementState> elementStack) { }
+    protected virtual void Collected(Player playerScript) { }
 
-	void _OnBodyEntered(Node2D body)
+    void _OnBodyEntered(Node2D body)
 	{
         if (!isActive) return;
         if (body is not Player) return;
 
         Disable();
-        //QueueFree();
 
-        // Get the script of player node and modify its ability list
         Player playerScript = body as Player;
-        audioManager.orbCollectSound.Play();
-		ModifyElementStack(playerScript.AbilityList);
-        customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(playerScript.AbilityList));
+        
+        if (playerScript.DestructionMode)
+        {
+            // TODO: Orb destroy sound
+            playerScript.DisableDestructionMode();
+        }
+        else // Orb collect
+        {
+            audioManager.orbCollectSound.Play();
 
+            if (modifiesStack)
+            {
+                ModifyElementStack(playerScript.AbilityList);
+                customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(playerScript.AbilityList));
+            }
+            else
+            {
+                Collected(playerScript);
+            }
+        }
+        
         customSignals.EmitSignal(CustomSignals.SignalName.RequestCheckpoint);
 	}
 

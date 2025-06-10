@@ -7,6 +7,8 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
 {
     ShaderMaterial shaderMaterial;
 
+    //[Export] Sprite2D redEyes;
+
     Vector3 greenShirt = new(0.16f, 0.8f, 0.16f);
     Vector3 greenSleeves = new(0.12f, 0.6f, 0.12f);
 
@@ -25,11 +27,14 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
     Vector3 pinkShirt = new(0.8f, 0.0f, 0.4f);
     Vector3 pinkSleeves = new(0.6f, 0.0f, 0.3f);
 
-    // Signals
+    Vector3 blackShirt = new(0.16f, 0.16f, 0.16f);
+    Vector3 blackSleeves = new(0.12f, 0.12f, 0.12f);
+
+
     private CustomSignals customSignals;
 
     public override void _Ready()
-	{
+    {
         shaderMaterial = Material as ShaderMaterial;
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         customSignals.Connect(CustomSignals.SignalName.PlayerAbilityListUpdated, new Callable(this, MethodName.UpdatePlayerColorFromArray));
@@ -37,6 +42,8 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
 
     public void UpdatePlayerColor(ElementState element)
     {
+        //redEyes.Hide();
+
         switch (element)
         {
             case ElementState.water:
@@ -69,6 +76,12 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
         else UpdatePlayerColor(ElementState.normal);
     }
 
+    public void UpdateColorToDestruction()
+    {
+        //redEyes.Show();
+        shaderMaterial.SetShaderParameter("shirtColor", blackShirt);
+        shaderMaterial.SetShaderParameter("sleeveColor", blackSleeves);
+    }
 
 
     // ECHO TRAIL

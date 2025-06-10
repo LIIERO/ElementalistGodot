@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw1fjagta10i7"]
+
+[ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/OrbBase.tscn" id="1_eui0h"]
+[ext_resource type="Script" path="res://Scripts/Entities/Orbs/OrbDestruction.cs" id="2_700t0"]
+
+[node name="DestructionOrb" instance=ExtResource("1_eui0h")]
+script = ExtResource("2_700t0")
+refillColor = 8
+modifiesStack = false
+
+[node name="Sprite2D" parent="MovedByAnimation" index="0"]
+region_rect = Rect2(80, 16, 16, 16)

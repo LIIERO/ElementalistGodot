@@ -59,6 +59,7 @@ public partial class Player : CharacterBody2D, IUndoable
     public bool IsHoldingGoal { get; set; } = false; // Yellow or red
     public bool IsHoldingSpecialGoal { get; set; } = false; // Red
 	public bool SqueezeDeathDisabled { get; set; } = false; // Immune from a gate crush death
+	public bool DestructionMode { get; private set; } = false; // Next orb touched will be destroyed
     public bool IsFrozen => isDead || isUndoing || gameState.IsLevelTransitionPlaying || gameState.IsDialogActive || gameState.WatchtowerActive;
 
     ElementState currentAbility = ElementState.normal; // Different from normal only while using it
@@ -100,6 +101,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	private bool checkpointRequested = false;
 	private List<Vector2> playerPositionCheckpoints = new List<Vector2>();
 	private List<List<ElementState>> playerAbilitiesCheckpoints = new List<List<ElementState>>();
+	private List<bool> playerDestructionModeCheckpoints = new List<bool>();
 
     public override void _Ready()
 	{
@@ -409,7 +411,11 @@ public partial class Player : CharacterBody2D, IUndoable
 
 	private void StopAbility()
 	{
-		shaderScript.UpdatePlayerColor(GetEffectiveElement());
+		if (!DestructionMode)
+			shaderScript.UpdatePlayerColor(GetEffectiveElement());
+		else
+			shaderScript.UpdateColorToDestruction();
+
 		StopAbilityDust();
 		shaderScript.DeactivateTrail();
 
@@ -456,9 +462,22 @@ public partial class Player : CharacterBody2D, IUndoable
         StopAbilityDust();
     }
 
+
+	public void EnableDestructionMode()
+	{
+		DestructionMode = true;
+		shaderScript.UpdateColorToDestruction();
+	}
+
+    public void DisableDestructionMode()
+    {
+        DestructionMode = false;
+        shaderScript.UpdatePlayerColor(GetEffectiveElement());
+    }
+
     // ANIMATION ==================================================================================================================
 
-	private void SetDirection(float direction)
+    private void SetDirection(float direction)
 	{
         if (isFacingRight && direction < 0.0f)
         {
@@ -758,6 +777,7 @@ public partial class Player : CharacterBody2D, IUndoable
     {
         playerPositionCheckpoints.Add(GlobalPosition);
         playerAbilitiesCheckpoints.Add(new List<ElementState>(AbilityList));
+		playerDestructionModeCheckpoints.Add(DestructionMode);
         //SetCheckpointIndicatorPosition();
     }
 
@@ -769,15 +789,18 @@ public partial class Player : CharacterBody2D, IUndoable
         {
             GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
             GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
+			GameUtils.ListRemoveLastElement(playerDestructionModeCheckpoints);
         }
 
         propertyAnimations.Play("FadeOut");
 
         SetUndoPosition(playerPositionCheckpoints[^1]);
         AbilityList = new List<ElementState>(playerAbilitiesCheckpoints[^1]);
+		DestructionMode = playerDestructionModeCheckpoints[^1];
 
         customSignals.EmitSignal(CustomSignals.SignalName.PlayerAbilityListUpdated, GameUtils.ElementListToIntArray(AbilityList));
-        
+
+		if (DestructionMode) shaderScript.UpdateColorToDestruction();
         //SetCheckpointIndicatorPosition(true);
     }
 
@@ -785,6 +808,7 @@ public partial class Player : CharacterBody2D, IUndoable
     {
         GameUtils.ListRemoveLastElement(playerPositionCheckpoints);
         GameUtils.ListRemoveLastElement(playerAbilitiesCheckpoints);
+        GameUtils.ListRemoveLastElement(playerDestructionModeCheckpoints);
         AddLocalCheckpoint();
     }
 
