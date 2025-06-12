@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgqj4rrsgcayl"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Other/EarthBlock.cs" id="1_rc561"]
+[ext_resource type="Texture2D" uid="uid://bewa5ll3uy83b" path="res://Graphics/Tiles/Ground/cave_ground.png" id="1_sn5ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g01u"]
+size = Vector2(16, 16)
+
+[node name="EarthBlock" type="RigidBody2D" groups=["HardMaterial", "PlayerCollider"]]
+lock_rotation = true
+script = ExtResource("1_rc561")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_sn5ao")
+region_enabled = true
+region_rect = Rect2(0, 48, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_5g01u")

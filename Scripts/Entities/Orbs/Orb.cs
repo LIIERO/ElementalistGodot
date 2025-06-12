@@ -6,6 +6,7 @@ public abstract partial class Orb : Area2D, IUndoable
 {
 	[Export] public ColorSet refillColor;
     [Export] public bool modifiesStack = true;
+    [Export] public bool isRemixed = false;
 	private Light2D backgroundLight;
     private CpuParticles2D particles;
 

@@ -29,6 +29,8 @@ public partial class ElementSymbol : AnimatedSprite2D
                 Show(); Play("Love"); break;
             case ElementState.normal:
                 Show(); Play("Normal"); break;
+            case ElementState.earth_remix:
+                Show(); Play("Earth"); break;
             default:
                 Hide(); break;   
         }

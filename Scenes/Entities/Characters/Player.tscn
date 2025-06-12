@@ -1,9 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://d0if8ksrlccpx"]
+[gd_scene load_steps=47 format=3 uid="uid://d0if8ksrlccpx"]
 
 [ext_resource type="Texture2D" uid="uid://c0wd0chv2gx7p" path="res://Graphics/Characters/zoe.png" id="1_hmjjb"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ttwdh"]
 [ext_resource type="Shader" path="res://Graphics/Materials/Player.gdshader" id="2_8qnsu"]
 [ext_resource type="PackedScene" uid="uid://bqil6g1p2c3cp" path="res://Scenes/Entities/Fireball.tscn" id="2_e76yy"]
+[ext_resource type="PackedScene" uid="uid://bgqj4rrsgcayl" path="res://Scenes/Entities/EarthBlock.tscn" id="3_r6y01"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerShaderEffects.cs" id="4_grl6q"]
 [ext_resource type="PackedScene" uid="uid://c5b36fnh8utbi" path="res://Scenes/Effects/PlayerEchoTrailObject.tscn" id="5_xlh2h"]
 [ext_resource type="Texture2D" uid="uid://dreth7lup1wxr" path="res://Graphics/Effects/ZoeEchoTrail/water_echo.png" id="6_wxj53"]
@@ -306,6 +307,7 @@ texture_filter = 1
 position = Vector2(16, 32)
 script = ExtResource("1_ttwdh")
 fireball = ExtResource("2_e76yy")
+earthBlock = ExtResource("3_r6y01")
 animatedSprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("CollisionShape2D")
 spawner = NodePath("AnimatedSprite2D/EntitySpawner")

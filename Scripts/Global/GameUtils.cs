@@ -36,6 +36,7 @@ public static class GameUtils
         { ElementState.air , ColorSet.white },
         { ElementState.earth , ColorSet.brown },
         { ElementState.love , ColorSet.pink },
+        { ElementState.earth_remix , ColorSet.brown },
         { ElementState.normal , ColorSet.green }
     };
 

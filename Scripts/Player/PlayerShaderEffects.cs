@@ -61,6 +61,9 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
             case ElementState.love:
                 shaderMaterial.SetShaderParameter("shirtColor", pinkShirt);
                 shaderMaterial.SetShaderParameter("sleeveColor", pinkSleeves); break;
+            case ElementState.earth_remix:
+                shaderMaterial.SetShaderParameter("shirtColor", brownShirt);
+                shaderMaterial.SetShaderParameter("sleeveColor", brownSleeves); break;
             default:
                 shaderMaterial.SetShaderParameter("shirtColor", greenShirt);
                 shaderMaterial.SetShaderParameter("sleeveColor", greenSleeves); break;
@@ -142,6 +145,7 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
             ElementState.air => airAbility,
             ElementState.earth => earthAbility,
             ElementState.fire => fireAbility,
+            //ElementState.earth_remix => earthAbility,
             _ => throw new NotImplementedException(),
         };
     }

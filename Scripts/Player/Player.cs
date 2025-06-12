@@ -20,6 +20,7 @@ public partial class Player : CharacterBody2D, IUndoable
 
     // Instantiates
     [Export] private PackedScene fireball;
+	[Export] private PackedScene earthBlock;
 
     // Child nodes
     [Export] private AnimatedSprite2D animatedSprite;
@@ -312,10 +313,15 @@ public partial class Player : CharacterBody2D, IUndoable
 				if (isFacingRight) Velocity = new Vector2(-dashPower/2f, 0f);
 				else Velocity = new Vector2(dashPower/2f, 0f);
 			}
-			else if (currentAbility == ElementState.earth)
+			else if (currentAbility == ElementState.earth || currentAbility == ElementState.earth_remix)
 			{
 				if (isGrounded)
 				{
+					if (currentAbility == ElementState.earth_remix)
+					{
+						SpawnEarthBlockAfterTime(GlobalPosition);
+					}
+
 					RequestCheckpointAfterTime(inputBufferTime);
                     StopAbility();
                     SparkleAbilityDust(ElementState.earth, 0.1f);
@@ -330,7 +336,12 @@ public partial class Player : CharacterBody2D, IUndoable
 			{
                 Velocity = new Vector2(0f, 0f);
             }
-		}
+            else if (currentAbility == ElementState.earth_remix)
+            {
+				// TODO
+                Velocity = new Vector2(0f, 0f);
+            }
+        }
 
 		else if (isGrounded) canUseBaseAbility = true;
 	}
@@ -347,7 +358,7 @@ public partial class Player : CharacterBody2D, IUndoable
 
         isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
-		if (currentAbility != ElementState.love) shaderScript.ActivateTrail(currentAbility);
+		if (currentAbility != ElementState.love && currentAbility != ElementState.earth_remix) shaderScript.ActivateTrail(currentAbility);
 
 		if (currentAbility == ElementState.air)
 		{
@@ -402,10 +413,25 @@ public partial class Player : CharacterBody2D, IUndoable
 
             RequestCheckpoint();
         }
-        else if (currentAbility == ElementState.earth)
+        else if (currentAbility == ElementState.earth || currentAbility == ElementState.earth_remix)
 		{
 			audioManager.earthAbilityStart.Play();
 		}
+		/*else if (currentAbility == ElementState.earth_remix)
+		{
+			Console.WriteLine("Earth remix used");
+
+            audioManager.earthAbilityStart.Play();
+
+            SparkleAbilityDust(ElementState.earth_remix, 0.1f);
+            abilityBufferTimeCounter = -0.1f; // So it doesn't trigger twice
+
+            abilityTimer.Start(dashTime / 2f);
+            await ToSignal(abilityTimer, "timeout");
+            abilityTimer.Stop();
+
+            StopAbility();
+        }*/
 		else GD.Print("Execute ability broke very badly.");
 	}
 
@@ -440,6 +466,43 @@ public partial class Player : CharacterBody2D, IUndoable
 		instance.AddToGroup("Fireball"); // For checking how many there are
 
 		RequestCheckpoint();
+    }
+
+	private async void SpawnEarthBlockAfterTime(Vector2 position, float t = 0.5f)
+	{
+		await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+
+		Node2D instance = earthBlock.Instantiate() as Node2D;
+		spawner.AddChild(instance);
+
+		//GD.Print(position.X);
+
+		position.X = (float)Math.Round(position.X);
+
+		int xPositionQuanta = GameUtils.gameUnitSize / 2;
+		int threshold = xPositionQuanta / 2;
+		float diff = position.X % xPositionQuanta;
+		//GD.Print(diff);
+
+		if (diff >= 0)
+		{
+            if (diff > threshold) // move right
+                position.X += (xPositionQuanta - diff);
+            else // move left
+                position.X -= diff;
+        }
+		else
+		{
+			if (-diff <= threshold) // move right
+                position.X += -diff;
+			else // move left
+                position.X -= (xPositionQuanta + diff);
+		}
+
+        instance.GlobalPosition = position;
+
+        //GD.Print(position.X);
+        //GD.Print();
     }
 
     public void StartAbilityDust(ElementState elementState)

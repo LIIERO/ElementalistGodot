@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5288p47mieon"]
+
+[ext_resource type="PackedScene" uid="uid://dpn4bkokcwqml" path="res://Scenes/Entities/Orbs/OrbBase.tscn" id="1_xxxqc"]
+
+[node name="EarthOrbRemix" instance=ExtResource("1_xxxqc")]
+refillColor = 3
+isRemixed = true
+
+[node name="Sprite2D" parent="MovedByAnimation" index="0"]
+region_rect = Rect2(48, 16, 16, 16)
