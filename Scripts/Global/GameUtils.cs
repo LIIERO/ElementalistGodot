@@ -7,6 +7,7 @@ public static class GameUtils
 
 {
     public static readonly int gameUnitSize = 16;
+    public static readonly int gameUnitSizeHalf = 8;
     public static readonly string wordToMake = "ZOE";
 
     public static readonly Dictionary<ColorSet, Color> ColorsetToColor = new() {

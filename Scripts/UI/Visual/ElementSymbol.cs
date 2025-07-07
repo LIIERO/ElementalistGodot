@@ -30,7 +30,7 @@ public partial class ElementSymbol : AnimatedSprite2D
             case ElementState.normal:
                 Show(); Play("Normal"); break;
             case ElementState.earth_remix:
-                Show(); Play("Earth"); break;
+                Show(); Play("EarthRemix"); break;
             default:
                 Hide(); break;   
         }

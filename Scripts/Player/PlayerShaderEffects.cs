@@ -145,7 +145,7 @@ public partial class PlayerShaderEffects : AnimatedSprite2D
             ElementState.air => airAbility,
             ElementState.earth => earthAbility,
             ElementState.fire => fireAbility,
-            //ElementState.earth_remix => earthAbility,
+            ElementState.earth_remix => earthAbility,
             _ => throw new NotImplementedException(),
         };
     }

@@ -29,6 +29,8 @@ public partial class Player : CharacterBody2D, IUndoable
 	[Export] private CpuParticles2D particles;
 	[Export] private Sprite2D checkpointIndicator;
 	[Export] private AnimationPlayer propertyAnimations;
+	[Export] private Node2D earthBlockIndicator;
+    [Export] private Area2D earthBlockTestCollision; // To prevent the earth block from floating
 	private PlayerShaderEffects shaderScript;
 
 	// Parameters
@@ -36,7 +38,8 @@ public partial class Player : CharacterBody2D, IUndoable
 	public const float jumpVelocity = -220.0f;
 	public const float maxFallingSpeed = 250f;
 	public const float earthJumpPower = -275.0f;
-	public const float dashPower = 230.0f;
+    public const float earthRemixJumpPower = -170.0f;
+    public const float dashPower = 230.0f;
 	public const float dashTime = 0.2f;
 	public const float waterJumpMomentumPreservation = 0.55f;
 	public const float clingDrag = 0.8f;
@@ -77,6 +80,9 @@ public partial class Player : CharacterBody2D, IUndoable
 	public float checkpointTimer = -0.1f;
 	public bool isOnMovingEntity = false; // For now only true when standing on a gate that is moving up
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
+	private Vector2 earthIndicatorPosition = Vector2.Zero;
+	private float earthStillTimer = inputBufferTime;
+	private Vector2 lastFramePosition = Vector2.Zero;
 
 	[Export] private Timer abilityTimer = null;
 	private SceneTreeTimer addAbilityTimer = null;
@@ -261,8 +267,10 @@ public partial class Player : CharacterBody2D, IUndoable
 
 
 	// ABILITY ==================================================================================================================
+	private bool CanUseEarthRemix => isGrounded && earthStillTimer < 0;
 
-	private void Ability(bool abilityPressed, double delta)
+
+    private void Ability(bool abilityPressed, double delta)
 	{
 		if (abilityPressed) abilityBufferTimeCounter = inputBufferTime;
 		else abilityBufferTimeCounter -= (float)delta;
@@ -270,7 +278,7 @@ public partial class Player : CharacterBody2D, IUndoable
 		// player uses ability
 		if (!isUsingAbility && !IsFrozen && abilityBufferTimeCounter > 0f)
 		{
-			if (AbilityList.Count > 0 || (BaseAbility != ElementState.normal && canUseBaseAbility))
+			if ((AbilityList.Count > 0 && (CanUseEarthRemix || GetEffectiveElement() != ElementState.earth_remix)) || (BaseAbility != ElementState.normal && canUseBaseAbility))
 			{
 				isUsingAbility = true;
 				gravity = 0f;
@@ -315,11 +323,13 @@ public partial class Player : CharacterBody2D, IUndoable
 			}
 			else if (currentAbility == ElementState.earth || currentAbility == ElementState.earth_remix)
 			{
-				if (isGrounded)
+				bool remixed = currentAbility == ElementState.earth_remix;
+
+                if (isGrounded)
 				{
-					if (currentAbility == ElementState.earth_remix)
+					if (remixed)
 					{
-						SpawnEarthBlockAfterTime(GlobalPosition);
+						SpawnEarthBlock(GlobalPosition);
 					}
 
 					RequestCheckpointAfterTime(inputBufferTime);
@@ -327,7 +337,8 @@ public partial class Player : CharacterBody2D, IUndoable
                     SparkleAbilityDust(ElementState.earth, 0.1f);
                     abilityBufferTimeCounter = -0.1f; // Preventing overlapping abilities
 					isGrounded = false;
-					Velocity = new Vector2(Velocity.X, earthJumpPower);
+					float power = remixed ? earthRemixJumpPower : earthJumpPower;
+                    Velocity = new Vector2(Velocity.X, power);
 					audioManager.earthAbilityEnd.Play();
 				}
 				else Velocity = new Vector2(0f, dashPower);
@@ -336,14 +347,36 @@ public partial class Player : CharacterBody2D, IUndoable
 			{
                 Velocity = new Vector2(0f, 0f);
             }
-            else if (currentAbility == ElementState.earth_remix)
-            {
-				// TODO
-                Velocity = new Vector2(0f, 0f);
+        }
+		else if (isGrounded) canUseBaseAbility = true;
+
+		// Earth block indicator
+		if (Math.Abs(lastFramePosition.X - GlobalPosition.X) > 0.001f) earthStillTimer = inputBufferTime;
+		else earthStillTimer -= (float)delta;
+
+		lastFramePosition = GlobalPosition;
+
+		if (!isUsingAbility && !IsFrozen && CanUseEarthRemix && GetEffectiveElement() == ElementState.earth_remix)
+		{
+			Vector2 newIndPos = new Vector2(CalculateEarthXPosition(GlobalPosition.X, GlobalPosition.Y), GlobalPosition.Y);
+            if (Math.Abs(earthIndicatorPosition.X - newIndPos.X) > GameUtils.gameUnitSizeHalf || Math.Abs(earthIndicatorPosition.Y - newIndPos.Y) > GameUtils.gameUnitSizeHalf)
+			{
+				earthIndicatorPosition = newIndPos;
+                earthBlockIndicator.GlobalPosition = earthIndicatorPosition;
+            }
+
+			if (!earthBlockIndicator.Visible)
+			{
+				AnimationPlayer anim = earthBlockIndicator.GetNode<AnimationPlayer>("AnimationPlayer");
+				anim.Play("Reset");
+                earthBlockIndicator.Show();
+				anim.Play("Appear");
             }
         }
-
-		else if (isGrounded) canUseBaseAbility = true;
+		else
+		{
+			earthBlockIndicator.Hide();
+		}
 	}
 
 	async private void ExecuteAbilityAfterSeconds(float t)
@@ -358,7 +391,7 @@ public partial class Player : CharacterBody2D, IUndoable
 
         isExecutingAbility = true;
 		StartAbilityDust(currentAbility);
-		if (currentAbility != ElementState.love && currentAbility != ElementState.earth_remix) shaderScript.ActivateTrail(currentAbility);
+		if (currentAbility != ElementState.love) shaderScript.ActivateTrail(currentAbility);
 
 		if (currentAbility == ElementState.air)
 		{
@@ -468,41 +501,55 @@ public partial class Player : CharacterBody2D, IUndoable
 		RequestCheckpoint();
     }
 
-	private async void SpawnEarthBlockAfterTime(Vector2 position, float t = 0.5f)
+	private float CalculateEarthXPosition(float positionXorig, float posY)
 	{
-		await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+        int xPositionQuanta = GameUtils.gameUnitSize;
+        int threshold = GameUtils.gameUnitSizeHalf;
 
-		Node2D instance = earthBlock.Instantiate() as Node2D;
-		spawner.AddChild(instance);
+        float positionX = (float)Math.Round(positionXorig) + threshold; // add threshold because block spawnpoint on its left
 
-		//GD.Print(position.X);
+        float diff = positionX % xPositionQuanta;
+        //GD.Print(diff);
 
-		position.X = (float)Math.Round(position.X);
-
-		int xPositionQuanta = GameUtils.gameUnitSize / 2;
-		int threshold = xPositionQuanta / 2;
-		float diff = position.X % xPositionQuanta;
-		//GD.Print(diff);
-
-		if (diff >= 0)
-		{
+        if (diff >= 0)
+        {
             if (diff > threshold) // move right
-                position.X += (xPositionQuanta - diff);
+                positionX += (xPositionQuanta - diff);
             else // move left
-                position.X -= diff;
+                positionX -= diff;
         }
-		else
+        else
+        {
+            if (-diff <= threshold) // move right
+                positionX += -diff;
+            else // move left
+                positionX -= (xPositionQuanta + diff);
+        }
+
+        earthBlockTestCollision.GlobalPosition = new Vector2(positionX, posY);
+
+        foreach (Node2D body in earthBlockTestCollision.GetOverlappingBodies())
 		{
-			if (-diff <= threshold) // move right
-                position.X += -diff;
-			else // move left
-                position.X -= (xPositionQuanta + diff);
+			if (body.IsInGroup("PlayerCollider"))
+			{
+                return positionX;
+            }
 		}
 
-        instance.GlobalPosition = position;
+        int direction = GlobalPosition.X > (earthBlockTestCollision.GlobalPosition.X - GameUtils.gameUnitSizeHalf) ? 1 : -1;
+        positionX += GameUtils.gameUnitSize * direction;
 
-        //GD.Print(position.X);
-        //GD.Print();
+        return positionX;
+    }
+	
+	private void SpawnEarthBlock(Vector2 position)
+	{
+		//await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+
+		Vector2 earthPosition = new Vector2(CalculateEarthXPosition(position.X, position.Y), position.Y);
+        Node2D instance = earthBlock.Instantiate() as Node2D;
+        spawner.AddChild(instance);
+        instance.GlobalPosition = earthPosition;
     }
 
     public void StartAbilityDust(ElementState elementState)
@@ -571,7 +618,7 @@ public partial class Player : CharacterBody2D, IUndoable
 		// animations
 		if (currentAbility == ElementState.air)
 			currentAnimation = "Dash";
-        else if (currentAbility == ElementState.earth)
+        else if (currentAbility == ElementState.earth || currentAbility == ElementState.earth_remix)
             currentAnimation = "Dive";
         else if (currentAbility == ElementState.water)
 			currentAnimation = "Jump";
