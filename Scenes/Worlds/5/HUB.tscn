@@ -145,7 +145,7 @@ position = Vector2(0, 64)
 
 [node name="SunGate" parent="Gates" index="0" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_qfrvw")]
 position = Vector2(240, 16)
-requiredFragments = 50
+requiredFragments = 55
 playerNode = NodePath("../../Zoe")
 
 [node name="Orbs" type="Node2D" parent="." index="12"]

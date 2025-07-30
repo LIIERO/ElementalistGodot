@@ -131,6 +131,7 @@ public partial class AudioManager : Node
     [Export] public AudioStreamPlayer sunCollectSound;
     [Export] public AudioStreamPlayer elementCharge;
     [Export] public AudioStreamPlayer gateOpen;
+    [Export] public AudioStreamPlayer permanentCollectSound;
     [Export] public AudioStreamPlayer orderGateProgress;
     [Export] public AudioStreamPlayer orderGateReset;
 

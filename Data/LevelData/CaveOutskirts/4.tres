@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_yy8ts")
 ID = "4"
-Name = "mission_impossible"
+Name = "leap_of_faith"
 NoCompletedToUnlock = 3
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

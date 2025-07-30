@@ -15,7 +15,7 @@ public partial class Camera : Camera2D
     private float velocityY = 0.0f;
 
     const float smoothTime = 0.2f;
-    const float maxSmoothSpeed = 400.0f;
+    const float maxSmoothSpeed = 300.0f;
 
     // How far in each direction can camera go in grid units
     [Export] private float leftLimit = -99f;
@@ -24,7 +24,7 @@ public partial class Camera : Camera2D
     [Export] private float downLimit = 99f;
     private float baseLeftLimit, baseRightLimit, baseDownLimit, baseUpLimit;
 
-    private const float freeViewSpeed = 400.0f;
+    private const float freeViewSpeed = 300.0f;
 
     private Vector2 desiredPosition;
 

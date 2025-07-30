@@ -27,7 +27,7 @@ public abstract partial class PermanentCollectable : Area2D
 
         //Player playerScript = body as Player;
         OnCollected();
-        audioManager.orbCollectSound.Play(); // TODO: Zmienić dźwięk
+        audioManager.permanentCollectSound.Play();
         Hide();
         QueueFree();
         customSignals.EmitSignal(CustomSignals.SignalName.CollectedPermanent);

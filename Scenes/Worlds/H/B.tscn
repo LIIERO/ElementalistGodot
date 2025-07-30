@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0c1avpc4hrv8"]
+[gd_scene load_steps=6 format=3 uid="uid://c0c1avpc4hrv8"]
 
 [ext_resource type="PackedScene" uid="uid://dgm3ht0c8whkr" path="res://Scenes/Worlds/H/Base.tscn" id="1_7v051"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_5inim"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="3_x1o7a"]
 [ext_resource type="PackedScene" uid="uid://cvc6f4fkj7t0v" path="res://Scenes/Entities/PermanentCollectables/ElementalShell.tscn" id="4_2gsds"]
+[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="4_ovlia"]
 
 [node name="Game" instance=ExtResource("1_7v051")]
 
@@ -20,6 +21,9 @@ position = Vector2(64, 128)
 position = Vector2(-64, 112)
 
 [node name="Orbs" type="Node2D" parent="." index="9"]
+
+[node name="EarthOrb" parent="Orbs" index="0" instance=ExtResource("4_ovlia")]
+position = Vector2(0, 72)
 
 [node name="Charges" type="Node2D" parent="." index="10"]
 
