@@ -9,3 +9,4 @@ Name = "quest_for_fire"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "5"
 IsSpecial = false
+IsSalvageable = true

@@ -9,3 +9,4 @@ Name = "greatest_deal"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
+IsSalvageable = true

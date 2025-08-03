@@ -4,7 +4,7 @@
   ],
 
   "level_shortcut_info": [
-	{"name": "", "background": "default", "portrait": "default", "text": "It seems like this portal will take you to a level that you might want to come back to."}
+	{"name": "", "background": "default", "portrait": "default", "text": "You have a strong feeling that rectangular portals indicate levels that you are supposed to get something from."}
   ],
 
 
@@ -93,7 +93,7 @@
 
   
   "H_A_finale": [
-	{"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "This is it, the final level of the demo."},
+	{"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "This is it, the \"final\" level!"},
   {"name": "Sign", "background": "H", "portrait": "SignNormal", "text": "Good luck!"}
   ],
 

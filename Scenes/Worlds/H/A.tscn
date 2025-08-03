@@ -59,7 +59,7 @@ position = Vector2(-224, 112)
 position = Vector2(32, 80)
 
 [node name="EarthOrb2" parent="Orbs" index="8" instance=ExtResource("8_4txd3")]
-position = Vector2(-16, -48)
+position = Vector2(0, -16)
 
 [node name="FireOrb3" parent="Orbs" index="9" instance=ExtResource("9_6407k")]
 position = Vector2(224, 32)

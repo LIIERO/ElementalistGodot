@@ -9,3 +9,4 @@ Name = "retaker"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false
+IsSalvageable = true

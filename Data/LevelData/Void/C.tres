@@ -9,3 +9,4 @@ Name = "salvation"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false
+IsSalvageable = true

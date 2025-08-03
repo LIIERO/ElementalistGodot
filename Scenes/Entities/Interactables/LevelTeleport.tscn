@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccg8gwtjisj4"]
+[gd_scene load_steps=17 format=3 uid="uid://ccg8gwtjisj4"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/LevelTeleport.cs" id="1_npe73"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_tx6ga"]
@@ -12,6 +12,10 @@ size = Vector2(16, 1)
 atlas = ExtResource("3_scuhr")
 region = Rect2(16, 0, 16, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ede1n"]
+atlas = ExtResource("3_scuhr")
+region = Rect2(48, 128, 16, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2eo2a"]
 atlas = ExtResource("3_scuhr")
 region = Rect2(48, 64, 16, 32)
@@ -19,6 +23,10 @@ region = Rect2(48, 64, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_12hi8"]
 atlas = ExtResource("3_scuhr")
 region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f0bl"]
+atlas = ExtResource("3_scuhr")
+region = Rect2(32, 128, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w06w8"]
 atlas = ExtResource("3_scuhr")
@@ -36,6 +44,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ede1n")
+}],
+"loop": false,
+"name": &"LevelCompletedSalvage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2eo2a")
 }],
 "loop": false,
@@ -48,6 +64,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"LevelNotCompleted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f0bl")
+}],
+"loop": false,
+"name": &"LevelNotCompletedSalvage",
 "speed": 5.0
 }, {
 "frames": [{
@@ -131,7 +155,7 @@ position = Vector2(0, 1)
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_f1tq1")
-animation = &"LevelNotCompleted"
+animation = &"LevelCompletedSalvage"
 
 [node name="Text" type="Node2D" parent="MovedByAnimation"]
 position = Vector2(-3, -21)

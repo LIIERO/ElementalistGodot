@@ -53,12 +53,16 @@ public partial class LevelTeleport : Interactable
         {
             if (levelToTeleportTo.IsSpecial)
                 currentSprite.Play("LevelCompletedSpecial");
+            else if (levelToTeleportTo.IsSalvageable)
+                currentSprite.Play("LevelCompletedSalvage");
             else currentSprite.Play("LevelCompleted");
         }
         else // Level is not completed - no outline
         {
             if (levelToTeleportTo.IsSpecial)
                 currentSprite.Play("LevelNotCompletedSpecial");
+            else if (levelToTeleportTo.IsSalvageable)
+                currentSprite.Play("LevelNotCompletedSalvage");
             else currentSprite.Play("LevelNotCompleted");
         }
         

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blcuw1hmng8md"]
+[gd_scene load_steps=12 format=3 uid="uid://blcuw1hmng8md"]
 
 [ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_2tny8"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="3_8by4j"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="9_hws31"]
 [ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="11_1yxy8"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="11_2nscj"]
+[ext_resource type="PackedScene" uid="uid://dddf0e3rgqswt" path="res://Scenes/Decals/AirIndicator.tscn" id="11_7dox0"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="12_v0dav"]
 
 [node name="Game" instance=ExtResource("1_2tny8")]
@@ -61,7 +62,10 @@ position = Vector2(-176, 80)
 position = Vector2(192, 80)
 
 [node name="DangerTiles" parent="." index="12"]
-layer_0/tile_data = PackedInt32Array(458748, 131072, 1, 458749, 0, 0, 458750, 196608, 0, 458751, 65536, 0, 393216, 196608, 0, 393217, 196608, 0, 393218, 0, 0, 393219, 196608, 0, 393220, 65536, 0, 393221, 131072, 0, 393222, 196608, 0, 393223, 0, 0, 393224, 196608, 0, 393225, 0, 0, 393226, 65536, 0, 393227, 131072, 2, 524284, 196608, 1, 524283, 0, 0, 524282, 0, 0, 524281, 0, 1)
+layer_0/tile_data = PackedInt32Array(458748, 131072, 1, 458749, 0, 0, 458750, 196608, 0, 458751, 65536, 0, 393216, 196608, 0, 393217, 196608, 0, 393218, 0, 0, 393219, 196608, 0, 393220, 65536, 0, 393221, 131072, 0, 393222, 196608, 0, 393223, 0, 0, 393224, 196608, 0, 393225, 0, 0, 393226, 65536, 0, 393227, 131072, 2, 524284, 196608, 1, 524283, 0, 0, 524282, 0, 0, 524281, 0, 1, 196608, 0, 3)
 
 [node name="WaterIndicator" parent="." index="15" instance=ExtResource("11_1yxy8")]
-position = Vector2(-120, 120)
+position = Vector2(-112, 120)
+
+[node name="AirIndicator" parent="." index="16" instance=ExtResource("11_7dox0")]
+position = Vector2(-112, 96)

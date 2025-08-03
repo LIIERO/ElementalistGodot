@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkdcpcjtedde6"]
+[gd_scene load_steps=10 format=3 uid="uid://bkdcpcjtedde6"]
 
 [ext_resource type="PackedScene" uid="uid://pv1wjlxg44q7" path="res://Scenes/Worlds/6/Base.tscn" id="1_078aq"]
 [ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="2_3dxss"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kt0e8nafbrp" path="res://Scenes/Entities/Gates/AbilityGate.tscn" id="6_jgm3y"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="7_qyjxm"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="8_j07ov"]
+[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="9_mrybk"]
 
 [node name="Game" instance=ExtResource("1_078aq")]
 
@@ -68,3 +69,6 @@ position = Vector2(-192, -64)
 
 [node name="DangerTiles" parent="." index="12"]
 layer_0/tile_data = PackedInt32Array(131076, 0, 2, 131075, 65536, 2, 65543, 131072, 0, 65542, 0, 0, 65541, 0, 0, 65540, 65536, 2, 8, 196608, 1, 7, 0, 1, -65528, 196608, 3, 65546, 0, 2, 65545, 0, 0, 65544, 65536, 0, 196620, 65536, 1, 196619, 0, 0, 196618, 131072, 1, 131086, 0, 2, 131085, 131072, 0, 131084, 65536, 2, 15, 196608, 1, 14, 131072, 1, 262130, 65536, 1, 262129, 0, 1, 131059, 0, 2, 131058, 196608, 2, 65523, 131072, 2, 65522, 131072, 1, -14, 196608, 1, -15, 0, 1, 131065, 196608, 1, 131064, 65536, 0, 131063, 65536, 2, -524295, 0, 2, -524296, 0, 0, -524297, 65536, 2)
+
+[node name="WaterIndicator" parent="." index="15" instance=ExtResource("9_mrybk")]
+position = Vector2(-96, -32)

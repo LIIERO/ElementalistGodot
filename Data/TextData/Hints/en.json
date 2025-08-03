@@ -122,8 +122,8 @@
 	"C": [], 
 	"D": [], 
 	"E": [], 
-	"F": [], 
-	"G": [], 
+	"F": ["You need four air to go back and forth through the tunnel on the right twice."], 
+	"G": ["The spike tunnel in the middle is so short, you could almost jump through it."], 
 	"1S": [], 
 	"2S": [], 
 	"CS": []
@@ -131,8 +131,8 @@
 
   "6": { 
 	"0": [], 
-	"1": [], 
-	"2": [], 
+	"1": ["There is pretty much nothing in this level that water can do that earth can't."], 
+	"2": ["The gate takes a plenty time to move to its destination."], 
 	"3": [], 
 	"4": [], 
 	"5": [], 
@@ -144,8 +144,8 @@
 
   "H": {
 	"A": ["You can activate the bottom left charge without going through the spike tunnel.", 
-	"The solution requires you to use fire... three times in a row.", 
-	"The green orb in the bottom-left corner shall be collected last."],
+	"The green orb in the bottom-left corner shall be collected last.",
+	"The solution requires you to use fire... three times in a row."],
 	"B": [],
 	"C": []
   }
