@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3 uid="uid://cb6khylc7npsb"]
+
+[ext_resource type="Script" path="res://Scripts/Data/WorldData.cs" id="1_3tikt"]
+
+[resource]
+script = ExtResource("1_3tikt")
+ID = "7"
+Name = "todo"
