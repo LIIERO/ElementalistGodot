@@ -18,6 +18,7 @@ public partial class SettingsManager : Node
     public int MusicVolume { get; private set; } = 5;
     public bool LightParticlesActive {  get; private set; } = true;
     public bool SpeedrunTimerVisible { get; private set; } = false;
+    public bool GridEnabled { get; private set; } = false;
 
     public string LastlyUsedSaveFile { get; private set; } = "";
 
@@ -122,16 +123,21 @@ public partial class SettingsManager : Node
         LightParticlesActive = visible;
     }
 
-    public void SetTimerVisibility(bool active)
+    public void SetTimerVisibility(bool visible)
     {
-        SpeedrunTimerVisible = active;
+        SpeedrunTimerVisible = visible;
+    }
+
+    public void SetGridVisibility(bool visible)
+    {
+        GridEnabled = visible;
     }
 
     private const string preferencesPath = "user://preferences.json";
     public void SavePreferences()
     {
         string path = ProjectSettings.GlobalizePath(preferencesPath);
-        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume, LightParticlesActive, SpeedrunTimerVisible, gameState.CurrentSaveFileID);
+        PreferencesData data = new(Fullscreen, WindowScale, SoundVolume, MusicVolume, LightParticlesActive, SpeedrunTimerVisible, GridEnabled, gameState.CurrentSaveFileID);
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
     }
@@ -154,6 +160,7 @@ public partial class SettingsManager : Node
         MusicVolume = data.MusicVolume;
         LightParticlesActive = data.LightParticlesActive;
         SpeedrunTimerVisible = data.SpeedrunTimerVisible;
+        GridEnabled = data.GridEnabled;
 
         gameState.CurrentSaveFileID = data.LastlyUsedSaveFile;
         gameState.CurrentSaveFileID ??= "";

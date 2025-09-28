@@ -1,6 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=57 format=3 uid="uid://ciq4cuqvua4tl"]
 
+[ext_resource type="Script" path="res://Scripts/UI/Visual/Grid.cs" id="1_diw0v"]
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
+[ext_resource type="Texture2D" uid="uid://cftsincqiki5t" path="res://Graphics/UI/Gameplay/grid.png" id="1_wfiwv"]
 [ext_resource type="Script" path="res://Scripts/UI/ElementOverlay.cs" id="2_00r7b"]
 [ext_resource type="Texture2D" uid="uid://cu7a8jxcecdfx" path="res://Graphics/UI/Gameplay/free_view_frame.png" id="3_c0kmf"]
 [ext_resource type="Script" path="res://Scripts/UI/Visual/WatchtowerFrame.cs" id="4_gda8g"]
@@ -275,6 +277,20 @@ _data = {
 
 [node name="GUI" type="CanvasLayer"]
 layer = 3
+
+[node name="Grid" type="ParallaxBackground" parent="."]
+layer = 2
+visible = false
+scroll_base_scale = Vector2(1, 0)
+script = ExtResource("1_diw0v")
+
+[node name="Grid" type="ParallaxLayer" parent="Grid"]
+motion_mirroring = Vector2(480, 0)
+
+[node name="Grid" type="Sprite2D" parent="Grid/Grid"]
+position = Vector2(240, 128)
+texture = ExtResource("1_wfiwv")
+offset = Vector2(0, 7)
 
 [node name="ElementOverlay" type="Node2D" parent="."]
 texture_filter = 1

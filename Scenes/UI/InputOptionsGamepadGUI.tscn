@@ -64,7 +64,7 @@ position = Vector2(0, 1)
 texture_filter = 1
 texture = ExtResource("4_25drf")
 region_enabled = true
-region_rect = Rect2(64, 0, 16, 16)
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="Options/OptionsButton"]
 position = Vector2(64, 8)
@@ -136,6 +136,7 @@ text = "RESET TO DEFAULT"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Left" type="Node2D" parent="Options"]
 visible = false
@@ -289,7 +290,7 @@ animation = &"default"
 
 [node name="Interact" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 64)
+position = Vector2(16, 80)
 script = ExtResource("7_houmx")
 interactableTextID = "interact_up_alt"
 
@@ -334,6 +335,7 @@ text = "INTERACT/UP (ALT)"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="InputSprite" type="Sprite2D" parent="Options/Interact"]
 position = Vector2(208, 8)
@@ -357,6 +359,7 @@ text = "input key"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GamepadButtonDisplay" parent="Options/Interact" instance=ExtResource("8_cswvv")]
 position = Vector2(296, 8)
@@ -364,7 +367,7 @@ animation = &"default"
 
 [node name="Jump" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 88)
+position = Vector2(16, 104)
 script = ExtResource("7_houmx")
 interactableTextID = "jump"
 
@@ -409,6 +412,7 @@ text = "JUMP"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="InputSprite" type="Sprite2D" parent="Options/Jump"]
 position = Vector2(208, 8)
@@ -432,6 +436,7 @@ text = "input key"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GamepadButtonDisplay" parent="Options/Jump" instance=ExtResource("8_cswvv")]
 position = Vector2(296, 8)
@@ -439,7 +444,7 @@ animation = &"default"
 
 [node name="Ability" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 112)
+position = Vector2(16, 128)
 script = ExtResource("7_houmx")
 interactableTextID = "use_ability"
 
@@ -484,6 +489,7 @@ text = "USE ABILITY"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="InputSprite" type="Sprite2D" parent="Options/Ability"]
 position = Vector2(208, 8)
@@ -507,6 +513,7 @@ text = "input key"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GamepadButtonDisplay" parent="Options/Ability" instance=ExtResource("8_cswvv")]
 position = Vector2(296, 8)
@@ -514,7 +521,7 @@ animation = &"default"
 
 [node name="Undo" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 136)
+position = Vector2(16, 152)
 script = ExtResource("7_houmx")
 interactableTextID = "undo"
 
@@ -560,6 +567,7 @@ text = "UNDO
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="InputSprite" type="Sprite2D" parent="Options/Undo"]
 position = Vector2(208, 8)
@@ -583,6 +591,7 @@ text = "input key"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GamepadButtonDisplay" parent="Options/Undo" instance=ExtResource("8_cswvv")]
 position = Vector2(296, 8)
@@ -590,7 +599,7 @@ animation = &"default"
 
 [node name="Retry" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 160)
+position = Vector2(16, 176)
 script = ExtResource("7_houmx")
 interactableTextID = "retry"
 
@@ -635,6 +644,7 @@ text = "RETRY"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="InputSprite" type="Sprite2D" parent="Options/Retry"]
 position = Vector2(208, 8)
@@ -658,6 +668,7 @@ text = "input key"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GamepadButtonDisplay" parent="Options/Retry" instance=ExtResource("8_cswvv")]
 position = Vector2(296, 8)
@@ -665,7 +676,7 @@ animation = &"default"
 
 [node name="Pause" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 184)
+position = Vector2(16, 200)
 script = ExtResource("7_houmx")
 interactableTextID = "pause"
 
@@ -710,6 +721,7 @@ text = "PAUSE"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="InputSprite" type="Sprite2D" parent="Options/Pause"]
 position = Vector2(208, 8)
@@ -733,6 +745,7 @@ text = "input key"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GamepadButtonDisplay" parent="Options/Pause" instance=ExtResource("8_cswvv")]
 position = Vector2(296, 8)

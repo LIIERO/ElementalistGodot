@@ -62,7 +62,7 @@ position = Vector2(32, 80)
 requiredCharges = 1
 
 [node name="ElementCharge" parent="Gates" index="1" instance=ExtResource("12_si106")]
-position = Vector2(112, -48)
+position = Vector2(112, -40)
 
 [node name="Goal" parent="." index="13" instance=ExtResource("13_kwi88")]
 position = Vector2(96, 80)

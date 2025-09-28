@@ -43,7 +43,7 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3g4ri")
-buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("SpeedrunTimerToggle"), NodePath("InputOptionsButton"), NodePath("GamepadInputOptionsButton")]
+buttonList = [NodePath("MainMenuButton"), NodePath("FullscreenToggle"), NodePath("ResolutionSlide"), NodePath("SfxVolumeSlide"), NodePath("MusicVolumeSlide"), NodePath("LightParticlesToggle"), NodePath("SpeedrunTimerToggle"), NodePath("GridToggle"), NodePath("InputOptionsButton"), NodePath("GamepadInputOptionsButton")]
 
 [node name="MainMenuButton" type="Node2D" parent="Options"]
 texture_filter = 1
@@ -68,7 +68,7 @@ position = Vector2(0, 1)
 texture_filter = 1
 texture = ExtResource("4_tsktv")
 region_enabled = true
-region_rect = Rect2(64, 0, 16, 16)
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="Options/MainMenuButton"]
 position = Vector2(64, 8)
@@ -95,7 +95,7 @@ text_overrun_behavior = 2
 
 [node name="FullscreenToggle" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 64)
+position = Vector2(16, 56)
 script = ExtResource("7_fm3dv")
 interactableTextID = "fullscreen"
 
@@ -140,6 +140,7 @@ text = "FULLSCREEN"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ToggleBox" type="Sprite2D" parent="Options/FullscreenToggle"]
 position = Vector2(160, 8)
@@ -151,7 +152,7 @@ texture = ExtResource("8_1d85j")
 
 [node name="ResolutionSlide" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 88)
+position = Vector2(16, 80)
 script = ExtResource("10_rob1m")
 values = PackedStringArray("480x270", "960x540", "1440x810", "1920x1080")
 interactableTextID = "resolution"
@@ -197,6 +198,7 @@ text = "RESOLUTION"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Selection" type="Sprite2D" parent="Options/ResolutionSlide"]
 position = Vector2(184, 8)
@@ -230,10 +232,11 @@ text = "res"
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SfxVolumeSlide" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 112)
+position = Vector2(16, 104)
 script = ExtResource("10_rob1m")
 values = PackedStringArray("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
 interactableTextID = "sound_volume"
@@ -280,6 +283,7 @@ text = "SOUND VOLUME
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Selection" type="Sprite2D" parent="Options/SfxVolumeSlide"]
 position = Vector2(184, 8)
@@ -314,10 +318,11 @@ text = "vol
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MusicVolumeSlide" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 136)
+position = Vector2(16, 128)
 script = ExtResource("10_rob1m")
 values = PackedStringArray("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
 interactableTextID = "music_volume"
@@ -364,6 +369,7 @@ text = "MUSIC VOLUME
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Selection" type="Sprite2D" parent="Options/MusicVolumeSlide"]
 position = Vector2(184, 8)
@@ -398,10 +404,11 @@ text = "vol
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="LightParticlesToggle" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 160)
+position = Vector2(16, 152)
 script = ExtResource("7_fm3dv")
 interactableTextID = "light_particles"
 
@@ -447,6 +454,7 @@ text = "LIGHT AND PARTICLES
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ToggleBox" type="Sprite2D" parent="Options/LightParticlesToggle"]
 position = Vector2(160, 8)
@@ -458,7 +466,7 @@ texture = ExtResource("8_1d85j")
 
 [node name="SpeedrunTimerToggle" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 184)
+position = Vector2(16, 176)
 script = ExtResource("7_fm3dv")
 interactableTextID = "speedrun_timer"
 
@@ -513,9 +521,66 @@ texture = ExtResource("7_jexq3")
 position = Vector2(160, 8)
 texture = ExtResource("8_1d85j")
 
+[node name="GridToggle" type="Node2D" parent="Options"]
+texture_filter = 1
+position = Vector2(16, 200)
+script = ExtResource("7_fm3dv")
+interactableTextID = "grid_toggle"
+
+[node name="OrbSelection" type="Node2D" parent="Options/GridToggle"]
+position = Vector2(-8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/GridToggle/OrbSelection"]
+libraries = {
+"": SubResource("AnimationLibrary_c15ny")
+}
+autoplay = "Idle"
+script = ExtResource("3_x81f0")
+
+[node name="MovedByAnimation" type="Node2D" parent="Options/GridToggle/OrbSelection"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/GridToggle/OrbSelection/MovedByAnimation"]
+texture_filter = 1
+texture = ExtResource("4_tsktv")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Options/GridToggle"]
+position = Vector2(64, 8)
+texture = ExtResource("5_ey2qm")
+
+[node name="Text" type="Label" parent="Options/GridToggle/Sprite2D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.992
+anchor_bottom = 0.875
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -63.976
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_0it6a")
+theme_override_font_sizes/font_size = 12
+text = "GRID
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="ToggleBox" type="Sprite2D" parent="Options/GridToggle"]
+position = Vector2(160, 8)
+texture = ExtResource("7_jexq3")
+
+[node name="ToggleCheckmark" type="Sprite2D" parent="Options/GridToggle"]
+position = Vector2(160, 8)
+texture = ExtResource("8_1d85j")
+
 [node name="InputOptionsButton" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 208)
+position = Vector2(16, 224)
 script = ExtResource("2_ilks8")
 interactableTextID = "keyboard_config"
 
@@ -562,10 +627,11 @@ text = "KEYBOARD CONFIG
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GamepadInputOptionsButton" type="Node2D" parent="Options"]
 texture_filter = 1
-position = Vector2(16, 232)
+position = Vector2(16, 248)
 script = ExtResource("2_ilks8")
 interactableTextID = "controller_config"
 
@@ -612,3 +678,4 @@ text = "CONTROLLER CONFIG
 horizontal_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 2
+metadata/_edit_use_anchors_ = true

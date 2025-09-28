@@ -13,8 +13,9 @@ public partial class Options : ButtonManager
     private const int MUSICVOLUME = 4;
     private const int LIGHTPARTICLES = 5;
     private const int TIMER = 6;
-    private const int INPUTSETTINGS = 7;
-    private const int GAMEPADINPUTSETTINGS = 8;
+    private const int GRID = 7;
+    private const int INPUTSETTINGS = 8;
+    private const int GAMEPADINPUTSETTINGS = 9;
 
     // Singletons
     private LevelTransitions levelTransitions;
@@ -54,54 +55,70 @@ public partial class Options : ButtonManager
 
         else if (InputManager.UIAcceptPressed())
         {
-            if (CurrentItemIndex == BACK)
+            switch (CurrentItemIndex)
             {
-                GoBack();
-            }
-            else if (CurrentItemIndex == INPUTSETTINGS)
-            {
-                gameState.LoadInputOptions();
-            }
-            else if (CurrentItemIndex == GAMEPADINPUTSETTINGS)
-            {
-                gameState.LoadGamepadInputOptions();
-            }
-            else if (CurrentItemIndex == FULLSCREEN) // toggle fullscreen
-            {
-                if (settingsManager.Fullscreen) {
-                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
-                    (buttonList[RESOLUTION] as MenuSelection).Enable();
-                    settingsManager.ChangeToWindowed();
-                }
-                else {
-                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
-                    (buttonList[RESOLUTION] as MenuSelection).Disable();
-                    settingsManager.ChangeToFullscreen();
-                }
-            }
-            
-            else if (CurrentItemIndex == LIGHTPARTICLES) // toggle light and particles
-            {
-                if (settingsManager.LightParticlesActive) {
-                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
-                    settingsManager.SetLightAndParticlesVisibility(false);
-                }
-                else {
-                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
-                    settingsManager.SetLightAndParticlesVisibility(true);
-                }
-            }
+                case BACK:
+                    GoBack(); break;
 
-            else if (CurrentItemIndex == TIMER) // toggle wallslide slowdown
-            {
-                if (settingsManager.SpeedrunTimerVisible) {
-                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
-                    settingsManager.SetTimerVisibility(false);
-                }
-                else {
-                    (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
-                    settingsManager.SetTimerVisibility(true);
-                }
+                case INPUTSETTINGS:
+                    gameState.LoadInputOptions(); break;
+
+                case GAMEPADINPUTSETTINGS:
+                    gameState.LoadGamepadInputOptions(); break;
+
+                case FULLSCREEN:
+                    if (settingsManager.Fullscreen)
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
+                        (buttonList[RESOLUTION] as MenuSelection).Enable();
+                        settingsManager.ChangeToWindowed();
+                    }
+                    else
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
+                        (buttonList[RESOLUTION] as MenuSelection).Disable();
+                        settingsManager.ChangeToFullscreen();
+                    }
+                    break;
+
+                case LIGHTPARTICLES:
+                    if (settingsManager.LightParticlesActive)
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
+                        settingsManager.SetLightAndParticlesVisibility(false);
+                    }
+                    else
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
+                        settingsManager.SetLightAndParticlesVisibility(true);
+                    }
+                    break;
+
+                case TIMER:
+                    if (settingsManager.SpeedrunTimerVisible)
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
+                        settingsManager.SetTimerVisibility(false);
+                    }
+                    else
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
+                        settingsManager.SetTimerVisibility(true);
+                    }
+                    break;
+
+                case GRID:
+                    if (settingsManager.GridEnabled)
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(false);
+                        settingsManager.SetGridVisibility(false);
+                    }
+                    else
+                    {
+                        (buttonList[CurrentItemIndex] as MenuToggle).Toggle(true);
+                        settingsManager.SetGridVisibility(true);
+                    }
+                    break;
             }
         }
 
@@ -161,5 +178,6 @@ public partial class Options : ButtonManager
         (buttonList[MUSICVOLUME] as MenuSelection).SetCurrentValueIndex(settingsManager.MusicVolume);
         (buttonList[LIGHTPARTICLES] as MenuToggle).Toggle(settingsManager.LightParticlesActive);
         (buttonList[TIMER] as MenuToggle).Toggle(settingsManager.SpeedrunTimerVisible);
+        (buttonList[GRID] as MenuToggle).Toggle(settingsManager.GridEnabled);
     }
 }

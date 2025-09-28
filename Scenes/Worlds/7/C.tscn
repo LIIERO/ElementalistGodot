@@ -2,16 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bgxfp8pjgxus4" path="res://Scenes/Worlds/7/Base.tscn" id="1_2ydbc"]
 [ext_resource type="PackedScene" uid="uid://bs7v22papc08q" path="res://Scenes/Entities/Orbs/RemoveTopOrb.tscn" id="2_8m583"]
-[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="3_ne3yc"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_bouo7"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="5_kiry0"]
 [ext_resource type="PackedScene" uid="uid://dlb3kwtwp4t6l" path="res://Scenes/Entities/Orbs/FireOrb.tscn" id="7_7kab6"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="13_7v4g6"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="14_iv6t6"]
 
 [node name="Game" instance=ExtResource("1_2ydbc")]
-
-[node name="GUI" parent="." index="0"]
-visible = true
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-144, 96)
@@ -42,20 +39,20 @@ position = Vector2(-160, 48)
 [node name="AirOrb3" parent="Orbs" index="2" instance=ExtResource("5_bouo7")]
 position = Vector2(-176, 48)
 
-[node name="EarthOrb" parent="Orbs" index="3" instance=ExtResource("3_ne3yc")]
-position = Vector2(-96, 48)
-
-[node name="FireOrb" parent="Orbs" index="4" instance=ExtResource("7_7kab6")]
+[node name="FireOrb" parent="Orbs" index="3" instance=ExtResource("7_7kab6")]
 position = Vector2(-128, 48)
 
-[node name="RemoveTopOrb" parent="Orbs" index="5" instance=ExtResource("2_8m583")]
+[node name="RemoveTopOrb" parent="Orbs" index="4" instance=ExtResource("2_8m583")]
 position = Vector2(112, 80)
 
-[node name="RemoveTopOrb2" parent="Orbs" index="6" instance=ExtResource("2_8m583")]
+[node name="RemoveTopOrb2" parent="Orbs" index="5" instance=ExtResource("2_8m583")]
 position = Vector2(128, 80)
 
-[node name="RemoveTopOrb3" parent="Orbs" index="7" instance=ExtResource("2_8m583")]
+[node name="RemoveTopOrb3" parent="Orbs" index="6" instance=ExtResource("2_8m583")]
 position = Vector2(144, 80)
+
+[node name="WaterOrb" parent="Orbs" index="7" instance=ExtResource("5_kiry0")]
+position = Vector2(-96, 48)
 
 [node name="Goal" parent="." index="12" instance=ExtResource("13_7v4g6")]
 position = Vector2(208, 32)
