@@ -10,6 +10,9 @@
 
 [node name="Game" instance=ExtResource("1_2ydbc")]
 
+[node name="GUI" parent="." index="0"]
+visible = true
+
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-144, 96)
 

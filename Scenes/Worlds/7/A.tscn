@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh4ccejgc5sfl"]
+[gd_scene load_steps=10 format=3 uid="uid://bh4ccejgc5sfl"]
 
 [ext_resource type="PackedScene" uid="uid://bgxfp8pjgxus4" path="res://Scenes/Worlds/7/Base.tscn" id="1_2jyfw"]
 [ext_resource type="PackedScene" uid="uid://bs7v22papc08q" path="res://Scenes/Entities/Orbs/RemoveTopOrb.tscn" id="2_28te3"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_vb35u"]
 [ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="7_utprg"]
 [ext_resource type="PackedScene" uid="uid://c5eyiktb8ynu0" path="res://Scenes/Entities/Orbs/CopyTopOrb.tscn" id="8_xmg25"]
-[ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="9_uoxeb"]
 [ext_resource type="PackedScene" uid="uid://c5288p47mieon" path="res://Scenes/Entities/Orbs/EarthOrbRemix.tscn" id="10_pwka5"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="13_112vn"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="14_auvp2"]
@@ -69,11 +68,5 @@ position = Vector2(-160, 16)
 [node name="LevelExit" parent="." index="13" instance=ExtResource("14_auvp2")]
 position = Vector2(144, 32)
 
-[node name="WaterIndicator" parent="." index="14" instance=ExtResource("9_uoxeb")]
-position = Vector2(-176, 48)
-
-[node name="WaterIndicator2" parent="." index="15" instance=ExtResource("9_uoxeb")]
-position = Vector2(112, 48)
-
-[node name="EarthOrbRemix" parent="." index="16" instance=ExtResource("10_pwka5")]
+[node name="EarthOrbRemix" parent="." index="14" instance=ExtResource("10_pwka5")]
 position = Vector2(208, 16)

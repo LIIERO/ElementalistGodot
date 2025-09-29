@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xs48e3humoub"]
+[gd_scene load_steps=4 format=3 uid="uid://xs48e3humoub"]
 
 [ext_resource type="PackedScene" uid="uid://ciq4cuqvua4tl" path="res://Scenes/UI/GUI.tscn" id="1_ac16r"]
 [ext_resource type="PackedScene" uid="uid://d0if8ksrlccpx" path="res://Scenes/Entities/Characters/Player.tscn" id="2_t2ulh"]
 [ext_resource type="PackedScene" uid="uid://cmnxh43swq1fg" path="res://Scenes/MainCamera.tscn" id="3_qsafc"]
-[ext_resource type="PackedScene" uid="uid://couwgj3jfensj" path="res://Scenes/UI/AccesibilityGrid.tscn" id="4_ptvp0"]
 
 [node name="Game" type="Node2D"]
 
@@ -14,5 +13,3 @@ position = Vector2(0, 48)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("PlayerNode") instance=ExtResource("3_qsafc")]
 PlayerNode = NodePath("../Zoe")
-
-[node name="AccesibilityGrid" parent="." instance=ExtResource("4_ptvp0")]

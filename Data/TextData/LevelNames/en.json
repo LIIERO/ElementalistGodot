@@ -7,6 +7,7 @@
 	"amor_operatorium_world": "Amor Operatorium",
 	"amor_knipe_world": "Amor Knipe",
 	"faraway_meadowlands_world": "Faraway Meadowlands",
+	"fallen_kingdom_world": "Fallen Kingdom",
 
 	"the_first_finale": "The First Finale",
 	"elemental_shell": "Elemental Shell",
@@ -79,9 +80,6 @@
 	"interruption": "Interruption",
 	"telepathy": "Telepathy",
 	"waste_disposal": "Waste Disposal",
-	"the_minus": "The Minus",
-	"less_than_zero": "Less Than Zero",
-	"abandon": "Abandon",
 
 	"one_way": "One Way",
 	"out_of_ordinary": "Out Of The Ordinary",
@@ -112,6 +110,12 @@
 	"offset": "Offset",
 	"quest_for_fire": "Quest for Fire",
 	"compound": "Compound",
+	
+	"the_minus": "The Minus",
+	"abandon": "Abandon",
+	"less_than_zero": "Less Than Zero",
+	"void_poison": "Void Poison",
+	"corrupted_repository": "Corrupted Repository",
 	
 	"": ""
 }

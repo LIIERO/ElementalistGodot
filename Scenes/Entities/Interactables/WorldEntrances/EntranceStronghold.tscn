@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://byt4ymmfmttt1"]
+
+[ext_resource type="PackedScene" uid="uid://cqushr7gr33sh" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceBase.tscn" id="1_xrcax"]
+[ext_resource type="Resource" uid="uid://cb6khylc7npsb" path="res://Data/WorldData/Stronghold.tres" id="2_7unbm"]
+
+[node name="EntranceStronghold" instance=ExtResource("1_xrcax")]
+worldToTeleportTo = ExtResource("2_7unbm")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(192, 64, 48, 64)
