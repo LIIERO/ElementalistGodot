@@ -173,7 +173,7 @@ public partial class LevelTransitions : CanvasLayer
                     EndLevelTransitionAfterSeconds(0.5f); break;
 
                 case ScreenTransition.levelEntry:
-                    gameState.LoadLevel(transitionLevel.ID, gameState.GetLevelName(transitionLevel.Name));
+                    gameState.LoadLevel(transitionLevel.ID, transitionLevel.Name);
                     EndLevelTransitionAfterSeconds(1.5f); break;
 
                 case ScreenTransition.worldEntry:

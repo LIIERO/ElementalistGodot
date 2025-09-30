@@ -35,7 +35,7 @@ public partial class CustomSignals : Node
     public delegate void StartDialogEventHandler(string dialogID);
 
     [Signal]
-    public delegate void StartHintDialogEventHandler(string worldID, string levelID, int noHint);
+    public delegate void StartHintDialogEventHandler(int noHint);
 
     [Signal]
     public delegate void EndDialogEventHandler();

@@ -138,7 +138,7 @@ public partial class PauseMenu : ButtonManager
         Resume();
         hintApprovalPopup = null;
 
-        if (showHint) customSignals.EmitSignal(CustomSignals.SignalName.StartHintDialog, gameState.CurrentWorld, gameState.CurrentLevel, noHint);
+        if (showHint) customSignals.EmitSignal(CustomSignals.SignalName.StartHintDialog, noHint);
     }
 
     private async void DelayResumeAndSkipCutscene()

@@ -38,7 +38,7 @@ public partial class GameState : Node
     public string CurrentLevel { get; private set; } = "0"; // Current level ID
     public string PreviousLevel { get; private set; } = "0";
     public bool IsCurrentLevelSpecial { get; set; } = false;
-    public string CurrentLevelName { get; set; } = "";
+    public string CurrentLevelNameID { get; set; } = "";
     public int MainCutsceneProgress { get; set; } = 0;
     public bool IsAbilitySalvagingUnlocked { get; set; } = false;
     public List<ElementState> SalvagedAbilities { get; set; } = new();
@@ -251,7 +251,7 @@ public partial class GameState : Node
     {
         PreviousLevel = CurrentLevel;
         CurrentLevel = id;
-        CurrentLevelName = name;
+        CurrentLevelNameID = name;
         LoadGame();
     }
 
@@ -341,7 +341,7 @@ public partial class GameState : Node
             CurrentLevel, 
             PreviousLevel, 
             IsCurrentLevelSpecial, 
-            CurrentLevelName, 
+            CurrentLevelNameID, 
             MainCutsceneProgress, 
             InGameTime, 
             NoDeaths,
@@ -384,7 +384,7 @@ public partial class GameState : Node
         CurrentLevel = data.CurrentLevel;
         PreviousLevel = data.PreviousLevel;
         IsCurrentLevelSpecial = data.IsCurrentLevelSpecial;
-        CurrentLevelName = data.CurrentLevelName;
+        CurrentLevelNameID = data.CurrentLevelNameID;
         MainCutsceneProgress = data.MainCutsceneProgress;
         InGameTime = data.InGameTime;
         NoDeaths = data.NoDeaths;
@@ -415,7 +415,7 @@ public partial class GameState : Node
         CurrentWorld = "0";
         PreviousWorld = "0";
         IsCurrentLevelSpecial = false;
-        CurrentLevelName = "HUB";
+        CurrentLevelNameID = "HUB";
         MainCutsceneProgress = 0;
         InGameTime = 0.0;
         NoDeaths = 0;

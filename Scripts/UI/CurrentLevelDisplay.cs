@@ -16,7 +16,7 @@ public partial class CurrentLevelDisplay : Node2D
         currentLevelLabel = GetNode<Label>("Label");
         Hide();
 
-        currentLevelLabel.Text = "Level " + gameState.CurrentLevel + ": " + gameState.CurrentLevelName;
+        currentLevelLabel.Text = "Level " + gameState.CurrentLevel + ": " + gameState.GetLevelName(gameState.CurrentLevelNameID);
 	}
 
     void OnPauseAndResume(bool pause)

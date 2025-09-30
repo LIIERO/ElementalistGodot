@@ -16,7 +16,7 @@ public class PlayerData
     public string CurrentLevel { get; private set; } = "HUB";
     public string PreviousLevel { get; private set; } = "HUB";
     public bool IsCurrentLevelSpecial { get; private set; } = false;
-    public string CurrentLevelName { get; private set; } = "HUB";
+    public string CurrentLevelNameID { get; private set; } = "HUB";
     public int MainCutsceneProgress { get; private set; } = 0;
     public double InGameTime { get; private set; } = 0.0;
     public int NoDeaths { get; private set; } = 0;
@@ -37,7 +37,7 @@ public class PlayerData
         string CurrentLevel, 
         string PreviousLevel, 
         bool IsCurrentLevelSpecial, 
-        string CurrentLevelName,
+        string CurrentLevelNameID,
         int MainCutsceneProgress,
         double InGameTime,
         int NoDeaths,
@@ -57,7 +57,7 @@ public class PlayerData
         this.CurrentLevel = CurrentLevel;
         this.PreviousLevel = PreviousLevel;
         this.IsCurrentLevelSpecial = IsCurrentLevelSpecial;
-        this.CurrentLevelName = CurrentLevelName;
+        this.CurrentLevelNameID = CurrentLevelNameID;
         this.MainCutsceneProgress = MainCutsceneProgress;
         this.InGameTime = InGameTime;
         this.NoDeaths = NoDeaths;

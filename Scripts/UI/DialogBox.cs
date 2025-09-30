@@ -83,8 +83,11 @@ public partial class DialogBox : Sprite2D
         TriggerDialogSequence();
     }
 
-    public void StartHintDialog(string worldID, string levelID, int noHint) // Start dialog cutscene for hints specifically
+    public void StartHintDialog(int noHint) // Start dialog cutscene for hints specifically
     {
+        string worldID = gameState.CurrentWorld;
+        string levelNameID = gameState.CurrentLevelNameID;
+
         if (!gameState.HintsData.ContainsKey(worldID))
         {
             GD.Print("No such world exists! (hints data)");
@@ -94,12 +97,12 @@ public partial class DialogBox : Sprite2D
         Dictionary<string, string> dialogTemplate = gameState.DialogData[""][0];
         dialogTemplate["background"] = worldID;
 
-        if (gameState.HintsData[worldID].ContainsKey(levelID))
+        if (gameState.HintsData[worldID].ContainsKey(levelNameID))
         {
-            if (noHint > gameState.HintsData[worldID][levelID].Count())
+            if (noHint > gameState.HintsData[worldID][levelNameID].Count())
                 dialogTemplate["text"] = gameState.UITextData["hint_missing"];
             else
-                dialogTemplate["text"] = gameState.HintsData[worldID][levelID][noHint - 1];
+                dialogTemplate["text"] = gameState.HintsData[worldID][levelNameID][noHint - 1];
             /*int l = gameState.HintsData[worldID][levelID].Count;
             
             currentDialog = new();
