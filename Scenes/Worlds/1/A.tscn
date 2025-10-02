@@ -77,5 +77,5 @@ position = Vector2(-128, 64)
 [node name="Goal" parent="." index="10" instance=ExtResource("6_xe05t")]
 position = Vector2(-208, 96)
 
-[node name="WaterIndicator" parent="." index="13" instance=ExtResource("8_vbdeo")]
+[node name="WaterIndicator" parent="." index="12" instance=ExtResource("8_vbdeo")]
 position = Vector2(-48, 64)

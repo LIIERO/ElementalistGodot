@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4feou558q787"]
+
+[ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="1_js0iu"]
+[ext_resource type="Texture2D" uid="uid://cdn0hk1mjpnf4" path="res://Graphics/Backgrounds/Operatorium/bg_operatorium_0.png" id="2_3bok3"]
+[ext_resource type="Texture2D" uid="uid://ck0wm32i56bkt" path="res://Graphics/Backgrounds/Operatorium/bg_operatorium_1.png" id="3_cuq8y"]
+[ext_resource type="Texture2D" uid="uid://8fmjpnq8n8ad" path="res://Graphics/Backgrounds/Operatorium/bg_operatorium_2.png" id="4_tofux"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_base_scale = Vector2(1, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(512, 256)
+script = ExtResource("1_js0iu")
+speedX = -3.0
+speedY = -3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("2_3bok3")
+offset = Vector2(256, 128)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(512, 256)
+script = ExtResource("1_js0iu")
+speedX = 3.0
+speedY = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("3_cuq8y")
+offset = Vector2(256, 128)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(512, 512)
+script = ExtResource("1_js0iu")
+speedX = 0.0
+speedY = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("4_tofux")
+offset = Vector2(256, 256)

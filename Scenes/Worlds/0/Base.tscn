@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://4huidt2uo664"]
+[gd_scene load_steps=6 format=3 uid="uid://4huidt2uo664"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_qj3jk"]
 [ext_resource type="PackedScene" uid="uid://8fiiiupclrw5" path="res://Scenes/Tilesets/Ground/PFGround.tscn" id="2_njoi7"]
-[ext_resource type="Texture2D" uid="uid://1camlv8qspsp" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_0.png" id="3_a2msj"]
-[ext_resource type="Texture2D" uid="uid://drkpo63h6lydd" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_1.png" id="4_kj6kf"]
-[ext_resource type="Texture2D" uid="uid://bp1ukqnl5wq1b" path="res://Graphics/Backgrounds/PurpleForest/bg_purple_forest_2.png" id="5_hox8m"]
+[ext_resource type="PackedScene" uid="uid://cxc3gfro42mxr" path="res://Scenes/Backgrounds/ParallaxBackgroundForest.tscn" id="3_6xlro"]
 [ext_resource type="PackedScene" uid="uid://buawqddng5un7" path="res://Scenes/Tilesets/Decals/PurpleForest.tscn" id="6_fy4nf"]
 [ext_resource type="PackedScene" uid="uid://x16i5ukqcw2t" path="res://Scenes/Tilesets/Background/PFBackground.tscn" id="7_3wt3h"]
 
@@ -12,38 +10,7 @@
 
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_njoi7")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
-scroll_base_scale = Vector2(1, 0)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
-motion_scale = Vector2(0.2, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("3_a2msj")
-offset = Vector2(240, 135)
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
-motion_scale = Vector2(0.4, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("4_kj6kf")
-offset = Vector2(240, 135)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
-motion_scale = Vector2(0.6, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("5_hox8m")
-offset = Vector2(240, 135)
+[node name="ParallaxBackground" parent="." index="4" instance=ExtResource("3_6xlro")]
 
 [node name="Orbs" type="Node2D" parent="." index="5"]
 

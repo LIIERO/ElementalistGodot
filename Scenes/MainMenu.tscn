@@ -1,11 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://ceyal433rjg2d"]
+[gd_scene load_steps=19 format=3 uid="uid://ceyal433rjg2d"]
 
+[ext_resource type="Script" path="res://Scripts/UI/Visual/MainMenuBackground.cs" id="1_0i17d"]
 [ext_resource type="PackedScene" uid="uid://kb46qb43ayfp" path="res://Scenes/UI/MainMenuGUI.tscn" id="1_wggo7"]
-[ext_resource type="PackedScene" uid="uid://cep3g7i8o4gx4" path="res://Scenes/UI/MenuBackground.tscn" id="2_klgq3"]
+[ext_resource type="PackedScene" uid="uid://cxc3gfro42mxr" path="res://Scenes/Backgrounds/ParallaxBackgroundForest.tscn" id="2_bg23t"]
 [ext_resource type="Script" path="res://Scripts/Behaviors/RandomAnimationOffset.cs" id="3_8fo6t"]
 [ext_resource type="Texture2D" uid="uid://chkl7fub4c05g" path="res://Graphics/title1.png" id="3_cj2ew"]
+[ext_resource type="PackedScene" uid="uid://buuvg2lw8iuxx" path="res://Scenes/Backgrounds/ParallaxBackgroundShore.tscn" id="3_tc84o"]
+[ext_resource type="PackedScene" uid="uid://s65nvor3u88i" path="res://Scenes/Backgrounds/ParallaxBackgroundCave.tscn" id="4_3hsm8"]
 [ext_resource type="Texture2D" uid="uid://bolh0sf67nxg5" path="res://Graphics/demo.png" id="4_ymxk2"]
+[ext_resource type="PackedScene" uid="uid://dtgjfryon3sal" path="res://Scenes/Backgrounds/ParallaxBackgroundAsh.tscn" id="5_tnwlv"]
 [ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="6_7ucia"]
+[ext_resource type="PackedScene" uid="uid://d4feou558q787" path="res://Scenes/Backgrounds/ParallaxBackgroundOperatorium.tscn" id="6_q71kb"]
+[ext_resource type="PackedScene" uid="uid://c24gq8q8p5moh" path="res://Scenes/Backgrounds/ParallaxBackgroundKnipe.tscn" id="7_6u7hp"]
+[ext_resource type="PackedScene" uid="uid://ckeoj74oa50kx" path="res://Scenes/Backgrounds/ParallaxBackgroundMeadowlands.tscn" id="8_bpnot"]
+[ext_resource type="PackedScene" uid="uid://d2qawbg3dsagw" path="res://Scenes/Backgrounds/ParallaxBackgroundStronghold.tscn" id="9_a7r1o"]
+[ext_resource type="PackedScene" uid="uid://c2h6uak3qrl13" path="res://Scenes/Backgrounds/ParallaxBackgroundVoid.tscn" id="10_t3lji"]
+[ext_resource type="Script" path="res://Scripts/Camera/MenuCamera.cs" id="11_flxmh"]
 
 [sub_resource type="Animation" id="Animation_sgcxl"]
 resource_name = "Idle"
@@ -31,45 +41,51 @@ _data = {
 }
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_0i17d")
+backgrounds = Array[PackedScene]([ExtResource("2_bg23t"), ExtResource("3_tc84o"), ExtResource("4_3hsm8"), ExtResource("5_tnwlv"), ExtResource("6_q71kb"), ExtResource("7_6u7hp"), ExtResource("8_bpnot"), ExtResource("9_a7r1o"), ExtResource("10_t3lji")])
+worldIDs = PackedStringArray("0", "1", "2", "3", "4", "5", "6", "7", "H")
+
+[node name="MenuCamera" type="Camera2D" parent="."]
+script = ExtResource("11_flxmh")
 
 [node name="GUI" parent="." instance=ExtResource("1_wggo7")]
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("2_klgq3")]
+[node name="OtherStuff" type="CanvasLayer" parent="."]
 
-[node name="Title" type="Node2D" parent="."]
+[node name="Title" type="Node2D" parent="OtherStuff"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OtherStuff/Title"]
 libraries = {
 "": SubResource("AnimationLibrary_6uqv8")
 }
 autoplay = "Idle"
 script = ExtResource("3_8fo6t")
 
-[node name="MovedByAnimation" type="Node2D" parent="Title"]
+[node name="MovedByAnimation" type="Node2D" parent="OtherStuff/Title"]
 position = Vector2(0, 0.307335)
 
-[node name="TitleImg" type="Sprite2D" parent="Title/MovedByAnimation"]
+[node name="TitleImg" type="Sprite2D" parent="OtherStuff/Title/MovedByAnimation"]
 position = Vector2(240, 31.1998)
 texture = ExtResource("3_cj2ew")
 
-[node name="DEMO" type="Node2D" parent="."]
+[node name="DEMO" type="Node2D" parent="OtherStuff"]
 visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DEMO"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OtherStuff/DEMO"]
 libraries = {
 "": SubResource("AnimationLibrary_6uqv8")
 }
 autoplay = "Idle"
 script = ExtResource("3_8fo6t")
 
-[node name="MovedByAnimation" type="Node2D" parent="DEMO"]
+[node name="MovedByAnimation" type="Node2D" parent="OtherStuff/DEMO"]
 position = Vector2(0, 0.330766)
 
-[node name="DemoImg" type="Sprite2D" parent="DEMO/MovedByAnimation"]
+[node name="DemoImg" type="Sprite2D" parent="OtherStuff/DEMO/MovedByAnimation"]
 position = Vector2(368, 80.9582)
 texture = ExtResource("4_ymxk2")
 
-[node name="Version" type="Label" parent="."]
+[node name="Version" type="Label" parent="OtherStuff"]
 texture_filter = 1
 offset_left = 336.0
 offset_top = 64.0

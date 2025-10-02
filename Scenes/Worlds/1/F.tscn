@@ -74,8 +74,8 @@ position = Vector2(40, 32)
 [node name="ElementCharge2" parent="Charges" index="3" instance=ExtResource("8_jreot")]
 position = Vector2(176, 32)
 
-[node name="WaterIndicator" parent="." index="13" instance=ExtResource("9_jmg4i")]
+[node name="WaterIndicator" parent="." index="12" instance=ExtResource("9_jmg4i")]
 position = Vector2(-96, 16)
 
-[node name="WaterIndicator2" parent="." index="14" instance=ExtResource("9_jmg4i")]
+[node name="WaterIndicator2" parent="." index="13" instance=ExtResource("9_jmg4i")]
 position = Vector2(-96, 32)

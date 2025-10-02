@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://c24gq8q8p5moh"]
+
+[ext_resource type="Texture2D" uid="uid://dr6c0u1ftr0be" path="res://Graphics/Backgrounds/Knipe/bg_knipe_0.png" id="1_7bot1"]
+[ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="2_vnn5k"]
+[ext_resource type="Texture2D" uid="uid://mo0ofankf0o4" path="res://Graphics/Backgrounds/Knipe/bg_knipe_1.png" id="3_u1xk7"]
+[ext_resource type="Texture2D" uid="uid://cv0j1xw7deq41" path="res://Graphics/Backgrounds/Knipe/bg_knipe_2.png" id="4_eulyr"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_base_scale = Vector2(1, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("1_7bot1")
+offset = Vector2(240, 135)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(480, 0)
+script = ExtResource("2_vnn5k")
+speedX = 5.0
+speedY = -5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("3_u1xk7")
+offset = Vector2(240, 144)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(480, 0)
+script = ExtResource("2_vnn5k")
+speedX = 5.0
+speedY = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("4_eulyr")
+offset = Vector2(240, 144)

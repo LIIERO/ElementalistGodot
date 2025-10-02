@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgoo441sy0tyh"]
+[gd_scene load_steps=6 format=3 uid="uid://cgoo441sy0tyh"]
 
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_xn1pv"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_6yo7d"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="3_3qqh5"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="3_yy11c"]
 [ext_resource type="PackedScene" uid="uid://bb4t2p0sg3gcq" path="res://Scenes/Decals/Tutorials/RetryTutorial.tscn" id="4_usui1"]
 
 [node name="Game" instance=ExtResource("1_xn1pv")]
@@ -15,6 +16,10 @@ layer_0/tile_data = PackedInt32Array(262128, 262144, 1, 327664, 524288, 1, 39320
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_6yo7d")]
 position = Vector2(-192, 48)
+
+[node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_yy11c")]
+position = Vector2(16, 64)
+Text = "0_0_undertale"
 
 [node name="Goal" parent="." index="7" instance=ExtResource("3_3qqh5")]
 position = Vector2(208, 48)

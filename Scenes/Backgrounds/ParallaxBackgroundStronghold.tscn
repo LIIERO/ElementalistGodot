@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2qawbg3dsagw"]
+
+[ext_resource type="Texture2D" uid="uid://w2cs7pfg63w7" path="res://Graphics/Backgrounds/Stronghold/bg_stronghold_0.png" id="1_u8250"]
+[ext_resource type="Texture2D" uid="uid://duupawhawoi4t" path="res://Graphics/Backgrounds/Stronghold/bg_stronghold_1.png" id="2_jbqx0"]
+[ext_resource type="Texture2D" uid="uid://bd1hxfg64il4y" path="res://Graphics/Backgrounds/Stronghold/bg_stronghold_2.png" id="3_hqjic"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_base_scale = Vector2(1, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("1_u8250")
+offset = Vector2(240, 135)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("2_jbqx0")
+offset = Vector2(240, 135)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("3_hqjic")
+offset = Vector2(240, 135)

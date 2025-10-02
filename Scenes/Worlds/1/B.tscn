@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6vmvaa8ov7nh"]
+[gd_scene load_steps=9 format=3 uid="uid://6vmvaa8ov7nh"]
 
 [ext_resource type="PackedScene" uid="uid://bvcfjv4q8c13d" path="res://Scenes/Worlds/1/Base.tscn" id="1_tkv4l"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_hc47v"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://clau3s1lggnyx" path="res://Scenes/Entities/Gates/ChargeGate.tscn" id="5_2gkv4"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="6_joygv"]
 [ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="8_ly1k2"]
-[ext_resource type="PackedScene" uid="uid://dddf0e3rgqswt" path="res://Scenes/Decals/AirIndicator.tscn" id="9_1e8v5"]
 
 [node name="Game" instance=ExtResource("1_tkv4l")]
 
@@ -62,8 +61,5 @@ requiredCharges = 3
 [node name="Goal" parent="." index="11" instance=ExtResource("6_joygv")]
 position = Vector2(224, 48)
 
-[node name="WaterIndicator" parent="." index="14" instance=ExtResource("8_ly1k2")]
+[node name="WaterIndicator" parent="." index="13" instance=ExtResource("8_ly1k2")]
 position = Vector2(48, 48)
-
-[node name="AirIndicator" parent="." index="15" instance=ExtResource("9_1e8v5")]
-position = Vector2(96, 112)

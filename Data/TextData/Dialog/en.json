@@ -30,6 +30,11 @@
 
 
 
+  "0_0_undertale": [
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "It appears you are stuck in a hole."},
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Make sure to use the button displayed above your head."}
+  ],
+
   "0_2_failed": [
 	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Congratulations, you have failed the puzzle."}
   ],

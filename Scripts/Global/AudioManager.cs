@@ -38,7 +38,8 @@ public partial class AudioManager : Node
             { "3", musicIslandsOfAshes },
             { "4", musicOperatorium },
             { "5", musicKnipe },
-            { "6", musicMeadowlands }
+            { "6", musicMeadowlands },
+            { "7", musicVoid } // TODO
         };
     }
 

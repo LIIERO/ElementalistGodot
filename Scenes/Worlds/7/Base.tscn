@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgxfp8pjgxus4"]
+[gd_scene load_steps=10 format=3 uid="uid://bgxfp8pjgxus4"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_b2wba"]
 [ext_resource type="PackedScene" uid="uid://d6t75odymhmb" path="res://Scenes/Tilesets/Ground/StrongholdGround.tscn" id="2_mvxdb"]
@@ -6,60 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://cfgyqwqmxpn14" path="res://Scenes/Tilesets/Background/StrongholdBackground.tscn" id="3_38uht"]
 [ext_resource type="PackedScene" uid="uid://y7o7hwo01ue3" path="res://Scenes/Tilesets/Danger/StrongholdDanger.tscn" id="4_gevqp"]
 [ext_resource type="PackedScene" uid="uid://dxulmt7wmstpg" path="res://Scenes/Tilesets/Background/StrongholdBackground2.tscn" id="5_p18r8"]
-[ext_resource type="Texture2D" uid="uid://w2cs7pfg63w7" path="res://Graphics/Backgrounds/Stronghold/bg_stronghold_0.png" id="7_xkt3c"]
-[ext_resource type="Texture2D" uid="uid://duupawhawoi4t" path="res://Graphics/Backgrounds/Stronghold/bg_stronghold_1.png" id="8_vcq51"]
-[ext_resource type="Texture2D" uid="uid://bd1hxfg64il4y" path="res://Graphics/Backgrounds/Stronghold/bg_stronghold_2.png" id="9_5ljkt"]
+[ext_resource type="PackedScene" uid="uid://d2qawbg3dsagw" path="res://Scenes/Backgrounds/ParallaxBackgroundStronghold.tscn" id="7_a6760"]
+[ext_resource type="Texture2D" uid="uid://311d6t40ijo6" path="res://Graphics/Backgrounds/Stronghold/fg_stronghold.png" id="11_cf8aq"]
 [ext_resource type="PackedScene" uid="uid://bc3u03bpdjvjw" path="res://Scenes/Tilesets/Semisolid/SemisolidUp.tscn" id="13_oi7sq"]
 
 [node name="Game" instance=ExtResource("1_b2wba")]
 
-[node name="GUI" parent="." index="0"]
-visible = false
+[node name="GroundTiles2" parent="." index="3" instance=ExtResource("3_3m1w5")]
 
-[node name="GroundTiles2" parent="." index="4" instance=ExtResource("3_3m1w5")]
+[node name="GroundTiles" parent="." index="4" instance=ExtResource("2_mvxdb")]
 
-[node name="GroundTiles" parent="." index="5" instance=ExtResource("2_mvxdb")]
+[node name="BackgroundTiles2" parent="." index="5" instance=ExtResource("5_p18r8")]
 
-[node name="BackgroundTiles2" parent="." index="6" instance=ExtResource("5_p18r8")]
+[node name="BackgroundTiles" parent="." index="6" instance=ExtResource("3_38uht")]
 
-[node name="BackgroundTiles" parent="." index="7" instance=ExtResource("3_38uht")]
+[node name="DangerTiles" parent="." index="7" instance=ExtResource("4_gevqp")]
 
-[node name="DangerTiles" parent="." index="8" instance=ExtResource("4_gevqp")]
+[node name="ParallaxBackground" parent="." index="8" instance=ExtResource("7_a6760")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="9"]
-scroll_base_scale = Vector2(1, 0)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
-motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("7_xkt3c")
-offset = Vector2(240, 135)
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
-motion_scale = Vector2(0.2, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("8_vcq51")
-offset = Vector2(240, 135)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
-motion_scale = Vector2(0.5, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("9_5ljkt")
-offset = Vector2(240, 135)
-
-[node name="Semisolids" type="Node2D" parent="." index="10"]
+[node name="Semisolids" type="Node2D" parent="." index="9"]
 
 [node name="SemisolidUp" parent="Semisolids" index="0" instance=ExtResource("13_oi7sq")]
 
@@ -72,3 +37,15 @@ layer_0/tile_data = PackedInt32Array(-1250885635, 196608, 0)
 
 [node name="SemisolidRight" parent="Semisolids" index="3" instance=ExtResource("13_oi7sq")]
 rotation = 1.5708
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="." index="10"]
+layer = 1
+scroll_base_scale = Vector2(1, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground" index="0"]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer" index="0"]
+texture = ExtResource("11_cf8aq")
+offset = Vector2(240, 135)

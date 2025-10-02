@@ -43,6 +43,7 @@ buttonList = [NodePath("MainMenuButton")]
 texture_filter = 1
 position = Vector2(16, 16)
 script = ExtResource("2_xc8oh")
+interactableTextID = "go_back"
 
 [node name="OrbSelection" type="Node2D" parent="Credits/MainMenuButton"]
 position = Vector2(-8, 8)

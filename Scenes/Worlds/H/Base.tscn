@@ -1,32 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgm3ht0c8whkr"]
+[gd_scene load_steps=5 format=3 uid="uid://dgm3ht0c8whkr"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_ouv4h"]
 [ext_resource type="PackedScene" uid="uid://dksvpjuakc3ut" path="res://Scenes/Tilesets/Ground/VoidGround.tscn" id="2_iyyjr"]
-[ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="3_0wmox"]
-[ext_resource type="Texture2D" uid="uid://coltt4aa4xebf" path="res://Graphics/Backgrounds/Void/bg_void_0.png" id="3_l626d"]
+[ext_resource type="PackedScene" uid="uid://c2h6uak3qrl13" path="res://Scenes/Backgrounds/ParallaxBackgroundVoid.tscn" id="3_rgv8x"]
 [ext_resource type="PackedScene" uid="uid://5jvvffijwrcq" path="res://Scenes/Tilesets/Danger/VoidDanger.tscn" id="5_4khn4"]
 
 [node name="Game" instance=ExtResource("1_ouv4h")]
 
-[node name="Camera2D" parent="." index="2" node_paths=PackedStringArray("PlayerNode")]
-PlayerNode = NodePath("../Zoe")
-
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_iyyjr")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
-scroll_base_scale = Vector2(1, 0)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
-motion_scale = Vector2(0.2, 0)
-motion_mirroring = Vector2(480, 288)
-script = ExtResource("3_0wmox")
-speedX = 0.0
-speedY = -5.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("3_l626d")
-offset = Vector2(240, 144)
+[node name="ParallaxBackground" parent="." index="4" instance=ExtResource("3_rgv8x")]
 
 [node name="DangerTiles" parent="." index="5" instance=ExtResource("5_4khn4")]

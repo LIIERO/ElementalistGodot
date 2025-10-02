@@ -55,24 +55,24 @@
 	"Complete collection order: air, air, water, water, air, water."],
 	
 	"reckless_fall": ["Finish the level just like the previous one.", 
-	"The green orbs are a bait", 
+	"The green orbs are a bait.", 
 	"Dodge the stacked water orbs on your way down."],
 	
-	"doors_and_keys": ["You activate the charges by touching them while using an ability."],
+	"doors_and_keys": ["The crystals are charges, they require a touch of elemental energy.", "You activate the charges by touching them while using an ability.", "After using an ability you start leaving a trail until it's finished. You can activate charges in that state."],
 	
-	"in_charge": ["Activate the rightmost charge last."],
+	"in_charge": ["While using an ability you always activate charges. Even when the ability is almost finished.", "Activate the rightmost charge last.", "With air you can clear gaps and activate charges at the same time."],
 	
-	"over_the_ditch": ["Use the gate on the left to your advantage, don't open it too early.", "Jump and dash from the gate to clear the gap.", ""],
+	"over_the_ditch": ["An unopened gate acts as a solid block", "Use the gate on the left to your advantage, don't open it too early.", "Jump and dash from the gate to clear the gap."],
 	
-	"energy_conservation": ["Some gates shall remain unopened.", "You should use air to activate the leftmost charge."],
+	"energy_conservation": ["Collecting orbs during ability won't stop you from activating charges.", "Some gates shall remain unopened.", "You should use air to activate the leftmost charge."],
 	
-	"assassin": ["You can activate more than one charge with one ability.", "Activate the two middle charges with one air at the end."],
+	"assassin": ["Collect everything on the left at the start.", "You can activate more than one charge with one ability.", "Activate the two middle charges with one air at the end."],
 	
-	"stalactite": ["Leave the green orb on the left for later.", "Avoid the charge when going up with water."],
+	"stalactite": ["Sometimes charges are the obstacles.", "Leave the green orb on the left for later.", "Avoid the charge when going up with water."],
 	
-	"missing_piece": ["The upper path is useless.", "If you use an ability and go through a copy orb, the next one will be copied."],
+	"missing_piece": ["The upper path is useless.", "If you use an ability and go through a copy orb, the next one will be copied.", "With enough water you can reach the Sun Fragment from the bottom."],
 	
-	"reckless_squeeze": ["Use the wall to squeeze on the left side of the stacked water orbs.", "Hold left to collect and use the air to cross the gap from the right."]
+	"reckless_squeeze": ["Don't collect the water orbs when going down", "Use the wall to squeeze on the left side of the stacked water orbs.", "Hold left to collect and use the air to cross the gap from the right."]
   },
 
   "2": {

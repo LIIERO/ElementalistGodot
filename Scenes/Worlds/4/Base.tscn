@@ -1,59 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmgvwefyymir"]
+[gd_scene load_steps=6 format=3 uid="uid://cmgvwefyymir"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_spcht"]
 [ext_resource type="PackedScene" uid="uid://cjmafchdfb1o7" path="res://Scenes/Tilesets/Ground/OperatoriumGround.tscn" id="2_7e85u"]
-[ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="3_6yms0"]
-[ext_resource type="Texture2D" uid="uid://cdn0hk1mjpnf4" path="res://Graphics/Backgrounds/Operatorium/bg_operatorium_0.png" id="3_22xo4"]
-[ext_resource type="Texture2D" uid="uid://ck0wm32i56bkt" path="res://Graphics/Backgrounds/Operatorium/bg_operatorium_1.png" id="4_610ad"]
+[ext_resource type="PackedScene" uid="uid://d4feou558q787" path="res://Scenes/Backgrounds/ParallaxBackgroundOperatorium.tscn" id="3_5aopj"]
 [ext_resource type="PackedScene" uid="uid://c827cb548sjey" path="res://Scenes/Tilesets/Background/OperatoriumBackground.tscn" id="5_lrj8j"]
 [ext_resource type="PackedScene" uid="uid://cwhp7w8jmlgt8" path="res://Scenes/Tilesets/Danger/OperatoriumDanger.tscn" id="5_nf6as"]
-[ext_resource type="Texture2D" uid="uid://8fmjpnq8n8ad" path="res://Graphics/Backgrounds/Operatorium/bg_operatorium_2.png" id="6_53wa0"]
 
 [node name="Game" instance=ExtResource("1_spcht")]
 
 [node name="GroundTiles" parent="." index="3" instance=ExtResource("2_7e85u")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
-scroll_base_scale = Vector2(1, 0)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
-motion_scale = Vector2(0.2, 0)
-motion_mirroring = Vector2(512, 256)
-script = ExtResource("3_6yms0")
-speedX = -3.0
-speedY = -3.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("3_22xo4")
-offset = Vector2(256, 128)
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
-motion_scale = Vector2(0.2, 0)
-motion_mirroring = Vector2(512, 256)
-script = ExtResource("3_6yms0")
-speedX = 3.0
-speedY = 3.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("4_610ad")
-offset = Vector2(256, 128)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
-motion_scale = Vector2(1, 0)
-motion_mirroring = Vector2(512, 512)
-script = ExtResource("3_6yms0")
-speedX = 0.0
-speedY = 5.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("6_53wa0")
-offset = Vector2(256, 256)
+[node name="ParallaxBackground" parent="." index="4" instance=ExtResource("3_5aopj")]
 
 [node name="DangerTiles" parent="." index="5" instance=ExtResource("5_nf6as")]
 

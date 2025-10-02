@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvcfjv4q8c13d"]
+[gd_scene load_steps=7 format=3 uid="uid://bvcfjv4q8c13d"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_b502t"]
 [ext_resource type="PackedScene" uid="uid://b1058bt1p1lbe" path="res://Scenes/Tilesets/Ground/DSGround.tscn" id="2_bqg7k"]
 [ext_resource type="PackedScene" uid="uid://hwrdn25v5eo3" path="res://Scenes/Tilesets/Background/DSBackground.tscn" id="2_myfgc"]
 [ext_resource type="PackedScene" uid="uid://bjy3ha4nvax5k" path="res://Scenes/Tilesets/Danger/DSDanger.tscn" id="3_dkysh"]
-[ext_resource type="Texture2D" uid="uid://bq7c64jtdli3" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_0.png" id="4_73alj"]
 [ext_resource type="PackedScene" uid="uid://d18ljxbmgba8q" path="res://Scenes/Tilesets/Decals/DistantShoreline.tscn" id="4_ojidg"]
-[ext_resource type="Texture2D" uid="uid://dtu6ycblst2ux" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_1.png" id="5_j3a1v"]
-[ext_resource type="Texture2D" uid="uid://dl54m5dbpugh7" path="res://Graphics/Backgrounds/DistantShoreline/bg_distant_shoreline_2.png" id="6_6hleb"]
-[ext_resource type="Script" path="res://Scripts/Behaviors/BackgroundMovement.cs" id="6_gavt2"]
+[ext_resource type="PackedScene" uid="uid://buuvg2lw8iuxx" path="res://Scenes/Backgrounds/ParallaxBackgroundShore.tscn" id="6_j2b2l"]
 
 [node name="Game" instance=ExtResource("1_b502t")]
 
@@ -20,38 +17,4 @@
 
 [node name="DangerTiles" parent="." index="6" instance=ExtResource("3_dkysh")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="7"]
-scroll_base_scale = Vector2(1, 0)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
-motion_scale = Vector2(0.2, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("4_73alj")
-offset = Vector2(240, 135)
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
-motion_scale = Vector2(0.3, 0)
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("5_j3a1v")
-offset = Vector2(240, 135)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
-motion_scale = Vector2(0.7, 0)
-motion_mirroring = Vector2(512, 0)
-script = ExtResource("6_gavt2")
-speedX = 5.0
-speedY = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("6_6hleb")
-offset = Vector2(256, 135)
+[node name="ParallaxBackground" parent="." index="7" instance=ExtResource("6_j2b2l")]
