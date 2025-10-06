@@ -1,5 +1,7 @@
+using GlobalTypes;
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Security.AccessControl;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -97,6 +99,13 @@ public partial class LevelTeleport : Interactable
         base.Interact();
 
         gameState.SalvagedAbilities = new();
+
+        if (playerScriptReference.IsHoldingGoal)
+        {
+            // Ability salvaging with Fractured Fragment
+            if (gameState.IsAbilitySalvagingUnlocked && playerScriptReference.AbilityList.Count > 0)
+                gameState.SalvagedAbilities = new List<ElementState>(playerScriptReference.AbilityList); // TODO: make them corrupted
+        }
 
         levelTransitions.StartLevelTransition(levelToTeleportTo);
         if (levelToTeleportTo.IsSpecial) gameState.IsCurrentLevelSpecial = true;

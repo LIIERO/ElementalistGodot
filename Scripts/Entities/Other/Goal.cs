@@ -83,6 +83,13 @@ public partial class Goal : Area2D, IUndoable
 
     private void SetAppearance(bool lightActive)
     {
+        if (gameState.IsHubLoaded()) // Fractured Fragment for meta puzzles
+        {
+            sprite.Play("Fractured");
+            if (lightActive) backgroundLight.Color = GameUtils.ColorsetToColor[ColorSet.white];
+            return;
+        }
+
         if (gameState.HasCurrentLevelBeenCompleted()) // White goal
         {
             if (gameState.IsCurrentLevelSpecial) sprite.Play("LevelCompletedSpecial");

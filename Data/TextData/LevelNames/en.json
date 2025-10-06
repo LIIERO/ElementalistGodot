@@ -9,9 +9,11 @@
 	"faraway_meadowlands_world": "Faraway Meadowlands",
 	"fallen_kingdom_world": "Fallen Kingdom",
 
+
 	"the_first_finale": "The First Finale",
 	"elemental_shell": "Elemental Shell",
 	"salvation": "Salvation",
+
 
 	"sun_collector": "Sun Collector",
 	"the_water": "The Water",
@@ -19,6 +21,7 @@
 	"the_air": "The Air",
 	"powers_combined": "Powers Combined",
 	"elemental_stack": "Elemental Stack",
+
 
 	"sharp_reefs": "Sharp Reefs",
 	"trade_offer": "Trade Offer",
@@ -37,6 +40,7 @@
 	"assassin": "Assassin",
 	"stalactite": "Stalactite",
 
+
 	"the_earth": "The Earth",
 	"portable_trampoline": "Portable Trampoline",
 	"two_birds": "Two Birds",
@@ -49,6 +53,7 @@
 	"later_usage": "Later Usage",
 	"usage_of_useless": "Usage of the Useless",
 	"the_shaft": "The Shaft",
+
 
 	"the_fire": "The Fire",
 	"ambush": "Ambush",
@@ -65,6 +70,7 @@
 	"return_ticket": "Return Ticket",
 	"abandoned_marketplace": "Abandoned Marketplace",
 
+
 	"forward_thinker": "The Forward Thinker",
 	"inversion": "Inversion",
 	"extraction": "Extraction",
@@ -80,6 +86,7 @@
 	"interruption": "Interruption",
 	"telepathy": "Telepathy",
 	"waste_disposal": "Waste Disposal",
+
 
 	"one_way": "One Way",
 	"out_of_ordinary": "Out Of The Ordinary",
@@ -100,6 +107,7 @@
 	"weaver": "Weaver",
 	"the_escapist": "The Escapist",
 
+
 	"elevator": "Elevator",
 	"incompetence": "Incompetence",
 	"fight_the_movement": "Fight the Movement!",
@@ -110,6 +118,10 @@
 	"offset": "Offset",
 	"quest_for_fire": "Quest for Fire",
 	"compound": "Compound",
+	
+	
+	"fracture": "Fracture",
+	"static": "Static",
 	
 	"the_minus": "The Minus",
 	"abandon": "Abandon",

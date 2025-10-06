@@ -22,7 +22,7 @@ public partial class GameState : Node
         { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "AS", "BS" } }, // Operatorium
         { "5", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "F", "G", "1S", "2S", "BS" } }, // Knipe
         { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "C", "M", "5S" } }, // Meadowlands
-        { "7", new string[] { "HUB", "A", "B", "C", "D", "E" } } // Fallen Kingdom (Stronghold)
+        { "7", new string[] { "HUB", "0", "1", "A", "B", "C", "D", "E" } } // Fallen Kingdom (Stronghold)
     };
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _EnterTree
 
@@ -495,10 +495,11 @@ public partial class GameState : Node
             {
                 foreach (string levelKey in world.Value.Keys.ToList())
                 {
-                    if (world.Key != "5" && world.Key != "6" && !(world.Key == "H" && levelKey != "A")) // TODO: temporary for playtesting
+                    if (world.Key != "7") // TODO: temporary for playtesting
                         CompletedLevels[world.Key][levelKey] = true;
                 }
             }
+            IsAbilitySalvagingUnlocked = true;
             RestartCurrentLevel();
         }
     }

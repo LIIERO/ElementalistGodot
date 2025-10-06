@@ -62,5 +62,5 @@ layer_0/tile_data = PackedInt32Array(-589814, 524288, 536870912, 720903, 524288,
 [node name="DangerTiles" parent="." index="12"]
 layer_0/tile_data = PackedInt32Array(-196615, 131072, 1, -7, 0, 1, -196614, 65536, 0, -6, 0, 0, -196613, 65536, 0, -5, 131072, 0, -196612, 131072, 2, -4, 196608, 1)
 
-[node name="WaterIndicator" parent="." index="14" instance=ExtResource("8_cjsbq")]
+[node name="WaterIndicator" parent="." index="13" instance=ExtResource("8_cjsbq")]
 position = Vector2(-176, -32)

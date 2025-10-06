@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://eqqxlxvmmaaa"]
+[gd_scene load_steps=16 format=3 uid="uid://eqqxlxvmmaaa"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Other/Goal.cs" id="1_5u0vj"]
 [ext_resource type="Texture2D" uid="uid://cfr0n6ypj3j01" path="res://Graphics/Entities/no_anim_entities.png" id="2_52swv"]
@@ -29,6 +29,10 @@ _data = {
 "Idle": SubResource("Animation_sgcxl")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdepr"]
+atlas = ExtResource("2_52swv")
+region = Rect2(96, 128, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vitxw"]
 atlas = ExtResource("2_52swv")
 region = Rect2(96, 0, 32, 32)
@@ -47,6 +51,14 @@ region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6dt8e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdepr")
+}],
+"loop": false,
+"name": &"Fractured",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vitxw")
