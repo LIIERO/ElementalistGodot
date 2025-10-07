@@ -68,5 +68,5 @@ requiredCharges = 1
 [node name="ElementCharge" parent="Charges" index="1" instance=ExtResource("9_6c7bu")]
 position = Vector2(128, 64)
 
-[node name="WaterIndicator" parent="." index="14" instance=ExtResource("10_damy1")]
+[node name="WaterIndicator" parent="." index="13" instance=ExtResource("10_damy1")]
 position = Vector2(112, -80)

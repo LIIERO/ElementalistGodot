@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c5vh8iicjhpxn"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_neytk"]
+
+[resource]
+script = ExtResource("1_neytk")
+ID = "2"
+Name = "the_cliff"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "1"
+IsSpecial = false
+IsSalvageable = true

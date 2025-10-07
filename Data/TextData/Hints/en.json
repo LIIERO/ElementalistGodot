@@ -10,146 +10,235 @@
 	
 	"floating_island": ["Try different approaches to the climb. Remember that the undo button makes mistakes less costly.", 
 	"Using one ability to get one ability is a terrible trade if you are not making any progress.", 
-	"Get double water from the right and climb on the left."],
+	"Get double Water from the right and climb on the left."],
 	
 	"the_air": ["Air lets you dash horizontally, but you don't need it for everything.", 
-	"Jump over the first pit to save one air. Undo or restart if you fall down.",
+	"Jump over the first pit to save one Air. Undo or restart if you fall down.",
 	"Not much else to say. Remember that pancakes are pretty good."],
 	
 	"powers_combined": ["The most recently collected ability will be used first. You can't swap the order.", 
-	"You have to use air first. How? Figure it out (or use the last hint).", 
-	"Jump over the air orb to collect water first."],
+	"You have to use Air first. How? Figure it out (or use the last hint).", 
+	"Jump over the Air orb to collect Water first."],
 	
 	"elemental_stack": ["The most recently collected ability will be used first.", 
 	"The order of use is opposite to the order of collection, it works like a stack.", 
-	"Get air, then water, then air, then water. Use them to ascend."]
+	"Get Air, then Water, then Air, then Water. Use them to ascend."]
   },
 
   "1": {
-	"sharp_reefs": ["The red stuff are spikes. You cannot cross the spike tunnel with water.", 
-	"You can jump over the pit on the right. Get air with double water.", 
+	"sharp_reefs": ["The red stuff are spikes. You cannot cross the spike tunnel with Water.", 
+	"You can jump over the pit on the right. Get Air with double Water.", 
 	"No need to be too cautious when dashing through a spike tunnel, it's \"lenient\", as they say."],
 	
-	"trade_offer": ["Using air to get air does nothing.", 
-	"Water seems a bit useless in this level, while air is much needed.", 
-	"You can use water to increase your jump distance. Get air with water."],
+	"trade_offer": ["Using Air to get Air does nothing.", 
+	"Water seems a bit useless in this level, while Air is much needed.", 
+	"You can use Water to increase your jump distance. Get Air with Water."],
 	
 	"the_copy": ["The green orb gives you a copy of the next element you will use (if there is any).",
-	"You need two water abilities to get back to the entrance.",
-	"Don't collect the last green orb with air as your top ability."],
+	"You need two Water abilities to get back to the entrance.",
+	"Don't collect the last green orb with Air as your top ability."],
 	
 	"reverse_thinker": ["Remember, you have to collect the orbs in reverse order.",
-	"You only need one water, plan when you need it.",
+	"You only need one Water, plan when you need it.",
 	"Get both of the green orbs last."],
 	
 	"extra_piece": ["You have one more orb than you need.", 
-	"You only need one water and three air to get to the Sun Fragment.", 
+	"You only need one Water and three Air to get to the Sun Fragment.", 
 	"Get the green orb first, you don't need it."],
 	
-	"sandcastle": ["You need two water orbs to get the Sun Fragment.", 
+	"sandcastle": ["You need two Water orbs to get the Sun Fragment.", 
 	"You don't have to collect every single orb on the left before going for the Sun Fragment.", 
-	"Get three water and go for the Sun Fragment."],
+	"Get three Water and go for the Sun Fragment."],
 	
 	"elemental_stack_v2": ["You must use four abilities in quick succession before landing on the ground.", 
-	"Air, water, water, air.", 
-	"Complete collection order: air, air, water, water, air, water."],
+	"Air, Water, Water, Air.", 
+	"Complete collection order: Air, Air, Water, Water, Air, Water."],
 	
 	"reckless_fall": ["Finish the level just like the previous one.", 
 	"The green orbs are a bait.", 
-	"Dodge the stacked water orbs on your way down."],
+	"Dodge the stacked Water orbs on your way down."],
 	
-	"doors_and_keys": ["The crystals are charges, they require a touch of elemental energy.", "You activate the charges by touching them while using an ability.", "After using an ability you start leaving a trail until it's finished. You can activate charges in that state."],
+	"doors_and_keys": ["The crystals are Charges. They require a touch of elemental energy.", 
+	"You activate the Charges by touching them while using an ability.", 
+	"After using any ability, you start leaving a trail that continues until the ability is finished. Touch Charges in that state."],
 	
-	"in_charge": ["While using an ability you always activate charges. Even when the ability is almost finished.", "Activate the rightmost charge last.", "With air you can clear gaps and activate charges at the same time."],
+	"in_charge": ["You always activate Charges while using an ability. This happens even when the ability is almost finished.", 
+	"Activate the rightmost Charge last.", 
+	"With Air, you can clear gaps and activate Charges at the same time."],
 	
-	"over_the_ditch": ["An unopened gate acts as a solid block", "Use the gate on the left to your advantage, don't open it too early.", "Jump and dash from the gate to clear the gap."],
+	"over_the_ditch": ["A closed gate acts as a solid block.", 
+	"Use the gate on the left to your advantage, don't open it too early.", 
+	"Jump and dash from the gate to clear the gap."],
 	
-	"energy_conservation": ["Collecting orbs during ability won't stop you from activating charges.", "Some gates shall remain unopened.", "You should use air to activate the leftmost charge."],
+	"energy_conservation": ["Collecting orbs during an ability won't stop you from activating Charges.", 
+	"Some gates shall remain unopened.", 
+	"You should use Air to activate the leftmost Charge."],
 	
-	"assassin": ["Collect everything on the left at the start.", "You can activate more than one charge with one ability.", "Activate the two middle charges with one air at the end."],
+	"assassin": ["Collect everything on the left at the start.", 
+	"You can activate more than one Charge with one ability.", 
+	"Activate the two middle Charges with one Air at the end."],
 	
-	"stalactite": ["Sometimes charges are the obstacles.", "Leave the green orb on the left for later.", "Avoid the charge when going up with water."],
+	"stalactite": ["Sometimes Charges are the obstacle.", 
+	"Leave the green orb on the left for later.", 
+	"Avoid the Charge when going up with Water."],
 	
-	"missing_piece": ["The upper path is useless.", "If you use an ability and go through a copy orb, the next one will be copied.", "With enough water you can reach the Sun Fragment from the bottom."],
+	"missing_piece": ["The upper path is useless.", 
+	"If you use an ability and go through a copy orb, the next one will be copied.", 
+	"With enough Water you can reach the Sun Fragment from the bottom."],
 	
-	"reckless_squeeze": ["Don't collect the water orbs when going down", "Use the wall to squeeze on the left side of the stacked water orbs.", "Hold left to collect and use the air to cross the gap from the right."]
+	"reckless_squeeze": ["Don't collect the Water orbs when going down.", 
+	"Use the wall to squeeze on the left side of the stacked Water orbs.", 
+	"Hold left against the wall to collect and use the Air to cross the gap from the right."]
   },
 
   "2": {
-	"the_earth": ["Earth will always make you go down to the ground before launching you up. You can't chain it.", "Earth gives you less height than water, but more than a jump. Use it to climb up from the right."],
+	"the_earth": ["Earth will always make you go down to the ground, before launching you up. You can't chain it.", 
+	"Earth gives you less height than Water, but more than a jump.",
+	"Use Earth to climb up from the right."],
 	
-	"portable_trampoline": ["You have way more earth than you need to traverse. Make sure water is at the bottom of the stack.", "Don't collect more earth than you need so that it can be used as soon as you collect it.", "To get the water, you should get two earths from the higher ground."],
+	"portable_trampoline": ["You have way more Earth than you need to traverse.",
+	"Water needs to be at the bottom of the stack so don't collect more Earth than you need.",
+	"To get the Water, you should get two Earth orbs from the higher ground."],
 	
-	"two_birds": ["Earth activates charges when you fly down towards the ground.", "Use only air and earth to activate all four charges."],
+	"two_birds": ["Earth activates Charges when you fly down towards the ground.", 
+	"Use only Air and Earth to activate all four Charges.", 
+	"Copy the Air."],
 	
-	"brown_burden": ["You must use green orbs on air only.", "Leave one earth on the bottom before going up."],
+	"brown_burden": ["You need a lot of Air.", 
+	"You have to use green orbs on Air only.", 
+	"Leave one Earth on the bottom before going up."],
 	
-	"leap_of_faith": ["Save your starting air by jumping onto the platform that has earth and air on it.", "Use the earth to activate the charge and jump back up at the same time."],
+	"leap_of_faith": ["You have to copy Air.", 
+	"Save your starting Air by jumping onto the platform that has Earth and Air on it.", 
+	"Use the Earth to activate the Charge and jump back up at the same time."],
 	
-	"devious_platform": ["Don't activate all three charges, it will never work.", "Activating the leftmost charge is inevitable, but you cannot activate the same charge twice.", "Activate the leftmost charge with air and ignore the middle one."],
+	"devious_platform": ["Don't activate all three Charges. It will never work.", 
+	"Activating the leftmost Charge is inevitable, but you cannot activate the same Charge twice.", 
+	"Activate the leftmost Charge with Air and ignore the middle one."],
 	
-	"step_by_step": ["Collect only as many orbs as you need to activate one charge. Come back and repeat.", "Duplicate air.", "Use the earth orb from the left corridor first."],
+	"step_by_step": ["Collect only as many orbs as you need to activate one Charge. Come back and repeat.", 
+	"Duplicate Air.", 
+	"Use the Earth orb from the left corridor first."],
 	
-	"concept_is_baffling": ["Leave the water untouched until the very end.", "If you use earth while airborne over an orb, you will collect it and still bounce.", "Copy the earth so you can do the previously mentioned trick on air and water."],
+	"concept_is_baffling": ["Leave the Water untouched until the very end.", 
+	"If you use Earth while Airborne over an orb, you will collect it and still bounce.", 
+	"Copy the Earth, so you can do the previously mentioned trick on Air and Water."],
 	
-	"later_usage": ["TODO: better hints Activate the leftmost charge with air.", "Leave one of the bottom water orbs untouched, you will need it to get back up.", "Don't collect the rightmost water until you've activated the leftmost charge. Start by collecting earth and air."],
+	"later_usage": ["Copy Air, and activate the leftmost Charge with it. Save the Earth for triple activation.", 
+	"Leave only one of the bottom Water orbs untouched. You will need it to get back up at the end.", 
+	"Start by collecting Earth and Air. Don't collect the upper Water orb until you've activated the leftmost Charge."],
 	
-	"the_shaft": ["You don't have to use earth to activate charges in the shaft. You can use two other elements.", "Use your water immediately. I mean it."],
+	"the_shaft": ["You don't have to use Earth to activate Charges in the shaft. You can use two other elements.", 
+	"Use Water and Air to activate Charges in the shaft.", 
+	"Collect and use the Water immediately."],
 	
-	"burden_for_eternity": ["The charge at the top is a bait.", "Quick fingers can save you from certain death."],
+	"burden_for_eternity": ["The Charge at the top is a bait.", 
+	"Quick fingers can save you from certain death.", 
+	"Use Air to cancel Earth momentum and avoid spikes."],
 	
-	"usage_of_useless": ["The bottom air orb is the last one you collect on the left side. Earth is the second to last.", "See the hole to the right of the portal? At some point you will have to go down the hole, activate the charge, and get back up... somehow.", "At some point you will have to jump off of a moving object. It's quite evil."]
+	"usage_of_useless": ["The bottom Air orb is the last one you collect on the left side. Earth is the second to last.", 
+	"See the hole to the right of the portal? At some point you will have to go down the hole, activate the Charge, and get back up... somehow.", 
+	"At some point you will have to jump off of a moving object. It's quite evil."]
   },
 
   "3": {
-	"the_fire": ["Fire makes you shoot a clone projectile that steadily moves in one direction. You teleport to it when it hits a wall or a room border.", "Go right first."],
+	"the_fire": ["Fire makes you shoot a clone projectile that steadily moves in one direction. You teleport to it when it hits a wall or a room border.", 
+	"The clone you shoot activates all of the Charges it touches.",
+	"Go right first. Don't move while the clone is flying."],
 	
-	"ambush": ["Both air and fire have their limits. Use both to get each charge.", "You need air to go right and avoid spikes so use fire to go left first."],
+	"ambush": ["Both Air and Fire have their limits. Use both to activate each Charge.", 
+	"You need Air to go right and avoid spikes.",
+	"Use Fire to go left first."],
 	
-	"burglary": ["Activating charges is bad sometimes.", "You must activate one charge only. Going right with fire will not work.", "You don't need the first fire orb for movement, so use it to activate the charge by shooting left."],
+	"burglary": ["Activating one Charge is good. Activating two is bad.", 
+	"Don't go right with Fire. Use it in a different way.", 
+	"Use Fire to activate the first Charge by shooting it left instead of right."],
 	
-	"order_problem": ["You are free to move and do whatever you want when your clone is flying.", "Collect the water orb after using fire, but before the clone hits a wall."],
+	"order_problem": ["You are free to move and do whatever you want when the Fire clone is flying.", 
+	"Use Air to get to the left. Use Water to activate the Charge on the right.",
+	"Collect the Water orb after using Fire, but before the clone hits a wall."],
 	
-	"quick_act": ["You need the earth orb to get back up, don't collect it before collecting the Sun Fragment.", "If you are holding a Sun Fragment when you teleport, it will teleport with you.", "Get water first and then copy fire.", "Use fire and quickly get the Sun Fragment with water."],
+	"quick_act": ["You need the Earth orb to get back up, so don't collect it before collecting the Sun Fragment.", 
+	"If you are holding a Sun Fragment when you teleport, it will teleport with you.", 
+	"Use Fire to teleport back, and quickly get the Sun Fragment with Water before you teleport."],
 	
-	"fun_moment": ["Save the first water until the very end.", "Activate the leftmost charge with fire.", "If you use earth when airborne over an orb, you will collect it and still bounce."],
+	"fun_moment": ["Save the first Water until the very end.", 
+	"Activate the leftmost Charge with Fire.", 
+	"If you use Earth when airborne over an orb, you will collect it and still bounce."],
 	
-	"optionless": ["Get earth and air, and use them to activate the leftmost charge.", "Your clone cannot collect orbs for you.", "Use fire to collect the remaining orbs in reverse order."],
+	"optionless": ["Get Earth and Air, and use them to activate the leftmost Charge.", 
+	"Your clone cannot collect orbs for you.", 
+	"Collect the remaining orbs in reverse order using Fire."],
 	
-	"blue_herring": ["The water orb on the left is a bait", "There are more ways to activate one of the charges on the right than using water.", "Use earth and fire to activate the rightmost charge."],
+	"blue_herring": ["The Water orb on the left is a bait. You should never collect it.", 
+	"There are more ways to activate one of the Charges on the right than using Water.", 
+	"Use Earth and Fire to activate the rightmost Charge."],
 	
-	"bypass": ["Earth is better than water in this level. You can use it to go up without activating anything.", "Start by collecting all of the water. Copy fire and earth."],
+	"bypass": ["Earth is better than Water in this level.", 
+	"You can use Earth to go up, without activating anything.", 
+	"Start by collecting all of the Water. Copy Fire and Earth."],
 	
-	"return_ticket": ["Air has no use other than to activate the charge in the middle.", "Don't collect the water in the middle until you have fire."],
+	"return_ticket": ["You need Earth to get Fire.",
+	"Air has no real use here, so you can activate stuff with it.", 
+	"Don't collect the Water in the middle until you have Fire."],
 	
-	"abandoned_marketplace": ["You can use water and air to get to the fire.", "Don't collect the free air until you're about to go for the earth."],
+	"abandoned_marketplace": ["Getting two orbs for one is a good trade to start with.",
+	"You can use Water and Air to get to the Fire.", 
+	"Don't collect the free Air until you're about to go for the Earth."],
 	
-	"theft": ["You can have more than one clone flying at once. All of them will teleport you", "Use the second fire when the first clone is about to hit the Red Fragment."],
+	"theft": ["You need to do something with quite a precise timing here.",
+	"You can have more than one clone flying at a time. All of them will teleport you.", 
+	"Use the second Fire when the first clone is about to hit the goal."],
 	
-	"not_my_problem": ["The water is a bait. Don't ever go left.", "Use air to activate the rightmost charge.", "You can exit a level while your clone is still flying."],
+	"not_my_problem": ["Use Fire to activate the leftmost Charge.",
+	"Use Air to activate the rightmost Charge.", 
+	"The Water is a bait. Don't ever go left."],
 	
-	"bruh_moment": ["Whenever you use fire, it gives you a backward boost, which is just enough to get you through a short spike tunnel. I'm sorry.", "To make it easier: Hold right, jump, and when you are about to touch the spikes, release right and tap left and the ability button all at the same time."]
+	"bruh_moment": ["You need to use fancy movement tech to solve this level. I'm sorry.",
+	"Whenever you use Fire, it gives you a backward boost, which is just enough to get you through a short spike tunnel.", 
+	"To make it easier: Hold right, jump, and when you are about to touch the spikes, release right and tap left and the ability button all at the same time."]
   },
 
   "4": {
-	"0": [], 
-	"1": [], 
-	"2": [], 
-	"3": [], 
-	"4": [], 
-	"5": [], 
-	"6": [], 
-	"A": [], 
-	"B": [], 
-	"C": [], 
-	"D": [], 
-	"E": [], 
-	"F": [], 
-	"J": [], 
-	"K": [], 
-	"L": [], 
-	"AS": [],
-	"BS": [] 
+	"forward_thinker": ["Thanks to the new orb you, don't need to think in reverse!",
+	"The reverse orb reverses the order of your elements.",
+	"Get Water first and Earth last."], 
+
+	"inversion": ["You need Fire to get to the left.",
+	"When you get to the left, you will need: Earth, Air, and Earth (in that order).",
+	"Remember that you can shoot the Fire before collecting everything."], 
+
+	"extraction": ["Reverse orbs allow you to acquire elements from tricky places by putting them in the back.",
+	"Earth combined with Water allows you to get to reach higher vertically.",
+	"Two Water between Earth works, because it will be split after collecting Fire as a side effect."], 
+
+	"cancellation": ["You need to split Water orbs. You can use a reverse orb for this.",
+	"You technically have one more Earth orb than you need.",
+	"Start by collecting one Earth, and then leave one Water to collect it later."], 
+
+	"indifference": ["You need Earth, Fire, and Water to complete the chamber on the right.",
+	"If your abilities are symmetrical, collecting a reverse orb will do nothing to them.",
+	"Remove one of the bottom reverse orbs without affecting your abilities as soon as possible. Activate the leftmost charge with Water."], 
+
+	"the_split": [], 
+
+	"parity": [], 
+
+	"right_order": [], 
+
+	"wrong_order": [], 
+
+	"forcing_unnecessary": [], 
+
+	"forcing_impossible": [], 
+
+	"hard_to_reach": [], 
+
+	"interruption": [], 
+
+	"telepathy": [], 
+
+	"waste_disposal": []
   },
 
   "5": {
@@ -160,13 +249,13 @@
 	"4": [],
 	"5": [],
 	"6": [],
-	"7": ["The water indicator is correct on both sides."],
+	"7": ["The Water indicator is correct on both sides."],
 	"A": [], 
 	"B": [], 
 	"C": [], 
 	"D": [], 
 	"E": [], 
-	"F": ["You need four air to go back and forth through the tunnel on the right twice."], 
+	"F": ["You need four Air to go back and forth through the tunnel on the right twice."], 
 	"G": ["The spike tunnel in the middle is so short, you could almost jump through it."], 
 	"1S": [], 
 	"2S": [], 
@@ -175,7 +264,7 @@
 
   "6": { 
 	"0": [], 
-	"1": ["There is pretty much nothing in this level that water can do that earth can't."], 
+	"1": ["There is pretty much nothing in this level that Water can do that Earth can't."], 
 	"2": ["The gate takes a plenty time to move to its destination."], 
 	"3": [], 
 	"4": [], 
@@ -187,9 +276,9 @@
   },
 
   "H": {
-	"the_first_finale": ["You can activate the bottom left charge without going through the spike tunnel.", 
+	"the_first_finale": ["You can activate the bottom left Charge without going through the spike tunnel.", 
 	"The green orb in the bottom-left corner shall be collected last.",
-	"The solution requires you to use fire... three times in a row."],
+	"The solution requires you to use Fire... three times in a row."],
 	
 	"elemental_shell": [],
 	
