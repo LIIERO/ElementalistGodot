@@ -220,30 +220,57 @@
 	"If your abilities are symmetrical, collecting a reverse orb will do nothing to them.",
 	"Remove one of the bottom reverse orbs without affecting your abilities as soon as possible. Activate the leftmost charge with Water."], 
 
-	"the_split": [], 
+	"the_split": ["The Charges have to be activated with one ability. It must be the Fire.",
+	"You need Air to return from the right side, so you cannot use it to go there, because it cannot be split. Duplicate the Fire.",
+	"Splitting double Fire is possible by using one of them and collecting the reverse orb."], 
 
-	"parity": [], 
+	"parity": ["Technically, you only need four abilities, but you have five orbs at your disposal.",
+	"You can only get to the Sun Fragment with Fire and only get back with Air. These abilities need to be placed next to each other.",
+	"Fire lets you pass through orbs without collecting them."], 
 
-	"right_order": [], 
+	"right_order": ["Order gates open when you use the displayed elements in the correct order. If a wrong ability is used at any point, it will reset.",
+	"At the start, just collect everything and go through the level normally. Watch how gates react when you use abilities.",
+	"Remember that the order of usage is: top-left, top-right, bottom-left, bottom-right (it's not going in a circle)."],
 
-	"wrong_order": [], 
+	"wrong_order": ["You can jump over the Fire orb right next to you.",
+	"Ignore the upper gate. It should remain closed.",
+	"Fire lets you pass through orbs without collecting them."],
 
-	"forcing_unnecessary": [], 
+	"forcing_unnecessary": ["You can progress both gates at once if the next required element is the same for both of them.",
+	"Use one Earth to simultaneously open the gate on the left and progress the gate on the right.",
+	"Copy Water whenever possible. You don't need to copy anything but Water."],
 
-	"forcing_impossible": [], 
+	"forcing_impossible": ["The rightmost Air orb is a bait. Don't ever go there.",
+	"Throughout the whole level, you use Water only once.",
+	"To get on the ledge on the left, you have to use one Earth and two Air abilities."],
 
-	"hard_to_reach": [], 
+	"hard_to_reach": ["Reach the Air orb with Earth and Water.",
+	"Use the first Air orb only to progress the gates.",
+	"Collect Water and Earth while the clone is flying."],
 
-	"interruption": [], 
+	"interruption": ["You have to open the gate to complete the level.",
+	"Resetting order gates is sometimes good. Reset it early, so it doesn't reset too late.",
+	"Use the Air to reset the gate after going right, so it sets up perfectly after you come back."],
 
-	"telepathy": [], 
+	"telepathy": ["If you use Earth twice, the gates will reset to the beginning state.",
+	"You have one more green orb at the top than you need. Do you remember the previous level?",
+	"Copy and use Earth at the very start, so it sets up a beneficial reset."],
 
-	"waste_disposal": []
+	"waste_disposal": ["Start by collecting Water and Earth to escape at the end. Sometimes collecting abilities is bad because it can force a bad gate reset.",
+	"The bottom-right copy orb is problematic. Getting another Water forces a bad reset. Maybe you can get rid of it somehow?",
+	"The bottom-right copy orb will be the first one to be used. The rest will be used to copy Air."]
   },
 
   "5": {
-	"0": [], 
-	"1": [], 
+	"one_way": ["The thin platforms only allow for movement in one way. There are tiny arrows on their sides to help indicate the direction.",
+	"After collecting the Sun Fragment, two Water abilities is all you need.",
+	"Get Air and duplicate Earth to get Water. Earth followed by Air is enough to clear the gap."], 
+	
+	"a": ["a",
+	"a",
+	"a"], 
+	
+	"1": [],
 	"2": [],
 	"3": [],
 	"4": [],

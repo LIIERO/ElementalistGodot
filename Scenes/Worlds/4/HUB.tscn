@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dxdknctbn4pnq"]
+[gd_scene load_steps=23 format=3 uid="uid://dxdknctbn4pnq"]
 
 [ext_resource type="PackedScene" uid="uid://cmgvwefyymir" path="res://Scenes/Worlds/4/Base.tscn" id="1_011wx"]
 [ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="4_uo4of"]
@@ -16,12 +16,9 @@
 [ext_resource type="Resource" uid="uid://blg55oktxxg50" path="res://Data/LevelData/Operatorium/C.tres" id="16_qv5dr"]
 [ext_resource type="Resource" uid="uid://k2pf3lvcxs07" path="res://Data/LevelData/Operatorium/D.tres" id="17_6kd54"]
 [ext_resource type="Resource" uid="uid://c3qcr28tbj4ox" path="res://Data/LevelData/Operatorium/E.tres" id="18_7gngk"]
-[ext_resource type="Resource" uid="uid://1l4rdxucypte" path="res://Data/LevelData/Stronghold/A.tres" id="19_fixhq"]
 [ext_resource type="Resource" uid="uid://b7obxn3k5xr38" path="res://Data/LevelData/Operatorium/AS.tres" id="20_2c8i2"]
-[ext_resource type="Resource" uid="uid://dettjmvytcn1u" path="res://Data/LevelData/Stronghold/C.tres" id="20_hob46"]
 [ext_resource type="PackedScene" uid="uid://cqj8267bl5dj6" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceVoid.tscn" id="20_ll2hb"]
 [ext_resource type="PackedScene" uid="uid://blskr05twsghv" path="res://Scenes/Entities/Gates/SunGate.tscn" id="20_r3t1o"]
-[ext_resource type="Resource" uid="uid://b57daleuiiwt4" path="res://Data/LevelData/Stronghold/B.tres" id="21_an6wc"]
 [ext_resource type="PackedScene" uid="uid://cswviw873l0lv" path="res://Scenes/Entities/Interactables/WorldEntrances/EntranceKnipe.tscn" id="21_e0j0t"]
 [ext_resource type="Resource" uid="uid://dk4nonpvnf4a6" path="res://Data/LevelData/Operatorium/BS.tres" id="21_mm2gq"]
 [ext_resource type="PackedScene" uid="uid://k50bvsnwfd4u" path="res://Scenes/Entities/Gates/OrderGate.tscn" id="25_wumh7"]
@@ -128,18 +125,6 @@ levelToTeleportTo = ExtResource("20_2c8i2")
 [node name="LevelTeleportBS" parent="Interactables/Levels" index="14" instance=ExtResource("8_fsb1o")]
 position = Vector2(-400, 0)
 levelToTeleportTo = ExtResource("21_mm2gq")
-
-[node name="LevelTeleportJ" parent="Interactables/Levels" index="15" instance=ExtResource("8_fsb1o")]
-position = Vector2(-624, 32)
-levelToTeleportTo = ExtResource("19_fixhq")
-
-[node name="LevelTeleportK" parent="Interactables/Levels" index="16" instance=ExtResource("8_fsb1o")]
-position = Vector2(-688, 96)
-levelToTeleportTo = ExtResource("20_hob46")
-
-[node name="LevelTeleportL" parent="Interactables/Levels" index="17" instance=ExtResource("8_fsb1o")]
-position = Vector2(-624, 96)
-levelToTeleportTo = ExtResource("21_an6wc")
 
 [node name="EntranceVoid" parent="Interactables" index="1" instance=ExtResource("20_ll2hb")]
 position = Vector2(0, 112)
