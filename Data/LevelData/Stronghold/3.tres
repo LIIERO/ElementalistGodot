@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://ce4w0lx1ajna3"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_wa4vr"]
+
+[resource]
+script = ExtResource("1_wa4vr")
+ID = "3"
+Name = "the_cave"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "2"
+IsSpecial = false
+IsSalvageable = true

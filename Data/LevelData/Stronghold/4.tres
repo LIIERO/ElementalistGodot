@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://cag8b1nv7cfkb"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_alsoj"]
+
+[resource]
+script = ExtResource("1_alsoj")
+ID = "4"
+Name = "badlands"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "3"
+IsSpecial = false
+IsSalvageable = true

@@ -9,4 +9,4 @@ Name = "the_cliff"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "1"
 IsSpecial = false
-IsSalvageable = true
+IsSalvageable = false

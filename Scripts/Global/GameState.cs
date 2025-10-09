@@ -12,20 +12,8 @@ public partial class GameState : Node
 {
     // Level loader stuff
     private readonly string levelsPathStart = "res://Scenes/Worlds/";
-    private readonly Dictionary<string, string[]> levels = new() { // Turn this to json?
-        { "H", new string[] { "HUB", "A", "B", "C" } }, // Main Hub (The Void)
-        { "L", new string[] { "HUB" } }, // Library
-        { "0", new string[] { "HUB", "0", "1", "2", "3", "4", "5" } }, // Purple Forest
-        { "1", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "F", "4S", "7S" } }, // Distant Shores
-        { "2", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "3S", "8S" } }, // Cave Outskirts
-        { "3", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "2S", "3S", "5S" } }, // Islands of Ashes
-        { "4", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "A", "B", "C", "D", "E", "F", "AS", "BS" } }, // Operatorium
-        { "5", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "F", "G", "1S", "2S", "BS" } }, // Knipe
-        { "6", new string[] { "HUB", "0", "1", "2", "3", "4", "5", "6", "C", "M", "5S" } }, // Meadowlands
-        { "7", new string[] { "HUB", "0", "1", "A", "B", "C", "D", "E" } } // Fallen Kingdom (Stronghold)
-    };
+    private Dictionary<string, List<string>> levelsIndex;
     private Dictionary<string, Dictionary<string, PackedScene>> LevelIDToLevel = new(); // Level path data, initialized in _EnterTree
-
     private const string specialLevelLetter = "S";
 
     // Data loaded from the save file
@@ -76,13 +64,15 @@ public partial class GameState : Node
     public override void _EnterTree()
     {
         string languageCode = "en"; // TODO: Language option in settings or when loading the game (OR WITH THE STEAM THINGY)
+        levelsIndex = LoadJSONData<Dictionary<string, List<string>>>("levelsIndex");
         DialogData = LoadTextData<Dictionary<string, List<Dictionary<string, string>>>>("Dialog", languageCode);
         HintsData = LoadTextData<Dictionary<string, Dictionary<string, List<string>>>>("Hints", languageCode);
         UITextData = LoadTextData<Dictionary<string, string>>("UI", languageCode);
         LevelNameData = LoadTextData<Dictionary<string, string>>("LevelNames", languageCode);
 
+
         // Initialize LevelIDToLevel
-        foreach (KeyValuePair<string, string[]> world in levels)
+        foreach (KeyValuePair<string, List<string>> world in levelsIndex)
         {
             LevelIDToLevel.Add(world.Key, new Dictionary<string, PackedScene>());
 
@@ -105,7 +95,7 @@ public partial class GameState : Node
     {
         Dictionary<string, Dictionary<string, bool>> completedLevels = new();
 
-        foreach (KeyValuePair<string, string[]> world in levels)
+        foreach (KeyValuePair<string, List<string>> world in levelsIndex)
         {
             completedLevels.Add(world.Key, new Dictionary<string, bool>());
 
@@ -120,7 +110,7 @@ public partial class GameState : Node
 
     private void FixCompletedLevels()
     {
-        foreach (KeyValuePair<string, string[]> world in levels)
+        foreach (KeyValuePair<string, List<string>> world in levelsIndex)
         {
             if (!CompletedLevels.ContainsKey(world.Key))
             {
@@ -311,10 +301,15 @@ public partial class GameState : Node
 
     private T LoadTextData<T>(string textDataFolderName, string languageCode)
     {
-        string path = textDataPath + textDataFolderName + "/" + languageCode + jsonFormat;
+        return LoadJSONData<T>(textDataFolderName + "/" + languageCode);   
+    }
+
+    private T LoadJSONData<T>(string pathRelativeToTextData)
+    {
+        string path = textDataPath + pathRelativeToTextData + jsonFormat;
         if (!Godot.FileAccess.FileExists(path))
-            throw new GameUtils.DataFileDoesntExistException($"Path ({path}) not found ({textDataFolderName} data file)");
-        
+            throw new GameUtils.DataFileDoesntExistException($"Path ({path}) not found.");
+
         var dataFile = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
         return JsonSerializer.Deserialize<T>(dataFile.GetAsText());
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpiqn8kb0rapq"]
+[gd_scene load_steps=32 format=3 uid="uid://cpiqn8kb0rapq"]
 
 [ext_resource type="PackedScene" uid="uid://bgxfp8pjgxus4" path="res://Scenes/Worlds/7/Base.tscn" id="1_yvkvi"]
 [ext_resource type="PackedScene" uid="uid://bs7v22papc08q" path="res://Scenes/Entities/Orbs/RemoveTopOrb.tscn" id="2_bbosb"]
@@ -27,7 +27,10 @@
 [ext_resource type="Resource" uid="uid://c5vh8iicjhpxn" path="res://Data/LevelData/Stronghold/2.tres" id="22_g0tim"]
 [ext_resource type="Resource" uid="uid://dbnxj8ftqtpg2" path="res://Data/LevelData/Stronghold/D.tres" id="22_kqh1i"]
 [ext_resource type="Resource" uid="uid://bhfjj0pktoqaw" path="res://Data/LevelData/Stronghold/E.tres" id="23_3igtj"]
+[ext_resource type="Resource" uid="uid://ce4w0lx1ajna3" path="res://Data/LevelData/Stronghold/3.tres" id="23_4uh65"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="24_l6kka"]
+[ext_resource type="Resource" uid="uid://cag8b1nv7cfkb" path="res://Data/LevelData/Stronghold/4.tres" id="24_sryno"]
+[ext_resource type="Resource" uid="uid://ed57w123flm6" path="res://Data/LevelData/Stronghold/5.tres" id="25_tpgg7"]
 
 [node name="Game" instance=ExtResource("1_yvkvi")]
 
@@ -152,6 +155,18 @@ levelToTeleportTo = ExtResource("21_ancip")
 [node name="LevelTeleport2" parent="Levels/Left" index="2" instance=ExtResource("18_1qng3")]
 position = Vector2(-928, 96)
 levelToTeleportTo = ExtResource("22_g0tim")
+
+[node name="LevelTeleport3" parent="Levels/Left" index="3" instance=ExtResource("18_1qng3")]
+position = Vector2(-960, -32)
+levelToTeleportTo = ExtResource("23_4uh65")
+
+[node name="LevelTeleport4" parent="Levels/Left" index="4" instance=ExtResource("18_1qng3")]
+position = Vector2(-928, -32)
+levelToTeleportTo = ExtResource("24_sryno")
+
+[node name="LevelTeleport5" parent="Levels/Left" index="5" instance=ExtResource("18_1qng3")]
+position = Vector2(-896, -32)
+levelToTeleportTo = ExtResource("25_tpgg7")
 
 [node name="Right" type="Node2D" parent="Levels" index="1"]
 
