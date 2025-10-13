@@ -9,7 +9,7 @@ public partial class ElementOverlay : Node2D
 {
 	[Export] private PackedScene elementSymbol;
 	const float spaceBetweenEntries = 32f;
-	const int maxElements = 14;
+	const int maxElements = 16;
 
 	private ElementSymbol[] overlayElements;
 	private int firstEmptyIndex;
@@ -51,13 +51,13 @@ public partial class ElementOverlay : Node2D
         } 
     }
 
-    public void InsertElement(ElementState element)
+    /*public void InsertElement(ElementState element)
 	{
 		overlayElements[firstEmptyIndex].ShowSprite(element);
 		firstEmptyIndex++;
 
 		RefreshIndicator();
-	}
+	}*/
 
 	public void RefreshElements(int[] elementArray)
 	{

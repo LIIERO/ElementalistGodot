@@ -52,6 +52,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	public const float floatyGravityMaxVelocity = 50.0f;
 	public const int windDashCornerCorrection = 5;
 	public const int verticalCornerCorrection = 4;
+	public const int maxAbilityCount = 15;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -202,6 +203,13 @@ public partial class Player : CharacterBody2D, IUndoable
 
         //GD.Print(CanAddCheckpoint());
         //GD.Print(isOnMovingEntity);
+
+		// Secret death from Element overdose TODO: Achievement
+		if (AbilityList.Count > maxAbilityCount)
+		{
+            AbilityList.Clear();
+            Kill(true); // Works like a crush
+		}
     }
 
 	// MOVEMENT ==================================================================================================================

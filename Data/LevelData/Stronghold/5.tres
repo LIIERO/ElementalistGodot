@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_xey51")
 ID = "5"
-Name = "place_of_love"
+Name = "storerooms"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "4"
 IsSpecial = false
