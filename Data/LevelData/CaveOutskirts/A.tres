@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://8qd7kv6xi3sm"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_cda2m"]
+
+[resource]
+script = ExtResource("1_cda2m")
+ID = "A"
+Name = "the_new_earth"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = ""
+IsSpecial = false
+IsSalvageable = false

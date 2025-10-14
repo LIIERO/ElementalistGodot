@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dhsfwvrfxwmd7"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_wium7"]
+
+[resource]
+script = ExtResource("1_wium7")
+ID = "I"
+Name = "icy_tower"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "C"
+IsSpecial = false
+IsSalvageable = false
