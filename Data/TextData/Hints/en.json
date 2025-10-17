@@ -266,27 +266,73 @@
 	"After collecting the Sun Fragment, two Water abilities is all you need.",
 	"Get Air and duplicate Earth to get Water. Earth followed by Air is enough to clear the gap."], 
 	
-	"a": ["a",
-	"a",
-	"a"], 
+	"out_of_ordinary": ["You can activate two Charges on the left with one Air.",
+	"Use Air followed by Water to make it through the tunnel on the right.",
+	"Activate two Charges on the left right before completing the level."], 
 	
-	"1": [],
-	"2": [],
-	"3": [],
-	"4": [],
-	"5": [],
-	"6": [],
-	"7": ["The Water indicator is correct on both sides."],
-	"A": [], 
-	"B": [], 
-	"C": [], 
-	"D": [], 
-	"E": [], 
-	"F": ["You need four Air to go back and forth through the tunnel on the right twice."], 
-	"G": ["The spike tunnel in the middle is so short, you could almost jump through it."], 
-	"1S": [], 
-	"2S": [], 
-	"CS": []
+	"out_of_bounds": ["You need to get under the level somehow. When you do, you will only need one Air to win.",
+	"The rightmost Air is a bait. Don't ever go to the section on the right.",
+	"If a gate would crush you, but you are on a one-way platform, you will pass right through it."], 
+	
+	"dig_yourself_out": ["Use Earth and Air to get onto the ledge blocked by the leftmost gate.",
+	"Duplicate Earth.",
+	"Use Water to activate the bottom-right Charge."], 
+	
+	"get_buried_alive": ["Duplicate Water.",
+	"If you teleport while you are using a different ability, the ability won't stop.",
+	"Activate all of the Charges (except for the one near the portal) with just one Earth."],
+	
+	"the_escapist": ["Use Water creatively.",
+	"Use only Earth and Fire to get to the upper ledge.",
+	"You can use Water to cross the horizontal gap, because there is no ceiling above it."],
+	
+	"mouse_trap": ["You can have more than one clone flying at a time. All of them will teleport you.",
+	"Both clones should go in the same direction.",
+	"Fire two clones from the right, so both Charges activate at the same time."],
+	
+	"weaver": ["Water and Earth are definitely useful in this level.",
+	"You can use Earth and Water to get over the obstacles.",
+	"Use Earth, Water, and Fire to go to the right from above."],
+	
+	"loop": ["Activate both Charges with Earth.",
+	"Duplicate Air.",
+	"Collect and use Fire right before activating a Charge and collecting Water."],
+	
+	"indiana_zoe": ["The Water element indicator is correct on both sides.",
+	"The only element you should duplicate is Water.",
+	"Use Air to activate the leftmost Charge and escape the trap."],
+	
+	"the_love": ["The heart-shaped element is Love.",
+	"Love can activate Charges.",
+	"Keep collecting and duplicating Love whenever possible, but start using it at the very end."],
+	
+	"resolving_issues": ["The only element you should duplicate is Love. You need it to open the gate.",
+	"Use Fire and Water to get through the tunnel.",
+	"Get the Air before going left. You will need it to come back. The reverse orb allows you to take Love with you."],
+	
+	"ignoring_issues": ["You need to use Air to get to the left side. The problem is with how you are going to get back using Fire.",
+	"The Love stalls you mid-air upon use. It also resets your momentum.",
+	"You can't use only Love to get back right, but you can use it to stall for something to happen."],
+	
+	"complications": ["Use Love to activate all of the Charges.",
+	"Use Air to cross all of the gaps on the left.",
+	"Collect and use the Love on the right first. It's much more constrained than the one on the left."],
+	
+	"guilt_tripping": ["Get Earth as late as possible.",
+	"You can put Love in between Water to prevent activating the gate on the right.",
+	"You can put two Love in between Water to prevent activating the gate on the right and activate the one on the left at the same time."],
+	
+	"love_bombing": ["Collecting reverse orbs doesn't reset gates.",
+	"Get two Love before going up.",
+	"Use the second Love pair immediately after getting it."],
+	
+	"you_need_it": ["Use the Fire from the ledge on the left to open the order gate, and then activate all the Charges.",
+	"You need four Air to go back and forth through the tunnel on the right twice.",
+	"Love is the only element that can reset the order gate at the right time. Go for it at the very start."],
+	
+	"love_gives_wings": ["Yeah, you can cross short spike tunnels with a single Love. You will have to do that three times.",
+	"Use one Air to activate both Charges.",
+	"Leave the Water orb for later. Leave activating the Charges for later, too."]
   },
 
   "6": { 
