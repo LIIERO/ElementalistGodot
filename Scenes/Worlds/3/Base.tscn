@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwabd5uj1swuf"]
+[gd_scene load_steps=7 format=3 uid="uid://bwabd5uj1swuf"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_8ub2l"]
 [ext_resource type="PackedScene" uid="uid://2a8bmo5kgwif" path="res://Scenes/Tilesets/Ground/AIGround.tscn" id="2_nb220"]
 [ext_resource type="PackedScene" uid="uid://bf8033hjxavfa" path="res://Scenes/Tilesets/Danger/AIDanger.tscn" id="3_tvpfg"]
 [ext_resource type="PackedScene" uid="uid://dtgjfryon3sal" path="res://Scenes/Backgrounds/ParallaxBackgroundAsh.tscn" id="4_81377"]
+[ext_resource type="PackedScene" uid="uid://ccfja25axvi75" path="res://Scenes/Tilesets/Decals/IslandsOfAshes.tscn" id="6_l2jgp"]
 [ext_resource type="PackedScene" uid="uid://bn36rhlr3vr8j" path="res://Scenes/Tilesets/Background/AIBackground.tscn" id="7_6enjl"]
 
 [node name="Game" instance=ExtResource("1_8ub2l")]
 
-[node name="GroundTiles" parent="." index="3" instance=ExtResource("2_nb220")]
+[node name="Decals" parent="." index="3" instance=ExtResource("6_l2jgp")]
 
-[node name="DangerTiles" parent="." index="4" instance=ExtResource("3_tvpfg")]
+[node name="GroundTiles" parent="." index="4" instance=ExtResource("2_nb220")]
 
-[node name="ParallaxBackground" parent="." index="5" instance=ExtResource("4_81377")]
+[node name="DangerTiles" parent="." index="5" instance=ExtResource("3_tvpfg")]
 
-[node name="BackgroundTiles" parent="." index="6" instance=ExtResource("7_6enjl")]
+[node name="ParallaxBackground" parent="." index="6" instance=ExtResource("4_81377")]
+
+[node name="BackgroundTiles" parent="." index="7" instance=ExtResource("7_6enjl")]

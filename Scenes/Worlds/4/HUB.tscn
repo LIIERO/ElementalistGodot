@@ -69,62 +69,77 @@ position = Vector2(64, 96)
 [node name="LevelTeleport0" parent="Interactables/Levels" index="0" instance=ExtResource("8_fsb1o")]
 position = Vector2(128, 96)
 levelToTeleportTo = ExtResource("9_y3vs0")
+swapLevelNameColours = true
 
 [node name="LevelTeleport1" parent="Interactables/Levels" index="1" instance=ExtResource("8_fsb1o")]
 position = Vector2(224, 64)
 levelToTeleportTo = ExtResource("10_4kjql")
+swapLevelNameColours = true
 
 [node name="LevelTeleport2" parent="Interactables/Levels" index="2" instance=ExtResource("8_fsb1o")]
 position = Vector2(128, 32)
 levelToTeleportTo = ExtResource("11_a0l1u")
+swapLevelNameColours = true
 
 [node name="LevelTeleport3" parent="Interactables/Levels" index="3" instance=ExtResource("8_fsb1o")]
 position = Vector2(224, 0)
 levelToTeleportTo = ExtResource("12_kf4bn")
+swapLevelNameColours = true
 
 [node name="LevelTeleport4" parent="Interactables/Levels" index="4" instance=ExtResource("8_fsb1o")]
 position = Vector2(352, 0)
 levelToTeleportTo = ExtResource("13_pdnjn")
+swapLevelNameColours = true
 
 [node name="LevelTeleport5" parent="Interactables/Levels" index="5" instance=ExtResource("8_fsb1o")]
 position = Vector2(400, 0)
 levelToTeleportTo = ExtResource("9_lipkf")
+swapLevelNameColours = true
 
 [node name="LevelTeleport6" parent="Interactables/Levels" index="6" instance=ExtResource("8_fsb1o")]
 position = Vector2(448, 0)
 levelToTeleportTo = ExtResource("10_j60e2")
+swapLevelNameColours = true
 
 [node name="LevelTeleportA" parent="Interactables/Levels" index="7" instance=ExtResource("8_fsb1o")]
 position = Vector2(-128, 96)
 levelToTeleportTo = ExtResource("14_oc6ho")
+swapLevelNameColours = true
 
 [node name="LevelTeleportB" parent="Interactables/Levels" index="8" instance=ExtResource("8_fsb1o")]
 position = Vector2(-224, 64)
 levelToTeleportTo = ExtResource("15_5dkdx")
+swapLevelNameColours = true
 
 [node name="LevelTeleportC" parent="Interactables/Levels" index="9" instance=ExtResource("8_fsb1o")]
 position = Vector2(-128, 32)
 levelToTeleportTo = ExtResource("16_qv5dr")
+swapLevelNameColours = true
 
 [node name="LevelTeleportD" parent="Interactables/Levels" index="10" instance=ExtResource("8_fsb1o")]
 position = Vector2(-224, 0)
 levelToTeleportTo = ExtResource("17_6kd54")
+swapLevelNameColours = true
 
 [node name="LevelTeleportE" parent="Interactables/Levels" index="11" instance=ExtResource("8_fsb1o")]
 position = Vector2(-352, 96)
 levelToTeleportTo = ExtResource("18_7gngk")
+swapLevelNameColours = true
 
 [node name="LevelTeleportF" parent="Interactables/Levels" index="12" instance=ExtResource("8_fsb1o")]
 position = Vector2(-400, 96)
 levelToTeleportTo = ExtResource("15_xl7bn")
+swapLevelNameColours = true
 
 [node name="LevelTeleportAS" parent="Interactables/Levels" index="13" instance=ExtResource("8_fsb1o")]
 position = Vector2(-352, 0)
 levelToTeleportTo = ExtResource("20_2c8i2")
+swapLevelNameColours = true
 
 [node name="LevelTeleportBS" parent="Interactables/Levels" index="14" instance=ExtResource("8_fsb1o")]
 position = Vector2(-400, 0)
 levelToTeleportTo = ExtResource("21_mm2gq")
+swapLevelNameColours = true
 
 [node name="EntranceVoid" parent="Interactables" index="1" instance=ExtResource("20_ll2hb")]
 position = Vector2(0, 112)

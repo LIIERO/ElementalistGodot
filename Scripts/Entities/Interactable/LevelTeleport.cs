@@ -15,9 +15,11 @@ public partial class LevelTeleport : Interactable
     private AnimatedSprite2D currentSprite;
     private Label teleportText;
     private Label levelNameDisplay;
+    private Label levelNameDisplayShadow;
     private AnimationPlayer nameDisplayAnimation;
 
     [Export] private LevelData levelToTeleportTo;
+    [Export] private bool swapLevelNameColours = false;
     [Export] private bool elementalShellRequired = false;
 
     public static bool setPlayerLevelEnterPosition = false;
@@ -31,9 +33,13 @@ public partial class LevelTeleport : Interactable
         teleportText = GetNode<Label>("MovedByAnimation/Text/Label");
         nameDisplayAnimation = GetNode<AnimationPlayer>("InfoAnimation");
         levelNameDisplay = GetNode<Label>("InfoCard");
+        levelNameDisplayShadow = levelNameDisplay.GetNode<Label>("Shadow");
         levelNameDisplay.Text = gameState.GetLevelName(levelToTeleportTo.Name);
-        levelNameDisplay.GetNode<Label>("Shadow").Text = gameState.GetLevelName(levelToTeleportTo.Name);
+        levelNameDisplayShadow.Text = gameState.GetLevelName(levelToTeleportTo.Name);
         levelNameDisplay.Hide();
+        if (swapLevelNameColours)
+            SwapLevelNameColors();
+
         base._Ready();
 
         teleportText.Text = levelToTeleportTo.ID[0].ToString();
@@ -79,6 +85,14 @@ public partial class LevelTeleport : Interactable
         }
     }
 
+    private void SwapLevelNameColors()
+    {
+        Color frontColor = (Color)levelNameDisplay.Get("theme_override_colors/font_color");
+        Color shadowColor = (Color)levelNameDisplayShadow.Get("theme_override_colors/font_color");
+        levelNameDisplay.Set("theme_override_colors/font_color", shadowColor);
+        levelNameDisplayShadow.Set("theme_override_colors/font_color", frontColor);
+    }
+
     protected override void PlayerEntered()
     {
         base.PlayerEntered();
@@ -104,7 +118,7 @@ public partial class LevelTeleport : Interactable
         {
             // Ability salvaging with Fractured Fragment
             if (gameState.IsAbilitySalvagingUnlocked && playerScriptReference.AbilityList.Count > 0)
-                gameState.SalvagedAbilities = new List<ElementState>(playerScriptReference.AbilityList); // TODO: make them corrupted
+                gameState.SalvagedAbilities = new List<ElementState>(playerScriptReference.AbilityList);
         }
 
         levelTransitions.StartLevelTransition(levelToTeleportTo);

@@ -336,16 +336,45 @@
   },
 
   "6": { 
-	"0": [], 
-	"1": ["There is pretty much nothing in this level that Water can do that Earth can't."], 
-	"2": ["The gate takes a plenty time to move to its destination."], 
-	"3": [], 
-	"4": [], 
-	"5": [], 
-	"6": [], 
-	"7": [], 
-	"8": [], 
-	"6S": [] 
+	"elevator": ["The gate moves back and forth with each ability usage.",
+	"Use Love to move the gate back and forth to get up.",
+	"Don't collect Water until you have the Sun Fragment."], 
+	
+	"incompetence": ["There is pretty much nothing in this level that Water can do that Earth can't.",
+	"Only copy the Earth.",
+	"Use Water immediately. Its only use is to move the gate downwards."], 
+	
+	"inertia": ["The gate takes plenty of time to move to its destination.", 
+	"If you use an element while a gate is moving, it will start going back immediately.", 
+	"Use Earth immediately after using Love."], 
+	
+	"retaker": ["You can salvage one Water or one Love from this level. You will need Water to get to the next level.", 
+	"After the gate that's closest to you takes you up, you can get to the Sun Fragment with just one Water.", 
+	"If you want to salvage Water, copy it whenever possible. Use Love to move the gate back and forth to get up."], 
+	
+	"greatest_deal": ["You can salvage one Earth or one Air from this level. You will need Earth to get to the next level.", 
+	"To salvage Earth, just grab one and complete the level. You will need Air to get to the level 6, so don't worry about it until then.", 
+	"To salvage Air, you need to get the middle Earth as soon as possible."], 
+	
+	"onset": ["You need to collect every single orb in this level.", 
+	"Collect and copy Water at the start.", 
+	"If you use Earth while Airborne over an orb, you will collect it and still bounce."], 
+	
+	"offset": ["Air and Earth are useless.", 
+	"Double Fire can achieve sneaky stuff. Remember the first bonus level in world 3?",
+	"The gate can push your Fire clone down to clear the gap. You will need to set up another one to get back, though."], 
+	
+	"quest_for_fire": ["The next step after this level is to get the letter \"Z\". You can only do it with Fire.", 
+	"Copy Fire.", 
+	"Use Water to activate the bottom-right Charge, but do not get up the ledge."], 
+	
+	"compound": ["The Water element indicator is correct. You need to use Water to get up.", 
+	"Collect Air before activating the Charge.", 
+	"Use Air to activate the Charge and escape the trap."], 
+	
+	"fight_the_movement": ["There is no point in the whole level where you want to carry more than one Fire ability at the same time.", 
+	"Use one Air for the sole purpose of moving a gate. There is more than one way to do that, so explore the possibilities.", 
+	"Go to the left before ever going to the right."]
   },
 
   "H": {

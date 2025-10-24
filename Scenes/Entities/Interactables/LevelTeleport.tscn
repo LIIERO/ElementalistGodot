@@ -181,6 +181,7 @@ offset_left = -96.0
 offset_top = -64.0
 offset_right = 96.0
 offset_bottom = -52.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_pew6j")
 theme_override_font_sizes/font_size = 12
 text = "LevelName"
