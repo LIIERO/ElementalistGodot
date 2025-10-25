@@ -39,6 +39,9 @@ public partial class LevelTeleport : Interactable
         levelNameDisplay.Hide();
         if (swapLevelNameColours)
             SwapLevelNameColors();
+        if (levelToTeleportTo.IsSalvageable)
+            GetNode<Sprite2D>("InfoCard/ElementalShellImage").Show();
+        
 
         base._Ready();
 
@@ -87,10 +90,12 @@ public partial class LevelTeleport : Interactable
 
     private void SwapLevelNameColors()
     {
-        Color frontColor = (Color)levelNameDisplay.Get("theme_override_colors/font_color");
-        Color shadowColor = (Color)levelNameDisplayShadow.Get("theme_override_colors/font_color");
-        levelNameDisplay.Set("theme_override_colors/font_color", shadowColor);
-        levelNameDisplayShadow.Set("theme_override_colors/font_color", frontColor);
+        //Color frontColor = (Color)levelNameDisplay.Get("theme_override_colors/font_color");
+        //Color shadowColor = (Color)levelNameDisplayShadow.Get("theme_override_colors/font_color");
+        //levelNameDisplay.Set("theme_override_colors/font_color", shadowColor);
+        //levelNameDisplayShadow.Set("theme_override_colors/font_color", frontColor);
+
+        levelNameDisplayShadow.ZIndex = 1;
     }
 
     protected override void PlayerEntered()

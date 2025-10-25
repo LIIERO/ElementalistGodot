@@ -342,7 +342,7 @@ _data = {
 "default": SubResource("Animation_dlpmy")
 }
 
-[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "hitbox", "spawner", "particles", "checkpointIndicator", "propertyAnimations", "earthBlockIndicator", "earthBlockTestCollision", "abilityTimer") groups=["Player"]]
+[node name="Zoe" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "hitbox", "spawner", "particles", "checkpointIndicator", "propertyAnimations", "earthBlockIndicator", "earthBlockTestCollision", "funnyLevitationPlatform", "abilityTimer") groups=["Player"]]
 z_index = 5
 texture_filter = 1
 position = Vector2(16, 32)
@@ -357,6 +357,7 @@ checkpointIndicator = NodePath("CheckpointIndicator")
 propertyAnimations = NodePath("AnimationPlayer")
 earthBlockIndicator = NodePath("EarthIndicator")
 earthBlockTestCollision = NodePath("TestCollision")
+funnyLevitationPlatform = NodePath("Levitation")
 abilityTimer = NodePath("AbilityTimer")
 
 [node name="TestCollision" type="Area2D" parent="."]
@@ -450,5 +451,11 @@ region_rect = Rect2(32, 96, 16, 16)
 visible = false
 position = Vector2(2, -13)
 texture = ExtResource("14_dt5oa")
+
+[node name="Levitation" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("13_w8olu")
+region_enabled = true
+region_rect = Rect2(112, 112, 16, 16)
 
 [connection signal="body_entered" from="Area2D" to="." method="_OnArea2dBodyEntered"]

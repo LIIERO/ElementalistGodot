@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class CustomSignals : Node
 {
     // Player
+
     [Signal]
     public delegate void PlayerInteractedEventHandler();
 
@@ -21,6 +22,7 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void SetPlayerPositionEventHandler(Vector2 position, bool fireTeleport, float fireballDirection);
 
+
     // Camera
 
     [Signal]
@@ -28,6 +30,7 @@ public partial class CustomSignals : Node
 
     [Signal]
     public delegate void ShiftCameraXLimitsEventHandler(int left, int right);
+
 
     // UI
 
@@ -58,6 +61,7 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void SwitchToNormalMenuModeEventHandler();
 
+
     // Gameplay
 
     [Signal]
@@ -68,6 +72,7 @@ public partial class CustomSignals : Node
 
     [Signal]
     public delegate void LevelTransitionedEventHandler();
+
 
     // Undo system
 
@@ -83,4 +88,6 @@ public partial class CustomSignals : Node
     [Signal]
     public delegate void UndoCheckpointEventHandler(bool nextCheckpointRequested);
 
+    [Signal]
+    public delegate void UnlockCheckpointingEventHandler(); // Used by Earth block
 }

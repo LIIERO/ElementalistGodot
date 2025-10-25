@@ -46,7 +46,7 @@ public partial class PauseMenu : ButtonManager
             {
                 DelayResume();
             }
-            else if (!gameState.IsLevelTransitionPlaying) // Cant pause during transitions
+            else if (!gameState.IsLevelTransitionPlaying && !gameState.WatchtowerActive) // Cant pause during transitions or while using watchtower
             {
                 ResetButtons();
                 Pause();

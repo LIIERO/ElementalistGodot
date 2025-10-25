@@ -31,7 +31,8 @@ public partial class Player : CharacterBody2D, IUndoable
 	[Export] private AnimationPlayer propertyAnimations;
 	[Export] private Node2D earthBlockIndicator;
     [Export] private Area2D earthBlockTestCollision; // To prevent the earth block from floating
-	private PlayerShaderEffects shaderScript;
+    [Export] private Sprite2D funnyLevitationPlatform;
+    private PlayerShaderEffects shaderScript;
 
 	// Parameters
 	public const float speed = 109.0f;
@@ -77,7 +78,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	public bool isDead = false;
 	public bool canJumpCancel = true;
 	public bool isUndoing = false;
-	//public bool isAddingCheckpoint = false;
+	public bool checkpointingUnlocked = true; // Only modified by an Earth block that has formed via a signal
 	public float checkpointTimer = -0.1f;
 	public bool isOnMovingEntity = false; // For now only true when standing on a gate that is moving up
 	float coyoteTimeCounter; float jumpBufferTimeCounter; float abilityBufferTimeCounter;
@@ -120,6 +121,7 @@ public partial class Player : CharacterBody2D, IUndoable
         customSignals.Connect(CustomSignals.SignalName.AddCheckpoint, new Callable(this, MethodName.AddLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.UndoCheckpoint, new Callable(this, MethodName.UndoLocalCheckpoint));
         customSignals.Connect(CustomSignals.SignalName.ReplaceTopCheckpoint, new Callable(this, MethodName.ReplaceTopLocalCheckpoint));
+        customSignals.Connect(CustomSignals.SignalName.UnlockCheckpointing, new Callable(this, MethodName.UnlockCheckpointing));
 
         customSignals.Connect(CustomSignals.SignalName.SetPlayerPosition, new Callable(this, MethodName.SetPosition));
         //customSignals.Connect(CustomSignals.SignalName.GamePaused, new Callable(this, MethodName.PauseAbilityTimer));
@@ -210,6 +212,12 @@ public partial class Player : CharacterBody2D, IUndoable
             AbilityList.Clear();
             Kill(true); // Works like a crush
 		}
+
+		// Secret platform in case of levitation (hint used midair)
+		if (gameState.IsDialogActive && !isGrounded)
+			funnyLevitationPlatform.Show();
+		else
+			funnyLevitationPlatform.Hide();
     }
 
 	// MOVEMENT ==================================================================================================================
@@ -275,7 +283,7 @@ public partial class Player : CharacterBody2D, IUndoable
 
 
 	// ABILITY ==================================================================================================================
-	private bool CanUseEarthRemix => isGrounded && earthStillTimer < 0;
+	private bool CanUseEarthRemix => IsOnFloor() && earthStillTimer < 0;
 
 
     private void Ability(bool abilityPressed, double delta)
@@ -552,9 +560,9 @@ public partial class Player : CharacterBody2D, IUndoable
 	
 	private void SpawnEarthBlock(Vector2 position)
 	{
-		//await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
-
-		Vector2 earthPosition = new Vector2(CalculateEarthXPosition(position.X, position.Y), position.Y);
+        //await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
+        checkpointingUnlocked = false; // Bugfix
+        Vector2 earthPosition = new Vector2(CalculateEarthXPosition(position.X, position.Y), position.Y);
         Node2D instance = earthBlock.Instantiate() as Node2D;
         spawner.AddChild(instance);
         instance.GlobalPosition = earthPosition;
@@ -850,7 +858,7 @@ public partial class Player : CharacterBody2D, IUndoable
     }
 
     // No checkpoint when there is a fireball lingering, you need to be grounded and be able to jump, there also shouldn't be a moving gate and you need to be able to die from being crushed
-    private bool CanAddCheckpoint() => isGrounded && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !isOnMovingEntity && !IsOnWall() && !SqueezeDeathDisabled;
+    private bool CanAddCheckpoint() => IsOnFloor() && !isUsingAbility && jumpMovePreventionTimer <= 0.0f && GetTree().GetNodesInGroup("Fireball").Count == 0 && !isOnMovingEntity && !IsOnWall() && !SqueezeDeathDisabled && checkpointingUnlocked;
 
     private void TryAddCheckpoint(double delta)
 	{
@@ -901,6 +909,8 @@ public partial class Player : CharacterBody2D, IUndoable
 
     public void UndoLocalCheckpoint(bool nextCpRequested)
     {
+		checkpointingUnlocked = true;
+
         if (isDead) isDead = false;
 
         if (!checkpointRequested && playerPositionCheckpoints.Count > 1)
@@ -944,4 +954,9 @@ public partial class Player : CharacterBody2D, IUndoable
         isUndoing = false;
 		propertyAnimations.Play("FadeIn");
     }
+
+	private void UnlockCheckpointing()
+	{
+		checkpointingUnlocked = true;
+	}
 }

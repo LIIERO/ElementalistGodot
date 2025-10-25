@@ -64,5 +64,6 @@ public partial class EarthBlock : Area2D, IUndoable
     {
         blockCollider.Disabled = false;
         sprite.Modulate = new Color(1f, 1f, 1f, 1f);
+        customSignals.EmitSignal(CustomSignals.SignalName.UnlockCheckpointing);
     }
 }

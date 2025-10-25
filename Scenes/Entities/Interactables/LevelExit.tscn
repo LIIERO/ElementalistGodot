@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://deel3vxmckby4"]
+[gd_scene load_steps=7 format=3 uid="uid://deel3vxmckby4"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactable/LevelExit.cs" id="1_ipfbx"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_3gj41"]
@@ -6,33 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qu6i"]
 size = Vector2(16, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejfed"]
-atlas = ExtResource("3_r3rhy")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12hi8"]
-atlas = ExtResource("3_r3rhy")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_f1tq1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ejfed")
-}],
-"loop": false,
-"name": &"LevelCompleted",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_12hi8")
-}],
-"loop": false,
-"name": &"LevelNotCompleted",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_porbe"]
 resource_name = "Idle"
@@ -67,13 +40,14 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3qu6i")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, -0.287858)
+position = Vector2(0, 0.184706)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
+[node name="Sprite2D" type="Sprite2D" parent="MovedByAnimation"]
 texture_filter = 1
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_f1tq1")
-animation = &"LevelNotCompleted"
+texture = ExtResource("3_r3rhy")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 32)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

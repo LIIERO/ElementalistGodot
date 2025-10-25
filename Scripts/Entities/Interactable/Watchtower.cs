@@ -33,7 +33,7 @@ public partial class Watchtower : Interactable
 
         if (!gameState.WatchtowerActive) return;
 
-        if (InputManager.JumpPressed() || InputManager.AbilityPressed() || InputManager.UndoPressed())
+        if (InputManager.JumpPressed() || InputManager.AbilityPressed() || InputManager.UndoPressed() || InputManager.PausePressed())
         {
             gameState.WatchtowerActive = false;
             //unlockNextFrame = true;

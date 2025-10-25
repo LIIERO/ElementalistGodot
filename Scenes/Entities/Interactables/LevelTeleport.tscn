@@ -149,13 +149,13 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3qu6i")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 0.924413)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_f1tq1")
-animation = &"LevelCompletedSalvage"
+animation = &"LevelNotCompleted"
 
 [node name="Text" type="Node2D" parent="MovedByAnimation"]
 position = Vector2(-3, -21)
@@ -202,6 +202,13 @@ theme_override_font_sizes/font_size = 12
 text = "LevelName"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ElementalShellImage" type="Sprite2D" parent="InfoCard"]
+visible = false
+position = Vector2(96, -8)
+texture = ExtResource("3_scuhr")
+region_enabled = true
+region_rect = Rect2(48, 96, 16, 16)
 
 [node name="InfoAnimation" type="AnimationPlayer" parent="."]
 libraries = {
