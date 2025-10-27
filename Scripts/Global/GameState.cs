@@ -31,6 +31,7 @@ public partial class GameState : Node
     public bool IsAbilitySalvagingUnlocked { get; set; } = false;
     public List<ElementState> SalvagedAbilities { get; set; } = new();
     public List<string> UnlockedLetters { get; set; } = new();
+    public Dictionary<string, List<ElementState>> AbilitiesSalvagedInLevels { get; private set; } = new();
 
     // Save file stats
     public double InGameTime { get; set; } = 0.0; // Set in game time display class
@@ -295,6 +296,31 @@ public partial class GameState : Node
         customSignals.EmitSignal(CustomSignals.SignalName.SetPlayerPosition, position, fireTeleport, fireballDirection);
     }
 
+    public void UpdateAbilitiesSalvagedInLevels(List<ElementState> salvagedAbilities)
+    {
+        if (AbilitiesSalvagedInLevels == null) AbilitiesSalvagedInLevels = new();
+
+        string key = CurrentLevelNameID; // these are unique for each level
+        List<ElementState> salvagedAbilitiesCopy = new List<ElementState>(salvagedAbilities);
+        if (AbilitiesSalvagedInLevels.ContainsKey(key))
+            AbilitiesSalvagedInLevels[key] = salvagedAbilitiesCopy;
+        else
+            AbilitiesSalvagedInLevels.Add(key, salvagedAbilitiesCopy);
+    }
+
+    public bool RetrieveAbilitiesSalvagedInLevel(string levelNameID, out List<ElementState> elements)
+    {
+        string key = levelNameID;
+        elements = null;
+
+        if (AbilitiesSalvagedInLevels == null) return false;
+        if (!AbilitiesSalvagedInLevels.ContainsKey(key)) return false;
+
+        elements = new List<ElementState>(AbilitiesSalvagedInLevels[key]);
+        return true;
+    }
+
+
     // TEXT DATA
     string textDataPath = "res://Data/TextData/";
     private const string jsonFormat = ".json";
@@ -326,6 +352,8 @@ public partial class GameState : Node
         foreach (ElementState state in SalvagedAbilities)
             salvagedAbilitiesInt.Add((int)state);
 
+        Dictionary<string, List<int>> abilitiesSalvagedInLevelsInt = GameUtils.SalvagedAbilitiesInLevelsToInt(AbilitiesSalvagedInLevels);
+
         PlayerData data = new(
             PlayerHubRespawnPosition.X, PlayerHubRespawnPosition.Y,
             CompletedLevels, 
@@ -345,7 +373,8 @@ public partial class GameState : Node
             NoAbilityUses,
             IsAbilitySalvagingUnlocked,
             salvagedAbilitiesInt,
-            UnlockedLetters);
+            UnlockedLetters,
+            abilitiesSalvagedInLevelsInt);
 
         string jsonString = JsonSerializer.Serialize(data);
         File.WriteAllText(path, jsonString);
@@ -391,6 +420,7 @@ public partial class GameState : Node
         foreach (int stateInt in data.SalvagedAbilities)
             SalvagedAbilities.Add((ElementState)stateInt);
         UnlockedLetters = data.UnlockedLetters;
+        AbilitiesSalvagedInLevels = GameUtils.SalvagedAbilitiesInLevelsToElementState(data.AbilitiesSalvagedInLevels);
 
         if (UnlockedLetters == null) UnlockedLetters = new(); // Incompatible save file fix
 
@@ -420,6 +450,7 @@ public partial class GameState : Node
         IsAbilitySalvagingUnlocked = false;
         SalvagedAbilities = new();
         UnlockedLetters = new();
+        AbilitiesSalvagedInLevels = new();
 
         CurrentSaveFileID = id;
 

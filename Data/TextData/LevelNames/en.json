@@ -143,7 +143,11 @@
 	"abandon": "Abandon",
 	"less_than_zero": "Less Than Zero",
 	"void_poison": "Void Poison",
+	"curse_of_binding": "Curse of Binding",
+	"annihilate": "Annihilate",
 	"corrupted_repository": "Corrupted Repository",
+	"excalibur": "Excalibur",
+	"lord_woolsack": "Lord Woolsack",
 	
 	"": ""
 }

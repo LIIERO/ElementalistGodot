@@ -47,7 +47,7 @@ public partial class CustomSignals : Node
     public delegate void ProgressDialogEventHandler();
 
     [Signal]
-    public delegate void PopupResultEventHandler(bool result);
+    public delegate void PopupResultEventHandler(bool result, string popupId);
 
     [Signal]
     public delegate void HintPopupResultEventHandler(bool result, int noHint);

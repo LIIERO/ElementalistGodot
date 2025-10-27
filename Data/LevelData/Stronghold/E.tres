@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_1l064")
 ID = "E"
-Name = "corrupted_repository"
+Name = "curse_of_binding"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

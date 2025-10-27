@@ -207,9 +207,10 @@ position = Vector2(-272, 16)
 
 [node name="Interactables" type="Node2D" parent="." index="9"]
 
-[node name="LevelShortcut" parent="Interactables" index="0" instance=ExtResource("9_rybi7")]
+[node name="LevelShortcut" parent="Interactables" index="0" node_paths=PackedStringArray("orderedLevelPositions") instance=ExtResource("9_rybi7")]
 position = Vector2(64, 96)
 orderedLevels = Array[Object]([ExtResource("12_gshaw"), ExtResource("14_35802"), ExtResource("16_4t4fk")])
+orderedLevelPositions = [NodePath("../Levels/Level3"), NodePath("../Levels/Level4"), NodePath("../Levels/Level6")]
 
 [node name="Levels" type="Node2D" parent="Interactables" index="1"]
 
@@ -229,15 +230,15 @@ levelToTeleportTo = ExtResource("11_bmdxf")
 position = Vector2(320, 48)
 levelToTeleportTo = ExtResource("12_gshaw")
 
-[node name="Level5" parent="Interactables/Levels" index="4" instance=ExtResource("8_umfyq")]
+[node name="Level4" parent="Interactables/Levels" index="4" instance=ExtResource("8_umfyq")]
 position = Vector2(-176, -64)
 levelToTeleportTo = ExtResource("14_35802")
 
-[node name="Level6" parent="Interactables/Levels" index="5" instance=ExtResource("8_umfyq")]
+[node name="Level5" parent="Interactables/Levels" index="5" instance=ExtResource("8_umfyq")]
 position = Vector2(528, 32)
 levelToTeleportTo = ExtResource("15_e3orq")
 
-[node name="Level7" parent="Interactables/Levels" index="6" instance=ExtResource("8_umfyq")]
+[node name="Level6" parent="Interactables/Levels" index="6" instance=ExtResource("8_umfyq")]
 position = Vector2(-416, 0)
 levelToTeleportTo = ExtResource("16_4t4fk")
 
@@ -249,7 +250,7 @@ levelToTeleportTo = ExtResource("13_m0xhk")
 position = Vector2(-208, 112)
 levelToTeleportTo = ExtResource("18_a3chb")
 
-[node name="Level6S" parent="Interactables/Levels" index="9" instance=ExtResource("8_umfyq")]
+[node name="Level5S" parent="Interactables/Levels" index="9" instance=ExtResource("8_umfyq")]
 position = Vector2(448, 0)
 levelToTeleportTo = ExtResource("17_65sys")
 

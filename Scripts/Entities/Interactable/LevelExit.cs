@@ -26,12 +26,14 @@ public partial class LevelExit : Interactable
         {
             // Ability salvaging
             if (gameState.IsAbilitySalvagingUnlocked && playerScriptReference.AbilityList.Count > 0)
+            {
                 gameState.SalvagedAbilities = new List<ElementState>(playerScriptReference.AbilityList);
+                gameState.UpdateAbilitiesSalvagedInLevels(playerScriptReference.AbilityList);
+            }   
             
             gameState.CompleteCurrentLevel();
         }
             
-
         levelTransitions.StartHubTransition(playerScriptReference.IsHoldingGoal);  
     }
 }

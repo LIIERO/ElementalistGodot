@@ -1,4 +1,4 @@
-using Godot;
+/*using Godot;
 using System;
 using System.Security.AccessControl;
 using static System.Net.Mime.MediaTypeNames;
@@ -14,9 +14,7 @@ public partial class LevelShortcut : Interactable
 
     [Export] private string text = "level_shortcut_info";
     [Export] private LevelData[] orderedLevels;
-    [Export] private Node2D[] orderedLevelPositions;
     private LevelData levelToTeleportTo = null;
-    private int levelToTeleportToIndex = -1;
 
     public static bool setPlayerLevelEnterPosition = false;
 
@@ -36,7 +34,6 @@ public partial class LevelShortcut : Interactable
             if (gameState.HasLevelBeenCompleted(level.ID)) // TODO: last entered level (not completed)
             {
                 levelToTeleportTo = level;
-                levelToTeleportToIndex = i;
             }
         }
 
@@ -54,14 +51,10 @@ public partial class LevelShortcut : Interactable
             return;
         }
 
-        gameState.SalvagedAbilities.Clear();
-        gameState.PlayerHubRespawnPosition = orderedLevelPositions[levelToTeleportToIndex].GlobalPosition;
-        playerScriptReference.RestartLevel(false);
+        gameState.SalvagedAbilities = new();
 
-        //gameState.SalvagedAbilities = new();
-
-        //levelTransitions.StartLevelTransition(levelToTeleportTo);
-        //if (levelToTeleportTo.IsSpecial) gameState.IsCurrentLevelSpecial = true;
+        levelTransitions.StartLevelTransition(levelToTeleportTo);
+        if (levelToTeleportTo.IsSpecial) gameState.IsCurrentLevelSpecial = true;
     }
 
     protected override void PlayerExited()
@@ -71,3 +64,4 @@ public partial class LevelShortcut : Interactable
         customSignals.EmitSignal(CustomSignals.SignalName.EndDialog);
     }
 }
+*/

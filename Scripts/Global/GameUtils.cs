@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using GlobalTypes;
+using System.Linq;
 
 public static class GameUtils
 
@@ -110,6 +111,24 @@ public static class GameUtils
         TimeSpan span = new(0, 0, seconds);
         return string.Format("{0:0}:{1:00}:{2:00}.{3:000}", span.Hours, span.Minutes, span.Seconds, miliseconds);
     }
+
+    /*public static Dictionary<string, List<A>> TypeCastInDict<A, B>(Dictionary<string, List<B>> other)
+    {
+        if (other == null) return null;
+        return other.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(e => (A)Convert.ChangeType(e, typeof(A))).ToList());
+    }*/
+
+    public static Dictionary<string, List<int>> SalvagedAbilitiesInLevelsToInt(Dictionary<string, List<ElementState>> other)
+    {
+        if (other == null) return null;
+        return other.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(e => (int)e).ToList());
+    }
+    public static Dictionary<string, List<ElementState>> SalvagedAbilitiesInLevelsToElementState(Dictionary<string, List<int>> other)
+    {
+        if (other == null) return null;
+        return other.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(e => (ElementState)e).ToList());
+    }
+
 
 
     public class DataFileDoesntExistException : Exception

@@ -120,7 +120,8 @@ public partial class SaveSlot : Node2D
         else
             elementalShell.Hide();
 
-        if (saveData.UnlockedLetters == null) saveData.UnlockedLetters = new(); // Incompatible save file fix
+        if (saveData.UnlockedLetters == null)
+            saveData.UnlockedLetters = new(); // Incompatible save file fix
 
         for (int i = 0; i < GameUtils.wordToMake.Length; i++)
         {

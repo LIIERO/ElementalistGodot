@@ -675,9 +675,10 @@ public partial class Player : CharacterBody2D, IUndoable
 			Kill(crushed:true);
 	}
 
-	private void RestartLevel()
+	public void RestartLevel(bool countRestart=true)
 	{
-		gameState.NoRestarts++;
+		if (countRestart)
+			gameState.NoRestarts++;
 
         if (gameState.IsHubLoaded() && gameState.PlayerHubRespawnPosition != Vector2.Zero) // Dying in Hub (multiple checkpoints)
             setPlayerRespawnPosition = true;

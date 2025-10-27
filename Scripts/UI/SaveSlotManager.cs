@@ -103,7 +103,7 @@ public partial class SaveSlotManager : Control
 					newGameApprovalPopup.SetText(newGameApprovalPopupText);
 					newGameApprovalPopup.CreatePopup();
 				}
-				else NewGame(true);
+				else NewGame(true, "");
             }
 
             if (selectionMode == SelectionMode.continuePressed)
@@ -142,7 +142,7 @@ public partial class SaveSlotManager : Control
         SelectSlot(CurrentItemIndex);
     }
 
-    private void NewGame(bool areYouSure)
+    private void NewGame(bool areYouSure, string _)
     {
         newGameApprovalPopup = null;
 

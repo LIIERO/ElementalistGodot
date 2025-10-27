@@ -7,6 +7,6 @@ script = ExtResource("1_7l1ci")
 ID = "D"
 Name = "void_poison"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "C"
+SpecificLevelCompletedToUnlock = "A"
 IsSpecial = false
 IsSalvageable = false

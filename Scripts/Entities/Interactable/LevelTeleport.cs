@@ -9,7 +9,7 @@ public partial class LevelTeleport : Interactable
 {
     // Singletons
     private GameState gameState;
-    //private CustomSignals customSignals;
+    private CustomSignals customSignals;
     private LevelTransitions levelTransitions;
 
     private AnimatedSprite2D currentSprite;
@@ -18,17 +18,23 @@ public partial class LevelTeleport : Interactable
     private Label levelNameDisplayShadow;
     private AnimationPlayer nameDisplayAnimation;
 
+    //private PackedScene yesNoScreen = null;
+    private YesNoScreen abilityRetrievalApprovalPopup = null;
+
     [Export] private LevelData levelToTeleportTo;
     [Export] private bool swapLevelNameColours = false;
     [Export] private bool elementalShellRequired = false;
 
     public static bool setPlayerLevelEnterPosition = false;
+    private List<ElementState> tempRetrievedElements = null;
 
     public override void _Ready()
     {
         gameState = GetNode<GameState>("/root/GameState");
-        //customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         levelTransitions = GetNode<CanvasLayer>("/root/Transitions") as LevelTransitions;
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+        customSignals.Connect(CustomSignals.SignalName.PopupResult, new Callable(this, MethodName.RetrievalPopupResult));
+        
         currentSprite = GetNode<AnimatedSprite2D>("MovedByAnimation/AnimatedSprite2D");
         teleportText = GetNode<Label>("MovedByAnimation/Text/Label");
         nameDisplayAnimation = GetNode<AnimationPlayer>("InfoAnimation");
@@ -40,7 +46,11 @@ public partial class LevelTeleport : Interactable
         if (swapLevelNameColours)
             SwapLevelNameColors();
         if (levelToTeleportTo.IsSalvageable)
+        {
             GetNode<Sprite2D>("InfoCard/ElementalShellImage").Show();
+            //yesNoScreen = ResourceLoader.Load<PackedScene>("res://Scenes/UI/YesNoScreen.tscn"); // Popup only needed for Salvageable levels
+        }
+            
         
 
         base._Ready();
@@ -117,6 +127,24 @@ public partial class LevelTeleport : Interactable
     {
         base.Interact();
 
+        // Salvaged ability retrieval system
+        if (levelToTeleportTo.IsSalvageable && gameState.RetrieveAbilitiesSalvagedInLevel(levelToTeleportTo.Name, out List<ElementState> retrievedElements))
+        {
+            tempRetrievedElements = retrievedElements;
+
+            abilityRetrievalApprovalPopup = ResourceLoader.Load<PackedScene>("res://Scenes/UI/YesNoScreen.tscn").Instantiate() as YesNoScreen;
+            AddChild(abilityRetrievalApprovalPopup);
+            abilityRetrievalApprovalPopup.SetText(gameState.UITextData["ability_retrieval_question"]);
+            abilityRetrievalApprovalPopup.CreatePopup(popupId:levelToTeleportTo.Name);
+        }
+        else
+        {
+            EnterLevel();
+        }
+    }
+
+    private void EnterLevel()
+    {
         gameState.SalvagedAbilities = new();
 
         if (playerScriptReference.IsHoldingGoal)
@@ -128,5 +156,24 @@ public partial class LevelTeleport : Interactable
 
         levelTransitions.StartLevelTransition(levelToTeleportTo);
         if (levelToTeleportTo.IsSpecial) gameState.IsCurrentLevelSpecial = true;
+    }
+
+    private void RetrievalPopupResult(bool areYouSure, string popupId)
+    {
+        if (popupId != levelToTeleportTo.Name) return; // So only one portal receives the event (using name as id)
+
+        abilityRetrievalApprovalPopup = null;
+
+        if (areYouSure)
+        {
+            EnterLevel();
+        }
+        else
+        {
+            gameState.SalvagedAbilities = tempRetrievedElements;
+            tempRetrievedElements = null;
+            gameState.PlayerHubRespawnPosition = GlobalPosition;
+            playerScriptReference.RestartLevel(false);
+        }
     }
 }

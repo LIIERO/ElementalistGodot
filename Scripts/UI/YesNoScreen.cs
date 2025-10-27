@@ -13,6 +13,7 @@ public partial class YesNoScreen : CanvasLayer
     [Export] private Label popupText;
 
     private bool isYesSelected;
+    private string id = "";
 
     public override void _Ready()
 	{
@@ -26,8 +27,9 @@ public partial class YesNoScreen : CanvasLayer
         popupText.Text = text;
     }
 
-    public void CreatePopup()
+    public void CreatePopup(string popupId="")
     {
+        id = popupId;
         Show();
         GetTree().Paused = true;
         gameState.IsGamePaused = true;
@@ -57,7 +59,7 @@ public partial class YesNoScreen : CanvasLayer
     {
         GetTree().Paused = false;
         gameState.IsGamePaused = false;
-        customSignals.EmitSignal(CustomSignals.SignalName.PopupResult, result);
+        customSignals.EmitSignal(CustomSignals.SignalName.PopupResult, result, id);
         QueueFree();
     }
 
