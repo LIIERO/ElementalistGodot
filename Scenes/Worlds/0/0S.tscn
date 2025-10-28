@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_qn1ts"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_ieyoe"]
 [ext_resource type="PackedScene" uid="uid://c5288p47mieon" path="res://Scenes/Entities/Orbs/EarthOrbRemix.tscn" id="2_wbh5d"]
-[ext_resource type="PackedScene" uid="uid://dwd7nxjif35kx" path="res://Scenes/Entities/Orbs/EarthOrb.tscn" id="3_pc3xu"]
+[ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="3_04quu"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="3_qpxtv"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="4_sjue3"]
 
@@ -51,8 +51,8 @@ position = Vector2(-64, -32)
 [node name="EarthOrbRemix12" parent="Orbs" index="11" instance=ExtResource("2_wbh5d")]
 position = Vector2(-48, -32)
 
-[node name="EarthOrb" parent="Orbs" index="12" instance=ExtResource("3_pc3xu")]
-position = Vector2(208, 48)
+[node name="WaterOrb" parent="Orbs" index="12" instance=ExtResource("3_04quu")]
+position = Vector2(-72, -48)
 
 [node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_ieyoe")]
 position = Vector2(-192, 48)

@@ -55,6 +55,13 @@
 	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Undo checkpoints are created when you land on the ground after collecting, or using, an ability."}
   ],
 
+  "0_R_easy": [
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "This is a recreation of the hardest triple-A game puzzle. Use the device on the left to check your answer."}
+  ],
+
+  "0_R_hard": [
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Now, this is an otherworldly puzzle!"}
+  ],
 
 
   "1_HUB_reminder": [
