@@ -515,17 +515,22 @@ public partial class GameState : Node
 
         else if (Input.IsActionJustPressed("inputDebugUnlockAll"))
         {
+            string[] world2levelsToLock = new string[] { "A", "B", "C", "D", "I", "V", "VS" };
+            string[] world0levelsToLock = new string[] { "0S", "N", "NS" };
+
             NoSunFragments = 900;
             NoRedFragments = 90;
             foreach (KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
             {
                 foreach (string levelKey in world.Value.Keys.ToList())
                 {
-                    if (world.Key != "7") // TODO: temporary for playtesting
+                    // temporary for playtesting
+                    if (!(world.Key == "7" || (world.Key == "2" && world2levelsToLock.Contains(levelKey)) || (world.Key == "0" && world0levelsToLock.Contains(levelKey))))
                         CompletedLevels[world.Key][levelKey] = true;
                 }
             }
             IsAbilitySalvagingUnlocked = true;
+            if (!UnlockedLetters.Contains("Z")) UnlockedLetters.Add("Z");
             RestartCurrentLevel();
         }
     }

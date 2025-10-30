@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bc4pp5pxdth3o"]
+
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_giebt"]
+
+[resource]
+script = ExtResource("1_giebt")
+ID = "NS"
+Name = "roman_numeral"
+NoCompletedToUnlock = 0
+SpecificLevelCompletedToUnlock = "N"
+IsSpecial = true
+IsSalvageable = false

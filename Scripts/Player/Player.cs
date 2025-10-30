@@ -562,7 +562,7 @@ public partial class Player : CharacterBody2D, IUndoable
 	{
         //await ToSignal(GetTree().CreateTimer(t, processInPhysics: true), "timeout");
         checkpointingUnlocked = false; // Bugfix
-        Vector2 earthPosition = new Vector2(CalculateEarthXPosition(position.X, position.Y), position.Y);
+        Vector2 earthPosition = new Vector2(CalculateEarthXPosition(position.X, position.Y), (float)Math.Round(position.Y));
         Node2D instance = earthBlock.Instantiate() as Node2D;
         spawner.AddChild(instance);
         instance.GlobalPosition = earthPosition;

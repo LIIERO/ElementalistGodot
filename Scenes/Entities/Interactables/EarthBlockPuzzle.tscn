@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1q8rdr37rltp"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/PFPuzzles/EarthBlockPuzzleColorSwapper.cs" id="1_8eccn"]
+[ext_resource type="Texture2D" uid="uid://bymq53bwncnmr" path="res://Graphics/Entities/pf_entities.png" id="2_80nvp"]
+[ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_amwg1"]
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/PFPuzzles/EarthBlockPuzzleChecker.cs" id="3_gsje7"]
+[ext_resource type="PackedScene" uid="uid://cqcciotlmggur" path="res://Scenes/Entities/Gates/EmptyGate.tscn" id="4_c7l3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfl2i"]
+size = Vector2(30, 1)
+
+[node name="EarthBlockPuzzle" type="Node2D"]
+
+[node name="ColorSwapper" type="Area2D" parent="."]
+position = Vector2(32, 0)
+script = ExtResource("1_8eccn")
+arrowYOffset = -3.0
+arrowIndicatorPrefab = ExtResource("2_amwg1")
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorSwapper"]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("2_80nvp")
+region_enabled = true
+region_rect = Rect2(64, 32, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorSwapper"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_nfl2i")
+
+[node name="EarthBlockChecker" type="Sprite2D" parent="." node_paths=PackedStringArray("gate", "blockPositions")]
+position = Vector2(-40, -32)
+texture = ExtResource("2_80nvp")
+region_enabled = true
+region_rect = Rect2(0, 64, 48, 64)
+script = ExtResource("3_gsje7")
+gate = NodePath("../EmptyGate")
+blockPositions = [NodePath("BlockPlacePoints/00"), NodePath("BlockPlacePoints/01"), NodePath("BlockPlacePoints/02"), NodePath("BlockPlacePoints/10"), NodePath("BlockPlacePoints/11"), NodePath("BlockPlacePoints/12"), NodePath("BlockPlacePoints/20"), NodePath("BlockPlacePoints/21"), NodePath("BlockPlacePoints/22"), NodePath("BlockPlacePoints/30"), NodePath("BlockPlacePoints/31"), NodePath("BlockPlacePoints/32")]
+hasToBeDark = PackedInt32Array(0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="BlockPlacePoints" type="Node2D" parent="EarthBlockChecker"]
+position = Vector2(24, 32)
+
+[node name="00" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-32, -48)
+
+[node name="01" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-16, -48)
+
+[node name="02" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(0, -48)
+
+[node name="10" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-32, -32)
+
+[node name="11" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-16, -32)
+
+[node name="12" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(0, -32)
+
+[node name="20" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-32, -16)
+
+[node name="21" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-16, -16)
+
+[node name="22" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(0, -16)
+
+[node name="30" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-32, 0)
+
+[node name="31" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+position = Vector2(-16, 0)
+
+[node name="32" type="Node2D" parent="EarthBlockChecker/BlockPlacePoints"]
+
+[node name="EmptyGate" parent="." instance=ExtResource("4_c7l3y")]
+position = Vector2(80, -16)
+undoable = true
+
+[connection signal="body_entered" from="ColorSwapper" to="ColorSwapper" method="_OnBodyEntered"]
+[connection signal="body_exited" from="ColorSwapper" to="ColorSwapper" method="_OnBodyExited"]

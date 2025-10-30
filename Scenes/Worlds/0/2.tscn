@@ -49,10 +49,10 @@ layer_0/tile_data = PackedInt32Array(851972, 262144, 3, 851970, 196608, 26843545
 [node name="BackgroundTiles" parent="." index="9"]
 layer_0/tile_data = PackedInt32Array(131079, 196608, 2, 65543, 0, 1, 131078, 131072, 3, 7, 0, 1, -65529, 0, 1, -131065, 0, 1, -196601, 0, 0, 458755, 720896, 3, 393219, 720896, 2, 458754, 589824, 3, 393218, 327680, 1, 458753, 524288, 3, 393217, 524288, 0, 327683, 720896, 0, 327682, 524288, 0, 131064, 524288, 0, 65529, 0, 0, 131065, 589824, 0, 131066, 720896, 0, 196600, 524288, 3, 196601, 589824, 3, 196602, 720896, 3)
 
-[node name="WaterIndicator" parent="." index="11" instance=ExtResource("6_ohoyu")]
+[node name="WaterIndicator" parent="." index="10" instance=ExtResource("6_ohoyu")]
 position = Vector2(-128, 0)
 
-[node name="UndoTutorial" parent="." index="12" instance=ExtResource("7_1qrex")]
+[node name="UndoTutorial" parent="." index="11" instance=ExtResource("7_1qrex")]
 position = Vector2(32, -128)
 
 [connection signal="body_entered" from="Orbs/WaterOrb" to="Orbs/WaterOrb" method="_on_body_entered"]

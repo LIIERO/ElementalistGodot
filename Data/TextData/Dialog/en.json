@@ -56,7 +56,8 @@
   ],
 
   "0_R_easy": [
-	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "This is a recreation of the hardest triple-A game puzzle. Use the device on the left to check your answer."}
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "This is a recreation of the hardest triple-A game puzzle ever made."},
+	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Use the device on the left to check your answer."}
   ],
 
   "0_R_hard": [

@@ -21,7 +21,7 @@ public abstract partial class Gate : Node2D, IUndoable
     protected Label requiredFragmentsDisplay;
     protected Sprite2D gateSprite;
 
-    protected bool isOpened = false;
+    public bool isOpened = false;
 
     // Undo system
     private List<bool> gateStateCheckpoints = new List<bool>();

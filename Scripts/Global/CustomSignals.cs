@@ -90,4 +90,10 @@ public partial class CustomSignals : Node
 
     [Signal]
     public delegate void UnlockCheckpointingEventHandler(); // Used by Earth block
+
+
+    // Purple Forest puzzle
+
+    [Signal]
+    public delegate void SwapEarthBlockColorEventHandler();
 }

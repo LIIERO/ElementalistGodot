@@ -51,7 +51,7 @@
   "abilities_salvaged": "Abilities salvaged",
 
   "new_save_warning": "Are you sure you want to reset this save file? \n\nAll progress will be lost.",
-  "ability_retrieval_question": "Are you sure you want to enter this level? \n\nSelect \"NO\" to retrieve last salvaged elements instead.",
+  "ability_retrieval_question": "Would you like to retrieve the last salvaged elements instead of entering the level?",
   "hint_warning": "Are you sure you want to see a hint?",
   "hint_missing": "Hint unavailable, sorry.",
   "gamepad_note": "Note: The left analog stick and Dpad always control directional input."

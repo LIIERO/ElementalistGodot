@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8paic3uof2dp"]
+
+[ext_resource type="Texture2D" uid="uid://bymq53bwncnmr" path="res://Graphics/Entities/pf_entities.png" id="1_pk7b3"]
+
+[node name="RomanNumeralIndicator" type="Sprite2D"]
+texture = ExtResource("1_pk7b3")
+region_enabled = true
+region_rect = Rect2(48, 24, 8, 8)

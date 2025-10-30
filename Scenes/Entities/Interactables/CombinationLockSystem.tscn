@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dunbjrxf0cim2"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Interactable/CombinationLockSystem/CombinationLockConfirm.cs" id="1_b0dvh"]
+[ext_resource type="Script" path="res://Scripts/Entities/Interactable/PFPuzzles/CombinationLockConfirm.cs" id="1_b0dvh"]
 [ext_resource type="Texture2D" uid="uid://bymq53bwncnmr" path="res://Graphics/Entities/pf_entities.png" id="2_tvotw"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="2_w05f4"]
 [ext_resource type="PackedScene" uid="uid://c42e87axlihoa" path="res://Scenes/Entities/Interactables/CombinationLockInput.tscn" id="3_dolfh"]

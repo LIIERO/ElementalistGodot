@@ -9,7 +9,7 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5g01u"]
 size = Vector2(16, 16)
 
-[node name="EarthBlock" type="Area2D"]
+[node name="EarthBlock" type="Area2D" groups=["EarthBlock"]]
 script = ExtResource("1_rc561")
 
 [node name="PlayerDetection" type="CollisionShape2D" parent="."]

@@ -21,6 +21,10 @@
 	"the_air": "The Air",
 	"powers_combined": "Powers Combined",
 	"elemental_stack": "Elemental Stack",
+	
+	"red_collector": "Red Collector",
+	"numeral": "Numeral",
+	"roman_numeral": "Roman Numeral",
 
 
 	"sharp_reefs": "Sharp Reefs",
@@ -128,16 +132,16 @@
 	"compound": "Compound",
 	
 	
-	"fracture": "Fracture",
-	"static": "Static",
+	"fracture": "The Fracture",
+	"static": "The Static",
 	"the_cliff": "The Cliff",
 	"the_cave": "The Cave",
-	"badlands": "Badlands",
-	"storerooms": "Storerooms",
-	"ravine": "Ravine",
+	"badlands": "The Badlands",
+	"storerooms": "The Storerooms",
+	"ravine": "The Ravine",
 	"the_tower": "The Tower",
-	"yellow_altar": "Yellow Altar",
-	"red_altar": "Red Altar",
+	"yellow_altar": "The Yellow Altar",
+	"red_altar": "The Red Altar",
 	
 	"the_minus": "The Minus",
 	"abandon": "Abandon",
@@ -147,7 +151,7 @@
 	"annihilate": "Annihilate",
 	"corrupted_repository": "Corrupted Repository",
 	"excalibur": "Excalibur",
-	"lord_woolsack": "Lord Woolsack",
+	"lord_woolsack": "Lord Woolsack's Castle",
 	
 	"": ""
 }

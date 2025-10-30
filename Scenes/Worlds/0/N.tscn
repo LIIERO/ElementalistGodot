@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://60slkyu8x7v2"]
+[gd_scene load_steps=7 format=3 uid="uid://drlttaq25xynt"]
 
-[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_qwoya"]
-[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="2_q577c"]
-[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="3_8v6qs"]
-[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="4_5v58q"]
-[ext_resource type="PackedScene" uid="uid://dunbjrxf0cim2" path="res://Scenes/Entities/Interactables/CombinationLockSystem.tscn" id="5_d4n13"]
-[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="6_bewf0"]
+[ext_resource type="PackedScene" uid="uid://4huidt2uo664" path="res://Scenes/Worlds/0/Base.tscn" id="1_skyl0"]
+[ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="3_ig1rd"]
+[ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="4_wseq4"]
+[ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="5_25sy4"]
+[ext_resource type="PackedScene" uid="uid://dunbjrxf0cim2" path="res://Scenes/Entities/Interactables/CombinationLockSystem.tscn" id="5_57dlt"]
+[ext_resource type="FontFile" uid="uid://dude106dxhqsh" path="res://Fonts/Exple_12px.ttf" id="6_45rn0"]
 
-[node name="Game" instance=ExtResource("1_qwoya")]
+[node name="Game" instance=ExtResource("1_skyl0")]
 
 [node name="Zoe" parent="." index="1"]
 position = Vector2(-112, 96)
@@ -15,33 +15,36 @@ position = Vector2(-112, 96)
 [node name="GroundTiles" parent="." index="3"]
 layer_0/tile_data = PackedInt32Array(262128, 0, 1, 327664, 262144, 1, 393200, 524288, 1, 458736, 524288, 1, 458737, 589824, 2, 458738, 589824, 2, 458739, 393216, 1, 458740, 655360, 0, 458741, 655360, 0, 458742, 655360, 0, 458743, 655360, 0, 458744, 655360, 0, 458745, 655360, 0, 458746, 655360, 0, 458747, 655360, 0, 458748, 655360, 0, 458749, 655360, 0, 458750, 655360, 0, 458751, 655360, 0, 393216, 655360, 0, 393217, 655360, 0, 393218, 655360, 0, 393219, 655360, 0, 393220, 655360, 0, 393221, 655360, 0, 393222, 655360, 0, 393223, 655360, 0, 393224, 655360, 0, 524272, 524288, 1, 589808, 524288, 1, 655344, 524288, 3, 524273, 589824, 2, 589809, 589824, 2, 655345, 589824, 3, 524274, 589824, 2, 589810, 589824, 2, 655346, 589824, 3, 524275, 589824, 2, 589811, 589824, 2, 655347, 589824, 3, 524276, 589824, 2, 589812, 589824, 2, 655348, 589824, 3, 524277, 589824, 2, 589813, 589824, 2, 655349, 589824, 3, 524278, 589824, 2, 589814, 589824, 2, 655350, 589824, 3, 524279, 589824, 2, 589815, 589824, 2, 655351, 589824, 3, 524280, 589824, 2, 589816, 589824, 2, 655352, 589824, 3, 524281, 589824, 2, 589817, 589824, 2, 655353, 589824, 3, 524282, 589824, 2, 589818, 589824, 2, 655354, 589824, 3, 524283, 589824, 2, 589819, 589824, 2, 655355, 589824, 3, 524284, 589824, 2, 589820, 589824, 2, 655356, 589824, 3, 524285, 589824, 2, 589821, 589824, 2, 655357, 589824, 3, 524286, 589824, 2, 589822, 589824, 2, 655358, 589824, 3, 524287, 589824, 2, 589823, 589824, 2, 655359, 589824, 3, 458752, 589824, 2, 524288, 589824, 2, 589824, 589824, 3, 458753, 589824, 2, 524289, 589824, 2, 589825, 589824, 3, 458754, 589824, 2, 524290, 589824, 2, 589826, 589824, 3, 458755, 589824, 2, 524291, 589824, 2, 589827, 589824, 3, 458756, 589824, 2, 524292, 589824, 2, 589828, 589824, 3, 458757, 589824, 2, 524293, 589824, 2, 589829, 589824, 3, 458758, 589824, 2, 524294, 589824, 2, 589830, 589824, 3, 458759, 589824, 2, 524295, 589824, 2, 589831, 589824, 3, 458760, 589824, 2, 524296, 589824, 2, 589832, 589824, 3, 458761, 589824, 2, 524297, 589824, 2, 589833, 589824, 3, 458762, 589824, 2, 524298, 589824, 2, 589834, 589824, 3, 458763, 589824, 2, 524299, 589824, 2, 589835, 589824, 3, 458764, 589824, 2, 524300, 589824, 2, 589836, 589824, 3, 458765, 589824, 2, 524301, 589824, 2, 589837, 589824, 3, 458766, 589824, 2, 524302, 589824, 2, 589838, 589824, 3, -131057, 0, 1, -65521, 0, 1, 458767, 720896, 2, 524303, 720896, 2, 589839, 720896, 3, 196592, 0, 1, 131056, 0, 1, 65520, 0, 1, -16, 0, 1, -65552, 0, 1, 15, 458752, 1, 65551, 720896, 2, 131087, 720896, 2, 196623, 720896, 2, 262159, 720896, 2, 327695, 720896, 2, 393231, 720896, 2, 393230, 589824, 2, 393229, 327680, 1, 393228, 655360, 0, 393227, 655360, 0, 393226, 655360, 0, 393225, 655360, 0, -131088, 0, 1, -196624, 0, 1, -262160, 0, 1, -327696, 0, 1, -393232, 0, 1, -458768, 0, 1, -524304, 0, 1, -589840, 65536, 0, -196593, 0, 1, -262129, 0, 1, -327665, 0, 1, -393201, 0, 1, -458737, 0, 1, -524273, 0, 1, -589809, 0, 1, -655345, 196608, 0, -655346, 131072, 3, -655347, 131072, 3, -655348, 131072, 3, -655349, 131072, 3, -655350, 131072, 3, -655351, 131072, 3, -655352, 131072, 3, -655353, 131072, 3, -655354, 131072, 3, -655355, 131072, 3, -655356, 131072, 3, -655357, 131072, 3, -655358, 131072, 3, -655359, 131072, 3, -655360, 131072, 3, -589825, 131072, 3, -589826, 131072, 3, -589827, 131072, 3, -589828, 131072, 3, -589829, 131072, 3, -589830, 131072, 3, -589831, 131072, 3, -589832, 131072, 3, -589833, 131072, 3, -589834, 131072, 3, -589835, 131072, 3, -589836, 131072, 3, -589837, 131072, 3, -589838, 131072, 3, -589839, 131072, 3, 393203, 720896, 0, 393202, 655360, 0, 393201, 393216, 1, 327665, 720896, 0, 327694, 589824, 2, 262158, 589824, 2, 196622, 589824, 2, 327693, 524288, 1, 262157, 524288, 1, 196621, 327680, 2, 196620, 589824, 3, 131084, 327680, 1, 196619, 589824, 3, 131083, 655360, 0, 196618, 327680, 3, 131082, 524288, 0, 196617, 65536, 3, 131085, 589824, 2, 65549, 655360, 0, 65548, 524288, 0, 131086, 589824, 2, 65550, 327680, 1, 14, 524288, 0)
 
-[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("2_q577c")]
+[node name="LevelExit" parent="Interactables" index="0" instance=ExtResource("4_wseq4")]
 position = Vector2(-112, 96)
 
-[node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_8v6qs")]
+[node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_ig1rd")]
 position = Vector2(-160, 96)
-Text = "0_R_hard"
+Text = "0_R_easy"
 
-[node name="Goal" parent="." index="7" instance=ExtResource("4_5v58q")]
+[node name="Goal" parent="." index="7" instance=ExtResource("5_25sy4")]
 position = Vector2(192, 80)
+
+[node name="Decals" parent="." index="8"]
+layer_0/tile_data = PackedInt32Array(524259, 262144, 0, 524265, 0, 0, 786415, 196608, 0, 786421, 196608, 1, 655376, 262144, 3, 196630, 327680, 0, 720921, 196608, 3, 26, 262144, 1)
 
 [node name="BackgroundTiles" parent="." index="9"]
 layer_0/tile_data = PackedInt32Array(393229, 720896, 3, 327693, 720896, 2, 262157, 720896, 2, 196621, 720896, 0, 393228, 589824, 3, 327692, 589824, 2, 262156, 589824, 2, 196620, 655360, 0, 393227, 589824, 3, 327691, 589824, 2, 262155, 589824, 2, 196619, 655360, 0, 393226, 589824, 3, 327690, 589824, 2, 262154, 589824, 2, 196618, 655360, 0, 393225, 589824, 3, 327689, 589824, 2, 262153, 589824, 2, 196617, 655360, 0, 393224, 589824, 3, 327688, 589824, 2, 262152, 327680, 1, 393223, 589824, 3, 327687, 589824, 2, 196616, 524288, 0, 262151, 655360, 0, 393222, 589824, 3, 327686, 327680, 1, 393221, 589824, 3, 327685, 655360, 0, 393220, 524288, 3, 327684, 524288, 0, 262150, 524288, 0)
 
-[node name="CombinationLockSystem" parent="." index="10" instance=ExtResource("5_d4n13")]
+[node name="CombinationLockSystem" parent="." index="10" instance=ExtResource("5_57dlt")]
 position = Vector2(-208, 80)
 
 [node name="Input" parent="CombinationLockSystem" index="1"]
 position = Vector2(144, 16)
-requiredNumber = 9
+requiredNumber = 6
 
 [node name="Input2" parent="CombinationLockSystem" index="2"]
 position = Vector2(208, 16)
-requiredNumber = 4
+requiredNumber = 7
 
 [node name="Input3" parent="CombinationLockSystem" index="3"]
 position = Vector2(272, 16)
-requiredNumber = 6
+requiredNumber = 2
 
 [node name="EmptyGate" parent="CombinationLockSystem" index="4"]
 position = Vector2(368, 0)
@@ -55,7 +58,7 @@ offset_left = 141.0
 offset_top = -37.0
 offset_right = 147.0
 offset_bottom = -25.0
-theme_override_fonts/font = ExtResource("6_bewf0")
+theme_override_fonts/font = ExtResource("6_45rn0")
 theme_override_font_sizes/font_size = 12
 text = "6"
 
@@ -65,7 +68,7 @@ offset_left = 205.0
 offset_top = -37.0
 offset_right = 211.0
 offset_bottom = -25.0
-theme_override_fonts/font = ExtResource("6_bewf0")
+theme_override_fonts/font = ExtResource("6_45rn0")
 theme_override_font_sizes/font_size = 12
 text = "7"
 
@@ -75,7 +78,7 @@ offset_left = 269.0
 offset_top = -37.0
 offset_right = 275.0
 offset_bottom = -25.0
-theme_override_fonts/font = ExtResource("6_bewf0")
+theme_override_fonts/font = ExtResource("6_45rn0")
 theme_override_font_sizes/font_size = 12
 text = "2"
 

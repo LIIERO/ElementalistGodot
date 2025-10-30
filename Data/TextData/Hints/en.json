@@ -58,8 +58,8 @@
 	"The green orbs are a bait.", 
 	"Dodge the stacked Water orbs on your way down."],
 	
-	"doors_and_keys": ["The crystals are Charges. They require a touch of elemental energy.", 
-	"You activate the Charges by touching them while using an ability.", 
+	"doors_and_keys": ["The crystals are Charges. They require a touch of elemental energy. The gates open when you activate a number of charges displayed on them.", 
+	"You activate the Charges by touching them while using an ability. If a gate has \"4\" on it, it will open when 4 charges are lit.", 
 	"After using any ability, you start leaving a trail that continues until the ability is finished. Touch Charges in that state."],
 	
 	"in_charge": ["You always activate Charges while using an ability. This happens even when the ability is almost finished.", 

@@ -166,14 +166,14 @@ public partial class LevelTeleport : Interactable
 
         if (areYouSure)
         {
-            EnterLevel();
-        }
-        else
-        {
             gameState.SalvagedAbilities = tempRetrievedElements;
             tempRetrievedElements = null;
             gameState.PlayerHubRespawnPosition = GlobalPosition;
             playerScriptReference.RestartLevel(false);
+        }
+        else
+        {
+            EnterLevel();
         }
     }
 }
