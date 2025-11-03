@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_blgev")
 ID = "0"
-Name = "fracture"
+Name = "powerless"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = ""
 IsSpecial = false

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_44g8e")
 ID = "1"
-Name = "static"
+Name = "dungeon"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "0"
 IsSpecial = false

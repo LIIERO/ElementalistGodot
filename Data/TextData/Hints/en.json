@@ -22,7 +22,19 @@
 	
 	"elemental_stack": ["The most recently collected ability will be used first.", 
 	"The order of use is opposite to the order of collection, it works like a stack.", 
-	"Get Air, then Water, then Air, then Water. Use them to ascend."]
+	"Get Air, then Water, then Air, then Water. Use them to ascend."],
+	
+	"red_collector": ["You have to place the blocks within the structure in the middle in a specific way to win. This level has no information on how to place them.", 
+	"Use the device on the right to toggle the brightness of the blocks; it's very important. After you've placed all of the blocks, jump left to get the Water.", 
+	"There is a building in the World 7 which represents the way you should place the blocks."],
+	
+	"numeral": ["Use the devices to match the numbers.", 
+	"Keep interacting with each device in the middle, until the numbers displayed on them are the same as the ones below. Then, interact with the device on the left.", 
+	"Walk up to the first device on your right. Use your finger to press the UP/INTERACT button. It will increase the number displayed on the device by one, unless... (Not enough room to finish the hint.)"],
+	
+	"roman_numeral": ["The three numbers displayed below the devices indicate three worlds.", 
+	"The three worlds contain Roman numerals that are part of a three-digit number you have to assemble.", 
+	"Roman numerals can be found on level portals. The relevant portals are indicated with tiny \"N\"s below."]
   },
 
   "1": {
@@ -138,7 +150,36 @@
 	
 	"usage_of_useless": ["The bottom Air orb is the last one you collect on the left side. Earth is the second to last.", 
 	"See the hole to the right of the portal? At some point you will have to go down the hole, activate the Charge, and get back up... somehow.", 
-	"At some point you will have to jump off of a moving object. It's quite evil."]
+	"At some point you will have to jump off of a moving object. It's quite evil."],
+	
+	
+	"the_new_earth": ["This new Earth element creates a block of vines that you can use for platforming. You can use this ability only when grounded.",
+	"You can place the blocks on top of each other.",
+	"Use the ability twice near the left ledge to get to the Sun Fragment."],
+	
+	"stairs": ["You need three blocks to get to the Sun Fragment.",
+	"You need to ascend to where the Sun Fragment is twice, so you need a structure of blocks that will allow it. You need a form of stairs.",
+	"One block on the bottom can act like a part of the stairs, but at the same time, help you get to the upper elements with Air."],
+	
+	"rennovations": ["Waste the copy orb from the left. Copy Earth. ",
+	"Place one block on the little pillar in the middle to get enough elevation. Don't do it too early",
+	"Get an Air orb as soon as possible. Don't waste Water for it, you will need to get back there later."],
+	
+	"antigravity": ["Activate the Charge with Air.",
+	"Only copy the Air.",
+	"After you activate the Charge, do not use Water."],
+	
+	"icy_tower": ["You don't have to collect every single orb before you start placing blocks.",
+	"You need three Water to get the Sun Fragment.",
+	"You need to place only one block on the little pillar, but you still need two more blocks to complete the level."],
+	
+	"icy_tower_2": ["Stack three blocks on the little pillar to get onto the upper platform.",
+	"Use Air to get the upmost Water.",
+	"Use the rightmost and the leftmost Water just to get onto the unfinished stack of blocks."],
+	
+	"icely_tower": ["Compare this layout to the original. There are two things that have changed.",
+	"Air has a property of corner correction, which means it can give you a tiny bit of elevation when you are very close to reaching an edge.",
+	"Activate at least one Charge. You can win, despite the gate being closed."]
   },
 
   "3": {
@@ -375,6 +416,85 @@
 	"fight_the_movement": ["There is no point in the whole level where you want to carry more than one Fire ability at the same time.", 
 	"Use one Air for the sole purpose of moving a gate. There is more than one way to do that, so explore the possibilities.", 
 	"Go to the left before ever going to the right."]
+  },
+
+  "7": {
+	"powerless": ["You need Water and Earth to get up the ledge.", 
+	"Ability salvaging also works the other way around.",
+	"You have to get the Sun Fragment and collect the abilities in the Hub. It's useful to take notes of what you need."],
+	
+	"dungeon": ["The minus orb removes the top element from your stack", 
+	"",
+	""],
+	
+	"the_cliff": ["", 
+	"",
+	""],
+	
+	"the_cave": ["", 
+	"",
+	""],
+	
+	"badlands": ["", 
+	"",
+	""],
+	
+	"storerooms": ["", 
+	"",
+	""],
+	
+	"ravine": ["", 
+	"",
+	""],
+	
+	"the_tower": ["", 
+	"",
+	""],
+	
+	"yellow_altar": ["", 
+	"",
+	""],
+	
+	"red_altar": ["", 
+	"",
+	""],
+	
+	
+	"the_minus": ["", 
+	"",
+	""],
+	
+	"abandon": ["", 
+	"",
+	""],
+	
+	"less_than_zero": ["", 
+	"",
+	""],
+	
+	"void_poison": ["", 
+	"",
+	""],
+	
+	"curse_of_binding": ["", 
+	"",
+	""],
+	
+	"annihilate": ["", 
+	"",
+	""],
+	
+	"corrupted_repository": ["", 
+	"",
+	""],
+	
+	"excalibur": ["", 
+	"",
+	""],
+	
+	"lord_woolsack": ["", 
+	"",
+	""]
   },
 
   "H": {

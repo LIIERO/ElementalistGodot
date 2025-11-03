@@ -4,6 +4,8 @@ using System.Linq;
 
 public partial class CombinationLockConfirm : Interactable
 {
+    private AudioManager audioManager;
+
     private AnimatedSprite2D checkmark;
     [Export] private CombinationLockInput[] inputs;
     [Export] private EmptyGate gate;
@@ -11,6 +13,8 @@ public partial class CombinationLockConfirm : Interactable
     public override void _Ready()
 	{
 		base._Ready();
+        audioManager = GetNode<Node>("/root/AudioManager") as AudioManager;
+
         checkmark = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         HideDisplay();
     }
@@ -18,6 +22,7 @@ public partial class CombinationLockConfirm : Interactable
     protected override void Interact()
 	{
 		base.Interact();
+        audioManager.buttonSelected.Play();
 
         if (inputs.All(e => e.NumbersMatching()))
         {
