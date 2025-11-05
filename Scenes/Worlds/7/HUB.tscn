@@ -18,7 +18,6 @@
 [ext_resource type="Resource" uid="uid://dettjmvytcn1u" path="res://Data/LevelData/Stronghold/C.tres" id="21_nkkrk"]
 [ext_resource type="Resource" uid="uid://c5vh8iicjhpxn" path="res://Data/LevelData/Stronghold/2.tres" id="22_g0tim"]
 [ext_resource type="Resource" uid="uid://dbnxj8ftqtpg2" path="res://Data/LevelData/Stronghold/D.tres" id="22_kqh1i"]
-[ext_resource type="Resource" uid="uid://bhfjj0pktoqaw" path="res://Data/LevelData/Stronghold/E.tres" id="23_3igtj"]
 [ext_resource type="Resource" uid="uid://ce4w0lx1ajna3" path="res://Data/LevelData/Stronghold/3.tres" id="23_4uh65"]
 [ext_resource type="Resource" uid="uid://vyerq08whoya" path="res://Data/LevelData/Stronghold/6.tres" id="23_ukh47"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="24_l6kka"]
@@ -26,8 +25,9 @@
 [ext_resource type="Resource" uid="uid://cjocvncq3cnne" path="res://Data/LevelData/Stronghold/7.tres" id="24_x4h6h"]
 [ext_resource type="Resource" uid="uid://dmxuoo2rlw4rb" path="res://Data/LevelData/Stronghold/8.tres" id="25_ratfd"]
 [ext_resource type="Resource" uid="uid://ed57w123flm6" path="res://Data/LevelData/Stronghold/5.tres" id="25_tpgg7"]
+[ext_resource type="Resource" uid="uid://b5na75sp6tnw0" path="res://Data/LevelData/Stronghold/E.tres" id="26_bwp1d"]
 [ext_resource type="Resource" uid="uid://draoq8kyc3l5c" path="res://Data/LevelData/Stronghold/8S.tres" id="26_ksvo5"]
-[ext_resource type="Resource" uid="uid://dmfuuwdtkc8ux" path="res://Data/LevelData/Stronghold/F.tres" id="28_wfx7y"]
+[ext_resource type="Resource" uid="uid://bhfjj0pktoqaw" path="res://Data/LevelData/Stronghold/F.tres" id="27_f63k2"]
 [ext_resource type="Resource" uid="uid://dura8oow70lvy" path="res://Data/LevelData/Stronghold/G.tres" id="29_7r4df"]
 [ext_resource type="Resource" uid="uid://mhmf1blujeet" path="res://Data/LevelData/Stronghold/X.tres" id="30_55c2x"]
 [ext_resource type="Resource" uid="uid://dvlwoc3q7w4di" path="res://Data/LevelData/Stronghold/L.tres" id="31_y7bke"]
@@ -174,19 +174,19 @@ position = Vector2(560, 64)
 levelToTeleportTo = ExtResource("21_nkkrk")
 
 [node name="LevelTeleportD" parent="Levels/Right" index="3" instance=ExtResource("18_1qng3")]
-position = Vector2(816, 80)
+position = Vector2(752, 80)
 levelToTeleportTo = ExtResource("22_kqh1i")
 
 [node name="LevelTeleportE" parent="Levels/Right" index="4" instance=ExtResource("18_1qng3")]
-position = Vector2(672, 0)
-levelToTeleportTo = ExtResource("23_3igtj")
+position = Vector2(816, 80)
+levelToTeleportTo = ExtResource("26_bwp1d")
 
 [node name="LevelTeleportF" parent="Levels/Right" index="5" instance=ExtResource("18_1qng3")]
 position = Vector2(672, 96)
-levelToTeleportTo = ExtResource("28_wfx7y")
+levelToTeleportTo = ExtResource("27_f63k2")
 
 [node name="LevelTeleportG" parent="Levels/Right" index="6" instance=ExtResource("18_1qng3")]
-position = Vector2(752, 80)
+position = Vector2(672, 0)
 levelToTeleportTo = ExtResource("29_7r4df")
 
 [node name="LevelTeleportX" parent="Levels/Right" index="7" instance=ExtResource("18_1qng3")]

@@ -26,7 +26,7 @@
 	
 	"red_collector": ["You have to place the blocks within the structure in the middle in a specific way to win. This level has no information on how to place them.", 
 	"Use the device on the right to toggle the brightness of the blocks; it's very important. After you've placed all of the blocks, jump left to get the Water.", 
-	"There is a building in World 7 which represents the way you should place the blocks."],
+	"There is a building in the World 7 which represents the way you should place the blocks."],
 	
 	"numeral": ["Use the devices to match the numbers.", 
 	"Keep interacting with each device in the middle, until the numbers displayed on them are the same as the ones below. Then, interact with the device on the left.", 
@@ -423,7 +423,7 @@
 	"Ability salvaging also works the other way around.",
 	"You have to get the Sun Fragment and collect the abilities in the Hub. It's useful to take notes of what you need."],
 	
-	"dungeon": ["The minus orb removes the top element from your stack when you collect it.", 
+	"dungeon": ["The minus orb removes the top element from your stack.", 
 	"Two Earth abilities are needed.",
 	"Remove Water. Duplicate Air."],
 	
@@ -431,70 +431,70 @@
 	"You can use both Earth + Air or Water + Air to get Fire. The first and last elements don't matter because they have to be removed.",
 	"Use Fire on the edge of the cliff and fall down to get the Sun Fragment. You will be teleported to safety."],
 	
-	"the_cave": ["You will need to enter this level multiple times in a row. You can get infinite Love from this level, but you don't need it.", 
-	"If you have Love + two Air, you can get two Love + two Air by activating the Charge with Air.",
-	"From this level, you will need to get either triple Air, triple Water, or two Love + two Air."],
+	"the_cave": ["From this level, you will need to get either triple Air, triple Water, or a bunch of Love, followed by an Air or two.", 
+	"",
+	""],
 	
-	"badlands": ["You can complete this level with triple Air.", 
-	"You need Fire and Earth to activate all of the Charges.",
-	"From this level, you will need to get either Fire or Fire + triple Water."],
+	"badlands": ["From this level, you will need to get either Fire, TODO", 
+	"",
+	""],
 	
-	"storerooms": ["Don't worry about the gate with triple Water on it.", 
-	"In this level, you can spend Fire and Water, or Fire and triple Water.",
-	"From this level, you will need to get either Love, Earth + Fire, or Air + Fire."],
+	"storerooms": ["From this level, you will need to get either Love", 
+	"",
+	""],
 	
-	"ravine": ["You need Fire to beat this level.", 
-	"If you have Fire on the top of your stack, you can always add an additional Water to it by completing this level.",
-	"From this level, you will need to get either Fire + Water, or Air + Fire + Water."],
+	"ravine": ["From this level, you will need to get either", 
+	"",
+	""],
 	
-	"the_tower": ["You can make it inside the tower by using Water and Fire.", 
-	"You need Air to make it out of the tower.",
-	"Get Air + Fire + Water to beat this level."],
+	"the_tower": ["", 
+	"",
+	""],
 	
-	"yellow_altar": ["Congrats! Go on and collect the letter \"O\". You deserve it!", 
-	"You can make everything with jumps. No elements needed.",
-	"You can use the shortcut to get to the Void quickly. The final challenge waits there for you."],
+	"yellow_altar": ["", 
+	"",
+	""],
 	
-	"red_altar": ["Congrats! Go on and collect the Red Fragment. You deserve it!", 
-	"You can make everything with jumps. No elements needed.",
-	"Salvage the Fire to get back."],
+	"red_altar": ["", 
+	"",
+	""],
 	
 	
-	"the_minus": ["The minus orb removes the top element from your stack when you collect it.", 
-	"Copy Water.",
-	"Save the bottom Love orb to use it on the leftmost minus orb."],
+	"the_minus": ["", 
+	"",
+	""],
 	
-	"abandon": ["Copy Fire.", 
-	"The motion of using Fire and collecting an orb is useful here.",
-	"Never collect the minus orb."],
+	"abandon": ["", 
+	"",
+	""],
 	
-	"less_than_zero": ["If you have no abilities, the minus orb will do nothing.", 
-	"Don't collect every single orb before you go through the spike tunnel.",
-	"Use Fire to get back to the left. Get rid of the minus orbs while the clone is flying."],
+	"less_than_zero": ["", 
+	"",
+	""],
 	
-	"void_poison": ["When you collect a void orb, it puts you in a state where you destroy the next orb you try to collect.", 
-	"You can use abilities while in the void state.",
-	"Go up to destroy the Water orb, so you can collect Air."],
+	"void_poison": ["", 
+	"",
+	""],
 	
-	"corrupted_repository": ["Copy Fire. Teleport to the Sun Fragment in the void state.", 
-	"Place the Earth block in the bottom-left corner of the level.",
-	"Place the Earth block before you copy Fire."],
+	"curse_of_binding": ["", 
+	"",
+	""],
 	
-	"curse_of_binding": ["Sun Fragments cannot be destroyed by void.", 
-	"You need to destroy an orb on the left of the spike tunnel.",
-	"Leave one orb on the left before going through the spike tunnel. Come back for it in the void state."],
+	"annihilate": ["", 
+	"",
+	""],
 	
-	"annihilate": ["Get every single orb before going right.", 
-	"The void can destroy void orbs.",
-	"Go past the Water orb with Fire and save yourself with double Air when you hit the wall."],
-
-	"excalibur": ["Activate the Charge with Fire.", 
-	"Do not copy Fire.",
-	"Build a Fire-catching barrier by stacking two earth blocks on top of each other."],
+	"corrupted_repository": ["", 
+	"",
+	""],
 	
-	"lord_woolsack": ["Get on the platform above the Charges twice.", 
-	"Copy each of the given elements once.",
-	"Block two Fire clones with two different Earth blocks."]
+	"excalibur": ["", 
+	"",
+	""],
+	
+	"lord_woolsack": ["", 
+	"",
+	""]
   },
 
   "H": {
@@ -502,12 +502,8 @@
 	"The green orb in the bottom-left corner shall be collected last.",
 	"The solution requires you to use Fire... three times in a row."],
 	
-	"elemental_shell": ["The Elemental Shell is a permanent upgrade that lets you salvage abilities from levels if you have a Sun Fragment.",
-	"Levels that require you to salvage abilities are marked with rectangular portals.",
-	"Grab the Earth orb and the Sun Fragment, and then exit the level."],
+	"elemental_shell": [],
 	
-	"reactor": ["You need to salvage Air from this level to progress.",
-	"The spikes can be crossed using Water, either with or without activating the Charge.",
-	"You need to use Fire from the left so it hits the activated gate. Get Air while the Clone is flying."]
+	"salvation": []
   }
 }

@@ -23,7 +23,7 @@
 [ext_resource type="Resource" uid="uid://s8h12dvrgxaq" path="res://Data/LevelData/Meadowlands/M.tres" id="18_a3chb"]
 [ext_resource type="PackedScene" uid="uid://6fdinduem110" path="res://Scenes/Entities/PermanentCollectables/Letter.tscn" id="19_a677n"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="20_a80nx"]
-[ext_resource type="Texture2D" uid="uid://dj5g6aqwkobr8" path="res://Graphics/Decals/Global/terraria_campfire.png" id="21_lnl1e"]
+[ext_resource type="Texture2D" uid="uid://dj5g6aqwkobr8" path="res://Graphics/Decals/Global/EasterEggs/terraria_campfire.png" id="21_lnl1e"]
 [ext_resource type="PackedScene" uid="uid://y87iiwimv5rr" path="res://Scenes/Entities/Interactables/WorldEntrances/EntrancePurpleForest.tscn" id="23_n74ra"]
 [ext_resource type="PackedScene" uid="uid://bgt3h8gpgargk" path="res://Scenes/Entities/Interactables/Watchtower.tscn" id="25_pcgjx"]
 [ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="26_imdjo"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj5g6aqwkobr8"
-path="res://.godot/imported/terraria_campfire.png-c08beb2549fa6c42484f8416d27842e9.ctex"
+path="res://.godot/imported/terraria_campfire.png-4fce91671733e0f6ba40296c6ef48825.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Decals/Global/terraria_campfire.png"
-dest_files=["res://.godot/imported/terraria_campfire.png-c08beb2549fa6c42484f8416d27842e9.ctex"]
+source_file="res://Graphics/Decals/Global/EasterEggs/terraria_campfire.png"
+dest_files=["res://.godot/imported/terraria_campfire.png-4fce91671733e0f6ba40296c6ef48825.ctex"]
 
 [params]
 

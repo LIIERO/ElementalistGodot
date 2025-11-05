@@ -20,13 +20,13 @@ layer_0/tile_data = PackedInt32Array(524303, 720896, 3, 458767, 720896, 2, 39323
 [node name="DangerTiles" parent="." index="5"]
 layer_0/tile_data = PackedInt32Array(327672, 65536, 2, 327673, 0, 0, 327674, 131072, 2, 262150, 131072, 0, 262151, 131072, 2, 262149, 65536, 2)
 
-[node name="LevelExit" parent="." index="7" instance=ExtResource("2_umkfn")]
+[node name="LevelExit" parent="." index="6" instance=ExtResource("2_umkfn")]
 position = Vector2(32, 96)
 
-[node name="Goal" parent="." index="8" instance=ExtResource("3_j6s1w")]
+[node name="Goal" parent="." index="7" instance=ExtResource("3_j6s1w")]
 position = Vector2(-32, 80)
 
-[node name="Orbs" type="Node2D" parent="." index="9"]
+[node name="Orbs" type="Node2D" parent="." index="8"]
 
 [node name="FireOrb" parent="Orbs" index="0" instance=ExtResource("4_d4bje")]
 position = Vector2(232, 56)
@@ -43,7 +43,7 @@ position = Vector2(-232, 80)
 [node name="AirOrb" parent="Orbs" index="4" instance=ExtResource("6_yxdww")]
 position = Vector2(-232, 56)
 
-[node name="Gates" type="Node2D" parent="." index="10"]
+[node name="Gates" type="Node2D" parent="." index="9"]
 
 [node name="ElementCharge" parent="Gates" index="0" instance=ExtResource("6_1hsql")]
 position = Vector2(112, 25)

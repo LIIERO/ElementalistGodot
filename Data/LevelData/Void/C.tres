@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_efe65")
 ID = "C"
-Name = "salvation"
+Name = "reactor"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false

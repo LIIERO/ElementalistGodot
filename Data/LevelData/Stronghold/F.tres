@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dmfuuwdtkc8ux"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bhfjj0pktoqaw"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_p1r6s"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_1l064"]
 
 [resource]
-script = ExtResource("1_p1r6s")
+script = ExtResource("1_1l064")
 ID = "F"
-Name = "annihilate"
+Name = "curse_of_binding"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

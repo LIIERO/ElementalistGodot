@@ -129,6 +129,7 @@ public partial class AudioManager : Node
 
     [ExportSubgroup("Entities")]
     [Export] public AudioStreamPlayer orbCollectSound;
+    [Export] public AudioStreamPlayer voidOrb;
     [Export] public AudioStreamPlayer sunCollectSound;
     [Export] public AudioStreamPlayer elementCharge;
     [Export] public AudioStreamPlayer gateOpen;

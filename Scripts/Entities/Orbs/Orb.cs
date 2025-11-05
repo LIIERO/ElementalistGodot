@@ -65,7 +65,7 @@ public abstract partial class Orb : Area2D, IUndoable
         
         if (playerScript.DestructionMode)
         {
-            // TODO: Orb destroy sound
+            audioManager.voidOrb.Play();
             playerScript.DisableDestructionMode();
         }
         else // Orb collect

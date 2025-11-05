@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dura8oow70lvy"]
 
-[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_6bie3"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_p1r6s"]
 
 [resource]
-script = ExtResource("1_6bie3")
+script = ExtResource("1_p1r6s")
 ID = "G"
-Name = "corrupted_repository"
+Name = "annihilate"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

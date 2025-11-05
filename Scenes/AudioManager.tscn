@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://lwcdnh2w31db"]
+[gd_scene load_steps=39 format=3 uid="uid://lwcdnh2w31db"]
 
 [ext_resource type="Script" path="res://Scripts/Global/AudioManager.cs" id="1_b82rj"]
 [ext_resource type="AudioStream" uid="uid://dkw1m7qreuiri" path="res://Audio/Sounds/Zoe/Walk/Soft/walk_grass_1.ogg" id="2_3djbo"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://82cb3hqnb3vy" path="res://Audio/Sounds/Zoe/Abilities/ability_love.ogg" id="13_ci8qw"]
 [ext_resource type="AudioStream" uid="uid://bhmoon5pwhm3g" path="res://Audio/Music/purple_forest.ogg" id="16_hvofm"]
 [ext_resource type="AudioStream" uid="uid://crgpglfsjb8f2" path="res://Audio/Music/distant_shore.ogg" id="17_i7plo"]
+[ext_resource type="AudioStream" uid="uid://7toaprtkjde1" path="res://Audio/Sounds/Entities/void_orb.ogg" id="18_bu0kf"]
 [ext_resource type="AudioStream" uid="uid://dvsm0waov44fn" path="res://Audio/Sounds/Entities/gate_open.ogg" id="19_1ek7g"]
 [ext_resource type="AudioStream" uid="uid://c5sq1gld6p24d" path="res://Audio/Sounds/Transitions/fade_out.ogg" id="20_xgnnk"]
 [ext_resource type="AudioStream" uid="uid://cc26g1u888ue7" path="res://Audio/Sounds/Entities/OrderGate/ordergate_set.ogg" id="21_6vd6o"]
@@ -38,7 +39,7 @@
 [ext_resource type="AudioStream" uid="uid://d11f00iak27em" path="res://Audio/Sounds/Dialog/zoe_normal.ogg" id="34_61eul"]
 [ext_resource type="AudioStream" uid="uid://bttdadtpp6mfd" path="res://Audio/Music/meadowlands.ogg" id="34_don3y"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "loveAbility", "death", "orbCollectSound", "sunCollectSound", "elementCharge", "gateOpen", "permanentCollectSound", "orderGateProgress", "orderGateReset", "buttonSelected", "textNoise", "zoeNormalNoise", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicKnipe", "musicMeadowlands", "musicVoid")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("softFootsteps", "hardFootsteps", "waterAbility", "airAbility", "fireAbility", "earthAbilityStart", "earthAbilityEnd", "loveAbility", "death", "orbCollectSound", "voidOrb", "sunCollectSound", "elementCharge", "gateOpen", "permanentCollectSound", "orderGateProgress", "orderGateReset", "buttonSelected", "textNoise", "zoeNormalNoise", "levelCompleted", "fadeOut", "fadeIn", "musicPurpleForest", "musicDistantShore", "musicCaveOutskirts", "musicIslandsOfAshes", "musicOperatorium", "musicKnipe", "musicMeadowlands", "musicVoid")]
 script = ExtResource("1_b82rj")
 softFootsteps = [NodePath("Player/Footsteps/FS1"), NodePath("Player/Footsteps/FS2"), NodePath("Player/Footsteps/FS3"), NodePath("Player/Footsteps/FS4")]
 hardFootsteps = [NodePath("Player/Footsteps/FH1"), NodePath("Player/Footsteps/FH2"), NodePath("Player/Footsteps/FH3"), NodePath("Player/Footsteps/FH4")]
@@ -50,6 +51,7 @@ earthAbilityEnd = NodePath("Player/Abilities/EarthEnd")
 loveAbility = NodePath("Player/Abilities/Love")
 death = NodePath("Player/Death")
 orbCollectSound = NodePath("Entities/orbCollect")
+voidOrb = NodePath("Entities/voidOrb")
 sunCollectSound = NodePath("Entities/sunCollect")
 elementCharge = NodePath("Entities/elementCharge")
 gateOpen = NodePath("Entities/gateOpen")
@@ -143,6 +145,7 @@ bus = &"Sounds"
 
 [node name="Death" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("10_4xgau")
+volume_db = -2.0
 bus = &"Sounds"
 
 [node name="Entities" type="Node" parent="."]
@@ -151,6 +154,10 @@ bus = &"Sounds"
 stream = ExtResource("2_a35su")
 volume_db = -12.0
 pitch_scale = 1.1
+bus = &"Sounds"
+
+[node name="voidOrb" type="AudioStreamPlayer" parent="Entities"]
+stream = ExtResource("18_bu0kf")
 bus = &"Sounds"
 
 [node name="sunCollect" type="AudioStreamPlayer" parent="Entities"]
