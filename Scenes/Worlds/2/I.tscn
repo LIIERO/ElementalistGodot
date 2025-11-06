@@ -33,10 +33,10 @@ position = Vector2(208, 112)
 position = Vector2(-144, 112)
 
 [node name="CopyTopOrb2" parent="Orbs" index="3" instance=ExtResource("5_rewgd")]
-position = Vector2(176, 112)
+position = Vector2(144, 112)
 
 [node name="EarthOrbRemix" parent="Orbs" index="4" instance=ExtResource("6_7fsii")]
-position = Vector2(144, 112)
+position = Vector2(176, 112)
 
 [node name="EarthOrbRemix2" parent="Orbs" index="5" instance=ExtResource("6_7fsii")]
 position = Vector2(-176, 112)

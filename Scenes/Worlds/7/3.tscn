@@ -50,7 +50,7 @@ sequenceLength = 1
 ability0 = 6
 
 [node name="ElementCharge" parent="Gates" index="2" instance=ExtResource("12_abo0m")]
-position = Vector2(-48, 0)
+position = Vector2(-48, -8)
 
 [node name="Goal" parent="." index="13" instance=ExtResource("13_trp2p")]
 position = Vector2(128, -16)

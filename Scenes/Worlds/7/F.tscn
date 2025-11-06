@@ -42,19 +42,16 @@ position = Vector2(64, 80)
 [node name="DestructionOrb2" parent="Orbs" index="2" instance=ExtResource("3_ww14e")]
 position = Vector2(64, 16)
 
-[node name="DestructionOrb3" parent="Orbs" index="3" instance=ExtResource("3_ww14e")]
-position = Vector2(80, 80)
-
-[node name="AirOrb3" parent="Orbs" index="4" instance=ExtResource("4_n5wx2")]
+[node name="AirOrb3" parent="Orbs" index="3" instance=ExtResource("4_n5wx2")]
 position = Vector2(-120, 48)
 
-[node name="FireOrb" parent="Orbs" index="5" instance=ExtResource("7_6yhii")]
+[node name="FireOrb" parent="Orbs" index="4" instance=ExtResource("7_6yhii")]
 position = Vector2(-136, 48)
 
-[node name="CopyTopOrb" parent="Orbs" index="6" instance=ExtResource("8_41w7x")]
+[node name="CopyTopOrb" parent="Orbs" index="5" instance=ExtResource("8_41w7x")]
 position = Vector2(-168, 48)
 
-[node name="CopyTopOrb2" parent="Orbs" index="7" instance=ExtResource("8_41w7x")]
+[node name="CopyTopOrb2" parent="Orbs" index="6" instance=ExtResource("8_41w7x")]
 position = Vector2(-152, 48)
 
 [node name="Gates" type="Node2D" parent="." index="12"]
