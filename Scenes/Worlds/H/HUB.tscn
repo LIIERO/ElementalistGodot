@@ -64,12 +64,7 @@ position = Vector2(-128, 48)
 requiredFragments = 40
 playerNode = NodePath("../../Zoe")
 
-[node name="Gate1" parent="Gates" index="1" node_paths=PackedStringArray("playerNode") instance=ExtResource("4_dp1gh")]
-position = Vector2(512, 48)
-requiredFragments = 36
-playerNode = NodePath("../../Zoe")
-
-[node name="LetterGate" parent="Gates" index="2" node_paths=PackedStringArray("playerNode") instance=ExtResource("10_vrm75")]
+[node name="LetterGate" parent="Gates" index="1" node_paths=PackedStringArray("playerNode") instance=ExtResource("10_vrm75")]
 position = Vector2(-352, 48)
 requiredLetter = "O"
 playerNode = NodePath("../../Zoe")

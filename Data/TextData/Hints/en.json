@@ -171,7 +171,7 @@
 	
 	"icy_tower": ["You don't have to collect every single orb before you start placing blocks.",
 	"You need three Water to get the Sun Fragment.",
-	"You need to place only one block on the little pillar, but you still need two more blocks to complete the level."],
+	"You need to place only one block on the little pillar, but you still need one more block to complete the level."],
 	
 	"icy_tower_2": ["Stack three blocks on the little pillar to get onto the upper platform.",
 	"Use Air to get the upmost Water.",
@@ -462,7 +462,7 @@
 	
 	"the_minus": ["The minus orb removes the top element from your stack when you collect it.", 
 	"Copy Water.",
-	"Save the bottom Love orb to use it on the leftmost minus orb."],
+	"Do not collect both Air orbs in the middle at the same time. Save one for the leftmost minus orb."],
 	
 	"abandon": ["Copy Fire.", 
 	"The motion of using Fire and collecting an orb is useful here.",
@@ -476,17 +476,17 @@
 	"You can use abilities while in the void state.",
 	"Go up to destroy the Water orb, so you can collect Air."],
 	
-	"corrupted_repository": ["Copy Fire. Teleport to the Sun Fragment in the void state.", 
-	"Place the Earth block in the bottom-left corner of the level.",
-	"Place the Earth block before you copy Fire."],
-	
-	"curse_of_binding": ["Sun Fragments cannot be destroyed by void.", 
-	"You need to destroy an orb on the left of the spike tunnel.",
+	"curse_of_binding": ["Avoid the jail on the right.", 
+	"Do not collect every single orb before going right.",
 	"Leave one orb on the left before going through the spike tunnel. Come back for it in the void state."],
 	
-	"annihilate": ["Get every single orb before going right.", 
+	"break_the_binding": ["Get every single orb before going right.", 
 	"The void can destroy void orbs.",
 	"Go past the Water orb with Fire and save yourself with double Air when you hit the wall."],
+	
+	"corrupted_repository": ["Place the Earth block in the bottom-left corner of the level.",
+	"Place the Earth block before you copy Fire.",
+	"Teleport to the Sun Fragment in the void state."],
 
 	"excalibur": ["Activate the Charge with Fire.", 
 	"Do not copy Fire.",

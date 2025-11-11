@@ -21,6 +21,7 @@ position = Vector2(-112, 96)
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_ig1rd")]
 position = Vector2(-160, 96)
 Text = "0_R_easy"
+SunHoldingText = "0_R_easy_done"
 
 [node name="Goal" parent="." index="7" instance=ExtResource("5_25sy4")]
 position = Vector2(192, 80)

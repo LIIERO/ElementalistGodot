@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ciq4cuqvua4tl"]
+[gd_scene load_steps=58 format=3 uid="uid://ciq4cuqvua4tl"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Visual/Grid.cs" id="1_diw0v"]
 [ext_resource type="PackedScene" uid="uid://cuxshltrytaqn" path="res://Scenes/UI/Elements/ElementSymbol.tscn" id="1_rymwl"]
@@ -62,6 +62,10 @@ region = Rect2(64, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xt2cc"]
 atlas = ExtResource("6_thq10")
 region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5efxd"]
+atlas = ExtResource("6_thq10")
+region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_od41x"]
 atlas = ExtResource("6_thq10")
@@ -127,6 +131,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5efxd")
+}],
+"loop": false,
+"name": &"7",
 "speed": 5.0
 }, {
 "frames": [{
@@ -373,7 +385,7 @@ visible_ratio = 0.0
 [node name="PortraitBackground" type="AnimatedSprite2D" parent="DialogBox"]
 position = Vector2(-112, 0)
 sprite_frames = SubResource("SpriteFrames_nnjkw")
-animation = &"6"
+animation = &"7"
 autoplay = "default"
 
 [node name="Portrait" type="AnimatedSprite2D" parent="DialogBox"]

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b5na75sp6tnw0"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bhfjj0pktoqaw"]
 
 [ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="1_6bie3"]
 
 [resource]
 script = ExtResource("1_6bie3")
 ID = "E"
-Name = "corrupted_repository"
+Name = "curse_of_binding"
 NoCompletedToUnlock = 0
 SpecificLevelCompletedToUnlock = "D"
 IsSpecial = false

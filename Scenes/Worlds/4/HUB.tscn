@@ -45,21 +45,18 @@ layer_0/tile_data = PackedInt32Array(-262143, 65536, 3, -196610, 65536, 3, -3276
 position = Vector2(-64, 96)
 
 [node name="LoveOrb4" parent="Orbs" index="1" instance=ExtResource("4_uo4of")]
-position = Vector2(-304, 80)
+position = Vector2(-368, 80)
 
 [node name="LoveOrb5" parent="Orbs" index="2" instance=ExtResource("4_uo4of")]
-position = Vector2(-448, 80)
+position = Vector2(-384, 80)
 
-[node name="LoveOrb6" parent="Orbs" index="3" instance=ExtResource("4_uo4of")]
+[node name="LoveOrb7" parent="Orbs" index="3" instance=ExtResource("4_uo4of")]
 position = Vector2(-720, 80)
 
-[node name="LoveOrb7" parent="Orbs" index="4" instance=ExtResource("4_uo4of")]
-position = Vector2(-528, 48)
-
-[node name="LoveOrb8" parent="Orbs" index="5" instance=ExtResource("4_uo4of")]
+[node name="LoveOrb8" parent="Orbs" index="4" instance=ExtResource("4_uo4of")]
 position = Vector2(496, -16)
 
-[node name="LoveOrb2" parent="Orbs" index="6" instance=ExtResource("4_uo4of")]
+[node name="LoveOrb2" parent="Orbs" index="5" instance=ExtResource("4_uo4of")]
 position = Vector2(64, 96)
 
 [node name="Interactables" type="Node2D" parent="." index="7"]
@@ -122,12 +119,12 @@ levelToTeleportTo = ExtResource("17_6kd54")
 swapLevelNameColours = true
 
 [node name="LevelTeleportE" parent="Interactables/Levels" index="11" instance=ExtResource("8_fsb1o")]
-position = Vector2(-352, 96)
+position = Vector2(-624, 96)
 levelToTeleportTo = ExtResource("18_7gngk")
 swapLevelNameColours = true
 
 [node name="LevelTeleportF" parent="Interactables/Levels" index="12" instance=ExtResource("8_fsb1o")]
-position = Vector2(-400, 96)
+position = Vector2(-624, 32)
 levelToTeleportTo = ExtResource("15_xl7bn")
 swapLevelNameColours = true
 
@@ -151,17 +148,17 @@ position = Vector2(432, 128)
 
 [node name="SunGate4" parent="Gates" index="0" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
 position = Vector2(-272, 64)
-requiredFragments = 50
+requiredFragments = 70
 playerNode = NodePath("../../Zoe")
 
 [node name="SunGate2" parent="Gates" index="1" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
 position = Vector2(272, -16)
-requiredFragments = 60
+requiredFragments = 70
 playerNode = NodePath("../../Zoe")
 
 [node name="SunGate3" parent="Gates" index="2" node_paths=PackedStringArray("playerNode") instance=ExtResource("20_r3t1o")]
 position = Vector2(336, 80)
-requiredFragments = 50
+requiredFragments = 40
 playerNode = NodePath("../../Zoe")
 
 [node name="OrderGate" parent="Gates" index="3" instance=ExtResource("25_wumh7")]

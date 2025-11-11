@@ -292,8 +292,8 @@ public partial class Player : CharacterBody2D, IUndoable
 		else abilityBufferTimeCounter -= (float)delta;
 
 		// player uses ability
-		if (!isUsingAbility && !IsFrozen && abilityBufferTimeCounter > 0f)
-		{
+		if (!isUsingAbility && !IsFrozen && abilityBufferTimeCounter > 0f) // Cant cast fire while teleporting:  && !(GetEffectiveElement() == ElementState.fire && hitbox.Disabled == true)
+        {
 			if ((AbilityList.Count > 0 && (CanUseEarthRemix || GetEffectiveElement() != ElementState.earth_remix)) || (BaseAbility != ElementState.normal && canUseBaseAbility))
 			{
 				isUsingAbility = true;

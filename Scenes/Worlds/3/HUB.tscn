@@ -129,7 +129,7 @@ playerNode = NodePath("../Zoe")
 
 [node name="Gate2" parent="." index="10" node_paths=PackedStringArray("playerNode") instance=ExtResource("17_bc1jx")]
 position = Vector2(-272, 32)
-requiredFragments = 34
+requiredFragments = 30
 playerNode = NodePath("../Zoe")
 
 [node name="LetterGate" parent="." index="11" node_paths=PackedStringArray("playerNode") instance=ExtResource("22_xylpi")]

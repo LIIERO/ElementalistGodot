@@ -552,6 +552,25 @@ public partial class GameState : Node
             }
             RestartCurrentLevel();
         }
+
+        else if (Input.IsActionJustPressed("inputDebugUnlockDemo"))
+        {
+            string[] world2levelsToLock = new string[] { "A", "B", "C", "D", "I", "V", "VS" };
+            string[] world0levelsToLock = new string[] { "0S", "N", "NS" };
+
+            NoSunFragments = 41;
+            NoRedFragments = 7;
+            foreach (KeyValuePair<string, Dictionary<string, bool>> world in CompletedLevels)
+            {
+                foreach (string levelKey in world.Value.Keys.ToList())
+                {
+                    // temporary for playtesting
+                    if (!(world.Key == "7" || (world.Key == "2" && world2levelsToLock.Contains(levelKey)) || (world.Key == "0" && world0levelsToLock.Contains(levelKey)) || world.Key == "6" || world.Key == "H" || world.Key == "4" || world.Key == "5"))
+                        CompletedLevels[world.Key][levelKey] = true;
+                }
+            }
+            RestartCurrentLevel();
+        }
     }
 }
 

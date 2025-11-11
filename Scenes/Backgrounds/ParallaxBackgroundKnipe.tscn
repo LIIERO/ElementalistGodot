@@ -20,7 +20,7 @@ offset = Vector2(240, 135)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.6, 0)
-motion_mirroring = Vector2(480, 0)
+motion_mirroring = Vector2(480, 288)
 script = ExtResource("2_vnn5k")
 speedX = 5.0
 speedY = -5.0
@@ -33,7 +33,7 @@ offset = Vector2(240, 144)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.6, 0)
-motion_mirroring = Vector2(480, 0)
+motion_mirroring = Vector2(480, 288)
 script = ExtResource("2_vnn5k")
 speedX = 5.0
 speedY = 5.0

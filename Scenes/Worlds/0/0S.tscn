@@ -60,7 +60,7 @@ position = Vector2(-192, 48)
 
 [node name="Sign" parent="Interactables" index="1" instance=ExtResource("3_qpxtv")]
 position = Vector2(16, 64)
-Text = "something cool or funny"
+Text = "suggest what I should put on this sign"
 
 [node name="Goal" parent="." index="7" instance=ExtResource("4_sjue3")]
 position = Vector2(160, 80)

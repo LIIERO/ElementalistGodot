@@ -13,7 +13,7 @@
 position = Vector2(-32, 0)
 
 [node name="Decals" parent="." index="3"]
-layer_0/tile_data = PackedInt32Array(-327671, 0, 0, -9, 327680, 0, -29, 327680, 1, -458723, 262144, 1, -2, 327680, 2, -458726, 0, 2)
+layer_0/tile_data = PackedInt32Array(-327671, 0, 0, -9, 327680, 0, -29, 327680, 1, -458723, 262144, 1, -458726, 0, 2, -65531, 327680, 2)
 
 [node name="Orbs" type="Node2D" parent="." index="4"]
 

@@ -40,6 +40,7 @@ public partial class HintPopup : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        // TODO: Escape to return from popup without a decision
         if (InputManager.PausePressed())
         {
             ReturnFromPopup(false, 0);

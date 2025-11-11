@@ -25,10 +25,10 @@
 [ext_resource type="Resource" uid="uid://cjocvncq3cnne" path="res://Data/LevelData/Stronghold/7.tres" id="24_x4h6h"]
 [ext_resource type="Resource" uid="uid://dmxuoo2rlw4rb" path="res://Data/LevelData/Stronghold/8.tres" id="25_ratfd"]
 [ext_resource type="Resource" uid="uid://ed57w123flm6" path="res://Data/LevelData/Stronghold/5.tres" id="25_tpgg7"]
-[ext_resource type="Resource" uid="uid://b5na75sp6tnw0" path="res://Data/LevelData/Stronghold/E.tres" id="26_bwp1d"]
+[ext_resource type="Resource" uid="uid://b5na75sp6tnw0" path="res://Data/LevelData/Stronghold/F.tres" id="26_bwp1d"]
 [ext_resource type="Resource" uid="uid://draoq8kyc3l5c" path="res://Data/LevelData/Stronghold/8S.tres" id="26_ksvo5"]
-[ext_resource type="Resource" uid="uid://bhfjj0pktoqaw" path="res://Data/LevelData/Stronghold/F.tres" id="27_f63k2"]
-[ext_resource type="Resource" uid="uid://dura8oow70lvy" path="res://Data/LevelData/Stronghold/G.tres" id="29_7r4df"]
+[ext_resource type="Resource" uid="uid://bhfjj0pktoqaw" path="res://Data/LevelData/Stronghold/E.tres" id="27_f63k2"]
+[ext_resource type="Resource" uid="uid://dura8oow70lvy" path="res://Data/LevelData/Stronghold/ES.tres" id="29_7r4df"]
 [ext_resource type="Resource" uid="uid://mhmf1blujeet" path="res://Data/LevelData/Stronghold/X.tres" id="30_55c2x"]
 [ext_resource type="Resource" uid="uid://dvlwoc3q7w4di" path="res://Data/LevelData/Stronghold/L.tres" id="31_y7bke"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="33_m38ck"]
@@ -61,40 +61,112 @@ layer_0/tile_data = PackedInt32Array(720822, 0, 2, 720821, 131072, 0, 720820, 0,
 
 [node name="Orbs" type="Node2D" parent="." index="10"]
 
-[node name="RemoveTopOrb" parent="Orbs" index="0" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb13" parent="Orbs" index="0" instance=ExtResource("2_bbosb")]
 position = Vector2(-832, 88)
 
-[node name="RemoveTopOrb2" parent="Orbs" index="1" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb14" parent="Orbs" index="1" instance=ExtResource("2_bbosb")]
 position = Vector2(-848, 88)
 
-[node name="RemoveTopOrb3" parent="Orbs" index="2" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb15" parent="Orbs" index="2" instance=ExtResource("2_bbosb")]
 position = Vector2(-864, 88)
 
-[node name="RemoveTopOrb4" parent="Orbs" index="3" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb16" parent="Orbs" index="3" instance=ExtResource("2_bbosb")]
 position = Vector2(-880, 88)
 
-[node name="RemoveTopOrb5" parent="Orbs" index="4" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb17" parent="Orbs" index="4" instance=ExtResource("2_bbosb")]
 position = Vector2(-832, 72)
 
-[node name="RemoveTopOrb6" parent="Orbs" index="5" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb18" parent="Orbs" index="5" instance=ExtResource("2_bbosb")]
 position = Vector2(-848, 72)
 
-[node name="RemoveTopOrb7" parent="Orbs" index="6" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb19" parent="Orbs" index="6" instance=ExtResource("2_bbosb")]
 position = Vector2(-864, 72)
 
-[node name="RemoveTopOrb8" parent="Orbs" index="7" instance=ExtResource("2_bbosb")]
+[node name="RemoveTopOrb20" parent="Orbs" index="7" instance=ExtResource("2_bbosb")]
 position = Vector2(-880, 72)
 
-[node name="WaterOrb" parent="Orbs" index="8" instance=ExtResource("4_kqbqy")]
+[node name="RemoveTopOrb21" parent="Orbs" index="8" instance=ExtResource("2_bbosb")]
+position = Vector2(-832, 76)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb21/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb21/MovedByAnimation" index="2"]
+visible = false
+
+[node name="RemoveTopOrb22" parent="Orbs" index="9" instance=ExtResource("2_bbosb")]
+position = Vector2(-848, 76)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb22/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb22/MovedByAnimation" index="2"]
+visible = false
+
+[node name="RemoveTopOrb23" parent="Orbs" index="10" instance=ExtResource("2_bbosb")]
+position = Vector2(-864, 76)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb23/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb23/MovedByAnimation" index="2"]
+visible = false
+
+[node name="RemoveTopOrb24" parent="Orbs" index="11" instance=ExtResource("2_bbosb")]
+position = Vector2(-880, 76)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb24/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb24/MovedByAnimation" index="2"]
+visible = false
+
+[node name="RemoveTopOrb25" parent="Orbs" index="12" instance=ExtResource("2_bbosb")]
+position = Vector2(-832, 84)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb25/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb25/MovedByAnimation" index="2"]
+visible = false
+
+[node name="RemoveTopOrb26" parent="Orbs" index="13" instance=ExtResource("2_bbosb")]
+position = Vector2(-848, 84)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb26/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb26/MovedByAnimation" index="2"]
+visible = false
+
+[node name="RemoveTopOrb27" parent="Orbs" index="14" instance=ExtResource("2_bbosb")]
+position = Vector2(-864, 84)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb27/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb27/MovedByAnimation" index="2"]
+visible = false
+
+[node name="RemoveTopOrb28" parent="Orbs" index="15" instance=ExtResource("2_bbosb")]
+position = Vector2(-880, 84)
+
+[node name="PointLight2D" parent="Orbs/RemoveTopOrb28/MovedByAnimation" index="1"]
+visible = false
+
+[node name="GPUParticles2D" parent="Orbs/RemoveTopOrb28/MovedByAnimation" index="2"]
+visible = false
+
+[node name="WaterOrb" parent="Orbs" index="16" instance=ExtResource("4_kqbqy")]
 position = Vector2(-968, 48)
 
-[node name="AirOrb" parent="Orbs" index="9" instance=ExtResource("5_0iku1")]
+[node name="AirOrb" parent="Orbs" index="17" instance=ExtResource("5_0iku1")]
 position = Vector2(-936, 48)
 
-[node name="CopyTopOrb" parent="Orbs" index="10" instance=ExtResource("8_nnjjh")]
+[node name="CopyTopOrb" parent="Orbs" index="18" instance=ExtResource("8_nnjjh")]
 position = Vector2(-1000, 48)
 
-[node name="EarthOrb" parent="Orbs" index="11" instance=ExtResource("10_g1q25")]
+[node name="EarthOrb" parent="Orbs" index="19" instance=ExtResource("10_g1q25")]
 position = Vector2(-904, 48)
 
 [node name="Gates" type="Node2D" parent="." index="11"]
@@ -178,16 +250,16 @@ position = Vector2(752, 80)
 levelToTeleportTo = ExtResource("22_kqh1i")
 
 [node name="LevelTeleportE" parent="Levels/Right" index="4" instance=ExtResource("18_1qng3")]
-position = Vector2(816, 80)
-levelToTeleportTo = ExtResource("26_bwp1d")
-
-[node name="LevelTeleportF" parent="Levels/Right" index="5" instance=ExtResource("18_1qng3")]
 position = Vector2(672, 96)
 levelToTeleportTo = ExtResource("27_f63k2")
 
-[node name="LevelTeleportG" parent="Levels/Right" index="6" instance=ExtResource("18_1qng3")]
+[node name="LevelTeleportES" parent="Levels/Right" index="5" instance=ExtResource("18_1qng3")]
 position = Vector2(672, 0)
 levelToTeleportTo = ExtResource("29_7r4df")
+
+[node name="LevelTeleportF" parent="Levels/Right" index="6" instance=ExtResource("18_1qng3")]
+position = Vector2(816, 80)
+levelToTeleportTo = ExtResource("26_bwp1d")
 
 [node name="LevelTeleportX" parent="Levels/Right" index="7" instance=ExtResource("18_1qng3")]
 position = Vector2(464, -32)
@@ -204,12 +276,25 @@ position = Vector2(-760, 48)
 position = Vector2(1280, -16)
 Text = "Future secret here. Congrats on gm+1 skills."
 
-[node name="ShiftCameraLimit" parent="." index="17" instance=ExtResource("34_lsuy8")]
+[node name="Sign2" parent="." index="17" instance=ExtResource("33_m38ck")]
+position = Vector2(880, 96)
+Text = "7_3_redhint"
+
+[node name="ShiftCameraLimit" parent="." index="18" instance=ExtResource("34_lsuy8")]
 position = Vector2(1104, 0)
 rightShiftUnits = 16
 
-[node name="RomanNumeralIndicator" parent="." index="18" instance=ExtResource("35_c7bnf")]
+[node name="RomanNumeralIndicator" parent="." index="19" instance=ExtResource("35_c7bnf")]
 position = Vector2(466, -30)
 
-[node name="RomanNumeralIndicator2" parent="." index="19" instance=ExtResource("35_c7bnf")]
+[node name="RomanNumeralIndicator2" parent="." index="20" instance=ExtResource("35_c7bnf")]
 position = Vector2(514, -30)
+
+[editable path="Orbs/RemoveTopOrb21"]
+[editable path="Orbs/RemoveTopOrb22"]
+[editable path="Orbs/RemoveTopOrb23"]
+[editable path="Orbs/RemoveTopOrb24"]
+[editable path="Orbs/RemoveTopOrb25"]
+[editable path="Orbs/RemoveTopOrb26"]
+[editable path="Orbs/RemoveTopOrb27"]
+[editable path="Orbs/RemoveTopOrb28"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bgxfp8pjgxus4" path="res://Scenes/Worlds/7/Base.tscn" id="1_pd55a"]
 [ext_resource type="PackedScene" uid="uid://dw1fjagta10i7" path="res://Scenes/Entities/Orbs/DestructionOrb.tscn" id="3_feref"]
 [ext_resource type="PackedScene" uid="uid://dvfx6j0oudcju" path="res://Scenes/Entities/Orbs/WaterOrb.tscn" id="4_4xdo5"]
-[ext_resource type="PackedScene" uid="uid://bs7v22papc08q" path="res://Scenes/Entities/Orbs/RemoveTopOrb.tscn" id="5_tjgqf"]
+[ext_resource type="PackedScene" uid="uid://cr06vu3xtye2o" path="res://Scenes/Entities/Orbs/LoveOrb.tscn" id="5_6rvjo"]
 [ext_resource type="PackedScene" uid="uid://dqbf7485elcnw" path="res://Scenes/Entities/Orbs/AirOrb.tscn" id="5_wt2ae"]
 [ext_resource type="PackedScene" uid="uid://eqqxlxvmmaaa" path="res://Scenes/Entities/Goal.tscn" id="13_cgixb"]
 [ext_resource type="PackedScene" uid="uid://deel3vxmckby4" path="res://Scenes/Entities/Interactables/LevelExit.tscn" id="14_o2ycy"]
@@ -54,7 +54,7 @@ position = Vector2(-128, 64)
 [node name="AirOrb3" parent="Orbs" index="7" instance=ExtResource("5_wt2ae")]
 position = Vector2(80, 64)
 
-[node name="RemoveTopOrb" parent="Orbs" index="8" instance=ExtResource("5_tjgqf")]
+[node name="LoveOrb" parent="Orbs" index="8" instance=ExtResource("5_6rvjo")]
 position = Vector2(-48, 64)
 
 [node name="Gates" type="Node2D" parent="." index="12"]
