@@ -20,8 +20,8 @@
 	{"name": "Sign", "background": "0", "portrait": "SignNormal", "text": "Unless, of course, you are satisfied with the defaults."}
   ],
 
-  "L_HUB_shelf_empty": [
-	{"name": "", "background": "default", "portrait": "default", "text": "This shelf is empty."}
+  "L_HUB_shelf_locked": [
+	{"name": "", "background": "default", "portrait": "default", "text": "It seems like you cannot access this information yet."}
   ],
 
   "L_HUB_librarian_test": [

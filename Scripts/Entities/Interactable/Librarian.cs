@@ -6,8 +6,10 @@ public partial class Librarian : Interactable
 {
     private CustomSignals customSignals; // Singleton
 
-    [Export] public string Text { get; set; } // TODO: rename to dialogID, make sign into an npc class to handle this for every single npc
-    [Export] public string SunHoldingText { get; set; }
+    [Export] private Node2D playerNode;
+    [Export] private string librarianMissingText;
+
+    private bool librarianMissing = false;
 
     private AnimatedSprite2D tableAnimation;
     private AnimatedSprite2D librarianAnimation;
@@ -15,27 +17,36 @@ public partial class Librarian : Interactable
     public override void _Ready()
 	{
 		base._Ready();
-
         customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-
         tableAnimation = GetNode<AnimatedSprite2D>("Body/Table");
         librarianAnimation = GetNode<AnimatedSprite2D>("Body/Librarian");
-        tableAnimation.Play("SleepingIdle");
+
+        if (librarianMissing)
+        {
+            tableAnimation.Play("Idle");
+            librarianAnimation.Hide();
+            return;
+        }
+
+        tableAnimation.Play("Sleeping");
         librarianAnimation.Play("Idle");
+    }
+
+    public override void _Process(double delta)
+    {
+        if (librarianMissing) return;
+
+        if (playerNode.GlobalPosition.X > GlobalPosition.X)
+            librarianAnimation.FlipH = true;
+        else
+            librarianAnimation.FlipH = false;
     }
 
     protected override void Interact()
 	{
 		base.Interact();
 
-        // This middle bit is only for easter eggs where sign says something different when you carry a sun
-        string text = Text;
-        if (playerScriptReference.IsHoldingGoal)
-        {
-            text = string.IsNullOrEmpty(SunHoldingText) ? Text : SunHoldingText;
-        }
-
-        customSignals.EmitSignal(CustomSignals.SignalName.StartDialog, text);
+        customSignals.EmitSignal(CustomSignals.SignalName.StartDialog, librarianMissingText);
     }
 
     protected override void PlayerExited()

@@ -7,15 +7,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7onrw"]
 size = Vector2(39, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dba1d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_36qlr"]
 atlas = ExtResource("3_ab12x")
 region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_od4ot"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ussx6"]
 atlas = ExtResource("3_ab12x")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_it68g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_arx37"]
 atlas = ExtResource("3_ab12x")
 region = Rect2(64, 64, 32, 32)
 
@@ -23,36 +23,47 @@ region = Rect2(64, 64, 32, 32)
 animations = [{
 "frames": [{
 "duration": 10.0,
-"texture": SubResource("AtlasTexture_dba1d")
+"texture": SubResource("AtlasTexture_36qlr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_od4ot")
+"texture": SubResource("AtlasTexture_ussx6")
 }, {
 "duration": 10.0,
-"texture": SubResource("AtlasTexture_it68g")
+"texture": SubResource("AtlasTexture_arx37")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_od4ot")
+"texture": SubResource("AtlasTexture_ussx6")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_16lme"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(96, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bboro"]
+atlas = ExtResource("3_ab12x")
+region = Rect2(144, 96, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kc7er"]
 atlas = ExtResource("3_ab12x")
 region = Rect2(0, 96, 48, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6lmtc"]
-atlas = ExtResource("3_ab12x")
-region = Rect2(0, 96, 48, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fdacd"]
-atlas = ExtResource("3_ab12x")
-region = Rect2(48, 96, 48, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_xgbyl"]
 animations = [{
+"frames": [{
+"duration": 11.0,
+"texture": SubResource("AtlasTexture_16lme")
+}, {
+"duration": 11.0,
+"texture": SubResource("AtlasTexture_bboro")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kc7er")
@@ -60,22 +71,10 @@ animations = [{
 "loop": false,
 "name": &"Sleeping",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 11.0,
-"texture": SubResource("AtlasTexture_6lmtc")
-}, {
-"duration": 11.0,
-"texture": SubResource("AtlasTexture_fdacd")
-}],
-"loop": true,
-"name": &"SleepingIdle",
-"speed": 12.0
 }]
 
 [node name="Librarian" type="Area2D"]
 script = ExtResource("1_m85ha")
-Text = "Librarian"
 arrowYOffset = -3.0
 arrowIndicatorPrefab = ExtResource("2_enkby")
 
@@ -89,6 +88,7 @@ shape = SubResource("RectangleShape2D_7onrw")
 position = Vector2(0, -31)
 sprite_frames = SubResource("SpriteFrames_w0grj")
 animation = &"Idle"
+frame_progress = 0.320597
 
 [node name="Table" type="AnimatedSprite2D" parent="Body"]
 position = Vector2(4, -8)
