@@ -149,7 +149,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3qu6i")
 
 [node name="MovedByAnimation" type="Node2D" parent="."]
-position = Vector2(0, 0.924413)
+position = Vector2(0, 0.868875)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MovedByAnimation"]
 texture_filter = 1

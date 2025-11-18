@@ -1,21 +1,16 @@
 {
-  "": [
-    {"name": "", 
-    "description": [""]}
-  ],
+  "": {"name": [""], 
+  "description": [""]},
 
-  "area_portal": [
-    {"name": "Area Portal", 
-    "description": ["A big portal made out of void. Used to teleport between different worlds.", "Always destroys all solar entities held upon travel."]}
-  ],
+  "area_portal": {"name": ["Area Portal"], 
+  "description": ["A big portal made out of void. Used to teleport between different worlds.", "Always destroys all solar entities held upon travel."]},
 
-  "level_portal": [
-    {"name": "Level Portal", 
-    "description": ["A small portal made out of void. Used to teleport between the hub level and individual puzzle levels.", "Destroys all unshielded solar entities held upon travel.", "If a portal leads to a puzzle, it has a digit/letter representing it. If it leads out of it, \"HUB\" is written on it instead.", "The hub portals are commonly used for Sun Fragment absorbtion."]}
-  ],
+  "level_portal": {"name": ["Level Portal"], 
+  "description": ["A small portal made out of void. Used to teleport between the hub level and individual puzzle levels.", "Destroys all unshielded solar entities held upon travel.", "If a portal leads to a puzzle, it has a digit/letter representing it. If it leads out of it, \"HUB\" is written on it instead.", "The hub portals are commonly used for Sun Fragment absorbtion."]},
 
-  "sun_fragment": [
-    {"name": "Sun Fragment", 
-    "description": ["A small piece of pure solar energy. Can be picked up and carried.", "Can be absorbed in proximity of a void entity (like a level portal).", "Gets destroyed when transported through void portals.", "An "]}
-  ]
+  "sun_fragment": {"name": ["Sun Fragment"], 
+  "description": ["A small piece of pure solar energy. Can be picked up and carried.", "Can be absorbed in proximity of a void entity (like a level portal).", "Gets destroyed when transported through void portals.", "Power within a Sun Fragments is hidden. It should be treated as a resource."]},
+
+  "elemental_charge": {"name": ["Elemental Charge"], 
+  "description": ["A solar energy vessel."]}
 }

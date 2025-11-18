@@ -74,6 +74,16 @@ public partial class DialogBox : Sprite2D
         {
             currentDialog = gameState.DialogData[textID];
         }
+        else if (gameState.LibraryData.ContainsKey(textID))
+        {
+            currentDialog = new();
+            int dialogLen = gameState.LibraryData[textID]["description"].Count();
+            for (int i = 0; i < dialogLen; i++)
+            {
+                currentDialog.Add(new Dictionary<string, string>() { {"name", ""}, {"background", "default"}, {"portrait", "default"}, {"text", gameState.LibraryData[textID]["description"][i]} });
+            }
+            
+        }
         else // in case there is no such ID
         {
             currentDialog = gameState.DialogData[""];

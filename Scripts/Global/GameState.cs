@@ -47,6 +47,7 @@ public partial class GameState : Node
     public Dictionary<string, Dictionary<string, List<string>>> HintsData { get; private set; }
     public Dictionary<string, string> UITextData { get; private set; }
     public Dictionary<string, string> LevelNameData { get; private set; }
+    public Dictionary<string, Dictionary<string, List<string>>> LibraryData { get; private set; }
 
     // Other
     public bool IsGameplayActive { get; private set; } = false; // Is the root of menus the main menu or the gameplay
@@ -70,6 +71,7 @@ public partial class GameState : Node
         HintsData = LoadTextData<Dictionary<string, Dictionary<string, List<string>>>>("Hints", languageCode);
         UITextData = LoadTextData<Dictionary<string, string>>("UI", languageCode);
         LevelNameData = LoadTextData<Dictionary<string, string>>("LevelNames", languageCode);
+        LibraryData = LoadTextData<Dictionary<string, Dictionary<string, List<string>>>>("Library", languageCode);
 
 
         // Initialize LevelIDToLevel
