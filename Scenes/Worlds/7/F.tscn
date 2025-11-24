@@ -73,3 +73,6 @@ position = Vector2(160, 80)
 
 [node name="LevelExit" parent="." index="14" instance=ExtResource("14_6uppb")]
 position = Vector2(-16, 0)
+
+[node name="Decals" parent="." index="15"]
+layer_0/tile_data = PackedInt32Array(-327671, 524288, 0, 327686, 0, 1, 262154, 131072, 0, 262170, 196608, 0, -393213, 327680, 0, -262147, 458752, 1)

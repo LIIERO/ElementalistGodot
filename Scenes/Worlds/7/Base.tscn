@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgxfp8pjgxus4"]
+[gd_scene load_steps=11 format=3 uid="uid://bgxfp8pjgxus4"]
 
 [ext_resource type="PackedScene" uid="uid://xs48e3humoub" path="res://Scenes/GameBase.tscn" id="1_b2wba"]
 [ext_resource type="PackedScene" uid="uid://d6t75odymhmb" path="res://Scenes/Tilesets/Ground/StrongholdGround.tscn" id="2_mvxdb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://y7o7hwo01ue3" path="res://Scenes/Tilesets/Danger/StrongholdDanger.tscn" id="4_gevqp"]
 [ext_resource type="PackedScene" uid="uid://dxulmt7wmstpg" path="res://Scenes/Tilesets/Background/StrongholdBackground2.tscn" id="5_p18r8"]
 [ext_resource type="PackedScene" uid="uid://d2qawbg3dsagw" path="res://Scenes/Backgrounds/ParallaxBackgroundStronghold.tscn" id="7_a6760"]
+[ext_resource type="PackedScene" uid="uid://dgkcbvpecqsg7" path="res://Scenes/Tilesets/Decals/Stronghold.tscn" id="10_3knpb"]
 [ext_resource type="Texture2D" uid="uid://311d6t40ijo6" path="res://Graphics/Backgrounds/Stronghold/fg_stronghold.png" id="11_cf8aq"]
 [ext_resource type="PackedScene" uid="uid://bc3u03bpdjvjw" path="res://Scenes/Tilesets/Semisolid/SemisolidUp.tscn" id="13_oi7sq"]
 
@@ -49,3 +50,5 @@ motion_mirroring = Vector2(480, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer" index="0"]
 texture = ExtResource("11_cf8aq")
 offset = Vector2(240, 135)
+
+[node name="Decals" parent="." index="11" instance=ExtResource("10_3knpb")]
