@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dde17dq38nhiq"]
+[gd_scene load_steps=12 format=3 uid="uid://dde17dq38nhiq"]
 
 [ext_resource type="PackedScene" uid="uid://dkq80bp42viub" path="res://Scenes/Worlds/L/Base.tscn" id="1_74qea"]
 [ext_resource type="PackedScene" uid="uid://cf4k0twdc7q22" path="res://Scenes/Entities/Characters/Librarian.tscn" id="2_t5y61"]
 [ext_resource type="PackedScene" uid="uid://dg4ul6kr58ln8" path="res://Scenes/Decals/WaterIndicator.tscn" id="3_24epn"]
+[ext_resource type="Texture2D" uid="uid://du3g4tuj65wbn" path="res://Graphics/Decals/Global/tutorial_panel.png" id="4_d705p"]
 [ext_resource type="PackedScene" uid="uid://cboyimwuw3r22" path="res://Scenes/Decals/Tutorials/JumpTutorial.tscn" id="4_duvxx"]
 [ext_resource type="PackedScene" uid="uid://wt0yldp5yawf" path="res://Scenes/UI/Indicators/UpArrowIndicator.tscn" id="4_k4oli"]
 [ext_resource type="PackedScene" uid="uid://dwq53xpwvs61d" path="res://Scenes/Entities/Interactables/Sign.tscn" id="6_aygy5"]
@@ -37,16 +38,20 @@ position = Vector2(-208, 48)
 [node name="Tutorial" type="Node2D" parent="." index="10"]
 position = Vector2(0, 112)
 
-[node name="AnimatedSprite2D" parent="Tutorial" index="0" instance=ExtResource("4_k4oli")]
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial" index="0"]
+position = Vector2(0, -242)
+texture = ExtResource("4_d705p")
+
+[node name="AnimatedSprite2D" parent="Tutorial" index="1" instance=ExtResource("4_k4oli")]
 position = Vector2(16, 11)
 rotation = 1.5708
 
-[node name="AnimatedSprite2D2" parent="Tutorial" index="1" instance=ExtResource("4_k4oli")]
+[node name="AnimatedSprite2D2" parent="Tutorial" index="2" instance=ExtResource("4_k4oli")]
 position = Vector2(-16, 11)
 rotation = -1.5708
 
-[node name="JumpTutorial" parent="Tutorial" index="2" instance=ExtResource("4_duvxx")]
-position = Vector2(-72, -240)
+[node name="JumpTutorial" parent="Tutorial" index="3" instance=ExtResource("4_duvxx")]
+position = Vector2(-72, -246)
 
 [node name="Interactables" type="Node2D" parent="." index="11"]
 
