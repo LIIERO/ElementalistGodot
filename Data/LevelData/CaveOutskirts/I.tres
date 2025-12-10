@@ -7,6 +7,6 @@ script = ExtResource("1_wium7")
 ID = "I"
 Name = "icy_tower"
 NoCompletedToUnlock = 0
-SpecificLevelCompletedToUnlock = "C"
+SpecificLevelCompletedToUnlock = "B"
 IsSpecial = false
 IsSalvageable = false

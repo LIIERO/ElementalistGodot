@@ -52,3 +52,6 @@ texture = ExtResource("11_cf8aq")
 offset = Vector2(240, 135)
 
 [node name="Decals" parent="." index="11" instance=ExtResource("10_3knpb")]
+
+[node name="DecalsForeground" parent="." index="12" instance=ExtResource("10_3knpb")]
+z_index = 0
