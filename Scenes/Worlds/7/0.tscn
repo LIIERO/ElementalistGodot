@@ -27,3 +27,6 @@ position = Vector2(160, -16)
 
 [node name="LevelExit" parent="." index="14" instance=ExtResource("14_hudus")]
 position = Vector2(-112, 96)
+
+[node name="Decals" parent="." index="15"]
+layer_0/tile_data = PackedInt32Array(-65533, 524288, 7, 589825, 720896, 7, 786413, 655360, 7, 786426, 589824, 7)

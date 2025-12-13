@@ -35,3 +35,6 @@ position = Vector2(0, 80)
 [node name="Letter" parent="." index="15" instance=ExtResource("4_6h2hg")]
 position = Vector2(-192, -64)
 letter = "O"
+
+[node name="Decals" parent="." index="16"]
+layer_0/tile_data = PackedInt32Array(262123, 851968, 4, 262141, 851968, 4, 196611, 851968, 4, 262117, 851968, 4, -19, 65536, 2, -29, 65536, 268435458, -5, 65536, 268435458, -65531, 65536, 2, 458772, 851968, 7, 589834, 720896, 7, 655333, 589824, 7)

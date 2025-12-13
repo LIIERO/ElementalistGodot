@@ -8,8 +8,6 @@ public partial class Goal : Area2D, IUndoable
 {
     [Export] public bool IsSpecial { get; private set; } = false;
 
-    const float smoothTime = 0.3f;
-
     // Singletons
     private CustomSignals customSignals;
     private GameState gameState;
@@ -115,6 +113,8 @@ public partial class Goal : Area2D, IUndoable
 
     public override void _Process(double delta)
     {
+        bool absorbeAnimation = gameState.IsLevelTransitionPlaying && assigned;
+
         Vector2 desiredPosition;
         if (objectToFollow == null)
         {
@@ -122,12 +122,25 @@ public partial class Goal : Area2D, IUndoable
         }
         else
         {
-            desiredPosition = objectToFollow.Position + new Vector2(0f, -2.5f * GameUtils.gameUnitSize); 
+            float yOffset = absorbeAnimation ? -0.5f : -2.5f;
+            desiredPosition = objectToFollow.Position + new Vector2(0f, yOffset * GameUtils.gameUnitSize); 
         }
 
-        float smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, 200, (float)delta);
-        float smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, 200, (float)delta);
+        int maxSpeed = absorbeAnimation ? 2000 : 200;
+        float smoothTime = 0.3f;
+        float smoothedX = GameUtils.SmoothDamp(Position.X, desiredPosition.X, ref velocityX, smoothTime, maxSpeed, (float)delta);
+        float smoothedY = GameUtils.SmoothDamp(Position.Y, desiredPosition.Y, ref velocityY, smoothTime, maxSpeed, (float)delta);
         Position = new Vector2(smoothedX, smoothedY);
+
+        // Proximity fadeout on level complete (I dont think imma use it tbh)
+        /*if (!absorbeAnimation) return;
+        float playerFragmentDistance = Position.DistanceTo(desiredPosition);
+        float thresholdDistance = 4.0f * GameUtils.gameUnitSize;
+        if (playerFragmentDistance < thresholdDistance)
+        {
+            float alphaFactor = playerFragmentDistance / thresholdDistance;
+            Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f * alphaFactor);
+        }*/
     }
 
     public void AddLocalCheckpoint()

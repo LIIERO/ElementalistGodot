@@ -62,3 +62,6 @@ position = Vector2(-80, 48)
 [node name="Sign" parent="." index="15" instance=ExtResource("10_vrbg3")]
 position = Vector2(0, 80)
 Text = "7_3_hint"
+
+[node name="Decals" parent="." index="16"]
+layer_0/tile_data = PackedInt32Array(524285, 524288, 268435463, -589805, 851968, 268435463, -1, 655360, 268435463, 65557, 589824, 268435463, 458779, 786432, 268435463, 851977, 720896, 268435463)

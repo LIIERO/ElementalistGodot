@@ -53,7 +53,13 @@ position = Vector2(160, -32)
 position = Vector2(-16, 64)
 
 [node name="Goal" parent="." index="13" instance=ExtResource("13_26kfd")]
-position = Vector2(-112, 96)
+position = Vector2(-112, 80)
 
 [node name="LevelExit" parent="." index="14" instance=ExtResource("14_jby6y")]
 position = Vector2(160, 96)
+
+[node name="Decals" parent="." index="15"]
+layer_0/tile_data = PackedInt32Array(917497, 65536, 0, 917493, 0, 1, 786422, 0, 0, 851952, 393216, 2, 327682, 589824, 2, 327684, 524288, 2, 65544, 851968, 4, -655355, 65536, 268435458, 13, 327680, 0, -327677, 0, 2, 393224, 262144, 0, 17, 655360, 6, 655339, 327680, 7, -655358, 196608, 7, -393199, 262144, 7, 327691, 262144, 7, 851966, 262144, 6, 327677, 65536, 2, 327655, 65536, 268435458)
+
+[node name="DecalsForeground" parent="." index="16"]
+layer_0/tile_data = PackedInt32Array(262124, 720896, 4, -917492, 524288, 4, 327701, 589824, 4, 720900, 262144, 5, -6, 327680, 5, -720870, 524288, 5)
